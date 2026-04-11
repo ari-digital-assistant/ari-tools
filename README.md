@@ -14,8 +14,20 @@ ari-tools/
     ├── generate-dataset.py    Build the training JSONL from Ari skills + mobile-actions
     ├── train.py               Standalone training script (runs on GPU instance)
     ├── launch-aws.sh          Launch a spot instance, train, download result, terminate
+    ├── eval.py                Quick eval harness for a GGUF model against Ari test cases
     └── finetune-colab.ipynb   Colab notebook (alternative to AWS path)
 ```
+
+After a training run, evaluate the model:
+
+```bash
+pip install llama-cpp-python
+python3 functiongemma/eval.py ./output/ari-functiongemma-q4_k_m.gguf
+```
+
+The eval harness runs 24 hand-picked test cases covering easy utterances,
+paraphrases, and negative examples (general-knowledge questions that
+shouldn't match any skill). Prints a score per category.
 
 ## functiongemma
 
