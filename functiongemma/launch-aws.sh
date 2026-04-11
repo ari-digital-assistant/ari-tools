@@ -4,16 +4,19 @@
 # resulting GGUF, and terminate the instance.
 #
 # Prerequisites:
-#   - aws CLI configured (default profile)
-#   - HF_TOKEN env var (HuggingFace token with Gemma access)
+#   - aws CLI configured (default profile, or GitHub OIDC-assumed role)
+#   - Secrets Manager secret `ari-functiongemma/hf-token` holding the
+#     HuggingFace token (created once out of band)
+#   - Instance profile `ari-functiongemma-instance` (created once) that
+#     the spot instance assumes to read that secret
 #
 # Usage:
-#   HF_TOKEN=hf_xxx ./launch-aws.sh
+#   ./launch-aws.sh
 #
-# The instance clones ari-tools from GitHub, regenerates the dataset
-# fresh from the current Ari skill descriptions (so any skill changes
-# you've merged are reflected), trains, and the script SCPs the GGUF
-# back here.
+# The instance clones ari-tools from GitHub, reads the HF token from
+# Secrets Manager, regenerates the dataset fresh from the current Ari
+# skill descriptions (so any skill changes you've merged are reflected),
+# trains, and the script SCPs the GGUF back here.
 #
 # Defaults:
 #   Region:   eu-west-2 (London)
@@ -39,11 +42,8 @@ SECURITY_GROUP_NAME="${AWS_SG_NAME:-ari-functiongemma-train}"
 LOCAL_OUT="${LOCAL_OUT:-./output}"
 TOOLS_REPO="${TOOLS_REPO:-https://github.com/ari-digital-assistant/ari-tools.git}"
 TOOLS_BRANCH="${TOOLS_BRANCH:-main}"
-
-if [[ -z "${HF_TOKEN:-}" ]]; then
-    echo "ERROR: HF_TOKEN env var not set" >&2
-    exit 2
-fi
+INSTANCE_PROFILE="${AWS_INSTANCE_PROFILE:-ari-functiongemma-instance}"
+HF_SECRET_ID="${HF_SECRET_ID:-ari-functiongemma/hf-token}"
 
 mkdir -p "$LOCAL_OUT"
 
@@ -127,15 +127,32 @@ exec > >(tee /var/log/ari-train.log | logger -t ari-train -s 2>/dev/console) 2>&
 
 cd /home/ubuntu
 
-# The Deep Learning AMI has Python + CUDA. Clone our scripts.
+# The Deep Learning AMI has Python + CUDA + awscli. Clone our scripts.
 echo "Cloning ari-tools..."
 sudo -u ubuntu git clone --depth 1 --branch "$TOOLS_BRANCH" "$TOOLS_REPO" ari-tools
 
+# Fetch the HF token from Secrets Manager using the instance profile's
+# auto-rotated credentials. The token never touches user-data or any
+# long-lived storage on the instance.
+echo "Fetching HF token from Secrets Manager..."
+HF_TOKEN=\$(aws secretsmanager get-secret-value \\
+    --region "$REGION" \\
+    --secret-id "$HF_SECRET_ID" \\
+    --query SecretString --output text)
+
+if [[ -z "\$HF_TOKEN" ]]; then
+    echo "ERROR: failed to fetch HF token from Secrets Manager" >&2
+    exit 1
+fi
+
 echo "Running training..."
 cd /home/ubuntu/ari-tools/functiongemma
-sudo -u ubuntu python3 train.py \\
-    --hf-token "$HF_TOKEN" \\
+sudo -u ubuntu HF_TOKEN="\$HF_TOKEN" python3 train.py \\
+    --hf-token "\$HF_TOKEN" \\
     --output-dir /home/ubuntu/output
+
+# Scrub the token from the environment before marking done.
+unset HF_TOKEN
 
 echo "Training complete. Touching done marker."
 sudo -u ubuntu touch /home/ubuntu/output/DONE
@@ -155,6 +172,7 @@ SPOT_REQUEST_ID=$(aws ec2 request-spot-instances --region "$REGION" \
         \"InstanceType\": \"$INSTANCE_TYPE\",
         \"KeyName\": \"$KEY_NAME\",
         \"SecurityGroupIds\": [\"$SG_ID\"],
+        \"IamInstanceProfile\": {\"Name\": \"$INSTANCE_PROFILE\"},
         \"BlockDeviceMappings\": [{
             \"DeviceName\": \"/dev/sda1\",
             \"Ebs\": {\"VolumeSize\": 100, \"VolumeType\": \"gp3\"}
