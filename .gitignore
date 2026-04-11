@@ -1,0 +1,17 @@
+# Secrets
+.env
+
+# Training output
+output/
+*.gguf
+*.safetensors
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# OS
+.DS_Store
