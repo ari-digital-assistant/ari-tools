@@ -23,6 +23,9 @@ import sys
 from pathlib import Path
 
 
+ARI_ENGINE_REPO = "https://github.com/ari-digital-assistant/ari-engine.git"
+
+
 def install_deps():
     """Install Python deps not in the Deep Learning AMI."""
     print("Installing Python dependencies...")
@@ -36,14 +39,46 @@ def install_deps():
     ])
 
 
-def generate_dataset(dest: Path):
+def ensure_rust():
+    """Make sure cargo is on PATH (for the ari-skills export-utterances bin)."""
+    if subprocess.run(["which", "cargo"], capture_output=True).returncode == 0:
+        print("Rust toolchain already installed.")
+        return
+    print("Installing Rust toolchain...")
+    subprocess.check_call(
+        "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable",
+        shell=True,
+    )
+    # rustup adds to ~/.cargo/bin which isn't on PATH yet for this process
+    cargo_bin = os.path.expanduser("~/.cargo/bin")
+    os.environ["PATH"] = f"{cargo_bin}:{os.environ.get('PATH', '')}"
+
+
+def clone_engine(output_dir: Path) -> Path:
+    """Clone ari-engine so generate-dataset.py can extract skill data."""
+    engine_dir = output_dir / "ari-engine"
+    if engine_dir.exists():
+        print(f"ari-engine already cloned at {engine_dir}")
+        return engine_dir
+    print(f"Cloning ari-engine to {engine_dir}...")
+    subprocess.check_call([
+        "git", "clone", "--depth", "1",
+        ARI_ENGINE_REPO, str(engine_dir),
+    ])
+    return engine_dir
+
+
+def generate_dataset(dest: Path, engine_dir: Path):
     """Run generate-dataset.py to build the training data fresh."""
     print("Generating dataset...")
     script = Path(__file__).parent / "generate-dataset.py"
+    env = os.environ.copy()
+    env["ARI_ENGINE_DIR"] = str(engine_dir)
     with open(dest, "w") as f:
         subprocess.check_call(
             [sys.executable, str(script)],
             stdout=f,
+            env=env,
         )
     line_count = sum(1 for _ in open(dest))
     print(f"  {line_count} samples")
@@ -218,12 +253,15 @@ def main():
 
     if not args.skip_install:
         install_deps()
+        ensure_rust()
 
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    engine_dir = clone_engine(output_dir)
+
     dataset_path = output_dir / "dataset.jsonl"
-    generate_dataset(dataset_path)
+    generate_dataset(dataset_path, engine_dir)
 
     hf_login(args.hf_token)
 
