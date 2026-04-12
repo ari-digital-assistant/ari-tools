@@ -31,6 +31,7 @@ image = (
         "huggingface_hub",
         "gguf",
         "pyyaml",
+        "sentencepiece",
     )
     .run_commands(
         "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable",
@@ -266,13 +267,96 @@ def train():
     print("Done. Model saved to Modal volume 'ari-functiongemma-output'.")
 
 
+@app.function(
+    image=image,
+    gpu="A10G",
+    timeout=3600,
+    secrets=[modal.Secret.from_name("huggingface")],
+    volumes={OUTPUT_DIR: volume},
+)
+def convert_only():
+    """Retry just the GGUF conversion using the fused model saved to the volume."""
+    import os
+    import shutil
+
+    fused_backup = f"{OUTPUT_DIR}/fused"
+    if not os.path.exists(fused_backup):
+        raise RuntimeError("No fused model on volume. Run full training first.")
+
+    os.makedirs(WORK_DIR, exist_ok=True)
+    fused_dir = f"{WORK_DIR}/fused"
+    if not os.path.exists(fused_dir):
+        shutil.copytree(fused_backup, fused_dir)
+    print(f"Fused model restored from volume to {fused_dir}")
+
+    # Download missing tokenizer files
+    from huggingface_hub import hf_hub_download, login
+    login(token=os.environ["HF_TOKEN"])
+    base_model_id = "google/functiongemma-270m-it"
+    for fname in ["tokenizer.model", "added_tokens.json", "special_tokens_map.json"]:
+        if not os.path.exists(os.path.join(fused_dir, fname)):
+            try:
+                src = hf_hub_download(base_model_id, fname)
+                shutil.copy2(src, os.path.join(fused_dir, fname))
+                print(f"  Copied {fname}")
+            except Exception as e:
+                print(f"  WARNING: {fname}: {e}")
+
+    # Build llama.cpp quantizer
+    print("Cloning llama.cpp...")
+    subprocess.check_call(
+        ["git", "clone", "--depth", "1", "https://github.com/ggml-org/llama.cpp.git", f"{WORK_DIR}/llama.cpp"]
+    )
+    subprocess.check_call(["cmake", "-B", "build"], cwd=f"{WORK_DIR}/llama.cpp")
+    subprocess.check_call(
+        ["cmake", "--build", "build", "--target", "llama-quantize", "-j4"],
+        cwd=f"{WORK_DIR}/llama.cpp",
+    )
+
+    f16_path = f"{WORK_DIR}/ari-functiongemma-f16.gguf"
+    q4_path = f"{OUTPUT_DIR}/ari-functiongemma-q4_k_m.gguf"
+
+    print("Converting to GGUF F16...")
+    subprocess.check_call([
+        sys.executable,
+        f"{WORK_DIR}/llama.cpp/convert_hf_to_gguf.py",
+        fused_dir,
+        "--outfile", f16_path,
+        "--outtype", "f16",
+    ])
+
+    print("Quantising to Q4_K_M...")
+    subprocess.check_call([
+        f"{WORK_DIR}/llama.cpp/build/bin/llama-quantize",
+        f16_path,
+        q4_path,
+        "Q4_K_M",
+    ])
+
+    size_mb = os.path.getsize(q4_path) / 1024 / 1024
+    print(f"Final model: {q4_path} ({size_mb:.0f} MB)")
+    volume.commit()
+
+
 @app.local_entrypoint()
 def main():
-    print("Launching training on Modal...")
-    train.remote()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--convert-only", action="store_true",
+                        help="Skip training, just retry GGUF conversion from the saved fused model")
+    args = parser.parse_args()
+
+    import os as _os
+    if args.convert_only:
+        print("Retrying GGUF conversion only...")
+        convert_only.remote()
+    else:
+        print("Launching training on Modal...")
+        train.remote()
 
     print("Downloading model from Modal volume...")
     import subprocess as sp
+    _os.makedirs("./output", exist_ok=True)
     sp.check_call([
         "modal", "volume", "get",
         "ari-functiongemma-output",
