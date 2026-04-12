@@ -1,27 +1,18 @@
 #!/usr/bin/env bash
 #
-# Launch a spot instance, fine-tune FunctionGemma on it, download the
+# Launch an instance, fine-tune FunctionGemma on it, download the
 # resulting GGUF, and terminate the instance.
+#
+# Tries spot first; falls back to on-demand if spot capacity is
+# unavailable. All resources live in eu-west-1 (Ireland).
 #
 # Prerequisites:
 #   - aws CLI configured (default profile, or GitHub OIDC-assumed role)
-#   - Secrets Manager secret `ari-functiongemma/hf-token` holding the
-#     HuggingFace token (created once out of band)
-#   - Instance profile `ari-functiongemma-instance` (created once) that
-#     the spot instance assumes to read that secret
+#   - Secrets Manager secret `ari-functiongemma/hf-token` in eu-west-1
+#   - Instance profile `ari-functiongemma-instance` (IAM is global)
 #
 # Usage:
 #   ./launch-aws.sh
-#
-# The instance clones ari-tools from GitHub, reads the HF token from
-# Secrets Manager, regenerates the dataset fresh from the current Ari
-# skill descriptions (so any skill changes you've merged are reflected),
-# trains, and the script SCPs the GGUF back here.
-#
-# Defaults:
-#   Region:   eu-west-2 (London)
-#   Instance: g6.xlarge (L4, 24GB VRAM, ~$0.85/hr on-demand, ~$0.30/hr spot)
-#   AMI:      Deep Learning Base GPU AMI (Ubuntu 22.04, PyTorch + CUDA)
 
 set -euo pipefail
 
@@ -38,8 +29,8 @@ if [[ -f "$REPO_ROOT/.env" ]]; then
     set +a
 fi
 
-REGION="${AWS_REGION:-eu-west-2}"
-INSTANCE_TYPE="${INSTANCE_TYPE:-g6.xlarge}"
+REGION="${AWS_REGION:-eu-west-1}"
+INSTANCE_TYPE="${INSTANCE_TYPE:-g5.xlarge}"
 KEY_NAME="${AWS_KEY_NAME:-ari-functiongemma}"
 SECURITY_GROUP_NAME="${AWS_SG_NAME:-ari-functiongemma-train}"
 LOCAL_OUT="${LOCAL_OUT:-./output}"
@@ -50,26 +41,9 @@ HF_SECRET_ID="${HF_SECRET_ID:-ari-functiongemma/hf-token}"
 
 mkdir -p "$LOCAL_OUT"
 
-# ── Check G instance vCPU quota ──────────────────────────────────────────
+# ── Resolve the latest Deep Learning Base GPU AMI ────────────────────────
 
-echo "[0/8] Checking AWS service quota for G instances in $REGION..."
-# L-DB2E81BA = "Running On-Demand G and VT instances" (vCPU count, applies to spot too)
-QUOTA=$(aws service-quotas get-service-quota --region "$REGION" \
-    --service-code ec2 --quota-code L-DB2E81BA \
-    --query 'Quota.Value' --output text 2>/dev/null || echo "0")
-
-if [[ "$QUOTA" == "0.0" || "$QUOTA" == "0" ]]; then
-    echo "ERROR: G instance vCPU quota is 0 in $REGION." >&2
-    echo "Request a quota increase here:" >&2
-    echo "  https://${REGION}.console.aws.amazon.com/servicequotas/home/services/ec2/quotas/L-DB2E81BA" >&2
-    echo "Ask for at least 4 vCPUs (g6.xlarge needs 4)." >&2
-    exit 1
-fi
-echo "  G instance vCPU quota: $QUOTA"
-
-# ── Resolve the latest Deep Learning Base GPU AMI for Ubuntu 22.04 ────────
-
-echo "[1/8] Resolving latest Deep Learning Base GPU AMI in $REGION..."
+echo "[1/7] Resolving latest Deep Learning Base GPU AMI in $REGION..."
 AMI_ID=$(aws ec2 describe-images --region "$REGION" \
     --owners amazon \
     --filters "Name=name,Values=Deep Learning Base OSS Nvidia Driver GPU AMI (Ubuntu 22.04)*" \
@@ -87,19 +61,19 @@ echo "  AMI: $AMI_ID"
 
 KEY_FILE="$HOME/.ssh/${KEY_NAME}.pem"
 if ! aws ec2 describe-key-pairs --region "$REGION" --key-names "$KEY_NAME" >/dev/null 2>&1; then
-    echo "[2/8] Creating SSH key pair $KEY_NAME..."
+    echo "[2/7] Creating SSH key pair $KEY_NAME..."
     aws ec2 create-key-pair --region "$REGION" --key-name "$KEY_NAME" \
         --query 'KeyMaterial' --output text > "$KEY_FILE"
     chmod 600 "$KEY_FILE"
     echo "  Key saved to $KEY_FILE"
 else
-    echo "[2/8] SSH key pair $KEY_NAME exists"
+    echo "[2/7] SSH key pair $KEY_NAME exists"
 fi
 
 # ── Ensure security group exists (allow SSH from your IP) ────────────────
 
 MY_IP=$(curl -s https://checkip.amazonaws.com | tr -d '[:space:]')
-echo "[3/8] Ensuring security group $SECURITY_GROUP_NAME (SSH from $MY_IP/32)..."
+echo "[3/7] Ensuring security group $SECURITY_GROUP_NAME (SSH from $MY_IP/32)..."
 
 SG_ID=$(aws ec2 describe-security-groups --region "$REGION" \
     --filters "Name=group-name,Values=$SECURITY_GROUP_NAME" \
@@ -113,14 +87,13 @@ if [[ "$SG_ID" == "None" || -z "$SG_ID" ]]; then
     echo "  Created SG $SG_ID"
 fi
 
-# Idempotent: add rule if not present
 aws ec2 authorize-security-group-ingress --region "$REGION" \
     --group-id "$SG_ID" \
     --protocol tcp --port 22 --cidr "$MY_IP/32" 2>/dev/null || true
 
 echo "  SG: $SG_ID"
 
-# ── Build user-data: bootstrap script that runs the training ─────────────
+# ── Build user-data ──────────────────────────────────────────────────────
 
 USER_DATA_FILE=$(mktemp)
 cat > "$USER_DATA_FILE" <<EOF
@@ -130,13 +103,9 @@ exec > >(tee /var/log/ari-train.log | logger -t ari-train -s 2>/dev/console) 2>&
 
 cd /home/ubuntu
 
-# The Deep Learning AMI has Python + CUDA + awscli. Clone our scripts.
 echo "Cloning ari-tools..."
 sudo -u ubuntu git clone --depth 1 --branch "$TOOLS_BRANCH" "$TOOLS_REPO" ari-tools
 
-# Fetch the HF token from Secrets Manager using the instance profile's
-# auto-rotated credentials. The token never touches user-data or any
-# long-lived storage on the instance.
 echo "Fetching HF token from Secrets Manager..."
 HF_TOKEN=\$(aws secretsmanager get-secret-value \\
     --region "$REGION" \\
@@ -154,57 +123,108 @@ sudo -u ubuntu HF_TOKEN="\$HF_TOKEN" python3 train.py \\
     --hf-token "\$HF_TOKEN" \\
     --output-dir /home/ubuntu/output
 
-# Scrub the token from the environment before marking done.
 unset HF_TOKEN
 
 echo "Training complete. Touching done marker."
 sudo -u ubuntu touch /home/ubuntu/output/DONE
-
-# Don't auto-shutdown — the launch script polls for DONE and SCPs the result.
 EOF
 
-# ── Request spot instance ────────────────────────────────────────────────
+USER_DATA_B64=$(base64 -w0 "$USER_DATA_FILE")
+rm -f "$USER_DATA_FILE"
 
-echo "[4/8] Requesting spot instance ($INSTANCE_TYPE)..."
+# ── Launch: try spot, fall back to on-demand ─────────────────────────────
 
+LAUNCH_SPEC="{
+    \"ImageId\": \"$AMI_ID\",
+    \"InstanceType\": \"$INSTANCE_TYPE\",
+    \"KeyName\": \"$KEY_NAME\",
+    \"SecurityGroupIds\": [\"$SG_ID\"],
+    \"IamInstanceProfile\": {\"Name\": \"$INSTANCE_PROFILE\"},
+    \"BlockDeviceMappings\": [{
+        \"DeviceName\": \"/dev/sda1\",
+        \"Ebs\": {\"VolumeSize\": 100, \"VolumeType\": \"gp3\"}
+    }],
+    \"UserData\": \"$USER_DATA_B64\"
+}"
+
+INSTANCE_ID=""
+
+# Attempt 1: spot
+echo "[4/7] Trying spot instance ($INSTANCE_TYPE in $REGION)..."
 SPOT_REQUEST_ID=$(aws ec2 request-spot-instances --region "$REGION" \
     --instance-count 1 \
     --type "one-time" \
-    --launch-specification "{
-        \"ImageId\": \"$AMI_ID\",
-        \"InstanceType\": \"$INSTANCE_TYPE\",
-        \"KeyName\": \"$KEY_NAME\",
-        \"SecurityGroupIds\": [\"$SG_ID\"],
-        \"IamInstanceProfile\": {\"Name\": \"$INSTANCE_PROFILE\"},
-        \"BlockDeviceMappings\": [{
-            \"DeviceName\": \"/dev/sda1\",
-            \"Ebs\": {\"VolumeSize\": 100, \"VolumeType\": \"gp3\"}
-        }],
-        \"UserData\": \"$(base64 -w0 "$USER_DATA_FILE")\"
-    }" \
-    --query 'SpotInstanceRequests[0].SpotInstanceRequestId' --output text)
+    --launch-specification "$LAUNCH_SPEC" \
+    --query 'SpotInstanceRequests[0].SpotInstanceRequestId' --output text 2>/dev/null || echo "")
 
-echo "  Spot request: $SPOT_REQUEST_ID"
-rm -f "$USER_DATA_FILE"
+if [[ -n "$SPOT_REQUEST_ID" ]]; then
+    echo "  Spot request: $SPOT_REQUEST_ID"
+    echo "  Waiting up to 3 minutes for fulfilment..."
 
-# ── Wait for fulfilment ──────────────────────────────────────────────────
+    SPOT_OK=false
+    for i in $(seq 1 12); do
+        STATE=$(aws ec2 describe-spot-instance-requests --region "$REGION" \
+            --spot-instance-request-ids "$SPOT_REQUEST_ID" \
+            --query 'SpotInstanceRequests[0].Status.Code' --output text 2>/dev/null || echo "unknown")
 
-echo "[5/8] Waiting for spot fulfilment (up to 10 minutes)..."
+        if [[ "$STATE" == "fulfilled" ]]; then
+            INSTANCE_ID=$(aws ec2 describe-spot-instance-requests --region "$REGION" \
+                --spot-instance-request-ids "$SPOT_REQUEST_ID" \
+                --query 'SpotInstanceRequests[0].InstanceId' --output text)
+            SPOT_OK=true
+            echo "  Spot fulfilled: $INSTANCE_ID"
+            break
+        elif [[ "$STATE" == "capacity-not-available" || "$STATE" == "capacity-oversubscribed" || "$STATE" == "price-too-low" ]]; then
+            echo "  Spot unavailable ($STATE), cancelling..."
+            aws ec2 cancel-spot-instance-requests --region "$REGION" \
+                --spot-instance-request-ids "$SPOT_REQUEST_ID" >/dev/null 2>&1 || true
+            break
+        fi
+        sleep 15
+    done
 
-# Use the built-in waiter — it polls every 15s for up to 40 attempts (10 min).
-if ! aws ec2 wait spot-instance-request-fulfilled --region "$REGION" \
-    --spot-instance-request-ids "$SPOT_REQUEST_ID" 2>/dev/null; then
-    echo "ERROR: spot request not fulfilled within 10 minutes" >&2
-    aws ec2 describe-spot-instance-requests --region "$REGION" \
-        --spot-instance-request-ids "$SPOT_REQUEST_ID" \
-        --query 'SpotInstanceRequests[0].Status' --output json >&2
-    exit 1
+    if [[ "$SPOT_OK" == "false" && -n "$SPOT_REQUEST_ID" ]]; then
+        aws ec2 cancel-spot-instance-requests --region "$REGION" \
+            --spot-instance-request-ids "$SPOT_REQUEST_ID" >/dev/null 2>&1 || true
+    fi
 fi
 
-INSTANCE_ID=$(aws ec2 describe-spot-instance-requests --region "$REGION" \
-    --spot-instance-request-ids "$SPOT_REQUEST_ID" \
-    --query 'SpotInstanceRequests[0].InstanceId' --output text)
-echo "  Instance: $INSTANCE_ID"
+# Attempt 2: on-demand
+if [[ -z "$INSTANCE_ID" ]]; then
+    echo "[4/7] Spot unavailable. Launching on-demand ($INSTANCE_TYPE in $REGION)..."
+    INSTANCE_ID=$(aws ec2 run-instances --region "$REGION" \
+        --image-id "$AMI_ID" \
+        --instance-type "$INSTANCE_TYPE" \
+        --key-name "$KEY_NAME" \
+        --security-group-ids "$SG_ID" \
+        --iam-instance-profile "Name=$INSTANCE_PROFILE" \
+        --block-device-mappings '[{"DeviceName":"/dev/sda1","Ebs":{"VolumeSize":100,"VolumeType":"gp3"}}]' \
+        --user-data "file://<(echo "$USER_DATA_B64" | base64 -d)" \
+        --query 'Instances[0].InstanceId' --output text 2>/dev/null || echo "")
+
+    # run-instances needs the raw user-data, not base64 in a JSON blob
+    if [[ -z "$INSTANCE_ID" ]]; then
+        # Retry with a temp file approach
+        UD_TMP=$(mktemp)
+        echo "$USER_DATA_B64" | base64 -d > "$UD_TMP"
+        INSTANCE_ID=$(aws ec2 run-instances --region "$REGION" \
+            --image-id "$AMI_ID" \
+            --instance-type "$INSTANCE_TYPE" \
+            --key-name "$KEY_NAME" \
+            --security-group-ids "$SG_ID" \
+            --iam-instance-profile "Name=$INSTANCE_PROFILE" \
+            --block-device-mappings '[{"DeviceName":"/dev/sda1","Ebs":{"VolumeSize":100,"VolumeType":"gp3"}}]' \
+            --user-data "file://$UD_TMP" \
+            --query 'Instances[0].InstanceId' --output text)
+        rm -f "$UD_TMP"
+    fi
+
+    if [[ -z "$INSTANCE_ID" || "$INSTANCE_ID" == "None" ]]; then
+        echo "ERROR: failed to launch on-demand instance" >&2
+        exit 1
+    fi
+    echo "  On-demand instance: $INSTANCE_ID"
+fi
 
 # Tag the instance for visibility
 aws ec2 create-tags --region "$REGION" --resources "$INSTANCE_ID" \
@@ -212,7 +232,7 @@ aws ec2 create-tags --region "$REGION" --resources "$INSTANCE_ID" \
 
 # ── Wait for SSH ─────────────────────────────────────────────────────────
 
-echo "[6/8] Waiting for instance to be reachable via SSH..."
+echo "[5/7] Waiting for instance to be reachable via SSH..."
 
 aws ec2 wait instance-running --region "$REGION" --instance-ids "$INSTANCE_ID"
 
@@ -232,7 +252,7 @@ done
 
 # ── Poll for training completion ─────────────────────────────────────────
 
-echo "[7/8] Training in progress. Polling for completion (every 60s)..."
+echo "[6/7] Training in progress. Polling for completion (every 60s)..."
 echo "  Watch live: ssh -i $KEY_FILE ubuntu@$PUBLIC_IP 'sudo tail -f /var/log/ari-train.log'"
 
 while true; do
@@ -246,7 +266,7 @@ done
 
 # ── Download result and terminate ────────────────────────────────────────
 
-echo "[8/8] Downloading GGUF and terminating instance..."
+echo "[7/7] Downloading GGUF and terminating instance..."
 
 scp -i "$KEY_FILE" -o StrictHostKeyChecking=no \
     ubuntu@"$PUBLIC_IP":/home/ubuntu/output/ari-functiongemma-q4_k_m.gguf \
