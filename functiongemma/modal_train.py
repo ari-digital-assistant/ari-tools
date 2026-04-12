@@ -355,6 +355,6 @@ def main(convert_only: bool = False):
         "modal", "volume", "get",
         "ari-functiongemma-output",
         "ari-functiongemma-q4_k_m.gguf",
-        "--output", "./output/ari-functiongemma-q4_k_m.gguf",
+        "./output/",
     ])
     print("Done. Model: ./output/ari-functiongemma-q4_k_m.gguf")
