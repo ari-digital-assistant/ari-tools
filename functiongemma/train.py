@@ -159,8 +159,8 @@ def train_model(
     config_kwargs = dict(
         output_dir=str(output_dir / "training"),
         num_train_epochs=2,
-        per_device_train_batch_size=4,
-        gradient_accumulation_steps=8,
+        per_device_train_batch_size=1,
+        gradient_accumulation_steps=32,
         learning_rate=1e-5,
         lr_scheduler_type="cosine",
         gradient_checkpointing=True,
