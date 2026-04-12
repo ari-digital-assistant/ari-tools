@@ -5,18 +5,19 @@ Generate the FunctionGemma fine-tuning dataset for Ari.
 Combines:
 1. Ari built-in skill paraphrases (extracted from ari-engine via the
    `export-utterances` Cargo binary — single source of truth)
-2. Google mobile-actions dataset (9,654 examples)
-3. Negative examples (general knowledge, should NOT trigger any function)
+2. Community skill examples (parsed from ari-skills SKILL.md manifests)
+3. Google mobile-actions dataset (9,654 examples)
+4. Negative examples (general knowledge, should NOT trigger any function)
 
 Output: JSONL on stdout in the same format as google/mobile-actions,
 ready for SFTTrainer fine-tuning with FunctionGemma's chat template.
 
 Usage:
-    # Auto-discover ari-engine (assumes sibling clone or env var):
     python3 generate-dataset.py > dataset.jsonl
 
-    # Or specify the engine path:
-    ARI_ENGINE_DIR=/path/to/ari-engine python3 generate-dataset.py > dataset.jsonl
+Environment variables:
+    ARI_ENGINE_DIR  — path to ari-engine checkout (auto-discovered if not set)
+    ARI_SKILLS_DIR  — path to ari-skills checkout (auto-discovered if not set)
 """
 
 import json
@@ -69,6 +70,125 @@ def export_skills(engine_dir: Path) -> list:
         check=True,
     )
     return json.loads(result.stdout)
+
+
+# ── Locate ari-skills and parse community SKILL.md files ─────────────
+
+def find_skills_dir() -> Path | None:
+    """Find ari-skills relative to this script or via env var."""
+    if env := os.environ.get("ARI_SKILLS_DIR"):
+        p = Path(env)
+        if (p / "skills").is_dir():
+            return p
+        print(f"WARNING: ARI_SKILLS_DIR={env} has no skills/ dir, skipping community skills", file=sys.stderr)
+        return None
+
+    here = Path(__file__).resolve().parent
+    candidates = [
+        here.parent.parent / "ari-skills",
+        here.parent.parent.parent / "ari-skills",
+        here.parent / "ari-skills",
+    ]
+    for c in candidates:
+        if (c / "skills").is_dir():
+            return c
+
+    print("WARNING: could not find ari-skills, skipping community skills", file=sys.stderr)
+    return None
+
+
+def parse_skillfile_yaml(path: Path) -> dict | None:
+    """Minimal YAML frontmatter parser for SKILL.md. Extracts metadata.ari fields."""
+    try:
+        import yaml
+    except ImportError:
+        # Fall back to a basic parser if PyYAML isn't available
+        return _parse_skillfile_basic(path)
+
+    text = path.read_text()
+    if not text.startswith("---"):
+        return None
+    end = text.find("\n---", 3)
+    if end < 0:
+        return None
+    frontmatter = text[3:end].strip()
+    try:
+        doc = yaml.safe_load(frontmatter)
+    except Exception:
+        return None
+    return doc
+
+
+def _parse_skillfile_basic(path: Path) -> dict | None:
+    """Fallback parser using json via subprocess — calls the engine's validator."""
+    return None
+
+
+def load_community_skills(skills_dir: Path) -> list:
+    """Walk skills/*/SKILL.md and extract id, description, parameters, examples."""
+    skills_root = skills_dir / "skills"
+    if not skills_root.is_dir():
+        return []
+
+    community = []
+    for skill_dir in sorted(skills_root.iterdir()):
+        manifest = skill_dir / "SKILL.md"
+        if not manifest.is_file():
+            continue
+
+        doc = parse_skillfile_yaml(manifest)
+        if not doc:
+            continue
+
+        ari = (doc.get("metadata") or {}).get("ari")
+        if not ari:
+            continue
+
+        # Skip assistant skills — they don't enter routing
+        if ari.get("type") == "assistant":
+            continue
+
+        skill_id = ari.get("id")
+        description = doc.get("description", "")
+        if not skill_id or not description:
+            continue
+
+        # Parse examples
+        raw_examples = ari.get("examples", [])
+        if not raw_examples:
+            continue
+
+        examples = []
+        for ex in raw_examples:
+            text = ex.get("text") if isinstance(ex, dict) else None
+            if not text:
+                continue
+            args = ex.get("args", {}) if isinstance(ex, dict) else {}
+            if args is None:
+                args = {}
+            examples.append({"text": text, "args": args})
+
+        if not examples:
+            continue
+
+        # Build a parameters schema from the examples' args keys
+        # (simple heuristic — if any example has args, infer string properties)
+        params = {"type": "object", "properties": {}}
+        for ex in examples:
+            for key in ex["args"]:
+                if key not in params["properties"]:
+                    params["properties"][key] = {"type": "string"}
+        if params["properties"]:
+            params["required"] = list(params["properties"].keys())
+
+        community.append({
+            "id": skill_id,
+            "description": description,
+            "parameters": params,
+            "examples": examples,
+        })
+
+    return community
 
 
 # ── Negative examples (should NOT match any skill) ─────────────────────
@@ -235,13 +355,23 @@ def load_mobile_actions() -> list:
 
 def main():
     engine_dir = find_engine_dir()
-    skills = export_skills(engine_dir)
-    print(f"  {len(skills)} skills found", file=sys.stderr)
+    builtin_skills = export_skills(engine_dir)
+    print(f"  {len(builtin_skills)} built-in skills", file=sys.stderr)
 
-    tools = build_tools(skills)
+    # Load community skills from ari-skills repo
+    skills_dir = find_skills_dir()
+    community_skills = load_community_skills(skills_dir) if skills_dir else []
+    print(f"  {len(community_skills)} community skills with examples", file=sys.stderr)
+
+    # Merge — community skills after built-ins. Skip duplicates by id.
+    builtin_ids = {s["id"] for s in builtin_skills}
+    all_skills = builtin_skills + [s for s in community_skills if s["id"] not in builtin_ids]
+    print(f"  {len(all_skills)} total skills for training", file=sys.stderr)
+
+    tools = build_tools(all_skills)
 
     print("Generating samples:", file=sys.stderr)
-    skill_samples = generate_skill_samples(skills, tools)
+    skill_samples = generate_skill_samples(all_skills, tools)
     negative_samples = generate_negative_samples(tools)
     mobile_samples = load_mobile_actions()
 

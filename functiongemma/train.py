@@ -24,6 +24,7 @@ from pathlib import Path
 
 
 ARI_ENGINE_REPO = "https://github.com/ari-digital-assistant/ari-engine.git"
+ARI_SKILLS_REPO = "https://github.com/ari-digital-assistant/ari-skills.git"
 
 
 def install_deps():
@@ -36,6 +37,7 @@ def install_deps():
         "datasets",
         "huggingface_hub",
         "gguf",
+        "pyyaml",
     ])
 
 
@@ -68,12 +70,27 @@ def clone_engine(output_dir: Path) -> Path:
     return engine_dir
 
 
-def generate_dataset(dest: Path, engine_dir: Path):
+def clone_skills(output_dir: Path) -> Path:
+    """Clone ari-skills so generate-dataset.py can extract community skill examples."""
+    skills_dir = output_dir / "ari-skills"
+    if skills_dir.exists():
+        print(f"ari-skills already cloned at {skills_dir}")
+        return skills_dir
+    print(f"Cloning ari-skills to {skills_dir}...")
+    subprocess.check_call([
+        "git", "clone", "--depth", "1",
+        ARI_SKILLS_REPO, str(skills_dir),
+    ])
+    return skills_dir
+
+
+def generate_dataset(dest: Path, engine_dir: Path, skills_dir: Path):
     """Run generate-dataset.py to build the training data fresh."""
     print("Generating dataset...")
     script = Path(__file__).parent / "generate-dataset.py"
     env = os.environ.copy()
     env["ARI_ENGINE_DIR"] = str(engine_dir)
+    env["ARI_SKILLS_DIR"] = str(skills_dir)
     with open(dest, "w") as f:
         subprocess.check_call(
             [sys.executable, str(script)],
@@ -259,9 +276,10 @@ def main():
     output_dir.mkdir(parents=True, exist_ok=True)
 
     engine_dir = clone_engine(output_dir)
+    skills_dir = clone_skills(output_dir)
 
     dataset_path = output_dir / "dataset.jsonl"
-    generate_dataset(dataset_path, engine_dir)
+    generate_dataset(dataset_path, engine_dir, skills_dir)
 
     hf_login(args.hf_token)
 
