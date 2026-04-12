@@ -162,12 +162,13 @@ def train_model(
     eval_formatted = format_for_trl(eval_data, processor)
     print(f"  train: {len(train_formatted)}, eval: {len(eval_formatted)}")
 
-    # Compute max sequence length from a sample
-    max_len = 0
-    for s in train_formatted[:1000]:
-        tokens = processor.encode(s["prompt"] + s["completion"])
-        max_len = max(max_len, len(tokens))
-    max_seq_len = min(max_len + 100, 2048)
+    # Cap sequence length. The full prompt+completion can be ~1400 tokens
+    # (long tool declarations), but the cross-entropy loss on a 262K
+    # vocab needs (seq_len × vocab_size × 4) bytes of VRAM for logits
+    # alone. 512 tokens fits in 24GB with batch=1; longer sequences OOM.
+    # TRL truncates from the left, keeping the completion (the part we
+    # care about) intact.
+    max_seq_len = 512
     print(f"  max sequence length: {max_seq_len}")
 
     train_ds = Dataset.from_list(train_formatted)
@@ -267,6 +268,8 @@ def main():
     parser.add_argument("--base-model", default="google/functiongemma-270m-it")
     parser.add_argument("--skip-install", action="store_true")
     args = parser.parse_args()
+
+    os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
     if not args.skip_install:
         install_deps()
