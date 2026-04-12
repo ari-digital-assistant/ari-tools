@@ -59,6 +59,11 @@ def train():
     import os
     from pathlib import Path
 
+    # Ensure cargo is on PATH (installed during image build at /root/.cargo/bin)
+    cargo_bin = "/root/.cargo/bin"
+    if cargo_bin not in os.environ.get("PATH", ""):
+        os.environ["PATH"] = f"{cargo_bin}:{os.environ.get('PATH', '')}"
+
     os.makedirs(WORK_DIR, exist_ok=True)
 
     # Clone repos
@@ -80,6 +85,7 @@ def train():
     env = os.environ.copy()
     env["ARI_ENGINE_DIR"] = f"{WORK_DIR}/ari-engine"
     env["ARI_SKILLS_DIR"] = f"{WORK_DIR}/ari-skills"
+    env["PATH"] = os.environ["PATH"]
     dataset_path = f"{WORK_DIR}/dataset.jsonl"
     with open(dataset_path, "w") as f:
         subprocess.check_call(
