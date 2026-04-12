@@ -266,7 +266,7 @@ PUBLIC_IP=$(aws ec2 describe-instances --region "$REGION" \
 echo "  Public IP: $PUBLIC_IP"
 
 for i in $(seq 1 30); do
-    if ssh -i "$KEY_FILE" -o StrictHostKeyChecking=no -o ConnectTimeout=5 \
+    if ssh -i "$KEY_FILE" -o StrictHostKeyChecking=no -o IdentitiesOnly=yes -o ConnectTimeout=5 \
         ubuntu@"$PUBLIC_IP" "echo ok" >/dev/null 2>&1; then
         echo "  SSH ready"
         break
@@ -280,7 +280,7 @@ echo "[8/9] Training in progress. Polling for completion (every 60s)..."
 echo "  Watch live: ssh -i $KEY_FILE ubuntu@$PUBLIC_IP 'sudo tail -f /var/log/ari-train.log'"
 
 while true; do
-    if ssh -i "$KEY_FILE" -o StrictHostKeyChecking=no \
+    if ssh -i "$KEY_FILE" -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
         ubuntu@"$PUBLIC_IP" "test -f /home/ubuntu/output/DONE" 2>/dev/null; then
         echo "  Done."
         break
@@ -292,7 +292,7 @@ done
 
 echo "[9/9] Downloading GGUF and terminating instance..."
 
-scp -i "$KEY_FILE" -o StrictHostKeyChecking=no \
+scp -i "$KEY_FILE" -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
     ubuntu@"$PUBLIC_IP":/home/ubuntu/output/ari-functiongemma-q4_k_m.gguf \
     "$LOCAL_OUT/ari-functiongemma-q4_k_m.gguf"
 
