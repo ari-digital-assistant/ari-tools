@@ -25,6 +25,9 @@
 
 set -euo pipefail
 
+# Disable AWS CLI pager so commands don't block waiting for 'q'.
+export AWS_PAGER=""
+
 # Load .env from the repo root if present.
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
@@ -186,27 +189,22 @@ rm -f "$USER_DATA_FILE"
 
 # ── Wait for fulfilment ──────────────────────────────────────────────────
 
-echo "[5/8] Waiting for spot fulfilment..."
+echo "[5/8] Waiting for spot fulfilment (up to 10 minutes)..."
 
-INSTANCE_ID=""
-for i in $(seq 1 60); do
-    INSTANCE_ID=$(aws ec2 describe-spot-instance-requests --region "$REGION" \
-        --spot-instance-request-ids "$SPOT_REQUEST_ID" \
-        --query 'SpotInstanceRequests[0].InstanceId' --output text 2>/dev/null || echo "None")
-    if [[ "$INSTANCE_ID" != "None" && -n "$INSTANCE_ID" ]]; then
-        echo "  Instance: $INSTANCE_ID"
-        break
-    fi
-    sleep 5
-done
-
-if [[ -z "$INSTANCE_ID" || "$INSTANCE_ID" == "None" ]]; then
-    echo "ERROR: spot request not fulfilled within 5 minutes" >&2
+# Use the built-in waiter — it polls every 15s for up to 40 attempts (10 min).
+if ! aws ec2 wait spot-instance-request-fulfilled --region "$REGION" \
+    --spot-instance-request-ids "$SPOT_REQUEST_ID" 2>/dev/null; then
+    echo "ERROR: spot request not fulfilled within 10 minutes" >&2
     aws ec2 describe-spot-instance-requests --region "$REGION" \
         --spot-instance-request-ids "$SPOT_REQUEST_ID" \
-        --query 'SpotInstanceRequests[0].Status' >&2
+        --query 'SpotInstanceRequests[0].Status' --output json >&2
     exit 1
 fi
+
+INSTANCE_ID=$(aws ec2 describe-spot-instance-requests --region "$REGION" \
+    --spot-instance-request-ids "$SPOT_REQUEST_ID" \
+    --query 'SpotInstanceRequests[0].InstanceId' --output text)
+echo "  Instance: $INSTANCE_ID"
 
 # Tag the instance for visibility
 aws ec2 create-tags --region "$REGION" --resources "$INSTANCE_ID" \
