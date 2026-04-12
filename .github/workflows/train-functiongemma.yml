@@ -111,3 +111,23 @@ jobs:
         with:
           name: ari-functiongemma-q4_k_m
           path: output/ari-functiongemma-q4_k_m.gguf
+
+      - name: Send email notification
+        if: steps.check.outputs.should_train == 'true'
+        uses: dawidd6/action-send-mail@v5
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "FunctionGemma training complete"
+          to: ${{ secrets.NOTIFICATION_EMAIL }}
+          from: ${{ secrets.SMTP_USERNAME }}
+          body: |
+            FunctionGemma training run completed successfully.
+
+            Engine skills SHA: ${{ steps.check.outputs.engine_skills_sha }}
+            Community skills SHA: ${{ steps.check.outputs.skills_sha }}
+            Workflow run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+            The GGUF is available as a workflow artifact.
