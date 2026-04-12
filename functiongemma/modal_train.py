@@ -356,5 +356,6 @@ def main(convert_only: bool = False):
         "ari-functiongemma-output",
         "ari-functiongemma-q4_k_m.gguf",
         "./output/",
+        "--force",
     ])
     print("Done. Model: ./output/ari-functiongemma-q4_k_m.gguf")
