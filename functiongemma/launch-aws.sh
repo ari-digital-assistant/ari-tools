@@ -33,6 +33,8 @@ REGION="${AWS_REGION:-eu-west-1}"
 INSTANCE_TYPE="${INSTANCE_TYPE:-g5.xlarge}"
 KEY_NAME="${AWS_KEY_NAME:-ari-functiongemma}"
 SECURITY_GROUP_NAME="${AWS_SG_NAME:-ari-functiongemma-train}"
+VPC_ID="${AWS_VPC_ID:-vpc-0de446c7cba0bf0ac}"
+SUBNET_ID="${AWS_SUBNET_ID:-subnet-014f74f23ac772175}"
 LOCAL_OUT="${LOCAL_OUT:-./output}"
 TOOLS_REPO="${TOOLS_REPO:-https://github.com/ari-digital-assistant/ari-tools.git}"
 TOOLS_BRANCH="${TOOLS_BRANCH:-main}"
@@ -83,6 +85,7 @@ if [[ "$SG_ID" == "None" || -z "$SG_ID" ]]; then
     SG_ID=$(aws ec2 create-security-group --region "$REGION" \
         --group-name "$SECURITY_GROUP_NAME" \
         --description "Ari FunctionGemma training SSH access" \
+        --vpc-id "$VPC_ID" \
         --query 'GroupId' --output text)
     echo "  Created SG $SG_ID"
 fi
@@ -138,6 +141,7 @@ LAUNCH_SPEC="{
     \"ImageId\": \"$AMI_ID\",
     \"InstanceType\": \"$INSTANCE_TYPE\",
     \"KeyName\": \"$KEY_NAME\",
+    \"SubnetId\": \"$SUBNET_ID\",
     \"SecurityGroupIds\": [\"$SG_ID\"],
     \"IamInstanceProfile\": {\"Name\": \"$INSTANCE_PROFILE\"},
     \"BlockDeviceMappings\": [{
@@ -192,32 +196,19 @@ fi
 # Attempt 2: on-demand
 if [[ -z "$INSTANCE_ID" ]]; then
     echo "[4/7] Spot unavailable. Launching on-demand ($INSTANCE_TYPE in $REGION)..."
+    UD_TMP=$(mktemp)
+    echo "$USER_DATA_B64" | base64 -d > "$UD_TMP"
     INSTANCE_ID=$(aws ec2 run-instances --region "$REGION" \
         --image-id "$AMI_ID" \
         --instance-type "$INSTANCE_TYPE" \
         --key-name "$KEY_NAME" \
+        --subnet-id "$SUBNET_ID" \
         --security-group-ids "$SG_ID" \
         --iam-instance-profile "Name=$INSTANCE_PROFILE" \
         --block-device-mappings '[{"DeviceName":"/dev/sda1","Ebs":{"VolumeSize":100,"VolumeType":"gp3"}}]' \
-        --user-data "file://<(echo "$USER_DATA_B64" | base64 -d)" \
-        --query 'Instances[0].InstanceId' --output text 2>/dev/null || echo "")
-
-    # run-instances needs the raw user-data, not base64 in a JSON blob
-    if [[ -z "$INSTANCE_ID" ]]; then
-        # Retry with a temp file approach
-        UD_TMP=$(mktemp)
-        echo "$USER_DATA_B64" | base64 -d > "$UD_TMP"
-        INSTANCE_ID=$(aws ec2 run-instances --region "$REGION" \
-            --image-id "$AMI_ID" \
-            --instance-type "$INSTANCE_TYPE" \
-            --key-name "$KEY_NAME" \
-            --security-group-ids "$SG_ID" \
-            --iam-instance-profile "Name=$INSTANCE_PROFILE" \
-            --block-device-mappings '[{"DeviceName":"/dev/sda1","Ebs":{"VolumeSize":100,"VolumeType":"gp3"}}]' \
-            --user-data "file://$UD_TMP" \
-            --query 'Instances[0].InstanceId' --output text)
-        rm -f "$UD_TMP"
-    fi
+        --user-data "file://$UD_TMP" \
+        --query 'Instances[0].InstanceId' --output text)
+    rm -f "$UD_TMP"
 
     if [[ -z "$INSTANCE_ID" || "$INSTANCE_ID" == "None" ]]; then
         echo "ERROR: failed to launch on-demand instance" >&2
