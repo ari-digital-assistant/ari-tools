@@ -22,7 +22,7 @@ volume = modal.Volume.from_name("ari-functiongemma-output", create_if_missing=Tr
 # Image with everything pre-installed.
 image = (
     modal.Image.debian_slim(python_version="3.11")
-    .apt_install("git", "cmake", "build-essential")
+    .apt_install("git", "cmake", "build-essential", "curl")
     .pip_install(
         "torch",
         "transformers==4.57.1",
@@ -34,6 +34,8 @@ image = (
     )
     .run_commands(
         "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable",
+        "echo 'export PATH=/root/.cargo/bin:$PATH' >> /root/.bashrc",
+        "/root/.cargo/bin/rustc --version",
     )
     .env({"PATH": "/root/.cargo/bin:/usr/local/bin:/usr/bin:/bin"})
     .env({"PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"})
@@ -79,6 +81,11 @@ def train():
     subprocess.check_call(
         ["git", "clone", "--depth", "1", ARI_TOOLS_REPO, f"{WORK_DIR}/ari-tools"]
     )
+
+    # Verify cargo is available
+    print(f"PATH: {os.environ.get('PATH', 'NOT SET')}")
+    subprocess.check_call(["which", "cargo"])
+    subprocess.check_call(["cargo", "--version"])
 
     # Generate dataset
     print("Generating dataset...")
