@@ -1,0 +1,113 @@
+name: Train FunctionGemma
+
+on:
+  # Nightly at midnight UTC
+  schedule:
+    - cron: '0 0 * * *'
+  # Manual trigger
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Force training even if no skill changes detected'
+        required: false
+        default: 'false'
+
+jobs:
+  check-and-train:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check for skill changes since last training
+        id: check
+        run: |
+          set -e
+
+          # Get the last commit that touched built-in skills in ari-engine
+          ENGINE_SHA=$(git ls-remote https://github.com/ari-digital-assistant/ari-engine.git HEAD | cut -f1)
+          git clone --depth 50 --filter=blob:none --sparse \
+            https://github.com/ari-digital-assistant/ari-engine.git /tmp/engine
+          cd /tmp/engine
+          git sparse-checkout set crates/ari-skills/src
+          ENGINE_SKILLS_SHA=$(git log -1 --format=%H -- crates/ari-skills/src/)
+          cd -
+
+          # Get the last commit that touched community skills in ari-skills
+          git clone --depth 50 --filter=blob:none --sparse \
+            https://github.com/ari-digital-assistant/ari-skills.git /tmp/skills
+          cd /tmp/skills
+          git sparse-checkout set skills/
+          SKILLS_SHA=$(git log -1 --format=%H -- skills/)
+          cd -
+
+          echo "engine_skills_sha=$ENGINE_SKILLS_SHA" >> "$GITHUB_OUTPUT"
+          echo "skills_sha=$SKILLS_SHA" >> "$GITHUB_OUTPUT"
+
+          # Compare against stored SHAs from last successful run
+          STORED_ENGINE=""
+          STORED_SKILLS=""
+          if pip install -q modal && \
+             modal volume get ari-functiongemma-output last-trained.json /tmp/last-trained.json 2>/dev/null; then
+            STORED_ENGINE=$(python3 -c "import json; print(json.load(open('/tmp/last-trained.json')).get('engine_skills_sha',''))")
+            STORED_SKILLS=$(python3 -c "import json; print(json.load(open('/tmp/last-trained.json')).get('skills_sha',''))")
+          fi
+
+          echo "Stored engine SHA: $STORED_ENGINE"
+          echo "Current engine SHA: $ENGINE_SKILLS_SHA"
+          echo "Stored skills SHA: $STORED_SKILLS"
+          echo "Current skills SHA: $SKILLS_SHA"
+
+          FORCE="${{ github.event.inputs.force || 'false' }}"
+          if [[ "$FORCE" == "true" ]]; then
+            echo "Force flag set — training will run."
+            echo "should_train=true" >> "$GITHUB_OUTPUT"
+          elif [[ "$ENGINE_SKILLS_SHA" != "$STORED_ENGINE" || "$SKILLS_SHA" != "$STORED_SKILLS" ]]; then
+            echo "Skill changes detected — training will run."
+            echo "should_train=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "No skill changes since last training — skipping."
+            echo "should_train=false" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+          MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+
+      - name: Set up Python
+        if: steps.check.outputs.should_train == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Modal
+        if: steps.check.outputs.should_train == 'true'
+        run: pip install modal
+
+      - name: Train on Modal
+        if: steps.check.outputs.should_train == 'true'
+        env:
+          MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+          MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+        run: modal run functiongemma/modal_train.py
+
+      - name: Store training SHAs
+        if: steps.check.outputs.should_train == 'true'
+        env:
+          MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+          MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+        run: |
+          cat > /tmp/last-trained.json <<EOF
+          {
+            "engine_skills_sha": "${{ steps.check.outputs.engine_skills_sha }}",
+            "skills_sha": "${{ steps.check.outputs.skills_sha }}",
+            "trained_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "workflow_run": "${{ github.run_id }}"
+          }
+          EOF
+          modal volume put ari-functiongemma-output /tmp/last-trained.json last-trained.json
+
+      - name: Upload GGUF as artifact
+        if: steps.check.outputs.should_train == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: ari-functiongemma-q4_k_m
+          path: output/ari-functiongemma-q4_k_m.gguf
