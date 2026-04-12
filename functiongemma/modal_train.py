@@ -274,7 +274,7 @@ def train():
     secrets=[modal.Secret.from_name("huggingface")],
     volumes={OUTPUT_DIR: volume},
 )
-def convert_only():
+def convert_only_fn():
     """Retry just the GGUF conversion using the fused model saved to the volume."""
     import os
     import shutil
@@ -339,17 +339,11 @@ def convert_only():
 
 
 @app.local_entrypoint()
-def main():
-    import argparse
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--convert-only", action="store_true",
-                        help="Skip training, just retry GGUF conversion from the saved fused model")
-    args = parser.parse_args()
-
+def main(convert_only: bool = False):
     import os as _os
-    if args.convert_only:
+    if convert_only:
         print("Retrying GGUF conversion only...")
-        convert_only.remote()
+        convert_only_fn.remote()
     else:
         print("Launching training on Modal...")
         train.remote()
