@@ -196,11 +196,36 @@ def train():
     print("Starting training...")
     trainer.train()
 
-    # Save fused model
+    # Save fused model (both to working dir and volume for recovery)
     fused_dir = f"{WORK_DIR}/fused"
     trainer.save_model(fused_dir)
     processor.save_pretrained(fused_dir)
     print(f"Model saved to {fused_dir}")
+
+    # Also save to volume so we can retry conversion without retraining
+    import shutil as _shutil
+    fused_backup = f"{OUTPUT_DIR}/fused"
+    if os.path.exists(fused_backup):
+        _shutil.rmtree(fused_backup)
+    _shutil.copytree(fused_dir, fused_backup)
+    volume.commit()
+    print(f"Fused model backed up to volume")
+
+    # Copy missing tokenizer files from the base model into the fused dir.
+    # save_pretrained doesn't always copy tokenizer.model (sentencepiece),
+    # and the GGUF converter asserts vocab size matches. FunctionGemma has
+    # 262146 tokens (2 image tokens beyond config's 262144), which trips
+    # the assertion if the sentencepiece model is missing.
+    from huggingface_hub import hf_hub_download
+    for fname in ["tokenizer.model", "added_tokens.json", "special_tokens_map.json"]:
+        if not os.path.exists(os.path.join(fused_dir, fname)):
+            try:
+                src = hf_hub_download(base_model_id, fname)
+                import shutil
+                shutil.copy2(src, os.path.join(fused_dir, fname))
+                print(f"  Copied {fname} from HuggingFace hub")
+            except Exception as e:
+                print(f"  WARNING: could not download {fname}: {e}")
 
     # Convert to GGUF
     print("Cloning llama.cpp for GGUF conversion...")
