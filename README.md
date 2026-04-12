@@ -12,10 +12,11 @@ pipelines, training scripts, registry maintenance, that sort of thing.
 ari-tools/
 └── functiongemma/        — fine-tuning pipeline for the FunctionGemma router
     ├── generate-dataset.py    Build the training JSONL from Ari skills + mobile-actions
-    ├── train.py               Standalone training script (runs on GPU instance)
-    ├── launch-aws.sh          Launch a spot instance, train, download result, terminate
+    ├── modal_train.py         Train on Modal (recommended — one command, no infra)
+    ├── train.py               Standalone training script (runs on any GPU instance)
+    ├── launch-aws.sh          Launch an AWS spot instance for training (legacy)
     ├── eval.py                Quick eval harness for a GGUF model against Ari test cases
-    └── finetune-colab.ipynb   Colab notebook (alternative to AWS path)
+    └── finetune-colab.ipynb   Colab notebook (alternative, manual)
 ```
 
 After a training run, evaluate the model:
@@ -34,36 +35,26 @@ shouldn't match any skill). Prints a score per category.
 Fine-tuning pipeline for FunctionGemma 270M, the optional skill router that
 catches paraphrases the keyword matcher misses.
 
-Quick start (manual run):
+### Quick start with Modal (recommended)
+
+```bash
+pip install modal
+modal setup                                                    # one-time: authenticate
+modal secret create huggingface HF_TOKEN=hf_your_token_here    # one-time
+modal run functiongemma/modal_train.py                         # train
+```
+
+That's it. Modal spins up an A10G GPU, clones ari-engine + ari-skills,
+generates the dataset fresh, trains, quantises to GGUF Q4_K_M, and
+downloads the result to `./output/ari-functiongemma-q4_k_m.gguf`.
+
+Cost: ~$1.50-2.00 per run. Free tier gives $30/month (~20 runs).
+
+### Alternative: AWS (legacy)
 
 ```bash
 ./functiongemma/launch-aws.sh
 ```
 
-That's it. The launch script:
-1. Spins up an AWS spot instance (g6.xlarge, L4 GPU, ~$0.30/hr spot)
-2. Clones ari-tools and ari-engine on the instance
-3. Reads the HF token from AWS Secrets Manager (via instance profile)
-4. Regenerates the training dataset fresh from the current Ari skill descriptions
-5. Fine-tunes FunctionGemma 270M (~20 minutes on L4)
-6. Quantises to GGUF Q4_K_M
-7. SCPs the result back to `./output/ari-functiongemma-q4_k_m.gguf`
-8. Terminates the instance
-
-Cost per run: ~$0.10-0.15. Final model: ~240MB.
-
-### Prerequisites
-
-- `aws` CLI configured (or GitHub OIDC federation if running from Actions)
-- AWS region of your choice has an EC2 G instance vCPU quota > 0
-- The following AWS resources created once, out of band:
-  - OIDC provider for `token.actions.githubusercontent.com` (for Actions runs)
-  - IAM role `ari-functiongemma-training` (assumed by GitHub Actions)
-  - IAM role + instance profile `ari-functiongemma-instance` (attached to the
-    spot instance, grants Secrets Manager read)
-  - Secrets Manager secret `ari-functiongemma/hf-token` holding the HuggingFace
-    token with Gemma model license accepted
-
-The HuggingFace token is **not** stored in `.env`, GitHub secrets, or
-environment variables at runtime. It lives only in Secrets Manager, and the
-spot instance fetches it at boot via the instance profile's credentials.
+Requires AWS CLI, OIDC federation, Secrets Manager secret, instance profile,
+VPC, and G-instance vCPU quota. See the script header for full prerequisites.
