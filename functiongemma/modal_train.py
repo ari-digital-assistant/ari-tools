@@ -52,7 +52,7 @@ WORK_DIR = "/work"
 
 @app.function(
     image=image,
-    gpu="A10G",
+    gpu="A100",
     timeout=7200,
     secrets=[modal.Secret.from_name("huggingface")],
     volumes={OUTPUT_DIR: volume},
@@ -165,8 +165,8 @@ def train():
     config_kwargs = dict(
         output_dir=f"{WORK_DIR}/training",
         num_train_epochs=2,
-        per_device_train_batch_size=1,
-        gradient_accumulation_steps=32,
+        per_device_train_batch_size=4,
+        gradient_accumulation_steps=8,
         learning_rate=1e-5,
         lr_scheduler_type="cosine",
         gradient_checkpointing=True,
@@ -182,9 +182,9 @@ def train():
         report_to="none",
     )
     try:
-        training_config = SFTConfig(max_length=512, **config_kwargs)
+        training_config = SFTConfig(max_length=1536, **config_kwargs)
     except TypeError:
-        training_config = SFTConfig(max_seq_length=512, **config_kwargs)
+        training_config = SFTConfig(max_seq_length=1536, **config_kwargs)
 
     trainer = SFTTrainer(
         model=base_model,
@@ -269,7 +269,7 @@ def train():
 
 @app.function(
     image=image,
-    gpu="A10G",
+    gpu="A100",
     timeout=3600,
     secrets=[modal.Secret.from_name("huggingface")],
     volumes={OUTPUT_DIR: volume},
