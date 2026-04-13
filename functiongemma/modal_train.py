@@ -35,8 +35,19 @@ image = (
     )
     .run_commands(
         "curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --default-toolchain stable",
-        "echo 'export PATH=/root/.cargo/bin:$PATH' >> /root/.bashrc",
         "/root/.cargo/bin/rustc --version",
+    )
+    # Pre-download the base model into the image cache. This is a gated
+    # model so it needs the HF token during build. The model files get
+    # baked into the image layer — subsequent runs load from disk, not
+    # the network.
+    .run_commands(
+        "python3 -c '"
+        "from huggingface_hub import login; import os; login(token=os.environ[\"HF_TOKEN\"]); "
+        "from transformers import AutoProcessor, AutoModelForCausalLM; "
+        "AutoProcessor.from_pretrained(\"google/functiongemma-270m-it\"); "
+        "AutoModelForCausalLM.from_pretrained(\"google/functiongemma-270m-it\")'",
+        secrets=[modal.Secret.from_name("huggingface")],
     )
     .env({"PATH": "/root/.cargo/bin:/usr/local/bin:/usr/bin:/bin"})
     .env({"PYTORCH_CUDA_ALLOC_CONF": "expandable_segments:True"})
@@ -53,7 +64,7 @@ WORK_DIR = "/work"
 @app.function(
     image=image,
     gpu="A100",
-    timeout=7200,
+    timeout=14400,
     secrets=[modal.Secret.from_name("huggingface")],
     volumes={OUTPUT_DIR: volume},
 )
