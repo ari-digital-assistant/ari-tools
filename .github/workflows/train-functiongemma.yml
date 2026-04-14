@@ -103,7 +103,7 @@ jobs:
             "workflow_run": "${{ github.run_id }}"
           }
           EOF
-          modal volume put ari-functiongemma-output /tmp/last-trained.json last-trained.json
+          modal volume put --force ari-functiongemma-output /tmp/last-trained.json last-trained.json
 
       - name: Upload GGUF as artifact
         if: steps.check.outputs.should_train == 'true'
