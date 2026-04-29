@@ -117,10 +117,17 @@ def existing_manifest(release_tag: str) -> Optional[dict]:
 
 
 def replace_release_asset(release_tag: str, manifest: dict) -> None:
-    """Delete the old manifest.json (if any) and upload the new one."""
-    fd, path = tempfile.mkstemp(suffix=".json")
-    try:
-        with os.fdopen(fd, "w") as f:
+    """Delete the old manifest.json (if any) and upload the new one.
+
+    `gh release upload` uses the file's basename as the asset name, so
+    we have to write into a temp directory under the literal name
+    `manifest.json` rather than letting `tempfile.mkstemp` pick a random
+    name. Otherwise the asset shows up on the release as something like
+    `tmp0abcd123.json` and the app's manifest URL 404s.
+    """
+    with tempfile.TemporaryDirectory() as td:
+        path = os.path.join(td, "manifest.json")
+        with open(path, "w") as f:
             json.dump(manifest, f, indent=2)
             f.write("\n")
         # Delete-then-upload because GH has no atomic asset replace.
@@ -136,11 +143,6 @@ def replace_release_asset(release_tag: str, manifest: dict) -> None:
              "--repo", GH_REPO, "--clobber"],
             check=True,
         )
-    finally:
-        try:
-            os.unlink(path)
-        except OSError:
-            pass
 
 
 def now_iso() -> str:
