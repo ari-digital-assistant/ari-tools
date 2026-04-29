@@ -1,0 +1,49 @@
+name: Publish LLM manifests
+
+# Polls Hugging Face daily for each on-device LLM tier and republishes
+# the floating-release manifest if the upstream GGUF has changed. The
+# script's content-based dedup means same-sha re-runs are no-ops, so
+# the daily cron is cheap.
+
+on:
+  schedule:
+    - cron: '15 1 * * *'   # 01:15 UTC daily — staggered from FunctionGemma's 00:00
+  workflow_dispatch:
+
+permissions:
+  contents: write   # needed for `gh release upload` against the same repo
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false   # one tier failing shouldn't block the others
+      matrix:
+        tier:
+          - id: small
+            hf_repo: unsloth/gemma-3-1b-it-GGUF
+            file: gemma-3-1b-it-Q4_K_M.gguf
+          - id: medium
+            hf_repo: unsloth/gemma-4-E2B-it-GGUF
+            file: gemma-4-E2B-it-Q4_K_M.gguf
+          - id: large
+            hf_repo: unsloth/gemma-4-E4B-it-GGUF
+            file: gemma-4-E4B-it-Q4_K_M.gguf
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Publish if upstream changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/publish_manifest.py llm \
+            --hf-repo "${{ matrix.tier.hf_repo }}" \
+            --hf-file "${{ matrix.tier.file }}" \
+            --release-tag "llm-${{ matrix.tier.id }}-latest"

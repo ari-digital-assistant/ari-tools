@@ -1,0 +1,46 @@
+name: Publish STT manifests
+
+# Polls Hugging Face daily for each STT bundle and republishes the
+# floating-release manifest if any component file has changed. Bundle
+# manifest format: top-level `version` covers the set, with per-file
+# `name`/`url`/`sha256`/`size_bytes` entries.
+
+on:
+  schedule:
+    - cron: '30 1 * * *'   # 01:30 UTC daily — staggered after the LLM job
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        model:
+          - id: kroko
+            hf_repo: csukuangfj/sherpa-onnx-streaming-zipformer-en-kroko-2025-08-06
+            files: encoder.onnx,decoder.onnx,joiner.onnx,tokens.txt
+          - id: nemotron
+            hf_repo: csukuangfj/sherpa-onnx-nemotron-speech-streaming-en-0.6b-int8-2026-01-14
+            files: encoder.int8.onnx,decoder.int8.onnx,joiner.int8.onnx,tokens.txt
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Publish if upstream changed
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/publish_manifest.py stt-bundle \
+            --hf-repo "${{ matrix.model.hf_repo }}" \
+            --hf-files "${{ matrix.model.files }}" \
+            --release-tag "stt-${{ matrix.model.id }}-latest"

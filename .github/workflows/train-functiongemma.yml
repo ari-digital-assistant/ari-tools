@@ -112,6 +112,44 @@ jobs:
           name: ari-functiongemma-q4_k_m
           path: output/ari-functiongemma-q4_k_m.gguf
 
+      - name: Install publish-manifest deps
+        if: steps.check.outputs.should_train == 'true'
+        run: pip install requests
+
+      - name: Compute version + asset URL
+        id: manifest
+        if: steps.check.outputs.should_train == 'true'
+        run: |
+          set -e
+          VERSION="$(date -u +%Y.%m.%d)-r${{ github.run_number }}"
+          TAG="functiongemma-$VERSION"
+          GGUF_URL="https://github.com/${{ github.repository }}/releases/download/$TAG/ari-functiongemma-q4_k_m.gguf"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "gguf_url=$GGUF_URL" >> "$GITHUB_OUTPUT"
+
+      - name: Create versioned release with GGUF
+        if: steps.check.outputs.should_train == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "${{ steps.manifest.outputs.tag }}" \
+            output/ari-functiongemma-q4_k_m.gguf \
+            --repo ${{ github.repository }} \
+            --title "FunctionGemma ${{ steps.manifest.outputs.version }}" \
+            --notes "Nightly retrain. Engine skills SHA: ${{ steps.check.outputs.engine_skills_sha }} · Community skills SHA: ${{ steps.check.outputs.skills_sha }} · Workflow run: ${{ github.run_id }}"
+
+      - name: Publish floating manifest
+        if: steps.check.outputs.should_train == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python3 scripts/publish_manifest.py functiongemma \
+            --gguf output/ari-functiongemma-q4_k_m.gguf \
+            --version "${{ steps.manifest.outputs.version }}" \
+            --gguf-url "${{ steps.manifest.outputs.gguf_url }}" \
+            --release-tag functiongemma-latest
+
       - name: Send email notification
         if: steps.check.outputs.should_train == 'true'
         uses: dawidd6/action-send-mail@v5
