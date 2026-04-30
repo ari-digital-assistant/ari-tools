@@ -12,6 +12,9 @@ on:
         required: false
         default: 'false'
 
+permissions:
+  contents: write   # needed for `gh release create` + `gh release upload`
+
 jobs:
   check-and-train:
     runs-on: ubuntu-latest
