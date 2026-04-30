@@ -15,6 +15,10 @@ on:
 permissions:
   contents: write   # needed for `gh release create` + `gh release upload`
 
+# Force JS actions onto Node 24 ahead of the 2026-06-02 default flip.
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   check-and-train:
     runs-on: ubuntu-latest
