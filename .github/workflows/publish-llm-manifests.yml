@@ -30,6 +30,9 @@ jobs:
             hf_repo: unsloth/gemma-4-E4B-it-GGUF
             file: gemma-4-E4B-it-Q4_K_M.gguf
     steps:
+      - name: Silence git default-branch hint
+        run: git config --global init.defaultBranch main
+
       - uses: actions/checkout@v5
 
       - uses: actions/setup-python@v6

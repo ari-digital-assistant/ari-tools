@@ -19,6 +19,9 @@ jobs:
   check-and-train:
     runs-on: ubuntu-latest
     steps:
+      - name: Silence git default-branch hint
+        run: git config --global init.defaultBranch main
+
       - uses: actions/checkout@v5
 
       - name: Check for skill changes since last training
