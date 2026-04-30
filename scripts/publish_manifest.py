@@ -130,6 +130,20 @@ def replace_release_asset(release_tag: str, manifest: dict) -> None:
         with open(path, "w") as f:
             json.dump(manifest, f, indent=2)
             f.write("\n")
+        # Self-heal: create the floating release on first publish for a
+        # new model. `gh release create` exits non-zero when the tag
+        # already exists, which is the common case — we ignore that.
+        # Without this, adding a new model to the workflow matrix would
+        # need a one-shot manual `gh release create` step.
+        subprocess.run(
+            ["gh", "release", "create", release_tag,
+             "--repo", GH_REPO,
+             "--title", release_tag,
+             "--notes",
+             f"Floating release tracking the latest manifest.json for {release_tag}.",
+             "--target", "main"],
+            check=False, stderr=subprocess.DEVNULL,
+        )
         # Delete-then-upload because GH has no atomic asset replace.
         # `--clobber` on upload also overwrites, but explicit delete
         # makes the operation visible in the audit log.

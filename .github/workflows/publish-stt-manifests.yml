@@ -26,6 +26,13 @@ jobs:
           - id: nemotron
             hf_repo: csukuangfj/sherpa-onnx-nemotron-speech-streaming-en-0.6b-int8-2026-01-14
             files: encoder.int8.onnx,decoder.int8.onnx,joiner.int8.onnx,tokens.txt
+          - id: whisper-turbo
+            hf_repo: csukuangfj/sherpa-onnx-whisper-turbo
+            # Whisper is encoder-decoder, no joiner. int8 quantised
+            # variants of the encoder and decoder; tokens.txt is the
+            # 52k-entry BPE vocabulary covering all 99 supported
+            # languages. Total ~1 GB on disk.
+            files: turbo-encoder.int8.onnx,turbo-decoder.int8.onnx,turbo-tokens.txt
     steps:
       - uses: actions/checkout@v4
 
