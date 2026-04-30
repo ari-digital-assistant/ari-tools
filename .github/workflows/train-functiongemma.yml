@@ -15,15 +15,11 @@ on:
 permissions:
   contents: write   # needed for `gh release create` + `gh release upload`
 
-# Force JS actions onto Node 24 ahead of the 2026-06-02 default flip.
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
-
 jobs:
   check-and-train:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Check for skill changes since last training
         id: check
@@ -81,7 +77,7 @@ jobs:
 
       - name: Set up Python
         if: steps.check.outputs.should_train == 'true'
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.11'
 
@@ -114,7 +110,7 @@ jobs:
 
       - name: Upload GGUF as artifact
         if: steps.check.outputs.should_train == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ari-functiongemma-q4_k_m
           path: output/ari-functiongemma-q4_k_m.gguf

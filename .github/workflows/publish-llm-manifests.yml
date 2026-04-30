@@ -13,12 +13,6 @@ on:
 permissions:
   contents: write   # needed for `gh release upload` against the same repo
 
-# Force JS actions onto Node 24 ahead of the 2026-06-02 default flip.
-# Suppresses the "Node.js 20 actions are deprecated" warning emitted
-# by actions/checkout@v4 + actions/setup-python@v5 et al.
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
-
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -36,9 +30,9 @@ jobs:
             hf_repo: unsloth/gemma-4-E4B-it-GGUF
             file: gemma-4-E4B-it-Q4_K_M.gguf
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.11'
 
