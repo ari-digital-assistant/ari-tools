@@ -47,15 +47,46 @@ from pathlib import Path
 from typing import Optional
 
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 
 
 HF_API = "https://huggingface.co/api/models"
 GH_REPO = "ari-digital-assistant/ari-tools"
 
+_session: Optional[requests.Session] = None
+
+
+def hf_session() -> requests.Session:
+    """Shared session for Hugging Face calls.
+
+    Anonymous requests share a tight per-IP rate-limit bucket with every
+    other CI runner on GitHub's egress, so the daily cron started tripping
+    `429 Too Many Requests` once several matrix jobs hit the API in the
+    same few seconds. Bearer auth (when HF_TOKEN is set) lifts the ceiling;
+    the retry adapter rides out the residual 429s/5xx, honouring any
+    `Retry-After` header HF sends back.
+    """
+    global _session
+    if _session is None:
+        s = requests.Session()
+        retry = Retry(
+            total=5,
+            backoff_factor=2,
+            status_forcelist=(429, 500, 502, 503, 504),
+            allowed_methods=frozenset(["GET"]),
+        )
+        s.mount("https://", HTTPAdapter(max_retries=retry))
+        token = os.environ.get("HF_TOKEN")
+        if token:
+            s.headers["Authorization"] = f"Bearer {token}"
+        _session = s
+    return _session
+
 
 def hf_tree(repo: str) -> list[dict]:
     """List files at HF repo HEAD with their LFS metadata."""
-    r = requests.get(f"{HF_API}/{repo}/tree/main", timeout=30)
+    r = hf_session().get(f"{HF_API}/{repo}/tree/main", timeout=30)
     r.raise_for_status()
     return r.json()
 
@@ -81,7 +112,7 @@ def hf_file_meta(repo: str, filename: str) -> dict:
 def _hash_inline_file(repo: str, filename: str, size_hint: Optional[int]) -> dict:
     """Fetch a small (non-LFS) file and SHA-256 it client-side."""
     url = f"https://huggingface.co/{repo}/resolve/main/{filename}"
-    r = requests.get(url, timeout=60)
+    r = hf_session().get(url, timeout=60)
     r.raise_for_status()
     sha = hashlib.sha256(r.content).hexdigest()
     return {"url": url, "sha256": sha, "size_bytes": size_hint or len(r.content)}
@@ -130,6 +161,20 @@ def replace_release_asset(release_tag: str, manifest: dict) -> None:
         with open(path, "w") as f:
             json.dump(manifest, f, indent=2)
             f.write("\n")
+        # Self-heal: create the floating release on first publish for a
+        # new model. `gh release create` exits non-zero when the tag
+        # already exists, which is the common case — we ignore that.
+        # Without this, adding a new model to the workflow matrix would
+        # need a one-shot manual `gh release create` step.
+        subprocess.run(
+            ["gh", "release", "create", release_tag,
+             "--repo", GH_REPO,
+             "--title", release_tag,
+             "--notes",
+             f"Floating release tracking the latest manifest.json for {release_tag}.",
+             "--target", "main"],
+            check=False, stderr=subprocess.DEVNULL,
+        )
         # Delete-then-upload because GH has no atomic asset replace.
         # `--clobber` on upload also overwrites, but explicit delete
         # makes the operation visible in the audit log.
