@@ -18,6 +18,9 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      max-parallel: 1    # serialise so the models don't burst HF's per-IP
+                         # rate-limit in the same second (429s); dedup makes
+                         # back-to-back runs near-free anyway
       matrix:
         model:
           - id: kroko

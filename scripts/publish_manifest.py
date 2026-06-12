@@ -71,10 +71,11 @@ def hf_session() -> requests.Session:
     if _session is None:
         s = requests.Session()
         retry = Retry(
-            total=5,
+            total=8,
             backoff_factor=2,
             status_forcelist=(429, 500, 502, 503, 504),
             allowed_methods=frozenset(["GET"]),
+            respect_retry_after_header=True,
         )
         s.mount("https://", HTTPAdapter(max_retries=retry))
         token = os.environ.get("HF_TOKEN")
