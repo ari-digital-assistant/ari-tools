@@ -55,6 +55,7 @@ HF_API = "https://huggingface.co/api/models"
 GH_REPO = "ari-digital-assistant/ari-tools"
 
 _session: Optional[requests.Session] = None
+_tree_cache: dict[str, list[dict]] = {}
 
 
 def hf_session() -> requests.Session:
@@ -86,10 +87,18 @@ def hf_session() -> requests.Session:
 
 
 def hf_tree(repo: str) -> list[dict]:
-    """List files at HF repo HEAD with their LFS metadata."""
-    r = hf_session().get(f"{HF_API}/{repo}/tree/main", timeout=30)
-    r.raise_for_status()
-    return r.json()
+    """List files at HF repo HEAD with their LFS metadata.
+
+    Memoised per repo: a multi-file kind (STT bundles 3-4 files) calls
+    hf_file_meta once per file, and every one of those would otherwise
+    re-fetch the identical tree listing — needless requests against the
+    same per-IP bucket that hands out the 429s we're trying to dodge.
+    """
+    if repo not in _tree_cache:
+        r = hf_session().get(f"{HF_API}/{repo}/tree/main", timeout=30)
+        r.raise_for_status()
+        _tree_cache[repo] = r.json()
+    return _tree_cache[repo]
 
 
 def hf_file_meta(repo: str, filename: str) -> dict:
