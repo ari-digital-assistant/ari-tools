@@ -51,22 +51,22 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 
-HF_API = "https://huggingface.co/api/models"
 GH_REPO = "ari-digital-assistant/ari-tools"
 
 _session: Optional[requests.Session] = None
-_tree_cache: dict[str, list[dict]] = {}
 
 
 def hf_session() -> requests.Session:
     """Shared session for Hugging Face calls.
 
-    Anonymous requests share a tight per-IP rate-limit bucket with every
-    other CI runner on GitHub's egress, so the daily cron started tripping
-    `429 Too Many Requests` once several matrix jobs hit the API in the
-    same few seconds. Bearer auth (when HF_TOKEN is set) lifts the ceiling;
-    the retry adapter rides out the residual 429s/5xx, honouring any
-    `Retry-After` header HF sends back.
+    Bearer auth (when HF_TOKEN is set) raises our rate-limit ceiling; the
+    retry adapter rides out transient 429s/5xx on the `/resolve/` download
+    path, honouring any `Retry-After` header HF sends back. Note we no
+    longer touch the `/api/models/.../tree` metadata endpoint at all (see
+    hf_file_meta) — that JSON API enforces a tight *per-IP* limit shared
+    across GitHub's egress IP pool, which a token cannot lift and which
+    handed us the nightly 429s. HEAD and GET both go through the resolve
+    CDN path instead.
     """
     global _session
     if _session is None:
@@ -75,7 +75,7 @@ def hf_session() -> requests.Session:
             total=8,
             backoff_factor=2,
             status_forcelist=(429, 500, 502, 503, 504),
-            allowed_methods=frozenset(["GET"]),
+            allowed_methods=frozenset(["GET", "HEAD"]),
             respect_retry_after_header=True,
         )
         s.mount("https://", HTTPAdapter(max_retries=retry))
@@ -86,37 +86,46 @@ def hf_session() -> requests.Session:
     return _session
 
 
-def hf_tree(repo: str) -> list[dict]:
-    """List files at HF repo HEAD with their LFS metadata.
-
-    Memoised per repo: a multi-file kind (STT bundles 3-4 files) calls
-    hf_file_meta once per file, and every one of those would otherwise
-    re-fetch the identical tree listing — needless requests against the
-    same per-IP bucket that hands out the 429s we're trying to dodge.
-    """
-    if repo not in _tree_cache:
-        r = hf_session().get(f"{HF_API}/{repo}/tree/main", timeout=30)
-        r.raise_for_status()
-        _tree_cache[repo] = r.json()
-    return _tree_cache[repo]
-
-
 def hf_file_meta(repo: str, filename: str) -> dict:
-    """Return {url, sha256, size_bytes} for a single file in the repo."""
-    for entry in hf_tree(repo):
-        if entry.get("path") == filename:
-            # LFS-tracked files (all GGUFs / .onnx) carry a real SHA-256
-            # under entry.lfs.sha256; small files like tokens.txt are
-            # inline blobs whose `oid` is a git blob SHA-1, not a file
-            # SHA-256, so fall back to a direct download for hashing.
-            if entry.get("lfs") and entry["lfs"].get("sha256"):
-                return {
-                    "url": f"https://huggingface.co/{repo}/resolve/main/{filename}",
-                    "sha256": entry["lfs"]["sha256"],
-                    "size_bytes": entry["size"],
-                }
-            return _hash_inline_file(repo, filename, entry.get("size"))
-    raise SystemExit(f"file '{filename}' not found in HF repo {repo}")
+    """Return {url, sha256, size_bytes} for a single file in the repo.
+
+    The hash and size come straight off a HEAD against the file's
+    `/resolve/` download URL: HF answers LFS/Xet-backed files with a
+    redirect carrying `x-linked-etag` (the content SHA-256) and
+    `x-linked-size` (byte count). This deliberately avoids the
+    `/api/models/.../tree` JSON endpoint, whose per-IP rate-limit —
+    shared across every CI runner on GitHub's egress IP pool — is what
+    handed us the nightly 429s that no token or backoff could ride out.
+    The `/resolve/` path is the high-traffic download infra and tolerates
+    CI bursts the metadata API rejects. As a bonus it also kills the old
+    fallback's habit of downloading the whole multi-GB blob just to hash
+    it.
+
+    Plain git blobs (e.g. a small `tokens.txt`) also expose an
+    `x-linked-etag`, but there it's the git SHA-1 of the blob, NOT a
+    content SHA-256 — and crucially they carry no `x-linked-size`. So the
+    presence of `x-linked-size` is the LFS/Xet marker: only then is
+    `x-linked-etag` a real SHA-256. Without it we fall back to
+    downloading and hashing the bytes client-side.
+    """
+    url = f"https://huggingface.co/{repo}/resolve/main/{filename}"
+    r = hf_session().head(url, allow_redirects=False, timeout=30)
+    if r.status_code == 404:
+        raise SystemExit(f"file '{filename}' not found in HF repo {repo}")
+    r.raise_for_status()
+
+    etag = r.headers.get("x-linked-etag")
+    size = r.headers.get("x-linked-size")
+    if etag and size:
+        # LFS/Xet-backed: x-linked-etag is the content SHA-256.
+        return {
+            "url": url,
+            "sha256": etag.strip('"'),
+            "size_bytes": int(size),
+        }
+    # Plain git blob (no x-linked-size): hash the bytes directly. The
+    # x-linked-etag here would be a SHA-1, so we must not trust it.
+    return _hash_inline_file(repo, filename, None)
 
 
 def _hash_inline_file(repo: str, filename: str, size_hint: Optional[int]) -> dict:

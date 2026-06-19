@@ -18,9 +18,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      max-parallel: 1    # serialise so the models don't burst HF's per-IP
-                         # rate-limit in the same second (429s); dedup makes
-                         # back-to-back runs near-free anyway
+                         # Models run in parallel: the publisher reads each
+                         # LFS file's sha/size from a HEAD on the /resolve/
+                         # download path, not the rate-limited
+                         # /api/models/.../tree JSON API, so there's no
+                         # per-IP 429 burst to serialise around anymore.
       matrix:
         model:
           - id: kroko
