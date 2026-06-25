@@ -411,6 +411,20 @@ SYSTEM_PROMPT = "You are a model that can do function calling with the following
 
 # ── Build training samples ─────────────────────────────────────────────
 
+def assign_aliases(skills: list) -> None:
+    """Set s["alias"] on each skill, mirroring ari-llm's router_alias_table:
+    the router declares skills by a short alias (the final id segment) because a
+    270M model can't reliably emit reverse-DNS ids. We train on the SAME names
+    the runtime shows so training and inference agree. Non-unique final segments
+    keep the full id to stay unambiguous."""
+    from collections import Counter
+    last_seg = lambda i: i.rsplit(".", 1)[-1]
+    counts = Counter(last_seg(s["id"]) for s in skills)
+    for s in skills:
+        seg = last_seg(s["id"])
+        s["alias"] = seg if counts[seg] == 1 else s["id"]
+
+
 def build_tools(skills: list) -> list:
     """Convert exported skills into FunctionGemma tool declarations."""
     tools = []
@@ -418,7 +432,7 @@ def build_tools(skills: list) -> list:
         tools.append({
             "type": "function",
             "function": {
-                "name": s["id"],
+                "name": s["alias"],
                 "description": s["description"],
                 "parameters": s["parameters"],
             },
@@ -461,7 +475,7 @@ def generate_skill_samples(skills: list, tools: list) -> list:
             tool_calls = [{
                 "type": "function",
                 "function": {
-                    "name": skill["id"],
+                    "name": skill["alias"],
                     "arguments": ex["args"],
                 },
             }]
@@ -507,6 +521,7 @@ def main():
     all_skills = builtin_skills + [s for s in community_skills if s["id"] not in builtin_ids]
     print(f"  {len(all_skills)} total skills for training", file=sys.stderr)
 
+    assign_aliases(all_skills)
     tools = build_tools(all_skills)
 
     print("Generating samples:", file=sys.stderr)
