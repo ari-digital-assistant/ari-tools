@@ -156,7 +156,13 @@ jobs:
 
       - name: Install llama.cpp build deps
         if: steps.check.outputs.should_train == 'true'
-        run: sudo apt-get update && sudo apt-get install -y cmake clang libclang-dev
+        run: |
+          sudo apt-get update && sudo apt-get install -y cmake clang libclang-dev
+          # bindgen (via llama-cpp-sys) needs to locate libclang; clang-sys
+          # doesn't always find the apt-installed versioned .so on its own.
+          LIBCLANG_DIR="$(dirname "$(find /usr/lib /usr/lib64 -name 'libclang*.so*' 2>/dev/null | head -1)")"
+          echo "Found libclang in: $LIBCLANG_DIR"
+          echo "LIBCLANG_PATH=$LIBCLANG_DIR" >> "$GITHUB_ENV"
 
       - name: Routing-eval promotion gate
         if: steps.check.outputs.should_train == 'true'
