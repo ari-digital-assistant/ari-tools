@@ -6,8 +6,13 @@ Combines:
 1. Ari built-in skill paraphrases (extracted from ari-engine via the
    `export-utterances` Cargo binary — single source of truth)
 2. Community skill examples (parsed from ari-skills SKILL.md manifests)
-3. Google mobile-actions dataset (9,654 examples)
-4. Negative examples (general knowledge, should NOT trigger any function)
+3. Negative examples (general knowledge, should NOT trigger any function),
+   scaled to the positive count so abstention stays well represented.
+
+We deliberately do NOT use Google's mobile-actions demo dataset: the base
+model (`google/functiongemma-270m-it`) is already function-calling pretrained,
+those are Android actions Ari doesn't support, and its 9,654 always-call
+samples drowned the negatives — the cause of the r70→r75 abstention regression.
 
 Output: JSONL on stdout in the same format as google/mobile-actions,
 ready for SFTTrainer fine-tuning with FunctionGemma's chat template.
@@ -132,7 +137,12 @@ def load_community_skills(skills_dir: Path) -> list:
 
     community = []
     for skill_dir in sorted(skills_root.iterdir()):
-        manifest = skill_dir / "SKILL.md"
+        # Post-migration manifests are SKILL.<locale>.md; FunctionGemma is
+        # English-trained so we read the English manifest. Fall back to the
+        # pre-migration SKILL.md for any skill not yet migrated.
+        manifest = skill_dir / "SKILL.en.md"
+        if not manifest.is_file():
+            manifest = skill_dir / "SKILL.md"
         if not manifest.is_file():
             continue
 
@@ -364,18 +374,34 @@ _MISC_FACTUAL_NEGATIVES = [
 
 
 def generate_factual_negatives() -> list:
-    """Build the expanded, phrasing-varied general-knowledge negative set."""
+    """Build a large, phrasing-varied general-knowledge negative pool.
+
+    Every template is applied to every entity: multiple phrasings of the same
+    fact ("who is X" / "who was X" / "tell me about X") all reinforce the same
+    intent — general knowledge → emit no function. This multiplies the pool
+    (~500 uniques) so `generate_negative_samples` can scale negatives to match
+    the positive count without us hand-typing hundreds of entities."""
     out = []
-    for i, c in enumerate(_CAPITAL_COUNTRIES):
-        out.append(_CAPITAL_TEMPLATES[i % len(_CAPITAL_TEMPLATES)].format(c))
+    # Capitals + other country facts (reuse the country list).
+    for tmpl in _CAPITAL_TEMPLATES:
+        for c in _CAPITAL_COUNTRIES:
+            out.append(tmpl.format(c))
+    for c in _CAPITAL_COUNTRIES:
+        out.append(f"what is the population of {c}")
+        out.append(f"what currency is used in {c}")
+        out.append(f"what continent is {c} in")
     for c in _LANGUAGE_COUNTRIES:
         out.append(f"what language do they speak in {c}")
-    for i, p in enumerate(_PEOPLE):
-        out.append(_PEOPLE_TEMPLATES[i % len(_PEOPLE_TEMPLATES)].format(p))
-    for i, concept in enumerate(_CONCEPTS):
-        out.append(_CONCEPT_TEMPLATES[i % len(_CONCEPT_TEMPLATES)].format(concept))
+    # People + concepts — every template, every entity.
+    for tmpl in _PEOPLE_TEMPLATES:
+        for p in _PEOPLE:
+            out.append(tmpl.format(p))
+    for tmpl in _CONCEPT_TEMPLATES:
+        for concept in _CONCEPTS:
+            out.append(tmpl.format(concept))
     for thing in _HOW_THINGS:
         out.append(f"how does {thing} work")
+        out.append(f"explain how {thing} works")
     out.extend(_MISC_FACTUAL_NEGATIVES)
     return out
 
@@ -445,36 +471,24 @@ def generate_skill_samples(skills: list, tools: list) -> list:
     return samples
 
 
-def generate_negative_samples(tools: list) -> list:
-    # Curated base + programmatically expanded factual questions, de-duped
-    # while preserving order.
-    all_negatives = list(dict.fromkeys(NEGATIVE_EXAMPLES + generate_factual_negatives()))
-    samples = [build_sample(text, None, tools) for text in all_negatives]
-    print(f"  {len(samples)} negative examples", file=sys.stderr)
-    return samples
+# Never fewer negatives than this, even with very few skills installed.
+NEG_FLOOR = 250
 
 
-def load_mobile_actions() -> list:
-    """Load the Google mobile-actions dataset."""
-    try:
-        from datasets import load_dataset
-    except ImportError:
+def generate_negative_samples(tools: list, target: int) -> list:
+    # Curated base + programmatically expanded factual questions, de-duped.
+    pool = list(dict.fromkeys(NEGATIVE_EXAMPLES + generate_factual_negatives()))
+    if len(pool) >= target:
+        chosen = random.sample(pool, target)
+    else:
+        chosen = pool
         print(
-            "WARNING: 'datasets' library not available, skipping mobile-actions",
+            f"  WARNING: negative pool ({len(pool)}) < target ({target}); abstention "
+            f"may be under-represented — add entities to generate_factual_negatives",
             file=sys.stderr,
         )
-        return []
-
-    print("Loading google/mobile-actions...", file=sys.stderr)
-    ds = load_dataset("google/mobile-actions", split="train")
-    samples = []
-    for row in ds:
-        samples.append({
-            "metadata": row["metadata"],
-            "tools": row["tools"],
-            "messages": row["messages"],
-        })
-    print(f"  {len(samples)} mobile action examples", file=sys.stderr)
+    samples = [build_sample(text, None, tools) for text in chosen]
+    print(f"  {len(samples)} negative examples (target {target}, pool {len(pool)})", file=sys.stderr)
     return samples
 
 
@@ -497,10 +511,15 @@ def main():
 
     print("Generating samples:", file=sys.stderr)
     skill_samples = generate_skill_samples(all_skills, tools)
-    negative_samples = generate_negative_samples(tools)
-    mobile_samples = load_mobile_actions()
+    # Scale negatives to the positive count so "emit nothing" stays well
+    # represented as skills are added. (We deliberately do NOT mix in Google's
+    # mobile-actions demo dataset: the base model is already function-calling
+    # pretrained, those are actions Ari doesn't support, and 9,654 always-call
+    # samples drown abstention — the root of the r70→r75 regression.)
+    neg_target = max(NEG_FLOOR, len(skill_samples))
+    negative_samples = generate_negative_samples(tools, neg_target)
 
-    all_samples = skill_samples + negative_samples + mobile_samples
+    all_samples = skill_samples + negative_samples
     random.shuffle(all_samples)
 
     split_idx = int(len(all_samples) * 0.9)
