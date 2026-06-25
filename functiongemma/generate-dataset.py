@@ -256,6 +256,130 @@ NEGATIVE_EXAMPLES = [
     "okay",
 ]
 
+# Programmatically expand the negative set. Without enough negatives the
+# router is biased to always emit a function and stops abstaining on
+# general-knowledge questions — this is the r70→r75 regression (one bad
+# nightly routed "what is the capital of the UAE" straight to a skill).
+# The per-skill paraphrases number in the hundreds and grow every time a
+# skill is added, so the negatives have to keep pace. Templates are rotated
+# per entity so the model learns the INTENT (general knowledge → no
+# function), not a fixed sentence shape. NOTHING here may contain a skill
+# trigger word (date/time/calculate/open/search/look up/google/find/play/
+# remind/weather/timer/alarm/coin) or it would become a false negative.
+
+_CAPITAL_COUNTRIES = [
+    "the united arab emirates", "saudi arabia", "south korea", "new zealand",
+    "Japan", "Brazil", "Egypt", "Canada", "Australia", "Kenya", "Norway",
+    "Thailand", "Mexico", "Peru", "Greece", "Portugal", "Vietnam", "Morocco",
+    "Argentina", "Sweden", "Poland", "Turkey", "Indonesia", "Nigeria", "Chile",
+    "Finland", "Ireland", "Hungary", "Iceland", "the Philippines",
+]
+
+_CAPITAL_TEMPLATES = [
+    "what is the capital of {}",
+    "what's the capital city of {}",
+    "which city is the capital of {}",
+    "tell me the capital of {}",
+]
+
+_LANGUAGE_COUNTRIES = [
+    "Brazil", "Switzerland", "Austria", "Belgium", "Morocco", "the Philippines",
+    "Nigeria", "Peru", "Iran", "Kazakhstan", "Finland", "Egypt", "India",
+    "Mexico", "Vietnam",
+]
+
+_PEOPLE = [
+    "Marie Curie", "Nelson Mandela", "Isaac Newton", "Leonardo da Vinci",
+    "William Shakespeare", "Cleopatra", "Charles Darwin", "Mahatma Gandhi",
+    "Vincent van Gogh", "Nikola Tesla", "Winston Churchill", "Frida Kahlo",
+    "Galileo", "Beethoven", "Aristotle", "Napoleon", "Stephen Hawking",
+    "Rosa Parks", "Confucius", "Pablo Picasso", "Ada Lovelace", "Genghis Khan",
+    "Florence Nightingale", "Alan Turing",
+]
+
+_PEOPLE_TEMPLATES = [
+    "who is {}",
+    "who was {}",
+    "tell me about {}",
+    "what is {} known for",
+]
+
+_CONCEPTS = [
+    "gravity", "inflation", "a black hole", "the stock market", "evolution",
+    "the greenhouse effect", "the water cycle", "a recession", "nuclear fusion",
+    "the big bang", "osmosis", "democracy", "capitalism", "virtual reality",
+    "quantum entanglement", "the immune system", "machine learning",
+    "supply and demand", "compound interest", "natural selection", "inertia",
+    "the theory of relativity",
+]
+
+_CONCEPT_TEMPLATES = [
+    "what is {}",
+    "explain {}",
+    "can you explain {}",
+    "what does {} mean",
+]
+
+_HOW_THINGS = [
+    "the human heart", "a refrigerator", "a microwave", "the internet", "GPS",
+    "solar panels", "a battery", "the brain", "nuclear power", "radio waves",
+    "a jet engine", "the stock market", "electricity", "the human eye",
+    "a touchscreen", "noise cancelling headphones",
+]
+
+# Hand-written negatives across geography, history and demographics — these
+# round out the templated sets with less formulaic phrasing.
+_MISC_FACTUAL_NEGATIVES = [
+    "what is the highest mountain in the world",
+    "what is the deepest part of the ocean",
+    "what is the hottest place on earth",
+    "what is the largest desert",
+    "what is the oldest city in the world",
+    "which country has the most people",
+    "what year did the berlin wall fall",
+    "when did the roman empire collapse",
+    "when was the printing press invented",
+    "what year did humans first land on the moon",
+    "when did the cold war end",
+    "what caused the first world war",
+    "when did the dinosaurs go extinct",
+    "what is the population of Tokyo",
+    "how many people live in China",
+    "how big is Russia",
+    "how large is the Pacific ocean",
+    "what is the chemical symbol for gold",
+    "how many moons does Jupiter have",
+    "what is the freezing point of water",
+    "why do we dream",
+    "how do tides work",
+    "what makes the northern lights",
+    "why is the ocean salty",
+    "how old is the universe",
+    "what is the human body made of",
+    "why do leaves change colour",
+    "what is absolute zero",
+    "how many strings does a violin have",
+    "what is the currency of Japan",
+]
+
+
+def generate_factual_negatives() -> list:
+    """Build the expanded, phrasing-varied general-knowledge negative set."""
+    out = []
+    for i, c in enumerate(_CAPITAL_COUNTRIES):
+        out.append(_CAPITAL_TEMPLATES[i % len(_CAPITAL_TEMPLATES)].format(c))
+    for c in _LANGUAGE_COUNTRIES:
+        out.append(f"what language do they speak in {c}")
+    for i, p in enumerate(_PEOPLE):
+        out.append(_PEOPLE_TEMPLATES[i % len(_PEOPLE_TEMPLATES)].format(p))
+    for i, concept in enumerate(_CONCEPTS):
+        out.append(_CONCEPT_TEMPLATES[i % len(_CONCEPT_TEMPLATES)].format(concept))
+    for thing in _HOW_THINGS:
+        out.append(f"how does {thing} work")
+    out.extend(_MISC_FACTUAL_NEGATIVES)
+    return out
+
+
 SYSTEM_PROMPT = "You are a model that can do function calling with the following functions"
 
 
@@ -322,9 +446,10 @@ def generate_skill_samples(skills: list, tools: list) -> list:
 
 
 def generate_negative_samples(tools: list) -> list:
-    samples = []
-    for text in NEGATIVE_EXAMPLES:
-        samples.append(build_sample(text, None, tools))
+    # Curated base + programmatically expanded factual questions, de-duped
+    # while preserving order.
+    all_negatives = list(dict.fromkeys(NEGATIVE_EXAMPLES + generate_factual_negatives()))
+    samples = [build_sample(text, None, tools) for text in all_negatives]
     print(f"  {len(samples)} negative examples", file=sys.stderr)
     return samples
 
