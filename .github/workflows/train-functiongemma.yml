@@ -95,22 +95,6 @@ jobs:
           MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
         run: modal run functiongemma/modal_train.py
 
-      - name: Store training SHAs
-        if: steps.check.outputs.should_train == 'true'
-        env:
-          MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
-          MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
-        run: |
-          cat > /tmp/last-trained.json <<EOF
-          {
-            "engine_skills_sha": "${{ steps.check.outputs.engine_skills_sha }}",
-            "skills_sha": "${{ steps.check.outputs.skills_sha }}",
-            "trained_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
-            "workflow_run": "${{ github.run_id }}"
-          }
-          EOF
-          modal volume put --force ari-functiongemma-output /tmp/last-trained.json last-trained.json
-
       - name: Upload GGUF as artifact
         if: steps.check.outputs.should_train == 'true'
         uses: actions/upload-artifact@v7
@@ -144,6 +128,61 @@ jobs:
             --repo ${{ github.repository }} \
             --title "FunctionGemma ${{ steps.manifest.outputs.version }}" \
             --notes "Nightly retrain. Engine skills SHA: ${{ steps.check.outputs.engine_skills_sha }} · Community skills SHA: ${{ steps.check.outputs.skills_sha }} · Workflow run: ${{ github.run_id }}"
+
+      # ── Promotion gate ──────────────────────────────────────────────────
+      # Route a held-out eval set through the freshly-trained model using the
+      # REAL routing path (route-eval bin in ari-engine: same Engine, builtin
+      # catalogue, prompt builder, parser and confidence gate as production).
+      # If abstention or positive routing regressed, this step fails and the
+      # job stops BEFORE the floating-manifest publish below — so the model is
+      # archived as a versioned release but NEVER promoted to devices. This is
+      # what would have caught the r75 abstention regression.
+      - name: Check out ari-engine (eval harness)
+        if: steps.check.outputs.should_train == 'true'
+        uses: actions/checkout@v5
+        with:
+          repository: ari-digital-assistant/ari-engine
+          path: _ari-engine
+
+      - name: Set up Rust
+        if: steps.check.outputs.should_train == 'true'
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Cache Rust build
+        if: steps.check.outputs.should_train == 'true'
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: _ari-engine
+
+      - name: Install llama.cpp build deps
+        if: steps.check.outputs.should_train == 'true'
+        run: sudo apt-get update && sudo apt-get install -y cmake clang libclang-dev
+
+      - name: Routing-eval promotion gate
+        if: steps.check.outputs.should_train == 'true'
+        run: |
+          cd _ari-engine
+          cargo run -p ari-ffi --bin route-eval -- \
+            "$GITHUB_WORKSPACE/output/ari-functiongemma-q4_k_m.gguf" \
+            "$GITHUB_WORKSPACE/functiongemma/routing-eval.jsonl"
+
+      # Only recorded AFTER the gate passes — a failed gate must not mark this
+      # skill-state as "trained", or the next nightly would skip the retry.
+      - name: Store training SHAs
+        if: steps.check.outputs.should_train == 'true'
+        env:
+          MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+          MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+        run: |
+          cat > /tmp/last-trained.json <<EOF
+          {
+            "engine_skills_sha": "${{ steps.check.outputs.engine_skills_sha }}",
+            "skills_sha": "${{ steps.check.outputs.skills_sha }}",
+            "trained_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "workflow_run": "${{ github.run_id }}"
+          }
+          EOF
+          modal volume put --force ari-functiongemma-output /tmp/last-trained.json last-trained.json
 
       - name: Publish floating manifest
         if: steps.check.outputs.should_train == 'true'
