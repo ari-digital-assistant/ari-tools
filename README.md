@@ -11,7 +11,7 @@ pipelines, training scripts, registry maintenance, that sort of thing.
 ```
 ari-tools/
 └── functiongemma/        — fine-tuning pipeline for the FunctionGemma router
-    ├── generate-dataset.py    Build the training JSONL from Ari skills + mobile-actions
+    ├── generate-dataset.py    Build the training JSONL from Ari skills (built-in + community) + scaled negatives
     ├── modal_train.py         Train on Modal (recommended — one command, no infra)
     ├── train.py               Standalone training script (runs on any GPU instance)
     ├── launch-aws.sh          Launch an AWS spot instance for training (legacy)
