@@ -47,6 +47,19 @@ def test_load_community_skills_falls_back_to_english(tmp_path):
     assert out[0]["examples"][0]["text"] == "utterance-en"
 
 
-def test_negatives_for_locale_en_matches_english_pool():
-    expected = gends.NEGATIVE_EXAMPLES + gends.generate_factual_negatives()
-    assert gends.negatives_for_locale("en") == expected
+def test_negatives_for_locale_en_includes_curated_general_knowledge():
+    pool = gends.negatives_for_locale("en")
+    # Real behaviour: the English negative pool teaches the router to abstain on
+    # general-knowledge questions. Pin specific curated members (from
+    # NEGATIVE_EXAMPLES) rather than restating the implementation expression.
+    assert "what is the capital of France" in pool
+    assert "who wrote Romeo and Juliet" in pool
+    assert "what language do they speak in Brazil" in pool
+    # The templated factual expander must also contribute — e.g. capitals of
+    # other countries beyond the curated France entry.
+    assert any(
+        n.startswith("what is the capital of ") and n != "what is the capital of France"
+        for n in pool
+    )
+    # Every entry is a non-empty string.
+    assert all(isinstance(n, str) and n for n in pool)

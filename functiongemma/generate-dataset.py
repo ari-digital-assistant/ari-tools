@@ -18,7 +18,9 @@ Output: JSONL on stdout in the same format as google/mobile-actions,
 ready for SFTTrainer fine-tuning with FunctionGemma's chat template.
 
 Usage:
-    python3 generate-dataset.py > dataset.jsonl
+    python3 generate-dataset.py [--locale <xx>] > dataset.jsonl
+
+    --locale defaults to "en" and produces the byte-identical English dataset.
 
 Environment variables:
     ARI_ENGINE_DIR  — path to ari-engine checkout (auto-discovered if not set)
