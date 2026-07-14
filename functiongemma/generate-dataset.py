@@ -64,11 +64,12 @@ def find_engine_dir() -> Path:
     )
 
 
-def export_skills(engine_dir: Path) -> list:
-    """Run `cargo run -p ari-skills --bin export-utterances` and parse JSON."""
-    print(f"Exporting skills from {engine_dir}...", file=sys.stderr)
+def export_skills(engine_dir: Path, locale: str) -> list:
+    """Run `export-utterances --locale <locale>` and parse JSON."""
+    print(f"Exporting {locale} skills from {engine_dir}...", file=sys.stderr)
     result = subprocess.run(
-        ["cargo", "run", "--quiet", "-p", "ari-skills", "--bin", "export-utterances"],
+        ["cargo", "run", "--quiet", "-p", "ari-skills", "--bin",
+         "export-utterances", "--", "--locale", locale],
         cwd=engine_dir,
         capture_output=True,
         text=True,
@@ -129,18 +130,19 @@ def _parse_skillfile_basic(path: Path) -> dict | None:
     return None
 
 
-def load_community_skills(skills_dir: Path) -> list:
-    """Walk skills/*/SKILL.md and extract id, description, parameters, examples."""
+def load_community_skills(skills_dir: Path, locale: str) -> list:
+    """Walk skills/*/SKILL.<locale>.md and extract id, description, params, examples."""
     skills_root = skills_dir / "skills"
     if not skills_root.is_dir():
         return []
 
     community = []
     for skill_dir in sorted(skills_root.iterdir()):
-        # Post-migration manifests are SKILL.<locale>.md; FunctionGemma is
-        # English-trained so we read the English manifest. Fall back to the
-        # pre-migration SKILL.md for any skill not yet migrated.
-        manifest = skill_dir / "SKILL.en.md"
+        # Prefer the requested locale's manifest; fall back to English, then
+        # to the pre-migration SKILL.md for any skill not yet migrated.
+        manifest = skill_dir / f"SKILL.{locale}.md"
+        if not manifest.is_file():
+            manifest = skill_dir / "SKILL.en.md"
         if not manifest.is_file():
             manifest = skill_dir / "SKILL.md"
         if not manifest.is_file():
@@ -489,9 +491,15 @@ def generate_skill_samples(skills: list, tools: list) -> list:
 NEG_FLOOR = 250
 
 
-def generate_negative_samples(tools: list, target: int) -> list:
-    # Curated base + programmatically expanded factual questions, de-duped.
-    pool = list(dict.fromkeys(NEGATIVE_EXAMPLES + generate_factual_negatives()))
+def negatives_for_locale(locale: str) -> list:
+    """General-knowledge negatives for `locale`. English for every locale for
+    now; Plan 2 adds the Italian pool keyed on `locale`."""
+    return NEGATIVE_EXAMPLES + generate_factual_negatives()
+
+
+def generate_negative_samples(tools: list, target: int, pool: list) -> list:
+    # De-dupe the supplied pool, then sample to the target count.
+    pool = list(dict.fromkeys(pool))
     if len(pool) >= target:
         chosen = random.sample(pool, target)
     else:
@@ -507,13 +515,18 @@ def generate_negative_samples(tools: list, target: int) -> list:
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Generate the FunctionGemma dataset.")
+    parser.add_argument("--locale", default="en", help="Locale to build the dataset for (default: en)")
+    locale = parser.parse_args().locale
+
     engine_dir = find_engine_dir()
-    builtin_skills = export_skills(engine_dir)
+    builtin_skills = export_skills(engine_dir, locale)
     print(f"  {len(builtin_skills)} built-in skills", file=sys.stderr)
 
     # Load community skills from ari-skills repo
     skills_dir = find_skills_dir()
-    community_skills = load_community_skills(skills_dir) if skills_dir else []
+    community_skills = load_community_skills(skills_dir, locale) if skills_dir else []
     print(f"  {len(community_skills)} community skills with examples", file=sys.stderr)
 
     # Merge — community skills after built-ins. Skip duplicates by id.
@@ -532,7 +545,7 @@ def main():
     # pretrained, those are actions Ari doesn't support, and 9,654 always-call
     # samples drown abstention — the root of the r70→r75 regression.)
     neg_target = max(NEG_FLOOR, len(skill_samples))
-    negative_samples = generate_negative_samples(tools, neg_target)
+    negative_samples = generate_negative_samples(tools, neg_target, negatives_for_locale(locale))
 
     all_samples = skill_samples + negative_samples
     random.shuffle(all_samples)
