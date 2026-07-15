@@ -26,7 +26,7 @@
 {"utterance": "chi ha fondato Roma", "expect": "NONE"}
 {"utterance": "che cos'è la tettonica a placche", "expect": "NONE"}
 {"utterance": "perché il ghiaccio galleggia", "expect": "NONE"}
-{"utterance": "chi ha diretto il film Il Padrino", "expect": "NONE"}
+{"utterance": "chi ha diretto Il padrino", "expect": "NONE"}
 {"utterance": "che cosa mangiano i panda", "expect": "NONE"}
 {"utterance": "qual è l'osso più piccolo del corpo umano", "expect": "NONE"}
 {"utterance": "chi è stato il primo imperatore romano", "expect": "NONE"}
@@ -37,7 +37,7 @@
 {"utterance": "sapresti dirmi l'ora", "expect": "current_time"}
 {"utterance": "vorrei sapere l'ora esatta", "expect": "current_time"}
 {"utterance": "che ore sono di preciso", "expect": "current_time"}
-{"utterance": "a quanti ne siamo oggi", "expect": "current_date"}
+{"utterance": "quanti ne abbiamo oggi", "expect": "current_date"}
 {"utterance": "che data abbiamo oggi", "expect": "current_date"}
 {"utterance": "quant'è 63 meno 28", "expect": "calculator"}
 {"utterance": "quanto viene il 30 percento di 90", "expect": "calculator"}
@@ -46,5 +46,5 @@
 {"utterance": "avvia l'app della banca", "expect": "open"}
 {"utterance": "aprimi duolingo", "expect": "open"}
 {"utterance": "buon pomeriggio ari", "expect": "greeting"}
-{"utterance": "come te la cavi", "expect": "greeting"}
+{"utterance": "come va ultimamente", "expect": "greeting"}
 {"utterance": "salve come va", "expect": "greeting"}

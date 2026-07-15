@@ -105,10 +105,10 @@ IT_TEST_CASES = [
     # Hard — paraphrases the keyword matcher would miss
     ("sapresti dirmi l'ora", "current_time", "hard"),
     ("è ancora mattina o siamo nel pomeriggio", "current_time", "hard"),
-    ("a quanti ne siamo oggi", "date", "hard"),
+    ("quanti ne abbiamo oggi", "date", "hard"),
     ("quanto viene il 30 percento di 90", "calculator", "hard"),
     ("fammi la somma di 128 e 256", "calculator", "hard"),
-    ("come te la cavi", "greeting", "hard"),
+    ("come va ultimamente", "greeting", "hard"),
     ("buon pomeriggio ari", "greeting", "hard"),
     ("aprimi duolingo", "open_app", "hard"),
     ("avvia l'app della banca", "open_app", "hard"),

@@ -455,7 +455,7 @@ ITALIAN_NEGATIVE_EXAMPLES = [
     "che libro mi consigli",
     "consigliami un film",
     "che cosa dovrei mangiare a cena",
-    "sono annoiato",
+    "mi sto annoiando",
     "ti piace la musica",
     "qual è il tuo colore preferito",
     "sei un robot",
@@ -594,7 +594,7 @@ _IT_MISC_FACTUAL_NEGATIVES = [
     "qual è il posto più caldo della terra",
     "qual è il deserto più grande del mondo",
     "qual è la città più antica del mondo",
-    "quale paese ha più abitanti",
+    "qual è il paese più popoloso del mondo",
     "in che anno è caduto il muro di Berlino",
     "quando è crollato l'impero romano",
     "quando è stata inventata la stampa",
@@ -651,8 +651,10 @@ _IT_TRIGGER_WORDS = frozenset({
     # navigation
     "portami", "indicazioni", "arrivo", "vai", "andiamo",
     # coin-flip / counter / github-zen / wasm-echo
+    # wasm-echo's Italian trigger is `echo`, not `eco` — the skill name is a
+    # developer term and is deliberately not translated (Keith's review).
     "moneta", "tira", "croce", "conta", "contatore", "zen", "saggezza",
-    "wasm", "eco",
+    "wasm", "echo",
     # home-assistant: accendi/spegni (+ infinitives), the abbassa/alza
     # brightness family anchored to luci/luminosità, imposta/regola for
     # thermostats, apri (already banned above) / chiudi / blocca / sblocca
