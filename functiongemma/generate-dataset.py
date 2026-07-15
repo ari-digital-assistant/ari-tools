@@ -813,6 +813,18 @@ SYSTEM_PROMPT = "You are a model that can do function calling with the following
 
 # ── Build training samples ─────────────────────────────────────────────
 
+def router_eligible_skills(skills: list) -> list:
+    """Drop skills the router is never offered.
+
+    `router_catalog()` filters on `Skill::router_eligible()`, so a skill that
+    opts out (today: `search`) is never in the tools list at inference —
+    training it teaches the model to call a function that isn't on the menu.
+    Community skills come from manifests, which have no router_eligible
+    concept, so a missing key means eligible.
+    """
+    return [s for s in skills if s.get("router_eligible", True)]
+
+
 def assign_aliases(skills: list) -> None:
     """Set s["alias"] on each skill, mirroring ari-llm's router_alias_table:
     the router declares skills by a short alias (the final id segment) because a
@@ -933,6 +945,12 @@ def main():
     # Merge — community skills after built-ins. Skip duplicates by id.
     builtin_ids = {s["id"] for s in builtin_skills}
     all_skills = builtin_skills + [s for s in community_skills if s["id"] not in builtin_ids]
+    before = len(all_skills)
+    all_skills = router_eligible_skills(all_skills)
+    dropped = before - len(all_skills)
+    if dropped:
+        print(f"  dropped {dropped} router-ineligible skill(s) — never offered at inference",
+              file=sys.stderr)
     print(f"  {len(all_skills)} total skills for training", file=sys.stderr)
 
     assign_aliases(all_skills)

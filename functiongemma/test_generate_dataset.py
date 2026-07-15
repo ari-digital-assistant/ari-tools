@@ -170,6 +170,27 @@ def test_normalize_texts_is_idempotent():
     assert once == twice
 
 
+def test_router_ineligible_skills_are_excluded():
+    # search sets router_eligible=false, so router_catalog() never offers it.
+    # Training it teaches the model to call a function that isn't on the menu.
+    skills = [
+        {"id": "search", "description": "d", "router_eligible": False,
+         "parameters": {}, "examples": [{"text": "find x", "args": {}}]},
+        {"id": "current_time", "description": "d", "router_eligible": True,
+         "parameters": {}, "examples": [{"text": "what time", "args": {}}]},
+    ]
+    kept = gends.router_eligible_skills(skills)
+    assert [s["id"] for s in kept] == ["current_time"]
+
+
+def test_skills_without_the_flag_default_to_eligible():
+    # Community skills come from SKILL.md manifests, which have no
+    # router_eligible concept — they must not be silently dropped.
+    skills = [{"id": "dev.heyari.weather", "description": "d",
+               "parameters": {}, "examples": [{"text": "meteo", "args": {}}]}]
+    assert gends.router_eligible_skills(skills) == skills
+
+
 def test_export_skills_passes_locale_after_double_dash(monkeypatch):
     # Pins the cross-repo contract: cargo needs `--` before binary args, and
     # the binary expects `--locale <xx>`. Getting this wrong silently exports
