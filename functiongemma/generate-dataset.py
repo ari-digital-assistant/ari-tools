@@ -377,6 +377,342 @@ _MISC_FACTUAL_NEGATIVES = [
 ]
 
 
+# ── Italian negatives (should NOT match any skill) ─────────────────────
+# Same job as the English pool: teach the router to abstain on general
+# knowledge. Nothing here may contain a live Italian skill trigger or it
+# becomes a poisoned sample — it would teach the router to abstain on an
+# utterance a skill should own.
+#
+# The trigger lists were read out of the engine and the community skills,
+# not guessed. Three matching rules make Italian trickier than English:
+#
+#  1. Built-in skills match a BAG OF WORDS, not a phrase (see `score` in
+#     ari-skills/src/{current_time,date,greeting}.rs): date's
+#     ["che","giorno"] fires whenever BOTH words appear anywhere. So
+#     "in che giorno è nato Napoleone" is a date-skill hit, not a
+#     negative. Same for ["che","data"], ["che","ora"], ["che","ore"],
+#     ["ora","attuale"], ["dimmi","ora"] and greeting's ["come","va"].
+#     => the standalone words `ora`/`ore`/`giorno`/`data`/`va` are banned.
+#     (Note elisions split first: "un'ora" normalises to "un ora", which
+#     is why no entry may elide onto a banned word either.)
+#  2. `calculator.rs` matches its triggers as a SUBSTRING
+#     (`input.contains`), and its list is a union of English + Italian —
+#     so the English trigger `eval` fires inside "medievale", and `solve`
+#     inside "risolve". Both are banned as substrings.
+#  3. Community SKILL.it.md patterns are regex/whole-word over the
+#     normalised text. The nasty ones are Italian polysemy: weather owns
+#     \b(tempo|meteo)\b — so `tempo` meaning *duration* is poisoned —
+#     search owns the bare word `trova`, which kills the otherwise
+#     natural "dove si trova X", and music owns `volume`.
+#
+# `_it_trigger_offenders` below encodes all of that and is enforced by
+# test_italian_negatives_do_not_collide_with_skill_triggers.
+ITALIAN_NEGATIVE_EXAMPLES = [
+    "qual è la capitale della Francia",
+    "chi ha scritto Romeo e Giulietta",
+    "perché il cielo è blu",
+    "raccontami una barzelletta",
+    "quanto dista la luna dalla terra",
+    "qual è il senso della vita",
+    "chi è il presidente degli Stati Uniti",
+    "quanti continenti ci sono",
+    "qual è la velocità della luce",
+    "spiegami la fisica quantistica",
+    "che cos'è la fotosintesi",
+    "chi ha dipinto la Gioconda",
+    "che lingua si parla in Brasile",
+    "quante ossa ha il corpo umano",
+    "qual è l'edificio più alto del mondo",
+    "quando è stato inventato internet",
+    "chi ha scoperto la gravità",
+    "che cosa causa i terremoti",
+    "come funziona il wifi",
+    "qual è l'oceano più grande",
+    "parlami dei dinosauri",
+    "a che temperatura bolle l'acqua",
+    "chi era Albert Einstein",
+    "in che anno è finita la seconda guerra mondiale",
+    "come fanno gli uccelli a volare",
+    "che cos'è il DNA",
+    "chi ha inventato la lampadina",
+    "che cos'è il cambiamento climatico",
+    "quanti pianeti ci sono nel sistema solare",
+    "qual è il fiume più lungo del mondo",
+    "spiegami come funziona il motore di un'automobile",
+    "qual è la lingua più parlata al mondo",
+    "chi è stato il primo uomo sulla luna",
+    "che cosa vuol dire intelligenza artificiale",
+    "come funzionano i vaccini",
+    "qual è il paese più piccolo del mondo",
+    "chi ha composto le quattro stagioni",
+    "che cos'è la blockchain",
+    "come fanno gli aerei a restare in volo",
+    "che cos'è la grande muraglia cinese",
+    # Chitchat and conversation closers — the Italian counterpart of the
+    # English pool's tail. "ciao" is deliberately absent: it is a live
+    # greeting trigger, so the farewells use arrivederci / a dopo.
+    "raccontami qualcosa di interessante",
+    "che libro mi consigli",
+    "consigliami un film",
+    "che cosa dovrei mangiare a cena",
+    "sono annoiato",
+    "ti piace la musica",
+    "qual è il tuo colore preferito",
+    "sei un robot",
+    "che cosa sai fare",
+    "grazie",
+    "grazie ari",
+    "lascia perdere",
+    "non importa",
+    "è tutto",
+    "arrivederci",
+    "a dopo",
+    "ci vediamo dopo",
+    "ho finito",
+    "niente",
+    "ok",
+]
+
+# Country + the definite article its name takes. Italian country names
+# carry their article ("la Germania", "il Portogallo", "l'Egitto") and it
+# fuses with "di" ("della"/"del"/"dell'"), so a hardcoded "della {c}"
+# would emit ungrammatical Italian for over a third of this list. The
+# article travels with the entity and `_it_di`/`_it_the` do the fusion.
+_IT_CAPITAL_COUNTRIES = [
+    ("Germania", "la"), ("Spagna", "la"), ("Francia", "la"),
+    ("Grecia", "la"), ("Norvegia", "la"), ("Svezia", "la"),
+    ("Polonia", "la"), ("Turchia", "la"), ("Thailandia", "la"),
+    ("Croazia", "la"), ("Danimarca", "la"), ("Finlandia", "la"),
+    ("Nigeria", "la"), ("Svizzera", "la"), ("Colombia", "la"),
+    ("Romania", "la"), ("Scozia", "la"), ("Bulgaria", "la"),
+    ("Cina", "la"), ("Russia", "la"),
+    ("Irlanda", "l'"), ("Ungheria", "l'"), ("Islanda", "l'"),
+    ("Austria", "l'"), ("Argentina", "l'"), ("Australia", "l'"),
+    ("Indonesia", "l'"), ("India", "l'"), ("Egitto", "l'"),
+    ("Etiopia", "l'"), ("Ucraina", "l'"),
+    ("Portogallo", "il"), ("Brasile", "il"), ("Giappone", "il"),
+    ("Canada", "il"), ("Messico", "il"), ("Perù", "il"),
+    ("Vietnam", "il"), ("Marocco", "il"), ("Cile", "il"),
+    ("Kenya", "il"), ("Belgio", "il"),
+]
+
+# "di" + definite article, fused. The elided form takes no space after the
+# apostrophe ("dell'Egitto", never "dell' Egitto").
+_IT_DI_FORMS = {"la": "della ", "il": "del ", "l'": "dell'"}
+
+
+def _it_di(name: str, art: str) -> str:
+    """'Germania','la' → 'della Germania'; 'Egitto',"l'" → \"dell'Egitto\"."""
+    return _IT_DI_FORMS[art] + name
+
+
+def _it_the(name: str, art: str) -> str:
+    """'Germania','la' → 'la Germania'; 'Egitto',"l'" → \"l'Egitto\"."""
+    return f"{art}{name}" if art == "l'" else f"{art} {name}"
+
+
+_IT_CAPITAL_TEMPLATES = [
+    "qual è la capitale {di}",
+    "quale città è la capitale {di}",
+    "come si chiama la capitale {di}",
+    "dimmi la capitale {di}",
+]
+
+_IT_LANGUAGE_COUNTRIES = [
+    "Brasile", "Svizzera", "Austria", "Belgio", "Marocco", "Nigeria",
+    "Perù", "Iran", "Kazakistan", "Finlandia", "Egitto", "India",
+    "Messico", "Vietnam", "Argentina", "Canada",
+]
+
+_IT_PEOPLE = [
+    "Marie Curie", "Nelson Mandela", "Isaac Newton", "Leonardo da Vinci",
+    "William Shakespeare", "Cleopatra", "Charles Darwin", "Gandhi",
+    "Vincent van Gogh", "Nikola Tesla", "Winston Churchill", "Frida Kahlo",
+    "Galileo Galilei", "Beethoven", "Aristotele", "Napoleone",
+    "Stephen Hawking", "Rosa Parks", "Confucio", "Pablo Picasso",
+    "Ada Lovelace", "Gengis Khan", "Florence Nightingale", "Alan Turing",
+    "Dante Alighieri", "Cristoforo Colombo", "Giuseppe Garibaldi",
+    "Maria Montessori",
+]
+
+# Every template is gender-neutral on purpose: "per cosa è famoso {}"
+# would need famoso/famosa per entity, and the router gains nothing from
+# us solving agreement here when a neutral phrasing reads just as natural.
+_IT_PEOPLE_TEMPLATES = [
+    "chi è {}",
+    "chi era {}",
+    "parlami di {}",
+    "che cosa ha fatto {}",
+    "raccontami la storia di {}",
+]
+
+# The article is part of the entity so the templates stay simple.
+_IT_CONCEPTS = [
+    "la gravità", "l'inflazione", "un buco nero", "la borsa",
+    "l'evoluzione", "l'effetto serra", "il ciclo dell'acqua",
+    "una recessione", "la fusione nucleare", "il big bang", "l'osmosi",
+    "la democrazia", "il capitalismo", "la realtà virtuale",
+    "l'entanglement quantistico", "il sistema immunitario",
+    "l'apprendimento automatico", "la domanda e l'offerta",
+    "l'interesse composto", "la selezione naturale", "l'inerzia",
+    "la teoria della relatività",
+]
+
+_IT_CONCEPT_TEMPLATES = [
+    "che cos'è {}",
+    "spiegami {}",
+    "puoi spiegarmi {}",
+    "in che cosa consiste {}",
+]
+
+# (entity, verb) — Italian conjugates for number, so plural subjects need
+# "funzionano". Carrying the verb beats restricting the list to singulars.
+_IT_HOW_THINGS = [
+    ("il cuore umano", "funziona"),
+    ("un frigorifero", "funziona"),
+    ("un forno a microonde", "funziona"),
+    ("internet", "funziona"),
+    ("il GPS", "funziona"),
+    ("i pannelli solari", "funzionano"),
+    ("una batteria", "funziona"),
+    ("il cervello", "funziona"),
+    ("l'energia nucleare", "funziona"),
+    ("le onde radio", "funzionano"),
+    ("un motore a reazione", "funziona"),
+    ("la borsa", "funziona"),
+    ("l'elettricità", "funziona"),
+    ("l'occhio umano", "funziona"),
+    ("un touchscreen", "funziona"),
+    ("le cuffie con cancellazione del rumore", "funzionano"),
+]
+
+# Hand-written Italian negatives across geography, history, science and
+# demographics — the less formulaic counterpart of the templated sets.
+_IT_MISC_FACTUAL_NEGATIVES = [
+    "qual è la montagna più alta del mondo",
+    "qual è il punto più profondo dell'oceano",
+    "qual è il posto più caldo della terra",
+    "qual è il deserto più grande del mondo",
+    "qual è la città più antica del mondo",
+    "quale paese ha più abitanti",
+    "in che anno è caduto il muro di Berlino",
+    "quando è crollato l'impero romano",
+    "quando è stata inventata la stampa",
+    "in che anno l'uomo è sbarcato sulla luna",
+    "quando è finita la guerra fredda",
+    "che cosa ha causato la prima guerra mondiale",
+    "quando si sono estinti i dinosauri",
+    "quanti abitanti ha Tokyo",
+    "quante persone vivono in Cina",
+    "quanto è grande la Russia",
+    "quanto è esteso l'oceano Pacifico",
+    "qual è il simbolo chimico dell'oro",
+    "quante lune ha Giove",
+    "a che temperatura congela l'acqua",
+    "perché sogniamo",
+    "come funzionano le maree",
+    "che cosa provoca l'aurora boreale",
+    "perché il mare è salato",
+    "quanti anni ha l'universo",
+    "di che cosa è fatto il corpo umano",
+    "perché le foglie cambiano colore",
+    "che cos'è lo zero assoluto",
+    "quante corde ha un violino",
+    "qual è la valuta del Giappone",
+    "chi ha costruito le piramidi",
+    "perché la torre di Pisa è inclinata",
+    "qual è l'animale più veloce del mondo",
+    "quanto vive una tartaruga",
+    "perché i vulcani eruttano",
+]
+
+# Live Italian trigger words, transcribed from the real skills:
+#   ari-engine/crates/ari-skills/src/{calculator,current_time,date,
+#     greeting,open,search}.rs  (the union-dictionary consts)
+#   ari-skills/skills/*/SKILL.it.md  (matching.patterns)
+# Whole-word entries are matched against the utterance's words, mirroring
+# `contains_word` in ari-skill-loader/src/scoring.rs and the built-ins'
+# `words.contains` checks. Substring entries mirror calculator.rs's
+# `input.contains`.
+_IT_TRIGGER_WORDS = frozenset({
+    # built-ins: current_time / date / greeting / open / search
+    "ora", "ore", "attuale", "giorno", "data", "oggi",
+    "ciao", "salve", "buongiorno", "buonasera", "buonanotte", "va", "stai",
+    "apri", "avvia", "lancia", "esegui", "cerca", "cercare", "trova",
+    # weather
+    "tempo", "meteo", "previsioni", "piove", "pioverà", "piovera",
+    "vento", "ventoso", "uv",
+    # timer / alarm / reminder
+    "timer", "manca", "sveglia", "sveglie", "svegliami",
+    "ricordami", "promemoria", "aggiungi", "metti",
+    # music
+    "riproduci", "ascolta", "pausa", "riprendi", "prossima", "successiva",
+    "avanti", "salta", "precedente", "ferma", "muto", "silenzia", "volume",
+    # navigation
+    "portami", "indicazioni", "arrivo", "vai", "andiamo",
+    # coin-flip / counter / github-zen / wasm-echo
+    "moneta", "tira", "croce", "conta", "contatore", "zen", "saggezza",
+    "wasm", "eco",
+})
+
+# calculator.rs matches these anywhere in the string, not as words.
+_IT_TRIGGER_SUBSTRINGS = ("calcola", "risolvi", "calculate", "compute", "eval", "solve")
+
+
+def _it_trigger_offenders(pool: list) -> list:
+    """Italian negatives that collide with a live skill trigger.
+
+    Applies the engine's real matching rules to `pool`: whole-word for the
+    union dictionaries and the SKILL.it.md keyword/regex patterns,
+    substring for calculator.rs. Digits are flagged too — `has_math_content`
+    only needs a digit plus any math-word substring, and Italian's "per"
+    (times) hides inside perché/persone/temperatura, so a digit is enough
+    to hand an utterance to the calculator."""
+    offenders = []
+    for n in pool:
+        # Elisions split into separate words before matching (un'ora → un ora).
+        words = set(n.lower().replace("'", " ").replace("’", " ").split())
+        if words & _IT_TRIGGER_WORDS:
+            offenders.append(n)
+        elif any(s in n.lower() for s in _IT_TRIGGER_SUBSTRINGS):
+            offenders.append(n)
+        elif any(c.isdigit() for c in n):
+            offenders.append(n)
+    return offenders
+
+
+def generate_italian_factual_negatives() -> list:
+    """Italian counterpart of generate_factual_negatives — a phrasing-varied
+    general-knowledge pool large enough (~500 uniques) for
+    generate_negative_samples to scale negatives to the positive count."""
+    out = []
+    # Capitals + other country facts (reuse the country list).
+    for tmpl in _IT_CAPITAL_TEMPLATES:
+        for c, art in _IT_CAPITAL_COUNTRIES:
+            out.append(tmpl.format(di=_it_di(c, art)))
+    for c, art in _IT_CAPITAL_COUNTRIES:
+        out.append(f"qual è la popolazione {_it_di(c, art)}")
+        # "valuta", not "moneta": moneta is a live coin-flip keyword.
+        out.append(f"qual è la valuta {_it_di(c, art)}")
+        # "a quale continente appartiene", not "dove si trova": `trova` is
+        # a live search trigger.
+        out.append(f"a quale continente appartiene {_it_the(c, art)}")
+    for c in _IT_LANGUAGE_COUNTRIES:
+        out.append(f"che lingua si parla in {c}")
+    # People + concepts — every template, every entity.
+    for tmpl in _IT_PEOPLE_TEMPLATES:
+        for p in _IT_PEOPLE:
+            out.append(tmpl.format(p))
+    for tmpl in _IT_CONCEPT_TEMPLATES:
+        for concept in _IT_CONCEPTS:
+            out.append(tmpl.format(concept))
+    for thing, verb in _IT_HOW_THINGS:
+        out.append(f"come {verb} {thing}")
+        out.append(f"spiegami come {verb} {thing}")
+    out.extend(_IT_MISC_FACTUAL_NEGATIVES)
+    return out
+
+
 def generate_factual_negatives() -> list:
     """Build a large, phrasing-varied general-knowledge negative pool.
 
@@ -494,8 +830,9 @@ NEG_FLOOR = 250
 
 
 def negatives_for_locale(locale: str) -> list:
-    """General-knowledge negatives for `locale`. English for every locale for
-    now; Plan 2 adds the Italian pool keyed on `locale`."""
+    """General-knowledge negatives for `locale`."""
+    if locale == "it":
+        return ITALIAN_NEGATIVE_EXAMPLES + generate_italian_factual_negatives()
     return NEGATIVE_EXAMPLES + generate_factual_negatives()
 
 
