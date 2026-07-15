@@ -35,7 +35,7 @@
 {"utterance": "chi ha inventato la stampa a caratteri mobili", "expect": "NONE"}
 {"utterance": "qual è il metallo più leggero", "expect": "NONE"}
 {"utterance": "sapresti dirmi l'ora", "expect": "current_time"}
-{"utterance": "vorrei sapere l'ora esatta", "expect": "current_time"}
+{"utterance": "è ancora mattina", "expect": "current_time"}
 {"utterance": "che ore sono di preciso", "expect": "current_time"}
 {"utterance": "quanti ne abbiamo oggi", "expect": "current_date"}
 {"utterance": "che data abbiamo oggi", "expect": "current_date"}
