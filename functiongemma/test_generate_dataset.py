@@ -128,3 +128,25 @@ def test_italian_pool_is_large_enough_to_scale_negatives():
 
 def test_negatives_for_locale_unknown_falls_back_to_english():
     assert gends.negatives_for_locale("de") == gends.negatives_for_locale("en")
+
+
+def test_export_skills_passes_locale_after_double_dash(monkeypatch):
+    # Pins the cross-repo contract: cargo needs `--` before binary args, and
+    # the binary expects `--locale <xx>`. Getting this wrong silently exports
+    # English for every locale.
+    captured = {}
+
+    class _Result:
+        stdout = "[]"
+
+    def fake_run(cmd, **kwargs):
+        captured["cmd"] = cmd
+        return _Result()
+
+    monkeypatch.setattr(gends.subprocess, "run", fake_run)
+    gends.export_skills(Path("/tmp/engine"), "it")
+
+    cmd = captured["cmd"]
+    assert "--" in cmd, "cargo requires -- before binary args"
+    assert cmd[cmd.index("--") + 1 :] == ["--locale", "it"]
+    assert "export-utterances" in cmd

@@ -653,10 +653,29 @@ _IT_TRIGGER_WORDS = frozenset({
     # coin-flip / counter / github-zen / wasm-echo
     "moneta", "tira", "croce", "conta", "contatore", "zen", "saggezza",
     "wasm", "eco",
+    # home-assistant: accendi/spegni (+ infinitives), the abbassa/alza
+    # brightness family anchored to luci/luminosità, imposta/regola for
+    # thermostats, apri (already banned above) / chiudi / blocca / sblocca
+    # for locks and covers, attiva for scenes, and the AND-keywords
+    # termostato + luci. "dove"/"dov" are banned outright rather than
+    # encoding the real pattern's `dove? (e|è|sono|si trova|si trovano)`
+    # adjacency — same over-conservative-single-word tradeoff as "ora"/
+    # "giorno" above. "trova" is already banned; "trovano" covers the
+    # plural "si trovano".
+    "accendi", "accendere", "spegni", "spegnere", "imposta", "regola",
+    "abbassa", "alza", "attenua", "aumenta", "riduci", "chiudi", "blocca",
+    "sblocca", "luci", "luminosità", "termostato", "attiva",
+    "dove", "dov", "trovano",
 })
 
 # calculator.rs matches these anywhere in the string, not as words.
-_IT_TRIGGER_SUBSTRINGS = ("calcola", "risolvi", "calculate", "compute", "eval", "solve")
+# `apert`/`chius` are stems: home-assistant's status patterns match the
+# participle forms (aperto/aperta/aperti/aperte, chiuso/chiusa/chiusi/
+# chiuse) via a character class, so a stem substring catches all of them.
+_IT_TRIGGER_SUBSTRINGS = (
+    "calcola", "risolvi", "calculate", "compute", "eval", "solve",
+    "apert", "chius",
+)
 
 
 def _it_trigger_offenders(pool: list) -> list:
