@@ -130,6 +130,67 @@ def test_negatives_for_locale_unknown_falls_back_to_english():
     assert gends.negatives_for_locale("de") == gends.negatives_for_locale("en")
 
 
+def test_normalize_texts_matches_the_engine(tmp_path):
+    # Not a replica test: this shells out to the engine's own normalize bin,
+    # which is the whole point — one source of truth for train/serve parity.
+    engine = Path(__file__).resolve().parents[2] / "ari-engine"
+    out = gends.normalize_texts(engine, ["what's the time", "quick, what time is it?"], "en")
+    assert out == ["what is the time", "quick what time is it"]
+
+
+def test_normalize_texts_preserves_order_and_count():
+    engine = Path(__file__).resolve().parents[2] / "ari-engine"
+    # Deliberately NOT number words: English normalisation converts those to
+    # digits (see the test below), which would muddy an order/count check.
+    texts = ["hello", "WORLD", "stop!"]
+    out = gends.normalize_texts(engine, texts, "en")
+    assert out == ["hello", "world", "stop"]
+
+
+def test_english_number_words_become_digits_but_italian_is_untouched():
+    # normalize_input runs replace_number_words for "en" ONLY. This is the
+    # single most surprising thing normalisation does to the English corpus —
+    # pin it so it's a documented decision, not a shock in a diff.
+    engine = Path(__file__).resolve().parents[2] / "ari-engine"
+    assert gends.normalize_texts(
+        engine, ["how much is fifteen percent of two hundred"], "en"
+    ) == ["how much is 15 percent of 200"]
+    # Italian gets no number-word replacement, so its equivalent is unchanged.
+    assert gends.normalize_texts(
+        engine, ["quanto fa il quindici percento di duecento"], "it"
+    ) == ["quanto fa il quindici percento di duecento"]
+
+
+def test_normalize_texts_is_idempotent():
+    # Normalising already-normalised text must be a no-op, or the corpus
+    # would depend on how many times the pipeline ran.
+    engine = Path(__file__).resolve().parents[2] / "ari-engine"
+    once = gends.normalize_texts(engine, ["What's the TIME?"], "en")
+    twice = gends.normalize_texts(engine, once, "en")
+    assert once == twice
+
+
+def test_router_ineligible_skills_are_excluded():
+    # search sets router_eligible=false, so router_catalog() never offers it.
+    # Training it teaches the model to call a function that isn't on the menu.
+    skills = [
+        {"id": "search", "description": "d", "router_eligible": False,
+         "parameters": {}, "examples": [{"text": "find x", "args": {}}]},
+        {"id": "current_time", "description": "d", "router_eligible": True,
+         "parameters": {}, "examples": [{"text": "what time", "args": {}}]},
+    ]
+    kept = gends.router_eligible_skills(skills)
+    assert [s["id"] for s in kept] == ["current_time"]
+
+
+def test_skills_without_the_flag_default_to_eligible():
+    # Community skills come from SKILL.md manifests, which have no
+    # router_eligible concept — they must not be silently dropped.
+    skills = [{"id": "dev.heyari.weather", "description": "d",
+               "parameters": {}, "examples": [{"text": "meteo", "args": {}}]}]
+    assert gends.router_eligible_skills(skills) == skills
+
+
 def test_export_skills_passes_locale_after_double_dash(monkeypatch):
     # Pins the cross-repo contract: cargo needs `--` before binary args, and
     # the binary expects `--locale <xx>`. Getting this wrong silently exports
