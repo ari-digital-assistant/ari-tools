@@ -9,6 +9,12 @@ Combines:
 3. Negative examples (general knowledge, should NOT trigger any function),
    scaled to the positive count so abstention stays well represented.
 
+Every training utterance is normalised through the engine's own
+`normalize_input` (via the `normalize` bin) before sample generation: the
+router is only ever served normalised text at inference, so training on raw
+text trains it on a distribution it never sees. Tool-call args and skill
+descriptions are schema, not utterances, and are deliberately NOT normalised.
+
 We deliberately do NOT use Google's mobile-actions demo dataset: the base
 model (`google/functiongemma-270m-it`) is already function-calling pretrained,
 those are Android actions Ari doesn't support, and its 9,654 always-call
@@ -20,7 +26,7 @@ ready for SFTTrainer fine-tuning with FunctionGemma's chat template.
 Usage:
     python3 generate-dataset.py [--locale <xx>] > dataset.jsonl
 
-    --locale defaults to "en" and produces the byte-identical English dataset.
+    --locale defaults to "en".
 
 Environment variables:
     ARI_ENGINE_DIR  — path to ari-engine checkout (auto-discovered if not set)
@@ -78,6 +84,41 @@ def export_skills(engine_dir: Path, locale: str) -> list:
         check=True,
     )
     return json.loads(result.stdout)
+
+
+def normalize_texts(engine_dir: Path, texts: list, locale: str) -> list:
+    """Normalise training text through the engine's OWN normalize_input.
+
+    The router is served normalize_input()'d text at inference, so the corpus
+    must be normalised the same way or we train on a distribution the model
+    never sees. We shell out to the `normalize` bin rather than reimplement
+    it here: a Python replica would drift, and would be a second source of
+    truth for the exact function that defines train/serve parity.
+
+    One subprocess for the whole batch — not one per string.
+    """
+    if not texts:
+        return []
+    bad = [t for t in texts if "\n" in t]
+    if bad:
+        sys.exit(f"ERROR: training text contains a newline, which breaks the "
+                 f"line-per-text protocol: {bad[:3]}")
+    result = subprocess.run(
+        ["cargo", "run", "--quiet", "-p", "ari-skills", "--bin",
+         "normalize", "--", "--locale", locale],
+        cwd=engine_dir,
+        input="\n".join(texts),
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    out = result.stdout.split("\n")
+    if out and out[-1] == "":
+        out.pop()  # trailing newline from println!
+    if len(out) != len(texts):
+        sys.exit(f"ERROR: normalize returned {len(out)} lines for {len(texts)} "
+                 f"inputs — the corpus would be silently mis-paired")
+    return out
 
 
 # ── Locate ari-skills and parse community SKILL.md files ─────────────
@@ -897,6 +938,15 @@ def main():
     assign_aliases(all_skills)
     tools = build_tools(all_skills)
 
+    # Normalise every training utterance through the engine's own normaliser.
+    # The router only ever sees normalize_input()'d text at inference; training
+    # on raw text trains it on a distribution it is never served. Args and
+    # descriptions are schema, not utterances — they are NOT normalised.
+    flat = [ex for s in all_skills for ex in s["examples"]]
+    for ex, norm in zip(flat, normalize_texts(engine_dir, [e["text"] for e in flat], locale)):
+        ex["text"] = norm
+    print(f"  normalised {len(flat)} skill paraphrases ({locale})", file=sys.stderr)
+
     print("Generating samples:", file=sys.stderr)
     skill_samples = generate_skill_samples(all_skills, tools)
     # Scale negatives to the positive count so "emit nothing" stays well
@@ -905,7 +955,9 @@ def main():
     # pretrained, those are actions Ari doesn't support, and 9,654 always-call
     # samples drown abstention — the root of the r70→r75 regression.)
     neg_target = max(NEG_FLOOR, len(skill_samples))
-    negative_samples = generate_negative_samples(tools, neg_target, negatives_for_locale(locale))
+    negative_pool = normalize_texts(engine_dir, negatives_for_locale(locale), locale)
+    print(f"  normalised {len(negative_pool)} negatives ({locale})", file=sys.stderr)
+    negative_samples = generate_negative_samples(tools, neg_target, negative_pool)
 
     all_samples = skill_samples + negative_samples
     random.shuffle(all_samples)
