@@ -27,17 +27,17 @@
 {"utterance": "what is the hardest natural material", "expect": "NONE"}
 {"utterance": "who was the first emperor of Rome", "expect": "NONE"}
 {"utterance": "what does photosynthesis produce", "expect": "NONE"}
-{"utterance": "what time is it right now", "expect": "current_time"}
-{"utterance": "can you tell me the time", "expect": "current_time"}
-{"utterance": "got the time", "expect": "current_time"}
+{"utterance": "do you happen to know the time", "expect": "current_time"}
+{"utterance": "mind telling me the time", "expect": "current_time"}
+{"utterance": "is it past noon yet", "expect": "current_time"}
 {"utterance": "what is the date today", "expect": "current_date"}
 {"utterance": "what day of the week is it", "expect": "current_date"}
 {"utterance": "what is 8 times 7", "expect": "calculator"}
 {"utterance": "calculate 144 divided by 12", "expect": "calculator"}
 {"utterance": "what is 250 plus 379", "expect": "calculator"}
 {"utterance": "open the camera", "expect": "open"}
-{"utterance": "open Spotify", "expect": "open"}
+{"utterance": "bring up spotify", "expect": "open"}
 {"utterance": "launch the settings app", "expect": "open"}
 {"utterance": "hello there", "expect": "greeting"}
-{"utterance": "good morning", "expect": "greeting"}
-{"utterance": "hey Ari", "expect": "greeting"}
+{"utterance": "nice to see you", "expect": "greeting"}
+{"utterance": "how have you been", "expect": "greeting"}
