@@ -68,7 +68,7 @@ WORK_DIR = "/work"
     secrets=[modal.Secret.from_name("huggingface")],
     volumes={OUTPUT_DIR: volume},
 )
-def train():
+def train(engine_ref: str = "main", skills_ref: str = "main", tools_ref: str = "main"):
     import json
     import os
     from pathlib import Path
@@ -80,18 +80,20 @@ def train():
 
     os.makedirs(WORK_DIR, exist_ok=True)
 
-    # Clone repos
-    print("Cloning ari-engine...")
+    # Clone repos. Refs default to main; a branch can be passed so an
+    # experiment can be trained without landing on main first (and so the
+    # nightly, which passes no refs, is unaffected).
+    print(f"Cloning ari-engine @ {engine_ref}...")
     subprocess.check_call(
-        ["git", "clone", "--depth", "1", ARI_ENGINE_REPO, f"{WORK_DIR}/ari-engine"]
+        ["git", "clone", "--depth", "1", "--branch", engine_ref, ARI_ENGINE_REPO, f"{WORK_DIR}/ari-engine"]
     )
-    print("Cloning ari-skills...")
+    print(f"Cloning ari-skills @ {skills_ref}...")
     subprocess.check_call(
-        ["git", "clone", "--depth", "1", ARI_SKILLS_REPO, f"{WORK_DIR}/ari-skills"]
+        ["git", "clone", "--depth", "1", "--branch", skills_ref, ARI_SKILLS_REPO, f"{WORK_DIR}/ari-skills"]
     )
-    print("Cloning ari-tools...")
+    print(f"Cloning ari-tools @ {tools_ref}...")
     subprocess.check_call(
-        ["git", "clone", "--depth", "1", ARI_TOOLS_REPO, f"{WORK_DIR}/ari-tools"]
+        ["git", "clone", "--depth", "1", "--branch", tools_ref, ARI_TOOLS_REPO, f"{WORK_DIR}/ari-tools"]
     )
 
     # Verify cargo is available
@@ -350,14 +352,19 @@ def convert_only_fn():
 
 
 @app.local_entrypoint()
-def main(convert_only: bool = False):
+def main(
+    convert_only: bool = False,
+    engine_ref: str = "main",
+    skills_ref: str = "main",
+    tools_ref: str = "main",
+):
     import os as _os
     if convert_only:
         print("Retrying GGUF conversion only...")
         convert_only_fn.remote()
     else:
-        print("Launching training on Modal...")
-        train.remote()
+        print(f"Launching training on Modal (engine={engine_ref} skills={skills_ref} tools={tools_ref})...")
+        train.remote(engine_ref=engine_ref, skills_ref=skills_ref, tools_ref=tools_ref)
 
     print("Downloading model from Modal volume...")
     import subprocess as sp
