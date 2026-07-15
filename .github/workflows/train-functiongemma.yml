@@ -11,6 +11,14 @@ on:
         description: 'Force training even if no skill changes detected'
         required: false
         default: 'false'
+      tools_ref:
+        description: 'ari-tools branch to train from (default: main)'
+        required: false
+        default: 'main'
+      experimental:
+        description: 'Experimental run — train + routing-eval ONLY. Never releases, never stores training SHAs, never publishes to devices.'
+        required: false
+        default: 'false'
 
 permissions:
   contents: write   # needed for `gh release create` + `gh release upload`
@@ -93,7 +101,7 @@ jobs:
         env:
           MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
           MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
-        run: modal run functiongemma/modal_train.py
+        run: modal run functiongemma/modal_train.py --tools-ref "${{ github.event.inputs.tools_ref || 'main' }}"
 
       - name: Upload GGUF as artifact
         if: steps.check.outputs.should_train == 'true'
@@ -119,7 +127,10 @@ jobs:
           echo "gguf_url=$GGUF_URL" >> "$GITHUB_OUTPUT"
 
       - name: Create versioned release with GGUF
-        if: steps.check.outputs.should_train == 'true'
+        # Experimental runs stop at the routing-eval measurement: no release,
+        # no stored SHAs (which would make the next nightly skip training),
+        # and above all no manifest publish — that promotes to devices.
+        if: steps.check.outputs.should_train == 'true' && github.event.inputs.experimental != 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -175,7 +186,7 @@ jobs:
       # Only recorded AFTER the gate passes — a failed gate must not mark this
       # skill-state as "trained", or the next nightly would skip the retry.
       - name: Store training SHAs
-        if: steps.check.outputs.should_train == 'true'
+        if: steps.check.outputs.should_train == 'true' && github.event.inputs.experimental != 'true'
         env:
           MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
           MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
@@ -191,7 +202,7 @@ jobs:
           modal volume put --force ari-functiongemma-output /tmp/last-trained.json last-trained.json
 
       - name: Publish floating manifest
-        if: steps.check.outputs.should_train == 'true'
+        if: steps.check.outputs.should_train == 'true' && github.event.inputs.experimental != 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -202,7 +213,7 @@ jobs:
             --release-tag functiongemma-latest
 
       - name: Send email notification
-        if: steps.check.outputs.should_train == 'true'
+        if: steps.check.outputs.should_train == 'true' && github.event.inputs.experimental != 'true'
         uses: dawidd6/action-send-mail@v5
         with:
           server_address: ${{ secrets.SMTP_SERVER }}
