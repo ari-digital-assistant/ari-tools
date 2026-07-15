@@ -1,0 +1,50 @@
+// Held-out routing eval (Italian) for the FunctionGemma promotion gate.
+// NONE = the router must abstain (general knowledge → assistant). These
+// utterances are deliberately NOT in the Italian training data — fresh
+// entities and phrasings — so a pass means the model GENERALISED, not
+// memorised. Checked against all three Italian training sources: the
+// built-in *_EXAMPLES_IT consts, the SKILL.it.md examples, and
+// generate-dataset.py's Italian negative pool.
+// Positives are canonical Italian skill requests a competent router must
+// still route — differently phrased, not tricks.
+// The NONE cases carry no live Italian skill trigger (same poisoned-sample
+// rule the negative pool follows), so none of them is an utterance a
+// keyword skill should have owned.
+// Note: "search" is keyword-only (router_eligible=false), so it is never a
+// positive target here.
+{"utterance": "chi ha scritto la Divina Commedia", "expect": "NONE"}
+{"utterance": "qual è il pianeta più vicino al sole", "expect": "NONE"}
+{"utterance": "perché le zebre hanno le strisce", "expect": "NONE"}
+{"utterance": "qual è il lago più profondo del mondo", "expect": "NONE"}
+{"utterance": "chi ha composto il Nabucco", "expect": "NONE"}
+{"utterance": "quante zampe ha un ragno", "expect": "NONE"}
+{"utterance": "che cosa provoca le eclissi", "expect": "NONE"}
+{"utterance": "qual è la formula chimica del sale", "expect": "NONE"}
+{"utterance": "che cosa ha inventato Guglielmo Marconi", "expect": "NONE"}
+{"utterance": "perché i gatti fanno le fusa", "expect": "NONE"}
+{"utterance": "quanto pesa un elefante africano", "expect": "NONE"}
+{"utterance": "chi ha fondato Roma", "expect": "NONE"}
+{"utterance": "che cos'è la tettonica a placche", "expect": "NONE"}
+{"utterance": "perché il ghiaccio galleggia", "expect": "NONE"}
+{"utterance": "chi ha diretto il film Il Padrino", "expect": "NONE"}
+{"utterance": "che cosa mangiano i panda", "expect": "NONE"}
+{"utterance": "qual è l'osso più piccolo del corpo umano", "expect": "NONE"}
+{"utterance": "chi è stato il primo imperatore romano", "expect": "NONE"}
+{"utterance": "perché le stelle brillano", "expect": "NONE"}
+{"utterance": "qual è la montagna più alta d'Europa", "expect": "NONE"}
+{"utterance": "chi ha inventato la stampa a caratteri mobili", "expect": "NONE"}
+{"utterance": "qual è il metallo più leggero", "expect": "NONE"}
+{"utterance": "sapresti dirmi l'ora", "expect": "current_time"}
+{"utterance": "vorrei sapere l'ora esatta", "expect": "current_time"}
+{"utterance": "che ore sono di preciso", "expect": "current_time"}
+{"utterance": "a quanti ne siamo oggi", "expect": "current_date"}
+{"utterance": "che data abbiamo oggi", "expect": "current_date"}
+{"utterance": "quant'è 63 meno 28", "expect": "calculator"}
+{"utterance": "quanto viene il 30 percento di 90", "expect": "calculator"}
+{"utterance": "fammi la somma di 128 e 256", "expect": "calculator"}
+{"utterance": "apri signal", "expect": "open"}
+{"utterance": "avvia l'app della banca", "expect": "open"}
+{"utterance": "aprimi duolingo", "expect": "open"}
+{"utterance": "buon pomeriggio ari", "expect": "greeting"}
+{"utterance": "come te la cavi", "expect": "greeting"}
+{"utterance": "salve come va", "expect": "greeting"}

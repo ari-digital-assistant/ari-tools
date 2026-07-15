@@ -15,6 +15,9 @@ Usage:
     # Or eval the base model for comparison
     python3 eval.py ~/models/functiongemma-270m-it-Q4_K_M.gguf
 
+    # Eval a per-locale router against that locale's cases (default: en)
+    python3 eval.py ./output/ari-functiongemma-it-q4_k_m.gguf --locale it
+
 Prints one line per test case plus a summary grouped by difficulty.
 """
 
@@ -83,6 +86,50 @@ TEST_CASES = [
     ("how far is the moon from earth", None, "none"),
 ]
 
+# Italian counterpart of TEST_CASES, for the per-locale router model.
+# Held-out like routing-eval.it.jsonl: none of these appear in the Italian
+# training data (the built-in *_EXAMPLES_IT consts, the SKILL.it.md
+# examples, or generate-dataset.py's Italian negative pool), so a pass
+# means the model generalised. The "none" cases carry no live Italian skill
+# trigger, so none of them is an utterance a keyword skill should own.
+IT_TEST_CASES = [
+    # Easy — keyword matcher would handle these
+    ("che ore sono di preciso", "current_time", "easy"),
+    ("che data abbiamo oggi", "date", "easy"),
+    ("calcola 63 meno 28", "calculator", "easy"),
+    ("buondì ari", "greeting", "easy"),
+    ("apri signal", "open_app", "easy"),
+    ("cerca dei tutorial di python", "search", "easy"),
+    ("lancia una monetina", "coin_flip", "easy"),
+
+    # Hard — paraphrases the keyword matcher would miss
+    ("sapresti dirmi l'ora", "current_time", "hard"),
+    ("è ancora mattina o siamo nel pomeriggio", "current_time", "hard"),
+    ("a quanti ne siamo oggi", "date", "hard"),
+    ("quanto viene il 30 percento di 90", "calculator", "hard"),
+    ("fammi la somma di 128 e 256", "calculator", "hard"),
+    ("come te la cavi", "greeting", "hard"),
+    ("buon pomeriggio ari", "greeting", "hard"),
+    ("aprimi duolingo", "open_app", "hard"),
+    ("avvia l'app della banca", "open_app", "hard"),
+    ("vorrei cercare una cosa su internet", "search", "hard"),
+    ("trovami delle informazioni sui buchi neri", "search", "hard"),
+    ("decidiamo a sorte, testa o croce", "coin_flip", "hard"),
+
+    # None — should NOT match any skill (general knowledge)
+    ("chi ha scritto la Divina Commedia", None, "none"),
+    ("perché le zebre hanno le strisce", None, "none"),
+    ("qual è il pianeta più vicino al sole", None, "none"),
+    ("che cosa mangiano i panda", None, "none"),
+    ("quanto pesa un elefante africano", None, "none"),
+]
+
+# eval.py runs English by default; --locale it selects the Italian cases.
+TEST_CASES_BY_LOCALE = {
+    "en": TEST_CASES,
+    "it": IT_TEST_CASES,
+}
+
 
 def build_prompt(user_input: str) -> str:
     """Build the FunctionGemma prompt with tool declarations."""
@@ -106,7 +153,9 @@ def parse_first_call(raw: str) -> str | None:
     return None
 
 
-def run_test(model_path: str):
+def run_test(model_path: str, locale: str = "en"):
+    test_cases = TEST_CASES_BY_LOCALE[locale]
+
     print(f"Loading model from {model_path}...")
     t0 = time.time()
     llm = Llama(
@@ -115,12 +164,13 @@ def run_test(model_path: str):
         n_threads=4,
         verbose=False,
     )
-    print(f"Model loaded in {time.time() - t0:.1f}s\n")
+    print(f"Model loaded in {time.time() - t0:.1f}s")
+    print(f"Locale: {locale} ({len(test_cases)} cases)\n")
 
     results = {"easy": [], "hard": [], "none": []}
     total_time = 0
 
-    for user_input, expected, difficulty in TEST_CASES:
+    for user_input, expected, difficulty in test_cases:
         prompt = build_prompt(user_input)
 
         t1 = time.time()
@@ -176,5 +226,11 @@ def run_test(model_path: str):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("model_path", help="Path to the GGUF model file")
+    parser.add_argument(
+        "--locale",
+        default="en",
+        choices=sorted(TEST_CASES_BY_LOCALE),
+        help="Which test-case set to run (default: en)",
+    )
     args = parser.parse_args()
-    run_test(args.model_path)
+    run_test(args.model_path, args.locale)
