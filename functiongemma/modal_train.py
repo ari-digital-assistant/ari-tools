@@ -194,20 +194,24 @@ def train(engine_ref: str = "main", skills_ref: str = "main", tools_ref: str = "
     # If corpus size changes materially, re-derive this from target optimizer
     # steps rather than leaving it fixed — that coupling is what made the
     # earlier measurement uninterpretable.
-    # Batch geometry: TRUE batch 32, no gradient accumulation. The old
-    # 4×8-accum split was a fossil from the A10G-24GB era (1a8b5a1), when
-    # OOM cancellations were real; on an A100-40GB with a 270M model and
-    # gradient_checkpointing on, accumulation was pure overhead — 8
-    # sequential micro-passes per optimizer step for ~2-4× the wall-clock.
-    # Same effective batch, mathematically equivalent training. Verified by
-    # an isolated sanity retrain on the unchanged corpus before anything
-    # else moved (2026-07-19); peak VRAM is printed at the end of training
-    # so headroom stays a number, not a vibe.
+    # Batch geometry: 8 × 4-accum (effective 32). The obvious "batch 32,
+    # no accumulation" was tried 2026-07-19 (run 29699674091) and OOM'd
+    # INSTANTLY on the A100-40GB with a single 41.16 GiB allocation. The
+    # wall is not the 270M's weights — it is the LOGITS tensor: Gemma's
+    # 262,144-token vocabulary means loss computation materialises
+    # batch × seq × 262144 floats (32 × 1536 × 262144 × fp32 ≈ 51 GB).
+    # That is also why the original A10G-24GB config was stuck at micro-
+    # batch 4 — the fear was real, just misattributed to model size.
+    # Ceiling maths: batch 8 → ~13 GB logits, fits with margin; batch 16
+    # → ~26 GB, does not. 8×4 halves the sequential micro-passes per
+    # optimizer step vs the old 4×8 — same effective batch 32,
+    # mathematically equivalent training, roughly 1.5-2× faster. Peak
+    # VRAM is printed after training so headroom stays a number.
     config_kwargs = dict(
         output_dir=f"{WORK_DIR}/training",
         num_train_epochs=2,
-        per_device_train_batch_size=32,
-        gradient_accumulation_steps=1,
+        per_device_train_batch_size=8,
+        gradient_accumulation_steps=4,
         learning_rate=1e-5,
         lr_scheduler_type="cosine",
         gradient_checkpointing=True,
