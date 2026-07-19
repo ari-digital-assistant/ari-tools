@@ -176,9 +176,21 @@ def train(engine_ref: str = "main", skills_ref: str = "main", tools_ref: str = "
     train_ds = Dataset.from_list(train_formatted)
     eval_ds = Dataset.from_list(eval_formatted)
 
+    # Epochs are tuned to hold OPTIMIZER STEPS roughly constant, not to a fixed
+    # number of passes. Effective batch is 4 x 8 = 32, so steps/epoch is
+    # len(train) / 32 — and the keyword-hit filter cut the corpus by ~60%, which
+    # silently cut steps with it:
+    #   pre-filter:  567 train / 32 ~= 18 steps/epoch x 2 = ~36 steps
+    #   post-filter: 221 train / 32 ~=  7 steps/epoch x 2 = ~14 steps
+    # That 2.5x cut in gradient updates at an unchanged 1e-5 LR confounded the
+    # first post-filter measurement: both locales LOST abstention (en 100->95%,
+    # it 100->86%) and began emitting confident wrong routes for general
+    # knowledge — textbook undertraining, not a verdict on the filter.
+    # 5 epochs restores ~35 (en) / ~40 (it) steps, comparable to the ~36 the
+    # baselines were trained at. Revisit if the corpus size moves materially.
     config_kwargs = dict(
         output_dir=f"{WORK_DIR}/training",
-        num_train_epochs=2,
+        num_train_epochs=5,
         per_device_train_batch_size=4,
         gradient_accumulation_steps=8,
         learning_rate=1e-5,
@@ -188,10 +200,13 @@ def train(engine_ref: str = "main", skills_ref: str = "main", tools_ref: str = "
         optim="adamw_torch_fused",
         bf16=True,
         completion_only_loss=True,
+        # Must stay well below the total step count or the run emits no logs and
+        # no intermediate eval at all — which is exactly what happened at 50/100
+        # against a ~14-step run.
         logging_strategy="steps",
-        logging_steps=50,
+        logging_steps=5,
         eval_strategy="steps",
-        eval_steps=100,
+        eval_steps=10,
         save_strategy="epoch",
         report_to="none",
     )
