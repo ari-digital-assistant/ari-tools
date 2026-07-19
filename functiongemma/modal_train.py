@@ -68,7 +68,7 @@ WORK_DIR = "/work"
     secrets=[modal.Secret.from_name("huggingface")],
     volumes={OUTPUT_DIR: volume},
 )
-def train(engine_ref: str = "main", skills_ref: str = "main", tools_ref: str = "main"):
+def train(engine_ref: str = "main", skills_ref: str = "main", tools_ref: str = "main", locale: str = "en"):
     import json
     import os
     from pathlib import Path
@@ -110,7 +110,8 @@ def train(engine_ref: str = "main", skills_ref: str = "main", tools_ref: str = "
     dataset_path = f"{WORK_DIR}/dataset.jsonl"
     with open(dataset_path, "w") as f:
         subprocess.check_call(
-            [sys.executable, f"{WORK_DIR}/ari-tools/functiongemma/generate-dataset.py"],
+            [sys.executable, f"{WORK_DIR}/ari-tools/functiongemma/generate-dataset.py",
+             "--locale", locale],
             stdout=f,
             env=env,
         )
@@ -218,7 +219,7 @@ def train(engine_ref: str = "main", skills_ref: str = "main", tools_ref: str = "
 
     # Also save to volume so we can retry conversion without retraining
     import shutil as _shutil
-    fused_backup = f"{OUTPUT_DIR}/fused"
+    fused_backup = f"{OUTPUT_DIR}/fused-{locale}"
     if os.path.exists(fused_backup):
         _shutil.rmtree(fused_backup)
     _shutil.copytree(fused_dir, fused_backup)
@@ -253,8 +254,8 @@ def train(engine_ref: str = "main", skills_ref: str = "main", tools_ref: str = "
         cwd=f"{WORK_DIR}/llama.cpp",
     )
 
-    f16_path = f"{WORK_DIR}/ari-functiongemma-f16.gguf"
-    q4_path = f"{OUTPUT_DIR}/ari-functiongemma-q4_k_m.gguf"
+    f16_path = f"{WORK_DIR}/ari-functiongemma-{locale}-f16.gguf"
+    q4_path = f"{OUTPUT_DIR}/ari-functiongemma-{locale}-q4_k_m.gguf"
 
     print("Converting to GGUF F16...")
     subprocess.check_call([
@@ -287,12 +288,12 @@ def train(engine_ref: str = "main", skills_ref: str = "main", tools_ref: str = "
     secrets=[modal.Secret.from_name("huggingface")],
     volumes={OUTPUT_DIR: volume},
 )
-def convert_only_fn():
+def convert_only_fn(locale: str = "en"):
     """Retry just the GGUF conversion using the fused model saved to the volume."""
     import os
     import shutil
 
-    fused_backup = f"{OUTPUT_DIR}/fused"
+    fused_backup = f"{OUTPUT_DIR}/fused-{locale}"
     if not os.path.exists(fused_backup):
         raise RuntimeError("No fused model on volume. Run full training first.")
 
@@ -326,8 +327,8 @@ def convert_only_fn():
         cwd=f"{WORK_DIR}/llama.cpp",
     )
 
-    f16_path = f"{WORK_DIR}/ari-functiongemma-f16.gguf"
-    q4_path = f"{OUTPUT_DIR}/ari-functiongemma-q4_k_m.gguf"
+    f16_path = f"{WORK_DIR}/ari-functiongemma-{locale}-f16.gguf"
+    q4_path = f"{OUTPUT_DIR}/ari-functiongemma-{locale}-q4_k_m.gguf"
 
     print("Converting to GGUF F16...")
     subprocess.check_call([
@@ -357,23 +358,25 @@ def main(
     engine_ref: str = "main",
     skills_ref: str = "main",
     tools_ref: str = "main",
+    locale: str = "en",
 ):
     import os as _os
     if convert_only:
-        print("Retrying GGUF conversion only...")
-        convert_only_fn.remote()
+        print(f"Retrying GGUF conversion only ({locale})...")
+        convert_only_fn.remote(locale=locale)
     else:
-        print(f"Launching training on Modal (engine={engine_ref} skills={skills_ref} tools={tools_ref})...")
-        train.remote(engine_ref=engine_ref, skills_ref=skills_ref, tools_ref=tools_ref)
+        print(f"Launching training on Modal (engine={engine_ref} skills={skills_ref} tools={tools_ref} locale={locale})...")
+        train.remote(engine_ref=engine_ref, skills_ref=skills_ref, tools_ref=tools_ref, locale=locale)
 
     print("Downloading model from Modal volume...")
     import subprocess as sp
+    gguf_name = f"ari-functiongemma-{locale}-q4_k_m.gguf"
     _os.makedirs("./output", exist_ok=True)
     sp.check_call([
         "modal", "volume", "get",
         "ari-functiongemma-output",
-        "ari-functiongemma-q4_k_m.gguf",
+        gguf_name,
         "./output/",
         "--force",
     ])
-    print("Done. Model: ./output/ari-functiongemma-q4_k_m.gguf")
+    print(f"Done. Model: ./output/{gguf_name}")
