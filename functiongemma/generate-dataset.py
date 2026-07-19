@@ -957,6 +957,15 @@ def negative_target(positive_count: int, ratio: float) -> int:
 
     NEG_FLOOR now binds only for a corpus too small to train on at all
     (< 50 positives), where an absolute floor beats a proportional one.
+
+    This makes the floor a step function, not a smooth one: at the
+    threshold, one additional positive example jumps the target down
+    5x (`negative_target(49, 1.0) == 250` vs `negative_target(50, 1.0)
+    == 50`). That discontinuity is intentional, not a bug — any
+    absolute floor creates a step at its boundary, and a corpus with
+    49 positives is too small to train on regardless of what the
+    ratio-scaled value would say. Do not smooth or interpolate this;
+    the floor is a degenerate-case guard, not a curve.
     """
     if positive_count < 50:
         return NEG_FLOOR

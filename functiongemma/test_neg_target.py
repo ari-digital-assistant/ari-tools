@@ -19,3 +19,11 @@ def test_floor_only_binds_for_a_tiny_corpus():
 def test_ratio_scales_negatives():
     assert gen.negative_target(130, 2.0) == 260
     assert gen.negative_target(200, 0.5) == 100
+
+
+def test_floor_boundary_steps_at_fifty_positives():
+    # Pin both sides of the < 50 threshold: the floor binds at 49
+    # positives and the ratio binds at 50. This is a deliberate step,
+    # not a bug — see the negative_target docstring.
+    assert gen.negative_target(49, 1.0) == 250
+    assert gen.negative_target(50, 1.0) == 50
