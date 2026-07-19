@@ -1077,10 +1077,15 @@ def main():
     import argparse
     parser = argparse.ArgumentParser(description="Generate the FunctionGemma dataset.")
     parser.add_argument("--locale", default="en", help="Locale to build the dataset for (default: en)")
+    parser.add_argument("--filter-keyword-hits", action="store_true",
+                        help="Drop examples the keyword scorer already wins. OFF by default: "
+                             "measured 2026-07-19 to make the model worse in both locales. "
+                             "Useful for measuring keyword-tier coverage, not for training.")
     parser.add_argument("--neg-ratio", type=float, default=1.0,
                         help="Negatives per positive (default: 1.0)")
     parsed = parser.parse_args()
     locale, neg_ratio = parsed.locale, parsed.neg_ratio
+    filter_keyword_hits = parsed.filter_keyword_hits
 
     engine_dir = find_engine_dir()
     builtin_skills = export_skills(engine_dir, locale)
@@ -1105,26 +1110,54 @@ def main():
     assign_aliases(all_skills)
     tools = build_tools(all_skills)
 
-    # Drop examples the keyword scorer already wins. The router is the
-    # fallback tier: it never sees these utterances in production, so they
-    # are capacity spent on cases the model is never asked about. Filter on
-    # RAW text (keyword_decision normalises internally) and before the
-    # normalisation pass below, so we don't normalise text we're discarding.
-    before_filter = sum(len(s["examples"]) for s in all_skills)
-    drop_keyword_hits(
-        all_skills,
-        lambda texts: keyword_hits(engine_dir, texts, locale, skills_dir),
-    )
-    after_filter = sum(len(s["examples"]) for s in all_skills)
-    pct = 100.0 * (before_filter - after_filter) / before_filter if before_filter else 0.0
-    print(f"  keyword-hit filter: {before_filter} -> {after_filter} examples "
-          f"({before_filter - after_filter} dropped, {pct:.0f}%)", file=sys.stderr)
+    # OPT-IN, AND DEFAULT-OFF ON PURPOSE. Measured 2026-07-19: filtering these
+    # examples out makes the model WORSE, in both locales.
+    #
+    #   corpus            steps   en abstain/pos   it abstain/pos
+    #   unfiltered, 2ep   ~36     100% / 60%       100% / 65%
+    #   filtered,   2ep   ~14      95% / 65%        86% / 65%
+    #   filtered,   5ep   ~35      86% / 40%       100% / 30%
+    #
+    # The hypothesis was that a keyword-won example is wasted training data,
+    # by analogy with the `search` fix. THAT ANALOGY IS FALSE. `search` was a
+    # function never OFFERED at inference (router_eligible=false), so training
+    # on it taught an impossible call. A keyword-won example is a VALID mapping
+    # to an offered function: the router never sees that particular utterance
+    # in production, but the example is still the model's evidence for what the
+    # skill MEANS — its semantics, signature and argument shape. It is
+    # redundant at inference, not useless at training. Dropping ~60% of the
+    # corpus dropped most of the semantic signal for ~16 skills.
+    #
+    # The router being a fallback tier is a fact about INFERENCE. It does not
+    # transfer to TRAINING. (It DOES transfer to EVAL — scoring the router on
+    # cases it never sees measures nothing, which is why route-eval's guardrail
+    # rejects them. That half is correct and stays enforced.)
+    #
+    # Kept behind a flag because it is still the right instrument for MEASURING
+    # how much of the corpus the keyword tier owns. Do not re-enable it for
+    # training without new evidence.
+    if filter_keyword_hits:
+        # Filter on RAW text (keyword_decision normalises internally) and
+        # before the normalisation pass below, so we don't normalise text we
+        # are about to discard.
+        before_filter = sum(len(s["examples"]) for s in all_skills)
+        drop_keyword_hits(
+            all_skills,
+            lambda texts: keyword_hits(engine_dir, texts, locale, skills_dir),
+        )
+        after_filter = sum(len(s["examples"]) for s in all_skills)
+        pct = 100.0 * (before_filter - after_filter) / before_filter if before_filter else 0.0
+        print(f"  keyword-hit filter: {before_filter} -> {after_filter} examples "
+              f"({before_filter - after_filter} dropped, {pct:.0f}%)", file=sys.stderr)
 
-    empty = [s["id"] for s in all_skills if not s["examples"]]
-    if empty:
-        sys.exit(f"ERROR: every example for {empty} is a keyword-hit — that skill "
-                 f"would train with zero positives. Author oblique examples for it "
-                 f"before regenerating.")
+        empty = [s["id"] for s in all_skills if not s["examples"]]
+        if empty:
+            sys.exit(f"ERROR: every example for {empty} is a keyword-hit — that skill "
+                     f"would train with zero positives. Author oblique examples for it "
+                     f"before regenerating.")
+    else:
+        print(f"  keyword-hit filter: OFF (default) — "
+              f"{sum(len(s['examples']) for s in all_skills)} examples kept", file=sys.stderr)
 
     # Normalise the survivors through the engine's OWN normalize_input. The
     # router only ever sees normalize_input()'d text at inference; training on

@@ -176,21 +176,23 @@ def train(engine_ref: str = "main", skills_ref: str = "main", tools_ref: str = "
     train_ds = Dataset.from_list(train_formatted)
     eval_ds = Dataset.from_list(eval_formatted)
 
-    # Epochs are tuned to hold OPTIMIZER STEPS roughly constant, not to a fixed
-    # number of passes. Effective batch is 4 x 8 = 32, so steps/epoch is
-    # len(train) / 32 — and the keyword-hit filter cut the corpus by ~60%, which
-    # silently cut steps with it:
-    #   pre-filter:  567 train / 32 ~= 18 steps/epoch x 2 = ~36 steps
-    #   post-filter: 221 train / 32 ~=  7 steps/epoch x 2 = ~14 steps
-    # That 2.5x cut in gradient updates at an unchanged 1e-5 LR confounded the
-    # first post-filter measurement: both locales LOST abstention (en 100->95%,
-    # it 100->86%) and began emitting confident wrong routes for general
-    # knowledge — textbook undertraining, not a verdict on the filter.
-    # 5 epochs restores ~35 (en) / ~40 (it) steps, comparable to the ~36 the
-    # baselines were trained at. Revisit if the corpus size moves materially.
+    # 2 epochs is the value every good model this project has produced was
+    # trained at (effective batch 4 x 8 = 32; ~630 samples -> ~18 steps/epoch
+    # -> ~36 optimizer steps).
+    #
+    # It was briefly raised to 5 on 2026-07-19, to compensate for optimizer
+    # steps lost when the keyword-hit filter halved the corpus. That made
+    # results much WORSE (en positives 65%->40%, it 65%->30% with a total
+    # abstention collapse), which falsified the undertraining hypothesis and
+    # showed the smaller corpus itself was the problem. The filter is now
+    # default-off, the corpus is back to full size, and so is this.
+    #
+    # If corpus size changes materially, re-derive this from target optimizer
+    # steps rather than leaving it fixed — that coupling is what made the
+    # earlier measurement uninterpretable.
     config_kwargs = dict(
         output_dir=f"{WORK_DIR}/training",
-        num_train_epochs=5,
+        num_train_epochs=2,
         per_device_train_batch_size=4,
         gradient_accumulation_steps=8,
         learning_rate=1e-5,
