@@ -211,3 +211,50 @@ def test_export_skills_passes_locale_after_double_dash(monkeypatch):
     assert "--" in cmd, "cargo requires -- before binary args"
     assert cmd[cmd.index("--") + 1 :] == ["--locale", "it"]
     assert "export-utterances" in cmd
+
+
+def _fake_keyword_hit(monkeypatch, captured, verdicts: str):
+    class _Result:
+        stdout = verdicts
+
+    def fake_run(cmd, **kwargs):
+        captured["cmd"] = cmd
+        return _Result()
+
+    monkeypatch.setattr(gends.subprocess, "run", fake_run)
+
+
+def test_keyword_hits_points_the_oracle_at_the_skills_root(monkeypatch):
+    # Pins the cross-repo contract with keyword-hit's --skills-dir. The
+    # binary wants the `skills/` ROOT (the directory whose children are skill
+    # folders), but find_skills_dir returns the repo checkout one level up.
+    # Passing the checkout would make the loader find zero skills and the
+    # filter would silently keep every community example the scorer wins.
+    captured = {}
+    _fake_keyword_hit(monkeypatch, captured, "true\nfalse\n")
+
+    got = gends.keyword_hits(
+        Path("/tmp/engine"), ["a", "b"], "it", Path("/tmp/ari-skills")
+    )
+
+    assert got == [True, False]
+    cmd = captured["cmd"]
+    assert cmd[cmd.index("--") + 1 :] == [
+        "--locale", "it", "--skills-dir", "/tmp/ari-skills/skills",
+    ]
+    assert "--no-default-features" in cmd, (
+        "the training container has no clang; the llm feature must stay off"
+    )
+
+
+def test_keyword_hits_omits_the_flag_when_there_is_no_skills_checkout(monkeypatch):
+    # No checkout means builtin-only verdicts — degraded but valid. The flag
+    # must be absent entirely rather than passed as an empty string, which
+    # the binary would treat as a real path and fail on.
+    captured = {}
+    _fake_keyword_hit(monkeypatch, captured, "false\n")
+
+    assert gends.keyword_hits(Path("/tmp/engine"), ["a"], "en", None) == [False]
+    cmd = captured["cmd"]
+    assert "--skills-dir" not in cmd
+    assert cmd[cmd.index("--") + 1 :] == ["--locale", "en"]

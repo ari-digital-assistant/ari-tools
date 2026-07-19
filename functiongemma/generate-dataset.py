@@ -121,7 +121,8 @@ def normalize_texts(engine_dir: Path, texts: list, locale: str) -> list:
     return out
 
 
-def keyword_hits(engine_dir: Path, texts: list, locale: str) -> list:
+def keyword_hits(engine_dir: Path, texts: list, locale: str,
+                 skills_dir: Path | None = None) -> list:
     """Ask the engine which of these utterances the KEYWORD scorer already wins.
 
     The router is the fallback tier — it only runs when the keyword scorer
@@ -133,6 +134,14 @@ def keyword_hits(engine_dir: Path, texts: list, locale: str) -> list:
     engine rather than reimplement the scorer, because a Python replica would
     drift from the ranking logic that actually decides this in production.
 
+    `skills_dir` is the ari-skills checkout whose `skills/` root holds the
+    community manifests. Passing it is what makes the oracle honest: without
+    it the engine registers only the six built-ins, so a community skill's own
+    `matching.patterns` are never in the running and its examples can never be
+    detected as keyword-hits — even the ones its own patterns win outright in
+    production. Those examples then sit in the corpus as pure waste. Pass None
+    only if the checkout is genuinely unavailable.
+
     Note: pass RAW text. keyword_decision() normalises internally, exactly as
     production does with raw user input.
 
@@ -142,7 +151,10 @@ def keyword_hits(engine_dir: Path, texts: list, locale: str) -> list:
     which pulls llama-cpp-sys and needs libclang at build time. The training
     container ships no clang, so the default build would fail here before a
     single row of the dataset was written. The keyword scorer doesn't touch
-    the LLM, so dropping the feature costs this oracle nothing.
+    the LLM, so dropping the feature costs this oracle nothing. Registering
+    the community skills stays inside that light build: the loader (and the
+    wasmtime it uses to compile skill modules) is already an unconditional
+    dependency of ari-ffi, so --skills-dir adds no new build requirement.
     """
     if not texts:
         return []
@@ -150,9 +162,12 @@ def keyword_hits(engine_dir: Path, texts: list, locale: str) -> list:
     if bad:
         sys.exit(f"ERROR: training text contains a newline, which breaks the "
                  f"line-per-text protocol: {bad[:3]}")
+    cmd = ["cargo", "run", "--quiet", "-p", "ari-ffi", "--no-default-features",
+           "--bin", "keyword-hit", "--", "--locale", locale]
+    if skills_dir is not None:
+        cmd += ["--skills-dir", str(skills_dir / "skills")]
     result = subprocess.run(
-        ["cargo", "run", "--quiet", "-p", "ari-ffi", "--no-default-features",
-         "--bin", "keyword-hit", "--", "--locale", locale],
+        cmd,
         cwd=engine_dir,
         input="\n".join(texts),
         capture_output=True,
@@ -1041,7 +1056,10 @@ def main():
     # normalisation pass below, so we don't normalise text we're discarding.
     before_filter = sum(len(s["examples"]) for s in all_skills)
     hit_flags = keyword_hits(
-        engine_dir, [e["text"] for s in all_skills for e in s["examples"]], locale
+        engine_dir,
+        [e["text"] for s in all_skills for e in s["examples"]],
+        locale,
+        skills_dir,
     )
     flags = iter(hit_flags)
     for skill in all_skills:
