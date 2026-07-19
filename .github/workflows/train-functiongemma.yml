@@ -19,13 +19,39 @@ on:
         description: 'Experimental run — train + routing-eval ONLY. Never releases, never stores training SHAs, never publishes to devices.'
         required: false
         default: 'false'
+      locale:
+        description: 'Restrict to one locale (en|it). Empty = both (the nightly default).'
+        required: false
+        default: ''
 
 permissions:
   contents: write   # needed for `gh release create` + `gh release upload`
 
 jobs:
-  check-and-train:
+  configure:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set.outputs.matrix }}
+    steps:
+      - name: Compute locale matrix
+        id: set
+        run: |
+          LOCALE="${{ github.event.inputs.locale }}"
+          EN='{"locale":"en","eval_file":"functiongemma/routing-eval.jsonl"}'
+          IT='{"locale":"it","eval_file":"functiongemma/routing-eval.it.jsonl"}'
+          case "$LOCALE" in
+            "")  echo "matrix={\"include\":[$EN,$IT]}" >> "$GITHUB_OUTPUT" ;;
+            en)  echo "matrix={\"include\":[$EN]}" >> "$GITHUB_OUTPUT" ;;
+            it)  echo "matrix={\"include\":[$IT]}" >> "$GITHUB_OUTPUT" ;;
+            *)   echo "unknown locale: $LOCALE" >&2; exit 1 ;;
+          esac
+
+  train:
+    needs: configure
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJson(needs.configure.outputs.matrix) }}
     steps:
       - name: Silence git default-branch hint
         run: git config --global init.defaultBranch main
@@ -36,8 +62,6 @@ jobs:
         id: check
         run: |
           set -e
-
-          # Get the last commit that touched built-in skills in ari-engine
           ENGINE_SHA=$(git ls-remote https://github.com/ari-digital-assistant/ari-engine.git HEAD | cut -f1)
           git clone --depth 50 --filter=blob:none --sparse \
             https://github.com/ari-digital-assistant/ari-engine.git /tmp/engine
@@ -46,7 +70,6 @@ jobs:
           ENGINE_SKILLS_SHA=$(git log -1 --format=%H -- crates/ari-skills/src/)
           cd -
 
-          # Get the last commit that touched community skills in ari-skills
           git clone --depth 50 --filter=blob:none --sparse \
             https://github.com/ari-digital-assistant/ari-skills.git /tmp/skills
           cd /tmp/skills
@@ -57,19 +80,18 @@ jobs:
           echo "engine_skills_sha=$ENGINE_SKILLS_SHA" >> "$GITHUB_OUTPUT"
           echo "skills_sha=$SKILLS_SHA" >> "$GITHUB_OUTPUT"
 
-          # Compare against stored SHAs from last successful run
+          # Per-locale stored SHAs — each locale tracks its own last training.
           STORED_ENGINE=""
           STORED_SKILLS=""
           if pip install -q modal && \
-             modal volume get ari-functiongemma-output last-trained.json /tmp/last-trained.json 2>/dev/null; then
+             modal volume get ari-functiongemma-output "last-trained-${{ matrix.locale }}.json" /tmp/last-trained.json 2>/dev/null; then
             STORED_ENGINE=$(python3 -c "import json; print(json.load(open('/tmp/last-trained.json')).get('engine_skills_sha',''))")
             STORED_SKILLS=$(python3 -c "import json; print(json.load(open('/tmp/last-trained.json')).get('skills_sha',''))")
           fi
 
-          echo "Stored engine SHA: $STORED_ENGINE"
-          echo "Current engine SHA: $ENGINE_SKILLS_SHA"
-          echo "Stored skills SHA: $STORED_SKILLS"
-          echo "Current skills SHA: $SKILLS_SHA"
+          echo "Locale: ${{ matrix.locale }}"
+          echo "Stored engine SHA: $STORED_ENGINE  Current: $ENGINE_SKILLS_SHA"
+          echo "Stored skills SHA: $STORED_SKILLS  Current: $SKILLS_SHA"
 
           FORCE="${{ github.event.inputs.force || 'false' }}"
           if [[ "$FORCE" == "true" ]]; then
@@ -101,14 +123,14 @@ jobs:
         env:
           MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
           MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
-        run: modal run functiongemma/modal_train.py --tools-ref "${{ github.event.inputs.tools_ref || 'main' }}"
+        run: modal run functiongemma/modal_train.py --locale ${{ matrix.locale }} --tools-ref "${{ github.event.inputs.tools_ref || 'main' }}"
 
       - name: Upload GGUF as artifact
         if: steps.check.outputs.should_train == 'true'
         uses: actions/upload-artifact@v7
         with:
-          name: ari-functiongemma-q4_k_m
-          path: output/ari-functiongemma-q4_k_m.gguf
+          name: ari-functiongemma-${{ matrix.locale }}-q4_k_m
+          path: output/ari-functiongemma-${{ matrix.locale }}-q4_k_m.gguf
 
       - name: Install publish-manifest deps
         if: steps.check.outputs.should_train == 'true'
@@ -120,34 +142,27 @@ jobs:
         run: |
           set -e
           VERSION="$(date -u +%Y.%m.%d)-r${{ github.run_number }}"
-          TAG="functiongemma-$VERSION"
-          GGUF_URL="https://github.com/${{ github.repository }}/releases/download/$TAG/ari-functiongemma-q4_k_m.gguf"
+          TAG="functiongemma-${{ matrix.locale }}-$VERSION"
+          GGUF_URL="https://github.com/${{ github.repository }}/releases/download/$TAG/ari-functiongemma-${{ matrix.locale }}-q4_k_m.gguf"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
           echo "gguf_url=$GGUF_URL" >> "$GITHUB_OUTPUT"
 
       - name: Create versioned release with GGUF
-        # Experimental runs stop at the routing-eval measurement: no release,
-        # no stored SHAs (which would make the next nightly skip training),
-        # and above all no manifest publish — that promotes to devices.
+        # Archival release for every non-experimental run of either locale — this
+        # is NOT device-facing (the floating manifest is). Italian models are
+        # archived here even before promotion, so they can be inspected/downloaded.
         if: steps.check.outputs.should_train == 'true' && github.event.inputs.experimental != 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh release create "${{ steps.manifest.outputs.tag }}" \
-            output/ari-functiongemma-q4_k_m.gguf \
+            output/ari-functiongemma-${{ matrix.locale }}-q4_k_m.gguf \
             --repo ${{ github.repository }} \
-            --title "FunctionGemma ${{ steps.manifest.outputs.version }}" \
-            --notes "Nightly retrain. Engine skills SHA: ${{ steps.check.outputs.engine_skills_sha }} · Community skills SHA: ${{ steps.check.outputs.skills_sha }} · Workflow run: ${{ github.run_id }}"
+            --title "FunctionGemma ${{ matrix.locale }} ${{ steps.manifest.outputs.version }}" \
+            --notes "Retrain (${{ matrix.locale }}). Engine skills SHA: ${{ steps.check.outputs.engine_skills_sha }} · Community skills SHA: ${{ steps.check.outputs.skills_sha }} · Workflow run: ${{ github.run_id }}"
 
       # ── Promotion gate ──────────────────────────────────────────────────
-      # Route a held-out eval set through the freshly-trained model using the
-      # REAL routing path (route-eval bin in ari-engine: same Engine, builtin
-      # catalogue, prompt builder, parser and confidence gate as production).
-      # If abstention or positive routing regressed, this step fails and the
-      # job stops BEFORE the floating-manifest publish below — so the model is
-      # archived as a versioned release but NEVER promoted to devices. This is
-      # what would have caught the r75 abstention regression.
       - name: Check out ari-engine (eval harness)
         if: steps.check.outputs.should_train == 'true'
         uses: actions/checkout@v5
@@ -169,8 +184,6 @@ jobs:
         if: steps.check.outputs.should_train == 'true'
         run: |
           sudo apt-get update && sudo apt-get install -y cmake clang libclang-dev
-          # bindgen (via llama-cpp-sys) needs to locate libclang; clang-sys
-          # doesn't always find the apt-installed versioned .so on its own.
           LIBCLANG_DIR="$(dirname "$(find /usr/lib /usr/lib64 -name 'libclang*.so*' 2>/dev/null | head -1)")"
           echo "Found libclang in: $LIBCLANG_DIR"
           echo "LIBCLANG_PATH=$LIBCLANG_DIR" >> "$GITHUB_ENV"
@@ -179,12 +192,11 @@ jobs:
         if: steps.check.outputs.should_train == 'true'
         run: |
           cd _ari-engine
-          cargo run -p ari-ffi --bin route-eval -- \
-            "$GITHUB_WORKSPACE/output/ari-functiongemma-q4_k_m.gguf" \
-            "$GITHUB_WORKSPACE/functiongemma/routing-eval.jsonl"
+          cargo run --release -p ari-ffi --bin route-eval -- \
+            --locale ${{ matrix.locale }} \
+            "$GITHUB_WORKSPACE/output/ari-functiongemma-${{ matrix.locale }}-q4_k_m.gguf" \
+            "$GITHUB_WORKSPACE/${{ matrix.eval_file }}"
 
-      # Only recorded AFTER the gate passes — a failed gate must not mark this
-      # skill-state as "trained", or the next nightly would skip the retry.
       - name: Store training SHAs
         if: steps.check.outputs.should_train == 'true' && github.event.inputs.experimental != 'true'
         env:
@@ -195,22 +207,28 @@ jobs:
           {
             "engine_skills_sha": "${{ steps.check.outputs.engine_skills_sha }}",
             "skills_sha": "${{ steps.check.outputs.skills_sha }}",
+            "locale": "${{ matrix.locale }}",
             "trained_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
             "workflow_run": "${{ github.run_id }}"
           }
           EOF
-          modal volume put --force ari-functiongemma-output /tmp/last-trained.json last-trained.json
+          modal volume put --force ari-functiongemma-output /tmp/last-trained.json "last-trained-${{ matrix.locale }}.json"
 
       - name: Publish floating manifest
-        if: steps.check.outputs.should_train == 'true' && github.event.inputs.experimental != 'true'
+        # DEVICE-FACING. English always; Italian only once vars.PROMOTE_IT is set —
+        # this is the one step that puts a model where the app auto-updates from it.
+        if: >-
+          steps.check.outputs.should_train == 'true'
+          && github.event.inputs.experimental != 'true'
+          && (matrix.locale == 'en' || vars.PROMOTE_IT == 'true')
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           python3 scripts/publish_manifest.py functiongemma \
-            --gguf output/ari-functiongemma-q4_k_m.gguf \
+            --gguf output/ari-functiongemma-${{ matrix.locale }}-q4_k_m.gguf \
             --version "${{ steps.manifest.outputs.version }}" \
             --gguf-url "${{ steps.manifest.outputs.gguf_url }}" \
-            --release-tag functiongemma-latest
+            --release-tag "functiongemma-${{ matrix.locale }}-latest"
 
       - name: Send email notification
         if: steps.check.outputs.should_train == 'true' && github.event.inputs.experimental != 'true'
@@ -220,14 +238,12 @@ jobs:
           server_port: ${{ secrets.SMTP_PORT }}
           username: ${{ secrets.SMTP_USERNAME }}
           password: ${{ secrets.SMTP_PASSWORD }}
-          subject: "FunctionGemma training complete"
+          subject: "FunctionGemma ${{ matrix.locale }} training complete"
           to: ${{ secrets.NOTIFICATION_EMAIL }}
           from: ${{ secrets.SMTP_USERNAME }}
           body: |
-            FunctionGemma training run completed successfully.
+            FunctionGemma (${{ matrix.locale }}) training run completed.
 
             Engine skills SHA: ${{ steps.check.outputs.engine_skills_sha }}
             Community skills SHA: ${{ steps.check.outputs.skills_sha }}
             Workflow run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-
-            The GGUF is available as a workflow artifact.
