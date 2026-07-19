@@ -121,6 +121,45 @@ def normalize_texts(engine_dir: Path, texts: list, locale: str) -> list:
     return out
 
 
+def keyword_hits(engine_dir: Path, texts: list, locale: str) -> list:
+    """Ask the engine which of these utterances the KEYWORD scorer already wins.
+
+    The router is the fallback tier — it only runs when the keyword scorer
+    finds nothing. An example the scorer claims is one the router never sees
+    in production, so training on it spends 270M-model capacity on a case it
+    is never asked about.
+
+    Same single-source-of-truth rule as normalize_texts: we shell out to the
+    engine rather than reimplement the scorer, because a Python replica would
+    drift from the ranking logic that actually decides this in production.
+
+    Note: pass RAW text. keyword_decision() normalises internally, exactly as
+    production does with raw user input.
+
+    One subprocess for the whole batch — not one per string.
+    """
+    if not texts:
+        return []
+    bad = [t for t in texts if "\n" in t]
+    if bad:
+        sys.exit(f"ERROR: training text contains a newline, which breaks the "
+                 f"line-per-text protocol: {bad[:3]}")
+    result = subprocess.run(
+        ["cargo", "run", "--quiet", "-p", "ari-ffi", "--bin",
+         "keyword-hit", "--", "--locale", locale],
+        cwd=engine_dir,
+        input="\n".join(texts),
+        capture_output=True,
+        text=True,
+        check=True,
+    )
+    out = [line for line in result.stdout.split("\n") if line != ""]
+    if len(out) != len(texts):
+        sys.exit(f"ERROR: keyword-hit returned {len(out)} verdicts for "
+                 f"{len(texts)} inputs — the corpus would be silently mis-paired")
+    return [line == "true" for line in out]
+
+
 # ── Locate ari-skills and parse community SKILL.md files ─────────────
 
 def find_skills_dir() -> Path | None:
@@ -956,9 +995,40 @@ def main():
     assign_aliases(all_skills)
     tools = build_tools(all_skills)
 
-    # Normalise every training utterance through the engine's own normaliser.
-    # The router only ever sees normalize_input()'d text at inference; training
-    # on raw text trains it on a distribution it is never served. Args and
+    # Drop examples the keyword scorer already wins. The router is the
+    # fallback tier: it never sees these utterances in production, so they
+    # are capacity spent on cases the model is never asked about. Filter on
+    # RAW text (keyword_decision normalises internally) and before the
+    # normalisation pass below, so we don't normalise text we're discarding.
+    before_filter = sum(len(s["examples"]) for s in all_skills)
+    hit_flags = keyword_hits(
+        engine_dir, [e["text"] for s in all_skills for e in s["examples"]], locale
+    )
+    flags = iter(hit_flags)
+    for skill in all_skills:
+        kept, dropped = [], 0
+        for ex in skill["examples"]:
+            if next(flags):
+                dropped += 1
+            else:
+                kept.append(ex)
+        skill["examples"] = kept
+        if dropped:
+            print(f"    {skill['id']}: dropped {dropped}, kept {len(kept)}", file=sys.stderr)
+    after_filter = sum(len(s["examples"]) for s in all_skills)
+    pct = 100.0 * (before_filter - after_filter) / before_filter if before_filter else 0.0
+    print(f"  keyword-hit filter: {before_filter} -> {after_filter} examples "
+          f"({before_filter - after_filter} dropped, {pct:.0f}%)", file=sys.stderr)
+
+    empty = [s["id"] for s in all_skills if not s["examples"]]
+    if empty:
+        sys.exit(f"ERROR: every example for {empty} is a keyword-hit — that skill "
+                 f"would train with zero positives. Author oblique examples for it "
+                 f"before regenerating.")
+
+    # Normalise the survivors through the engine's OWN normalize_input. The
+    # router only ever sees normalize_input()'d text at inference; training on
+    # raw text trains it on a distribution it is never served. Args and
     # descriptions are schema, not utterances — they are NOT normalised.
     flat = [ex for s in all_skills for ex in s["examples"]]
     for ex, norm in zip(flat, normalize_texts(engine_dir, [e["text"] for e in flat], locale)):
