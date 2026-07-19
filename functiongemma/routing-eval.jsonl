@@ -1,8 +1,20 @@
-// Held-out routing eval for the FunctionGemma promotion gate (route-eval bin).
-// NONE = the router must abstain (general knowledge → assistant). These
-// utterances are deliberately NOT in generate-dataset.py's training set —
-// fresh entities/phrasings — so a pass means the model GENERALISED, not memorised.
-// Positives are canonical skill requests a competent router must still route.
+// Held-out routing eval (English) for the FunctionGemma promotion gate.
+//
+// EVERY case here is a keyword-MISS. The router is the FALLBACK tier: it only
+// runs when the keyword scorer finds nothing, so a case the keyword scorer
+// already wins never reaches the router in production and scoring the router
+// on it measures nothing. `route-eval` enforces this (exits 3 on a polluted
+// eval) — verified against `Engine::keyword_decision` under locale "en".
+//
+// NONE = the router must abstain (general knowledge → assistant). Positives
+// are canonical English skill requests the keyword tier misses and a competent
+// router must still route — oblique phrasings, not tricks.
+//
+// Every utterance is also HELD OUT: absent from generate-dataset.py's English
+// training corpus (builtin *_EXAMPLES_EN, community SKILL.en.md examples, and
+// the English negative pool), compared on the normalised form. A pass means
+// the model GENERALISED, not memorised.
+//
 // Note: "search" is keyword-only (router_eligible=false), so it is never a
 // positive target here.
 {"utterance": "what is the capital of Denmark", "expect": "NONE"}
@@ -30,14 +42,20 @@
 {"utterance": "do you happen to know the time", "expect": "current_time"}
 {"utterance": "mind telling me the time", "expect": "current_time"}
 {"utterance": "is it past noon yet", "expect": "current_time"}
-{"utterance": "what is the date today", "expect": "current_date"}
-{"utterance": "what day of the week is it", "expect": "current_date"}
-{"utterance": "what is 8 times 7", "expect": "calculator"}
-{"utterance": "calculate 144 divided by 12", "expect": "calculator"}
-{"utterance": "what is 250 plus 379", "expect": "calculator"}
-{"utterance": "open the camera", "expect": "open"}
+{"utterance": "i have completely lost track of time", "expect": "current_time"}
+{"utterance": "is it friday already", "expect": "current_date"}
+{"utterance": "how far into the month are we", "expect": "current_date"}
+{"utterance": "i am not sure of the date", "expect": "current_date"}
+{"utterance": "give me the calendar date", "expect": "current_date"}
+{"utterance": "take 19 away from 47", "expect": "calculator"}
+{"utterance": "what is the sum of 128 and 256", "expect": "calculator"}
+{"utterance": "what is the product of 12 and 11", "expect": "calculator"}
+{"utterance": "add 45 and 67 for me", "expect": "calculator"}
 {"utterance": "bring up spotify", "expect": "open"}
-{"utterance": "launch the settings app", "expect": "open"}
-{"utterance": "hello there", "expect": "greeting"}
+{"utterance": "put signal on the screen", "expect": "open"}
+{"utterance": "let me into my banking app", "expect": "open"}
+{"utterance": "i would like to browse instagram", "expect": "open"}
 {"utterance": "nice to see you", "expect": "greeting"}
 {"utterance": "how have you been", "expect": "greeting"}
+{"utterance": "look who it is", "expect": "greeting"}
+{"utterance": "long time no see", "expect": "greeting"}
