@@ -1,0 +1,3404 @@
+{
+  "current_time": {
+    "target": 180,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "che ora fa",
+        "args": {}
+      },
+      {
+        "text": "che orario è",
+        "args": {}
+      },
+      {
+        "text": "che orario abbiamo",
+        "args": {}
+      },
+      {
+        "text": "che ore abbiamo",
+        "args": {}
+      },
+      {
+        "text": "che ora del giorno è",
+        "args": {}
+      },
+      {
+        "text": "mi sai dire l'ora",
+        "args": {}
+      },
+      {
+        "text": "me lo dici che ore sono",
+        "args": {}
+      },
+      {
+        "text": "dimmi un po' che ore sono",
+        "args": {}
+      },
+      {
+        "text": "senti che ore sono",
+        "args": {}
+      },
+      {
+        "text": "allora che ore sono",
+        "args": {}
+      },
+      {
+        "text": "ma che ore sono",
+        "args": {}
+      },
+      {
+        "text": "quindi che ore sono",
+        "args": {}
+      },
+      {
+        "text": "oh che ore sono",
+        "args": {}
+      },
+      {
+        "text": "ehi che ore sono",
+        "args": {}
+      },
+      {
+        "text": "scusami che ore sono",
+        "args": {}
+      },
+      {
+        "text": "perdonami che ore sono",
+        "args": {}
+      },
+      {
+        "text": "di grazia che ora è",
+        "args": {}
+      },
+      {
+        "text": "per cortesia l'ora",
+        "args": {}
+      },
+      {
+        "text": "gentilmente mi dici l'ora",
+        "args": {}
+      },
+      {
+        "text": "che ore saranno",
+        "args": {}
+      },
+      {
+        "text": "chissà che ore saranno",
+        "args": {}
+      },
+      {
+        "text": "mi domando che ore siano",
+        "args": {}
+      },
+      {
+        "text": "vorrei sapere che ore sono",
+        "args": {}
+      },
+      {
+        "text": "avrei bisogno di sapere l'ora esatta",
+        "args": {}
+      },
+      {
+        "text": "ho bisogno dell'ora esatta",
+        "args": {}
+      },
+      {
+        "text": "mi indichi l'ora",
+        "args": {}
+      },
+      {
+        "text": "indicami l'ora",
+        "args": {}
+      },
+      {
+        "text": "controlla che ore sono",
+        "args": {}
+      },
+      {
+        "text": "guarda un po' che ore sono",
+        "args": {}
+      },
+      {
+        "text": "dai dimmi l'ora",
+        "args": {}
+      },
+      {
+        "text": "forza dimmi l'ora",
+        "args": {}
+      },
+      {
+        "text": "su dimmi che ore sono",
+        "args": {}
+      },
+      {
+        "text": "l'ora adesso per favore",
+        "args": {}
+      },
+      {
+        "text": "l'ora attuale grazie",
+        "args": {}
+      },
+      {
+        "text": "che ore sono di preciso",
+        "args": {}
+      },
+      {
+        "text": "che ore sono esattamente",
+        "args": {}
+      },
+      {
+        "text": "l'ora precisa per favore",
+        "args": {}
+      },
+      {
+        "text": "mi diresti l'ora per cortesia",
+        "args": {}
+      },
+      {
+        "text": "mi diresti che ore sono",
+        "args": {}
+      },
+      {
+        "text": "sai per caso l'ora",
+        "args": {}
+      },
+      {
+        "text": "sai mica che ore sono",
+        "args": {}
+      },
+      {
+        "text": "sapresti per caso l'ora",
+        "args": {}
+      },
+      {
+        "text": "che ora è di preciso",
+        "args": {}
+      },
+      {
+        "text": "ma tu ce l'hai l'ora",
+        "args": {}
+      },
+      {
+        "text": "riesci a dirmi che ore sono",
+        "args": {}
+      },
+      {
+        "text": "puoi guardare che ore sono",
+        "args": {}
+      },
+      {
+        "text": "puoi controllare l'ora",
+        "args": {}
+      },
+      {
+        "text": "mi controlli l'ora",
+        "args": {}
+      },
+      {
+        "text": "mi guardi che ore sono",
+        "args": {}
+      },
+      {
+        "text": "mi faresti sapere l'ora",
+        "args": {}
+      },
+      {
+        "text": "mi fai sapere che ore sono",
+        "args": {}
+      },
+      {
+        "text": "che ore sono per favore",
+        "args": {}
+      },
+      {
+        "text": "ti spiace dirmi l'ora",
+        "args": {}
+      },
+      {
+        "text": "ti dispiacerebbe dirmi che ore sono",
+        "args": {}
+      },
+      {
+        "text": "avresti l'ora da darmi",
+        "args": {}
+      },
+      {
+        "text": "spara l'ora",
+        "args": {}
+      },
+      {
+        "text": "vai con l'ora",
+        "args": {}
+      },
+      {
+        "text": "dimmi l'orario",
+        "args": {}
+      },
+      {
+        "text": "che orario è adesso",
+        "args": {}
+      },
+      {
+        "text": "che orario segna l'orologio",
+        "args": {}
+      },
+      {
+        "text": "l'orario esatto per favore",
+        "args": {}
+      },
+      {
+        "text": "quanto è l'ora",
+        "args": {}
+      },
+      {
+        "text": "a che ora siamo",
+        "args": {}
+      },
+      {
+        "text": "in che ora siamo",
+        "args": {}
+      },
+      {
+        "text": "che ora ci troviamo",
+        "args": {}
+      },
+      {
+        "text": "dimmi l'ora esatta",
+        "args": {}
+      },
+      {
+        "text": "mi serve sapere l'ora",
+        "args": {}
+      },
+      {
+        "text": "mi servirebbe sapere che ore sono",
+        "args": {}
+      },
+      {
+        "text": "che ora è ora",
+        "args": {}
+      },
+      {
+        "text": "sai dirmi l'ora attuale",
+        "args": {}
+      },
+      {
+        "text": "l'ora corrente per favore",
+        "args": {}
+      },
+      {
+        "text": "qual è l'ora esatta",
+        "args": {}
+      },
+      {
+        "text": "qual è l'ora corrente",
+        "args": {}
+      },
+      {
+        "text": "qual è l'ora precisa",
+        "args": {}
+      },
+      {
+        "text": "mi dai l'ora",
+        "args": {}
+      },
+      {
+        "text": "dammi l'ora",
+        "args": {}
+      },
+      {
+        "text": "passami l'ora",
+        "args": {}
+      },
+      {
+        "text": "dimmi che ore sono adesso",
+        "args": {}
+      },
+      {
+        "text": "è già mezzogiorno",
+        "args": {}
+      },
+      {
+        "text": "siamo già a mezzogiorno",
+        "args": {}
+      },
+      {
+        "text": "è già mezzanotte",
+        "args": {}
+      },
+      {
+        "text": "è ora di pranzo",
+        "args": {}
+      },
+      {
+        "text": "è già ora di pranzo",
+        "args": {}
+      },
+      {
+        "text": "è ora di cena",
+        "args": {}
+      },
+      {
+        "text": "è già ora di cena",
+        "args": {}
+      },
+      {
+        "text": "è ancora presto per pranzo",
+        "args": {}
+      },
+      {
+        "text": "è già pomeriggio",
+        "args": {}
+      },
+      {
+        "text": "siamo già di pomeriggio",
+        "args": {}
+      },
+      {
+        "text": "è sera ormai",
+        "args": {}
+      },
+      {
+        "text": "si è fatta sera",
+        "args": {}
+      },
+      {
+        "text": "è già sera",
+        "args": {}
+      },
+      {
+        "text": "è già notte fonda",
+        "args": {}
+      },
+      {
+        "text": "è già ora di andare",
+        "args": {}
+      },
+      {
+        "text": "è già ora di uscire",
+        "args": {}
+      },
+      {
+        "text": "è già così tardi",
+        "args": {}
+      },
+      {
+        "text": "si è fatto tardi davvero",
+        "args": {}
+      },
+      {
+        "text": "quanto è tardi ormai",
+        "args": {}
+      },
+      {
+        "text": "è molto tardi",
+        "args": {}
+      },
+      {
+        "text": "è tardissimo vero",
+        "args": {}
+      },
+      {
+        "text": "è ancora presto vero",
+        "args": {}
+      },
+      {
+        "text": "è troppo presto per uscire",
+        "args": {}
+      },
+      {
+        "text": "è ancora mattina",
+        "args": {}
+      },
+      {
+        "text": "è già mattina inoltrata",
+        "args": {}
+      },
+      {
+        "text": "siamo già a fine giornata",
+        "args": {}
+      },
+      {
+        "text": "è già ora di dormire",
+        "args": {}
+      },
+      {
+        "text": "è ora di andare a letto",
+        "args": {}
+      },
+      {
+        "text": "è già ora di svegliarsi",
+        "args": {}
+      },
+      {
+        "text": "è ora di alzarsi",
+        "args": {}
+      },
+      {
+        "text": "quanto manca a mezzogiorno",
+        "args": {}
+      },
+      {
+        "text": "è già l'una passata",
+        "args": {}
+      },
+      {
+        "text": "è già passata l'ora di pranzo",
+        "args": {}
+      },
+      {
+        "text": "è mattina o già pomeriggio",
+        "args": {}
+      },
+      {
+        "text": "è pomeriggio o già sera",
+        "args": {}
+      },
+      {
+        "text": "siamo di mattina o di pomeriggio",
+        "args": {}
+      },
+      {
+        "text": "è ancora giorno o è già sera",
+        "args": {}
+      },
+      {
+        "text": "è passata mezzanotte",
+        "args": {}
+      },
+      {
+        "text": "è già ora di merenda",
+        "args": {}
+      },
+      {
+        "text": "è ora del caffè",
+        "args": {}
+      },
+      {
+        "text": "è già l'ora di chiusura",
+        "args": {}
+      },
+      {
+        "text": "è già ora di rientrare",
+        "args": {}
+      },
+      {
+        "text": "è già ora di cena o è presto",
+        "args": {}
+      },
+      {
+        "text": "si è fermato l'orologio che ore sono",
+        "args": {}
+      },
+      {
+        "text": "l'orologio è fermo mi dici l'ora",
+        "args": {}
+      },
+      {
+        "text": "non funziona l'orologio che ore sono",
+        "args": {}
+      },
+      {
+        "text": "ho l'orologio scarico che ore sono",
+        "args": {}
+      },
+      {
+        "text": "si è scaricato l'orologio dimmi l'ora",
+        "args": {}
+      },
+      {
+        "text": "non mi fido dell'orologio che ore sono davvero",
+        "args": {}
+      },
+      {
+        "text": "il mio orologio è indietro che ore sono",
+        "args": {}
+      },
+      {
+        "text": "l'orologio del muro è fermo che ore sono",
+        "args": {}
+      },
+      {
+        "text": "ho scordato l'orologio a casa che ore sono",
+        "args": {}
+      },
+      {
+        "text": "senza orologio non so l'ora me la dici",
+        "args": {}
+      },
+      {
+        "text": "l'orologio si è bloccato che ore sono",
+        "args": {}
+      },
+      {
+        "text": "credo che l'orologio sia fermo che ore sono davvero",
+        "args": {}
+      },
+      {
+        "text": "l'orologio segna l'ora sbagliata che ore sono giuste",
+        "args": {}
+      },
+      {
+        "text": "ho il telefono scarico e non so l'ora che ore sono",
+        "args": {}
+      },
+      {
+        "text": "non ho l'orologio addosso che ore sono",
+        "args": {}
+      },
+      {
+        "text": "mi si è fermato l'orologio dimmi tu l'ora",
+        "args": {}
+      },
+      {
+        "text": "ho perso la cognizione del tempo che ore sono",
+        "args": {}
+      },
+      {
+        "text": "ho perso il senso del tempo che ore sono",
+        "args": {}
+      },
+      {
+        "text": "non ho idea di che ore siano",
+        "args": {}
+      },
+      {
+        "text": "non so più che ore sono",
+        "args": {}
+      },
+      {
+        "text": "boh non so che ore sono",
+        "args": {}
+      },
+      {
+        "text": "ho perso di vista l'ora che ore sono",
+        "args": {}
+      },
+      {
+        "text": "non riesco a capire che ore sono",
+        "args": {}
+      },
+      {
+        "text": "sono qui da ore che ora è ormai",
+        "args": {}
+      },
+      {
+        "text": "il tempo è volato che ore sono",
+        "args": {}
+      },
+      {
+        "text": "non mi sono accorto dell'ora che ore sono",
+        "args": {}
+      },
+      {
+        "text": "quanto tempo è passato che ore sono ora",
+        "args": {}
+      },
+      {
+        "text": "col tempo che vola non so più l'ora",
+        "args": {}
+      },
+      {
+        "text": "ho lavorato senza guardare l'ora che ore sono",
+        "args": {}
+      },
+      {
+        "text": "mi sono perso nel tempo che ora è",
+        "args": {}
+      },
+      {
+        "text": "non capisco più che ore sono",
+        "args": {}
+      },
+      {
+        "text": "il tempo mi è sfuggito che ore sono adesso",
+        "args": {}
+      },
+      {
+        "text": "che ora è che ho perso il conto del tempo",
+        "args": {}
+      },
+      {
+        "text": "sono distratto da ore che ore sono",
+        "args": {}
+      },
+      {
+        "text": "ho passato il tempo senza accorgermene che ore sono",
+        "args": {}
+      },
+      {
+        "text": "faccio in tempo se guardo l'ora dimmi che ore sono",
+        "args": {}
+      },
+      {
+        "text": "devo uscire che ore sono",
+        "args": {}
+      },
+      {
+        "text": "ho un appuntamento che ore sono",
+        "args": {}
+      },
+      {
+        "text": "sto per fare tardi che ore sono",
+        "args": {}
+      },
+      {
+        "text": "quanto manca alle sei",
+        "args": {}
+      },
+      {
+        "text": "quanto manca alle otto",
+        "args": {}
+      },
+      {
+        "text": "manca molto a mezzogiorno",
+        "args": {}
+      },
+      {
+        "text": "arrivo tardi che ore sono",
+        "args": {}
+      },
+      {
+        "text": "il treno è tra poco che ore sono",
+        "args": {}
+      },
+      {
+        "text": "quanto ci vuole a sera che ore sono",
+        "args": {}
+      },
+      {
+        "text": "controllami l'ora che devo andare",
+        "args": {}
+      },
+      {
+        "text": "dimmi l'ora che ho un impegno",
+        "args": {}
+      },
+      {
+        "text": "guarda l'ora per me",
+        "args": {}
+      },
+      {
+        "text": "dimmi tu che ore sono",
+        "args": {}
+      },
+      {
+        "text": "verifica l'ora per favore",
+        "args": {}
+      },
+      {
+        "text": "che ore sono che sto perdendo la nozione",
+        "args": {}
+      },
+      {
+        "text": "mi ricordi che ore sono",
+        "args": {}
+      },
+      {
+        "text": "che ora abbiamo adesso",
+        "args": {}
+      },
+      {
+        "text": "quant'è l'ora adesso",
+        "args": {}
+      },
+      {
+        "text": "orario per cortesia",
+        "args": {}
+      },
+      {
+        "text": "l'ora grazie",
+        "args": {}
+      },
+      {
+        "text": "solo l'ora grazie",
+        "args": {}
+      },
+      {
+        "text": "mi basta sapere l'ora",
+        "args": {}
+      },
+      {
+        "text": "voglio solo sapere l'ora",
+        "args": {}
+      },
+      {
+        "text": "dimmi solo che ore sono",
+        "args": {}
+      },
+      {
+        "text": "che ora è arrivata",
+        "args": {}
+      },
+      {
+        "text": "a che ora siamo arrivati",
+        "args": {}
+      },
+      {
+        "text": "sai che ore si sono fatte",
+        "args": {}
+      },
+      {
+        "text": "che ore si sono fatte",
+        "args": {}
+      },
+      {
+        "text": "guarda che ore si sono fatte",
+        "args": {}
+      },
+      {
+        "text": "che ore fanno adesso",
+        "args": {}
+      },
+      {
+        "text": "che ore fa adesso",
+        "args": {}
+      },
+      {
+        "text": "in questo preciso momento che ore sono",
+        "args": {}
+      },
+      {
+        "text": "proprio adesso che ore sono",
+        "args": {}
+      },
+      {
+        "text": "adesso di preciso che ore sono",
+        "args": {}
+      },
+      {
+        "text": "ora come ora che ore sono",
+        "args": {}
+      },
+      {
+        "text": "in questo istante che ore sono",
+        "args": {}
+      },
+      {
+        "text": "puoi dirmi giusto l'ora",
+        "args": {}
+      },
+      {
+        "text": "mi sai giusto dire l'ora",
+        "args": {}
+      },
+      {
+        "text": "l'ora del momento per favore",
+        "args": {}
+      },
+      {
+        "text": "che ora fa il tuo orologio",
+        "args": {}
+      },
+      {
+        "text": "che ora tieni tu",
+        "args": {}
+      },
+      {
+        "text": "che ora hai tu",
+        "args": {}
+      },
+      {
+        "text": "sai tu che ore sono",
+        "args": {}
+      },
+      {
+        "text": "tu che ora hai",
+        "args": {}
+      },
+      {
+        "text": "controlla tu l'ora",
+        "args": {}
+      },
+      {
+        "text": "che ore sono su di te",
+        "args": {}
+      },
+      {
+        "text": "che ora batte adesso",
+        "args": {}
+      },
+      {
+        "text": "è già l'ora",
+        "args": {}
+      },
+      {
+        "text": "è arrivata l'ora",
+        "args": {}
+      },
+      {
+        "text": "è quasi ora",
+        "args": {}
+      },
+      {
+        "text": "è già ora vero",
+        "args": {}
+      },
+      {
+        "text": "è tardi o presto adesso",
+        "args": {}
+      },
+      {
+        "text": "fammi sapere l'ora precisa",
+        "args": {}
+      },
+      {
+        "text": "dimmi con precisione l'ora",
+        "args": {}
+      },
+      {
+        "text": "avrei giusto bisogno dell'ora",
+        "args": {}
+      },
+      {
+        "text": "mi occorre sapere l'ora",
+        "args": {}
+      },
+      {
+        "text": "mi occorre l'ora esatta",
+        "args": {}
+      }
+    ]
+  },
+  "current_date": {
+    "target": 180,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "oggi che giorno della settimana è",
+        "args": {}
+      },
+      {
+        "text": "in che data siamo",
+        "args": {}
+      },
+      {
+        "text": "in che giorno siamo oggi",
+        "args": {}
+      },
+      {
+        "text": "a che giorno siamo",
+        "args": {}
+      },
+      {
+        "text": "a quanti siamo oggi",
+        "args": {}
+      },
+      {
+        "text": "a quanti ne abbiamo oggi",
+        "args": {}
+      },
+      {
+        "text": "a quanti ne abbiamo",
+        "args": {}
+      },
+      {
+        "text": "quanti ne abbiamo oggi",
+        "args": {}
+      },
+      {
+        "text": "quanti del mese siamo",
+        "args": {}
+      },
+      {
+        "text": "che numero è oggi",
+        "args": {}
+      },
+      {
+        "text": "che data abbiamo oggi",
+        "args": {}
+      },
+      {
+        "text": "che data abbiamo",
+        "args": {}
+      },
+      {
+        "text": "mi ricordi che giorno è",
+        "args": {}
+      },
+      {
+        "text": "ricordami la data",
+        "args": {}
+      },
+      {
+        "text": "ricordami che giorno è oggi",
+        "args": {}
+      },
+      {
+        "text": "sai dirmi la data di oggi",
+        "args": {}
+      },
+      {
+        "text": "mi sai dire che giorno è",
+        "args": {}
+      },
+      {
+        "text": "dimmi per favore la data",
+        "args": {}
+      },
+      {
+        "text": "oggi è che giorno",
+        "args": {}
+      },
+      {
+        "text": "fammi sapere la data",
+        "args": {}
+      },
+      {
+        "text": "dammi la data di oggi",
+        "args": {}
+      },
+      {
+        "text": "dammi la data",
+        "args": {}
+      },
+      {
+        "text": "passami la data di oggi",
+        "args": {}
+      },
+      {
+        "text": "qual è il giorno di oggi",
+        "args": {}
+      },
+      {
+        "text": "che giorno abbiamo",
+        "args": {}
+      },
+      {
+        "text": "che giorno abbiamo oggi",
+        "args": {}
+      },
+      {
+        "text": "che giorno siamo",
+        "args": {}
+      },
+      {
+        "text": "oggi a quanti siamo",
+        "args": {}
+      },
+      {
+        "text": "che dì è oggi",
+        "args": {}
+      },
+      {
+        "text": "mi dici tu che giorno è",
+        "args": {}
+      },
+      {
+        "text": "dimmi tu la data",
+        "args": {}
+      },
+      {
+        "text": "senti che giorno è oggi",
+        "args": {}
+      },
+      {
+        "text": "allora che giorno è oggi",
+        "args": {}
+      },
+      {
+        "text": "ma che giorno è oggi",
+        "args": {}
+      },
+      {
+        "text": "scusa che giorno è oggi",
+        "args": {}
+      },
+      {
+        "text": "di preciso che data è",
+        "args": {}
+      },
+      {
+        "text": "che data è di preciso",
+        "args": {}
+      },
+      {
+        "text": "qual è la data esatta di oggi",
+        "args": {}
+      },
+      {
+        "text": "qual è la data precisa",
+        "args": {}
+      },
+      {
+        "text": "mi indichi la data",
+        "args": {}
+      },
+      {
+        "text": "indicami il giorno di oggi",
+        "args": {}
+      },
+      {
+        "text": "controlla che giorno è oggi",
+        "args": {}
+      },
+      {
+        "text": "verifica la data per favore",
+        "args": {}
+      },
+      {
+        "text": "mi verifichi la data di oggi",
+        "args": {}
+      },
+      {
+        "text": "puoi guardare che giorno è",
+        "args": {}
+      },
+      {
+        "text": "puoi controllare la data",
+        "args": {}
+      },
+      {
+        "text": "mi controlli la data",
+        "args": {}
+      },
+      {
+        "text": "sapresti dirmi la data",
+        "args": {}
+      },
+      {
+        "text": "sapresti dirmi che giorno è oggi",
+        "args": {}
+      },
+      {
+        "text": "riesci a dirmi la data",
+        "args": {}
+      },
+      {
+        "text": "mi faresti sapere che giorno è",
+        "args": {}
+      },
+      {
+        "text": "ti spiace dirmi la data",
+        "args": {}
+      },
+      {
+        "text": "ti dispiacerebbe dirmi che giorno è",
+        "args": {}
+      },
+      {
+        "text": "vorrei sapere che giorno è oggi",
+        "args": {}
+      },
+      {
+        "text": "avrei bisogno di sapere la data",
+        "args": {}
+      },
+      {
+        "text": "ho bisogno di sapere che giorno è",
+        "args": {}
+      },
+      {
+        "text": "mi serve sapere la data",
+        "args": {}
+      },
+      {
+        "text": "mi servirebbe sapere che giorno è oggi",
+        "args": {}
+      },
+      {
+        "text": "sai per caso che giorno è",
+        "args": {}
+      },
+      {
+        "text": "sai mica che data è oggi",
+        "args": {}
+      },
+      {
+        "text": "per caso sai la data di oggi",
+        "args": {}
+      },
+      {
+        "text": "hai idea di che giorno sia oggi",
+        "args": {}
+      },
+      {
+        "text": "chissà che giorno è oggi",
+        "args": {}
+      },
+      {
+        "text": "che data corre oggi",
+        "args": {}
+      },
+      {
+        "text": "in che data ci troviamo",
+        "args": {}
+      },
+      {
+        "text": "che giorno corre",
+        "args": {}
+      },
+      {
+        "text": "che giorno è oggi di grazia",
+        "args": {}
+      },
+      {
+        "text": "la data odierna per favore",
+        "args": {}
+      },
+      {
+        "text": "la data di oggi grazie",
+        "args": {}
+      },
+      {
+        "text": "solo la data grazie",
+        "args": {}
+      },
+      {
+        "text": "mi basta la data di oggi",
+        "args": {}
+      },
+      {
+        "text": "voglio solo sapere la data",
+        "args": {}
+      },
+      {
+        "text": "dimmi solo che giorno è",
+        "args": {}
+      },
+      {
+        "text": "qual è la giornata di oggi",
+        "args": {}
+      },
+      {
+        "text": "che giorno viene oggi",
+        "args": {}
+      },
+      {
+        "text": "oggi corrisponde a che data",
+        "args": {}
+      },
+      {
+        "text": "a quale giorno siamo arrivati",
+        "args": {}
+      },
+      {
+        "text": "sai che giorno si è fatto",
+        "args": {}
+      },
+      {
+        "text": "che giorno ci troviamo oggi",
+        "args": {}
+      },
+      {
+        "text": "oggi è già venerdì",
+        "args": {}
+      },
+      {
+        "text": "ma è già venerdì",
+        "args": {}
+      },
+      {
+        "text": "siamo già a venerdì",
+        "args": {}
+      },
+      {
+        "text": "è ancora mercoledì",
+        "args": {}
+      },
+      {
+        "text": "siamo ancora a mercoledì",
+        "args": {}
+      },
+      {
+        "text": "è già il weekend",
+        "args": {}
+      },
+      {
+        "text": "è già fine settimana",
+        "args": {}
+      },
+      {
+        "text": "manca tanto al weekend che giorno è",
+        "args": {}
+      },
+      {
+        "text": "oggi è lunedì vero",
+        "args": {}
+      },
+      {
+        "text": "oggi è lunedì o martedì",
+        "args": {}
+      },
+      {
+        "text": "siamo già a giovedì",
+        "args": {}
+      },
+      {
+        "text": "è già giovedì",
+        "args": {}
+      },
+      {
+        "text": "oggi è sabato o domenica",
+        "args": {}
+      },
+      {
+        "text": "è già sabato",
+        "args": {}
+      },
+      {
+        "text": "è ancora giovedì o è venerdì",
+        "args": {}
+      },
+      {
+        "text": "che giorno della settimana abbiamo",
+        "args": {}
+      },
+      {
+        "text": "in che giorno della settimana siamo",
+        "args": {}
+      },
+      {
+        "text": "oggi si lavora vero",
+        "args": {}
+      },
+      {
+        "text": "oggi è un giorno lavorativo",
+        "args": {}
+      },
+      {
+        "text": "oggi è festivo",
+        "args": {}
+      },
+      {
+        "text": "è un giorno festivo oggi",
+        "args": {}
+      },
+      {
+        "text": "oggi è feriale o festivo",
+        "args": {}
+      },
+      {
+        "text": "oggi si lavora o è festa",
+        "args": {}
+      },
+      {
+        "text": "domani è già sabato che giorno è oggi",
+        "args": {}
+      },
+      {
+        "text": "quanti giorni mancano al weekend oggi che giorno è",
+        "args": {}
+      },
+      {
+        "text": "è già lunedì di nuovo",
+        "args": {}
+      },
+      {
+        "text": "è di nuovo lunedì vero",
+        "args": {}
+      },
+      {
+        "text": "ancora lunedì oggi",
+        "args": {}
+      },
+      {
+        "text": "che giorno lavorativo è oggi",
+        "args": {}
+      },
+      {
+        "text": "oggi è mercoledì o giovedì",
+        "args": {}
+      },
+      {
+        "text": "siamo a inizio o fine settimana",
+        "args": {}
+      },
+      {
+        "text": "che giorno della settimana è oggi di preciso",
+        "args": {}
+      },
+      {
+        "text": "il mese sta volando a che giorno siamo",
+        "args": {}
+      },
+      {
+        "text": "come vola il mese che data è",
+        "args": {}
+      },
+      {
+        "text": "il mese è già a metà vero",
+        "args": {}
+      },
+      {
+        "text": "siamo già a metà mese",
+        "args": {}
+      },
+      {
+        "text": "siamo già a fine mese",
+        "args": {}
+      },
+      {
+        "text": "quanti giorni sono passati questo mese",
+        "args": {}
+      },
+      {
+        "text": "a che giorno del mese siamo",
+        "args": {}
+      },
+      {
+        "text": "che data del mese è oggi",
+        "args": {}
+      },
+      {
+        "text": "il mese è quasi finito che data è",
+        "args": {}
+      },
+      {
+        "text": "non mi accorgo di come passa il mese che giorno è",
+        "args": {}
+      },
+      {
+        "text": "in che mese siamo",
+        "args": {}
+      },
+      {
+        "text": "che mese è adesso",
+        "args": {}
+      },
+      {
+        "text": "siamo già a luglio",
+        "args": {}
+      },
+      {
+        "text": "ma siamo già in luglio",
+        "args": {}
+      },
+      {
+        "text": "che mese stiamo vivendo",
+        "args": {}
+      },
+      {
+        "text": "a che punto siamo del mese",
+        "args": {}
+      },
+      {
+        "text": "quanto manca a fine mese oggi che giorno è",
+        "args": {}
+      },
+      {
+        "text": "che settimana del mese è",
+        "args": {}
+      },
+      {
+        "text": "in che settimana del mese siamo",
+        "args": {}
+      },
+      {
+        "text": "il mese scorre veloce che data è oggi",
+        "args": {}
+      },
+      {
+        "text": "già così avanti nel mese che giorno è",
+        "args": {}
+      },
+      {
+        "text": "siamo a inizio mese vero",
+        "args": {}
+      },
+      {
+        "text": "è già passata metà del mese che data è",
+        "args": {}
+      },
+      {
+        "text": "quanto è avanzato il mese che giorno è",
+        "args": {}
+      },
+      {
+        "text": "il mese è quasi agli sgoccioli che data è",
+        "args": {}
+      },
+      {
+        "text": "siamo agli inizi del mese vero",
+        "args": {}
+      },
+      {
+        "text": "ho perso completamente il conto dei giorni che giorno è",
+        "args": {}
+      },
+      {
+        "text": "ho perso il filo dei giorni oggi che giorno è",
+        "args": {}
+      },
+      {
+        "text": "non tengo più il conto dei giorni che giorno è",
+        "args": {}
+      },
+      {
+        "text": "con questi giorni tutti uguali non so più la data",
+        "args": {}
+      },
+      {
+        "text": "questi giorni si assomigliano tutti che giorno è",
+        "args": {}
+      },
+      {
+        "text": "tra un giorno e l'altro ho perso la data",
+        "args": {}
+      },
+      {
+        "text": "ho perso di vista il calendario che giorno è",
+        "args": {}
+      },
+      {
+        "text": "non ho più il senso dei giorni che data è",
+        "args": {}
+      },
+      {
+        "text": "i giorni si confondono che giorno è oggi",
+        "args": {}
+      },
+      {
+        "text": "non so nemmeno più che giorno sia",
+        "args": {}
+      },
+      {
+        "text": "boh non so che giorno è oggi",
+        "args": {}
+      },
+      {
+        "text": "non mi ricordo più la data di oggi",
+        "args": {}
+      },
+      {
+        "text": "non mi ricordo che giorno sia oggi",
+        "args": {}
+      },
+      {
+        "text": "non ho idea del giorno che giorno è",
+        "args": {}
+      },
+      {
+        "text": "mi sono perso i giorni che data è",
+        "args": {}
+      },
+      {
+        "text": "in ferie ho perso il conto dei giorni che giorno è",
+        "args": {}
+      },
+      {
+        "text": "dopo le vacanze non so più che giorno è",
+        "args": {}
+      },
+      {
+        "text": "questi giorni volano che data è",
+        "args": {}
+      },
+      {
+        "text": "il tempo passa e non so più la data",
+        "args": {}
+      },
+      {
+        "text": "non riesco a stare dietro ai giorni che giorno è",
+        "args": {}
+      },
+      {
+        "text": "sono giorni che non guardo il calendario che data è",
+        "args": {}
+      },
+      {
+        "text": "ho perso la nozione dei giorni che giorno è",
+        "args": {}
+      },
+      {
+        "text": "devo segnare la data che giorno è oggi",
+        "args": {}
+      },
+      {
+        "text": "sto compilando un modulo che data è oggi",
+        "args": {}
+      },
+      {
+        "text": "devo mettere la data che giorno è",
+        "args": {}
+      },
+      {
+        "text": "per la firma che data metto oggi",
+        "args": {}
+      },
+      {
+        "text": "che data va scritta oggi",
+        "args": {}
+      },
+      {
+        "text": "che data ci mettiamo oggi",
+        "args": {}
+      },
+      {
+        "text": "oggi in che data siamo per l'assegno",
+        "args": {}
+      },
+      {
+        "text": "mi serve la data per il documento che giorno è",
+        "args": {}
+      },
+      {
+        "text": "quale data segno oggi",
+        "args": {}
+      },
+      {
+        "text": "che giorno è che devo prendere nota",
+        "args": {}
+      },
+      {
+        "text": "dimmi la data che devo appuntarla",
+        "args": {}
+      },
+      {
+        "text": "controllami la data di oggi",
+        "args": {}
+      },
+      {
+        "text": "guardami che giorno è",
+        "args": {}
+      },
+      {
+        "text": "dimmi tu che giorno è oggi",
+        "args": {}
+      },
+      {
+        "text": "verificami il giorno di oggi",
+        "args": {}
+      },
+      {
+        "text": "che data è che ho un promemoria",
+        "args": {}
+      },
+      {
+        "text": "che giorno è che ho una scadenza",
+        "args": {}
+      },
+      {
+        "text": "oggi scade qualcosa che giorno è",
+        "args": {}
+      },
+      {
+        "text": "che giorno è oggi che ho perso il conto",
+        "args": {}
+      },
+      {
+        "text": "aiutami con la data di oggi",
+        "args": {}
+      },
+      {
+        "text": "solo per curiosità che giorno è",
+        "args": {}
+      },
+      {
+        "text": "così per sapere che data è oggi",
+        "args": {}
+      },
+      {
+        "text": "tanto per sapere che giorno siamo",
+        "args": {}
+      },
+      {
+        "text": "giusto per curiosità in che data siamo",
+        "args": {}
+      }
+    ]
+  },
+  "calculator": {
+    "target": 600,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "quanto fa {N1} più {N2}",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "quant'è {N1} più {N2}",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "{N1} più {N2}",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "somma {N1} e {N2}",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "fammi la somma di {N1} e {N2}",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "qual è la somma tra {N1} e {N2}",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "aggiungi {N1} a {N2}",
+        "args": {
+          "expression": "{N2} + {N1}"
+        }
+      },
+      {
+        "text": "quanto viene {N1} più {N2}",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "calcolami {N1} più {N2}",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "quanto fanno {N1} e {N2} insieme",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "metti insieme {N1} e {N2}",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "mi calcoli {N1} più {N2}",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "quanto fa {N1} meno {N2}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "quant'è {N1} meno {N2}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "{N1} meno {N2}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "togli {N2} da {N1}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "leva {N2} a {N1}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "sottrai {N2} da {N1}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "qual è la differenza tra {N1} e {N2}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "quanto viene {N1} meno {N2}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "quanto resta se da {N1} togli {N2}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "mi serve il risultato di {N1} meno {N2}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "quanto fa {N1} per {N2}",
+        "args": {
+          "expression": "{N1} * {N2}"
+        }
+      },
+      {
+        "text": "quant'è {N1} per {N2}",
+        "args": {
+          "expression": "{N1} * {N2}"
+        }
+      },
+      {
+        "text": "{N1} per {N2}",
+        "args": {
+          "expression": "{N1} * {N2}"
+        }
+      },
+      {
+        "text": "moltiplica {N1} per {N2}",
+        "args": {
+          "expression": "{N1} * {N2}"
+        }
+      },
+      {
+        "text": "calcola {N1} per {N2}",
+        "args": {
+          "expression": "{N1} * {N2}"
+        }
+      },
+      {
+        "text": "{N1} volte {N2}",
+        "args": {
+          "expression": "{N1} * {N2}"
+        }
+      },
+      {
+        "text": "qual è il prodotto di {N1} e {N2}",
+        "args": {
+          "expression": "{N1} * {N2}"
+        }
+      },
+      {
+        "text": "quanto verrebbe {N1} moltiplicato per {N2}",
+        "args": {
+          "expression": "{N1} * {N2}"
+        }
+      },
+      {
+        "text": "fammi {N1} per {N2}",
+        "args": {
+          "expression": "{N1} * {N2}"
+        }
+      },
+      {
+        "text": "quanto fanno {N1} per {N2}",
+        "args": {
+          "expression": "{N1} * {N2}"
+        }
+      },
+      {
+        "text": "fammi il conto di {N1} per {N2}",
+        "args": {
+          "expression": "{N1} * {N2}"
+        }
+      },
+      {
+        "text": "quanto fa {N1} diviso {N2}",
+        "args": {
+          "expression": "{N1} / {N2}"
+        }
+      },
+      {
+        "text": "quant'è {N1} diviso {N2}",
+        "args": {
+          "expression": "{N1} / {N2}"
+        }
+      },
+      {
+        "text": "{N1} diviso {N2}",
+        "args": {
+          "expression": "{N1} / {N2}"
+        }
+      },
+      {
+        "text": "dividi {N1} per {N2}",
+        "args": {
+          "expression": "{N1} / {N2}"
+        }
+      },
+      {
+        "text": "quanto viene {N1} diviso {N2}",
+        "args": {
+          "expression": "{N1} / {N2}"
+        }
+      },
+      {
+        "text": "puoi calcolare {N1} diviso {N2}",
+        "args": {
+          "expression": "{N1} / {N2}"
+        }
+      },
+      {
+        "text": "quante volte {N2} sta in {N1}",
+        "args": {
+          "expression": "{N1} / {N2}"
+        }
+      },
+      {
+        "text": "{N1} fratto {N2}",
+        "args": {
+          "expression": "{N1} / {N2}"
+        }
+      },
+      {
+        "text": "ho bisogno di sapere quanto fa {N1} diviso {N2}",
+        "args": {
+          "expression": "{N1} / {N2}"
+        }
+      },
+      {
+        "text": "quanto fa {N1} elevato a {EXP}",
+        "args": {
+          "expression": "{N1}^{EXP}"
+        }
+      },
+      {
+        "text": "{N1} elevato a {EXP}",
+        "args": {
+          "expression": "{N1}^{EXP}"
+        }
+      },
+      {
+        "text": "quanto fa {N1} al quadrato",
+        "args": {
+          "expression": "{N1}^2"
+        }
+      },
+      {
+        "text": "{N1} al quadrato",
+        "args": {
+          "expression": "{N1}^2"
+        }
+      },
+      {
+        "text": "quanto fa {N1} al cubo",
+        "args": {
+          "expression": "{N1}^3"
+        }
+      },
+      {
+        "text": "{N1} al cubo",
+        "args": {
+          "expression": "{N1}^3"
+        }
+      },
+      {
+        "text": "qual è la radice quadrata di {N1}",
+        "args": {
+          "expression": "sqrt({N1})"
+        }
+      },
+      {
+        "text": "la radice quadrata di {N1}",
+        "args": {
+          "expression": "sqrt({N1})"
+        }
+      },
+      {
+        "text": "quanto fa la radice di {N1}",
+        "args": {
+          "expression": "sqrt({N1})"
+        }
+      },
+      {
+        "text": "quanto fa il {PCT} percento di {BASE}",
+        "args": {
+          "expression": "{PCT}% of {BASE}"
+        }
+      },
+      {
+        "text": "quant'è il {PCT} per cento di {BASE}",
+        "args": {
+          "expression": "{PCT}% of {BASE}"
+        }
+      },
+      {
+        "text": "il {PCT} percento di {BASE}",
+        "args": {
+          "expression": "{PCT}% of {BASE}"
+        }
+      },
+      {
+        "text": "calcola il {PCT} percento di {BASE}",
+        "args": {
+          "expression": "{PCT}% of {BASE}"
+        }
+      },
+      {
+        "text": "quanto viene il {PCT} per cento di {BASE}",
+        "args": {
+          "expression": "{PCT}% of {BASE}"
+        }
+      },
+      {
+        "text": "dammi il {PCT} percento di {BASE}",
+        "args": {
+          "expression": "{PCT}% of {BASE}"
+        }
+      },
+      {
+        "text": "togli il {PCT} percento da {BASE}",
+        "args": {
+          "expression": "{BASE} - ({BASE} * {PCT}%)"
+        }
+      },
+      {
+        "text": "quanto fa {BASE} meno il {PCT} percento",
+        "args": {
+          "expression": "{BASE} - ({BASE} * {PCT}%)"
+        }
+      },
+      {
+        "text": "aumenta {BASE} del {PCT} percento",
+        "args": {
+          "expression": "{BASE} + ({BASE} * {PCT}%)"
+        }
+      },
+      {
+        "text": "quanto fa la metà di {BASE}",
+        "args": {
+          "expression": "{BASE} / 2"
+        }
+      },
+      {
+        "text": "la metà di {BASE}",
+        "args": {
+          "expression": "{BASE} / 2"
+        }
+      },
+      {
+        "text": "un terzo di {BASE}",
+        "args": {
+          "expression": "{BASE} / 3"
+        }
+      },
+      {
+        "text": "quanto fa un terzo di {BASE}",
+        "args": {
+          "expression": "{BASE} / 3"
+        }
+      },
+      {
+        "text": "un quarto di {BASE}",
+        "args": {
+          "expression": "{BASE} / 4"
+        }
+      },
+      {
+        "text": "quanto fa un quarto di {BASE}",
+        "args": {
+          "expression": "{BASE} / 4"
+        }
+      },
+      {
+        "text": "il doppio di {N1}",
+        "args": {
+          "expression": "{N1} * 2"
+        }
+      },
+      {
+        "text": "raddoppia {N1}",
+        "args": {
+          "expression": "{N1} * 2"
+        }
+      },
+      {
+        "text": "il triplo di {N1}",
+        "args": {
+          "expression": "{N1} * 3"
+        }
+      },
+      {
+        "text": "triplica {N1}",
+        "args": {
+          "expression": "{N1} * 3"
+        }
+      }
+    ]
+  },
+  "greeting": {
+    "target": 200,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "ciao ari come va",
+        "args": {}
+      },
+      {
+        "text": "ehilà ari",
+        "args": {}
+      },
+      {
+        "text": "ciao ari ci sei",
+        "args": {}
+      },
+      {
+        "text": "ci sei ari",
+        "args": {}
+      },
+      {
+        "text": "ehi ci sei",
+        "args": {}
+      },
+      {
+        "text": "sei sveglia ari",
+        "args": {}
+      },
+      {
+        "text": "sei lì ari",
+        "args": {}
+      },
+      {
+        "text": "ciao a te",
+        "args": {}
+      },
+      {
+        "text": "salve a te",
+        "args": {}
+      },
+      {
+        "text": "salve ari come va",
+        "args": {}
+      },
+      {
+        "text": "buondì ari",
+        "args": {}
+      },
+      {
+        "text": "buon pomeriggio ari come va",
+        "args": {}
+      },
+      {
+        "text": "buongiorno a te",
+        "args": {}
+      },
+      {
+        "text": "buongiorno bello",
+        "args": {}
+      },
+      {
+        "text": "buongiorno caro",
+        "args": {}
+      },
+      {
+        "text": "buonasera cara",
+        "args": {}
+      },
+      {
+        "text": "buon pomeriggio a te",
+        "args": {}
+      },
+      {
+        "text": "buondì a te",
+        "args": {}
+      },
+      {
+        "text": "buongiorno bella giornata",
+        "args": {}
+      },
+      {
+        "text": "buongiorno ari come stai",
+        "args": {}
+      },
+      {
+        "text": "buonasera ari come stai",
+        "args": {}
+      },
+      {
+        "text": "buonasera ari tutto bene",
+        "args": {}
+      },
+      {
+        "text": "ciao ari tutto a posto",
+        "args": {}
+      },
+      {
+        "text": "ehi ari come butta",
+        "args": {}
+      },
+      {
+        "text": "ohi ari",
+        "args": {}
+      },
+      {
+        "text": "ohilà ari",
+        "args": {}
+      },
+      {
+        "text": "oi ari",
+        "args": {}
+      },
+      {
+        "text": "ueh ari",
+        "args": {}
+      },
+      {
+        "text": "ueilà ari",
+        "args": {}
+      },
+      {
+        "text": "weilà ari",
+        "args": {}
+      },
+      {
+        "text": "ehi tu ari",
+        "args": {}
+      },
+      {
+        "text": "ohilà bella",
+        "args": {}
+      },
+      {
+        "text": "ohi bella",
+        "args": {}
+      },
+      {
+        "text": "oi bella",
+        "args": {}
+      },
+      {
+        "text": "ehi bella",
+        "args": {}
+      },
+      {
+        "text": "ciao bello",
+        "args": {}
+      },
+      {
+        "text": "ciao caro",
+        "args": {}
+      },
+      {
+        "text": "ciao carissima",
+        "args": {}
+      },
+      {
+        "text": "ciao amico",
+        "args": {}
+      },
+      {
+        "text": "ciao amica",
+        "args": {}
+      },
+      {
+        "text": "ciao amico mio",
+        "args": {}
+      },
+      {
+        "text": "ehi amico",
+        "args": {}
+      },
+      {
+        "text": "ehi socio",
+        "args": {}
+      },
+      {
+        "text": "ehi capo",
+        "args": {}
+      },
+      {
+        "text": "ciao capo",
+        "args": {}
+      },
+      {
+        "text": "ehi ciao",
+        "args": {}
+      },
+      {
+        "text": "ciao ciao come stai",
+        "args": {}
+      },
+      {
+        "text": "ehilà come va",
+        "args": {}
+      },
+      {
+        "text": "ehilà come butta",
+        "args": {}
+      },
+      {
+        "text": "ohilà come va",
+        "args": {}
+      },
+      {
+        "text": "ciao bella come stai",
+        "args": {}
+      },
+      {
+        "text": "ciao caro come stai",
+        "args": {}
+      },
+      {
+        "text": "ehi ari eccomi",
+        "args": {}
+      },
+      {
+        "text": "ari ci sei ancora",
+        "args": {}
+      },
+      {
+        "text": "ma ci sei ari",
+        "args": {}
+      },
+      {
+        "text": "sei ancora sveglia ari",
+        "args": {}
+      },
+      {
+        "text": "ari sei lì",
+        "args": {}
+      },
+      {
+        "text": "pronto ari",
+        "args": {}
+      },
+      {
+        "text": "ari mi senti",
+        "args": {}
+      },
+      {
+        "text": "ehi ari mi senti",
+        "args": {}
+      },
+      {
+        "text": "ci sentiamo ari come va",
+        "args": {}
+      },
+      {
+        "text": "eccomi ari",
+        "args": {}
+      },
+      {
+        "text": "sono di nuovo qui ari",
+        "args": {}
+      },
+      {
+        "text": "chi si rivede",
+        "args": {}
+      },
+      {
+        "text": "chi si vede",
+        "args": {}
+      },
+      {
+        "text": "ma chi si rivede",
+        "args": {}
+      },
+      {
+        "text": "guarda chi si rivede",
+        "args": {}
+      },
+      {
+        "text": "oh chi si rivede",
+        "args": {}
+      },
+      {
+        "text": "ma guarda chi si vede",
+        "args": {}
+      },
+      {
+        "text": "chi non muore si rivede",
+        "args": {}
+      },
+      {
+        "text": "eccoti qua",
+        "args": {}
+      },
+      {
+        "text": "eccoti finalmente",
+        "args": {}
+      },
+      {
+        "text": "rieccoti",
+        "args": {}
+      },
+      {
+        "text": "rieccoci",
+        "args": {}
+      },
+      {
+        "text": "eccola qua",
+        "args": {}
+      },
+      {
+        "text": "ma ci sei ancora",
+        "args": {}
+      },
+      {
+        "text": "guarda un po' chi si rivede",
+        "args": {}
+      },
+      {
+        "text": "ma va' chi si rivede",
+        "args": {}
+      },
+      {
+        "text": "toh chi si rivede",
+        "args": {}
+      },
+      {
+        "text": "eccoti di nuovo",
+        "args": {}
+      },
+      {
+        "text": "sei tornata eh",
+        "args": {}
+      },
+      {
+        "text": "sei di nuovo qui eh",
+        "args": {}
+      },
+      {
+        "text": "ancora qua tu",
+        "args": {}
+      },
+      {
+        "text": "di nuovo insieme eh",
+        "args": {}
+      },
+      {
+        "text": "da quanto tempo",
+        "args": {}
+      },
+      {
+        "text": "quanto tempo",
+        "args": {}
+      },
+      {
+        "text": "quanto tempo eh",
+        "args": {}
+      },
+      {
+        "text": "da quanto non ci sentiamo",
+        "args": {}
+      },
+      {
+        "text": "ne è passato di tempo",
+        "args": {}
+      },
+      {
+        "text": "è un bel po' che non ci sentiamo",
+        "args": {}
+      },
+      {
+        "text": "quant'è che non ti sento",
+        "args": {}
+      },
+      {
+        "text": "quant'è che non ci parliamo",
+        "args": {}
+      },
+      {
+        "text": "è da un po' che non ci sentiamo",
+        "args": {}
+      },
+      {
+        "text": "quant'è che non ci vediamo",
+        "args": {}
+      },
+      {
+        "text": "quanto è che non ti facevi sentire",
+        "args": {}
+      },
+      {
+        "text": "quanto tempo è passato eh",
+        "args": {}
+      },
+      {
+        "text": "è passato tanto tempo eh",
+        "args": {}
+      },
+      {
+        "text": "da quanto manchi",
+        "args": {}
+      },
+      {
+        "text": "sparita da un po' eh",
+        "args": {}
+      },
+      {
+        "text": "non ti facevi sentire da un po'",
+        "args": {}
+      },
+      {
+        "text": "è una vita che non ci sentiamo",
+        "args": {}
+      },
+      {
+        "text": "è secoli che non ci parliamo",
+        "args": {}
+      },
+      {
+        "text": "quanto tempo senza sentirci",
+        "args": {}
+      },
+      {
+        "text": "che si dice di bello",
+        "args": {}
+      },
+      {
+        "text": "che mi dici di bello",
+        "args": {}
+      },
+      {
+        "text": "che mi racconti di bello",
+        "args": {}
+      },
+      {
+        "text": "come va la vita ultimamente",
+        "args": {}
+      },
+      {
+        "text": "come va oggi",
+        "args": {}
+      },
+      {
+        "text": "come vanno le cose oggi",
+        "args": {}
+      },
+      {
+        "text": "come te la passi oggi",
+        "args": {}
+      },
+      {
+        "text": "come butta oggi",
+        "args": {}
+      },
+      {
+        "text": "allora come butta",
+        "args": {}
+      },
+      {
+        "text": "tutto ok",
+        "args": {}
+      },
+      {
+        "text": "tutto tranquillo",
+        "args": {}
+      },
+      {
+        "text": "tutto liscio",
+        "args": {}
+      },
+      {
+        "text": "va tutto bene",
+        "args": {}
+      },
+      {
+        "text": "fila tutto liscio",
+        "args": {}
+      },
+      {
+        "text": "come stai stamattina",
+        "args": {}
+      },
+      {
+        "text": "come stai stasera",
+        "args": {}
+      },
+      {
+        "text": "come ti senti oggi",
+        "args": {}
+      },
+      {
+        "text": "come ti va",
+        "args": {}
+      },
+      {
+        "text": "come va lì da te",
+        "args": {}
+      },
+      {
+        "text": "come procede la giornata",
+        "args": {}
+      },
+      {
+        "text": "come sta andando",
+        "args": {}
+      },
+      {
+        "text": "come sta andando la giornata",
+        "args": {}
+      },
+      {
+        "text": "come vanno le cose dalle tue parti",
+        "args": {}
+      },
+      {
+        "text": "che aria tira",
+        "args": {}
+      },
+      {
+        "text": "che si fa di bello",
+        "args": {}
+      },
+      {
+        "text": "che combini",
+        "args": {}
+      },
+      {
+        "text": "che combini di bello",
+        "args": {}
+      },
+      {
+        "text": "che fai di bello",
+        "args": {}
+      },
+      {
+        "text": "cosa mi racconti",
+        "args": {}
+      },
+      {
+        "text": "novità in giro",
+        "args": {}
+      },
+      {
+        "text": "ci sono novità",
+        "args": {}
+      },
+      {
+        "text": "che c'è di nuovo",
+        "args": {}
+      },
+      {
+        "text": "niente di nuovo",
+        "args": {}
+      },
+      {
+        "text": "come procede",
+        "args": {}
+      },
+      {
+        "text": "come procede tutto",
+        "args": {}
+      },
+      {
+        "text": "tutto bene lì",
+        "args": {}
+      },
+      {
+        "text": "tutto a posto lì",
+        "args": {}
+      },
+      {
+        "text": "va tutto liscio oggi",
+        "args": {}
+      },
+      {
+        "text": "come butta lì",
+        "args": {}
+      },
+      {
+        "text": "come te la cavi",
+        "args": {}
+      },
+      {
+        "text": "come te la stai cavando",
+        "args": {}
+      },
+      {
+        "text": "come vanno le cose lì",
+        "args": {}
+      },
+      {
+        "text": "che si racconta",
+        "args": {}
+      },
+      {
+        "text": "che si racconta di bello",
+        "args": {}
+      },
+      {
+        "text": "come andiamo",
+        "args": {}
+      },
+      {
+        "text": "come andiamo oggi",
+        "args": {}
+      },
+      {
+        "text": "come si sta",
+        "args": {}
+      },
+      {
+        "text": "come si va",
+        "args": {}
+      },
+      {
+        "text": "che si fa",
+        "args": {}
+      },
+      {
+        "text": "tutto bene dalle tue parti",
+        "args": {}
+      },
+      {
+        "text": "come va tutto quanto",
+        "args": {}
+      },
+      {
+        "text": "e allora come va",
+        "args": {}
+      },
+      {
+        "text": "beh come va",
+        "args": {}
+      },
+      {
+        "text": "dimmi come va",
+        "args": {}
+      },
+      {
+        "text": "raccontami come va",
+        "args": {}
+      },
+      {
+        "text": "su come va",
+        "args": {}
+      },
+      {
+        "text": "allora che si dice",
+        "args": {}
+      },
+      {
+        "text": "e quindi che si dice",
+        "args": {}
+      },
+      {
+        "text": "dai che si dice",
+        "args": {}
+      },
+      {
+        "text": "quanto tempo che non ci si vede",
+        "args": {}
+      },
+      {
+        "text": "da tanto tempo eh",
+        "args": {}
+      },
+      {
+        "text": "era ora di risentirci",
+        "args": {}
+      },
+      {
+        "text": "era ora che ti facessi vivo",
+        "args": {}
+      },
+      {
+        "text": "guarda un po' che bel momento per risentirci",
+        "args": {}
+      },
+      {
+        "text": "ci voleva un saluto ogni tanto",
+        "args": {}
+      },
+      {
+        "text": "un saluto ci sta sempre",
+        "args": {}
+      },
+      {
+        "text": "piacere mio",
+        "args": {}
+      },
+      {
+        "text": "molto piacere",
+        "args": {}
+      },
+      {
+        "text": "è un piacere",
+        "args": {}
+      },
+      {
+        "text": "che piacere sentirti",
+        "args": {}
+      },
+      {
+        "text": "che piacere",
+        "args": {}
+      },
+      {
+        "text": "che bello sentirti",
+        "args": {}
+      },
+      {
+        "text": "che bello risentirti",
+        "args": {}
+      },
+      {
+        "text": "che bello ritrovarti",
+        "args": {}
+      },
+      {
+        "text": "felice di sentirti",
+        "args": {}
+      },
+      {
+        "text": "contento di sentirti",
+        "args": {}
+      },
+      {
+        "text": "sono felice di risentirti",
+        "args": {}
+      },
+      {
+        "text": "che bella sorpresa",
+        "args": {}
+      },
+      {
+        "text": "che bella sorpresa sentirti",
+        "args": {}
+      },
+      {
+        "text": "che sorpresa sei tu",
+        "args": {}
+      },
+      {
+        "text": "ma che bella sorpresa",
+        "args": {}
+      },
+      {
+        "text": "bello averti qui",
+        "args": {}
+      },
+      {
+        "text": "bello riaverti qui",
+        "args": {}
+      },
+      {
+        "text": "ehi come butta",
+        "args": {}
+      },
+      {
+        "text": "come butta amico",
+        "args": {}
+      },
+      {
+        "text": "come butta bella",
+        "args": {}
+      },
+      {
+        "text": "tutto bene amico",
+        "args": {}
+      },
+      {
+        "text": "tutto a posto amico",
+        "args": {}
+      },
+      {
+        "text": "come va amico mio",
+        "args": {}
+      },
+      {
+        "text": "come va socio",
+        "args": {}
+      },
+      {
+        "text": "come va capo",
+        "args": {}
+      },
+      {
+        "text": "salve salve",
+        "args": {}
+      },
+      {
+        "text": "buon dì a tutti",
+        "args": {}
+      },
+      {
+        "text": "salutami",
+        "args": {}
+      },
+      {
+        "text": "un saluto",
+        "args": {}
+      },
+      {
+        "text": "un salutone",
+        "args": {}
+      },
+      {
+        "text": "salutoni",
+        "args": {}
+      },
+      {
+        "text": "ti saluto ari",
+        "args": {}
+      },
+      {
+        "text": "saluti ari",
+        "args": {}
+      },
+      {
+        "text": "ehi salve",
+        "args": {}
+      },
+      {
+        "text": "salve come stai",
+        "args": {}
+      },
+      {
+        "text": "salve come va oggi",
+        "args": {}
+      },
+      {
+        "text": "buongiorno come butta",
+        "args": {}
+      },
+      {
+        "text": "buonasera come butta",
+        "args": {}
+      },
+      {
+        "text": "buondì come va",
+        "args": {}
+      },
+      {
+        "text": "ciao come butta",
+        "args": {}
+      },
+      {
+        "text": "ciao come procede",
+        "args": {}
+      },
+      {
+        "text": "ciao come te la passi",
+        "args": {}
+      },
+      {
+        "text": "ehi come te la passi",
+        "args": {}
+      },
+      {
+        "text": "ehi come vanno le cose",
+        "args": {}
+      },
+      {
+        "text": "ciao come vanno le cose",
+        "args": {}
+      },
+      {
+        "text": "buondì come stai",
+        "args": {}
+      },
+      {
+        "text": "buon pomeriggio come stai",
+        "args": {}
+      },
+      {
+        "text": "buonasera come va la vita",
+        "args": {}
+      },
+      {
+        "text": "ciao bella come va",
+        "args": {}
+      },
+      {
+        "text": "ciao bello come va",
+        "args": {}
+      },
+      {
+        "text": "ehilà come stai oggi",
+        "args": {}
+      },
+      {
+        "text": "come stai di bello",
+        "args": {}
+      },
+      {
+        "text": "come va di bello",
+        "args": {}
+      },
+      {
+        "text": "che si dice oggi",
+        "args": {}
+      },
+      {
+        "text": "che si dice in giro",
+        "args": {}
+      },
+      {
+        "text": "che novità ci sono",
+        "args": {}
+      },
+      {
+        "text": "novità di giornata",
+        "args": {}
+      },
+      {
+        "text": "che mi combini",
+        "args": {}
+      },
+      {
+        "text": "che mi combini oggi",
+        "args": {}
+      },
+      {
+        "text": "come procede oggi",
+        "args": {}
+      },
+      {
+        "text": "come butta di bello",
+        "args": {}
+      },
+      {
+        "text": "come te la passi in questi giorni",
+        "args": {}
+      },
+      {
+        "text": "come stai in questi giorni",
+        "args": {}
+      },
+      {
+        "text": "come vanno le cose in questi giorni",
+        "args": {}
+      },
+      {
+        "text": "che aria tira oggi",
+        "args": {}
+      },
+      {
+        "text": "come si mette oggi",
+        "args": {}
+      },
+      {
+        "text": "come ci si sente oggi",
+        "args": {}
+      }
+    ]
+  },
+  "open": {
+    "target": 600,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "apri {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "aprimi {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "avvia {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "avviami {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "lancia {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "mi lanci {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "fai partire {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "fammi partire {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "fammi partire subito {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "esegui {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "manda in esecuzione {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "accendi {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "attiva {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "apri subito {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "apri veloce {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "apri un attimo {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "apri per favore {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "per favore apri {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "aprimi per piacere {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "dai apri {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "su forza apri {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "mostrami {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "mostrami un attimo {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "fammi vedere {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "fammi vedere un attimo {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "portami {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "dammi {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "tira su {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "tira fuori {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "voglio {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "vorrei {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "voglio usare {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "voglio aprire {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "vorrei aprire {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "voglio vedere {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "voglio controllare {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "puoi aprire {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "puoi avviare {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "puoi lanciare {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "puoi far partire {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "mi apri {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "mi avvii {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "potresti aprire {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "potresti avviarmi {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "mi faresti partire {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "che ne dici di aprire {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "ti va di aprire {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "{APP} al volo",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "{APP} subito",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "è il momento di aprire {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "è ora di aprire {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "ho bisogno di aprire {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "mi serve aprire {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "fammi aprire {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "vai ad aprire {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "mi serve {APPSG}",
+        "args": {
+          "app_name": "{APPSG}"
+        }
+      },
+      {
+        "text": "mi servirebbe {APPSG}",
+        "args": {
+          "app_name": "{APPSG}"
+        }
+      },
+      {
+        "text": "mi occorre {APPSG}",
+        "args": {
+          "app_name": "{APPSG}"
+        }
+      },
+      {
+        "text": "{APPSG} mi serve",
+        "args": {
+          "app_name": "{APPSG}"
+        }
+      },
+      {
+        "text": "{APPSG} mi servirebbe",
+        "args": {
+          "app_name": "{APPSG}"
+        }
+      },
+      {
+        "text": "adesso mi serve {APPSG}",
+        "args": {
+          "app_name": "{APPSG}"
+        }
+      },
+      {
+        "text": "mi serve giusto {APPSG}",
+        "args": {
+          "app_name": "{APPSG}"
+        }
+      },
+      {
+        "text": "vai su {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "dai vai su {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "passa a {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "spostati su {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "entra in {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "fammi entrare in {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "avrei bisogno di {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "fammi dare un'occhiata a {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      }
+    ]
+  }
+}

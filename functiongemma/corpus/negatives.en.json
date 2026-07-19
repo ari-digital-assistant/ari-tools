@@ -1,0 +1,867 @@
+{
+  "target": 7000,
+  "cap": 30,
+  "frames": [
+    {
+      "text": "who is {NEG_PERSON}"
+    },
+    {
+      "text": "who was {NEG_PERSON}"
+    },
+    {
+      "text": "what is {NEG_PERSON} known for"
+    },
+    {
+      "text": "who painted {NEG_PAINTING}"
+    },
+    {
+      "text": "who is the artist behind {NEG_PAINTING}"
+    },
+    {
+      "text": "who created {NEG_PAINTING}"
+    },
+    {
+      "text": "who wrote {NEG_BOOK}"
+    },
+    {
+      "text": "who is the author of {NEG_BOOK}"
+    },
+    {
+      "text": "who composed {NEG_COMPOSITION}"
+    },
+    {
+      "text": "who wrote the music for {NEG_COMPOSITION}"
+    },
+    {
+      "text": "who directed {NEG_MOVIE}"
+    },
+    {
+      "text": "who starred in {NEG_MOVIE}"
+    },
+    {
+      "text": "who invented {NEG_INVENTION}"
+    },
+    {
+      "text": "who came up with {NEG_INVENTION}"
+    },
+    {
+      "text": "who is credited with inventing {NEG_INVENTION}"
+    },
+    {
+      "text": "who discovered {NEG_DISCOVERY}"
+    },
+    {
+      "text": "who first discovered {NEG_DISCOVERY}"
+    },
+    {
+      "text": "who built {NEG_WORK}"
+    },
+    {
+      "text": "who designed {NEG_WORK}"
+    },
+    {
+      "text": "who founded {NEG_APP}"
+    },
+    {
+      "text": "who owns {NEG_APP}"
+    },
+    {
+      "text": "who created {NEG_APP}"
+    },
+    {
+      "text": "who is the CEO of {NEG_APP}"
+    },
+    {
+      "text": "when did {NEG_EVENT} happen"
+    },
+    {
+      "text": "what year did {NEG_EVENT} take place"
+    },
+    {
+      "text": "when did {NEG_EVENT} start"
+    },
+    {
+      "text": "what caused {NEG_EVENT}"
+    },
+    {
+      "text": "who was involved in {NEG_EVENT}"
+    },
+    {
+      "text": "when did {NEG_ERA} begin"
+    },
+    {
+      "text": "when did {NEG_ERA} end"
+    },
+    {
+      "text": "how long did {NEG_ERA} last"
+    },
+    {
+      "text": "what year was {NEG_INVENTION} invented"
+    },
+    {
+      "text": "when was {NEG_INVENTION} first invented"
+    },
+    {
+      "text": "what year was {NEG_DISCOVERY} discovered"
+    },
+    {
+      "text": "when was {NEG_APP} founded"
+    },
+    {
+      "text": "what year did {NEG_APP} first appear"
+    },
+    {
+      "text": "when did {NEG_MOVIE} come out"
+    },
+    {
+      "text": "what year was {NEG_BOOK} written"
+    },
+    {
+      "text": "when was {NEG_LANDMARK} built"
+    },
+    {
+      "text": "what year was {NEG_WORK} completed"
+    },
+    {
+      "text": "when was {NEG_WORK} built"
+    },
+    {
+      "text": "when was {NEG_PERSON} born"
+    },
+    {
+      "text": "what century did {NEG_PERSON} live in"
+    },
+    {
+      "text": "when did {NEG_PERSON} live"
+    },
+    {
+      "text": "what year was {NEG_PAINTING} painted"
+    },
+    {
+      "text": "when was {NEG_SPORT} invented"
+    },
+    {
+      "text": "how tall is {NEG_MOUNTAIN}"
+    },
+    {
+      "text": "how high is {NEG_MOUNTAIN}"
+    },
+    {
+      "text": "how hard is it to climb {NEG_MOUNTAIN}"
+    },
+    {
+      "text": "how long is {NEG_RIVER}"
+    },
+    {
+      "text": "where does {NEG_RIVER} begin"
+    },
+    {
+      "text": "where does {NEG_RIVER} end"
+    },
+    {
+      "text": "what countries does {NEG_RIVER} flow through"
+    },
+    {
+      "text": "how deep is {NEG_WATERBODY}"
+    },
+    {
+      "text": "how big is {NEG_WATERBODY}"
+    },
+    {
+      "text": "where is {NEG_WATERBODY}"
+    },
+    {
+      "text": "how tall is {NEG_LANDMARK}"
+    },
+    {
+      "text": "how old is {NEG_LANDMARK}"
+    },
+    {
+      "text": "how many players are on a {NEG_SPORT} team"
+    },
+    {
+      "text": "how many teeth do {NEG_ANIMAL} have"
+    },
+    {
+      "text": "how long do {NEG_ANIMAL} live"
+    },
+    {
+      "text": "how much do {NEG_ANIMAL} weigh"
+    },
+    {
+      "text": "how fast can {NEG_ANIMAL} move"
+    },
+    {
+      "text": "how far away is {NEG_CELESTIAL}"
+    },
+    {
+      "text": "how big is {NEG_CELESTIAL}"
+    },
+    {
+      "text": "how far is {NEG_CELESTIAL} from earth"
+    },
+    {
+      "text": "who came up with {NEG_TIME_THING}"
+    },
+    {
+      "text": "why do we use {NEG_TIME_THING}"
+    },
+    {
+      "text": "how did {NEG_TIME_THING} come about"
+    },
+    {
+      "text": "who decided on {NEG_TIME_THING}"
+    },
+    {
+      "text": "what causes {NEG_WEATHER_THING}"
+    },
+    {
+      "text": "what is the science behind {NEG_WEATHER_THING}"
+    },
+    {
+      "text": "how do meteorologists predict {NEG_WEATHER_THING}"
+    },
+    {
+      "text": "what is {NEG_WEATHER_THING}"
+    },
+    {
+      "text": "what is the capital of {NEG_COUNTRY}"
+    },
+    {
+      "text": "what's the capital city of {NEG_COUNTRY}"
+    },
+    {
+      "text": "which city is the capital of {NEG_COUNTRY}"
+    },
+    {
+      "text": "tell me the capital of {NEG_COUNTRY}"
+    },
+    {
+      "text": "what is the population of {NEG_COUNTRY}"
+    },
+    {
+      "text": "what currency is used in {NEG_COUNTRY}"
+    },
+    {
+      "text": "what continent is {NEG_COUNTRY} in"
+    },
+    {
+      "text": "what language do they speak in {NEG_COUNTRY}"
+    },
+    {
+      "text": "what is {NEG_COUNTRY} famous for"
+    },
+    {
+      "text": "what is the national animal of {NEG_COUNTRY}"
+    },
+    {
+      "text": "what is the climate like in {NEG_COUNTRY}"
+    },
+    {
+      "text": "what religion is practised in {NEG_COUNTRY}"
+    },
+    {
+      "text": "how big is {NEG_COUNTRY}"
+    },
+    {
+      "text": "what is the population of {NEG_CITY}"
+    },
+    {
+      "text": "what country is {NEG_CITY} in"
+    },
+    {
+      "text": "why is {NEG_CITY} famous"
+    },
+    {
+      "text": "what is {NEG_CITY} known for"
+    },
+    {
+      "text": "what continent is {NEG_CITY} on"
+    },
+    {
+      "text": "how old is {NEG_CITY}"
+    },
+    {
+      "text": "how many people speak {NEG_LANGUAGE}"
+    },
+    {
+      "text": "where is {NEG_LANGUAGE} spoken"
+    },
+    {
+      "text": "where did {NEG_LANGUAGE} come from"
+    },
+    {
+      "text": "how hard is {NEG_LANGUAGE} to learn"
+    },
+    {
+      "text": "what alphabet does {NEG_LANGUAGE} use"
+    },
+    {
+      "text": "what does {NEG_LANGUAGE} sound like"
+    },
+    {
+      "text": "how does {NEG_TECH} work"
+    },
+    {
+      "text": "explain how {NEG_TECH} works"
+    },
+    {
+      "text": "what makes {NEG_TECH} work"
+    },
+    {
+      "text": "what is {NEG_TECH} used for"
+    },
+    {
+      "text": "who invented {NEG_TECH}"
+    },
+    {
+      "text": "why is {NEG_TECH} important"
+    },
+    {
+      "text": "what is {NEG_CONCEPT}"
+    },
+    {
+      "text": "explain {NEG_CONCEPT}"
+    },
+    {
+      "text": "can you explain {NEG_CONCEPT}"
+    },
+    {
+      "text": "what does {NEG_CONCEPT} mean"
+    },
+    {
+      "text": "how does {NEG_CONCEPT} work"
+    },
+    {
+      "text": "why is {NEG_CONCEPT} important"
+    },
+    {
+      "text": "how does {NEG_CONCEPT} affect us"
+    },
+    {
+      "text": "give me an example of {NEG_CONCEPT}"
+    },
+    {
+      "text": "what causes {NEG_PHENOMENON}"
+    },
+    {
+      "text": "why do we get {NEG_PHENOMENON}"
+    },
+    {
+      "text": "what makes {NEG_PHENOMENON} happen"
+    },
+    {
+      "text": "can {NEG_PHENOMENON} be dangerous"
+    },
+    {
+      "text": "what time of year do you get {NEG_PHENOMENON}"
+    },
+    {
+      "text": "what do {NEG_ANIMAL} eat"
+    },
+    {
+      "text": "where do {NEG_ANIMAL} live"
+    },
+    {
+      "text": "how do {NEG_ANIMAL} communicate"
+    },
+    {
+      "text": "are {NEG_ANIMAL} dangerous"
+    },
+    {
+      "text": "how do {NEG_ANIMAL} sleep"
+    },
+    {
+      "text": "how smart are {NEG_ANIMAL}"
+    },
+    {
+      "text": "how do {NEG_PLANT} grow"
+    },
+    {
+      "text": "why do {NEG_PLANT} need sunlight"
+    },
+    {
+      "text": "how do {NEG_PLANT} reproduce"
+    },
+    {
+      "text": "where do {NEG_PLANT} grow"
+    },
+    {
+      "text": "are {NEG_PLANT} poisonous"
+    },
+    {
+      "text": "what is the function of {NEG_BODY}"
+    },
+    {
+      "text": "what is the purpose of {NEG_BODY}"
+    },
+    {
+      "text": "why do we have {NEG_BODY}"
+    },
+    {
+      "text": "which part of the body has {NEG_BODY}"
+    },
+    {
+      "text": "can you live without {NEG_BODY}"
+    },
+    {
+      "text": "what is the chemical symbol for {NEG_ELEMENT}"
+    },
+    {
+      "text": "what is {NEG_ELEMENT} used for"
+    },
+    {
+      "text": "is {NEG_ELEMENT} a metal"
+    },
+    {
+      "text": "where is {NEG_ELEMENT} found"
+    },
+    {
+      "text": "what colour is {NEG_ELEMENT}"
+    },
+    {
+      "text": "is {NEG_ELEMENT} dangerous"
+    },
+    {
+      "text": "where does {NEG_FOOD} come from"
+    },
+    {
+      "text": "how is {NEG_FOOD} made"
+    },
+    {
+      "text": "what is {NEG_FOOD} made from"
+    },
+    {
+      "text": "is {NEG_FOOD} good for you"
+    },
+    {
+      "text": "what country is {NEG_FOOD} from"
+    },
+    {
+      "text": "how long does {NEG_FOOD} last"
+    },
+    {
+      "text": "where did {NEG_SPORT} originate"
+    },
+    {
+      "text": "what are the rules of {NEG_SPORT}"
+    },
+    {
+      "text": "how do you score in {NEG_SPORT}"
+    },
+    {
+      "text": "how long is a game of {NEG_SPORT}"
+    },
+    {
+      "text": "tell me about {NEG_PERSON}"
+    },
+    {
+      "text": "where was {NEG_PERSON} born"
+    },
+    {
+      "text": "what did {NEG_PERSON} do"
+    },
+    {
+      "text": "why is {NEG_PERSON} famous"
+    },
+    {
+      "text": "what nationality was {NEG_PERSON}"
+    },
+    {
+      "text": "where is {NEG_LANDMARK}"
+    },
+    {
+      "text": "why was {NEG_LANDMARK} built"
+    },
+    {
+      "text": "what is {NEG_LANDMARK} made of"
+    },
+    {
+      "text": "what country is {NEG_LANDMARK} in"
+    },
+    {
+      "text": "where is {NEG_MOUNTAIN}"
+    },
+    {
+      "text": "has anyone climbed {NEG_MOUNTAIN}"
+    },
+    {
+      "text": "what lives in {NEG_WATERBODY}"
+    },
+    {
+      "text": "what is {NEG_MOVIE} about"
+    },
+    {
+      "text": "where was {NEG_MOVIE} filmed"
+    },
+    {
+      "text": "why is {NEG_MOVIE} considered a classic"
+    },
+    {
+      "text": "what is {NEG_BOOK} about"
+    },
+    {
+      "text": "what genre is {NEG_BOOK}"
+    },
+    {
+      "text": "who is the main character in {NEG_BOOK}"
+    },
+    {
+      "text": "how does {NEG_INVENTION} work"
+    },
+    {
+      "text": "what was life like before {NEG_INVENTION}"
+    },
+    {
+      "text": "why was {NEG_INVENTION} invented"
+    },
+    {
+      "text": "how was {NEG_DISCOVERY} discovered"
+    },
+    {
+      "text": "why is {NEG_DISCOVERY} important"
+    },
+    {
+      "text": "tell me about {NEG_EVENT}"
+    },
+    {
+      "text": "what happened during {NEG_EVENT}"
+    },
+    {
+      "text": "why is {NEG_EVENT} important"
+    },
+    {
+      "text": "what was life like during {NEG_ERA}"
+    },
+    {
+      "text": "who ruled during {NEG_ERA}"
+    },
+    {
+      "text": "why did {NEG_ERA} end"
+    },
+    {
+      "text": "where is {NEG_PAINTING} displayed"
+    },
+    {
+      "text": "why is {NEG_PAINTING} so famous"
+    },
+    {
+      "text": "what instruments are in {NEG_COMPOSITION}"
+    },
+    {
+      "text": "why is {NEG_COMPOSITION} famous"
+    },
+    {
+      "text": "where is {NEG_APP} based"
+    },
+    {
+      "text": "how does {NEG_APP} make money"
+    },
+    {
+      "text": "how many users does {NEG_APP} have"
+    },
+    {
+      "text": "what country is {NEG_APP} from"
+    },
+    {
+      "text": "how did {NEG_APP} get its name"
+    },
+    {
+      "text": "when did {NEG_APP} become popular"
+    },
+    {
+      "text": "what is {NEG_CELESTIAL} made of"
+    },
+    {
+      "text": "can you see {NEG_CELESTIAL} without a telescope"
+    },
+    {
+      "text": "how old is {NEG_CELESTIAL}"
+    },
+    {
+      "text": "how long is a year on {NEG_PLANET}"
+    },
+    {
+      "text": "does {NEG_PLANET} have moons"
+    },
+    {
+      "text": "how many moons does {NEG_PLANET} have"
+    },
+    {
+      "text": "how hot is {NEG_PLANET}"
+    },
+    {
+      "text": "what is the atmosphere like on {NEG_PLANET}"
+    },
+    {
+      "text": "how far is {NEG_PLANET} from the sun"
+    },
+    {
+      "text": "what is a group of {NEG_ANIMAL} called"
+    },
+    {
+      "text": "do {NEG_ANIMAL} hibernate"
+    },
+    {
+      "text": "what predators do {NEG_ANIMAL} have"
+    },
+    {
+      "text": "what is the time difference with {NEG_COUNTRY}"
+    },
+    {
+      "text": "what is the main export of {NEG_COUNTRY}"
+    },
+    {
+      "text": "what ocean borders {NEG_COUNTRY}"
+    },
+    {
+      "text": "how many people live in {NEG_CITY}"
+    },
+    {
+      "text": "what river runs through {NEG_CITY}"
+    },
+    {
+      "text": "what is the atomic number of {NEG_ELEMENT}"
+    },
+    {
+      "text": "how heavy is {NEG_ELEMENT}"
+    },
+    {
+      "text": "what does {NEG_TECH} do"
+    },
+    {
+      "text": "how much does {NEG_TECH} cost"
+    },
+    {
+      "text": "is {NEG_FOOD} vegan"
+    },
+    {
+      "text": "what nutrients are in {NEG_FOOD}"
+    },
+    {
+      "text": "how tall do {NEG_PLANT} grow"
+    },
+    {
+      "text": "how long is {NEG_MOVIE}"
+    },
+    {
+      "text": "what awards did {NEG_MOVIE} win"
+    },
+    {
+      "text": "how many pages is {NEG_BOOK}"
+    },
+    {
+      "text": "is {NEG_SPORT} an olympic sport"
+    },
+    {
+      "text": "what equipment do you need for {NEG_SPORT}"
+    },
+    {
+      "text": "what family does {NEG_LANGUAGE} belong to"
+    },
+    {
+      "text": "how did {NEG_PERSON} die"
+    },
+    {
+      "text": "how were {NEG_MOUNTAIN} formed"
+    },
+    {
+      "text": "what is the weather like on {NEG_MOUNTAIN}"
+    },
+    {
+      "text": "how salty is {NEG_WATERBODY}"
+    },
+    {
+      "text": "how was {NEG_LANDMARK} constructed"
+    },
+    {
+      "text": "how many steps does {NEG_LANDMARK} have"
+    },
+    {
+      "text": "where did {NEG_EVENT} take place"
+    },
+    {
+      "text": "what technology existed during {NEG_ERA}"
+    },
+    {
+      "text": "what came before {NEG_INVENTION}"
+    },
+    {
+      "text": "who are {NEG_APP}'s competitors"
+    },
+    {
+      "text": "how many bones are in the human body"
+    },
+    {
+      "text": "how many planets are in the solar system"
+    },
+    {
+      "text": "how many continents are there"
+    },
+    {
+      "text": "how many countries are there in the world"
+    },
+    {
+      "text": "how many chambers does the human heart have"
+    },
+    {
+      "text": "how many moons does Jupiter have"
+    },
+    {
+      "text": "how many colours are in a rainbow"
+    },
+    {
+      "text": "how many keys are on a piano"
+    },
+    {
+      "text": "how many elements are on the periodic table"
+    },
+    {
+      "text": "how many strings does a violin have"
+    },
+    {
+      "text": "how many bones does a shark have"
+    },
+    {
+      "text": "how many hearts does an octopus have"
+    },
+    {
+      "text": "how many time zones are there in the world"
+    },
+    {
+      "text": "how many days are in a leap year"
+    },
+    {
+      "text": "how many hours are in a day"
+    },
+    {
+      "text": "how many weeks are in a year"
+    },
+    {
+      "text": "how many seconds are in an hour"
+    },
+    {
+      "text": "how many days are in a fortnight"
+    },
+    {
+      "text": "how did sailors tell time at sea"
+    },
+    {
+      "text": "how did ancient people tell time before clocks"
+    },
+    {
+      "text": "why are there 24 hours in a day"
+    },
+    {
+      "text": "why does a week have seven days"
+    },
+    {
+      "text": "why do we have leap years"
+    },
+    {
+      "text": "why do the clocks change twice a year"
+    },
+    {
+      "text": "why is there an international date line"
+    },
+    {
+      "text": "how do time zones work"
+    },
+    {
+      "text": "why is a year 365 days long"
+    },
+    {
+      "text": "how long is a day on Mars"
+    },
+    {
+      "text": "why is a day 24 hours long"
+    },
+    {
+      "text": "what makes the days longer in summer"
+    },
+    {
+      "text": "why do the days get shorter in winter"
+    },
+    {
+      "text": "how did people measure time in ancient Egypt"
+    },
+    {
+      "text": "what did people use before wristwatches"
+    },
+    {
+      "text": "how does a sundial tell the time"
+    },
+    {
+      "text": "why do we split the day into hours"
+    },
+    {
+      "text": "what causes day and night"
+    },
+    {
+      "text": "how many hours of daylight are there in summer"
+    },
+    {
+      "text": "who invented the concept of the hour"
+    },
+    {
+      "text": "what causes weather fronts"
+    },
+    {
+      "text": "how do meteorologists forecast the weather"
+    },
+    {
+      "text": "why is the weather so hard to predict"
+    },
+    {
+      "text": "what makes the weather change"
+    },
+    {
+      "text": "how does a weather balloon work"
+    },
+    {
+      "text": "why does weather move from west to east"
+    },
+    {
+      "text": "what is the difference between weather and climate"
+    },
+    {
+      "text": "how do satellites track the weather"
+    },
+    {
+      "text": "what is the meaning of life"
+    },
+    {
+      "text": "tell me a joke"
+    },
+    {
+      "text": "tell me something interesting"
+    },
+    {
+      "text": "give me a fun fact"
+    },
+    {
+      "text": "what's a good book to read"
+    },
+    {
+      "text": "recommend a movie"
+    },
+    {
+      "text": "what should I have for dinner"
+    },
+    {
+      "text": "who would win in a fight between a lion and a tiger"
+    },
+    {
+      "text": "what's the fastest animal on earth"
+    },
+    {
+      "text": "what's the tallest building in the world"
+    },
+    {
+      "text": "what's the biggest ocean in the world"
+    },
+    {
+      "text": "what's the smallest country in the world"
+    }
+  ]
+}

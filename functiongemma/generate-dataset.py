@@ -1083,9 +1083,17 @@ def main():
                              "Useful for measuring keyword-tier coverage, not for training.")
     parser.add_argument("--neg-ratio", type=float, default=1.0,
                         help="Negatives per positive (default: 1.0)")
+    parser.add_argument("--augment", metavar="BANKS_DIR", default=None,
+                        help="Directory of frame/slot banks (corpus/). Expands "
+                             "them deterministically into the corpus — the "
+                             "Google mobile-actions-scale volume recipe.")
+    parser.add_argument("--allow-missing-banks", action="store_true",
+                        help="With --augment: warn instead of failing when a "
+                             "router-eligible skill has no frame bank.")
     parsed = parser.parse_args()
     locale, neg_ratio = parsed.locale, parsed.neg_ratio
     filter_keyword_hits = parsed.filter_keyword_hits
+    augment_dir = Path(parsed.augment) if parsed.augment else None
 
     engine_dir = find_engine_dir()
     builtin_skills = export_skills(engine_dir, locale)
@@ -1106,6 +1114,29 @@ def main():
         print(f"  dropped {dropped} router-ineligible skill(s) — never offered at inference",
               file=sys.stderr)
     print(f"  {len(all_skills)} total skills for training", file=sys.stderr)
+
+    # Frame×slot augmentation — the volume half of Google's mobile-actions
+    # recipe (~1,380 rows per function vs our ~20 hand-authored). Banks are
+    # committed, human-reviewed JSON; the expansion is deterministic and
+    # decontaminated against the held-out evals. Runs before normalisation so
+    # expanded text flows through the same normalize_input path as everything
+    # else, and before alias/tool assembly so counts reflect the full corpus.
+    expanded_negatives = []
+    if augment_dir is not None:
+        from corpus_expander import expand_negatives, expand_skills, load_eval_keys
+        eval_keys = load_eval_keys([
+            Path(__file__).parent / "routing-eval.jsonl",
+            Path(__file__).parent / "routing-eval.it.jsonl",
+        ])
+        print(f"  augmenting from {augment_dir} ({locale}):", file=sys.stderr)
+        extra = expand_skills(augment_dir, locale, all_skills, eval_keys,
+                              allow_missing=parsed.allow_missing_banks)
+        for skill in all_skills:
+            skill["examples"] = skill["examples"] + extra.get(skill["id"], [])
+        expanded_negatives = expand_negatives(augment_dir, locale, eval_keys)
+        total = sum(len(s["examples"]) for s in all_skills)
+        print(f"  corpus after augmentation: {total} positive examples",
+              file=sys.stderr)
 
     assign_aliases(all_skills)
     tools = build_tools(all_skills)
@@ -1168,6 +1199,25 @@ def main():
         ex["text"] = norm
     print(f"  normalised {len(flat)} skill paraphrases ({locale})", file=sys.stderr)
 
+    # HELD-OUT GUARD, unconditional. The routing evals are the promotion
+    # gate's yardstick; a training row that matches an eval case converts the
+    # gate into a memorisation test. The corpus expander decontaminates its
+    # own output, but hand-written sources (manifest examples, the negative
+    # pools below) historically leaked — 2026-07-19 found two live eval NONE
+    # cases sitting in the hand-written EN negative pool. Positives that
+    # collide are a hard error (someone must consciously change one side);
+    # colliding negatives are dropped and reported.
+    from corpus_expander import load_eval_keys, loose_key
+    heldout_keys = load_eval_keys([
+        Path(__file__).parent / "routing-eval.jsonl",
+        Path(__file__).parent / "routing-eval.it.jsonl",
+    ])
+    poisoned = [ex["text"] for ex in flat if loose_key(ex["text"]) in heldout_keys]
+    if poisoned:
+        sys.exit(f"ERROR: skill example(s) collide with held-out eval cases: "
+                 f"{poisoned[:5]} — change the example or the eval case, "
+                 f"deliberately, not both silently.")
+
     print("Generating samples:", file=sys.stderr)
     skill_samples = generate_skill_samples(all_skills, tools)
     # Scale negatives to the positive count so "emit nothing" stays well
@@ -1178,7 +1228,13 @@ def main():
     neg_target = negative_target(len(skill_samples), neg_ratio)
     print(f"  negative target {neg_target} for {len(skill_samples)} positives "
           f"(ratio {neg_ratio})", file=sys.stderr)
-    negative_pool = normalize_texts(engine_dir, negatives_for_locale(locale), locale)
+    negative_pool = normalize_texts(
+        engine_dir, negatives_for_locale(locale) + expanded_negatives, locale)
+    before_guard = len(negative_pool)
+    negative_pool = [t for t in negative_pool if loose_key(t) not in heldout_keys]
+    if before_guard != len(negative_pool):
+        print(f"  held-out guard: dropped {before_guard - len(negative_pool)} "
+              f"negative(s) colliding with eval cases", file=sys.stderr)
     print(f"  normalised {len(negative_pool)} negatives ({locale})", file=sys.stderr)
     negative_samples = generate_negative_samples(tools, neg_target, negative_pool)
 

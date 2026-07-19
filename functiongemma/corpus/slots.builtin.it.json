@@ -1,0 +1,521 @@
+{
+  "N1": {
+    "type": "int",
+    "min": 2,
+    "max": 999
+  },
+  "N2": {
+    "type": "int",
+    "min": 2,
+    "max": 999
+  },
+  "PCT": {
+    "type": "int",
+    "min": 5,
+    "max": 95
+  },
+  "BASE": {
+    "type": "int",
+    "min": 10,
+    "max": 900
+  },
+  "EXP": {
+    "type": "int",
+    "min": 2,
+    "max": 6
+  },
+  "APP": [
+    {
+      "surface": "spotify",
+      "canonical": "Spotify"
+    },
+    {
+      "surface": "youtube",
+      "canonical": "YouTube"
+    },
+    {
+      "surface": "whatsapp",
+      "canonical": "WhatsApp"
+    },
+    {
+      "surface": "telegram",
+      "canonical": "Telegram"
+    },
+    {
+      "surface": "netflix",
+      "canonical": "Netflix"
+    },
+    {
+      "surface": "instagram",
+      "canonical": "Instagram"
+    },
+    {
+      "surface": "chrome",
+      "canonical": "Chrome"
+    },
+    {
+      "surface": "firefox",
+      "canonical": "Firefox"
+    },
+    {
+      "surface": "slack",
+      "canonical": "Slack"
+    },
+    {
+      "surface": "discord",
+      "canonical": "Discord"
+    },
+    {
+      "surface": "reddit",
+      "canonical": "Reddit"
+    },
+    {
+      "surface": "twitter",
+      "canonical": "Twitter"
+    },
+    {
+      "surface": "facebook",
+      "canonical": "Facebook"
+    },
+    {
+      "surface": "tiktok",
+      "canonical": "TikTok"
+    },
+    {
+      "surface": "gmail",
+      "canonical": "Gmail"
+    },
+    {
+      "surface": "signal",
+      "canonical": "Signal"
+    },
+    {
+      "surface": "google maps",
+      "canonical": "Maps"
+    },
+    {
+      "surface": "google chrome",
+      "canonical": "Chrome"
+    },
+    {
+      "surface": "amazon",
+      "canonical": "Amazon"
+    },
+    {
+      "surface": "dropbox",
+      "canonical": "Dropbox"
+    },
+    {
+      "surface": "zoom",
+      "canonical": "Zoom"
+    },
+    {
+      "surface": "outlook",
+      "canonical": "Outlook"
+    },
+    {
+      "surface": "safari",
+      "canonical": "Safari"
+    },
+    {
+      "surface": "microsoft teams",
+      "canonical": "Teams"
+    },
+    {
+      "surface": "la fotocamera",
+      "canonical": "Camera"
+    },
+    {
+      "surface": "l'app fotocamera",
+      "canonical": "Camera"
+    },
+    {
+      "surface": "il browser",
+      "canonical": "Browser"
+    },
+    {
+      "surface": "la galleria",
+      "canonical": "Gallery"
+    },
+    {
+      "surface": "il calendario",
+      "canonical": "Calendar"
+    },
+    {
+      "surface": "il telefono",
+      "canonical": "Phone"
+    },
+    {
+      "surface": "la calcolatrice",
+      "canonical": "Calculator"
+    },
+    {
+      "surface": "la posta",
+      "canonical": "Email"
+    },
+    {
+      "surface": "l'app di posta",
+      "canonical": "Email"
+    },
+    {
+      "surface": "il lettore musicale",
+      "canonical": "Music Player"
+    },
+    {
+      "surface": "l'orologio",
+      "canonical": "Clock"
+    },
+    {
+      "surface": "l'app orologio",
+      "canonical": "Clock"
+    },
+    {
+      "surface": "il meteo",
+      "canonical": "Weather"
+    },
+    {
+      "surface": "l'app meteo",
+      "canonical": "Weather"
+    },
+    {
+      "surface": "la rubrica",
+      "canonical": "Contacts"
+    },
+    {
+      "surface": "il registratore",
+      "canonical": "Voice Recorder"
+    },
+    {
+      "surface": "la sveglia",
+      "canonical": "Clock"
+    },
+    {
+      "surface": "l'app impostazioni",
+      "canonical": "Settings"
+    },
+    {
+      "surface": "la mia mail",
+      "canonical": "Email"
+    },
+    {
+      "surface": "le impostazioni",
+      "canonical": "Settings"
+    },
+    {
+      "surface": "le mappe",
+      "canonical": "Maps"
+    },
+    {
+      "surface": "i messaggi",
+      "canonical": "Messages"
+    },
+    {
+      "surface": "le note",
+      "canonical": "Notes"
+    },
+    {
+      "surface": "i file",
+      "canonical": "Files"
+    },
+    {
+      "surface": "il gestore dei file",
+      "canonical": "Files"
+    },
+    {
+      "surface": "le foto",
+      "canonical": "Photos"
+    },
+    {
+      "surface": "i contatti",
+      "canonical": "Contacts"
+    },
+    {
+      "surface": "le impostazioni del telefono",
+      "canonical": "Settings"
+    },
+    {
+      "surface": "i miei messaggi",
+      "canonical": "Messages"
+    },
+    {
+      "surface": "le mie foto",
+      "canonical": "Photos"
+    },
+    {
+      "surface": "i miei contatti",
+      "canonical": "Contacts"
+    }
+  ],
+  "APPSG": [
+    {
+      "surface": "spotify",
+      "canonical": "Spotify"
+    },
+    {
+      "surface": "youtube",
+      "canonical": "YouTube"
+    },
+    {
+      "surface": "whatsapp",
+      "canonical": "WhatsApp"
+    },
+    {
+      "surface": "telegram",
+      "canonical": "Telegram"
+    },
+    {
+      "surface": "netflix",
+      "canonical": "Netflix"
+    },
+    {
+      "surface": "instagram",
+      "canonical": "Instagram"
+    },
+    {
+      "surface": "chrome",
+      "canonical": "Chrome"
+    },
+    {
+      "surface": "firefox",
+      "canonical": "Firefox"
+    },
+    {
+      "surface": "slack",
+      "canonical": "Slack"
+    },
+    {
+      "surface": "discord",
+      "canonical": "Discord"
+    },
+    {
+      "surface": "reddit",
+      "canonical": "Reddit"
+    },
+    {
+      "surface": "twitter",
+      "canonical": "Twitter"
+    },
+    {
+      "surface": "facebook",
+      "canonical": "Facebook"
+    },
+    {
+      "surface": "tiktok",
+      "canonical": "TikTok"
+    },
+    {
+      "surface": "gmail",
+      "canonical": "Gmail"
+    },
+    {
+      "surface": "signal",
+      "canonical": "Signal"
+    },
+    {
+      "surface": "google maps",
+      "canonical": "Maps"
+    },
+    {
+      "surface": "google chrome",
+      "canonical": "Chrome"
+    },
+    {
+      "surface": "amazon",
+      "canonical": "Amazon"
+    },
+    {
+      "surface": "dropbox",
+      "canonical": "Dropbox"
+    },
+    {
+      "surface": "zoom",
+      "canonical": "Zoom"
+    },
+    {
+      "surface": "outlook",
+      "canonical": "Outlook"
+    },
+    {
+      "surface": "safari",
+      "canonical": "Safari"
+    },
+    {
+      "surface": "microsoft teams",
+      "canonical": "Teams"
+    },
+    {
+      "surface": "la fotocamera",
+      "canonical": "Camera"
+    },
+    {
+      "surface": "l'app fotocamera",
+      "canonical": "Camera"
+    },
+    {
+      "surface": "il browser",
+      "canonical": "Browser"
+    },
+    {
+      "surface": "la galleria",
+      "canonical": "Gallery"
+    },
+    {
+      "surface": "il calendario",
+      "canonical": "Calendar"
+    },
+    {
+      "surface": "il telefono",
+      "canonical": "Phone"
+    },
+    {
+      "surface": "la calcolatrice",
+      "canonical": "Calculator"
+    },
+    {
+      "surface": "la posta",
+      "canonical": "Email"
+    },
+    {
+      "surface": "l'app di posta",
+      "canonical": "Email"
+    },
+    {
+      "surface": "il lettore musicale",
+      "canonical": "Music Player"
+    },
+    {
+      "surface": "l'orologio",
+      "canonical": "Clock"
+    },
+    {
+      "surface": "l'app orologio",
+      "canonical": "Clock"
+    },
+    {
+      "surface": "il meteo",
+      "canonical": "Weather"
+    },
+    {
+      "surface": "l'app meteo",
+      "canonical": "Weather"
+    },
+    {
+      "surface": "la rubrica",
+      "canonical": "Contacts"
+    },
+    {
+      "surface": "il registratore",
+      "canonical": "Voice Recorder"
+    },
+    {
+      "surface": "la sveglia",
+      "canonical": "Clock"
+    },
+    {
+      "surface": "l'app impostazioni",
+      "canonical": "Settings"
+    },
+    {
+      "surface": "la mia mail",
+      "canonical": "Email"
+    }
+  ],
+  "APPNAME": [
+    {
+      "surface": "spotify",
+      "canonical": "Spotify"
+    },
+    {
+      "surface": "youtube",
+      "canonical": "YouTube"
+    },
+    {
+      "surface": "whatsapp",
+      "canonical": "WhatsApp"
+    },
+    {
+      "surface": "telegram",
+      "canonical": "Telegram"
+    },
+    {
+      "surface": "netflix",
+      "canonical": "Netflix"
+    },
+    {
+      "surface": "instagram",
+      "canonical": "Instagram"
+    },
+    {
+      "surface": "chrome",
+      "canonical": "Chrome"
+    },
+    {
+      "surface": "firefox",
+      "canonical": "Firefox"
+    },
+    {
+      "surface": "slack",
+      "canonical": "Slack"
+    },
+    {
+      "surface": "discord",
+      "canonical": "Discord"
+    },
+    {
+      "surface": "reddit",
+      "canonical": "Reddit"
+    },
+    {
+      "surface": "twitter",
+      "canonical": "Twitter"
+    },
+    {
+      "surface": "facebook",
+      "canonical": "Facebook"
+    },
+    {
+      "surface": "tiktok",
+      "canonical": "TikTok"
+    },
+    {
+      "surface": "gmail",
+      "canonical": "Gmail"
+    },
+    {
+      "surface": "signal",
+      "canonical": "Signal"
+    },
+    {
+      "surface": "google maps",
+      "canonical": "Maps"
+    },
+    {
+      "surface": "google chrome",
+      "canonical": "Chrome"
+    },
+    {
+      "surface": "amazon",
+      "canonical": "Amazon"
+    },
+    {
+      "surface": "dropbox",
+      "canonical": "Dropbox"
+    },
+    {
+      "surface": "zoom",
+      "canonical": "Zoom"
+    },
+    {
+      "surface": "outlook",
+      "canonical": "Outlook"
+    },
+    {
+      "surface": "safari",
+      "canonical": "Safari"
+    },
+    {
+      "surface": "microsoft teams",
+      "canonical": "Teams"
+    }
+  ]
+}

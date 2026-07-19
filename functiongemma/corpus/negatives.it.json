@@ -1,0 +1,708 @@
+{
+  "target": 7000,
+  "cap": 30,
+  "frames": [
+    {
+      "text": "chi era {ITNEG_PERSON}"
+    },
+    {
+      "text": "chi fu {ITNEG_PERSON}"
+    },
+    {
+      "text": "chi era veramente {ITNEG_PERSON}"
+    },
+    {
+      "text": "sai chi era {ITNEG_PERSON}"
+    },
+    {
+      "text": "parlami di {ITNEG_PERSON}"
+    },
+    {
+      "text": "raccontami la vita di {ITNEG_PERSON}"
+    },
+    {
+      "text": "dimmi qualcosa su {ITNEG_PERSON}"
+    },
+    {
+      "text": "che cosa sappiamo di {ITNEG_PERSON}"
+    },
+    {
+      "text": "che cosa ha fatto {ITNEG_PERSON}"
+    },
+    {
+      "text": "che cosa ha scoperto {ITNEG_PERSON}"
+    },
+    {
+      "text": "che cosa scoprì {ITNEG_PERSON}"
+    },
+    {
+      "text": "che cosa inventò {ITNEG_PERSON}"
+    },
+    {
+      "text": "dove nacque {ITNEG_PERSON}"
+    },
+    {
+      "text": "in che città nacque {ITNEG_PERSON}"
+    },
+    {
+      "text": "quando nacque {ITNEG_PERSON}"
+    },
+    {
+      "text": "quando morì {ITNEG_PERSON}"
+    },
+    {
+      "text": "in che anno morì {ITNEG_PERSON}"
+    },
+    {
+      "text": "come morì {ITNEG_PERSON}"
+    },
+    {
+      "text": "in che epoca visse {ITNEG_PERSON}"
+    },
+    {
+      "text": "in quale secolo visse {ITNEG_PERSON}"
+    },
+    {
+      "text": "dove visse {ITNEG_PERSON}"
+    },
+    {
+      "text": "di che nazionalità era {ITNEG_PERSON}"
+    },
+    {
+      "text": "perché è così importante {ITNEG_PERSON}"
+    },
+    {
+      "text": "che altezza ha {ITNEG_PLACE}"
+    },
+    {
+      "text": "quanti anni ha {ITNEG_PLACE}"
+    },
+    {
+      "text": "chi ha costruito {ITNEG_PLACE}"
+    },
+    {
+      "text": "chi ha progettato {ITNEG_PLACE}"
+    },
+    {
+      "text": "in che anno hanno costruito {ITNEG_PLACE}"
+    },
+    {
+      "text": "a che epoca risale {ITNEG_PLACE}"
+    },
+    {
+      "text": "perché hanno costruito {ITNEG_PLACE}"
+    },
+    {
+      "text": "che cosa rappresenta {ITNEG_PLACE}"
+    },
+    {
+      "text": "in quale città si trova {ITNEG_PLACE}"
+    },
+    {
+      "text": "in che paese si trova {ITNEG_PLACE}"
+    },
+    {
+      "text": "quanto tempo ci vuole per visitare {ITNEG_PLACE}"
+    },
+    {
+      "text": "che storia ha {ITNEG_PLACE}"
+    },
+    {
+      "text": "in che stile è {ITNEG_PLACE}"
+    },
+    {
+      "text": "chi ha creato {ITNEG_WORK}"
+    },
+    {
+      "text": "chi ha realizzato {ITNEG_WORK}"
+    },
+    {
+      "text": "chi ha ideato {ITNEG_WORK}"
+    },
+    {
+      "text": "a che epoca risale {ITNEG_WORK}"
+    },
+    {
+      "text": "che cosa rappresenta {ITNEG_WORK}"
+    },
+    {
+      "text": "perché è così importante {ITNEG_WORK}"
+    },
+    {
+      "text": "quanto vale {ITNEG_WORK}"
+    },
+    {
+      "text": "in quale città si trova {ITNEG_WORK}"
+    },
+    {
+      "text": "quanto vive {ITNEG_ANIMAL}"
+    },
+    {
+      "text": "quanto tempo vive {ITNEG_ANIMAL}"
+    },
+    {
+      "text": "dove vive {ITNEG_ANIMAL}"
+    },
+    {
+      "text": "in quale habitat vive {ITNEG_ANIMAL}"
+    },
+    {
+      "text": "cosa mangia {ITNEG_ANIMAL}"
+    },
+    {
+      "text": "di cosa si nutre {ITNEG_ANIMAL}"
+    },
+    {
+      "text": "quanto pesa {ITNEG_ANIMAL}"
+    },
+    {
+      "text": "quanto è veloce {ITNEG_ANIMAL}"
+    },
+    {
+      "text": "quanto è grande {ITNEG_ANIMAL}"
+    },
+    {
+      "text": "di che colore è {ITNEG_ANIMAL}"
+    },
+    {
+      "text": "come si riproduce {ITNEG_ANIMAL}"
+    },
+    {
+      "text": "quante zampe ha {ITNEG_ANIMAL}"
+    },
+    {
+      "text": "come respira {ITNEG_ANIMAL}"
+    },
+    {
+      "text": "quanto dorme {ITNEG_ANIMAL}"
+    },
+    {
+      "text": "come si difende {ITNEG_ANIMAL}"
+    },
+    {
+      "text": "che verso fa {ITNEG_ANIMAL}"
+    },
+    {
+      "text": "quanto può correre {ITNEG_ANIMAL}"
+    },
+    {
+      "text": "quando ha avuto luogo {ITNEG_EVENT}"
+    },
+    {
+      "text": "in che anno ha avuto luogo {ITNEG_EVENT}"
+    },
+    {
+      "text": "a quando risale {ITNEG_EVENT}"
+    },
+    {
+      "text": "in che epoca si colloca {ITNEG_EVENT}"
+    },
+    {
+      "text": "che cosa ha causato {ITNEG_EVENT}"
+    },
+    {
+      "text": "che cosa ha provocato {ITNEG_EVENT}"
+    },
+    {
+      "text": "quali conseguenze ha avuto {ITNEG_EVENT}"
+    },
+    {
+      "text": "come iniziò {ITNEG_EVENT}"
+    },
+    {
+      "text": "come finì {ITNEG_EVENT}"
+    },
+    {
+      "text": "quanto durò {ITNEG_EVENT}"
+    },
+    {
+      "text": "come si prepara {ITNEG_FOOD}"
+    },
+    {
+      "text": "come si fa {ITNEG_FOOD}"
+    },
+    {
+      "text": "da dove viene {ITNEG_FOOD}"
+    },
+    {
+      "text": "dove nasce {ITNEG_FOOD}"
+    },
+    {
+      "text": "quante calorie ha {ITNEG_FOOD}"
+    },
+    {
+      "text": "che sapore ha {ITNEG_FOOD}"
+    },
+    {
+      "text": "cosa contiene {ITNEG_FOOD}"
+    },
+    {
+      "text": "con cosa si mangia {ITNEG_FOOD}"
+    },
+    {
+      "text": "in quale paese si mangia {ITNEG_FOOD}"
+    },
+    {
+      "text": "chi ha inventato {ITNEG_FOOD}"
+    },
+    {
+      "text": "da quale regione proviene {ITNEG_FOOD}"
+    },
+    {
+      "text": "come nasce {ITNEG_FOOD}"
+    },
+    {
+      "text": "perché piace così tanto {ITNEG_FOOD}"
+    },
+    {
+      "text": "in che occasioni si mangia {ITNEG_FOOD}"
+    },
+    {
+      "text": "chi ha fondato {ITNEG_TECH}"
+    },
+    {
+      "text": "quando è nato {ITNEG_TECH}"
+    },
+    {
+      "text": "in che anno è nato {ITNEG_TECH}"
+    },
+    {
+      "text": "chi ha creato {ITNEG_TECH}"
+    },
+    {
+      "text": "di che paese è {ITNEG_TECH}"
+    },
+    {
+      "text": "chi possiede {ITNEG_TECH}"
+    },
+    {
+      "text": "quanti utenti ha {ITNEG_TECH}"
+    },
+    {
+      "text": "quando è stato lanciato {ITNEG_TECH}"
+    },
+    {
+      "text": "a chi appartiene {ITNEG_TECH}"
+    },
+    {
+      "text": "in che anno è uscito {ITNEG_TECH}"
+    },
+    {
+      "text": "quanto vale {ITNEG_TECH}"
+    },
+    {
+      "text": "chi c'è dietro {ITNEG_TECH}"
+    },
+    {
+      "text": "come guadagna {ITNEG_TECH}"
+    },
+    {
+      "text": "quanti dipendenti ha {ITNEG_TECH}"
+    },
+    {
+      "text": "in quale paese è nato {ITNEG_TECH}"
+    },
+    {
+      "text": "quante persone usano {ITNEG_TECH}"
+    },
+    {
+      "text": "in che continente si trova {ITNEG_NATURE}"
+    },
+    {
+      "text": "quanto è grande {ITNEG_NATURE}"
+    },
+    {
+      "text": "quanti chilometri misura {ITNEG_NATURE}"
+    },
+    {
+      "text": "perché è importante per il pianeta {ITNEG_NATURE}"
+    },
+    {
+      "text": "quanti abitanti ha {ITNEG_CITY}"
+    },
+    {
+      "text": "in che nazione si trova {ITNEG_CITY}"
+    },
+    {
+      "text": "in che continente si trova {ITNEG_CITY}"
+    },
+    {
+      "text": "che fiume attraversa {ITNEG_CITY}"
+    },
+    {
+      "text": "che cosa si può visitare a {ITNEG_CITY}"
+    },
+    {
+      "text": "quanto è grande {ITNEG_CITY}"
+    },
+    {
+      "text": "che squadra gioca a {ITNEG_CITY}"
+    },
+    {
+      "text": "che lingua si parla {ITNEG_COUNTRY_IN}"
+    },
+    {
+      "text": "quante persone vivono {ITNEG_COUNTRY_IN}"
+    },
+    {
+      "text": "che moneta si usa {ITNEG_COUNTRY_IN}"
+    },
+    {
+      "text": "che clima c'è {ITNEG_COUNTRY_IN}"
+    },
+    {
+      "text": "cosa si mangia {ITNEG_COUNTRY_IN}"
+    },
+    {
+      "text": "che animali vivono {ITNEG_COUNTRY_IN}"
+    },
+    {
+      "text": "che religione si pratica {ITNEG_COUNTRY_IN}"
+    },
+    {
+      "text": "qual è la capitale {ITNEG_COUNTRY_DI}"
+    },
+    {
+      "text": "qual è la moneta {ITNEG_COUNTRY_DI}"
+    },
+    {
+      "text": "qual è la bandiera {ITNEG_COUNTRY_DI}"
+    },
+    {
+      "text": "qual è la popolazione {ITNEG_COUNTRY_DI}"
+    },
+    {
+      "text": "qual è la lingua ufficiale {ITNEG_COUNTRY_DI}"
+    },
+    {
+      "text": "qual è la superficie {ITNEG_COUNTRY_DI}"
+    },
+    {
+      "text": "qual è l'inno {ITNEG_COUNTRY_DI}"
+    },
+    {
+      "text": "qual è la festa nazionale {ITNEG_COUNTRY_DI}"
+    },
+    {
+      "text": "qual è {ITNEG_SUP} {ITNEG_REGION}"
+    },
+    {
+      "text": "sai qual è {ITNEG_SUP} {ITNEG_REGION}"
+    },
+    {
+      "text": "mi sai dire qual è {ITNEG_SUP} {ITNEG_REGION}"
+    },
+    {
+      "text": "chi ha inventato {ITNEG_INVENTION}"
+    },
+    {
+      "text": "chi ha ideato {ITNEG_INVENTION}"
+    },
+    {
+      "text": "in che anno hanno inventato {ITNEG_INVENTION}"
+    },
+    {
+      "text": "quando hanno inventato {ITNEG_INVENTION}"
+    },
+    {
+      "text": "a cosa serviva {ITNEG_INVENTION}"
+    },
+    {
+      "text": "come funzionava {ITNEG_INVENTION}"
+    },
+    {
+      "text": "che cosa ha cambiato {ITNEG_INVENTION}"
+    },
+    {
+      "text": "perché è così importante {ITNEG_INVENTION}"
+    },
+    {
+      "text": "chi ha scoperto {ITNEG_DISCOVERY}"
+    },
+    {
+      "text": "quando hanno scoperto {ITNEG_DISCOVERY}"
+    },
+    {
+      "text": "in che anno hanno scoperto {ITNEG_DISCOVERY}"
+    },
+    {
+      "text": "come hanno scoperto {ITNEG_DISCOVERY}"
+    },
+    {
+      "text": "chi per primo ha scoperto {ITNEG_DISCOVERY}"
+    },
+    {
+      "text": "perché è importante {ITNEG_DISCOVERY}"
+    },
+    {
+      "text": "chi ha dipinto {ITNEG_PAINTING}"
+    },
+    {
+      "text": "chi ha realizzato {ITNEG_PAINTING}"
+    },
+    {
+      "text": "che cosa rappresenta {ITNEG_PAINTING}"
+    },
+    {
+      "text": "cosa raffigura {ITNEG_PAINTING}"
+    },
+    {
+      "text": "di chi è {ITNEG_PAINTING}"
+    },
+    {
+      "text": "chi ha composto {ITNEG_MUSIC}"
+    },
+    {
+      "text": "chi ha scritto {ITNEG_MUSIC}"
+    },
+    {
+      "text": "di chi è {ITNEG_MUSIC}"
+    },
+    {
+      "text": "a che epoca risale {ITNEG_MUSIC}"
+    },
+    {
+      "text": "di cosa parla {ITNEG_MUSIC}"
+    },
+    {
+      "text": "chi ha scritto {ITNEG_BOOK}"
+    },
+    {
+      "text": "di cosa parla {ITNEG_BOOK}"
+    },
+    {
+      "text": "che storia racconta {ITNEG_BOOK}"
+    },
+    {
+      "text": "come finisce {ITNEG_BOOK}"
+    },
+    {
+      "text": "che genere è {ITNEG_BOOK}"
+    },
+    {
+      "text": "chi ha diretto {ITNEG_FILM}"
+    },
+    {
+      "text": "chi ha girato {ITNEG_FILM}"
+    },
+    {
+      "text": "di cosa parla {ITNEG_FILM}"
+    },
+    {
+      "text": "come finisce {ITNEG_FILM}"
+    },
+    {
+      "text": "che genere è {ITNEG_FILM}"
+    },
+    {
+      "text": "che cosa provoca {ITNEG_PHENOMENON}"
+    },
+    {
+      "text": "che cosa causa {ITNEG_PHENOMENON}"
+    },
+    {
+      "text": "come si formano {ITNEG_PHENOMENON}"
+    },
+    {
+      "text": "perché avvengono {ITNEG_PHENOMENON}"
+    },
+    {
+      "text": "quanto durano {ITNEG_PHENOMENON}"
+    },
+    {
+      "text": "che cosa sono {ITNEG_PHENOMENON}"
+    },
+    {
+      "text": "dove avvengono più spesso {ITNEG_PHENOMENON}"
+    },
+    {
+      "text": "si possono prevedere {ITNEG_PHENOMENON}"
+    },
+    {
+      "text": "di cosa è fatto {ITNEG_SUBSTANCE}"
+    },
+    {
+      "text": "come si produce {ITNEG_SUBSTANCE}"
+    },
+    {
+      "text": "come si fabbrica {ITNEG_SUBSTANCE}"
+    },
+    {
+      "text": "da cosa si ricava {ITNEG_SUBSTANCE}"
+    },
+    {
+      "text": "quando è stato scoperto {ITNEG_SUBSTANCE}"
+    },
+    {
+      "text": "a cosa serve {ITNEG_SUBSTANCE}"
+    },
+    {
+      "text": "che cos'è {ITNEG_CONCEPT}"
+    },
+    {
+      "text": "che cosa significa {ITNEG_CONCEPT}"
+    },
+    {
+      "text": "spiegami {ITNEG_CONCEPT}"
+    },
+    {
+      "text": "puoi spiegarmi {ITNEG_CONCEPT}"
+    },
+    {
+      "text": "in cosa consiste {ITNEG_CONCEPT}"
+    },
+    {
+      "text": "come si spiega {ITNEG_CONCEPT}"
+    },
+    {
+      "text": "a cosa serve {ITNEG_CONCEPT}"
+    },
+    {
+      "text": "come funziona {ITNEG_CONCEPT}"
+    },
+    {
+      "text": "perché è importante {ITNEG_CONCEPT}"
+    },
+    {
+      "text": "chi ha teorizzato {ITNEG_CONCEPT}"
+    },
+    {
+      "text": "che cosa studia {ITNEG_CONCEPT}"
+    },
+    {
+      "text": "come funziona {ITNEG_TECHTHING}"
+    },
+    {
+      "text": "a cosa serve {ITNEG_TECHTHING}"
+    },
+    {
+      "text": "chi ha inventato {ITNEG_TECHTHING}"
+    },
+    {
+      "text": "quando hanno inventato {ITNEG_TECHTHING}"
+    },
+    {
+      "text": "che cos'è {ITNEG_TECHTHING}"
+    },
+    {
+      "text": "come si usa {ITNEG_TECHTHING}"
+    },
+    {
+      "text": "come misuravano il tempo {ITNEG_ANCIENTS}"
+    },
+    {
+      "text": "che calendario usavano {ITNEG_ANCIENTS}"
+    },
+    {
+      "text": "come contavano i giorni {ITNEG_ANCIENTS}"
+    },
+    {
+      "text": "come sapevano l'ora {ITNEG_ANCIENTS}"
+    },
+    {
+      "text": "come dividevano l'anno {ITNEG_ANCIENTS}"
+    },
+    {
+      "text": "quante persone parlano {ITNEG_LANGUAGE}"
+    },
+    {
+      "text": "in quali paesi si parla {ITNEG_LANGUAGE}"
+    },
+    {
+      "text": "quanto è difficile {ITNEG_LANGUAGE}"
+    },
+    {
+      "text": "da dove deriva {ITNEG_LANGUAGE}"
+    },
+    {
+      "text": "come si scrive {ITNEG_LANGUAGE}"
+    },
+    {
+      "text": "quante parole ha {ITNEG_LANGUAGE}"
+    },
+    {
+      "text": "quanto è grande {ITNEG_SPACE}"
+    },
+    {
+      "text": "quanto dista dalla Terra {ITNEG_SPACE}"
+    },
+    {
+      "text": "che cos'è {ITNEG_SPACE}"
+    },
+    {
+      "text": "quanto è alto {ITNEG_MOUNTAIN}"
+    },
+    {
+      "text": "in quale nazione si trova {ITNEG_MOUNTAIN}"
+    },
+    {
+      "text": "di che catena fa parte {ITNEG_MOUNTAIN}"
+    },
+    {
+      "text": "quanto è profondo {ITNEG_DEEP}"
+    },
+    {
+      "text": "quanto è grande {ITNEG_DEEP}"
+    },
+    {
+      "text": "quanto è lontano {ITNEG_FAR}"
+    },
+    {
+      "text": "quanto dista da noi {ITNEG_FAR}"
+    },
+    {
+      "text": "perché un giorno dura ventiquattro ore"
+    },
+    {
+      "text": "perché un anno dura trecentosessantacinque giorni"
+    },
+    {
+      "text": "chi ha inventato l'orologio"
+    },
+    {
+      "text": "perché esistono i fusi orari"
+    },
+    {
+      "text": "perché la settimana ha sette giorni"
+    },
+    {
+      "text": "da dove viene il nome dei giorni della settimana"
+    },
+    {
+      "text": "perché esiste l'anno bisestile"
+    },
+    {
+      "text": "perché a mezzanotte cambia la data"
+    },
+    {
+      "text": "come si calcolava il tempo prima degli orologi"
+    },
+    {
+      "text": "come misuravano il tempo gli antichi"
+    },
+    {
+      "text": "raccontami una curiosità storica"
+    },
+    {
+      "text": "dimmi un fatto interessante"
+    },
+    {
+      "text": "parlami di qualcosa di scientifico"
+    },
+    {
+      "text": "qual è il senso della vita"
+    },
+    {
+      "text": "perché esistiamo"
+    },
+    {
+      "text": "che cosa c'è dopo la morte"
+    },
+    {
+      "text": "insegnami qualcosa di nuovo"
+    },
+    {
+      "text": "spiegami una cosa difficile"
+    }
+  ]
+}

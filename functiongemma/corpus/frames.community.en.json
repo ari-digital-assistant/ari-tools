@@ -1,0 +1,3454 @@
+{
+  "dev.heyari.alarm": {
+    "target": 400,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "set an alarm for {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "set an alarm for {ATIME} every weekday",
+        "args": {}
+      },
+      {
+        "text": "set an alarm for {ATIME} on saturday",
+        "args": {}
+      },
+      {
+        "text": "set an alarm for {ATIME} on weekends",
+        "args": {}
+      },
+      {
+        "text": "put an alarm on for {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "add an alarm at {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "create an alarm for {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "set a {ALABEL} alarm for {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "{ALABEL} alarm at {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "wake me at {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "wake me up at {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "wake me up at {ATIME} tomorrow",
+        "args": {}
+      },
+      {
+        "text": "can you wake me at {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "i need to be up by {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "get me up at {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "buzz me at {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "give me a wake up call at {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "dont let me sleep past {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "make sure im awake by {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "rouse me at {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "i have to be up at {ATIME} for my {ALABEL}",
+        "args": {}
+      },
+      {
+        "text": "set an alarm so im up for {ALABEL} at {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "i want to wake up at {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "alarm for {ATIME} please",
+        "args": {}
+      },
+      {
+        "text": "need an alarm at {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "set the alarm for {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "wake me before {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "i have an early start so wake me at {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "set an alarm for {ATIME} and another one later",
+        "args": {}
+      },
+      {
+        "text": "schedule an alarm for {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "set a daily alarm for {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "wake me up every day at {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "set a recurring alarm for {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "get me out of bed at {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "drag me out of bed at {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "i cant miss my {ALABEL} so wake me at {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "set an alarm for {ATIME} on monday",
+        "args": {}
+      },
+      {
+        "text": "alarm at {ATIME} for the {ALABEL}",
+        "args": {}
+      },
+      {
+        "text": "wake me up at {ATIME} on the dot",
+        "args": {}
+      },
+      {
+        "text": "i need waking at {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "set my morning alarm for {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "can you set an alarm for {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "cancel my alarm",
+        "args": {}
+      },
+      {
+        "text": "cancel my {ATIME} alarm",
+        "args": {}
+      },
+      {
+        "text": "turn off my alarm",
+        "args": {}
+      },
+      {
+        "text": "turn off the {ATIME} alarm",
+        "args": {}
+      },
+      {
+        "text": "delete my {ALABEL} alarm",
+        "args": {}
+      },
+      {
+        "text": "remove the alarm for {ATIME}",
+        "args": {}
+      },
+      {
+        "text": "stop my morning alarm",
+        "args": {}
+      },
+      {
+        "text": "what alarms do i have",
+        "args": {}
+      },
+      {
+        "text": "what alarms do i have set",
+        "args": {}
+      },
+      {
+        "text": "do i have any alarms set",
+        "args": {}
+      },
+      {
+        "text": "when am i being woken tomorrow",
+        "args": {}
+      },
+      {
+        "text": "list my alarms",
+        "args": {}
+      },
+      {
+        "text": "have i got an alarm for the morning",
+        "args": {}
+      }
+    ]
+  },
+  "dev.heyari.counter": {
+    "target": 400,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "count up by {CN1}",
+        "args": {}
+      },
+      {
+        "text": "add {CN1} to the counter",
+        "args": {}
+      },
+      {
+        "text": "increment the counter by {CN1}",
+        "args": {}
+      },
+      {
+        "text": "bump the counter by {CN1}",
+        "args": {}
+      },
+      {
+        "text": "increase the count by {CN1}",
+        "args": {}
+      },
+      {
+        "text": "raise the count by {CN1}",
+        "args": {}
+      },
+      {
+        "text": "put the counter up by {CN1}",
+        "args": {}
+      },
+      {
+        "text": "tick {CN1} times",
+        "args": {}
+      },
+      {
+        "text": "count {CN1} more",
+        "args": {}
+      },
+      {
+        "text": "add {CN1} to the tally",
+        "args": {}
+      },
+      {
+        "text": "move the counter up {CN1}",
+        "args": {}
+      },
+      {
+        "text": "advance the counter by {CN1}",
+        "args": {}
+      },
+      {
+        "text": "count on {CN1}",
+        "args": {}
+      },
+      {
+        "text": "give the counter {CN1} more",
+        "args": {}
+      },
+      {
+        "text": "push the count up by {CN1}",
+        "args": {}
+      },
+      {
+        "text": "step the counter up by {CN1}",
+        "args": {}
+      },
+      {
+        "text": "count up {CN1} more times",
+        "args": {}
+      },
+      {
+        "text": "increment by {CN1}",
+        "args": {}
+      },
+      {
+        "text": "bump it up by {CN1}",
+        "args": {}
+      },
+      {
+        "text": "add another {CN1} to the count",
+        "args": {}
+      },
+      {
+        "text": "count to {CN1}",
+        "args": {}
+      },
+      {
+        "text": "tally up {CN1} more",
+        "args": {}
+      },
+      {
+        "text": "nudge the counter up by {CN1}",
+        "args": {}
+      },
+      {
+        "text": "increase the tally by {CN1}",
+        "args": {}
+      },
+      {
+        "text": "click the counter {CN1} times",
+        "args": {}
+      },
+      {
+        "text": "can you add {CN1} to the counter",
+        "args": {}
+      },
+      {
+        "text": "keep counting up to {CN1}",
+        "args": {}
+      },
+      {
+        "text": "register {CN1} more counts",
+        "args": {}
+      },
+      {
+        "text": "count",
+        "args": {}
+      },
+      {
+        "text": "tick",
+        "args": {}
+      },
+      {
+        "text": "increment the counter",
+        "args": {}
+      },
+      {
+        "text": "count up",
+        "args": {}
+      },
+      {
+        "text": "add one to the counter",
+        "args": {}
+      },
+      {
+        "text": "bump the counter",
+        "args": {}
+      },
+      {
+        "text": "count again",
+        "args": {}
+      },
+      {
+        "text": "one more tick",
+        "args": {}
+      },
+      {
+        "text": "next count",
+        "args": {}
+      },
+      {
+        "text": "increase the count",
+        "args": {}
+      },
+      {
+        "text": "keep counting",
+        "args": {}
+      },
+      {
+        "text": "tick again",
+        "args": {}
+      },
+      {
+        "text": "add another one",
+        "args": {}
+      },
+      {
+        "text": "count once more",
+        "args": {}
+      },
+      {
+        "text": "increment",
+        "args": {}
+      },
+      {
+        "text": "bump it",
+        "args": {}
+      },
+      {
+        "text": "up the counter",
+        "args": {}
+      },
+      {
+        "text": "tick the counter",
+        "args": {}
+      },
+      {
+        "text": "count up one",
+        "args": {}
+      },
+      {
+        "text": "add to the tally",
+        "args": {}
+      },
+      {
+        "text": "give me another tick",
+        "args": {}
+      },
+      {
+        "text": "move the counter along",
+        "args": {}
+      },
+      {
+        "text": "one more on the counter",
+        "args": {}
+      },
+      {
+        "text": "advance the counter",
+        "args": {}
+      },
+      {
+        "text": "push the counter up",
+        "args": {}
+      },
+      {
+        "text": "tally one more",
+        "args": {}
+      },
+      {
+        "text": "clock up another one",
+        "args": {}
+      }
+    ]
+  },
+  "dev.heyari.homeassistant": {
+    "target": 400,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "turn on {HAENT}",
+        "args": {}
+      },
+      {
+        "text": "turn off {HAENT}",
+        "args": {}
+      },
+      {
+        "text": "switch on {HAENT}",
+        "args": {}
+      },
+      {
+        "text": "switch off {HAENT}",
+        "args": {}
+      },
+      {
+        "text": "turn on the {HAROOM} lights",
+        "args": {}
+      },
+      {
+        "text": "turn off the {HAROOM} lights",
+        "args": {}
+      },
+      {
+        "text": "dim the {HAROOM} lights",
+        "args": {}
+      },
+      {
+        "text": "dim the {HAROOM} lights to {CPCT} percent",
+        "args": {}
+      },
+      {
+        "text": "brighten the {HAROOM} lights",
+        "args": {}
+      },
+      {
+        "text": "set the {HAROOM} lights to {CPCT} percent",
+        "args": {}
+      },
+      {
+        "text": "set the {HAROOM} to {CTEMP} degrees",
+        "args": {}
+      },
+      {
+        "text": "set the thermostat to {CTEMP} degrees",
+        "args": {}
+      },
+      {
+        "text": "turn the heating up to {CTEMP}",
+        "args": {}
+      },
+      {
+        "text": "make it {CTEMP} degrees in the {HAROOM}",
+        "args": {}
+      },
+      {
+        "text": "put the {HAROOM} lights on",
+        "args": {}
+      },
+      {
+        "text": "can you switch off {HAENT}",
+        "args": {}
+      },
+      {
+        "text": "open the {HAROOM} blinds",
+        "args": {}
+      },
+      {
+        "text": "close the {HAROOM} blinds",
+        "args": {}
+      },
+      {
+        "text": "lock the front door",
+        "args": {}
+      },
+      {
+        "text": "unlock the front door",
+        "args": {}
+      },
+      {
+        "text": "is {HAENT} on",
+        "args": {}
+      },
+      {
+        "text": "is {HAENT} still on",
+        "args": {}
+      },
+      {
+        "text": "did i leave {HAENT} on",
+        "args": {}
+      },
+      {
+        "text": "turn {HAENT} back on",
+        "args": {}
+      },
+      {
+        "text": "shut off {HAENT}",
+        "args": {}
+      },
+      {
+        "text": "kill {HAENT}",
+        "args": {}
+      },
+      {
+        "text": "lights on in the {HAROOM}",
+        "args": {}
+      },
+      {
+        "text": "lights off in the {HAROOM}",
+        "args": {}
+      },
+      {
+        "text": "turn the {HAROOM} lights down a bit",
+        "args": {}
+      },
+      {
+        "text": "turn the {HAROOM} lights right down",
+        "args": {}
+      },
+      {
+        "text": "set the brightness of the {HAROOM} lights to {CPCT} percent",
+        "args": {}
+      },
+      {
+        "text": "drop the temperature to {CTEMP}",
+        "args": {}
+      },
+      {
+        "text": "bump the thermostat up to {CTEMP}",
+        "args": {}
+      },
+      {
+        "text": "cool the {HAROOM} down to {CTEMP}",
+        "args": {}
+      },
+      {
+        "text": "warm the {HAROOM} up to {CTEMP}",
+        "args": {}
+      },
+      {
+        "text": "activate movie night scene",
+        "args": {}
+      },
+      {
+        "text": "run the good morning scene",
+        "args": {}
+      },
+      {
+        "text": "set the scene for movie night",
+        "args": {}
+      },
+      {
+        "text": "start the bedtime scene",
+        "args": {}
+      },
+      {
+        "text": "is the garage door open",
+        "args": {}
+      },
+      {
+        "text": "close the garage door",
+        "args": {}
+      },
+      {
+        "text": "open the garage door",
+        "args": {}
+      },
+      {
+        "text": "where is dad",
+        "args": {}
+      },
+      {
+        "text": "where is mum",
+        "args": {}
+      },
+      {
+        "text": "where is everyone",
+        "args": {}
+      },
+      {
+        "text": "is anyone home",
+        "args": {}
+      },
+      {
+        "text": "turn everything off",
+        "args": {}
+      },
+      {
+        "text": "turn all the lights off",
+        "args": {}
+      },
+      {
+        "text": "turn off all the lights downstairs",
+        "args": {}
+      },
+      {
+        "text": "switch the {HAROOM} lamp on",
+        "args": {}
+      },
+      {
+        "text": "can you dim {HAENT}",
+        "args": {}
+      },
+      {
+        "text": "put {HAENT} on",
+        "args": {}
+      },
+      {
+        "text": "set {HAENT} to {CPCT} percent",
+        "args": {}
+      },
+      {
+        "text": "turn the fan on in the {HAROOM}",
+        "args": {}
+      },
+      {
+        "text": "is the {HAROOM} light on",
+        "args": {}
+      }
+    ]
+  },
+  "dev.heyari.music": {
+    "target": 400,
+    "cap": 16,
+    "frames": [
+      {
+        "text": "play {SONG}",
+        "args": {
+          "query": "{SONG}"
+        }
+      },
+      {
+        "text": "put on {SONG}",
+        "args": {
+          "query": "{SONG}"
+        }
+      },
+      {
+        "text": "listen to {SONG}",
+        "args": {
+          "query": "{SONG}"
+        }
+      },
+      {
+        "text": "i want to hear {SONG}",
+        "args": {
+          "query": "{SONG}"
+        }
+      },
+      {
+        "text": "can you play {SONG}",
+        "args": {
+          "query": "{SONG}"
+        }
+      },
+      {
+        "text": "play {SONG} on {SERVICE}",
+        "args": {
+          "query": "{SONG}",
+          "service": "{SERVICE}"
+        }
+      },
+      {
+        "text": "put on {SONG} on {SERVICE}",
+        "args": {
+          "query": "{SONG}",
+          "service": "{SERVICE}"
+        }
+      },
+      {
+        "text": "stick on {SONG}",
+        "args": {
+          "query": "{SONG}"
+        }
+      },
+      {
+        "text": "play me {SONG}",
+        "args": {
+          "query": "{SONG}"
+        }
+      },
+      {
+        "text": "put {SONG} on",
+        "args": {
+          "query": "{SONG}"
+        }
+      },
+      {
+        "text": "play some {ARTIST}",
+        "args": {
+          "query": "{ARTIST}"
+        }
+      },
+      {
+        "text": "put on some {ARTIST}",
+        "args": {
+          "query": "{ARTIST}"
+        }
+      },
+      {
+        "text": "listen to {ARTIST}",
+        "args": {
+          "query": "{ARTIST}"
+        }
+      },
+      {
+        "text": "play {ARTIST}",
+        "args": {
+          "query": "{ARTIST}"
+        }
+      },
+      {
+        "text": "i fancy some {ARTIST}",
+        "args": {
+          "query": "{ARTIST}"
+        }
+      },
+      {
+        "text": "play a bit of {ARTIST}",
+        "args": {
+          "query": "{ARTIST}"
+        }
+      },
+      {
+        "text": "put on {ARTIST} on {SERVICE}",
+        "args": {
+          "query": "{ARTIST}",
+          "service": "{SERVICE}"
+        }
+      },
+      {
+        "text": "play some {ARTIST} on {SERVICE}",
+        "args": {
+          "query": "{ARTIST}",
+          "service": "{SERVICE}"
+        }
+      },
+      {
+        "text": "can we have some {ARTIST}",
+        "args": {
+          "query": "{ARTIST}"
+        }
+      },
+      {
+        "text": "shuffle some {ARTIST}",
+        "args": {
+          "query": "{ARTIST}"
+        }
+      },
+      {
+        "text": "put on some {GENRE}",
+        "args": {
+          "query": "{GENRE}"
+        }
+      },
+      {
+        "text": "play some {GENRE}",
+        "args": {
+          "query": "{GENRE}"
+        }
+      },
+      {
+        "text": "i want to listen to {GENRE}",
+        "args": {
+          "query": "{GENRE}"
+        }
+      },
+      {
+        "text": "put on a bit of {GENRE}",
+        "args": {
+          "query": "{GENRE}"
+        }
+      },
+      {
+        "text": "some {GENRE} please",
+        "args": {
+          "query": "{GENRE}"
+        }
+      },
+      {
+        "text": "throw on some {GENRE}",
+        "args": {
+          "query": "{GENRE}"
+        }
+      },
+      {
+        "text": "play something {MOOD}",
+        "args": {
+          "query": "{MOOD}"
+        }
+      },
+      {
+        "text": "put on something {MOOD}",
+        "args": {
+          "query": "{MOOD}"
+        }
+      },
+      {
+        "text": "i want something {MOOD}",
+        "args": {
+          "query": "{MOOD}"
+        }
+      },
+      {
+        "text": "pause",
+        "args": {
+          "action": "pause"
+        }
+      },
+      {
+        "text": "pause the music",
+        "args": {
+          "action": "pause"
+        }
+      },
+      {
+        "text": "resume",
+        "args": {
+          "action": "resume"
+        }
+      },
+      {
+        "text": "resume the music",
+        "args": {
+          "action": "resume"
+        }
+      },
+      {
+        "text": "keep playing",
+        "args": {
+          "action": "resume"
+        }
+      },
+      {
+        "text": "next",
+        "args": {
+          "action": "next"
+        }
+      },
+      {
+        "text": "skip this track",
+        "args": {
+          "action": "next"
+        }
+      },
+      {
+        "text": "next song",
+        "args": {
+          "action": "next"
+        }
+      },
+      {
+        "text": "go back a track",
+        "args": {
+          "action": "previous"
+        }
+      },
+      {
+        "text": "previous",
+        "args": {
+          "action": "previous"
+        }
+      },
+      {
+        "text": "play the last song again",
+        "args": {
+          "action": "previous"
+        }
+      },
+      {
+        "text": "stop playing",
+        "args": {
+          "action": "stop"
+        }
+      },
+      {
+        "text": "turn the music off",
+        "args": {
+          "action": "stop"
+        }
+      },
+      {
+        "text": "turn the music up",
+        "args": {
+          "action": "volume_up"
+        }
+      },
+      {
+        "text": "louder",
+        "args": {
+          "action": "volume_up"
+        }
+      },
+      {
+        "text": "crank it up",
+        "args": {
+          "action": "volume_up"
+        }
+      },
+      {
+        "text": "turn the music down",
+        "args": {
+          "action": "volume_down"
+        }
+      },
+      {
+        "text": "quieter",
+        "args": {
+          "action": "volume_down"
+        }
+      },
+      {
+        "text": "bit quieter please",
+        "args": {
+          "action": "volume_down"
+        }
+      },
+      {
+        "text": "mute the music",
+        "args": {
+          "action": "mute"
+        }
+      },
+      {
+        "text": "mute it",
+        "args": {
+          "action": "mute"
+        }
+      },
+      {
+        "text": "set the volume to 50",
+        "args": {
+          "action": "volume_set",
+          "level": 50
+        }
+      },
+      {
+        "text": "set the volume to 30",
+        "args": {
+          "action": "volume_set",
+          "level": 30
+        }
+      },
+      {
+        "text": "set the volume to 70",
+        "args": {
+          "action": "volume_set",
+          "level": 70
+        }
+      },
+      {
+        "text": "put the volume at 20",
+        "args": {
+          "action": "volume_set",
+          "level": 20
+        }
+      },
+      {
+        "text": "turn the volume up to 80",
+        "args": {
+          "action": "volume_set",
+          "level": 80
+        }
+      }
+    ]
+  },
+  "dev.heyari.navigation": {
+    "target": 400,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "take me to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "navigate to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "directions to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "how do i get to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "show me the way to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "get me to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "drive me to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "bring me to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "route to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "i need directions to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "guide me to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "can you take me to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "set a route to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "plot a course to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "put {DEST} in the sat nav",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "fire up the sat nav for {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "i want to go to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "lets head to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "whats the best way to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "whats the quickest route to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "find me a route to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "i need to get to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "help me get to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "start navigation to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "map a route to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "take me over to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "get directions for {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "navigate me to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "sat nav to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "lead the way to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "i want to drive to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "head for {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "can you navigate to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "work out a route to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "show me how to get to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "point me towards {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "get me over to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "i need to drive to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "directions please to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "take me down to {DEST}",
+        "args": {
+          "destination": "{DEST}"
+        }
+      },
+      {
+        "text": "get me home",
+        "args": {
+          "destination": "home"
+        }
+      },
+      {
+        "text": "navigate home",
+        "args": {
+          "destination": "home"
+        }
+      },
+      {
+        "text": "drive me home",
+        "args": {
+          "destination": "home"
+        }
+      },
+      {
+        "text": "quickest way home",
+        "args": {
+          "destination": "home"
+        }
+      },
+      {
+        "text": "i want to head home",
+        "args": {
+          "destination": "home"
+        }
+      },
+      {
+        "text": "get me to work",
+        "args": {
+          "destination": "work"
+        }
+      },
+      {
+        "text": "directions to work",
+        "args": {
+          "destination": "work"
+        }
+      },
+      {
+        "text": "navigate to the office",
+        "args": {
+          "destination": "office"
+        }
+      },
+      {
+        "text": "take me to my house",
+        "args": {
+          "destination": "my house"
+        }
+      },
+      {
+        "text": "bring me home",
+        "args": {
+          "destination": "home"
+        }
+      },
+      {
+        "text": "how do i get home from here",
+        "args": {
+          "destination": "home"
+        }
+      },
+      {
+        "text": "sat nav home",
+        "args": {
+          "destination": "home"
+        }
+      },
+      {
+        "text": "start driving me home",
+        "args": {
+          "destination": "home"
+        }
+      },
+      {
+        "text": "route me home",
+        "args": {
+          "destination": "home"
+        }
+      },
+      {
+        "text": "get me back home",
+        "args": {
+          "destination": "home"
+        }
+      }
+    ]
+  },
+  "dev.heyari.reminder": {
+    "target": 400,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "remind me to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "can you remind me to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "set a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "remind me {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "ping me to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "give me a nudge to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "buzz me {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "dont let me forget to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "make sure i {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "remind me to {REMTXT} {WHEN} please",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "set a reminder for me to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "nudge me to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "tell me {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "prompt me to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "can you make sure i remember to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "flag me to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "can you nudge me {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "give me a heads up {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "i mustnt forget to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "remember for me to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "set a reminder {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "quick reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "i keep forgetting to {REMTXT} remind me {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "drop a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "schedule a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "remind me to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "can you remind me to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "set a reminder to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "i need a reminder to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "dont let me forget to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "add a reminder to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "jot down a reminder to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "make a reminder to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "i want a reminder to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "set myself a reminder to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "add {ITEM} to my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "put {ITEM} on my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "add {ITEM} to the {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "can you add {ITEM} to my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "stick {ITEM} on the {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "i need {ITEM} on my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "pop {ITEM} on the {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "throw {ITEM} on the {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "add {ITEM} to the {LIST} list please",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "put {ITEM} on the {LIST} list for me",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "add {ITEM} to my shopping list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "shopping"
+        }
+      },
+      {
+        "text": "put {ITEM} on the shopping list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "shopping"
+        }
+      },
+      {
+        "text": "we need {ITEM} add it to the shopping list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "shopping"
+        }
+      },
+      {
+        "text": "add {ITEM} to the grocery list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "grocery"
+        }
+      },
+      {
+        "text": "put {ITEM} on my grocery list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "grocery"
+        }
+      },
+      {
+        "text": "i need to buy {ITEM} add it to my shopping list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "shopping"
+        }
+      },
+      {
+        "text": "remind me to {REMTXT} at some point",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "give me a reminder to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "note down a reminder to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      }
+    ]
+  },
+  "dev.heyari.timer": {
+    "target": 400,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "set a timer for {CMIN} minutes",
+        "args": {}
+      },
+      {
+        "text": "set a {CMIN} minute timer",
+        "args": {}
+      },
+      {
+        "text": "set a {CMIN} minute {TIMERNAME} timer",
+        "args": {}
+      },
+      {
+        "text": "set a {TIMERNAME} timer for {CMIN} minutes",
+        "args": {}
+      },
+      {
+        "text": "start a timer for {CMIN} minutes",
+        "args": {}
+      },
+      {
+        "text": "start a {CMIN} minute timer",
+        "args": {}
+      },
+      {
+        "text": "put a timer on for {CMIN} minutes",
+        "args": {}
+      },
+      {
+        "text": "give me a timer for {CMIN} minutes",
+        "args": {}
+      },
+      {
+        "text": "timer for {CMIN} minutes",
+        "args": {}
+      },
+      {
+        "text": "can you set a timer for {CMIN} minutes",
+        "args": {}
+      },
+      {
+        "text": "set a timer for {CHRS} hours",
+        "args": {}
+      },
+      {
+        "text": "set a {CHRS} hour timer",
+        "args": {}
+      },
+      {
+        "text": "set a timer for {CHRS} hours and {CMIN} minutes",
+        "args": {}
+      },
+      {
+        "text": "give me {CMIN} minutes for the {TIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "{CMIN} minute countdown for the {TIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "count down {CMIN} minutes for me",
+        "args": {}
+      },
+      {
+        "text": "i need a {CMIN} minute countdown",
+        "args": {}
+      },
+      {
+        "text": "countdown from {CMIN} minutes",
+        "args": {}
+      },
+      {
+        "text": "count down from {CMIN} minutes for the {TIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "let me know when {CMIN} minutes are up",
+        "args": {}
+      },
+      {
+        "text": "tell me when {CMIN} minutes have passed",
+        "args": {}
+      },
+      {
+        "text": "i want a countdown of {CMIN} minutes",
+        "args": {}
+      },
+      {
+        "text": "kick off a {CMIN} minute timer for {TIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "start a {CMIN} minute countdown for the {TIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "set the {TIMERNAME} timer for {CMIN} minutes",
+        "args": {}
+      },
+      {
+        "text": "set a timer for the {TIMERNAME} for {CMIN} minutes",
+        "args": {}
+      },
+      {
+        "text": "put a {CMIN} minute timer on for the {TIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "set a timer for {CMIN} minutes and another for {CMIN2} minutes",
+        "args": {}
+      },
+      {
+        "text": "set one timer for {CMIN} minutes and another for {CMIN2}",
+        "args": {}
+      },
+      {
+        "text": "i need two timers {CMIN} minutes and {CMIN2} minutes",
+        "args": {}
+      },
+      {
+        "text": "how much time is left on my {TIMERNAME} timer",
+        "args": {}
+      },
+      {
+        "text": "how long left on the {TIMERNAME} timer",
+        "args": {}
+      },
+      {
+        "text": "hows my {TIMERNAME} timer doing",
+        "args": {}
+      },
+      {
+        "text": "time left on the {TIMERNAME} timer",
+        "args": {}
+      },
+      {
+        "text": "how long is left on the {TIMERNAME} timer",
+        "args": {}
+      },
+      {
+        "text": "is the {TIMERNAME} timer done yet",
+        "args": {}
+      },
+      {
+        "text": "how much longer on the {TIMERNAME} timer",
+        "args": {}
+      },
+      {
+        "text": "whats left on my {TIMERNAME} timer",
+        "args": {}
+      },
+      {
+        "text": "how many minutes left on the {TIMERNAME} timer",
+        "args": {}
+      },
+      {
+        "text": "what timers do i have",
+        "args": {}
+      },
+      {
+        "text": "what timers have i got running",
+        "args": {}
+      },
+      {
+        "text": "list my timers",
+        "args": {}
+      },
+      {
+        "text": "show me my timers",
+        "args": {}
+      },
+      {
+        "text": "how many timers do i have going",
+        "args": {}
+      },
+      {
+        "text": "cancel my {TIMERNAME} timer",
+        "args": {}
+      },
+      {
+        "text": "stop the {TIMERNAME} timer",
+        "args": {}
+      },
+      {
+        "text": "scrap the {TIMERNAME} timer",
+        "args": {}
+      },
+      {
+        "text": "delete the {TIMERNAME} timer",
+        "args": {}
+      },
+      {
+        "text": "clear the {TIMERNAME} timer",
+        "args": {}
+      },
+      {
+        "text": "cancel the timer",
+        "args": {}
+      },
+      {
+        "text": "stop all my timers",
+        "args": {}
+      },
+      {
+        "text": "get rid of the {TIMERNAME} timer",
+        "args": {}
+      },
+      {
+        "text": "turn off the {TIMERNAME} timer",
+        "args": {}
+      },
+      {
+        "text": "remove the {CMIN} minute timer",
+        "args": {}
+      },
+      {
+        "text": "reset the {TIMERNAME} timer",
+        "args": {}
+      }
+    ]
+  },
+  "dev.heyari.weather": {
+    "target": 400,
+    "cap": 24,
+    "frames": [
+      {
+        "text": "hows the weather looking",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "whats the weather like",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "whats it like out",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "how hot is it",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "is it cold out",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "is it warm outside",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "whats the temperature",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "how windy is it",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "is it raining",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "do i need a jacket",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "should i wear a coat today",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "will i need an umbrella today",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "do i need sunglasses today",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "is it going to rain later",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "whats the weather doing today",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "whats the forecast for today",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "is it going to be sunny today",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "how warm will it get today",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "whats the weather tomorrow",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "whats the forecast for tomorrow",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "will it rain tomorrow",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "is it going to be nice tomorrow",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "should i take a coat tomorrow",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "do i need an umbrella tomorrow",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "how cold will it be tomorrow",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "whats the forecast this week",
+        "args": {
+          "location": "",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "whats the weather like this week",
+        "args": {
+          "location": "",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "is it going to rain this week",
+        "args": {
+          "location": "",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "any nice days this week",
+        "args": {
+          "location": "",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "whats the week looking like weather wise",
+        "args": {
+          "location": "",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "whats the weather in {CITY}",
+        "args": {
+          "location": "{CITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "hows the weather in {CITY}",
+        "args": {
+          "location": "{CITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "weather in {CITY}",
+        "args": {
+          "location": "{CITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "whats it like in {CITY} right now",
+        "args": {
+          "location": "{CITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "is it raining in {CITY}",
+        "args": {
+          "location": "{CITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "is it hot in {CITY}",
+        "args": {
+          "location": "{CITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "hows the weather in {CITY} today",
+        "args": {
+          "location": "{CITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "will it rain in {CITY} today",
+        "args": {
+          "location": "{CITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "whats the forecast for {CITY} today",
+        "args": {
+          "location": "{CITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "weather in {CITY} tomorrow",
+        "args": {
+          "location": "{CITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "whats the weather in {CITY} tomorrow",
+        "args": {
+          "location": "{CITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "will it rain in {CITY} tomorrow",
+        "args": {
+          "location": "{CITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "is it going to be cold in {CITY} tomorrow",
+        "args": {
+          "location": "{CITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "whats the forecast for {CITY} this week",
+        "args": {
+          "location": "{CITY}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "whats the weather in {CITY} this week",
+        "args": {
+          "location": "{CITY}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "do i need a coat in {CITY}",
+        "args": {
+          "location": "{CITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "how warm is it in {CITY}",
+        "args": {
+          "location": "{CITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "whats the uv like",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "is the uv high today",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "how strong is the sun today",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "is it going to be windy tomorrow",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "whats the wind doing",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "chance of rain today",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "is there any snow forecast this week",
+        "args": {
+          "location": "",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "how cold is it right now",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      }
+    ]
+  },
+  "dev.heyari.coinflip": {
+    "target": 400,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "flip a coin for me",
+        "args": {}
+      },
+      {
+        "text": "give the coin a flip",
+        "args": {}
+      },
+      {
+        "text": "flip me a coin",
+        "args": {}
+      },
+      {
+        "text": "can you toss a coin",
+        "args": {}
+      },
+      {
+        "text": "toss a coin for me",
+        "args": {}
+      },
+      {
+        "text": "throw a coin",
+        "args": {}
+      },
+      {
+        "text": "flip it",
+        "args": {}
+      },
+      {
+        "text": "toss it",
+        "args": {}
+      },
+      {
+        "text": "give it a toss",
+        "args": {}
+      },
+      {
+        "text": "do a coin toss",
+        "args": {}
+      },
+      {
+        "text": "coin flip please",
+        "args": {}
+      },
+      {
+        "text": "flip the coin",
+        "args": {}
+      },
+      {
+        "text": "toss the coin",
+        "args": {}
+      },
+      {
+        "text": "lets flip a coin",
+        "args": {}
+      },
+      {
+        "text": "lets toss a coin",
+        "args": {}
+      },
+      {
+        "text": "flip a coin quick",
+        "args": {}
+      },
+      {
+        "text": "quick coin flip",
+        "args": {}
+      },
+      {
+        "text": "just flip a coin",
+        "args": {}
+      },
+      {
+        "text": "flip a coin and tell me",
+        "args": {}
+      },
+      {
+        "text": "heads or tails then",
+        "args": {}
+      },
+      {
+        "text": "call it heads or tails",
+        "args": {}
+      },
+      {
+        "text": "is it heads or tails",
+        "args": {}
+      },
+      {
+        "text": "heads or tails go on",
+        "args": {}
+      },
+      {
+        "text": "lets do heads or tails",
+        "args": {}
+      },
+      {
+        "text": "give me heads or tails",
+        "args": {}
+      },
+      {
+        "text": "whats it going to be heads or tails",
+        "args": {}
+      },
+      {
+        "text": "flip for heads or tails",
+        "args": {}
+      },
+      {
+        "text": "call heads or tails for me",
+        "args": {}
+      },
+      {
+        "text": "lets settle this with a coin",
+        "args": {}
+      },
+      {
+        "text": "settle it with a coin flip",
+        "args": {}
+      },
+      {
+        "text": "flip a coin to decide",
+        "args": {}
+      },
+      {
+        "text": "toss a coin to decide",
+        "args": {}
+      },
+      {
+        "text": "decide this with a coin flip",
+        "args": {}
+      },
+      {
+        "text": "flip a coin and let fate decide",
+        "args": {}
+      },
+      {
+        "text": "let the coin decide",
+        "args": {}
+      },
+      {
+        "text": "leave it to the coin",
+        "args": {}
+      },
+      {
+        "text": "let a coin flip decide",
+        "args": {}
+      },
+      {
+        "text": "coin flip to settle it",
+        "args": {}
+      },
+      {
+        "text": "flip a coin to settle the bet",
+        "args": {}
+      },
+      {
+        "text": "toss up",
+        "args": {}
+      },
+      {
+        "text": "give me a toss up",
+        "args": {}
+      },
+      {
+        "text": "do a toss up",
+        "args": {}
+      },
+      {
+        "text": "lets have a toss up",
+        "args": {}
+      },
+      {
+        "text": "call it in the air",
+        "args": {}
+      },
+      {
+        "text": "flip a coin call it",
+        "args": {}
+      },
+      {
+        "text": "flip and ill call it",
+        "args": {}
+      },
+      {
+        "text": "lets flip for who goes first",
+        "args": {}
+      },
+      {
+        "text": "flip a coin to see who wins",
+        "args": {}
+      },
+      {
+        "text": "toss a coin to break the tie",
+        "args": {}
+      },
+      {
+        "text": "break the tie with a coin flip",
+        "args": {}
+      },
+      {
+        "text": "flip a coin i cant decide",
+        "args": {}
+      },
+      {
+        "text": "i cant decide flip a coin",
+        "args": {}
+      },
+      {
+        "text": "help me pick flip a coin",
+        "args": {}
+      },
+      {
+        "text": "flip a coin its too close to call",
+        "args": {}
+      },
+      {
+        "text": "cant make my mind up flip a coin",
+        "args": {}
+      },
+      {
+        "text": "flip a coin best of three",
+        "args": {}
+      },
+      {
+        "text": "do the coin flip thing",
+        "args": {}
+      },
+      {
+        "text": "give the coin a toss",
+        "args": {}
+      },
+      {
+        "text": "spin a coin",
+        "args": {}
+      },
+      {
+        "text": "flick a coin",
+        "args": {}
+      },
+      {
+        "text": "flick a coin for me",
+        "args": {}
+      },
+      {
+        "text": "toss a coin real quick",
+        "args": {}
+      },
+      {
+        "text": "flip a coin real quick",
+        "args": {}
+      },
+      {
+        "text": "one coin flip please",
+        "args": {}
+      },
+      {
+        "text": "another coin flip",
+        "args": {}
+      },
+      {
+        "text": "flip again",
+        "args": {}
+      },
+      {
+        "text": "toss again",
+        "args": {}
+      },
+      {
+        "text": "flip the coin one more time",
+        "args": {}
+      },
+      {
+        "text": "lets flip once more",
+        "args": {}
+      },
+      {
+        "text": "go on flip a coin",
+        "args": {}
+      },
+      {
+        "text": "would you flip a coin",
+        "args": {}
+      },
+      {
+        "text": "could you toss a coin for me",
+        "args": {}
+      },
+      {
+        "text": "mind flipping a coin",
+        "args": {}
+      },
+      {
+        "text": "fancy flipping a coin",
+        "args": {}
+      },
+      {
+        "text": "flip a coin will you",
+        "args": {}
+      },
+      {
+        "text": "chuck a coin",
+        "args": {}
+      },
+      {
+        "text": "flip a coin and see",
+        "args": {}
+      },
+      {
+        "text": "lets see heads or tails",
+        "args": {}
+      },
+      {
+        "text": "gimme a coin flip",
+        "args": {}
+      },
+      {
+        "text": "gimme heads or tails",
+        "args": {}
+      },
+      {
+        "text": "call the coin",
+        "args": {}
+      },
+      {
+        "text": "flip the coin for me please",
+        "args": {}
+      },
+      {
+        "text": "toss the coin for me please",
+        "args": {}
+      },
+      {
+        "text": "lets flip on it",
+        "args": {}
+      },
+      {
+        "text": "flip on it",
+        "args": {}
+      },
+      {
+        "text": "flip a coin ill go with that",
+        "args": {}
+      },
+      {
+        "text": "random heads or tails",
+        "args": {}
+      },
+      {
+        "text": "pick one heads or tails",
+        "args": {}
+      },
+      {
+        "text": "flip a coin to choose",
+        "args": {}
+      },
+      {
+        "text": "toss a coin to choose",
+        "args": {}
+      }
+    ]
+  },
+  "dev.heyari.githubzen": {
+    "target": 400,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "github zen please",
+        "args": {}
+      },
+      {
+        "text": "give me some github zen",
+        "args": {}
+      },
+      {
+        "text": "hit me with some github zen",
+        "args": {}
+      },
+      {
+        "text": "show me the github zen",
+        "args": {}
+      },
+      {
+        "text": "whats the github zen",
+        "args": {}
+      },
+      {
+        "text": "fetch me a github zen",
+        "args": {}
+      },
+      {
+        "text": "github zen quote",
+        "args": {}
+      },
+      {
+        "text": "a bit of github zen please",
+        "args": {}
+      },
+      {
+        "text": "some zen please",
+        "args": {}
+      },
+      {
+        "text": "give me some zen",
+        "args": {}
+      },
+      {
+        "text": "hit me with some zen",
+        "args": {}
+      },
+      {
+        "text": "i could use some zen",
+        "args": {}
+      },
+      {
+        "text": "share some zen",
+        "args": {}
+      },
+      {
+        "text": "drop some zen on me",
+        "args": {}
+      },
+      {
+        "text": "a little zen please",
+        "args": {}
+      },
+      {
+        "text": "zen me",
+        "args": {}
+      },
+      {
+        "text": "give me a zen quote",
+        "args": {}
+      },
+      {
+        "text": "read me some zen",
+        "args": {}
+      },
+      {
+        "text": "whats todays zen",
+        "args": {}
+      },
+      {
+        "text": "any zen for me",
+        "args": {}
+      },
+      {
+        "text": "lay some zen on me",
+        "args": {}
+      },
+      {
+        "text": "i need some zen",
+        "args": {}
+      },
+      {
+        "text": "gimme zen",
+        "args": {}
+      },
+      {
+        "text": "tell me a zen saying",
+        "args": {}
+      },
+      {
+        "text": "some words of zen please",
+        "args": {}
+      },
+      {
+        "text": "a zen one liner please",
+        "args": {}
+      },
+      {
+        "text": "give me a piece of wisdom",
+        "args": {}
+      },
+      {
+        "text": "share a piece of wisdom",
+        "args": {}
+      },
+      {
+        "text": "hit me with some wisdom",
+        "args": {}
+      },
+      {
+        "text": "drop some wisdom on me",
+        "args": {}
+      },
+      {
+        "text": "give me some wisdom",
+        "args": {}
+      },
+      {
+        "text": "a bit of wisdom please",
+        "args": {}
+      },
+      {
+        "text": "lay some wisdom on me",
+        "args": {}
+      },
+      {
+        "text": "i need some wisdom",
+        "args": {}
+      },
+      {
+        "text": "some wisdom for the day",
+        "args": {}
+      },
+      {
+        "text": "give me a nugget of wisdom",
+        "args": {}
+      },
+      {
+        "text": "share a nugget of wisdom",
+        "args": {}
+      },
+      {
+        "text": "wisdom please",
+        "args": {}
+      },
+      {
+        "text": "got any wisdom for me",
+        "args": {}
+      },
+      {
+        "text": "any wisdom to share",
+        "args": {}
+      },
+      {
+        "text": "teach me something wise",
+        "args": {}
+      },
+      {
+        "text": "tell me something wise",
+        "args": {}
+      },
+      {
+        "text": "say something wise to me",
+        "args": {}
+      },
+      {
+        "text": "give me something wise",
+        "args": {}
+      },
+      {
+        "text": "a wise word please",
+        "args": {}
+      },
+      {
+        "text": "share a wise word",
+        "args": {}
+      },
+      {
+        "text": "give me a wise saying",
+        "args": {}
+      },
+      {
+        "text": "tell me a wise saying",
+        "args": {}
+      },
+      {
+        "text": "something wise please",
+        "args": {}
+      },
+      {
+        "text": "a wise thought please",
+        "args": {}
+      },
+      {
+        "text": "inspire me with some wisdom",
+        "args": {}
+      },
+      {
+        "text": "give me a wise one liner",
+        "args": {}
+      },
+      {
+        "text": "drop a wise line on me",
+        "args": {}
+      },
+      {
+        "text": "words of wisdom please",
+        "args": {}
+      },
+      {
+        "text": "give me your best wisdom",
+        "args": {}
+      },
+      {
+        "text": "some sage advice please",
+        "args": {}
+      },
+      {
+        "text": "share some sage wisdom",
+        "args": {}
+      },
+      {
+        "text": "hit me with a wise quote",
+        "args": {}
+      },
+      {
+        "text": "a wise quote please",
+        "args": {}
+      },
+      {
+        "text": "give me a wise quote",
+        "args": {}
+      },
+      {
+        "text": "read me a piece of wisdom",
+        "args": {}
+      },
+      {
+        "text": "i want some wisdom",
+        "args": {}
+      },
+      {
+        "text": "hand me some wisdom",
+        "args": {}
+      },
+      {
+        "text": "can i get some wisdom",
+        "args": {}
+      },
+      {
+        "text": "wisdom for the road please",
+        "args": {}
+      },
+      {
+        "text": "give me a zen thought",
+        "args": {}
+      },
+      {
+        "text": "a zen thought please",
+        "args": {}
+      },
+      {
+        "text": "share a zen thought",
+        "args": {}
+      },
+      {
+        "text": "some zen wisdom please",
+        "args": {}
+      },
+      {
+        "text": "give me some zen wisdom",
+        "args": {}
+      },
+      {
+        "text": "a bit of zen wisdom",
+        "args": {}
+      },
+      {
+        "text": "zen wisdom please",
+        "args": {}
+      },
+      {
+        "text": "bestow some wisdom on me",
+        "args": {}
+      },
+      {
+        "text": "enlighten me with some wisdom",
+        "args": {}
+      },
+      {
+        "text": "a little wisdom to start the day",
+        "args": {}
+      },
+      {
+        "text": "start me off with some wisdom",
+        "args": {}
+      },
+      {
+        "text": "a wise thought to ponder please",
+        "args": {}
+      },
+      {
+        "text": "share a wise thought for the day",
+        "args": {}
+      },
+      {
+        "text": "dish out some wisdom",
+        "args": {}
+      },
+      {
+        "text": "serve me some wisdom",
+        "args": {}
+      },
+      {
+        "text": "offer me some wisdom",
+        "args": {}
+      },
+      {
+        "text": "throw some wisdom my way",
+        "args": {}
+      },
+      {
+        "text": "send some wisdom my way",
+        "args": {}
+      },
+      {
+        "text": "a dose of wisdom please",
+        "args": {}
+      },
+      {
+        "text": "give me my daily wisdom",
+        "args": {}
+      },
+      {
+        "text": "daily zen please",
+        "args": {}
+      },
+      {
+        "text": "my daily dose of zen",
+        "args": {}
+      },
+      {
+        "text": "one more piece of wisdom",
+        "args": {}
+      },
+      {
+        "text": "give me a wise little saying",
+        "args": {}
+      },
+      {
+        "text": "give me a bit of github wisdom",
+        "args": {}
+      }
+    ]
+  },
+  "dev.heyari.wasmecho": {
+    "target": 400,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "run wasm echo",
+        "args": {}
+      },
+      {
+        "text": "run the wasm echo",
+        "args": {}
+      },
+      {
+        "text": "wasm echo test",
+        "args": {}
+      },
+      {
+        "text": "do a wasm echo",
+        "args": {}
+      },
+      {
+        "text": "fire the wasm echo",
+        "args": {}
+      },
+      {
+        "text": "trigger the wasm echo",
+        "args": {}
+      },
+      {
+        "text": "call the wasm echo",
+        "args": {}
+      },
+      {
+        "text": "execute wasm echo",
+        "args": {}
+      },
+      {
+        "text": "wasm echo now",
+        "args": {}
+      },
+      {
+        "text": "lets run wasm echo",
+        "args": {}
+      },
+      {
+        "text": "run the echo test",
+        "args": {}
+      },
+      {
+        "text": "do the echo test",
+        "args": {}
+      },
+      {
+        "text": "echo test please",
+        "args": {}
+      },
+      {
+        "text": "run an echo test",
+        "args": {}
+      },
+      {
+        "text": "quick echo test",
+        "args": {}
+      },
+      {
+        "text": "try the echo test",
+        "args": {}
+      },
+      {
+        "text": "run the echo skill",
+        "args": {}
+      },
+      {
+        "text": "run echo skill",
+        "args": {}
+      },
+      {
+        "text": "call the echo skill",
+        "args": {}
+      },
+      {
+        "text": "fire the echo skill",
+        "args": {}
+      },
+      {
+        "text": "execute the echo skill",
+        "args": {}
+      },
+      {
+        "text": "test the echo skill",
+        "args": {}
+      },
+      {
+        "text": "lets test the echo skill",
+        "args": {}
+      },
+      {
+        "text": "run the wasm loader test",
+        "args": {}
+      },
+      {
+        "text": "check the wasm loader",
+        "args": {}
+      },
+      {
+        "text": "run a wasm loader test",
+        "args": {}
+      },
+      {
+        "text": "wasm loader test please",
+        "args": {}
+      },
+      {
+        "text": "smoke test the wasm loader",
+        "args": {}
+      },
+      {
+        "text": "run the wasm smoke test",
+        "args": {}
+      },
+      {
+        "text": "do the wasm smoke test",
+        "args": {}
+      },
+      {
+        "text": "wasm smoke test please",
+        "args": {}
+      },
+      {
+        "text": "run a wasm smoke test",
+        "args": {}
+      },
+      {
+        "text": "quick wasm smoke test",
+        "args": {}
+      },
+      {
+        "text": "smoke test the wasm skill",
+        "args": {}
+      },
+      {
+        "text": "test the wasm module",
+        "args": {}
+      },
+      {
+        "text": "run the wasm module test",
+        "args": {}
+      },
+      {
+        "text": "check the wasm module",
+        "args": {}
+      },
+      {
+        "text": "does the wasm loader work",
+        "args": {}
+      },
+      {
+        "text": "is the wasm loader working",
+        "args": {}
+      },
+      {
+        "text": "verify the wasm loader",
+        "args": {}
+      },
+      {
+        "text": "run wasm hello",
+        "args": {}
+      },
+      {
+        "text": "say wasm hello",
+        "args": {}
+      },
+      {
+        "text": "wasm hello please",
+        "args": {}
+      },
+      {
+        "text": "get the wasm greeting",
+        "args": {}
+      },
+      {
+        "text": "run the wasm greeting",
+        "args": {}
+      },
+      {
+        "text": "show me the wasm greeting",
+        "args": {}
+      },
+      {
+        "text": "echo something from wasm",
+        "args": {}
+      },
+      {
+        "text": "make the wasm skill echo",
+        "args": {}
+      },
+      {
+        "text": "have the wasm skill echo",
+        "args": {}
+      },
+      {
+        "text": "get the wasm skill to echo",
+        "args": {}
+      },
+      {
+        "text": "run the echo module",
+        "args": {}
+      },
+      {
+        "text": "test the echo module",
+        "args": {}
+      },
+      {
+        "text": "echo module test",
+        "args": {}
+      },
+      {
+        "text": "run echo from wasm",
+        "args": {}
+      },
+      {
+        "text": "wasm echo check",
+        "args": {}
+      },
+      {
+        "text": "do a wasm echo check",
+        "args": {}
+      },
+      {
+        "text": "check the wasm echo",
+        "args": {}
+      },
+      {
+        "text": "verify the wasm echo",
+        "args": {}
+      },
+      {
+        "text": "run the wasm abi test",
+        "args": {}
+      },
+      {
+        "text": "test the wasm abi",
+        "args": {}
+      },
+      {
+        "text": "wasm abi smoke test",
+        "args": {}
+      },
+      {
+        "text": "run the sandbox echo",
+        "args": {}
+      },
+      {
+        "text": "echo from the sandbox",
+        "args": {}
+      },
+      {
+        "text": "test the sandboxed echo",
+        "args": {}
+      },
+      {
+        "text": "run the sandboxed wasm echo",
+        "args": {}
+      },
+      {
+        "text": "give me a wasm echo",
+        "args": {}
+      },
+      {
+        "text": "lets do a wasm echo",
+        "args": {}
+      },
+      {
+        "text": "wasm echo one more time",
+        "args": {}
+      },
+      {
+        "text": "run wasm echo again",
+        "args": {}
+      },
+      {
+        "text": "echo test again",
+        "args": {}
+      },
+      {
+        "text": "do the echo smoke test",
+        "args": {}
+      },
+      {
+        "text": "echo smoke test please",
+        "args": {}
+      },
+      {
+        "text": "run the echo smoke test",
+        "args": {}
+      },
+      {
+        "text": "can you run wasm echo",
+        "args": {}
+      },
+      {
+        "text": "could you run the echo test",
+        "args": {}
+      },
+      {
+        "text": "please run the wasm echo",
+        "args": {}
+      },
+      {
+        "text": "kick off the wasm echo",
+        "args": {}
+      },
+      {
+        "text": "kick off an echo test",
+        "args": {}
+      },
+      {
+        "text": "start the wasm echo",
+        "args": {}
+      },
+      {
+        "text": "start the echo test",
+        "args": {}
+      },
+      {
+        "text": "launch the wasm echo",
+        "args": {}
+      },
+      {
+        "text": "launch the echo skill",
+        "args": {}
+      },
+      {
+        "text": "invoke the wasm echo",
+        "args": {}
+      },
+      {
+        "text": "invoke the echo skill",
+        "args": {}
+      },
+      {
+        "text": "ping the wasm echo",
+        "args": {}
+      },
+      {
+        "text": "run wasm echo to check it works",
+        "args": {}
+      },
+      {
+        "text": "echo test to check the loader",
+        "args": {}
+      },
+      {
+        "text": "wasm echo just to be sure",
+        "args": {}
+      },
+      {
+        "text": "one more wasm echo",
+        "args": {}
+      },
+      {
+        "text": "run the wasm echo demo",
+        "args": {}
+      }
+    ]
+  }
+}

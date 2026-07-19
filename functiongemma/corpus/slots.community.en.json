@@ -1,0 +1,1280 @@
+{
+  "CITY": [
+    {
+      "surface": "tokyo",
+      "canonical": "tokyo"
+    },
+    {
+      "surface": "valletta",
+      "canonical": "valletta"
+    },
+    {
+      "surface": "london",
+      "canonical": "london"
+    },
+    {
+      "surface": "paris",
+      "canonical": "paris"
+    },
+    {
+      "surface": "new york",
+      "canonical": "new york"
+    },
+    {
+      "surface": "berlin",
+      "canonical": "berlin"
+    },
+    {
+      "surface": "madrid",
+      "canonical": "madrid"
+    },
+    {
+      "surface": "rome",
+      "canonical": "rome"
+    },
+    {
+      "surface": "dublin",
+      "canonical": "dublin"
+    },
+    {
+      "surface": "edinburgh",
+      "canonical": "edinburgh"
+    },
+    {
+      "surface": "manchester",
+      "canonical": "manchester"
+    },
+    {
+      "surface": "glasgow",
+      "canonical": "glasgow"
+    },
+    {
+      "surface": "sydney",
+      "canonical": "sydney"
+    },
+    {
+      "surface": "melbourne",
+      "canonical": "melbourne"
+    },
+    {
+      "surface": "toronto",
+      "canonical": "toronto"
+    },
+    {
+      "surface": "chicago",
+      "canonical": "chicago"
+    },
+    {
+      "surface": "los angeles",
+      "canonical": "los angeles"
+    },
+    {
+      "surface": "san francisco",
+      "canonical": "san francisco"
+    },
+    {
+      "surface": "amsterdam",
+      "canonical": "amsterdam"
+    },
+    {
+      "surface": "barcelona",
+      "canonical": "barcelona"
+    },
+    {
+      "surface": "lisbon",
+      "canonical": "lisbon"
+    },
+    {
+      "surface": "vienna",
+      "canonical": "vienna"
+    },
+    {
+      "surface": "prague",
+      "canonical": "prague"
+    },
+    {
+      "surface": "copenhagen",
+      "canonical": "copenhagen"
+    },
+    {
+      "surface": "oslo",
+      "canonical": "oslo"
+    },
+    {
+      "surface": "stockholm",
+      "canonical": "stockholm"
+    },
+    {
+      "surface": "helsinki",
+      "canonical": "helsinki"
+    },
+    {
+      "surface": "reykjavik",
+      "canonical": "reykjavik"
+    },
+    {
+      "surface": "athens",
+      "canonical": "athens"
+    },
+    {
+      "surface": "cairo",
+      "canonical": "cairo"
+    },
+    {
+      "surface": "dubai",
+      "canonical": "dubai"
+    },
+    {
+      "surface": "singapore",
+      "canonical": "singapore"
+    },
+    {
+      "surface": "bangkok",
+      "canonical": "bangkok"
+    },
+    {
+      "surface": "mumbai",
+      "canonical": "mumbai"
+    },
+    {
+      "surface": "cape town",
+      "canonical": "cape town"
+    }
+  ],
+  "ARTIST": [
+    {
+      "surface": "the beatles",
+      "canonical": "the beatles"
+    },
+    {
+      "surface": "pink floyd",
+      "canonical": "pink floyd"
+    },
+    {
+      "surface": "radiohead",
+      "canonical": "radiohead"
+    },
+    {
+      "surface": "led zeppelin",
+      "canonical": "led zeppelin"
+    },
+    {
+      "surface": "queen",
+      "canonical": "queen"
+    },
+    {
+      "surface": "david bowie",
+      "canonical": "david bowie"
+    },
+    {
+      "surface": "fleetwood mac",
+      "canonical": "fleetwood mac"
+    },
+    {
+      "surface": "the rolling stones",
+      "canonical": "the rolling stones"
+    },
+    {
+      "surface": "nirvana",
+      "canonical": "nirvana"
+    },
+    {
+      "surface": "oasis",
+      "canonical": "oasis"
+    },
+    {
+      "surface": "coldplay",
+      "canonical": "coldplay"
+    },
+    {
+      "surface": "adele",
+      "canonical": "adele"
+    },
+    {
+      "surface": "taylor swift",
+      "canonical": "taylor swift"
+    },
+    {
+      "surface": "beyonce",
+      "canonical": "beyonce"
+    },
+    {
+      "surface": "kendrick lamar",
+      "canonical": "kendrick lamar"
+    },
+    {
+      "surface": "miles davis",
+      "canonical": "miles davis"
+    },
+    {
+      "surface": "john coltrane",
+      "canonical": "john coltrane"
+    },
+    {
+      "surface": "bob dylan",
+      "canonical": "bob dylan"
+    },
+    {
+      "surface": "bruce springsteen",
+      "canonical": "bruce springsteen"
+    },
+    {
+      "surface": "the cure",
+      "canonical": "the cure"
+    },
+    {
+      "surface": "arctic monkeys",
+      "canonical": "arctic monkeys"
+    },
+    {
+      "surface": "daft punk",
+      "canonical": "daft punk"
+    },
+    {
+      "surface": "the weeknd",
+      "canonical": "the weeknd"
+    },
+    {
+      "surface": "dua lipa",
+      "canonical": "dua lipa"
+    },
+    {
+      "surface": "amy winehouse",
+      "canonical": "amy winehouse"
+    }
+  ],
+  "SONG": [
+    {
+      "surface": "hotel california",
+      "canonical": "hotel california"
+    },
+    {
+      "surface": "comfortably numb",
+      "canonical": "comfortably numb"
+    },
+    {
+      "surface": "bohemian rhapsody",
+      "canonical": "bohemian rhapsody"
+    },
+    {
+      "surface": "abbey road",
+      "canonical": "abbey road"
+    },
+    {
+      "surface": "thriller",
+      "canonical": "thriller"
+    },
+    {
+      "surface": "stairway to heaven",
+      "canonical": "stairway to heaven"
+    },
+    {
+      "surface": "imagine",
+      "canonical": "imagine"
+    },
+    {
+      "surface": "smells like teen spirit",
+      "canonical": "smells like teen spirit"
+    },
+    {
+      "surface": "wonderwall",
+      "canonical": "wonderwall"
+    },
+    {
+      "surface": "hey jude",
+      "canonical": "hey jude"
+    },
+    {
+      "surface": "sweet child o mine",
+      "canonical": "sweet child o mine"
+    },
+    {
+      "surface": "billie jean",
+      "canonical": "billie jean"
+    },
+    {
+      "surface": "purple rain",
+      "canonical": "purple rain"
+    },
+    {
+      "surface": "no woman no cry",
+      "canonical": "no woman no cry"
+    },
+    {
+      "surface": "blinding lights",
+      "canonical": "blinding lights"
+    },
+    {
+      "surface": "rolling in the deep",
+      "canonical": "rolling in the deep"
+    },
+    {
+      "surface": "uptown funk",
+      "canonical": "uptown funk"
+    },
+    {
+      "surface": "take five",
+      "canonical": "take five"
+    },
+    {
+      "surface": "so what",
+      "canonical": "so what"
+    },
+    {
+      "surface": "bad guy",
+      "canonical": "bad guy"
+    }
+  ],
+  "GENRE": [
+    {
+      "surface": "jazz",
+      "canonical": "jazz"
+    },
+    {
+      "surface": "classical",
+      "canonical": "classical"
+    },
+    {
+      "surface": "blues",
+      "canonical": "blues"
+    },
+    {
+      "surface": "reggae",
+      "canonical": "reggae"
+    },
+    {
+      "surface": "hip hop",
+      "canonical": "hip hop"
+    },
+    {
+      "surface": "techno",
+      "canonical": "techno"
+    },
+    {
+      "surface": "house",
+      "canonical": "house"
+    },
+    {
+      "surface": "drum and bass",
+      "canonical": "drum and bass"
+    },
+    {
+      "surface": "soul",
+      "canonical": "soul"
+    },
+    {
+      "surface": "funk",
+      "canonical": "funk"
+    },
+    {
+      "surface": "country",
+      "canonical": "country"
+    },
+    {
+      "surface": "folk",
+      "canonical": "folk"
+    },
+    {
+      "surface": "metal",
+      "canonical": "metal"
+    },
+    {
+      "surface": "punk",
+      "canonical": "punk"
+    },
+    {
+      "surface": "ambient",
+      "canonical": "ambient"
+    },
+    {
+      "surface": "disco",
+      "canonical": "disco"
+    }
+  ],
+  "MOOD": [
+    {
+      "surface": "relaxing",
+      "canonical": "relaxing music"
+    },
+    {
+      "surface": "upbeat",
+      "canonical": "upbeat music"
+    },
+    {
+      "surface": "chilled",
+      "canonical": "chill music"
+    },
+    {
+      "surface": "mellow",
+      "canonical": "mellow music"
+    },
+    {
+      "surface": "energetic",
+      "canonical": "energetic music"
+    },
+    {
+      "surface": "calm",
+      "canonical": "calm music"
+    },
+    {
+      "surface": "cheerful",
+      "canonical": "cheerful music"
+    },
+    {
+      "surface": "moody",
+      "canonical": "moody music"
+    }
+  ],
+  "SERVICE": [
+    {
+      "surface": "spotify",
+      "canonical": "spotify"
+    },
+    {
+      "surface": "apple music",
+      "canonical": "apple_music"
+    },
+    {
+      "surface": "tidal",
+      "canonical": "tidal"
+    },
+    {
+      "surface": "deezer",
+      "canonical": "deezer"
+    },
+    {
+      "surface": "amazon music",
+      "canonical": "amazon_music"
+    }
+  ],
+  "DEST": [
+    {
+      "surface": "mcdonalds",
+      "canonical": "mcdonalds"
+    },
+    {
+      "surface": "asda",
+      "canonical": "asda"
+    },
+    {
+      "surface": "the train station",
+      "canonical": "the train station"
+    },
+    {
+      "surface": "the airport",
+      "canonical": "the airport"
+    },
+    {
+      "surface": "the museum",
+      "canonical": "the museum"
+    },
+    {
+      "surface": "the nearest pharmacy",
+      "canonical": "the nearest pharmacy"
+    },
+    {
+      "surface": "the hospital",
+      "canonical": "the hospital"
+    },
+    {
+      "surface": "the beach",
+      "canonical": "the beach"
+    },
+    {
+      "surface": "the stadium",
+      "canonical": "the stadium"
+    },
+    {
+      "surface": "my mums house",
+      "canonical": "my mums house"
+    },
+    {
+      "surface": "bristol",
+      "canonical": "bristol"
+    },
+    {
+      "surface": "the nearest petrol station",
+      "canonical": "the nearest petrol station"
+    },
+    {
+      "surface": "the supermarket",
+      "canonical": "the supermarket"
+    },
+    {
+      "surface": "tesco",
+      "canonical": "tesco"
+    },
+    {
+      "surface": "the gym",
+      "canonical": "the gym"
+    },
+    {
+      "surface": "my dentist",
+      "canonical": "my dentist"
+    },
+    {
+      "surface": "the post office",
+      "canonical": "the post office"
+    },
+    {
+      "surface": "the town centre",
+      "canonical": "the town centre"
+    },
+    {
+      "surface": "the nearest atm",
+      "canonical": "the nearest atm"
+    },
+    {
+      "surface": "kings cross station",
+      "canonical": "kings cross station"
+    },
+    {
+      "surface": "heathrow airport",
+      "canonical": "heathrow airport"
+    },
+    {
+      "surface": "the bus station",
+      "canonical": "the bus station"
+    },
+    {
+      "surface": "the harbour",
+      "canonical": "the harbour"
+    },
+    {
+      "surface": "the shopping centre",
+      "canonical": "the shopping centre"
+    },
+    {
+      "surface": "the library",
+      "canonical": "the library"
+    },
+    {
+      "surface": "the nearest car park",
+      "canonical": "the nearest car park"
+    },
+    {
+      "surface": "waterloo station",
+      "canonical": "waterloo station"
+    },
+    {
+      "surface": "my office",
+      "canonical": "my office"
+    },
+    {
+      "surface": "the cinema",
+      "canonical": "the cinema"
+    },
+    {
+      "surface": "the doctors surgery",
+      "canonical": "the doctors surgery"
+    }
+  ],
+  "HAENT": [
+    {
+      "surface": "the kitchen lights",
+      "canonical": "the kitchen lights"
+    },
+    {
+      "surface": "the bedroom lamp",
+      "canonical": "the bedroom lamp"
+    },
+    {
+      "surface": "the living room lights",
+      "canonical": "the living room lights"
+    },
+    {
+      "surface": "the hallway lights",
+      "canonical": "the hallway lights"
+    },
+    {
+      "surface": "the bathroom light",
+      "canonical": "the bathroom light"
+    },
+    {
+      "surface": "the porch light",
+      "canonical": "the porch light"
+    },
+    {
+      "surface": "the garage light",
+      "canonical": "the garage light"
+    },
+    {
+      "surface": "the bedside lamp",
+      "canonical": "the bedside lamp"
+    },
+    {
+      "surface": "the office lights",
+      "canonical": "the office lights"
+    },
+    {
+      "surface": "the dining room lights",
+      "canonical": "the dining room lights"
+    },
+    {
+      "surface": "the garage door",
+      "canonical": "the garage door"
+    },
+    {
+      "surface": "the thermostat",
+      "canonical": "the thermostat"
+    },
+    {
+      "surface": "the bedroom blinds",
+      "canonical": "the bedroom blinds"
+    },
+    {
+      "surface": "the living room blinds",
+      "canonical": "the living room blinds"
+    },
+    {
+      "surface": "the bedroom fan",
+      "canonical": "the bedroom fan"
+    },
+    {
+      "surface": "the living room tv",
+      "canonical": "the living room tv"
+    },
+    {
+      "surface": "the coffee machine",
+      "canonical": "the coffee machine"
+    },
+    {
+      "surface": "the kettle",
+      "canonical": "the kettle"
+    },
+    {
+      "surface": "the heating",
+      "canonical": "the heating"
+    },
+    {
+      "surface": "the air conditioning",
+      "canonical": "the air conditioning"
+    },
+    {
+      "surface": "the outdoor lights",
+      "canonical": "the outdoor lights"
+    },
+    {
+      "surface": "the fairy lights",
+      "canonical": "the fairy lights"
+    }
+  ],
+  "HAROOM": [
+    {
+      "surface": "kitchen",
+      "canonical": "kitchen"
+    },
+    {
+      "surface": "bedroom",
+      "canonical": "bedroom"
+    },
+    {
+      "surface": "living room",
+      "canonical": "living room"
+    },
+    {
+      "surface": "hallway",
+      "canonical": "hallway"
+    },
+    {
+      "surface": "bathroom",
+      "canonical": "bathroom"
+    },
+    {
+      "surface": "office",
+      "canonical": "office"
+    },
+    {
+      "surface": "garage",
+      "canonical": "garage"
+    },
+    {
+      "surface": "dining room",
+      "canonical": "dining room"
+    },
+    {
+      "surface": "landing",
+      "canonical": "landing"
+    },
+    {
+      "surface": "porch",
+      "canonical": "porch"
+    }
+  ],
+  "REMTXT": [
+    {
+      "surface": "call mum",
+      "canonical": "call mum"
+    },
+    {
+      "surface": "take the bins out",
+      "canonical": "take the bins out"
+    },
+    {
+      "surface": "buy milk",
+      "canonical": "buy milk"
+    },
+    {
+      "surface": "walk the dog",
+      "canonical": "walk the dog"
+    },
+    {
+      "surface": "book a dentist appointment",
+      "canonical": "book a dentist appointment"
+    },
+    {
+      "surface": "pay the electricity bill",
+      "canonical": "pay the electricity bill"
+    },
+    {
+      "surface": "water the plants",
+      "canonical": "water the plants"
+    },
+    {
+      "surface": "feed the cat",
+      "canonical": "feed the cat"
+    },
+    {
+      "surface": "pick up the kids",
+      "canonical": "pick up the kids"
+    },
+    {
+      "surface": "call the plumber",
+      "canonical": "call the plumber"
+    },
+    {
+      "surface": "send the invoice",
+      "canonical": "send the invoice"
+    },
+    {
+      "surface": "submit the report",
+      "canonical": "submit the report"
+    },
+    {
+      "surface": "renew my passport",
+      "canonical": "renew my passport"
+    },
+    {
+      "surface": "check the oven",
+      "canonical": "check the oven"
+    },
+    {
+      "surface": "take my medication",
+      "canonical": "take my medication"
+    },
+    {
+      "surface": "ring the bank",
+      "canonical": "ring the bank"
+    },
+    {
+      "surface": "defrost the chicken",
+      "canonical": "defrost the chicken"
+    },
+    {
+      "surface": "put the washing on",
+      "canonical": "put the washing on"
+    },
+    {
+      "surface": "charge my phone",
+      "canonical": "charge my phone"
+    },
+    {
+      "surface": "back up my laptop",
+      "canonical": "back up my laptop"
+    },
+    {
+      "surface": "cancel the subscription",
+      "canonical": "cancel the subscription"
+    },
+    {
+      "surface": "book train tickets",
+      "canonical": "book train tickets"
+    },
+    {
+      "surface": "return the library books",
+      "canonical": "return the library books"
+    },
+    {
+      "surface": "post the parcel",
+      "canonical": "post the parcel"
+    },
+    {
+      "surface": "top up my oyster card",
+      "canonical": "top up my oyster card"
+    },
+    {
+      "surface": "water the garden",
+      "canonical": "water the garden"
+    },
+    {
+      "surface": "phone the doctor",
+      "canonical": "phone the doctor"
+    },
+    {
+      "surface": "move the car",
+      "canonical": "move the car"
+    },
+    {
+      "surface": "email Sarah",
+      "canonical": "email Sarah"
+    },
+    {
+      "surface": "call Grandma",
+      "canonical": "call Grandma"
+    },
+    {
+      "surface": "wish Tom happy birthday",
+      "canonical": "wish Tom happy birthday"
+    }
+  ],
+  "WHEN": [
+    {
+      "surface": "at 5pm",
+      "canonical": "at 5pm"
+    },
+    {
+      "surface": "tonight",
+      "canonical": "tonight"
+    },
+    {
+      "surface": "in 30 minutes",
+      "canonical": "in 30 minutes"
+    },
+    {
+      "surface": "tomorrow morning",
+      "canonical": "tomorrow morning"
+    },
+    {
+      "surface": "in an hour",
+      "canonical": "in an hour"
+    },
+    {
+      "surface": "at 3pm",
+      "canonical": "at 3pm"
+    },
+    {
+      "surface": "this evening",
+      "canonical": "this evening"
+    },
+    {
+      "surface": "at noon",
+      "canonical": "at noon"
+    },
+    {
+      "surface": "at half past seven",
+      "canonical": "at half past seven"
+    },
+    {
+      "surface": "in 20 minutes",
+      "canonical": "in 20 minutes"
+    },
+    {
+      "surface": "at 6am",
+      "canonical": "at 6am"
+    },
+    {
+      "surface": "in two hours",
+      "canonical": "in two hours"
+    },
+    {
+      "surface": "tomorrow afternoon",
+      "canonical": "tomorrow afternoon"
+    },
+    {
+      "surface": "at quarter to nine",
+      "canonical": "at quarter to nine"
+    },
+    {
+      "surface": "at 10pm",
+      "canonical": "at 10pm"
+    },
+    {
+      "surface": "after lunch",
+      "canonical": "after lunch"
+    },
+    {
+      "surface": "at 8 tonight",
+      "canonical": "at 8 tonight"
+    },
+    {
+      "surface": "at 9am tomorrow",
+      "canonical": "at 9am tomorrow"
+    },
+    {
+      "surface": "on Friday at 3",
+      "canonical": "on Friday at 3"
+    },
+    {
+      "surface": "on Monday",
+      "canonical": "on Monday"
+    }
+  ],
+  "ITEM": [
+    {
+      "surface": "milk",
+      "canonical": "milk"
+    },
+    {
+      "surface": "eggs",
+      "canonical": "eggs"
+    },
+    {
+      "surface": "bread",
+      "canonical": "bread"
+    },
+    {
+      "surface": "butter",
+      "canonical": "butter"
+    },
+    {
+      "surface": "coffee",
+      "canonical": "coffee"
+    },
+    {
+      "surface": "bananas",
+      "canonical": "bananas"
+    },
+    {
+      "surface": "kitchen roll",
+      "canonical": "kitchen roll"
+    },
+    {
+      "surface": "washing up liquid",
+      "canonical": "washing up liquid"
+    },
+    {
+      "surface": "dog food",
+      "canonical": "dog food"
+    },
+    {
+      "surface": "batteries",
+      "canonical": "batteries"
+    },
+    {
+      "surface": "tomatoes",
+      "canonical": "tomatoes"
+    },
+    {
+      "surface": "cheese",
+      "canonical": "cheese"
+    },
+    {
+      "surface": "orange juice",
+      "canonical": "orange juice"
+    },
+    {
+      "surface": "toothpaste",
+      "canonical": "toothpaste"
+    },
+    {
+      "surface": "teabags",
+      "canonical": "teabags"
+    },
+    {
+      "surface": "olive oil",
+      "canonical": "olive oil"
+    },
+    {
+      "surface": "rice",
+      "canonical": "rice"
+    },
+    {
+      "surface": "chicken",
+      "canonical": "chicken"
+    },
+    {
+      "surface": "shampoo",
+      "canonical": "shampoo"
+    },
+    {
+      "surface": "bin bags",
+      "canonical": "bin bags"
+    }
+  ],
+  "LIST": [
+    {
+      "surface": "shopping",
+      "canonical": "shopping"
+    },
+    {
+      "surface": "grocery",
+      "canonical": "grocery"
+    },
+    {
+      "surface": "work",
+      "canonical": "work"
+    },
+    {
+      "surface": "todo",
+      "canonical": "todo"
+    },
+    {
+      "surface": "chores",
+      "canonical": "chores"
+    },
+    {
+      "surface": "weekend",
+      "canonical": "weekend"
+    },
+    {
+      "surface": "diy",
+      "canonical": "diy"
+    },
+    {
+      "surface": "party",
+      "canonical": "party"
+    },
+    {
+      "surface": "packing",
+      "canonical": "packing"
+    },
+    {
+      "surface": "reading",
+      "canonical": "reading"
+    }
+  ],
+  "TIMERNAME": [
+    {
+      "surface": "pasta",
+      "canonical": "pasta"
+    },
+    {
+      "surface": "bread",
+      "canonical": "bread"
+    },
+    {
+      "surface": "tea",
+      "canonical": "tea"
+    },
+    {
+      "surface": "eggs",
+      "canonical": "eggs"
+    },
+    {
+      "surface": "pizza",
+      "canonical": "pizza"
+    },
+    {
+      "surface": "laundry",
+      "canonical": "laundry"
+    },
+    {
+      "surface": "chicken",
+      "canonical": "chicken"
+    },
+    {
+      "surface": "rice",
+      "canonical": "rice"
+    },
+    {
+      "surface": "oven",
+      "canonical": "oven"
+    },
+    {
+      "surface": "coffee",
+      "canonical": "coffee"
+    },
+    {
+      "surface": "workout",
+      "canonical": "workout"
+    },
+    {
+      "surface": "meditation",
+      "canonical": "meditation"
+    },
+    {
+      "surface": "parking",
+      "canonical": "parking"
+    },
+    {
+      "surface": "steak",
+      "canonical": "steak"
+    },
+    {
+      "surface": "cake",
+      "canonical": "cake"
+    },
+    {
+      "surface": "cookies",
+      "canonical": "cookies"
+    },
+    {
+      "surface": "nap",
+      "canonical": "nap"
+    },
+    {
+      "surface": "kettle",
+      "canonical": "kettle"
+    }
+  ],
+  "ATIME": [
+    {
+      "surface": "7am",
+      "canonical": "7am"
+    },
+    {
+      "surface": "6:30",
+      "canonical": "6:30"
+    },
+    {
+      "surface": "half past six",
+      "canonical": "half past six"
+    },
+    {
+      "surface": "5:45",
+      "canonical": "5:45"
+    },
+    {
+      "surface": "8am",
+      "canonical": "8am"
+    },
+    {
+      "surface": "quarter to seven",
+      "canonical": "quarter to seven"
+    },
+    {
+      "surface": "five thirty",
+      "canonical": "five thirty"
+    },
+    {
+      "surface": "four am",
+      "canonical": "four am"
+    },
+    {
+      "surface": "half past five",
+      "canonical": "half past five"
+    },
+    {
+      "surface": "6am",
+      "canonical": "6am"
+    },
+    {
+      "surface": "7:15",
+      "canonical": "7:15"
+    },
+    {
+      "surface": "quarter past six",
+      "canonical": "quarter past six"
+    },
+    {
+      "surface": "ten to eight",
+      "canonical": "ten to eight"
+    },
+    {
+      "surface": "9am",
+      "canonical": "9am"
+    },
+    {
+      "surface": "midnight",
+      "canonical": "midnight"
+    },
+    {
+      "surface": "5am",
+      "canonical": "5am"
+    },
+    {
+      "surface": "6:45",
+      "canonical": "6:45"
+    },
+    {
+      "surface": "half seven",
+      "canonical": "half seven"
+    },
+    {
+      "surface": "twenty past six",
+      "canonical": "twenty past six"
+    },
+    {
+      "surface": "ten thirty",
+      "canonical": "ten thirty"
+    },
+    {
+      "surface": "6:15",
+      "canonical": "6:15"
+    },
+    {
+      "surface": "quarter to eight",
+      "canonical": "quarter to eight"
+    },
+    {
+      "surface": "5:15",
+      "canonical": "5:15"
+    },
+    {
+      "surface": "seven fifteen",
+      "canonical": "seven fifteen"
+    }
+  ],
+  "ALABEL": [
+    {
+      "surface": "gym",
+      "canonical": "gym"
+    },
+    {
+      "surface": "work",
+      "canonical": "work"
+    },
+    {
+      "surface": "school",
+      "canonical": "school"
+    },
+    {
+      "surface": "medicine",
+      "canonical": "medicine"
+    },
+    {
+      "surface": "meeting",
+      "canonical": "meeting"
+    },
+    {
+      "surface": "flight",
+      "canonical": "flight"
+    },
+    {
+      "surface": "yoga",
+      "canonical": "yoga"
+    },
+    {
+      "surface": "run",
+      "canonical": "run"
+    },
+    {
+      "surface": "meds",
+      "canonical": "meds"
+    },
+    {
+      "surface": "church",
+      "canonical": "church"
+    }
+  ],
+  "CN1": {
+    "type": "int",
+    "min": 2,
+    "max": 25
+  },
+  "CMIN": {
+    "type": "int",
+    "min": 2,
+    "max": 90
+  },
+  "CMIN2": {
+    "type": "int",
+    "min": 3,
+    "max": 45
+  },
+  "CHRS": {
+    "type": "int",
+    "min": 1,
+    "max": 8
+  },
+  "CPCT": {
+    "type": "int",
+    "min": 5,
+    "max": 95
+  },
+  "CTEMP": {
+    "type": "int",
+    "min": 16,
+    "max": 26
+  }
+}

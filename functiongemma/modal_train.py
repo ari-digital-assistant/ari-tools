@@ -111,7 +111,11 @@ def train(engine_ref: str = "main", skills_ref: str = "main", tools_ref: str = "
     with open(dataset_path, "w") as f:
         subprocess.check_call(
             [sys.executable, f"{WORK_DIR}/ari-tools/functiongemma/generate-dataset.py",
-             "--locale", locale],
+             "--locale", locale,
+             # Frame×slot banks — the Google mobile-actions-scale volume
+             # recipe. Deterministic expansion from committed, reviewed JSON;
+             # fails loudly if a router-eligible skill has no bank.
+             "--augment", f"{WORK_DIR}/ari-tools/functiongemma/corpus"],
             stdout=f,
             env=env,
         )

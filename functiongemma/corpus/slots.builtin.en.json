@@ -1,0 +1,249 @@
+{
+  "N1": {
+    "type": "int",
+    "min": 2,
+    "max": 999
+  },
+  "N2": {
+    "type": "int",
+    "min": 2,
+    "max": 999
+  },
+  "PCT": {
+    "type": "int",
+    "min": 5,
+    "max": 95
+  },
+  "BASE": {
+    "type": "int",
+    "min": 10,
+    "max": 900
+  },
+  "EXP": {
+    "type": "int",
+    "min": 2,
+    "max": 6
+  },
+  "APP": [
+    {
+      "surface": "spotify",
+      "canonical": "Spotify"
+    },
+    {
+      "surface": "youtube",
+      "canonical": "YouTube"
+    },
+    {
+      "surface": "chrome",
+      "canonical": "Chrome"
+    },
+    {
+      "surface": "firefox",
+      "canonical": "Firefox"
+    },
+    {
+      "surface": "gmail",
+      "canonical": "Gmail"
+    },
+    {
+      "surface": "maps",
+      "canonical": "Maps"
+    },
+    {
+      "surface": "google maps",
+      "canonical": "Google Maps"
+    },
+    {
+      "surface": "whatsapp",
+      "canonical": "WhatsApp"
+    },
+    {
+      "surface": "telegram",
+      "canonical": "Telegram"
+    },
+    {
+      "surface": "instagram",
+      "canonical": "Instagram"
+    },
+    {
+      "surface": "facebook",
+      "canonical": "Facebook"
+    },
+    {
+      "surface": "messenger",
+      "canonical": "Messenger"
+    },
+    {
+      "surface": "twitter",
+      "canonical": "Twitter"
+    },
+    {
+      "surface": "tiktok",
+      "canonical": "TikTok"
+    },
+    {
+      "surface": "netflix",
+      "canonical": "Netflix"
+    },
+    {
+      "surface": "camera",
+      "canonical": "Camera"
+    },
+    {
+      "surface": "settings",
+      "canonical": "Settings"
+    },
+    {
+      "surface": "photos",
+      "canonical": "Photos"
+    },
+    {
+      "surface": "gallery",
+      "canonical": "Gallery"
+    },
+    {
+      "surface": "calculator",
+      "canonical": "Calculator"
+    },
+    {
+      "surface": "calendar",
+      "canonical": "Calendar"
+    },
+    {
+      "surface": "clock",
+      "canonical": "Clock"
+    },
+    {
+      "surface": "contacts",
+      "canonical": "Contacts"
+    },
+    {
+      "surface": "phone",
+      "canonical": "Phone"
+    },
+    {
+      "surface": "messages",
+      "canonical": "Messages"
+    },
+    {
+      "surface": "notes",
+      "canonical": "Notes"
+    },
+    {
+      "surface": "reminders",
+      "canonical": "Reminders"
+    },
+    {
+      "surface": "files",
+      "canonical": "Files"
+    },
+    {
+      "surface": "play store",
+      "canonical": "Play Store"
+    },
+    {
+      "surface": "waze",
+      "canonical": "Waze"
+    },
+    {
+      "surface": "uber",
+      "canonical": "Uber"
+    },
+    {
+      "surface": "slack",
+      "canonical": "Slack"
+    },
+    {
+      "surface": "discord",
+      "canonical": "Discord"
+    },
+    {
+      "surface": "reddit",
+      "canonical": "Reddit"
+    },
+    {
+      "surface": "snapchat",
+      "canonical": "Snapchat"
+    },
+    {
+      "surface": "linkedin",
+      "canonical": "LinkedIn"
+    },
+    {
+      "surface": "amazon",
+      "canonical": "Amazon"
+    },
+    {
+      "surface": "paypal",
+      "canonical": "PayPal"
+    },
+    {
+      "surface": "music",
+      "canonical": "Music"
+    },
+    {
+      "surface": "podcasts",
+      "canonical": "Podcasts"
+    },
+    {
+      "surface": "weather",
+      "canonical": "Weather"
+    },
+    {
+      "surface": "drive",
+      "canonical": "Drive"
+    },
+    {
+      "surface": "docs",
+      "canonical": "Docs"
+    },
+    {
+      "surface": "outlook",
+      "canonical": "Outlook"
+    },
+    {
+      "surface": "teams",
+      "canonical": "Teams"
+    },
+    {
+      "surface": "zoom",
+      "canonical": "Zoom"
+    },
+    {
+      "surface": "signal",
+      "canonical": "Signal"
+    },
+    {
+      "surface": "twitch",
+      "canonical": "Twitch"
+    },
+    {
+      "surface": "shazam",
+      "canonical": "Shazam"
+    },
+    {
+      "surface": "duolingo",
+      "canonical": "Duolingo"
+    },
+    {
+      "surface": "github",
+      "canonical": "GitHub"
+    },
+    {
+      "surface": "brave",
+      "canonical": "Brave"
+    },
+    {
+      "surface": "flashlight",
+      "canonical": "Flashlight"
+    },
+    {
+      "surface": "voice recorder",
+      "canonical": "Voice Recorder"
+    },
+    {
+      "surface": "keep",
+      "canonical": "Keep"
+    }
+  ]
+}

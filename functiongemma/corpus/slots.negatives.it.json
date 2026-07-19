@@ -1,0 +1,4584 @@
+{
+  "ITNEG_PERSON": [
+    {
+      "surface": "Leonardo da Vinci",
+      "canonical": "Leonardo da Vinci"
+    },
+    {
+      "surface": "Michelangelo",
+      "canonical": "Michelangelo"
+    },
+    {
+      "surface": "Raffaello",
+      "canonical": "Raffaello"
+    },
+    {
+      "surface": "Caravaggio",
+      "canonical": "Caravaggio"
+    },
+    {
+      "surface": "Galileo Galilei",
+      "canonical": "Galileo Galilei"
+    },
+    {
+      "surface": "Cristoforo Colombo",
+      "canonical": "Cristoforo Colombo"
+    },
+    {
+      "surface": "Amerigo Vespucci",
+      "canonical": "Amerigo Vespucci"
+    },
+    {
+      "surface": "Marco Polo",
+      "canonical": "Marco Polo"
+    },
+    {
+      "surface": "Napoleone Bonaparte",
+      "canonical": "Napoleone Bonaparte"
+    },
+    {
+      "surface": "Giulio Cesare",
+      "canonical": "Giulio Cesare"
+    },
+    {
+      "surface": "Cleopatra",
+      "canonical": "Cleopatra"
+    },
+    {
+      "surface": "Marie Curie",
+      "canonical": "Marie Curie"
+    },
+    {
+      "surface": "Albert Einstein",
+      "canonical": "Albert Einstein"
+    },
+    {
+      "surface": "Isaac Newton",
+      "canonical": "Isaac Newton"
+    },
+    {
+      "surface": "Charles Darwin",
+      "canonical": "Charles Darwin"
+    },
+    {
+      "surface": "Nikola Tesla",
+      "canonical": "Nikola Tesla"
+    },
+    {
+      "surface": "Thomas Edison",
+      "canonical": "Thomas Edison"
+    },
+    {
+      "surface": "Guglielmo Marconi",
+      "canonical": "Guglielmo Marconi"
+    },
+    {
+      "surface": "Alessandro Volta",
+      "canonical": "Alessandro Volta"
+    },
+    {
+      "surface": "Enrico Fermi",
+      "canonical": "Enrico Fermi"
+    },
+    {
+      "surface": "Dante Alighieri",
+      "canonical": "Dante Alighieri"
+    },
+    {
+      "surface": "Alessandro Manzoni",
+      "canonical": "Alessandro Manzoni"
+    },
+    {
+      "surface": "Giacomo Leopardi",
+      "canonical": "Giacomo Leopardi"
+    },
+    {
+      "surface": "Giovanni Boccaccio",
+      "canonical": "Giovanni Boccaccio"
+    },
+    {
+      "surface": "Francesco Petrarca",
+      "canonical": "Francesco Petrarca"
+    },
+    {
+      "surface": "William Shakespeare",
+      "canonical": "William Shakespeare"
+    },
+    {
+      "surface": "Ludwig van Beethoven",
+      "canonical": "Ludwig van Beethoven"
+    },
+    {
+      "surface": "Wolfgang Amadeus Mozart",
+      "canonical": "Wolfgang Amadeus Mozart"
+    },
+    {
+      "surface": "Giuseppe Verdi",
+      "canonical": "Giuseppe Verdi"
+    },
+    {
+      "surface": "Antonio Vivaldi",
+      "canonical": "Antonio Vivaldi"
+    },
+    {
+      "surface": "Vincent van Gogh",
+      "canonical": "Vincent van Gogh"
+    },
+    {
+      "surface": "Pablo Picasso",
+      "canonical": "Pablo Picasso"
+    },
+    {
+      "surface": "Frida Kahlo",
+      "canonical": "Frida Kahlo"
+    },
+    {
+      "surface": "Claude Monet",
+      "canonical": "Claude Monet"
+    },
+    {
+      "surface": "Sigmund Freud",
+      "canonical": "Sigmund Freud"
+    },
+    {
+      "surface": "Karl Marx",
+      "canonical": "Karl Marx"
+    },
+    {
+      "surface": "Platone",
+      "canonical": "Platone"
+    },
+    {
+      "surface": "Aristotele",
+      "canonical": "Aristotele"
+    },
+    {
+      "surface": "Socrate",
+      "canonical": "Socrate"
+    },
+    {
+      "surface": "Archimede",
+      "canonical": "Archimede"
+    },
+    {
+      "surface": "Pitagora",
+      "canonical": "Pitagora"
+    },
+    {
+      "surface": "Giovanna d'Arco",
+      "canonical": "Giovanna d'Arco"
+    },
+    {
+      "surface": "Nelson Mandela",
+      "canonical": "Nelson Mandela"
+    },
+    {
+      "surface": "Mahatma Gandhi",
+      "canonical": "Mahatma Gandhi"
+    },
+    {
+      "surface": "Winston Churchill",
+      "canonical": "Winston Churchill"
+    },
+    {
+      "surface": "Abraham Lincoln",
+      "canonical": "Abraham Lincoln"
+    },
+    {
+      "surface": "Giuseppe Garibaldi",
+      "canonical": "Giuseppe Garibaldi"
+    },
+    {
+      "surface": "Maria Montessori",
+      "canonical": "Maria Montessori"
+    },
+    {
+      "surface": "Rita Levi-Montalcini",
+      "canonical": "Rita Levi-Montalcini"
+    },
+    {
+      "surface": "Alan Turing",
+      "canonical": "Alan Turing"
+    },
+    {
+      "surface": "Niccolò Machiavelli",
+      "canonical": "Niccolò Machiavelli"
+    },
+    {
+      "surface": "Ludovico Ariosto",
+      "canonical": "Ludovico Ariosto"
+    }
+  ],
+  "ITNEG_PLACE": [
+    {
+      "surface": "il Colosseo",
+      "canonical": "il Colosseo"
+    },
+    {
+      "surface": "la Torre Eiffel",
+      "canonical": "la Torre Eiffel"
+    },
+    {
+      "surface": "il Big Ben",
+      "canonical": "il Big Ben"
+    },
+    {
+      "surface": "la Statua della Libertà",
+      "canonical": "la Statua della Libertà"
+    },
+    {
+      "surface": "il Cristo Redentore",
+      "canonical": "il Cristo Redentore"
+    },
+    {
+      "surface": "la Sagrada Familia",
+      "canonical": "la Sagrada Familia"
+    },
+    {
+      "surface": "il Taj Mahal",
+      "canonical": "il Taj Mahal"
+    },
+    {
+      "surface": "la Grande Muraglia",
+      "canonical": "la Grande Muraglia"
+    },
+    {
+      "surface": "il Machu Picchu",
+      "canonical": "il Machu Picchu"
+    },
+    {
+      "surface": "il Partenone",
+      "canonical": "il Partenone"
+    },
+    {
+      "surface": "il Duomo di Milano",
+      "canonical": "il Duomo di Milano"
+    },
+    {
+      "surface": "la Fontana di Trevi",
+      "canonical": "la Fontana di Trevi"
+    },
+    {
+      "surface": "il Ponte di Brooklyn",
+      "canonical": "il Ponte di Brooklyn"
+    },
+    {
+      "surface": "la Torre di Pisa",
+      "canonical": "la Torre di Pisa"
+    },
+    {
+      "surface": "l'Empire State Building",
+      "canonical": "l'Empire State Building"
+    },
+    {
+      "surface": "la Casa Bianca",
+      "canonical": "la Casa Bianca"
+    },
+    {
+      "surface": "il Cremlino",
+      "canonical": "il Cremlino"
+    },
+    {
+      "surface": "l'Acropoli",
+      "canonical": "l'Acropoli"
+    },
+    {
+      "surface": "il Golden Gate",
+      "canonical": "il Golden Gate"
+    },
+    {
+      "surface": "il Burj Khalifa",
+      "canonical": "il Burj Khalifa"
+    },
+    {
+      "surface": "la Piramide di Giza",
+      "canonical": "la Piramide di Giza"
+    },
+    {
+      "surface": "la Sfinge",
+      "canonical": "la Sfinge"
+    },
+    {
+      "surface": "il Pantheon",
+      "canonical": "il Pantheon"
+    },
+    {
+      "surface": "il Foro Romano",
+      "canonical": "il Foro Romano"
+    },
+    {
+      "surface": "l'Arco di Trionfo",
+      "canonical": "l'Arco di Trionfo"
+    },
+    {
+      "surface": "il Buckingham Palace",
+      "canonical": "il Buckingham Palace"
+    },
+    {
+      "surface": "il Louvre",
+      "canonical": "il Louvre"
+    },
+    {
+      "surface": "il Prado",
+      "canonical": "il Prado"
+    },
+    {
+      "surface": "il British Museum",
+      "canonical": "il British Museum"
+    },
+    {
+      "surface": "la Cattedrale di San Basilio",
+      "canonical": "la Cattedrale di San Basilio"
+    },
+    {
+      "surface": "la Torre di Londra",
+      "canonical": "la Torre di Londra"
+    },
+    {
+      "surface": "il Ponte di Rialto",
+      "canonical": "il Ponte di Rialto"
+    },
+    {
+      "surface": "il Castel Sant'Angelo",
+      "canonical": "il Castel Sant'Angelo"
+    },
+    {
+      "surface": "la Mole Antonelliana",
+      "canonical": "la Mole Antonelliana"
+    },
+    {
+      "surface": "il Ponte Vecchio",
+      "canonical": "il Ponte Vecchio"
+    },
+    {
+      "surface": "la Reggia di Versailles",
+      "canonical": "la Reggia di Versailles"
+    },
+    {
+      "surface": "l'Opera di Sydney",
+      "canonical": "l'Opera di Sydney"
+    },
+    {
+      "surface": "il Muro di Berlino",
+      "canonical": "il Muro di Berlino"
+    },
+    {
+      "surface": "il Central Park",
+      "canonical": "il Central Park"
+    },
+    {
+      "surface": "la Piazza Rossa",
+      "canonical": "la Piazza Rossa"
+    },
+    {
+      "surface": "la Basilica di San Pietro",
+      "canonical": "la Basilica di San Pietro"
+    },
+    {
+      "surface": "il Castello di Neuschwanstein",
+      "canonical": "il Castello di Neuschwanstein"
+    },
+    {
+      "surface": "l'Alhambra",
+      "canonical": "l'Alhambra"
+    },
+    {
+      "surface": "il Cristo di Rio",
+      "canonical": "il Cristo di Rio"
+    },
+    {
+      "surface": "la Cattedrale di Notre-Dame",
+      "canonical": "la Cattedrale di Notre-Dame"
+    }
+  ],
+  "ITNEG_WORK": [
+    {
+      "surface": "la Gioconda",
+      "canonical": "la Gioconda"
+    },
+    {
+      "surface": "l'Ultima Cena",
+      "canonical": "l'Ultima Cena"
+    },
+    {
+      "surface": "la Cappella Sistina",
+      "canonical": "la Cappella Sistina"
+    },
+    {
+      "surface": "la Pietà",
+      "canonical": "la Pietà"
+    },
+    {
+      "surface": "la Nascita di Venere",
+      "canonical": "la Nascita di Venere"
+    },
+    {
+      "surface": "la Creazione di Adamo",
+      "canonical": "la Creazione di Adamo"
+    },
+    {
+      "surface": "la Ronda di Notte",
+      "canonical": "la Ronda di Notte"
+    },
+    {
+      "surface": "le Ninfee",
+      "canonical": "le Ninfee"
+    },
+    {
+      "surface": "i Girasoli",
+      "canonical": "i Girasoli"
+    },
+    {
+      "surface": "la Persistenza della Memoria",
+      "canonical": "la Persistenza della Memoria"
+    },
+    {
+      "surface": "la Libertà che guida il popolo",
+      "canonical": "la Libertà che guida il popolo"
+    },
+    {
+      "surface": "il Bacio",
+      "canonical": "il Bacio"
+    },
+    {
+      "surface": "la Scuola di Atene",
+      "canonical": "la Scuola di Atene"
+    },
+    {
+      "surface": "il Davide",
+      "canonical": "il Davide"
+    },
+    {
+      "surface": "la Venere di Milo",
+      "canonical": "la Venere di Milo"
+    },
+    {
+      "surface": "la Vittoria di Samotracia",
+      "canonical": "la Vittoria di Samotracia"
+    },
+    {
+      "surface": "il Pensatore",
+      "canonical": "il Pensatore"
+    },
+    {
+      "surface": "la Colonna Traiana",
+      "canonical": "la Colonna Traiana"
+    },
+    {
+      "surface": "l'Arco di Costantino",
+      "canonical": "l'Arco di Costantino"
+    },
+    {
+      "surface": "la Cupola del Brunelleschi",
+      "canonical": "la Cupola del Brunelleschi"
+    },
+    {
+      "surface": "il Mosè di Michelangelo",
+      "canonical": "il Mosè di Michelangelo"
+    },
+    {
+      "surface": "la Primavera del Botticelli",
+      "canonical": "la Primavera del Botticelli"
+    },
+    {
+      "surface": "il Cenacolo",
+      "canonical": "il Cenacolo"
+    },
+    {
+      "surface": "la Cappella degli Scrovegni",
+      "canonical": "la Cappella degli Scrovegni"
+    },
+    {
+      "surface": "il Battistero di Firenze",
+      "canonical": "il Battistero di Firenze"
+    },
+    {
+      "surface": "il Ponte dei Sospiri",
+      "canonical": "il Ponte dei Sospiri"
+    },
+    {
+      "surface": "la Reggia di Caserta",
+      "canonical": "la Reggia di Caserta"
+    },
+    {
+      "surface": "il Castello Sforzesco",
+      "canonical": "il Castello Sforzesco"
+    },
+    {
+      "surface": "il Mausoleo di Adriano",
+      "canonical": "il Mausoleo di Adriano"
+    },
+    {
+      "surface": "la Cattedrale di Chartres",
+      "canonical": "la Cattedrale di Chartres"
+    },
+    {
+      "surface": "la Piramide di Cheope",
+      "canonical": "la Piramide di Cheope"
+    },
+    {
+      "surface": "il Faro di Alessandria",
+      "canonical": "il Faro di Alessandria"
+    },
+    {
+      "surface": "i Giardini di Babilonia",
+      "canonical": "i Giardini di Babilonia"
+    },
+    {
+      "surface": "il Colosso di Rodi",
+      "canonical": "il Colosso di Rodi"
+    },
+    {
+      "surface": "la Moschea Blu",
+      "canonical": "la Moschea Blu"
+    },
+    {
+      "surface": "la Torre di Babele",
+      "canonical": "la Torre di Babele"
+    },
+    {
+      "surface": "l'Obelisco di Luxor",
+      "canonical": "l'Obelisco di Luxor"
+    },
+    {
+      "surface": "la Sfinge di Giza",
+      "canonical": "la Sfinge di Giza"
+    },
+    {
+      "surface": "il Duomo di Firenze",
+      "canonical": "il Duomo di Firenze"
+    },
+    {
+      "surface": "la Basilica di Santa Sofia",
+      "canonical": "la Basilica di Santa Sofia"
+    },
+    {
+      "surface": "l'Anfiteatro di Verona",
+      "canonical": "l'Anfiteatro di Verona"
+    },
+    {
+      "surface": "il Teatro alla Scala",
+      "canonical": "il Teatro alla Scala"
+    }
+  ],
+  "ITNEG_ANIMAL": [
+    {
+      "surface": "il leone",
+      "canonical": "il leone"
+    },
+    {
+      "surface": "la tigre",
+      "canonical": "la tigre"
+    },
+    {
+      "surface": "l'elefante",
+      "canonical": "l'elefante"
+    },
+    {
+      "surface": "la giraffa",
+      "canonical": "la giraffa"
+    },
+    {
+      "surface": "il ghepardo",
+      "canonical": "il ghepardo"
+    },
+    {
+      "surface": "il koala",
+      "canonical": "il koala"
+    },
+    {
+      "surface": "il panda",
+      "canonical": "il panda"
+    },
+    {
+      "surface": "il delfino",
+      "canonical": "il delfino"
+    },
+    {
+      "surface": "la balena",
+      "canonical": "la balena"
+    },
+    {
+      "surface": "lo squalo",
+      "canonical": "lo squalo"
+    },
+    {
+      "surface": "il polpo",
+      "canonical": "il polpo"
+    },
+    {
+      "surface": "il pinguino",
+      "canonical": "il pinguino"
+    },
+    {
+      "surface": "l'aquila",
+      "canonical": "l'aquila"
+    },
+    {
+      "surface": "il gufo",
+      "canonical": "il gufo"
+    },
+    {
+      "surface": "il pipistrello",
+      "canonical": "il pipistrello"
+    },
+    {
+      "surface": "la volpe",
+      "canonical": "la volpe"
+    },
+    {
+      "surface": "il lupo",
+      "canonical": "il lupo"
+    },
+    {
+      "surface": "l'orso",
+      "canonical": "l'orso"
+    },
+    {
+      "surface": "il canguro",
+      "canonical": "il canguro"
+    },
+    {
+      "surface": "il coccodrillo",
+      "canonical": "il coccodrillo"
+    },
+    {
+      "surface": "la tartaruga",
+      "canonical": "la tartaruga"
+    },
+    {
+      "surface": "il camaleonte",
+      "canonical": "il camaleonte"
+    },
+    {
+      "surface": "il fenicottero",
+      "canonical": "il fenicottero"
+    },
+    {
+      "surface": "la formica",
+      "canonical": "la formica"
+    },
+    {
+      "surface": "l'ape",
+      "canonical": "l'ape"
+    },
+    {
+      "surface": "la farfalla",
+      "canonical": "la farfalla"
+    },
+    {
+      "surface": "il ragno",
+      "canonical": "il ragno"
+    },
+    {
+      "surface": "lo scorpione",
+      "canonical": "lo scorpione"
+    },
+    {
+      "surface": "il serpente",
+      "canonical": "il serpente"
+    },
+    {
+      "surface": "la rana",
+      "canonical": "la rana"
+    },
+    {
+      "surface": "il cavallo",
+      "canonical": "il cavallo"
+    },
+    {
+      "surface": "la mucca",
+      "canonical": "la mucca"
+    },
+    {
+      "surface": "il maiale",
+      "canonical": "il maiale"
+    },
+    {
+      "surface": "la pecora",
+      "canonical": "la pecora"
+    },
+    {
+      "surface": "il cammello",
+      "canonical": "il cammello"
+    },
+    {
+      "surface": "il rinoceronte",
+      "canonical": "il rinoceronte"
+    },
+    {
+      "surface": "l'ippopotamo",
+      "canonical": "l'ippopotamo"
+    },
+    {
+      "surface": "la zebra",
+      "canonical": "la zebra"
+    },
+    {
+      "surface": "il gorilla",
+      "canonical": "il gorilla"
+    },
+    {
+      "surface": "lo scimpanzé",
+      "canonical": "lo scimpanzé"
+    },
+    {
+      "surface": "il riccio",
+      "canonical": "il riccio"
+    },
+    {
+      "surface": "la lumaca",
+      "canonical": "la lumaca"
+    },
+    {
+      "surface": "il granchio",
+      "canonical": "il granchio"
+    },
+    {
+      "surface": "la medusa",
+      "canonical": "la medusa"
+    },
+    {
+      "surface": "lo struzzo",
+      "canonical": "lo struzzo"
+    },
+    {
+      "surface": "il pavone",
+      "canonical": "il pavone"
+    },
+    {
+      "surface": "il picchio",
+      "canonical": "il picchio"
+    },
+    {
+      "surface": "il bradipo",
+      "canonical": "il bradipo"
+    },
+    {
+      "surface": "la lontra",
+      "canonical": "la lontra"
+    },
+    {
+      "surface": "il castoro",
+      "canonical": "il castoro"
+    },
+    {
+      "surface": "la talpa",
+      "canonical": "la talpa"
+    },
+    {
+      "surface": "il tasso",
+      "canonical": "il tasso"
+    }
+  ],
+  "ITNEG_EVENT": [
+    {
+      "surface": "la rivoluzione francese",
+      "canonical": "la rivoluzione francese"
+    },
+    {
+      "surface": "la rivoluzione industriale",
+      "canonical": "la rivoluzione industriale"
+    },
+    {
+      "surface": "la seconda guerra mondiale",
+      "canonical": "la seconda guerra mondiale"
+    },
+    {
+      "surface": "la prima guerra mondiale",
+      "canonical": "la prima guerra mondiale"
+    },
+    {
+      "surface": "la guerra fredda",
+      "canonical": "la guerra fredda"
+    },
+    {
+      "surface": "la caduta dell'impero romano",
+      "canonical": "la caduta dell'impero romano"
+    },
+    {
+      "surface": "la peste nera",
+      "canonical": "la peste nera"
+    },
+    {
+      "surface": "la rivoluzione russa",
+      "canonical": "la rivoluzione russa"
+    },
+    {
+      "surface": "la scoperta dell'America",
+      "canonical": "la scoperta dell'America"
+    },
+    {
+      "surface": "la rivoluzione americana",
+      "canonical": "la rivoluzione americana"
+    },
+    {
+      "surface": "il Rinascimento",
+      "canonical": "il Rinascimento"
+    },
+    {
+      "surface": "il Risorgimento",
+      "canonical": "il Risorgimento"
+    },
+    {
+      "surface": "la Riforma protestante",
+      "canonical": "la Riforma protestante"
+    },
+    {
+      "surface": "la guerra di Troia",
+      "canonical": "la guerra di Troia"
+    },
+    {
+      "surface": "la Grande Depressione",
+      "canonical": "la Grande Depressione"
+    },
+    {
+      "surface": "la corsa allo spazio",
+      "canonical": "la corsa allo spazio"
+    },
+    {
+      "surface": "la guerra dei cent'anni",
+      "canonical": "la guerra dei cent'anni"
+    },
+    {
+      "surface": "la Comune di Parigi",
+      "canonical": "la Comune di Parigi"
+    },
+    {
+      "surface": "la crisi dei missili di Cuba",
+      "canonical": "la crisi dei missili di Cuba"
+    },
+    {
+      "surface": "lo sbarco in Normandia",
+      "canonical": "lo sbarco in Normandia"
+    },
+    {
+      "surface": "la marcia su Roma",
+      "canonical": "la marcia su Roma"
+    },
+    {
+      "surface": "l'Unità d'Italia",
+      "canonical": "l'Unità d'Italia"
+    },
+    {
+      "surface": "la caduta del muro di Berlino",
+      "canonical": "la caduta del muro di Berlino"
+    },
+    {
+      "surface": "la rivoluzione verde",
+      "canonical": "la rivoluzione verde"
+    },
+    {
+      "surface": "la guerra civile americana",
+      "canonical": "la guerra civile americana"
+    },
+    {
+      "surface": "il crollo di Wall Street",
+      "canonical": "il crollo di Wall Street"
+    },
+    {
+      "surface": "la primavera araba",
+      "canonical": "la primavera araba"
+    },
+    {
+      "surface": "la conquista normanna",
+      "canonical": "la conquista normanna"
+    },
+    {
+      "surface": "la peste di Atene",
+      "canonical": "la peste di Atene"
+    },
+    {
+      "surface": "la battaglia di Waterloo",
+      "canonical": "la battaglia di Waterloo"
+    },
+    {
+      "surface": "la rivoluzione scientifica",
+      "canonical": "la rivoluzione scientifica"
+    },
+    {
+      "surface": "l'incendio di Roma",
+      "canonical": "l'incendio di Roma"
+    },
+    {
+      "surface": "l'eruzione di Pompei",
+      "canonical": "l'eruzione di Pompei"
+    },
+    {
+      "surface": "la firma della Magna Carta",
+      "canonical": "la firma della Magna Carta"
+    },
+    {
+      "surface": "la presa della Bastiglia",
+      "canonical": "la presa della Bastiglia"
+    },
+    {
+      "surface": "l'abolizione della schiavitù",
+      "canonical": "l'abolizione della schiavitù"
+    },
+    {
+      "surface": "la scoperta del fuoco",
+      "canonical": "la scoperta del fuoco"
+    },
+    {
+      "surface": "l'invenzione della scrittura",
+      "canonical": "l'invenzione della scrittura"
+    },
+    {
+      "surface": "la nascita della stampa",
+      "canonical": "la nascita della stampa"
+    },
+    {
+      "surface": "la rivoluzione neolitica",
+      "canonical": "la rivoluzione neolitica"
+    },
+    {
+      "surface": "la guerra del Vietnam",
+      "canonical": "la guerra del Vietnam"
+    },
+    {
+      "surface": "la crociata",
+      "canonical": "la crociata"
+    }
+  ],
+  "ITNEG_FOOD": [
+    {
+      "surface": "la pizza",
+      "canonical": "la pizza"
+    },
+    {
+      "surface": "la pasta",
+      "canonical": "la pasta"
+    },
+    {
+      "surface": "il risotto",
+      "canonical": "il risotto"
+    },
+    {
+      "surface": "la carbonara",
+      "canonical": "la carbonara"
+    },
+    {
+      "surface": "il tiramisù",
+      "canonical": "il tiramisù"
+    },
+    {
+      "surface": "la lasagna",
+      "canonical": "la lasagna"
+    },
+    {
+      "surface": "il gelato",
+      "canonical": "il gelato"
+    },
+    {
+      "surface": "il caffè",
+      "canonical": "il caffè"
+    },
+    {
+      "surface": "il cappuccino",
+      "canonical": "il cappuccino"
+    },
+    {
+      "surface": "la mozzarella",
+      "canonical": "la mozzarella"
+    },
+    {
+      "surface": "il parmigiano",
+      "canonical": "il parmigiano"
+    },
+    {
+      "surface": "il prosciutto",
+      "canonical": "il prosciutto"
+    },
+    {
+      "surface": "la focaccia",
+      "canonical": "la focaccia"
+    },
+    {
+      "surface": "il panettone",
+      "canonical": "il panettone"
+    },
+    {
+      "surface": "il pandoro",
+      "canonical": "il pandoro"
+    },
+    {
+      "surface": "la nutella",
+      "canonical": "la nutella"
+    },
+    {
+      "surface": "il sushi",
+      "canonical": "il sushi"
+    },
+    {
+      "surface": "il ramen",
+      "canonical": "il ramen"
+    },
+    {
+      "surface": "il curry",
+      "canonical": "il curry"
+    },
+    {
+      "surface": "il kebab",
+      "canonical": "il kebab"
+    },
+    {
+      "surface": "il taco",
+      "canonical": "il taco"
+    },
+    {
+      "surface": "l'hamburger",
+      "canonical": "l'hamburger"
+    },
+    {
+      "surface": "la paella",
+      "canonical": "la paella"
+    },
+    {
+      "surface": "il croissant",
+      "canonical": "il croissant"
+    },
+    {
+      "surface": "la baguette",
+      "canonical": "la baguette"
+    },
+    {
+      "surface": "il ketchup",
+      "canonical": "il ketchup"
+    },
+    {
+      "surface": "la maionese",
+      "canonical": "la maionese"
+    },
+    {
+      "surface": "il cioccolato",
+      "canonical": "il cioccolato"
+    },
+    {
+      "surface": "il pane",
+      "canonical": "il pane"
+    },
+    {
+      "surface": "la bruschetta",
+      "canonical": "la bruschetta"
+    },
+    {
+      "surface": "il pesto",
+      "canonical": "il pesto"
+    },
+    {
+      "surface": "il ragù",
+      "canonical": "il ragù"
+    },
+    {
+      "surface": "la polenta",
+      "canonical": "la polenta"
+    },
+    {
+      "surface": "gli gnocchi",
+      "canonical": "gli gnocchi"
+    },
+    {
+      "surface": "i tortellini",
+      "canonical": "i tortellini"
+    },
+    {
+      "surface": "il minestrone",
+      "canonical": "il minestrone"
+    },
+    {
+      "surface": "la caprese",
+      "canonical": "la caprese"
+    },
+    {
+      "surface": "l'espresso",
+      "canonical": "l'espresso"
+    },
+    {
+      "surface": "il cornetto",
+      "canonical": "il cornetto"
+    },
+    {
+      "surface": "la piadina",
+      "canonical": "la piadina"
+    },
+    {
+      "surface": "l'arancino",
+      "canonical": "l'arancino"
+    },
+    {
+      "surface": "la porchetta",
+      "canonical": "la porchetta"
+    },
+    {
+      "surface": "il gorgonzola",
+      "canonical": "il gorgonzola"
+    },
+    {
+      "surface": "il salame",
+      "canonical": "il salame"
+    },
+    {
+      "surface": "la mortadella",
+      "canonical": "la mortadella"
+    },
+    {
+      "surface": "la bresaola",
+      "canonical": "la bresaola"
+    },
+    {
+      "surface": "il tartufo",
+      "canonical": "il tartufo"
+    },
+    {
+      "surface": "il pandispagna",
+      "canonical": "il pandispagna"
+    },
+    {
+      "surface": "la sacher",
+      "canonical": "la sacher"
+    },
+    {
+      "surface": "la brioche",
+      "canonical": "la brioche"
+    }
+  ],
+  "ITNEG_TECH": [
+    {
+      "surface": "Spotify",
+      "canonical": "Spotify"
+    },
+    {
+      "surface": "WhatsApp",
+      "canonical": "WhatsApp"
+    },
+    {
+      "surface": "Instagram",
+      "canonical": "Instagram"
+    },
+    {
+      "surface": "Facebook",
+      "canonical": "Facebook"
+    },
+    {
+      "surface": "YouTube",
+      "canonical": "YouTube"
+    },
+    {
+      "surface": "Netflix",
+      "canonical": "Netflix"
+    },
+    {
+      "surface": "TikTok",
+      "canonical": "TikTok"
+    },
+    {
+      "surface": "Twitter",
+      "canonical": "Twitter"
+    },
+    {
+      "surface": "Telegram",
+      "canonical": "Telegram"
+    },
+    {
+      "surface": "Snapchat",
+      "canonical": "Snapchat"
+    },
+    {
+      "surface": "LinkedIn",
+      "canonical": "LinkedIn"
+    },
+    {
+      "surface": "Uber",
+      "canonical": "Uber"
+    },
+    {
+      "surface": "Airbnb",
+      "canonical": "Airbnb"
+    },
+    {
+      "surface": "Amazon",
+      "canonical": "Amazon"
+    },
+    {
+      "surface": "Google",
+      "canonical": "Google"
+    },
+    {
+      "surface": "Apple",
+      "canonical": "Apple"
+    },
+    {
+      "surface": "Microsoft",
+      "canonical": "Microsoft"
+    },
+    {
+      "surface": "Samsung",
+      "canonical": "Samsung"
+    },
+    {
+      "surface": "Reddit",
+      "canonical": "Reddit"
+    },
+    {
+      "surface": "Pinterest",
+      "canonical": "Pinterest"
+    },
+    {
+      "surface": "Discord",
+      "canonical": "Discord"
+    },
+    {
+      "surface": "Twitch",
+      "canonical": "Twitch"
+    },
+    {
+      "surface": "Zoom",
+      "canonical": "Zoom"
+    },
+    {
+      "surface": "PayPal",
+      "canonical": "PayPal"
+    },
+    {
+      "surface": "eBay",
+      "canonical": "eBay"
+    },
+    {
+      "surface": "Nintendo",
+      "canonical": "Nintendo"
+    },
+    {
+      "surface": "Sony",
+      "canonical": "Sony"
+    },
+    {
+      "surface": "Adobe",
+      "canonical": "Adobe"
+    },
+    {
+      "surface": "Dropbox",
+      "canonical": "Dropbox"
+    },
+    {
+      "surface": "Shopify",
+      "canonical": "Shopify"
+    },
+    {
+      "surface": "Nvidia",
+      "canonical": "Nvidia"
+    },
+    {
+      "surface": "Intel",
+      "canonical": "Intel"
+    },
+    {
+      "surface": "IBM",
+      "canonical": "IBM"
+    },
+    {
+      "surface": "Oracle",
+      "canonical": "Oracle"
+    },
+    {
+      "surface": "Huawei",
+      "canonical": "Huawei"
+    },
+    {
+      "surface": "Xiaomi",
+      "canonical": "Xiaomi"
+    },
+    {
+      "surface": "WeChat",
+      "canonical": "WeChat"
+    },
+    {
+      "surface": "Skype",
+      "canonical": "Skype"
+    },
+    {
+      "surface": "Spotify Wrapped",
+      "canonical": "Spotify Wrapped"
+    },
+    {
+      "surface": "Android",
+      "canonical": "Android"
+    },
+    {
+      "surface": "Windows",
+      "canonical": "Windows"
+    },
+    {
+      "surface": "Firefox",
+      "canonical": "Firefox"
+    },
+    {
+      "surface": "Photoshop",
+      "canonical": "Photoshop"
+    },
+    {
+      "surface": "Minecraft",
+      "canonical": "Minecraft"
+    },
+    {
+      "surface": "Fortnite",
+      "canonical": "Fortnite"
+    }
+  ],
+  "ITNEG_NATURE": [
+    {
+      "surface": "il Nilo",
+      "canonical": "il Nilo"
+    },
+    {
+      "surface": "il Rio delle Amazzoni",
+      "canonical": "il Rio delle Amazzoni"
+    },
+    {
+      "surface": "il Danubio",
+      "canonical": "il Danubio"
+    },
+    {
+      "surface": "il Po",
+      "canonical": "il Po"
+    },
+    {
+      "surface": "il Tamigi",
+      "canonical": "il Tamigi"
+    },
+    {
+      "surface": "la Senna",
+      "canonical": "la Senna"
+    },
+    {
+      "surface": "il Reno",
+      "canonical": "il Reno"
+    },
+    {
+      "surface": "il Volga",
+      "canonical": "il Volga"
+    },
+    {
+      "surface": "il Mississippi",
+      "canonical": "il Mississippi"
+    },
+    {
+      "surface": "il Gange",
+      "canonical": "il Gange"
+    },
+    {
+      "surface": "il lago di Garda",
+      "canonical": "il lago di Garda"
+    },
+    {
+      "surface": "il lago di Como",
+      "canonical": "il lago di Como"
+    },
+    {
+      "surface": "il lago Maggiore",
+      "canonical": "il lago Maggiore"
+    },
+    {
+      "surface": "il Mar Mediterraneo",
+      "canonical": "il Mar Mediterraneo"
+    },
+    {
+      "surface": "il Mar Rosso",
+      "canonical": "il Mar Rosso"
+    },
+    {
+      "surface": "il deserto del Sahara",
+      "canonical": "il deserto del Sahara"
+    },
+    {
+      "surface": "il deserto del Gobi",
+      "canonical": "il deserto del Gobi"
+    },
+    {
+      "surface": "la foresta amazzonica",
+      "canonical": "la foresta amazzonica"
+    },
+    {
+      "surface": "la savana africana",
+      "canonical": "la savana africana"
+    },
+    {
+      "surface": "la barriera corallina",
+      "canonical": "la barriera corallina"
+    },
+    {
+      "surface": "le cascate del Niagara",
+      "canonical": "le cascate del Niagara"
+    },
+    {
+      "surface": "le cascate Vittoria",
+      "canonical": "le cascate Vittoria"
+    },
+    {
+      "surface": "il Gran Canyon",
+      "canonical": "il Gran Canyon"
+    },
+    {
+      "surface": "il fiordo di Geiranger",
+      "canonical": "il fiordo di Geiranger"
+    },
+    {
+      "surface": "la tundra siberiana",
+      "canonical": "la tundra siberiana"
+    },
+    {
+      "surface": "il ghiacciaio dei Forni",
+      "canonical": "il ghiacciaio dei Forni"
+    },
+    {
+      "surface": "l'oceano Pacifico",
+      "canonical": "l'oceano Pacifico"
+    },
+    {
+      "surface": "l'oceano Atlantico",
+      "canonical": "l'oceano Atlantico"
+    },
+    {
+      "surface": "l'oceano Indiano",
+      "canonical": "l'oceano Indiano"
+    },
+    {
+      "surface": "il Mar Caspio",
+      "canonical": "il Mar Caspio"
+    },
+    {
+      "surface": "il Mar Nero",
+      "canonical": "il Mar Nero"
+    },
+    {
+      "surface": "il Mar Morto",
+      "canonical": "il Mar Morto"
+    },
+    {
+      "surface": "la Valle della Morte",
+      "canonical": "la Valle della Morte"
+    },
+    {
+      "surface": "il lago Baikal",
+      "canonical": "il lago Baikal"
+    },
+    {
+      "surface": "il fiume Giallo",
+      "canonical": "il fiume Giallo"
+    },
+    {
+      "surface": "l'altopiano del Tibet",
+      "canonical": "l'altopiano del Tibet"
+    },
+    {
+      "surface": "la Grande Barriera Corallina",
+      "canonical": "la Grande Barriera Corallina"
+    },
+    {
+      "surface": "il deserto di Atacama",
+      "canonical": "il deserto di Atacama"
+    },
+    {
+      "surface": "la foresta pluviale del Congo",
+      "canonical": "la foresta pluviale del Congo"
+    },
+    {
+      "surface": "il canyon del Colorado",
+      "canonical": "il canyon del Colorado"
+    },
+    {
+      "surface": "la palude delle Everglades",
+      "canonical": "la palude delle Everglades"
+    },
+    {
+      "surface": "il vulcano Kilauea",
+      "canonical": "il vulcano Kilauea"
+    },
+    {
+      "surface": "l'isola di Pasqua",
+      "canonical": "l'isola di Pasqua"
+    },
+    {
+      "surface": "la laguna di Venezia",
+      "canonical": "la laguna di Venezia"
+    },
+    {
+      "surface": "il delta del Gange",
+      "canonical": "il delta del Gange"
+    }
+  ],
+  "ITNEG_CITY": [
+    {
+      "surface": "Parigi",
+      "canonical": "Parigi"
+    },
+    {
+      "surface": "Londra",
+      "canonical": "Londra"
+    },
+    {
+      "surface": "New York",
+      "canonical": "New York"
+    },
+    {
+      "surface": "Tokyo",
+      "canonical": "Tokyo"
+    },
+    {
+      "surface": "Roma",
+      "canonical": "Roma"
+    },
+    {
+      "surface": "Milano",
+      "canonical": "Milano"
+    },
+    {
+      "surface": "Berlino",
+      "canonical": "Berlino"
+    },
+    {
+      "surface": "Madrid",
+      "canonical": "Madrid"
+    },
+    {
+      "surface": "Barcellona",
+      "canonical": "Barcellona"
+    },
+    {
+      "surface": "Amsterdam",
+      "canonical": "Amsterdam"
+    },
+    {
+      "surface": "Vienna",
+      "canonical": "Vienna"
+    },
+    {
+      "surface": "Praga",
+      "canonical": "Praga"
+    },
+    {
+      "surface": "Budapest",
+      "canonical": "Budapest"
+    },
+    {
+      "surface": "Lisbona",
+      "canonical": "Lisbona"
+    },
+    {
+      "surface": "Atene",
+      "canonical": "Atene"
+    },
+    {
+      "surface": "Istanbul",
+      "canonical": "Istanbul"
+    },
+    {
+      "surface": "Mosca",
+      "canonical": "Mosca"
+    },
+    {
+      "surface": "Pechino",
+      "canonical": "Pechino"
+    },
+    {
+      "surface": "Shanghai",
+      "canonical": "Shanghai"
+    },
+    {
+      "surface": "Mumbai",
+      "canonical": "Mumbai"
+    },
+    {
+      "surface": "Rio de Janeiro",
+      "canonical": "Rio de Janeiro"
+    },
+    {
+      "surface": "Buenos Aires",
+      "canonical": "Buenos Aires"
+    },
+    {
+      "surface": "Sydney",
+      "canonical": "Sydney"
+    },
+    {
+      "surface": "Toronto",
+      "canonical": "Toronto"
+    },
+    {
+      "surface": "Los Angeles",
+      "canonical": "Los Angeles"
+    },
+    {
+      "surface": "Chicago",
+      "canonical": "Chicago"
+    },
+    {
+      "surface": "San Francisco",
+      "canonical": "San Francisco"
+    },
+    {
+      "surface": "Dubai",
+      "canonical": "Dubai"
+    },
+    {
+      "surface": "Singapore",
+      "canonical": "Singapore"
+    },
+    {
+      "surface": "Bangkok",
+      "canonical": "Bangkok"
+    },
+    {
+      "surface": "Seul",
+      "canonical": "Seul"
+    },
+    {
+      "surface": "Città del Messico",
+      "canonical": "Città del Messico"
+    },
+    {
+      "surface": "Napoli",
+      "canonical": "Napoli"
+    },
+    {
+      "surface": "Firenze",
+      "canonical": "Firenze"
+    },
+    {
+      "surface": "Venezia",
+      "canonical": "Venezia"
+    },
+    {
+      "surface": "Torino",
+      "canonical": "Torino"
+    },
+    {
+      "surface": "Bologna",
+      "canonical": "Bologna"
+    },
+    {
+      "surface": "Palermo",
+      "canonical": "Palermo"
+    },
+    {
+      "surface": "Marsiglia",
+      "canonical": "Marsiglia"
+    },
+    {
+      "surface": "Amburgo",
+      "canonical": "Amburgo"
+    },
+    {
+      "surface": "Varsavia",
+      "canonical": "Varsavia"
+    },
+    {
+      "surface": "Stoccolma",
+      "canonical": "Stoccolma"
+    },
+    {
+      "surface": "Copenaghen",
+      "canonical": "Copenaghen"
+    },
+    {
+      "surface": "Dublino",
+      "canonical": "Dublino"
+    },
+    {
+      "surface": "Edimburgo",
+      "canonical": "Edimburgo"
+    },
+    {
+      "surface": "Bruxelles",
+      "canonical": "Bruxelles"
+    },
+    {
+      "surface": "Ginevra",
+      "canonical": "Ginevra"
+    },
+    {
+      "surface": "Zurigo",
+      "canonical": "Zurigo"
+    },
+    {
+      "surface": "Lione",
+      "canonical": "Lione"
+    },
+    {
+      "surface": "Valencia",
+      "canonical": "Valencia"
+    }
+  ],
+  "ITNEG_COUNTRY_IN": [
+    {
+      "surface": "in Francia",
+      "canonical": "in Francia"
+    },
+    {
+      "surface": "in Germania",
+      "canonical": "in Germania"
+    },
+    {
+      "surface": "in Spagna",
+      "canonical": "in Spagna"
+    },
+    {
+      "surface": "in Italia",
+      "canonical": "in Italia"
+    },
+    {
+      "surface": "in Giappone",
+      "canonical": "in Giappone"
+    },
+    {
+      "surface": "in Portogallo",
+      "canonical": "in Portogallo"
+    },
+    {
+      "surface": "in Brasile",
+      "canonical": "in Brasile"
+    },
+    {
+      "surface": "in Canada",
+      "canonical": "in Canada"
+    },
+    {
+      "surface": "in Messico",
+      "canonical": "in Messico"
+    },
+    {
+      "surface": "in Perù",
+      "canonical": "in Perù"
+    },
+    {
+      "surface": "in Cile",
+      "canonical": "in Cile"
+    },
+    {
+      "surface": "in Belgio",
+      "canonical": "in Belgio"
+    },
+    {
+      "surface": "in Marocco",
+      "canonical": "in Marocco"
+    },
+    {
+      "surface": "in Kenya",
+      "canonical": "in Kenya"
+    },
+    {
+      "surface": "in Vietnam",
+      "canonical": "in Vietnam"
+    },
+    {
+      "surface": "in Cina",
+      "canonical": "in Cina"
+    },
+    {
+      "surface": "in Russia",
+      "canonical": "in Russia"
+    },
+    {
+      "surface": "in Grecia",
+      "canonical": "in Grecia"
+    },
+    {
+      "surface": "in Norvegia",
+      "canonical": "in Norvegia"
+    },
+    {
+      "surface": "in Svezia",
+      "canonical": "in Svezia"
+    },
+    {
+      "surface": "in Polonia",
+      "canonical": "in Polonia"
+    },
+    {
+      "surface": "in Turchia",
+      "canonical": "in Turchia"
+    },
+    {
+      "surface": "in Croazia",
+      "canonical": "in Croazia"
+    },
+    {
+      "surface": "in Danimarca",
+      "canonical": "in Danimarca"
+    },
+    {
+      "surface": "in Finlandia",
+      "canonical": "in Finlandia"
+    },
+    {
+      "surface": "in Svizzera",
+      "canonical": "in Svizzera"
+    },
+    {
+      "surface": "in Colombia",
+      "canonical": "in Colombia"
+    },
+    {
+      "surface": "in Romania",
+      "canonical": "in Romania"
+    },
+    {
+      "surface": "in Argentina",
+      "canonical": "in Argentina"
+    },
+    {
+      "surface": "in Australia",
+      "canonical": "in Australia"
+    },
+    {
+      "surface": "in India",
+      "canonical": "in India"
+    },
+    {
+      "surface": "in Egitto",
+      "canonical": "in Egitto"
+    },
+    {
+      "surface": "in Indonesia",
+      "canonical": "in Indonesia"
+    },
+    {
+      "surface": "in Irlanda",
+      "canonical": "in Irlanda"
+    },
+    {
+      "surface": "in Ungheria",
+      "canonical": "in Ungheria"
+    },
+    {
+      "surface": "in Islanda",
+      "canonical": "in Islanda"
+    },
+    {
+      "surface": "in Austria",
+      "canonical": "in Austria"
+    },
+    {
+      "surface": "in Etiopia",
+      "canonical": "in Etiopia"
+    },
+    {
+      "surface": "in Ucraina",
+      "canonical": "in Ucraina"
+    },
+    {
+      "surface": "in Olanda",
+      "canonical": "in Olanda"
+    },
+    {
+      "surface": "negli Stati Uniti",
+      "canonical": "negli Stati Uniti"
+    },
+    {
+      "surface": "nei Paesi Bassi",
+      "canonical": "nei Paesi Bassi"
+    }
+  ],
+  "ITNEG_COUNTRY_DI": [
+    {
+      "surface": "della Francia",
+      "canonical": "della Francia"
+    },
+    {
+      "surface": "della Germania",
+      "canonical": "della Germania"
+    },
+    {
+      "surface": "della Spagna",
+      "canonical": "della Spagna"
+    },
+    {
+      "surface": "dell'Italia",
+      "canonical": "dell'Italia"
+    },
+    {
+      "surface": "del Giappone",
+      "canonical": "del Giappone"
+    },
+    {
+      "surface": "del Portogallo",
+      "canonical": "del Portogallo"
+    },
+    {
+      "surface": "del Brasile",
+      "canonical": "del Brasile"
+    },
+    {
+      "surface": "del Canada",
+      "canonical": "del Canada"
+    },
+    {
+      "surface": "del Messico",
+      "canonical": "del Messico"
+    },
+    {
+      "surface": "del Perù",
+      "canonical": "del Perù"
+    },
+    {
+      "surface": "del Cile",
+      "canonical": "del Cile"
+    },
+    {
+      "surface": "del Belgio",
+      "canonical": "del Belgio"
+    },
+    {
+      "surface": "del Marocco",
+      "canonical": "del Marocco"
+    },
+    {
+      "surface": "del Kenya",
+      "canonical": "del Kenya"
+    },
+    {
+      "surface": "del Vietnam",
+      "canonical": "del Vietnam"
+    },
+    {
+      "surface": "della Cina",
+      "canonical": "della Cina"
+    },
+    {
+      "surface": "della Russia",
+      "canonical": "della Russia"
+    },
+    {
+      "surface": "della Grecia",
+      "canonical": "della Grecia"
+    },
+    {
+      "surface": "della Norvegia",
+      "canonical": "della Norvegia"
+    },
+    {
+      "surface": "della Svezia",
+      "canonical": "della Svezia"
+    },
+    {
+      "surface": "della Polonia",
+      "canonical": "della Polonia"
+    },
+    {
+      "surface": "della Turchia",
+      "canonical": "della Turchia"
+    },
+    {
+      "surface": "della Croazia",
+      "canonical": "della Croazia"
+    },
+    {
+      "surface": "della Danimarca",
+      "canonical": "della Danimarca"
+    },
+    {
+      "surface": "della Finlandia",
+      "canonical": "della Finlandia"
+    },
+    {
+      "surface": "della Svizzera",
+      "canonical": "della Svizzera"
+    },
+    {
+      "surface": "della Colombia",
+      "canonical": "della Colombia"
+    },
+    {
+      "surface": "della Romania",
+      "canonical": "della Romania"
+    },
+    {
+      "surface": "dell'Argentina",
+      "canonical": "dell'Argentina"
+    },
+    {
+      "surface": "dell'Australia",
+      "canonical": "dell'Australia"
+    },
+    {
+      "surface": "dell'India",
+      "canonical": "dell'India"
+    },
+    {
+      "surface": "dell'Egitto",
+      "canonical": "dell'Egitto"
+    },
+    {
+      "surface": "dell'Indonesia",
+      "canonical": "dell'Indonesia"
+    },
+    {
+      "surface": "dell'Irlanda",
+      "canonical": "dell'Irlanda"
+    },
+    {
+      "surface": "dell'Ungheria",
+      "canonical": "dell'Ungheria"
+    },
+    {
+      "surface": "dell'Islanda",
+      "canonical": "dell'Islanda"
+    },
+    {
+      "surface": "dell'Austria",
+      "canonical": "dell'Austria"
+    },
+    {
+      "surface": "dell'Etiopia",
+      "canonical": "dell'Etiopia"
+    },
+    {
+      "surface": "dell'Ucraina",
+      "canonical": "dell'Ucraina"
+    },
+    {
+      "surface": "dell'Olanda",
+      "canonical": "dell'Olanda"
+    },
+    {
+      "surface": "degli Stati Uniti",
+      "canonical": "degli Stati Uniti"
+    },
+    {
+      "surface": "dei Paesi Bassi",
+      "canonical": "dei Paesi Bassi"
+    }
+  ],
+  "ITNEG_REGION": [
+    {
+      "surface": "del mondo",
+      "canonical": "del mondo"
+    },
+    {
+      "surface": "d'Europa",
+      "canonical": "d'Europa"
+    },
+    {
+      "surface": "d'Italia",
+      "canonical": "d'Italia"
+    },
+    {
+      "surface": "d'Africa",
+      "canonical": "d'Africa"
+    },
+    {
+      "surface": "d'Asia",
+      "canonical": "d'Asia"
+    },
+    {
+      "surface": "del pianeta",
+      "canonical": "del pianeta"
+    },
+    {
+      "surface": "della Terra",
+      "canonical": "della Terra"
+    },
+    {
+      "surface": "d'America",
+      "canonical": "d'America"
+    },
+    {
+      "surface": "del Sud America",
+      "canonical": "del Sud America"
+    },
+    {
+      "surface": "del Nord America",
+      "canonical": "del Nord America"
+    },
+    {
+      "surface": "dell'emisfero australe",
+      "canonical": "dell'emisfero australe"
+    },
+    {
+      "surface": "del continente africano",
+      "canonical": "del continente africano"
+    }
+  ],
+  "ITNEG_SUP": [
+    {
+      "surface": "la montagna più alta",
+      "canonical": "la montagna più alta"
+    },
+    {
+      "surface": "il fiume più lungo",
+      "canonical": "il fiume più lungo"
+    },
+    {
+      "surface": "il deserto più grande",
+      "canonical": "il deserto più grande"
+    },
+    {
+      "surface": "il lago più grande",
+      "canonical": "il lago più grande"
+    },
+    {
+      "surface": "la città più popolosa",
+      "canonical": "la città più popolosa"
+    },
+    {
+      "surface": "l'edificio più alto",
+      "canonical": "l'edificio più alto"
+    },
+    {
+      "surface": "il vulcano più attivo",
+      "canonical": "il vulcano più attivo"
+    },
+    {
+      "surface": "l'isola più grande",
+      "canonical": "l'isola più grande"
+    },
+    {
+      "surface": "la cascata più alta",
+      "canonical": "la cascata più alta"
+    },
+    {
+      "surface": "l'oceano più profondo",
+      "canonical": "l'oceano più profondo"
+    },
+    {
+      "surface": "il ghiacciaio più esteso",
+      "canonical": "il ghiacciaio più esteso"
+    },
+    {
+      "surface": "la foresta più grande",
+      "canonical": "la foresta più grande"
+    },
+    {
+      "surface": "il mammifero più grande",
+      "canonical": "il mammifero più grande"
+    },
+    {
+      "surface": "l'uccello più veloce",
+      "canonical": "l'uccello più veloce"
+    },
+    {
+      "surface": "il pesce più grande",
+      "canonical": "il pesce più grande"
+    },
+    {
+      "surface": "il serpente più lungo",
+      "canonical": "il serpente più lungo"
+    },
+    {
+      "surface": "il ponte più lungo",
+      "canonical": "il ponte più lungo"
+    },
+    {
+      "surface": "la torre più alta",
+      "canonical": "la torre più alta"
+    },
+    {
+      "surface": "la strada più lunga",
+      "canonical": "la strada più lunga"
+    },
+    {
+      "surface": "il tunnel più lungo",
+      "canonical": "il tunnel più lungo"
+    },
+    {
+      "surface": "il lago più profondo",
+      "canonical": "il lago più profondo"
+    },
+    {
+      "surface": "la catena montuosa più lunga",
+      "canonical": "la catena montuosa più lunga"
+    },
+    {
+      "surface": "il paese più esteso",
+      "canonical": "il paese più esteso"
+    },
+    {
+      "surface": "la capitale più antica",
+      "canonical": "la capitale più antica"
+    },
+    {
+      "surface": "il grattacielo più alto",
+      "canonical": "il grattacielo più alto"
+    },
+    {
+      "surface": "l'albero più alto",
+      "canonical": "l'albero più alto"
+    },
+    {
+      "surface": "il deserto più caldo",
+      "canonical": "il deserto più caldo"
+    },
+    {
+      "surface": "la spiaggia più lunga",
+      "canonical": "la spiaggia più lunga"
+    },
+    {
+      "surface": "il canyon più profondo",
+      "canonical": "il canyon più profondo"
+    },
+    {
+      "surface": "la metropoli più grande",
+      "canonical": "la metropoli più grande"
+    }
+  ],
+  "ITNEG_INVENTION": [
+    {
+      "surface": "la lavatrice",
+      "canonical": "la lavatrice"
+    },
+    {
+      "surface": "il telefono",
+      "canonical": "il telefono"
+    },
+    {
+      "surface": "la radio",
+      "canonical": "la radio"
+    },
+    {
+      "surface": "la televisione",
+      "canonical": "la televisione"
+    },
+    {
+      "surface": "il frigorifero",
+      "canonical": "il frigorifero"
+    },
+    {
+      "surface": "l'automobile",
+      "canonical": "l'automobile"
+    },
+    {
+      "surface": "l'aeroplano",
+      "canonical": "l'aeroplano"
+    },
+    {
+      "surface": "la lampadina",
+      "canonical": "la lampadina"
+    },
+    {
+      "surface": "la stampante",
+      "canonical": "la stampante"
+    },
+    {
+      "surface": "la bicicletta",
+      "canonical": "la bicicletta"
+    },
+    {
+      "surface": "il computer",
+      "canonical": "il computer"
+    },
+    {
+      "surface": "il microscopio",
+      "canonical": "il microscopio"
+    },
+    {
+      "surface": "il telescopio",
+      "canonical": "il telescopio"
+    },
+    {
+      "surface": "la macchina fotografica",
+      "canonical": "la macchina fotografica"
+    },
+    {
+      "surface": "il paracadute",
+      "canonical": "il paracadute"
+    },
+    {
+      "surface": "la dinamite",
+      "canonical": "la dinamite"
+    },
+    {
+      "surface": "il vaccino",
+      "canonical": "il vaccino"
+    },
+    {
+      "surface": "il termometro",
+      "canonical": "il termometro"
+    },
+    {
+      "surface": "la bussola",
+      "canonical": "la bussola"
+    },
+    {
+      "surface": "l'orologio meccanico",
+      "canonical": "l'orologio meccanico"
+    },
+    {
+      "surface": "il motore a vapore",
+      "canonical": "il motore a vapore"
+    },
+    {
+      "surface": "la macchina da scrivere",
+      "canonical": "la macchina da scrivere"
+    },
+    {
+      "surface": "il fonografo",
+      "canonical": "il fonografo"
+    },
+    {
+      "surface": "la calcolatrice",
+      "canonical": "la calcolatrice"
+    },
+    {
+      "surface": "la pila elettrica",
+      "canonical": "la pila elettrica"
+    },
+    {
+      "surface": "il telegrafo",
+      "canonical": "il telegrafo"
+    },
+    {
+      "surface": "il grammofono",
+      "canonical": "il grammofono"
+    },
+    {
+      "surface": "il forno a microonde",
+      "canonical": "il forno a microonde"
+    },
+    {
+      "surface": "l'aspirapolvere",
+      "canonical": "l'aspirapolvere"
+    },
+    {
+      "surface": "il ventilatore",
+      "canonical": "il ventilatore"
+    },
+    {
+      "surface": "il cannocchiale",
+      "canonical": "il cannocchiale"
+    },
+    {
+      "surface": "il barometro",
+      "canonical": "il barometro"
+    },
+    {
+      "surface": "il pendolo",
+      "canonical": "il pendolo"
+    },
+    {
+      "surface": "la ruota",
+      "canonical": "la ruota"
+    },
+    {
+      "surface": "il mulino a vento",
+      "canonical": "il mulino a vento"
+    },
+    {
+      "surface": "l'ascensore",
+      "canonical": "l'ascensore"
+    },
+    {
+      "surface": "la scala mobile",
+      "canonical": "la scala mobile"
+    },
+    {
+      "surface": "il sottomarino",
+      "canonical": "il sottomarino"
+    },
+    {
+      "surface": "il dirigibile",
+      "canonical": "il dirigibile"
+    },
+    {
+      "surface": "l'elicottero",
+      "canonical": "l'elicottero"
+    },
+    {
+      "surface": "il razzo",
+      "canonical": "il razzo"
+    },
+    {
+      "surface": "la mongolfiera",
+      "canonical": "la mongolfiera"
+    },
+    {
+      "surface": "la locomotiva",
+      "canonical": "la locomotiva"
+    },
+    {
+      "surface": "il motore a scoppio",
+      "canonical": "il motore a scoppio"
+    },
+    {
+      "surface": "la macchina a vapore",
+      "canonical": "la macchina a vapore"
+    }
+  ],
+  "ITNEG_DISCOVERY": [
+    {
+      "surface": "l'America",
+      "canonical": "l'America"
+    },
+    {
+      "surface": "la penicillina",
+      "canonical": "la penicillina"
+    },
+    {
+      "surface": "la gravità",
+      "canonical": "la gravità"
+    },
+    {
+      "surface": "i raggi X",
+      "canonical": "i raggi X"
+    },
+    {
+      "surface": "l'ossigeno",
+      "canonical": "l'ossigeno"
+    },
+    {
+      "surface": "l'elettricità",
+      "canonical": "l'elettricità"
+    },
+    {
+      "surface": "il DNA",
+      "canonical": "il DNA"
+    },
+    {
+      "surface": "la radioattività",
+      "canonical": "la radioattività"
+    },
+    {
+      "surface": "la circolazione del sangue",
+      "canonical": "la circolazione del sangue"
+    },
+    {
+      "surface": "i batteri",
+      "canonical": "i batteri"
+    },
+    {
+      "surface": "l'evoluzione",
+      "canonical": "l'evoluzione"
+    },
+    {
+      "surface": "la relatività",
+      "canonical": "la relatività"
+    },
+    {
+      "surface": "i raggi ultravioletti",
+      "canonical": "i raggi ultravioletti"
+    },
+    {
+      "surface": "il bosone di Higgs",
+      "canonical": "il bosone di Higgs"
+    },
+    {
+      "surface": "i buchi neri",
+      "canonical": "i buchi neri"
+    },
+    {
+      "surface": "l'insulina",
+      "canonical": "l'insulina"
+    },
+    {
+      "surface": "la tavola periodica",
+      "canonical": "la tavola periodica"
+    },
+    {
+      "surface": "i neutrini",
+      "canonical": "i neutrini"
+    },
+    {
+      "surface": "l'anestesia",
+      "canonical": "l'anestesia"
+    },
+    {
+      "surface": "la fissione nucleare",
+      "canonical": "la fissione nucleare"
+    },
+    {
+      "surface": "i raggi infrarossi",
+      "canonical": "i raggi infrarossi"
+    },
+    {
+      "surface": "l'elettrone",
+      "canonical": "l'elettrone"
+    },
+    {
+      "surface": "il neutrone",
+      "canonical": "il neutrone"
+    },
+    {
+      "surface": "il protone",
+      "canonical": "il protone"
+    },
+    {
+      "surface": "l'atomo",
+      "canonical": "l'atomo"
+    },
+    {
+      "surface": "la cellula",
+      "canonical": "la cellula"
+    },
+    {
+      "surface": "i cromosomi",
+      "canonical": "i cromosomi"
+    },
+    {
+      "surface": "l'antimateria",
+      "canonical": "l'antimateria"
+    },
+    {
+      "surface": "le onde gravitazionali",
+      "canonical": "le onde gravitazionali"
+    },
+    {
+      "surface": "i pianeti extrasolari",
+      "canonical": "i pianeti extrasolari"
+    },
+    {
+      "surface": "la vitamina C",
+      "canonical": "la vitamina C"
+    },
+    {
+      "surface": "gli antibiotici",
+      "canonical": "gli antibiotici"
+    },
+    {
+      "surface": "la deriva dei continenti",
+      "canonical": "la deriva dei continenti"
+    },
+    {
+      "surface": "l'espansione dell'universo",
+      "canonical": "l'espansione dell'universo"
+    },
+    {
+      "surface": "la doppia elica",
+      "canonical": "la doppia elica"
+    },
+    {
+      "surface": "la fotosintesi",
+      "canonical": "la fotosintesi"
+    },
+    {
+      "surface": "il campo magnetico terrestre",
+      "canonical": "il campo magnetico terrestre"
+    },
+    {
+      "surface": "la pressione atmosferica",
+      "canonical": "la pressione atmosferica"
+    },
+    {
+      "surface": "il vaccino contro il vaiolo",
+      "canonical": "il vaccino contro il vaiolo"
+    },
+    {
+      "surface": "la struttura dell'atomo",
+      "canonical": "la struttura dell'atomo"
+    },
+    {
+      "surface": "il moto dei pianeti",
+      "canonical": "il moto dei pianeti"
+    },
+    {
+      "surface": "la velocità della luce",
+      "canonical": "la velocità della luce"
+    }
+  ],
+  "ITNEG_PAINTING": [
+    {
+      "surface": "la Gioconda",
+      "canonical": "la Gioconda"
+    },
+    {
+      "surface": "la Notte Stellata",
+      "canonical": "la Notte Stellata"
+    },
+    {
+      "surface": "l'Urlo",
+      "canonical": "l'Urlo"
+    },
+    {
+      "surface": "la Ragazza con l'orecchino di perla",
+      "canonical": "la Ragazza con l'orecchino di perla"
+    },
+    {
+      "surface": "Guernica",
+      "canonical": "Guernica"
+    },
+    {
+      "surface": "la Nascita di Venere",
+      "canonical": "la Nascita di Venere"
+    },
+    {
+      "surface": "la Creazione di Adamo",
+      "canonical": "la Creazione di Adamo"
+    },
+    {
+      "surface": "la Ronda di Notte",
+      "canonical": "la Ronda di Notte"
+    },
+    {
+      "surface": "le Ninfee",
+      "canonical": "le Ninfee"
+    },
+    {
+      "surface": "i Girasoli",
+      "canonical": "i Girasoli"
+    },
+    {
+      "surface": "la Persistenza della Memoria",
+      "canonical": "la Persistenza della Memoria"
+    },
+    {
+      "surface": "la Libertà che guida il popolo",
+      "canonical": "la Libertà che guida il popolo"
+    },
+    {
+      "surface": "il Bacio",
+      "canonical": "il Bacio"
+    },
+    {
+      "surface": "la Scuola di Atene",
+      "canonical": "la Scuola di Atene"
+    },
+    {
+      "surface": "l'Ultima Cena",
+      "canonical": "l'Ultima Cena"
+    },
+    {
+      "surface": "la Dama con l'ermellino",
+      "canonical": "la Dama con l'ermellino"
+    },
+    {
+      "surface": "il Giudizio Universale",
+      "canonical": "il Giudizio Universale"
+    },
+    {
+      "surface": "le Demoiselles d'Avignon",
+      "canonical": "le Demoiselles d'Avignon"
+    },
+    {
+      "surface": "la Zattera della Medusa",
+      "canonical": "la Zattera della Medusa"
+    },
+    {
+      "surface": "l'Angelus",
+      "canonical": "l'Angelus"
+    },
+    {
+      "surface": "il Bacio di Klimt",
+      "canonical": "il Bacio di Klimt"
+    },
+    {
+      "surface": "la Grande Onda",
+      "canonical": "la Grande Onda"
+    },
+    {
+      "surface": "la Camera di Van Gogh",
+      "canonical": "la Camera di Van Gogh"
+    },
+    {
+      "surface": "i Mangiatori di patate",
+      "canonical": "i Mangiatori di patate"
+    },
+    {
+      "surface": "la Colazione sull'erba",
+      "canonical": "la Colazione sull'erba"
+    },
+    {
+      "surface": "l'Impressione del sole nascente",
+      "canonical": "l'Impressione del sole nascente"
+    },
+    {
+      "surface": "la Ragazza col cappello",
+      "canonical": "la Ragazza col cappello"
+    },
+    {
+      "surface": "il Figlio dell'uomo",
+      "canonical": "il Figlio dell'uomo"
+    },
+    {
+      "surface": "la Cena in Emmaus",
+      "canonical": "la Cena in Emmaus"
+    },
+    {
+      "surface": "la Deposizione",
+      "canonical": "la Deposizione"
+    },
+    {
+      "surface": "la Trasfigurazione",
+      "canonical": "la Trasfigurazione"
+    },
+    {
+      "surface": "la Flagellazione",
+      "canonical": "la Flagellazione"
+    },
+    {
+      "surface": "la Maestà di Duccio",
+      "canonical": "la Maestà di Duccio"
+    },
+    {
+      "surface": "la Primavera",
+      "canonical": "la Primavera"
+    },
+    {
+      "surface": "il Trittico delle delizie",
+      "canonical": "il Trittico delle delizie"
+    },
+    {
+      "surface": "la Torre di Babele di Bruegel",
+      "canonical": "la Torre di Babele di Bruegel"
+    },
+    {
+      "surface": "l'Autoritratto di Van Gogh",
+      "canonical": "l'Autoritratto di Van Gogh"
+    },
+    {
+      "surface": "la Venere di Urbino",
+      "canonical": "la Venere di Urbino"
+    },
+    {
+      "surface": "il Compianto sul Cristo morto",
+      "canonical": "il Compianto sul Cristo morto"
+    },
+    {
+      "surface": "la Tempesta di Giorgione",
+      "canonical": "la Tempesta di Giorgione"
+    }
+  ],
+  "ITNEG_MUSIC": [
+    {
+      "surface": "la Nona Sinfonia",
+      "canonical": "la Nona Sinfonia"
+    },
+    {
+      "surface": "il Bolero",
+      "canonical": "il Bolero"
+    },
+    {
+      "surface": "le Quattro Stagioni",
+      "canonical": "le Quattro Stagioni"
+    },
+    {
+      "surface": "la Traviata",
+      "canonical": "la Traviata"
+    },
+    {
+      "surface": "l'Aida",
+      "canonical": "l'Aida"
+    },
+    {
+      "surface": "il Barbiere di Siviglia",
+      "canonical": "il Barbiere di Siviglia"
+    },
+    {
+      "surface": "la Tosca",
+      "canonical": "la Tosca"
+    },
+    {
+      "surface": "il Flauto Magico",
+      "canonical": "il Flauto Magico"
+    },
+    {
+      "surface": "la Marcia Nuziale",
+      "canonical": "la Marcia Nuziale"
+    },
+    {
+      "surface": "l'Inno alla Gioia",
+      "canonical": "l'Inno alla Gioia"
+    },
+    {
+      "surface": "la Cavalcata delle Valchirie",
+      "canonical": "la Cavalcata delle Valchirie"
+    },
+    {
+      "surface": "il Requiem di Mozart",
+      "canonical": "il Requiem di Mozart"
+    },
+    {
+      "surface": "la Sinfonia Incompiuta",
+      "canonical": "la Sinfonia Incompiuta"
+    },
+    {
+      "surface": "la Bohème",
+      "canonical": "la Bohème"
+    },
+    {
+      "surface": "il Rigoletto",
+      "canonical": "il Rigoletto"
+    },
+    {
+      "surface": "la Carmen",
+      "canonical": "la Carmen"
+    },
+    {
+      "surface": "il Lago dei Cigni",
+      "canonical": "il Lago dei Cigni"
+    },
+    {
+      "surface": "lo Schiaccianoci",
+      "canonical": "lo Schiaccianoci"
+    },
+    {
+      "surface": "la Quinta Sinfonia",
+      "canonical": "la Quinta Sinfonia"
+    },
+    {
+      "surface": "il Messia",
+      "canonical": "il Messia"
+    },
+    {
+      "surface": "le Nozze di Figaro",
+      "canonical": "le Nozze di Figaro"
+    },
+    {
+      "surface": "la Primavera di Vivaldi",
+      "canonical": "la Primavera di Vivaldi"
+    },
+    {
+      "surface": "la Marcia Turca",
+      "canonical": "la Marcia Turca"
+    },
+    {
+      "surface": "il Don Giovanni",
+      "canonical": "il Don Giovanni"
+    },
+    {
+      "surface": "la Pastorale",
+      "canonical": "la Pastorale"
+    },
+    {
+      "surface": "il Chiaro di Luna",
+      "canonical": "il Chiaro di Luna"
+    },
+    {
+      "surface": "la Cavalleria Rusticana",
+      "canonical": "la Cavalleria Rusticana"
+    },
+    {
+      "surface": "il Guglielmo Tell",
+      "canonical": "il Guglielmo Tell"
+    },
+    {
+      "surface": "la Sinfonia del Nuovo Mondo",
+      "canonical": "la Sinfonia del Nuovo Mondo"
+    },
+    {
+      "surface": "l'Otello di Verdi",
+      "canonical": "l'Otello di Verdi"
+    },
+    {
+      "surface": "il Boléro di Ravel",
+      "canonical": "il Boléro di Ravel"
+    },
+    {
+      "surface": "la Rapsodia in blu",
+      "canonical": "la Rapsodia in blu"
+    },
+    {
+      "surface": "la Sagra della Primavera",
+      "canonical": "la Sagra della Primavera"
+    },
+    {
+      "surface": "il Bell'Danubio blu",
+      "canonical": "il Bell'Danubio blu"
+    },
+    {
+      "surface": "la Sinfonia Eroica",
+      "canonical": "la Sinfonia Eroica"
+    },
+    {
+      "surface": "il Va' pensiero",
+      "canonical": "il Va' pensiero"
+    },
+    {
+      "surface": "la Turandot",
+      "canonical": "la Turandot"
+    },
+    {
+      "surface": "il Concerto per pianoforte",
+      "canonical": "il Concerto per pianoforte"
+    },
+    {
+      "surface": "la Toccata e fuga",
+      "canonical": "la Toccata e fuga"
+    },
+    {
+      "surface": "l'Ave Maria",
+      "canonical": "l'Ave Maria"
+    }
+  ],
+  "ITNEG_BOOK": [
+    {
+      "surface": "i Promessi Sposi",
+      "canonical": "i Promessi Sposi"
+    },
+    {
+      "surface": "la Divina Commedia",
+      "canonical": "la Divina Commedia"
+    },
+    {
+      "surface": "il Decameron",
+      "canonical": "il Decameron"
+    },
+    {
+      "surface": "l'Orlando Furioso",
+      "canonical": "l'Orlando Furioso"
+    },
+    {
+      "surface": "la Gerusalemme Liberata",
+      "canonical": "la Gerusalemme Liberata"
+    },
+    {
+      "surface": "il Nome della Rosa",
+      "canonical": "il Nome della Rosa"
+    },
+    {
+      "surface": "il Piccolo Principe",
+      "canonical": "il Piccolo Principe"
+    },
+    {
+      "surface": "Don Chisciotte",
+      "canonical": "Don Chisciotte"
+    },
+    {
+      "surface": "Guerra e Pace",
+      "canonical": "Guerra e Pace"
+    },
+    {
+      "surface": "i Miserabili",
+      "canonical": "i Miserabili"
+    },
+    {
+      "surface": "il Conte di Montecristo",
+      "canonical": "il Conte di Montecristo"
+    },
+    {
+      "surface": "Orgoglio e Pregiudizio",
+      "canonical": "Orgoglio e Pregiudizio"
+    },
+    {
+      "surface": "Moby Dick",
+      "canonical": "Moby Dick"
+    },
+    {
+      "surface": "l'Odissea",
+      "canonical": "l'Odissea"
+    },
+    {
+      "surface": "l'Iliade",
+      "canonical": "l'Iliade"
+    },
+    {
+      "surface": "l'Eneide",
+      "canonical": "l'Eneide"
+    },
+    {
+      "surface": "la Metamorfosi",
+      "canonical": "la Metamorfosi"
+    },
+    {
+      "surface": "il Processo",
+      "canonical": "il Processo"
+    },
+    {
+      "surface": "Delitto e Castigo",
+      "canonical": "Delitto e Castigo"
+    },
+    {
+      "surface": "Anna Karenina",
+      "canonical": "Anna Karenina"
+    },
+    {
+      "surface": "il Vecchio e il Mare",
+      "canonical": "il Vecchio e il Mare"
+    },
+    {
+      "surface": "il Gattopardo",
+      "canonical": "il Gattopardo"
+    },
+    {
+      "surface": "Se questo è un uomo",
+      "canonical": "Se questo è un uomo"
+    },
+    {
+      "surface": "la Coscienza di Zeno",
+      "canonical": "la Coscienza di Zeno"
+    },
+    {
+      "surface": "i Malavoglia",
+      "canonical": "i Malavoglia"
+    },
+    {
+      "surface": "Pinocchio",
+      "canonical": "Pinocchio"
+    },
+    {
+      "surface": "Cuore",
+      "canonical": "Cuore"
+    },
+    {
+      "surface": "Cent'anni di solitudine",
+      "canonical": "Cent'anni di solitudine"
+    },
+    {
+      "surface": "il Signore delle Mosche",
+      "canonical": "il Signore delle Mosche"
+    },
+    {
+      "surface": "1984",
+      "canonical": "1984"
+    },
+    {
+      "surface": "il Grande Gatsby",
+      "canonical": "il Grande Gatsby"
+    },
+    {
+      "surface": "Frankenstein",
+      "canonical": "Frankenstein"
+    },
+    {
+      "surface": "Dracula",
+      "canonical": "Dracula"
+    },
+    {
+      "surface": "il Ritratto di Dorian Gray",
+      "canonical": "il Ritratto di Dorian Gray"
+    },
+    {
+      "surface": "l'Isola del tesoro",
+      "canonical": "l'Isola del tesoro"
+    },
+    {
+      "surface": "Robinson Crusoe",
+      "canonical": "Robinson Crusoe"
+    },
+    {
+      "surface": "i Viaggi di Gulliver",
+      "canonical": "i Viaggi di Gulliver"
+    },
+    {
+      "surface": "il Giovane Holden",
+      "canonical": "il Giovane Holden"
+    },
+    {
+      "surface": "la Fattoria degli animali",
+      "canonical": "la Fattoria degli animali"
+    },
+    {
+      "surface": "il Fu Mattia Pascal",
+      "canonical": "il Fu Mattia Pascal"
+    }
+  ],
+  "ITNEG_FILM": [
+    {
+      "surface": "il Padrino",
+      "canonical": "il Padrino"
+    },
+    {
+      "surface": "Titanic",
+      "canonical": "Titanic"
+    },
+    {
+      "surface": "il Gladiatore",
+      "canonical": "il Gladiatore"
+    },
+    {
+      "surface": "Pulp Fiction",
+      "canonical": "Pulp Fiction"
+    },
+    {
+      "surface": "il Signore degli Anelli",
+      "canonical": "il Signore degli Anelli"
+    },
+    {
+      "surface": "Forrest Gump",
+      "canonical": "Forrest Gump"
+    },
+    {
+      "surface": "Matrix",
+      "canonical": "Matrix"
+    },
+    {
+      "surface": "Inception",
+      "canonical": "Inception"
+    },
+    {
+      "surface": "lo Squalo",
+      "canonical": "lo Squalo"
+    },
+    {
+      "surface": "Rocky",
+      "canonical": "Rocky"
+    },
+    {
+      "surface": "Alien",
+      "canonical": "Alien"
+    },
+    {
+      "surface": "Casablanca",
+      "canonical": "Casablanca"
+    },
+    {
+      "surface": "C'era una volta il West",
+      "canonical": "C'era una volta il West"
+    },
+    {
+      "surface": "la Vita è bella",
+      "canonical": "la Vita è bella"
+    },
+    {
+      "surface": "Nuovo Cinema Paradiso",
+      "canonical": "Nuovo Cinema Paradiso"
+    },
+    {
+      "surface": "il Buono il Brutto e il Cattivo",
+      "canonical": "il Buono il Brutto e il Cattivo"
+    },
+    {
+      "surface": "Guerre Stellari",
+      "canonical": "Guerre Stellari"
+    },
+    {
+      "surface": "Jurassic Park",
+      "canonical": "Jurassic Park"
+    },
+    {
+      "surface": "Ritorno al Futuro",
+      "canonical": "Ritorno al Futuro"
+    },
+    {
+      "surface": "il Re Leone",
+      "canonical": "il Re Leone"
+    },
+    {
+      "surface": "Psyco",
+      "canonical": "Psyco"
+    },
+    {
+      "surface": "Shining",
+      "canonical": "Shining"
+    },
+    {
+      "surface": "Blade Runner",
+      "canonical": "Blade Runner"
+    },
+    {
+      "surface": "Apocalypse Now",
+      "canonical": "Apocalypse Now"
+    },
+    {
+      "surface": "Taxi Driver",
+      "canonical": "Taxi Driver"
+    },
+    {
+      "surface": "Quarto Potere",
+      "canonical": "Quarto Potere"
+    },
+    {
+      "surface": "Via col Vento",
+      "canonical": "Via col Vento"
+    },
+    {
+      "surface": "il Mago di Oz",
+      "canonical": "il Mago di Oz"
+    },
+    {
+      "surface": "E.T.",
+      "canonical": "E.T."
+    },
+    {
+      "surface": "Interstellar",
+      "canonical": "Interstellar"
+    },
+    {
+      "surface": "il Cavaliere Oscuro",
+      "canonical": "il Cavaliere Oscuro"
+    },
+    {
+      "surface": "Fight Club",
+      "canonical": "Fight Club"
+    },
+    {
+      "surface": "Schindler's List",
+      "canonical": "Schindler's List"
+    },
+    {
+      "surface": "il Silenzio degli innocenti",
+      "canonical": "il Silenzio degli innocenti"
+    },
+    {
+      "surface": "Braveheart",
+      "canonical": "Braveheart"
+    },
+    {
+      "surface": "Gladiator",
+      "canonical": "Gladiator"
+    },
+    {
+      "surface": "la Grande Bellezza",
+      "canonical": "la Grande Bellezza"
+    },
+    {
+      "surface": "Amélie",
+      "canonical": "Amélie"
+    },
+    {
+      "surface": "il Labirinto del fauno",
+      "canonical": "il Labirinto del fauno"
+    },
+    {
+      "surface": "Parasite",
+      "canonical": "Parasite"
+    }
+  ],
+  "ITNEG_PHENOMENON": [
+    {
+      "surface": "i terremoti",
+      "canonical": "i terremoti"
+    },
+    {
+      "surface": "le eruzioni vulcaniche",
+      "canonical": "le eruzioni vulcaniche"
+    },
+    {
+      "surface": "i fulmini",
+      "canonical": "i fulmini"
+    },
+    {
+      "surface": "le maree",
+      "canonical": "le maree"
+    },
+    {
+      "surface": "gli tsunami",
+      "canonical": "gli tsunami"
+    },
+    {
+      "surface": "le aurore boreali",
+      "canonical": "le aurore boreali"
+    },
+    {
+      "surface": "gli uragani",
+      "canonical": "gli uragani"
+    },
+    {
+      "surface": "i tornado",
+      "canonical": "i tornado"
+    },
+    {
+      "surface": "le eclissi",
+      "canonical": "le eclissi"
+    },
+    {
+      "surface": "gli arcobaleni",
+      "canonical": "gli arcobaleni"
+    },
+    {
+      "surface": "le valanghe",
+      "canonical": "le valanghe"
+    },
+    {
+      "surface": "le frane",
+      "canonical": "le frane"
+    },
+    {
+      "surface": "i cicloni",
+      "canonical": "i cicloni"
+    },
+    {
+      "surface": "i temporali",
+      "canonical": "i temporali"
+    },
+    {
+      "surface": "le tempeste di sabbia",
+      "canonical": "le tempeste di sabbia"
+    },
+    {
+      "surface": "le inondazioni",
+      "canonical": "le inondazioni"
+    },
+    {
+      "surface": "i maremoti",
+      "canonical": "i maremoti"
+    },
+    {
+      "surface": "le nevicate",
+      "canonical": "le nevicate"
+    },
+    {
+      "surface": "le grandinate",
+      "canonical": "le grandinate"
+    },
+    {
+      "surface": "le nebbie",
+      "canonical": "le nebbie"
+    },
+    {
+      "surface": "i miraggi",
+      "canonical": "i miraggi"
+    },
+    {
+      "surface": "le stelle cadenti",
+      "canonical": "le stelle cadenti"
+    },
+    {
+      "surface": "i geyser",
+      "canonical": "i geyser"
+    },
+    {
+      "surface": "le dune",
+      "canonical": "le dune"
+    },
+    {
+      "surface": "le sabbie mobili",
+      "canonical": "le sabbie mobili"
+    },
+    {
+      "surface": "le correnti oceaniche",
+      "canonical": "le correnti oceaniche"
+    },
+    {
+      "surface": "i venti alisei",
+      "canonical": "i venti alisei"
+    },
+    {
+      "surface": "le stagioni",
+      "canonical": "le stagioni"
+    },
+    {
+      "surface": "le fasi lunari",
+      "canonical": "le fasi lunari"
+    },
+    {
+      "surface": "i solstizi",
+      "canonical": "i solstizi"
+    },
+    {
+      "surface": "gli equinozi",
+      "canonical": "gli equinozi"
+    },
+    {
+      "surface": "le meteore",
+      "canonical": "le meteore"
+    },
+    {
+      "surface": "le comete",
+      "canonical": "le comete"
+    },
+    {
+      "surface": "le supernove",
+      "canonical": "le supernove"
+    },
+    {
+      "surface": "le trombe d'aria",
+      "canonical": "le trombe d'aria"
+    },
+    {
+      "surface": "i fuochi fatui",
+      "canonical": "i fuochi fatui"
+    },
+    {
+      "surface": "le carestie",
+      "canonical": "le carestie"
+    },
+    {
+      "surface": "le siccità",
+      "canonical": "le siccità"
+    },
+    {
+      "surface": "i monsoni",
+      "canonical": "i monsoni"
+    },
+    {
+      "surface": "le eclissi lunari",
+      "canonical": "le eclissi lunari"
+    },
+    {
+      "surface": "le eclissi solari",
+      "canonical": "le eclissi solari"
+    },
+    {
+      "surface": "gli tsunami sottomarini",
+      "canonical": "gli tsunami sottomarini"
+    }
+  ],
+  "ITNEG_SUBSTANCE": [
+    {
+      "surface": "il vetro",
+      "canonical": "il vetro"
+    },
+    {
+      "surface": "il cemento",
+      "canonical": "il cemento"
+    },
+    {
+      "surface": "il sapone",
+      "canonical": "il sapone"
+    },
+    {
+      "surface": "il cioccolato",
+      "canonical": "il cioccolato"
+    },
+    {
+      "surface": "il diamante",
+      "canonical": "il diamante"
+    },
+    {
+      "surface": "il ferro",
+      "canonical": "il ferro"
+    },
+    {
+      "surface": "il rame",
+      "canonical": "il rame"
+    },
+    {
+      "surface": "l'acciaio",
+      "canonical": "l'acciaio"
+    },
+    {
+      "surface": "il cartone",
+      "canonical": "il cartone"
+    },
+    {
+      "surface": "il bronzo",
+      "canonical": "il bronzo"
+    },
+    {
+      "surface": "il vino",
+      "canonical": "il vino"
+    },
+    {
+      "surface": "il pane",
+      "canonical": "il pane"
+    },
+    {
+      "surface": "il formaggio",
+      "canonical": "il formaggio"
+    },
+    {
+      "surface": "il sale",
+      "canonical": "il sale"
+    },
+    {
+      "surface": "lo zucchero",
+      "canonical": "lo zucchero"
+    },
+    {
+      "surface": "il caffè",
+      "canonical": "il caffè"
+    },
+    {
+      "surface": "il miele",
+      "canonical": "il miele"
+    },
+    {
+      "surface": "il burro",
+      "canonical": "il burro"
+    },
+    {
+      "surface": "il gesso",
+      "canonical": "il gesso"
+    },
+    {
+      "surface": "il carbone",
+      "canonical": "il carbone"
+    },
+    {
+      "surface": "il petrolio",
+      "canonical": "il petrolio"
+    },
+    {
+      "surface": "il gas naturale",
+      "canonical": "il gas naturale"
+    },
+    {
+      "surface": "il plutonio",
+      "canonical": "il plutonio"
+    },
+    {
+      "surface": "l'uranio",
+      "canonical": "l'uranio"
+    },
+    {
+      "surface": "il silicio",
+      "canonical": "il silicio"
+    },
+    {
+      "surface": "il platino",
+      "canonical": "il platino"
+    },
+    {
+      "surface": "il piombo",
+      "canonical": "il piombo"
+    },
+    {
+      "surface": "lo stagno",
+      "canonical": "lo stagno"
+    },
+    {
+      "surface": "il nichel",
+      "canonical": "il nichel"
+    },
+    {
+      "surface": "il titanio",
+      "canonical": "il titanio"
+    },
+    {
+      "surface": "il grafene",
+      "canonical": "il grafene"
+    },
+    {
+      "surface": "il polistirolo",
+      "canonical": "il polistirolo"
+    },
+    {
+      "surface": "il nylon",
+      "canonical": "il nylon"
+    },
+    {
+      "surface": "il cotone",
+      "canonical": "il cotone"
+    },
+    {
+      "surface": "il cuoio",
+      "canonical": "il cuoio"
+    },
+    {
+      "surface": "il marmo",
+      "canonical": "il marmo"
+    },
+    {
+      "surface": "il granito",
+      "canonical": "il granito"
+    },
+    {
+      "surface": "il cristallo",
+      "canonical": "il cristallo"
+    },
+    {
+      "surface": "il caucciù",
+      "canonical": "il caucciù"
+    },
+    {
+      "surface": "il bicarbonato",
+      "canonical": "il bicarbonato"
+    },
+    {
+      "surface": "l'aceto",
+      "canonical": "l'aceto"
+    },
+    {
+      "surface": "il lievito",
+      "canonical": "il lievito"
+    },
+    {
+      "surface": "l'alcol",
+      "canonical": "l'alcol"
+    },
+    {
+      "surface": "il mercurio",
+      "canonical": "il mercurio"
+    },
+    {
+      "surface": "il cloro",
+      "canonical": "il cloro"
+    }
+  ],
+  "ITNEG_CONCEPT": [
+    {
+      "surface": "la fotosintesi",
+      "canonical": "la fotosintesi"
+    },
+    {
+      "surface": "la gravità",
+      "canonical": "la gravità"
+    },
+    {
+      "surface": "l'inflazione",
+      "canonical": "l'inflazione"
+    },
+    {
+      "surface": "la democrazia",
+      "canonical": "la democrazia"
+    },
+    {
+      "surface": "il capitalismo",
+      "canonical": "il capitalismo"
+    },
+    {
+      "surface": "l'evoluzione",
+      "canonical": "l'evoluzione"
+    },
+    {
+      "surface": "la relatività",
+      "canonical": "la relatività"
+    },
+    {
+      "surface": "la fusione nucleare",
+      "canonical": "la fusione nucleare"
+    },
+    {
+      "surface": "il big bang",
+      "canonical": "il big bang"
+    },
+    {
+      "surface": "l'osmosi",
+      "canonical": "l'osmosi"
+    },
+    {
+      "surface": "la tettonica a placche",
+      "canonical": "la tettonica a placche"
+    },
+    {
+      "surface": "il socialismo",
+      "canonical": "il socialismo"
+    },
+    {
+      "surface": "la globalizzazione",
+      "canonical": "la globalizzazione"
+    },
+    {
+      "surface": "l'intelligenza artificiale",
+      "canonical": "l'intelligenza artificiale"
+    },
+    {
+      "surface": "la realtà aumentata",
+      "canonical": "la realtà aumentata"
+    },
+    {
+      "surface": "l'effetto serra",
+      "canonical": "l'effetto serra"
+    },
+    {
+      "surface": "il riscaldamento globale",
+      "canonical": "il riscaldamento globale"
+    },
+    {
+      "surface": "il ciclo dell'acqua",
+      "canonical": "il ciclo dell'acqua"
+    },
+    {
+      "surface": "la selezione naturale",
+      "canonical": "la selezione naturale"
+    },
+    {
+      "surface": "l'inerzia",
+      "canonical": "l'inerzia"
+    },
+    {
+      "surface": "l'entropia",
+      "canonical": "l'entropia"
+    },
+    {
+      "surface": "la termodinamica",
+      "canonical": "la termodinamica"
+    },
+    {
+      "surface": "la meccanica quantistica",
+      "canonical": "la meccanica quantistica"
+    },
+    {
+      "surface": "il metabolismo",
+      "canonical": "il metabolismo"
+    },
+    {
+      "surface": "la genetica",
+      "canonical": "la genetica"
+    },
+    {
+      "surface": "l'ecologia",
+      "canonical": "l'ecologia"
+    },
+    {
+      "surface": "la biodiversità",
+      "canonical": "la biodiversità"
+    },
+    {
+      "surface": "la borsa",
+      "canonical": "la borsa"
+    },
+    {
+      "surface": "l'interesse composto",
+      "canonical": "l'interesse composto"
+    },
+    {
+      "surface": "la deflazione",
+      "canonical": "la deflazione"
+    },
+    {
+      "surface": "la recessione",
+      "canonical": "la recessione"
+    },
+    {
+      "surface": "il libero mercato",
+      "canonical": "il libero mercato"
+    },
+    {
+      "surface": "la teoria del caos",
+      "canonical": "la teoria del caos"
+    },
+    {
+      "surface": "la teoria delle stringhe",
+      "canonical": "la teoria delle stringhe"
+    },
+    {
+      "surface": "la fisica quantistica",
+      "canonical": "la fisica quantistica"
+    },
+    {
+      "surface": "la chimica organica",
+      "canonical": "la chimica organica"
+    },
+    {
+      "surface": "l'astronomia",
+      "canonical": "l'astronomia"
+    },
+    {
+      "surface": "la geologia",
+      "canonical": "la geologia"
+    },
+    {
+      "surface": "la meteorologia",
+      "canonical": "la meteorologia"
+    },
+    {
+      "surface": "la psicologia",
+      "canonical": "la psicologia"
+    },
+    {
+      "surface": "la filosofia",
+      "canonical": "la filosofia"
+    },
+    {
+      "surface": "l'economia",
+      "canonical": "l'economia"
+    },
+    {
+      "surface": "la statistica",
+      "canonical": "la statistica"
+    },
+    {
+      "surface": "l'algebra",
+      "canonical": "l'algebra"
+    },
+    {
+      "surface": "la logica",
+      "canonical": "la logica"
+    },
+    {
+      "surface": "la crittografia",
+      "canonical": "la crittografia"
+    }
+  ],
+  "ITNEG_TECHTHING": [
+    {
+      "surface": "il wifi",
+      "canonical": "il wifi"
+    },
+    {
+      "surface": "il bluetooth",
+      "canonical": "il bluetooth"
+    },
+    {
+      "surface": "il gps",
+      "canonical": "il gps"
+    },
+    {
+      "surface": "il touchscreen",
+      "canonical": "il touchscreen"
+    },
+    {
+      "surface": "il codice qr",
+      "canonical": "il codice qr"
+    },
+    {
+      "surface": "la fibra ottica",
+      "canonical": "la fibra ottica"
+    },
+    {
+      "surface": "il 5g",
+      "canonical": "il 5g"
+    },
+    {
+      "surface": "il laser",
+      "canonical": "il laser"
+    },
+    {
+      "surface": "il transistor",
+      "canonical": "il transistor"
+    },
+    {
+      "surface": "la stampa 3d",
+      "canonical": "la stampa 3d"
+    },
+    {
+      "surface": "l'usb",
+      "canonical": "l'usb"
+    },
+    {
+      "surface": "il bitcoin",
+      "canonical": "il bitcoin"
+    },
+    {
+      "surface": "la blockchain",
+      "canonical": "la blockchain"
+    },
+    {
+      "surface": "il cloud",
+      "canonical": "il cloud"
+    },
+    {
+      "surface": "il microchip",
+      "canonical": "il microchip"
+    },
+    {
+      "surface": "il modem",
+      "canonical": "il modem"
+    },
+    {
+      "surface": "il router",
+      "canonical": "il router"
+    },
+    {
+      "surface": "il processore",
+      "canonical": "il processore"
+    },
+    {
+      "surface": "la realtà virtuale",
+      "canonical": "la realtà virtuale"
+    },
+    {
+      "surface": "il codice a barre",
+      "canonical": "il codice a barre"
+    },
+    {
+      "surface": "il motore di ricerca",
+      "canonical": "il motore di ricerca"
+    },
+    {
+      "surface": "il wireless",
+      "canonical": "il wireless"
+    },
+    {
+      "surface": "il radar",
+      "canonical": "il radar"
+    },
+    {
+      "surface": "il sonar",
+      "canonical": "il sonar"
+    },
+    {
+      "surface": "il satellite artificiale",
+      "canonical": "il satellite artificiale"
+    },
+    {
+      "surface": "il pannello solare",
+      "canonical": "il pannello solare"
+    },
+    {
+      "surface": "la batteria al litio",
+      "canonical": "la batteria al litio"
+    },
+    {
+      "surface": "il disco rigido",
+      "canonical": "il disco rigido"
+    },
+    {
+      "surface": "la scheda madre",
+      "canonical": "la scheda madre"
+    },
+    {
+      "surface": "la memoria ram",
+      "canonical": "la memoria ram"
+    },
+    {
+      "surface": "il sistema operativo",
+      "canonical": "il sistema operativo"
+    },
+    {
+      "surface": "il firewall",
+      "canonical": "il firewall"
+    },
+    {
+      "surface": "il riconoscimento facciale",
+      "canonical": "il riconoscimento facciale"
+    },
+    {
+      "surface": "la connessione dati",
+      "canonical": "la connessione dati"
+    },
+    {
+      "surface": "il codice binario",
+      "canonical": "il codice binario"
+    },
+    {
+      "surface": "la fibra di vetro",
+      "canonical": "la fibra di vetro"
+    },
+    {
+      "surface": "il pixel",
+      "canonical": "il pixel"
+    },
+    {
+      "surface": "il megapixel",
+      "canonical": "il megapixel"
+    },
+    {
+      "surface": "l'algoritmo",
+      "canonical": "l'algoritmo"
+    },
+    {
+      "surface": "la crittografia end to end",
+      "canonical": "la crittografia end to end"
+    },
+    {
+      "surface": "il machine learning",
+      "canonical": "il machine learning"
+    },
+    {
+      "surface": "il chip",
+      "canonical": "il chip"
+    }
+  ],
+  "ITNEG_ANCIENTS": [
+    {
+      "surface": "gli antichi egizi",
+      "canonical": "gli antichi egizi"
+    },
+    {
+      "surface": "gli antichi romani",
+      "canonical": "gli antichi romani"
+    },
+    {
+      "surface": "gli antichi greci",
+      "canonical": "gli antichi greci"
+    },
+    {
+      "surface": "i babilonesi",
+      "canonical": "i babilonesi"
+    },
+    {
+      "surface": "i maya",
+      "canonical": "i maya"
+    },
+    {
+      "surface": "gli aztechi",
+      "canonical": "gli aztechi"
+    },
+    {
+      "surface": "i sumeri",
+      "canonical": "i sumeri"
+    },
+    {
+      "surface": "i fenici",
+      "canonical": "i fenici"
+    },
+    {
+      "surface": "gli assiri",
+      "canonical": "gli assiri"
+    },
+    {
+      "surface": "gli inca",
+      "canonical": "gli inca"
+    },
+    {
+      "surface": "i vichinghi",
+      "canonical": "i vichinghi"
+    },
+    {
+      "surface": "i celti",
+      "canonical": "i celti"
+    },
+    {
+      "surface": "gli etruschi",
+      "canonical": "gli etruschi"
+    },
+    {
+      "surface": "i persiani",
+      "canonical": "i persiani"
+    },
+    {
+      "surface": "gli antichi cinesi",
+      "canonical": "gli antichi cinesi"
+    },
+    {
+      "surface": "i popoli mesopotamici",
+      "canonical": "i popoli mesopotamici"
+    },
+    {
+      "surface": "gli antichi indiani",
+      "canonical": "gli antichi indiani"
+    },
+    {
+      "surface": "i cartaginesi",
+      "canonical": "i cartaginesi"
+    },
+    {
+      "surface": "i micenei",
+      "canonical": "i micenei"
+    },
+    {
+      "surface": "gli spartani",
+      "canonical": "gli spartani"
+    },
+    {
+      "surface": "i germani",
+      "canonical": "i germani"
+    },
+    {
+      "surface": "i galli",
+      "canonical": "i galli"
+    },
+    {
+      "surface": "gli ittiti",
+      "canonical": "gli ittiti"
+    },
+    {
+      "surface": "i minoici",
+      "canonical": "i minoici"
+    },
+    {
+      "surface": "gli aztechi antichi",
+      "canonical": "gli aztechi antichi"
+    },
+    {
+      "surface": "i popoli andini",
+      "canonical": "i popoli andini"
+    }
+  ],
+  "ITNEG_LANGUAGE": [
+    {
+      "surface": "l'inglese",
+      "canonical": "l'inglese"
+    },
+    {
+      "surface": "il francese",
+      "canonical": "il francese"
+    },
+    {
+      "surface": "il tedesco",
+      "canonical": "il tedesco"
+    },
+    {
+      "surface": "lo spagnolo",
+      "canonical": "lo spagnolo"
+    },
+    {
+      "surface": "il cinese",
+      "canonical": "il cinese"
+    },
+    {
+      "surface": "il giapponese",
+      "canonical": "il giapponese"
+    },
+    {
+      "surface": "il russo",
+      "canonical": "il russo"
+    },
+    {
+      "surface": "l'arabo",
+      "canonical": "l'arabo"
+    },
+    {
+      "surface": "il portoghese",
+      "canonical": "il portoghese"
+    },
+    {
+      "surface": "l'hindi",
+      "canonical": "l'hindi"
+    },
+    {
+      "surface": "l'italiano",
+      "canonical": "l'italiano"
+    },
+    {
+      "surface": "il coreano",
+      "canonical": "il coreano"
+    },
+    {
+      "surface": "il turco",
+      "canonical": "il turco"
+    },
+    {
+      "surface": "il greco",
+      "canonical": "il greco"
+    },
+    {
+      "surface": "il latino",
+      "canonical": "il latino"
+    },
+    {
+      "surface": "l'ebraico",
+      "canonical": "l'ebraico"
+    },
+    {
+      "surface": "il polacco",
+      "canonical": "il polacco"
+    },
+    {
+      "surface": "l'olandese",
+      "canonical": "l'olandese"
+    },
+    {
+      "surface": "lo svedese",
+      "canonical": "lo svedese"
+    },
+    {
+      "surface": "il finlandese",
+      "canonical": "il finlandese"
+    },
+    {
+      "surface": "il vietnamita",
+      "canonical": "il vietnamita"
+    },
+    {
+      "surface": "il thailandese",
+      "canonical": "il thailandese"
+    },
+    {
+      "surface": "lo swahili",
+      "canonical": "lo swahili"
+    },
+    {
+      "surface": "il persiano",
+      "canonical": "il persiano"
+    },
+    {
+      "surface": "il rumeno",
+      "canonical": "il rumeno"
+    },
+    {
+      "surface": "il ceco",
+      "canonical": "il ceco"
+    },
+    {
+      "surface": "l'ungherese",
+      "canonical": "l'ungherese"
+    },
+    {
+      "surface": "il norvegese",
+      "canonical": "il norvegese"
+    },
+    {
+      "surface": "il danese",
+      "canonical": "il danese"
+    },
+    {
+      "surface": "il bengalese",
+      "canonical": "il bengalese"
+    },
+    {
+      "surface": "il tamil",
+      "canonical": "il tamil"
+    },
+    {
+      "surface": "il mandarino",
+      "canonical": "il mandarino"
+    }
+  ],
+  "ITNEG_SPACE": [
+    {
+      "surface": "il Sole",
+      "canonical": "il Sole"
+    },
+    {
+      "surface": "la Luna",
+      "canonical": "la Luna"
+    },
+    {
+      "surface": "Marte",
+      "canonical": "Marte"
+    },
+    {
+      "surface": "Giove",
+      "canonical": "Giove"
+    },
+    {
+      "surface": "Saturno",
+      "canonical": "Saturno"
+    },
+    {
+      "surface": "Venere",
+      "canonical": "Venere"
+    },
+    {
+      "surface": "Mercurio",
+      "canonical": "Mercurio"
+    },
+    {
+      "surface": "Nettuno",
+      "canonical": "Nettuno"
+    },
+    {
+      "surface": "Urano",
+      "canonical": "Urano"
+    },
+    {
+      "surface": "Plutone",
+      "canonical": "Plutone"
+    },
+    {
+      "surface": "la Terra",
+      "canonical": "la Terra"
+    },
+    {
+      "surface": "la Via Lattea",
+      "canonical": "la Via Lattea"
+    },
+    {
+      "surface": "il sistema solare",
+      "canonical": "il sistema solare"
+    },
+    {
+      "surface": "l'universo",
+      "canonical": "l'universo"
+    },
+    {
+      "surface": "un buco nero",
+      "canonical": "un buco nero"
+    },
+    {
+      "surface": "una stella",
+      "canonical": "una stella"
+    },
+    {
+      "surface": "una cometa",
+      "canonical": "una cometa"
+    },
+    {
+      "surface": "un asteroide",
+      "canonical": "un asteroide"
+    },
+    {
+      "surface": "una galassia",
+      "canonical": "una galassia"
+    },
+    {
+      "surface": "una nebulosa",
+      "canonical": "una nebulosa"
+    },
+    {
+      "surface": "la stella polare",
+      "canonical": "la stella polare"
+    },
+    {
+      "surface": "la fascia di asteroidi",
+      "canonical": "la fascia di asteroidi"
+    },
+    {
+      "surface": "il pianeta rosso",
+      "canonical": "il pianeta rosso"
+    },
+    {
+      "surface": "la costellazione di Orione",
+      "canonical": "la costellazione di Orione"
+    },
+    {
+      "surface": "l'Orsa Maggiore",
+      "canonical": "l'Orsa Maggiore"
+    },
+    {
+      "surface": "la stella Sirio",
+      "canonical": "la stella Sirio"
+    },
+    {
+      "surface": "l'anello di Saturno",
+      "canonical": "l'anello di Saturno"
+    },
+    {
+      "surface": "la Stazione Spaziale Internazionale",
+      "canonical": "la Stazione Spaziale Internazionale"
+    },
+    {
+      "surface": "il telescopio spaziale",
+      "canonical": "il telescopio spaziale"
+    },
+    {
+      "surface": "un anno luce",
+      "canonical": "un anno luce"
+    },
+    {
+      "surface": "la materia oscura",
+      "canonical": "la materia oscura"
+    },
+    {
+      "surface": "l'energia oscura",
+      "canonical": "l'energia oscura"
+    },
+    {
+      "surface": "il vento solare",
+      "canonical": "il vento solare"
+    },
+    {
+      "surface": "un quasar",
+      "canonical": "un quasar"
+    },
+    {
+      "surface": "una supernova",
+      "canonical": "una supernova"
+    },
+    {
+      "surface": "una pulsar",
+      "canonical": "una pulsar"
+    },
+    {
+      "surface": "un meteorite",
+      "canonical": "un meteorite"
+    },
+    {
+      "surface": "l'atmosfera terrestre",
+      "canonical": "l'atmosfera terrestre"
+    },
+    {
+      "surface": "la magnetosfera",
+      "canonical": "la magnetosfera"
+    },
+    {
+      "surface": "la cintura di Kuiper",
+      "canonical": "la cintura di Kuiper"
+    },
+    {
+      "surface": "la nube di Oort",
+      "canonical": "la nube di Oort"
+    },
+    {
+      "surface": "la nebulosa di Orione",
+      "canonical": "la nebulosa di Orione"
+    }
+  ],
+  "ITNEG_MOUNTAIN": [
+    {
+      "surface": "il Monte Everest",
+      "canonical": "il Monte Everest"
+    },
+    {
+      "surface": "il Monte Bianco",
+      "canonical": "il Monte Bianco"
+    },
+    {
+      "surface": "il Cervino",
+      "canonical": "il Cervino"
+    },
+    {
+      "surface": "il Kilimangiaro",
+      "canonical": "il Kilimangiaro"
+    },
+    {
+      "surface": "il Monte Fuji",
+      "canonical": "il Monte Fuji"
+    },
+    {
+      "surface": "il Vesuvio",
+      "canonical": "il Vesuvio"
+    },
+    {
+      "surface": "l'Etna",
+      "canonical": "l'Etna"
+    },
+    {
+      "surface": "lo Stromboli",
+      "canonical": "lo Stromboli"
+    },
+    {
+      "surface": "il Gran Sasso",
+      "canonical": "il Gran Sasso"
+    },
+    {
+      "surface": "il Monte Rosa",
+      "canonical": "il Monte Rosa"
+    },
+    {
+      "surface": "il K2",
+      "canonical": "il K2"
+    },
+    {
+      "surface": "l'Aconcagua",
+      "canonical": "l'Aconcagua"
+    },
+    {
+      "surface": "il Denali",
+      "canonical": "il Denali"
+    },
+    {
+      "surface": "il Monte Olimpo",
+      "canonical": "il Monte Olimpo"
+    },
+    {
+      "surface": "il Monviso",
+      "canonical": "il Monviso"
+    },
+    {
+      "surface": "il Cimone",
+      "canonical": "il Cimone"
+    },
+    {
+      "surface": "il Terminillo",
+      "canonical": "il Terminillo"
+    },
+    {
+      "surface": "il Monte Sinai",
+      "canonical": "il Monte Sinai"
+    },
+    {
+      "surface": "il Popocatepetl",
+      "canonical": "il Popocatepetl"
+    },
+    {
+      "surface": "il Kangchenjunga",
+      "canonical": "il Kangchenjunga"
+    },
+    {
+      "surface": "l'Elbrus",
+      "canonical": "l'Elbrus"
+    },
+    {
+      "surface": "il Teide",
+      "canonical": "il Teide"
+    },
+    {
+      "surface": "il Monte Kenya",
+      "canonical": "il Monte Kenya"
+    },
+    {
+      "surface": "il Monte Ararat",
+      "canonical": "il Monte Ararat"
+    }
+  ],
+  "ITNEG_DEEP": [
+    {
+      "surface": "il lago di Garda",
+      "canonical": "il lago di Garda"
+    },
+    {
+      "surface": "il lago di Como",
+      "canonical": "il lago di Como"
+    },
+    {
+      "surface": "il lago Maggiore",
+      "canonical": "il lago Maggiore"
+    },
+    {
+      "surface": "il Mar Mediterraneo",
+      "canonical": "il Mar Mediterraneo"
+    },
+    {
+      "surface": "il Mar Rosso",
+      "canonical": "il Mar Rosso"
+    },
+    {
+      "surface": "il Mar Nero",
+      "canonical": "il Mar Nero"
+    },
+    {
+      "surface": "il Mar Caspio",
+      "canonical": "il Mar Caspio"
+    },
+    {
+      "surface": "il lago Baikal",
+      "canonical": "il lago Baikal"
+    },
+    {
+      "surface": "l'oceano Pacifico",
+      "canonical": "l'oceano Pacifico"
+    },
+    {
+      "surface": "l'oceano Atlantico",
+      "canonical": "l'oceano Atlantico"
+    },
+    {
+      "surface": "l'oceano Indiano",
+      "canonical": "l'oceano Indiano"
+    },
+    {
+      "surface": "il Gran Canyon",
+      "canonical": "il Gran Canyon"
+    },
+    {
+      "surface": "il pozzo di San Patrizio",
+      "canonical": "il pozzo di San Patrizio"
+    },
+    {
+      "surface": "il Mar Baltico",
+      "canonical": "il Mar Baltico"
+    },
+    {
+      "surface": "il golfo del Messico",
+      "canonical": "il golfo del Messico"
+    },
+    {
+      "surface": "il lago di Loch Ness",
+      "canonical": "il lago di Loch Ness"
+    },
+    {
+      "surface": "il Mar Ionio",
+      "canonical": "il Mar Ionio"
+    },
+    {
+      "surface": "il Mar Tirreno",
+      "canonical": "il Mar Tirreno"
+    },
+    {
+      "surface": "il Mar Adriatico",
+      "canonical": "il Mar Adriatico"
+    },
+    {
+      "surface": "il canale di Suez",
+      "canonical": "il canale di Suez"
+    }
+  ],
+  "ITNEG_FAR": [
+    {
+      "surface": "il Sole",
+      "canonical": "il Sole"
+    },
+    {
+      "surface": "Marte",
+      "canonical": "Marte"
+    },
+    {
+      "surface": "Giove",
+      "canonical": "Giove"
+    },
+    {
+      "surface": "Saturno",
+      "canonical": "Saturno"
+    },
+    {
+      "surface": "Nettuno",
+      "canonical": "Nettuno"
+    },
+    {
+      "surface": "Urano",
+      "canonical": "Urano"
+    },
+    {
+      "surface": "Mercurio",
+      "canonical": "Mercurio"
+    },
+    {
+      "surface": "Plutone",
+      "canonical": "Plutone"
+    },
+    {
+      "surface": "il polo nord",
+      "canonical": "il polo nord"
+    },
+    {
+      "surface": "il polo sud",
+      "canonical": "il polo sud"
+    },
+    {
+      "surface": "il centro della Terra",
+      "canonical": "il centro della Terra"
+    },
+    {
+      "surface": "il nucleo terrestre",
+      "canonical": "il nucleo terrestre"
+    },
+    {
+      "surface": "il pianeta Marte",
+      "canonical": "il pianeta Marte"
+    },
+    {
+      "surface": "il confine dello spazio",
+      "canonical": "il confine dello spazio"
+    },
+    {
+      "surface": "il bordo dell'universo",
+      "canonical": "il bordo dell'universo"
+    },
+    {
+      "surface": "il pianeta più lontano",
+      "canonical": "il pianeta più lontano"
+    }
+  ]
+}

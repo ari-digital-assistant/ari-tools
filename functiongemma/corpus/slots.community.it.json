@@ -1,0 +1,1066 @@
+{
+  "ITHRS": {
+    "type": "int",
+    "min": 1,
+    "max": 12
+  },
+  "ITHR24": {
+    "type": "int",
+    "min": 13,
+    "max": 23
+  },
+  "ITMIN": {
+    "type": "int",
+    "min": 2,
+    "max": 45
+  },
+  "ITMIN2": {
+    "type": "int",
+    "min": 3,
+    "max": 50
+  },
+  "ITSEC": {
+    "type": "int",
+    "min": 10,
+    "max": 55
+  },
+  "ITCNT": {
+    "type": "int",
+    "min": 2,
+    "max": 30
+  },
+  "ITTEMP": {
+    "type": "int",
+    "min": 16,
+    "max": 26
+  },
+  "ITPCT": {
+    "type": "int",
+    "min": 10,
+    "max": 90
+  },
+  "ITM5": [
+    {
+      "surface": "05",
+      "canonical": "05"
+    },
+    {
+      "surface": "10",
+      "canonical": "10"
+    },
+    {
+      "surface": "15",
+      "canonical": "15"
+    },
+    {
+      "surface": "20",
+      "canonical": "20"
+    },
+    {
+      "surface": "25",
+      "canonical": "25"
+    },
+    {
+      "surface": "30",
+      "canonical": "30"
+    },
+    {
+      "surface": "35",
+      "canonical": "35"
+    },
+    {
+      "surface": "40",
+      "canonical": "40"
+    },
+    {
+      "surface": "45",
+      "canonical": "45"
+    },
+    {
+      "surface": "50",
+      "canonical": "50"
+    },
+    {
+      "surface": "55",
+      "canonical": "55"
+    }
+  ],
+  "ITCITY": [
+    {
+      "surface": "roma",
+      "canonical": "roma"
+    },
+    {
+      "surface": "milano",
+      "canonical": "milano"
+    },
+    {
+      "surface": "napoli",
+      "canonical": "napoli"
+    },
+    {
+      "surface": "torino",
+      "canonical": "torino"
+    },
+    {
+      "surface": "firenze",
+      "canonical": "firenze"
+    },
+    {
+      "surface": "venezia",
+      "canonical": "venezia"
+    },
+    {
+      "surface": "bologna",
+      "canonical": "bologna"
+    },
+    {
+      "surface": "palermo",
+      "canonical": "palermo"
+    },
+    {
+      "surface": "genova",
+      "canonical": "genova"
+    },
+    {
+      "surface": "bari",
+      "canonical": "bari"
+    },
+    {
+      "surface": "catania",
+      "canonical": "catania"
+    },
+    {
+      "surface": "verona",
+      "canonical": "verona"
+    },
+    {
+      "surface": "cagliari",
+      "canonical": "cagliari"
+    },
+    {
+      "surface": "trieste",
+      "canonical": "trieste"
+    },
+    {
+      "surface": "perugia",
+      "canonical": "perugia"
+    },
+    {
+      "surface": "londra",
+      "canonical": "londra"
+    },
+    {
+      "surface": "parigi",
+      "canonical": "parigi"
+    },
+    {
+      "surface": "berlino",
+      "canonical": "berlino"
+    },
+    {
+      "surface": "madrid",
+      "canonical": "madrid"
+    },
+    {
+      "surface": "tokyo",
+      "canonical": "tokyo"
+    },
+    {
+      "surface": "new york",
+      "canonical": "new york"
+    },
+    {
+      "surface": "amsterdam",
+      "canonical": "amsterdam"
+    },
+    {
+      "surface": "vienna",
+      "canonical": "vienna"
+    },
+    {
+      "surface": "barcellona",
+      "canonical": "barcellona"
+    },
+    {
+      "surface": "lisbona",
+      "canonical": "lisbona"
+    },
+    {
+      "surface": "dublino",
+      "canonical": "dublino"
+    },
+    {
+      "surface": "atene",
+      "canonical": "atene"
+    },
+    {
+      "surface": "praga",
+      "canonical": "praga"
+    },
+    {
+      "surface": "valletta",
+      "canonical": "valletta"
+    }
+  ],
+  "ITARTIST": [
+    {
+      "surface": "vasco rossi",
+      "canonical": "vasco rossi"
+    },
+    {
+      "surface": "cesare cremonini",
+      "canonical": "cesare cremonini"
+    },
+    {
+      "surface": "laura pausini",
+      "canonical": "laura pausini"
+    },
+    {
+      "surface": "lucio battisti",
+      "canonical": "lucio battisti"
+    },
+    {
+      "surface": "jovanotti",
+      "canonical": "jovanotti"
+    },
+    {
+      "surface": "ligabue",
+      "canonical": "ligabue"
+    },
+    {
+      "surface": "zucchero",
+      "canonical": "zucchero"
+    },
+    {
+      "surface": "i maneskin",
+      "canonical": "maneskin"
+    },
+    {
+      "surface": "i negramaro",
+      "canonical": "negramaro"
+    },
+    {
+      "surface": "gli 883",
+      "canonical": "883"
+    },
+    {
+      "surface": "i pink floyd",
+      "canonical": "pink floyd"
+    },
+    {
+      "surface": "i queen",
+      "canonical": "queen"
+    },
+    {
+      "surface": "i beatles",
+      "canonical": "beatles"
+    },
+    {
+      "surface": "i led zeppelin",
+      "canonical": "led zeppelin"
+    },
+    {
+      "surface": "gli u2",
+      "canonical": "u2"
+    },
+    {
+      "surface": "i radiohead",
+      "canonical": "radiohead"
+    },
+    {
+      "surface": "i coldplay",
+      "canonical": "coldplay"
+    },
+    {
+      "surface": "i metallica",
+      "canonical": "metallica"
+    },
+    {
+      "surface": "i nirvana",
+      "canonical": "nirvana"
+    },
+    {
+      "surface": "i rolling stones",
+      "canonical": "rolling stones"
+    },
+    {
+      "surface": "adele",
+      "canonical": "adele"
+    },
+    {
+      "surface": "david bowie",
+      "canonical": "david bowie"
+    }
+  ],
+  "ITGENRE": [
+    {
+      "surface": "jazz",
+      "canonical": "jazz"
+    },
+    {
+      "surface": "rock",
+      "canonical": "rock"
+    },
+    {
+      "surface": "reggae",
+      "canonical": "reggae"
+    },
+    {
+      "surface": "blues",
+      "canonical": "blues"
+    },
+    {
+      "surface": "musica classica",
+      "canonical": "musica classica"
+    },
+    {
+      "surface": "musica elettronica",
+      "canonical": "musica elettronica"
+    },
+    {
+      "surface": "musica pop",
+      "canonical": "musica pop"
+    },
+    {
+      "surface": "hip hop",
+      "canonical": "hip hop"
+    },
+    {
+      "surface": "musica dance",
+      "canonical": "musica dance"
+    },
+    {
+      "surface": "funk",
+      "canonical": "funk"
+    },
+    {
+      "surface": "soul",
+      "canonical": "soul"
+    },
+    {
+      "surface": "musica indie",
+      "canonical": "musica indie"
+    },
+    {
+      "surface": "musica rilassante",
+      "canonical": "musica rilassante"
+    },
+    {
+      "surface": "musica allegra",
+      "canonical": "musica allegra"
+    },
+    {
+      "surface": "reggaeton",
+      "canonical": "reggaeton"
+    }
+  ],
+  "ITDEST": [
+    {
+      "surface": "alla stazione",
+      "canonical": "stazione"
+    },
+    {
+      "surface": "al duomo",
+      "canonical": "duomo"
+    },
+    {
+      "surface": "dal dentista",
+      "canonical": "dentista"
+    },
+    {
+      "surface": "dal medico",
+      "canonical": "medico"
+    },
+    {
+      "surface": "all'ospedale",
+      "canonical": "ospedale"
+    },
+    {
+      "surface": "in aeroporto",
+      "canonical": "aeroporto"
+    },
+    {
+      "surface": "al centro",
+      "canonical": "centro"
+    },
+    {
+      "surface": "al mare",
+      "canonical": "mare"
+    },
+    {
+      "surface": "in montagna",
+      "canonical": "montagna"
+    },
+    {
+      "surface": "al supermercato",
+      "canonical": "supermercato"
+    },
+    {
+      "surface": "in ufficio",
+      "canonical": "ufficio"
+    },
+    {
+      "surface": "al lavoro",
+      "canonical": "lavoro"
+    },
+    {
+      "surface": "a casa",
+      "canonical": "casa"
+    },
+    {
+      "surface": "in palestra",
+      "canonical": "palestra"
+    },
+    {
+      "surface": "alla farmacia",
+      "canonical": "farmacia"
+    },
+    {
+      "surface": "al ristorante",
+      "canonical": "ristorante"
+    },
+    {
+      "surface": "al museo",
+      "canonical": "museo"
+    },
+    {
+      "surface": "alla posta",
+      "canonical": "posta"
+    },
+    {
+      "surface": "in banca",
+      "canonical": "banca"
+    },
+    {
+      "surface": "allo stadio",
+      "canonical": "stadio"
+    },
+    {
+      "surface": "al parco",
+      "canonical": "parco"
+    },
+    {
+      "surface": "alla spiaggia",
+      "canonical": "spiaggia"
+    },
+    {
+      "surface": "all'università",
+      "canonical": "università"
+    },
+    {
+      "surface": "alla biblioteca",
+      "canonical": "biblioteca"
+    },
+    {
+      "surface": "al cinema",
+      "canonical": "cinema"
+    },
+    {
+      "surface": "al porto",
+      "canonical": "porto"
+    },
+    {
+      "surface": "alla stazione centrale",
+      "canonical": "stazione centrale"
+    },
+    {
+      "surface": "al centro commerciale",
+      "canonical": "centro commerciale"
+    }
+  ],
+  "ITHAENT": [
+    {
+      "surface": "le luci della cucina",
+      "canonical": "le luci della cucina"
+    },
+    {
+      "surface": "le luci del soggiorno",
+      "canonical": "le luci del soggiorno"
+    },
+    {
+      "surface": "le luci del bagno",
+      "canonical": "le luci del bagno"
+    },
+    {
+      "surface": "le luci della camera",
+      "canonical": "le luci della camera"
+    },
+    {
+      "surface": "le luci del corridoio",
+      "canonical": "le luci del corridoio"
+    },
+    {
+      "surface": "le luci del giardino",
+      "canonical": "le luci del giardino"
+    },
+    {
+      "surface": "le luci della cameretta",
+      "canonical": "le luci della cameretta"
+    },
+    {
+      "surface": "le luci della sala",
+      "canonical": "le luci della sala"
+    },
+    {
+      "surface": "le luci esterne",
+      "canonical": "le luci esterne"
+    },
+    {
+      "surface": "la lampada della camera",
+      "canonical": "la lampada della camera"
+    },
+    {
+      "surface": "la lampada del comodino",
+      "canonical": "la lampada del comodino"
+    },
+    {
+      "surface": "la luce della cucina",
+      "canonical": "la luce della cucina"
+    },
+    {
+      "surface": "il ventilatore della camera",
+      "canonical": "il ventilatore della camera"
+    },
+    {
+      "surface": "il condizionatore del soggiorno",
+      "canonical": "il condizionatore del soggiorno"
+    },
+    {
+      "surface": "il riscaldamento del bagno",
+      "canonical": "il riscaldamento del bagno"
+    },
+    {
+      "surface": "la presa del salotto",
+      "canonical": "la presa del salotto"
+    },
+    {
+      "surface": "la tv del soggiorno",
+      "canonical": "la tv del soggiorno"
+    },
+    {
+      "surface": "la stufa del salotto",
+      "canonical": "la stufa del salotto"
+    },
+    {
+      "surface": "il phon del bagno",
+      "canonical": "il phon del bagno"
+    },
+    {
+      "surface": "le luci di casa",
+      "canonical": "le luci di casa"
+    },
+    {
+      "surface": "le luci del terrazzo",
+      "canonical": "le luci del terrazzo"
+    },
+    {
+      "surface": "la lampada dello studio",
+      "canonical": "la lampada dello studio"
+    },
+    {
+      "surface": "le luci della tavernetta",
+      "canonical": "le luci della tavernetta"
+    },
+    {
+      "surface": "il ventilatore del salotto",
+      "canonical": "il ventilatore del salotto"
+    }
+  ],
+  "ITHACOVER": [
+    {
+      "surface": "le tapparelle della camera",
+      "canonical": "le tapparelle della camera"
+    },
+    {
+      "surface": "le tapparelle del soggiorno",
+      "canonical": "le tapparelle del soggiorno"
+    },
+    {
+      "surface": "le persiane della cucina",
+      "canonical": "le persiane della cucina"
+    },
+    {
+      "surface": "le tende del salotto",
+      "canonical": "le tende del salotto"
+    },
+    {
+      "surface": "le tapparelle della cucina",
+      "canonical": "le tapparelle della cucina"
+    },
+    {
+      "surface": "le persiane della camera",
+      "canonical": "le persiane della camera"
+    },
+    {
+      "surface": "la serranda del garage",
+      "canonical": "la serranda del garage"
+    },
+    {
+      "surface": "le tende della camera",
+      "canonical": "le tende della camera"
+    }
+  ],
+  "ITHAROOM": [
+    {
+      "surface": "il soggiorno",
+      "canonical": "il soggiorno"
+    },
+    {
+      "surface": "la camera",
+      "canonical": "la camera"
+    },
+    {
+      "surface": "la cucina",
+      "canonical": "la cucina"
+    },
+    {
+      "surface": "il bagno",
+      "canonical": "il bagno"
+    },
+    {
+      "surface": "la cameretta",
+      "canonical": "la cameretta"
+    },
+    {
+      "surface": "lo studio",
+      "canonical": "lo studio"
+    },
+    {
+      "surface": "il salotto",
+      "canonical": "il salotto"
+    },
+    {
+      "surface": "la sala",
+      "canonical": "la sala"
+    }
+  ],
+  "ITSCENE": [
+    {
+      "surface": "serata film",
+      "canonical": "serata film"
+    },
+    {
+      "surface": "buongiorno",
+      "canonical": "buongiorno"
+    },
+    {
+      "surface": "buonanotte",
+      "canonical": "buonanotte"
+    },
+    {
+      "surface": "relax",
+      "canonical": "relax"
+    },
+    {
+      "surface": "cena",
+      "canonical": "cena"
+    },
+    {
+      "surface": "festa",
+      "canonical": "festa"
+    },
+    {
+      "surface": "lettura",
+      "canonical": "lettura"
+    },
+    {
+      "surface": "cinema",
+      "canonical": "cinema"
+    },
+    {
+      "surface": "romantica",
+      "canonical": "romantica"
+    },
+    {
+      "surface": "mattina",
+      "canonical": "mattina"
+    }
+  ],
+  "ITHAPERSON": [
+    {
+      "surface": "keith",
+      "canonical": "keith"
+    },
+    {
+      "surface": "marco",
+      "canonical": "marco"
+    },
+    {
+      "surface": "sara",
+      "canonical": "sara"
+    },
+    {
+      "surface": "luca",
+      "canonical": "luca"
+    },
+    {
+      "surface": "anna",
+      "canonical": "anna"
+    },
+    {
+      "surface": "giulia",
+      "canonical": "giulia"
+    },
+    {
+      "surface": "la mamma",
+      "canonical": "la mamma"
+    },
+    {
+      "surface": "il papà",
+      "canonical": "il papà"
+    }
+  ],
+  "ITREMTXT": [
+    {
+      "surface": "chiamare la mamma",
+      "canonical": "chiamare la mamma"
+    },
+    {
+      "surface": "chiamare il dentista",
+      "canonical": "chiamare il dentista"
+    },
+    {
+      "surface": "chiamare la nonna",
+      "canonical": "chiamare la nonna"
+    },
+    {
+      "surface": "portare fuori il cane",
+      "canonical": "portare fuori il cane"
+    },
+    {
+      "surface": "portare fuori la spazzatura",
+      "canonical": "portare fuori la spazzatura"
+    },
+    {
+      "surface": "comprare il latte",
+      "canonical": "comprare il latte"
+    },
+    {
+      "surface": "comprare il pane",
+      "canonical": "comprare il pane"
+    },
+    {
+      "surface": "prendere le medicine",
+      "canonical": "prendere le medicine"
+    },
+    {
+      "surface": "innaffiare le piante",
+      "canonical": "innaffiare le piante"
+    },
+    {
+      "surface": "annaffiare i fiori",
+      "canonical": "annaffiare i fiori"
+    },
+    {
+      "surface": "pagare la bolletta",
+      "canonical": "pagare la bolletta"
+    },
+    {
+      "surface": "pagare l'affitto",
+      "canonical": "pagare l'affitto"
+    },
+    {
+      "surface": "prenotare il ristorante",
+      "canonical": "prenotare il ristorante"
+    },
+    {
+      "surface": "prenotare dal medico",
+      "canonical": "prenotare dal medico"
+    },
+    {
+      "surface": "mandare la mail a sara",
+      "canonical": "mandare la mail a sara"
+    },
+    {
+      "surface": "richiamare il capo",
+      "canonical": "richiamare il capo"
+    },
+    {
+      "surface": "spedire il pacco",
+      "canonical": "spedire il pacco"
+    },
+    {
+      "surface": "ritirare la ricetta",
+      "canonical": "ritirare la ricetta"
+    },
+    {
+      "surface": "controllare il forno",
+      "canonical": "controllare il forno"
+    },
+    {
+      "surface": "spegnere il forno",
+      "canonical": "spegnere il forno"
+    },
+    {
+      "surface": "fare la lavatrice",
+      "canonical": "fare la lavatrice"
+    },
+    {
+      "surface": "stendere il bucato",
+      "canonical": "stendere il bucato"
+    },
+    {
+      "surface": "passare in farmacia",
+      "canonical": "passare in farmacia"
+    },
+    {
+      "surface": "passare in banca",
+      "canonical": "passare in banca"
+    },
+    {
+      "surface": "restituire i libri",
+      "canonical": "restituire i libri"
+    },
+    {
+      "surface": "rispondere a marco",
+      "canonical": "rispondere a marco"
+    },
+    {
+      "surface": "comprare un regalo per luca",
+      "canonical": "comprare un regalo per luca"
+    },
+    {
+      "surface": "prendere l'auto dal meccanico",
+      "canonical": "prendere l'auto dal meccanico"
+    },
+    {
+      "surface": "scongelare la carne",
+      "canonical": "scongelare la carne"
+    },
+    {
+      "surface": "fare benzina",
+      "canonical": "fare benzina"
+    }
+  ],
+  "ITWHEN": [
+    {
+      "surface": "alle 17",
+      "canonical": "alle 17"
+    },
+    {
+      "surface": "alle 8",
+      "canonical": "alle 8"
+    },
+    {
+      "surface": "alle 7",
+      "canonical": "alle 7"
+    },
+    {
+      "surface": "alle 20",
+      "canonical": "alle 20"
+    },
+    {
+      "surface": "alle 9 domani",
+      "canonical": "alle 9 domani"
+    },
+    {
+      "surface": "alle 15 30",
+      "canonical": "alle 15 30"
+    },
+    {
+      "surface": "domani mattina",
+      "canonical": "domani mattina"
+    },
+    {
+      "surface": "domani sera",
+      "canonical": "domani sera"
+    },
+    {
+      "surface": "stasera",
+      "canonical": "stasera"
+    },
+    {
+      "surface": "stamattina",
+      "canonical": "stamattina"
+    },
+    {
+      "surface": "questo pomeriggio",
+      "canonical": "questo pomeriggio"
+    },
+    {
+      "surface": "tra 10 minuti",
+      "canonical": "tra 10 minuti"
+    },
+    {
+      "surface": "tra 30 minuti",
+      "canonical": "tra 30 minuti"
+    },
+    {
+      "surface": "tra due ore",
+      "canonical": "tra due ore"
+    },
+    {
+      "surface": "venerdì alle 15",
+      "canonical": "venerdì alle 15"
+    },
+    {
+      "surface": "lunedì alle 9",
+      "canonical": "lunedì alle 9"
+    },
+    {
+      "surface": "sabato mattina",
+      "canonical": "sabato mattina"
+    },
+    {
+      "surface": "domenica pomeriggio",
+      "canonical": "domenica pomeriggio"
+    },
+    {
+      "surface": "più tardi",
+      "canonical": "più tardi"
+    },
+    {
+      "surface": "dopodomani",
+      "canonical": "dopodomani"
+    }
+  ],
+  "ITSHOP": [
+    {
+      "surface": "latte",
+      "canonical": "latte"
+    },
+    {
+      "surface": "uova",
+      "canonical": "uova"
+    },
+    {
+      "surface": "pane",
+      "canonical": "pane"
+    },
+    {
+      "surface": "burro",
+      "canonical": "burro"
+    },
+    {
+      "surface": "caffè",
+      "canonical": "caffè"
+    },
+    {
+      "surface": "zucchero",
+      "canonical": "zucchero"
+    },
+    {
+      "surface": "detersivo",
+      "canonical": "detersivo"
+    },
+    {
+      "surface": "carta igienica",
+      "canonical": "carta igienica"
+    },
+    {
+      "surface": "pomodori",
+      "canonical": "pomodori"
+    },
+    {
+      "surface": "pasta",
+      "canonical": "pasta"
+    },
+    {
+      "surface": "olio",
+      "canonical": "olio"
+    },
+    {
+      "surface": "sale",
+      "canonical": "sale"
+    },
+    {
+      "surface": "biscotti",
+      "canonical": "biscotti"
+    },
+    {
+      "surface": "formaggio",
+      "canonical": "formaggio"
+    },
+    {
+      "surface": "mele",
+      "canonical": "mele"
+    },
+    {
+      "surface": "banane",
+      "canonical": "banane"
+    },
+    {
+      "surface": "yogurt",
+      "canonical": "yogurt"
+    },
+    {
+      "surface": "acqua",
+      "canonical": "acqua"
+    }
+  ],
+  "ITTIMERNAME": [
+    {
+      "surface": "la pasta",
+      "canonical": "pasta"
+    },
+    {
+      "surface": "il caffè",
+      "canonical": "caffè"
+    },
+    {
+      "surface": "le uova",
+      "canonical": "uova"
+    },
+    {
+      "surface": "la torta",
+      "canonical": "torta"
+    },
+    {
+      "surface": "la pizza",
+      "canonical": "pizza"
+    },
+    {
+      "surface": "il riso",
+      "canonical": "riso"
+    },
+    {
+      "surface": "la lavatrice",
+      "canonical": "lavatrice"
+    },
+    {
+      "surface": "la lavastoviglie",
+      "canonical": "lavastoviglie"
+    },
+    {
+      "surface": "il forno",
+      "canonical": "forno"
+    },
+    {
+      "surface": "il tè",
+      "canonical": "tè"
+    },
+    {
+      "surface": "il brodo",
+      "canonical": "brodo"
+    },
+    {
+      "surface": "il risotto",
+      "canonical": "risotto"
+    },
+    {
+      "surface": "il pollo",
+      "canonical": "pollo"
+    },
+    {
+      "surface": "i biscotti",
+      "canonical": "biscotti"
+    },
+    {
+      "surface": "le verdure",
+      "canonical": "verdure"
+    },
+    {
+      "surface": "la minestra",
+      "canonical": "minestra"
+    },
+    {
+      "surface": "il sugo",
+      "canonical": "sugo"
+    },
+    {
+      "surface": "la carne",
+      "canonical": "carne"
+    }
+  ]
+}

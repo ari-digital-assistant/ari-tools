@@ -1,0 +1,3428 @@
+{
+  "dev.heyari.alarm": {
+    "target": 400,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "imposta una sveglia per le {ITHRS}",
+        "args": {}
+      },
+      {
+        "text": "imposta una sveglia per le {ITHR24}",
+        "args": {}
+      },
+      {
+        "text": "imposta una sveglia per le {ITHRS} {ITM5}",
+        "args": {}
+      },
+      {
+        "text": "imposta una sveglia per le {ITHR24} {ITM5}",
+        "args": {}
+      },
+      {
+        "text": "metti una sveglia alle {ITHRS}",
+        "args": {}
+      },
+      {
+        "text": "metti la sveglia alle {ITHR24}",
+        "args": {}
+      },
+      {
+        "text": "crea una sveglia per le {ITHRS} {ITM5}",
+        "args": {}
+      },
+      {
+        "text": "aggiungi una sveglia alle {ITHRS}",
+        "args": {}
+      },
+      {
+        "text": "svegliami alle {ITHRS}",
+        "args": {}
+      },
+      {
+        "text": "svegliami alle {ITHR24}",
+        "args": {}
+      },
+      {
+        "text": "svegliami alle {ITHRS} {ITM5}",
+        "args": {}
+      },
+      {
+        "text": "svegliami alle {ITHRS} di mattina",
+        "args": {}
+      },
+      {
+        "text": "svegliami alle {ITHRS} domani",
+        "args": {}
+      },
+      {
+        "text": "voglio essere svegliato alle {ITHRS}",
+        "args": {}
+      },
+      {
+        "text": "voglio essere svegliata alle {ITHRS} {ITM5}",
+        "args": {}
+      },
+      {
+        "text": "puoi svegliarmi alle {ITHRS}",
+        "args": {}
+      },
+      {
+        "text": "mettimi la sveglia per le {ITHRS} {ITM5}",
+        "args": {}
+      },
+      {
+        "text": "imposta la sveglia della palestra alle {ITHRS}",
+        "args": {}
+      },
+      {
+        "text": "sveglia palestra alle {ITHRS} {ITM5}",
+        "args": {}
+      },
+      {
+        "text": "sveglia lavoro alle {ITHRS}",
+        "args": {}
+      },
+      {
+        "text": "imposta una sveglia per le {ITHRS} ogni giorno feriale",
+        "args": {}
+      },
+      {
+        "text": "imposta una sveglia alle {ITHR24} tutti i giorni",
+        "args": {}
+      },
+      {
+        "text": "sveglia alle {ITHRS} da lunedì a venerdì",
+        "args": {}
+      },
+      {
+        "text": "imposta una sveglia per le {ITHRS} il sabato",
+        "args": {}
+      },
+      {
+        "text": "metti una sveglia alle {ITHRS} {ITM5} ogni mattina",
+        "args": {}
+      },
+      {
+        "text": "domani devo alzarmi alle {ITHRS}",
+        "args": {}
+      },
+      {
+        "text": "devo alzarmi presto domani alle {ITHRS}",
+        "args": {}
+      },
+      {
+        "text": "devo essere in piedi alle {ITHRS} {ITM5}",
+        "args": {}
+      },
+      {
+        "text": "devo svegliarmi alle {ITHRS} per il treno",
+        "args": {}
+      },
+      {
+        "text": "non farmi dormire oltre le {ITHRS}",
+        "args": {}
+      },
+      {
+        "text": "non farmi dormire oltre le {ITHR24}",
+        "args": {}
+      },
+      {
+        "text": "assicurati che io sia sveglio alle {ITHRS}",
+        "args": {}
+      },
+      {
+        "text": "fammi alzare alle {ITHRS} domani mattina",
+        "args": {}
+      },
+      {
+        "text": "tirami giù dal letto alle {ITHRS}",
+        "args": {}
+      },
+      {
+        "text": "ho la riunione presto svegliami alle {ITHRS}",
+        "args": {}
+      },
+      {
+        "text": "voglio essere sveglio per le {ITHRS} {ITM5}",
+        "args": {}
+      },
+      {
+        "text": "mi serve una sveglia alle {ITHRS}",
+        "args": {}
+      },
+      {
+        "text": "puoi mettere la sveglia alle {ITHRS} {ITM5}",
+        "args": {}
+      },
+      {
+        "text": "programma la sveglia per le {ITHR24}",
+        "args": {}
+      },
+      {
+        "text": "imposta un allarme per le {ITHRS}",
+        "args": {}
+      },
+      {
+        "text": "metti un allarme alle {ITHRS} {ITM5}",
+        "args": {}
+      },
+      {
+        "text": "sveglia alle {ITHRS} in punto",
+        "args": {}
+      },
+      {
+        "text": "svegliami domani alle {ITHR24}",
+        "args": {}
+      },
+      {
+        "text": "svegliami presto alle {ITHRS}",
+        "args": {}
+      },
+      {
+        "text": "vorrei una sveglia per le {ITHRS} {ITM5}",
+        "args": {}
+      },
+      {
+        "text": "cancella la sveglia delle {ITHRS}",
+        "args": {}
+      },
+      {
+        "text": "elimina la mia sveglia delle {ITHRS}",
+        "args": {}
+      },
+      {
+        "text": "togli la sveglia delle {ITHRS} {ITM5}",
+        "args": {}
+      },
+      {
+        "text": "rimuovi la sveglia delle {ITHR24}",
+        "args": {}
+      },
+      {
+        "text": "disattiva la sveglia",
+        "args": {}
+      },
+      {
+        "text": "disattiva la sveglia delle {ITHRS}",
+        "args": {}
+      },
+      {
+        "text": "spegni la sveglia",
+        "args": {}
+      },
+      {
+        "text": "che sveglie ho",
+        "args": {}
+      },
+      {
+        "text": "quali sveglie ho impostato",
+        "args": {}
+      },
+      {
+        "text": "elenca le mie sveglie",
+        "args": {}
+      }
+    ]
+  },
+  "dev.heyari.timer": {
+    "target": 400,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "imposta un timer di {ITMIN} minuti",
+        "args": {}
+      },
+      {
+        "text": "imposta un timer per {ITMIN} minuti",
+        "args": {}
+      },
+      {
+        "text": "avvia un timer di {ITMIN} minuti",
+        "args": {}
+      },
+      {
+        "text": "metti un timer di {ITMIN} minuti",
+        "args": {}
+      },
+      {
+        "text": "crea un timer da {ITMIN} minuti",
+        "args": {}
+      },
+      {
+        "text": "fai partire un timer di {ITMIN} minuti",
+        "args": {}
+      },
+      {
+        "text": "imposta un timer per {ITTIMERNAME} di {ITMIN} minuti",
+        "args": {}
+      },
+      {
+        "text": "avvia un timer di {ITMIN} minuti per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "metti un timer di {ITMIN} minuti per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "imposta il timer per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "un timer da {ITMIN} minuti per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "imposta un timer di {ITSEC} secondi",
+        "args": {}
+      },
+      {
+        "text": "avvia un timer di {ITSEC} secondi",
+        "args": {}
+      },
+      {
+        "text": "metti {ITMIN} minuti",
+        "args": {}
+      },
+      {
+        "text": "mettimi {ITMIN} minuti per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "dammi {ITMIN} minuti per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "avvisami tra {ITMIN} minuti",
+        "args": {}
+      },
+      {
+        "text": "avvisami tra {ITMIN} minuti per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "fammi sapere quando sono passati {ITMIN} minuti",
+        "args": {}
+      },
+      {
+        "text": "conto alla rovescia di {ITMIN} minuti",
+        "args": {}
+      },
+      {
+        "text": "conto alla rovescia di {ITMIN} minuti per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "fai un conto alla rovescia di {ITMIN} minuti",
+        "args": {}
+      },
+      {
+        "text": "suona tra {ITMIN} minuti",
+        "args": {}
+      },
+      {
+        "text": "parti con un timer di {ITMIN} minuti",
+        "args": {}
+      },
+      {
+        "text": "fai partire {ITMIN} minuti per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "imposta un timer di {ITMIN} minuti e un altro di {ITMIN2} minuti",
+        "args": {}
+      },
+      {
+        "text": "metti un timer di {ITMIN} minuti e uno di {ITMIN2} minuti",
+        "args": {}
+      },
+      {
+        "text": "quanto manca al timer per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "quanto tempo manca al timer per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "quanto resta al timer per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "quanto manca per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "ancora quanto per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "quanto manca",
+        "args": {}
+      },
+      {
+        "text": "quanto tempo resta sul timer",
+        "args": {}
+      },
+      {
+        "text": "quanti minuti mancano al timer per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "annulla il timer per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "cancella il timer per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "ferma il timer per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "elimina il timer per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "non mi serve più il timer per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "togli il timer per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "annulla il timer di {ITMIN} minuti",
+        "args": {}
+      },
+      {
+        "text": "cancella tutti i timer",
+        "args": {}
+      },
+      {
+        "text": "ferma il timer",
+        "args": {}
+      },
+      {
+        "text": "quali timer ho",
+        "args": {}
+      },
+      {
+        "text": "quali timer ho attivi",
+        "args": {}
+      },
+      {
+        "text": "che timer ho attivi",
+        "args": {}
+      },
+      {
+        "text": "elenca i miei timer",
+        "args": {}
+      },
+      {
+        "text": "mostrami i timer attivi",
+        "args": {}
+      },
+      {
+        "text": "quanti timer ho attivi",
+        "args": {}
+      },
+      {
+        "text": "imposta un timer per {ITTIMERNAME} da {ITMIN} minuti",
+        "args": {}
+      },
+      {
+        "text": "fai un timer di {ITMIN} minuti per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "avvia il conto alla rovescia di {ITMIN} minuti per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "fai partire il timer per {ITTIMERNAME}",
+        "args": {}
+      },
+      {
+        "text": "ancora molto per {ITTIMERNAME}",
+        "args": {}
+      }
+    ]
+  },
+  "dev.heyari.counter": {
+    "target": 400,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "conta",
+        "args": {}
+      },
+      {
+        "text": "contami",
+        "args": {}
+      },
+      {
+        "text": "aggiungine uno",
+        "args": {}
+      },
+      {
+        "text": "aggiungi uno al contatore",
+        "args": {}
+      },
+      {
+        "text": "incrementa il contatore",
+        "args": {}
+      },
+      {
+        "text": "aumenta il contatore",
+        "args": {}
+      },
+      {
+        "text": "alza il contatore",
+        "args": {}
+      },
+      {
+        "text": "fai salire il contatore",
+        "args": {}
+      },
+      {
+        "text": "più uno",
+        "args": {}
+      },
+      {
+        "text": "un altro",
+        "args": {}
+      },
+      {
+        "text": "ancora uno",
+        "args": {}
+      },
+      {
+        "text": "segna uno",
+        "args": {}
+      },
+      {
+        "text": "conta ancora",
+        "args": {}
+      },
+      {
+        "text": "conta di nuovo",
+        "args": {}
+      },
+      {
+        "text": "vai avanti con il conteggio",
+        "args": {}
+      },
+      {
+        "text": "aggiorna il contatore",
+        "args": {}
+      },
+      {
+        "text": "spingi avanti il contatore",
+        "args": {}
+      },
+      {
+        "text": "fammi contare",
+        "args": {}
+      },
+      {
+        "text": "tieni il conto",
+        "args": {}
+      },
+      {
+        "text": "aggiungi al contatore",
+        "args": {}
+      },
+      {
+        "text": "incrementa",
+        "args": {}
+      },
+      {
+        "text": "conta uno in più",
+        "args": {}
+      },
+      {
+        "text": "segna un altro",
+        "args": {}
+      },
+      {
+        "text": "aumenta di uno",
+        "args": {}
+      },
+      {
+        "text": "aggiungine un altro",
+        "args": {}
+      },
+      {
+        "text": "fai un altro conteggio",
+        "args": {}
+      },
+      {
+        "text": "conta su",
+        "args": {}
+      },
+      {
+        "text": "conteggia",
+        "args": {}
+      },
+      {
+        "text": "registra un altro",
+        "args": {}
+      },
+      {
+        "text": "metti un altro sul contatore",
+        "args": {}
+      },
+      {
+        "text": "aggiungi {ITCNT} al contatore",
+        "args": {}
+      },
+      {
+        "text": "aggiungine {ITCNT}",
+        "args": {}
+      },
+      {
+        "text": "aumenta il contatore di {ITCNT}",
+        "args": {}
+      },
+      {
+        "text": "incrementa il contatore di {ITCNT}",
+        "args": {}
+      },
+      {
+        "text": "somma {ITCNT} al contatore",
+        "args": {}
+      },
+      {
+        "text": "alza il contatore di {ITCNT}",
+        "args": {}
+      },
+      {
+        "text": "fai salire il contatore di {ITCNT}",
+        "args": {}
+      },
+      {
+        "text": "metti {ITCNT} sul contatore",
+        "args": {}
+      },
+      {
+        "text": "aggiungi {ITCNT} al conteggio",
+        "args": {}
+      },
+      {
+        "text": "più {ITCNT} sul contatore",
+        "args": {}
+      },
+      {
+        "text": "conta fino a {ITCNT}",
+        "args": {}
+      },
+      {
+        "text": "segna {ITCNT}",
+        "args": {}
+      },
+      {
+        "text": "aggiorna il contatore di {ITCNT}",
+        "args": {}
+      },
+      {
+        "text": "spingi avanti il contatore di {ITCNT}",
+        "args": {}
+      },
+      {
+        "text": "aumenta di {ITCNT} il contatore",
+        "args": {}
+      },
+      {
+        "text": "sommagli {ITCNT}",
+        "args": {}
+      },
+      {
+        "text": "incrementa di {ITCNT}",
+        "args": {}
+      },
+      {
+        "text": "aggiungi altri {ITCNT}",
+        "args": {}
+      },
+      {
+        "text": "conta {ITCNT} in più",
+        "args": {}
+      },
+      {
+        "text": "sali di {ITCNT}",
+        "args": {}
+      },
+      {
+        "text": "aggiungine altri {ITCNT}",
+        "args": {}
+      },
+      {
+        "text": "fai {ITCNT} in più",
+        "args": {}
+      },
+      {
+        "text": "registra {ITCNT} in più",
+        "args": {}
+      },
+      {
+        "text": "aumenta il conteggio di {ITCNT}",
+        "args": {}
+      },
+      {
+        "text": "porta avanti il contatore di {ITCNT}",
+        "args": {}
+      }
+    ]
+  },
+  "dev.heyari.homeassistant": {
+    "target": 400,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "accendi {ITHAENT}",
+        "args": {}
+      },
+      {
+        "text": "spegni {ITHAENT}",
+        "args": {}
+      },
+      {
+        "text": "puoi accendere {ITHAENT}",
+        "args": {}
+      },
+      {
+        "text": "puoi spegnere {ITHAENT}",
+        "args": {}
+      },
+      {
+        "text": "accendimi {ITHAENT}",
+        "args": {}
+      },
+      {
+        "text": "spegnimi {ITHAENT}",
+        "args": {}
+      },
+      {
+        "text": "vorrei che accendessi {ITHAENT}",
+        "args": {}
+      },
+      {
+        "text": "per favore accendi {ITHAENT}",
+        "args": {}
+      },
+      {
+        "text": "per favore spegni {ITHAENT}",
+        "args": {}
+      },
+      {
+        "text": "accendi {ITHAENT} grazie",
+        "args": {}
+      },
+      {
+        "text": "abbassa {ITHAENT}",
+        "args": {}
+      },
+      {
+        "text": "alza {ITHAENT}",
+        "args": {}
+      },
+      {
+        "text": "attenua {ITHAENT}",
+        "args": {}
+      },
+      {
+        "text": "abbassa {ITHAENT} al {ITPCT} percento",
+        "args": {}
+      },
+      {
+        "text": "imposta {ITHAENT} al {ITPCT} percento",
+        "args": {}
+      },
+      {
+        "text": "metti {ITHAENT} al {ITPCT} percento",
+        "args": {}
+      },
+      {
+        "text": "riduci {ITHAENT} al {ITPCT} percento",
+        "args": {}
+      },
+      {
+        "text": "apri {ITHACOVER}",
+        "args": {}
+      },
+      {
+        "text": "chiudi {ITHACOVER}",
+        "args": {}
+      },
+      {
+        "text": "puoi aprire {ITHACOVER}",
+        "args": {}
+      },
+      {
+        "text": "puoi chiudere {ITHACOVER}",
+        "args": {}
+      },
+      {
+        "text": "tira su {ITHACOVER}",
+        "args": {}
+      },
+      {
+        "text": "tira giù {ITHACOVER}",
+        "args": {}
+      },
+      {
+        "text": "abbassa {ITHACOVER}",
+        "args": {}
+      },
+      {
+        "text": "imposta {ITHAROOM} a {ITTEMP} gradi",
+        "args": {}
+      },
+      {
+        "text": "metti {ITHAROOM} a {ITTEMP} gradi",
+        "args": {}
+      },
+      {
+        "text": "regola {ITHAROOM} a {ITTEMP} gradi",
+        "args": {}
+      },
+      {
+        "text": "porta {ITHAROOM} a {ITTEMP} gradi",
+        "args": {}
+      },
+      {
+        "text": "imposta il termostato a {ITTEMP} gradi",
+        "args": {}
+      },
+      {
+        "text": "alza il riscaldamento",
+        "args": {}
+      },
+      {
+        "text": "abbassa il riscaldamento",
+        "args": {}
+      },
+      {
+        "text": "fa freddo alza il termostato a {ITTEMP} gradi",
+        "args": {}
+      },
+      {
+        "text": "attiva la scena {ITSCENE}",
+        "args": {}
+      },
+      {
+        "text": "avvia la scena {ITSCENE}",
+        "args": {}
+      },
+      {
+        "text": "esegui la scena {ITSCENE}",
+        "args": {}
+      },
+      {
+        "text": "lancia la scena {ITSCENE}",
+        "args": {}
+      },
+      {
+        "text": "metti la scena {ITSCENE}",
+        "args": {}
+      },
+      {
+        "text": "la porta del garage è aperta",
+        "args": {}
+      },
+      {
+        "text": "la porta d'ingresso è chiusa",
+        "args": {}
+      },
+      {
+        "text": "è tutto spento in casa",
+        "args": {}
+      },
+      {
+        "text": "sono rimaste accese le luci",
+        "args": {}
+      },
+      {
+        "text": "chiudi a chiave la porta d'ingresso",
+        "args": {}
+      },
+      {
+        "text": "blocca la porta d'ingresso",
+        "args": {}
+      },
+      {
+        "text": "sblocca la porta d'ingresso",
+        "args": {}
+      },
+      {
+        "text": "apri il portone",
+        "args": {}
+      },
+      {
+        "text": "dov'è {ITHAPERSON}",
+        "args": {}
+      },
+      {
+        "text": "dove si trova {ITHAPERSON}",
+        "args": {}
+      },
+      {
+        "text": "sai dov'è {ITHAPERSON}",
+        "args": {}
+      },
+      {
+        "text": "mi dici dov'è {ITHAPERSON}",
+        "args": {}
+      },
+      {
+        "text": "accendi {ITHAENT} per favore",
+        "args": {}
+      },
+      {
+        "text": "spegni tutto",
+        "args": {}
+      },
+      {
+        "text": "accendi tutte le luci",
+        "args": {}
+      },
+      {
+        "text": "spegni {ITHAENT} adesso",
+        "args": {}
+      },
+      {
+        "text": "accendi anche {ITHAENT}",
+        "args": {}
+      },
+      {
+        "text": "spegni pure {ITHAENT}",
+        "args": {}
+      }
+    ]
+  },
+  "dev.heyari.music": {
+    "target": 400,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "metti su {ITARTIST}",
+        "args": {
+          "query": "{ITARTIST}"
+        }
+      },
+      {
+        "text": "ascolta {ITARTIST}",
+        "args": {
+          "query": "{ITARTIST}"
+        }
+      },
+      {
+        "text": "riproduci {ITARTIST}",
+        "args": {
+          "query": "{ITARTIST}"
+        }
+      },
+      {
+        "text": "voglio ascoltare {ITARTIST}",
+        "args": {
+          "query": "{ITARTIST}"
+        }
+      },
+      {
+        "text": "voglio sentire {ITARTIST}",
+        "args": {
+          "query": "{ITARTIST}"
+        }
+      },
+      {
+        "text": "fammi sentire {ITARTIST}",
+        "args": {
+          "query": "{ITARTIST}"
+        }
+      },
+      {
+        "text": "mettimi {ITARTIST}",
+        "args": {
+          "query": "{ITARTIST}"
+        }
+      },
+      {
+        "text": "vorrei ascoltare {ITARTIST}",
+        "args": {
+          "query": "{ITARTIST}"
+        }
+      },
+      {
+        "text": "puoi mettere {ITARTIST}",
+        "args": {
+          "query": "{ITARTIST}"
+        }
+      },
+      {
+        "text": "metti {ITARTIST}",
+        "args": {
+          "query": "{ITARTIST}"
+        }
+      },
+      {
+        "text": "metti su {ITARTIST} per favore",
+        "args": {
+          "query": "{ITARTIST}"
+        }
+      },
+      {
+        "text": "metti su {ITARTIST} adesso",
+        "args": {
+          "query": "{ITARTIST}"
+        }
+      },
+      {
+        "text": "fammi ascoltare {ITARTIST}",
+        "args": {
+          "query": "{ITARTIST}"
+        }
+      },
+      {
+        "text": "senti {ITARTIST}",
+        "args": {
+          "query": "{ITARTIST}"
+        }
+      },
+      {
+        "text": "metti su un po' di {ITGENRE}",
+        "args": {
+          "query": "{ITGENRE}"
+        }
+      },
+      {
+        "text": "ascolta un po' di {ITGENRE}",
+        "args": {
+          "query": "{ITGENRE}"
+        }
+      },
+      {
+        "text": "voglio ascoltare {ITGENRE}",
+        "args": {
+          "query": "{ITGENRE}"
+        }
+      },
+      {
+        "text": "mettimi un po' di {ITGENRE}",
+        "args": {
+          "query": "{ITGENRE}"
+        }
+      },
+      {
+        "text": "metti {ITGENRE}",
+        "args": {
+          "query": "{ITGENRE}"
+        }
+      },
+      {
+        "text": "fammi sentire un po' di {ITGENRE}",
+        "args": {
+          "query": "{ITGENRE}"
+        }
+      },
+      {
+        "text": "vorrei un po' di {ITGENRE}",
+        "args": {
+          "query": "{ITGENRE}"
+        }
+      },
+      {
+        "text": "riproduci un po' di {ITGENRE}",
+        "args": {
+          "query": "{ITGENRE}"
+        }
+      },
+      {
+        "text": "voglio sentire un po' di {ITGENRE}",
+        "args": {
+          "query": "{ITGENRE}"
+        }
+      },
+      {
+        "text": "metti su {ITARTIST} su spotify",
+        "args": {
+          "query": "{ITARTIST}",
+          "service": "spotify"
+        }
+      },
+      {
+        "text": "ascolta {ITARTIST} su spotify",
+        "args": {
+          "query": "{ITARTIST}",
+          "service": "spotify"
+        }
+      },
+      {
+        "text": "riproduci {ITARTIST} su spotify",
+        "args": {
+          "query": "{ITARTIST}",
+          "service": "spotify"
+        }
+      },
+      {
+        "text": "riproduci {ITARTIST} su apple music",
+        "args": {
+          "query": "{ITARTIST}",
+          "service": "apple_music"
+        }
+      },
+      {
+        "text": "metti su {ITARTIST} su apple music",
+        "args": {
+          "query": "{ITARTIST}",
+          "service": "apple_music"
+        }
+      },
+      {
+        "text": "ascolta {ITARTIST} su tidal",
+        "args": {
+          "query": "{ITARTIST}",
+          "service": "tidal"
+        }
+      },
+      {
+        "text": "metti su {ITARTIST} su deezer",
+        "args": {
+          "query": "{ITARTIST}",
+          "service": "deezer"
+        }
+      },
+      {
+        "text": "riproduci {ITARTIST} su amazon music",
+        "args": {
+          "query": "{ITARTIST}",
+          "service": "amazon_music"
+        }
+      },
+      {
+        "text": "ascolta {ITARTIST} su amazon music",
+        "args": {
+          "query": "{ITARTIST}",
+          "service": "amazon_music"
+        }
+      },
+      {
+        "text": "metti su {ITGENRE} su spotify",
+        "args": {
+          "query": "{ITGENRE}",
+          "service": "spotify"
+        }
+      },
+      {
+        "text": "metti su {ITGENRE} su tidal",
+        "args": {
+          "query": "{ITGENRE}",
+          "service": "tidal"
+        }
+      },
+      {
+        "text": "metti su qualcosa di rilassante",
+        "args": {
+          "query": "musica rilassante"
+        }
+      },
+      {
+        "text": "metti su qualcosa di allegro",
+        "args": {
+          "query": "musica allegra"
+        }
+      },
+      {
+        "text": "fammi sentire qualcosa di allegro",
+        "args": {
+          "query": "musica allegra"
+        }
+      },
+      {
+        "text": "metti su qualcosa di tranquillo",
+        "args": {
+          "query": "musica rilassante"
+        }
+      },
+      {
+        "text": "metti su qualcosa da ballare",
+        "args": {
+          "query": "musica dance"
+        }
+      },
+      {
+        "text": "pausa",
+        "args": {
+          "action": "pause"
+        }
+      },
+      {
+        "text": "metti in pausa",
+        "args": {
+          "action": "pause"
+        }
+      },
+      {
+        "text": "ferma la musica",
+        "args": {
+          "action": "stop"
+        }
+      },
+      {
+        "text": "basta musica",
+        "args": {
+          "action": "stop"
+        }
+      },
+      {
+        "text": "riprendi",
+        "args": {
+          "action": "resume"
+        }
+      },
+      {
+        "text": "riprendi la musica",
+        "args": {
+          "action": "resume"
+        }
+      },
+      {
+        "text": "prossima",
+        "args": {
+          "action": "next"
+        }
+      },
+      {
+        "text": "cambia canzone",
+        "args": {
+          "action": "next"
+        }
+      },
+      {
+        "text": "torna indietro",
+        "args": {
+          "action": "previous"
+        }
+      },
+      {
+        "text": "canzone precedente",
+        "args": {
+          "action": "previous"
+        }
+      },
+      {
+        "text": "alza il volume",
+        "args": {
+          "action": "volume_up"
+        }
+      },
+      {
+        "text": "più forte",
+        "args": {
+          "action": "volume_up"
+        }
+      },
+      {
+        "text": "abbassa il volume",
+        "args": {
+          "action": "volume_down"
+        }
+      },
+      {
+        "text": "muto",
+        "args": {
+          "action": "mute"
+        }
+      },
+      {
+        "text": "imposta il volume al 40%",
+        "args": {
+          "action": "volume_set",
+          "level": 40
+        }
+      },
+      {
+        "text": "metti il volume al 70%",
+        "args": {
+          "action": "volume_set",
+          "level": 70
+        }
+      }
+    ]
+  },
+  "dev.heyari.navigation": {
+    "target": 400,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "portami {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "accompagnami {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "guidami {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "vai {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "andiamo {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "voglio andare {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "devo andare {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "come arrivo {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "come ci arrivo {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "come si arriva {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "come faccio ad arrivare {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "quanto ci metto ad arrivare {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "qual è la strada più veloce per arrivare {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "portami {ITDEST} in macchina",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "portami subito {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "voglio andare {ITDEST} in auto",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "fammi arrivare {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "conducimi {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "accompagnami {ITDEST} per favore",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "mi porti {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "puoi portarmi {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "portami di nuovo {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "come arrivo {ITDEST} da qui",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "fammi strada {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "andiamo subito {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "avviami la navigazione {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "naviga {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "imposta la rotta {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "voglio andare {ITDEST} adesso",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "indicazioni per la stazione",
+        "args": {
+          "destination": "stazione"
+        }
+      },
+      {
+        "text": "indicazioni per il museo",
+        "args": {
+          "destination": "museo"
+        }
+      },
+      {
+        "text": "indicazioni per l'aeroporto",
+        "args": {
+          "destination": "aeroporto"
+        }
+      },
+      {
+        "text": "indicazioni per l'ospedale",
+        "args": {
+          "destination": "ospedale"
+        }
+      },
+      {
+        "text": "voglio tornare {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "voglio tornare {ITDEST} in macchina",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "riportami {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "portami velocemente {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "ho bisogno di andare {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "mi serve andare {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "dobbiamo andare {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "avvia il navigatore {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "fammi da navigatore {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "come ci si arriva {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "che strada faccio per arrivare {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "trovami la strada {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "portami {ITDEST} adesso",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "voglio andare {ITDEST} subito",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "accompagnami {ITDEST} in auto",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "conducimi {ITDEST} per favore",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "vorrei andare {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "mi indichi come arrivare {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "quanto tempo ci vuole per arrivare {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "portaci {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "come arrivo prima {ITDEST}",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      },
+      {
+        "text": "portami {ITDEST} il prima possibile",
+        "args": {
+          "destination": "{ITDEST}"
+        }
+      }
+    ]
+  },
+  "dev.heyari.reminder": {
+    "target": 400,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "ricordami di {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "ricordami {ITWHEN} di {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "avvisami {ITWHEN} di {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "avvisami di {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "dimmi {ITWHEN} di {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "fammi sapere {ITWHEN} di {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "puoi ricordarmi di {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "ricordami di {ITREMTXT} {ITWHEN} per favore",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "imposta un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "metti un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "crea un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "segnami di {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "ricordami che devo {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "non farmi dimenticare di {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "ricordami {ITWHEN} che devo {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "ricordami di {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "ricordami che devo {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "avvisami di {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "non farmi dimenticare di {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "segnami di {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "imposta un promemoria per {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "metti un promemoria per {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "puoi ricordarmi di {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "aggiungi {ITSHOP} alla lista della spesa",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "spesa"
+        }
+      },
+      {
+        "text": "metti {ITSHOP} sulla lista della spesa",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "spesa"
+        }
+      },
+      {
+        "text": "aggiungi {ITSHOP} alla spesa",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "spesa"
+        }
+      },
+      {
+        "text": "aggiungi {ITSHOP} nella lista della spesa",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "spesa"
+        }
+      },
+      {
+        "text": "metti {ITSHOP} nella lista della spesa",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "spesa"
+        }
+      },
+      {
+        "text": "aggiungi {ITSHOP} alla lista del supermercato",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "supermercato"
+        }
+      },
+      {
+        "text": "segna {ITSHOP} sulla lista della spesa",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "spesa"
+        }
+      },
+      {
+        "text": "aggiungi {ITREMTXT} alla lista delle cose da fare",
+        "args": {
+          "title": "{ITREMTXT}",
+          "list_hint": "cose da fare"
+        }
+      },
+      {
+        "text": "aggiungi {ITSHOP} alla lista della spesa per favore",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "spesa"
+        }
+      },
+      {
+        "text": "che promemoria ho oggi",
+        "args": {}
+      },
+      {
+        "text": "che promemoria ho per domani",
+        "args": {}
+      },
+      {
+        "text": "quali promemoria ho",
+        "args": {}
+      },
+      {
+        "text": "quali promemoria ho oggi",
+        "args": {}
+      },
+      {
+        "text": "qual è il prossimo promemoria",
+        "args": {}
+      },
+      {
+        "text": "dimmi il prossimo promemoria",
+        "args": {}
+      },
+      {
+        "text": "ho qualche promemoria oggi",
+        "args": {}
+      },
+      {
+        "text": "cosa ho in programma oggi",
+        "args": {}
+      },
+      {
+        "text": "cosa ho in programma domani",
+        "args": {}
+      },
+      {
+        "text": "che cosa devo fare oggi",
+        "args": {}
+      },
+      {
+        "text": "ho dei promemoria per domani",
+        "args": {}
+      },
+      {
+        "text": "mi ricordi di {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "ricordami sempre di {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "ti prego ricordami di {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "devo ricordarmi di {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "aiutami a ricordare di {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "ricordami {ITWHEN} di {ITREMTXT} mi raccomando",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "avvisami {ITWHEN} che devo {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "fammi ricordare di {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "ricordami di {ITREMTXT} appena possibile",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "aggiungi {ITSHOP} alla mia lista della spesa",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "spesa"
+        }
+      },
+      {
+        "text": "metti {ITSHOP} in lista della spesa",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "spesa"
+        }
+      },
+      {
+        "text": "ricordami anche di {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      }
+    ]
+  },
+  "dev.heyari.weather": {
+    "target": 400,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "che tempo fa",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "che tempo fa fuori",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "com'è il tempo",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "che tempo c'è",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "quanto fa caldo fuori",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "quanti gradi ci sono",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "fa freddo fuori",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "c'è vento",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "qual è l'indice uv",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "c'è il sole",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "pioverà oggi",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "mi serve il cappotto oggi",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "mi serve l'ombrello oggi",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "serve la crema solare oggi",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "che tempo farà domani",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "pioverà domani",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "devo portare l'ombrello domani",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "mi serve il cappotto domani",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "quanti gradi faranno domani",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "previsioni per questa settimana",
+        "args": {
+          "location": "",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "nevicherà questa settimana",
+        "args": {
+          "location": "",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "che tempo farà questa settimana",
+        "args": {
+          "location": "",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "che tempo fa a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "che tempo c'è a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "com'è il tempo a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "quanti gradi ci sono a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "c'è il sole a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "fa freddo a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "piove a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "meteo a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "il meteo di {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "che tempo fa adesso a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "c'è vento a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "fa caldo a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "com'è il meteo a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "che tempo fa oggi a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "pioverà oggi a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "fa caldo oggi a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "serve l'ombrello oggi a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "piove oggi a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "quanti gradi ci sono oggi a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "c'è il sole oggi a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "meteo a {ITCITY} domani",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "che tempo farà domani a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "farà freddo a {ITCITY} domani",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "pioverà domani a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "che tempo fa domani a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "quanti gradi ci saranno domani a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "farà caldo domani a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "serve l'ombrello domani a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "che tempo farà questa settimana a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "previsioni per {ITCITY} questa settimana",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "pioverà questa settimana a {ITCITY}",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "come sarà il tempo a {ITCITY} questa settimana",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "meteo di {ITCITY} per questa settimana",
+        "args": {
+          "location": "{ITCITY}",
+          "when": "this week"
+        }
+      }
+    ]
+  },
+  "dev.heyari.coinflip": {
+    "target": 200,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "lancia la moneta",
+        "args": {}
+      },
+      {
+        "text": "lancia una monetina",
+        "args": {}
+      },
+      {
+        "text": "lancia la monetina",
+        "args": {}
+      },
+      {
+        "text": "tira la moneta",
+        "args": {}
+      },
+      {
+        "text": "tira una monetina",
+        "args": {}
+      },
+      {
+        "text": "tira la monetina",
+        "args": {}
+      },
+      {
+        "text": "gira una moneta",
+        "args": {}
+      },
+      {
+        "text": "gira la moneta",
+        "args": {}
+      },
+      {
+        "text": "gira una monetina",
+        "args": {}
+      },
+      {
+        "text": "gira la monetina",
+        "args": {}
+      },
+      {
+        "text": "butta una moneta",
+        "args": {}
+      },
+      {
+        "text": "butta la moneta",
+        "args": {}
+      },
+      {
+        "text": "butta una monetina",
+        "args": {}
+      },
+      {
+        "text": "butta la monetina",
+        "args": {}
+      },
+      {
+        "text": "fai volare una moneta",
+        "args": {}
+      },
+      {
+        "text": "fai volare la moneta",
+        "args": {}
+      },
+      {
+        "text": "fai volare una monetina",
+        "args": {}
+      },
+      {
+        "text": "fai volare la monetina",
+        "args": {}
+      },
+      {
+        "text": "lancia una moneta in aria",
+        "args": {}
+      },
+      {
+        "text": "tira una moneta in aria",
+        "args": {}
+      },
+      {
+        "text": "lancia in aria una monetina",
+        "args": {}
+      },
+      {
+        "text": "è testa o croce",
+        "args": {}
+      },
+      {
+        "text": "giochiamo a testa o croce",
+        "args": {}
+      },
+      {
+        "text": "dai facciamo testa o croce",
+        "args": {}
+      },
+      {
+        "text": "testa o croce dai",
+        "args": {}
+      },
+      {
+        "text": "puoi lanciare una moneta",
+        "args": {}
+      },
+      {
+        "text": "puoi tirare una moneta per me",
+        "args": {}
+      },
+      {
+        "text": "potresti lanciare una moneta",
+        "args": {}
+      },
+      {
+        "text": "potresti tirare una moneta",
+        "args": {}
+      },
+      {
+        "text": "ti va di lanciare una moneta",
+        "args": {}
+      },
+      {
+        "text": "lanci una moneta per favore",
+        "args": {}
+      },
+      {
+        "text": "lanciamela una moneta",
+        "args": {}
+      },
+      {
+        "text": "lancia una moneta per me",
+        "args": {}
+      },
+      {
+        "text": "tira una monetina per favore",
+        "args": {}
+      },
+      {
+        "text": "fai un lancio della moneta",
+        "args": {}
+      },
+      {
+        "text": "facciamo un lancio della moneta",
+        "args": {}
+      },
+      {
+        "text": "un lancio della moneta",
+        "args": {}
+      },
+      {
+        "text": "facciamo a pari o dispari con una moneta",
+        "args": {}
+      },
+      {
+        "text": "che decida la sorte",
+        "args": {}
+      },
+      {
+        "text": "che scelga il destino",
+        "args": {}
+      },
+      {
+        "text": "affidiamoci alla fortuna",
+        "args": {}
+      },
+      {
+        "text": "decidiamo con una moneta",
+        "args": {}
+      },
+      {
+        "text": "tiriamo a sorte",
+        "args": {}
+      },
+      {
+        "text": "facciamo decidere alla monetina",
+        "args": {}
+      },
+      {
+        "text": "lascia decidere alla moneta",
+        "args": {}
+      },
+      {
+        "text": "decida la moneta",
+        "args": {}
+      },
+      {
+        "text": "non so decidere lancia una moneta",
+        "args": {}
+      },
+      {
+        "text": "lancia una moneta per decidere",
+        "args": {}
+      },
+      {
+        "text": "testa o croce per decidere",
+        "args": {}
+      },
+      {
+        "text": "facciamo testa o croce per decidere",
+        "args": {}
+      },
+      {
+        "text": "decidi tu con una moneta",
+        "args": {}
+      },
+      {
+        "text": "tira una moneta e vediamo",
+        "args": {}
+      },
+      {
+        "text": "lancia e vediamo come va",
+        "args": {}
+      },
+      {
+        "text": "testa vince o croce vince",
+        "args": {}
+      },
+      {
+        "text": "dai lancia la monetina",
+        "args": {}
+      },
+      {
+        "text": "forza lancia una moneta",
+        "args": {}
+      },
+      {
+        "text": "buttiamo una moneta per scegliere",
+        "args": {}
+      },
+      {
+        "text": "tiriamo una moneta per scegliere",
+        "args": {}
+      },
+      {
+        "text": "se esce testa decido io",
+        "args": {}
+      },
+      {
+        "text": "facciamo a monetina",
+        "args": {}
+      },
+      {
+        "text": "giochiamocela a testa o croce",
+        "args": {}
+      },
+      {
+        "text": "lancia una moneta e dimmi il risultato",
+        "args": {}
+      },
+      {
+        "text": "tira su una moneta",
+        "args": {}
+      },
+      {
+        "text": "dammi un testa o croce",
+        "args": {}
+      },
+      {
+        "text": "voglio un testa o croce",
+        "args": {}
+      },
+      {
+        "text": "risolviamola con una moneta",
+        "args": {}
+      },
+      {
+        "text": "testa oppure croce",
+        "args": {}
+      },
+      {
+        "text": "vediamo se esce testa o croce",
+        "args": {}
+      },
+      {
+        "text": "fammi vedere testa o croce",
+        "args": {}
+      },
+      {
+        "text": "lancia una moneta virtuale",
+        "args": {}
+      },
+      {
+        "text": "tira una moneta virtuale",
+        "args": {}
+      },
+      {
+        "text": "fai girare una monetina",
+        "args": {}
+      },
+      {
+        "text": "fai saltare una moneta",
+        "args": {}
+      },
+      {
+        "text": "lancia la moneta e conta",
+        "args": {}
+      },
+      {
+        "text": "testa o croce decidi tu",
+        "args": {}
+      },
+      {
+        "text": "facciamo un bel testa o croce",
+        "args": {}
+      },
+      {
+        "text": "monetina per favore",
+        "args": {}
+      },
+      {
+        "text": "una moneta al volo",
+        "args": {}
+      },
+      {
+        "text": "tira una moneta al volo",
+        "args": {}
+      },
+      {
+        "text": "lascia scegliere alla sorte",
+        "args": {}
+      },
+      {
+        "text": "che la fortuna decida",
+        "args": {}
+      },
+      {
+        "text": "lanciamo una moneta e vediamo",
+        "args": {}
+      },
+      {
+        "text": "lancia una moneta e scegli",
+        "args": {}
+      },
+      {
+        "text": "testa vinco io croce vinci tu",
+        "args": {}
+      },
+      {
+        "text": "gira la monetina per me",
+        "args": {}
+      },
+      {
+        "text": "buttiamo in aria una moneta",
+        "args": {}
+      },
+      {
+        "text": "facciamo decidere alla sorte",
+        "args": {}
+      },
+      {
+        "text": "dai un testa o croce veloce",
+        "args": {}
+      },
+      {
+        "text": "scegli tu testa o croce",
+        "args": {}
+      },
+      {
+        "text": "risolviamo con testa o croce",
+        "args": {}
+      }
+    ]
+  },
+  "dev.heyari.githubzen": {
+    "target": 200,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "dammi una frase di saggezza",
+        "args": {}
+      },
+      {
+        "text": "dammi una perla di saggezza",
+        "args": {}
+      },
+      {
+        "text": "dammi un aforisma zen",
+        "args": {}
+      },
+      {
+        "text": "dammi una massima saggia",
+        "args": {}
+      },
+      {
+        "text": "dammi un pensiero saggio",
+        "args": {}
+      },
+      {
+        "text": "dammi una citazione zen",
+        "args": {}
+      },
+      {
+        "text": "dammi un consiglio saggio",
+        "args": {}
+      },
+      {
+        "text": "dimmi un po' di zen",
+        "args": {}
+      },
+      {
+        "text": "dimmi una perla di saggezza",
+        "args": {}
+      },
+      {
+        "text": "dimmi un aforisma zen",
+        "args": {}
+      },
+      {
+        "text": "dimmi una massima saggia",
+        "args": {}
+      },
+      {
+        "text": "dimmi un pensiero saggio",
+        "args": {}
+      },
+      {
+        "text": "dimmi una citazione zen",
+        "args": {}
+      },
+      {
+        "text": "dimmi un consiglio saggio",
+        "args": {}
+      },
+      {
+        "text": "regalami un po' di zen",
+        "args": {}
+      },
+      {
+        "text": "regalami una frase di saggezza",
+        "args": {}
+      },
+      {
+        "text": "regalami una perla di saggezza",
+        "args": {}
+      },
+      {
+        "text": "regalami un aforisma zen",
+        "args": {}
+      },
+      {
+        "text": "regalami una massima saggia",
+        "args": {}
+      },
+      {
+        "text": "regalami un pensiero saggio",
+        "args": {}
+      },
+      {
+        "text": "regalami una citazione zen",
+        "args": {}
+      },
+      {
+        "text": "regalami un consiglio saggio",
+        "args": {}
+      },
+      {
+        "text": "condividi un po' di zen",
+        "args": {}
+      },
+      {
+        "text": "condividi una frase di saggezza",
+        "args": {}
+      },
+      {
+        "text": "condividi una perla di saggezza",
+        "args": {}
+      },
+      {
+        "text": "condividi un aforisma zen",
+        "args": {}
+      },
+      {
+        "text": "condividi una massima saggia",
+        "args": {}
+      },
+      {
+        "text": "condividi un pensiero saggio",
+        "args": {}
+      },
+      {
+        "text": "condividi una citazione zen",
+        "args": {}
+      },
+      {
+        "text": "condividi un consiglio saggio",
+        "args": {}
+      },
+      {
+        "text": "mostrami un po' di zen",
+        "args": {}
+      },
+      {
+        "text": "mostrami una frase di saggezza",
+        "args": {}
+      },
+      {
+        "text": "mostrami una perla di saggezza",
+        "args": {}
+      },
+      {
+        "text": "mostrami un aforisma zen",
+        "args": {}
+      },
+      {
+        "text": "mostrami una massima saggia",
+        "args": {}
+      },
+      {
+        "text": "mostrami un pensiero saggio",
+        "args": {}
+      },
+      {
+        "text": "mostrami una citazione zen",
+        "args": {}
+      },
+      {
+        "text": "mostrami un consiglio saggio",
+        "args": {}
+      },
+      {
+        "text": "voglio un po' di zen",
+        "args": {}
+      },
+      {
+        "text": "voglio una frase di saggezza",
+        "args": {}
+      },
+      {
+        "text": "voglio una perla di saggezza",
+        "args": {}
+      },
+      {
+        "text": "voglio un aforisma zen",
+        "args": {}
+      },
+      {
+        "text": "voglio una massima saggia",
+        "args": {}
+      },
+      {
+        "text": "voglio un pensiero saggio",
+        "args": {}
+      },
+      {
+        "text": "voglio una citazione zen",
+        "args": {}
+      },
+      {
+        "text": "voglio un consiglio saggio",
+        "args": {}
+      },
+      {
+        "text": "offrimi un po' di zen",
+        "args": {}
+      },
+      {
+        "text": "offrimi una frase di saggezza",
+        "args": {}
+      },
+      {
+        "text": "offrimi una perla di saggezza",
+        "args": {}
+      },
+      {
+        "text": "offrimi un aforisma zen",
+        "args": {}
+      },
+      {
+        "text": "offrimi una massima saggia",
+        "args": {}
+      },
+      {
+        "text": "offrimi un pensiero saggio",
+        "args": {}
+      },
+      {
+        "text": "offrimi una citazione zen",
+        "args": {}
+      },
+      {
+        "text": "offrimi un consiglio saggio",
+        "args": {}
+      },
+      {
+        "text": "raccontami un po' di zen",
+        "args": {}
+      },
+      {
+        "text": "raccontami una frase di saggezza",
+        "args": {}
+      },
+      {
+        "text": "raccontami una perla di saggezza",
+        "args": {}
+      },
+      {
+        "text": "raccontami un aforisma zen",
+        "args": {}
+      },
+      {
+        "text": "raccontami una massima saggia",
+        "args": {}
+      },
+      {
+        "text": "raccontami un pensiero saggio",
+        "args": {}
+      },
+      {
+        "text": "raccontami una citazione zen",
+        "args": {}
+      },
+      {
+        "text": "raccontami un consiglio saggio",
+        "args": {}
+      },
+      {
+        "text": "qual è lo zen di github",
+        "args": {}
+      },
+      {
+        "text": "dammi lo zen di github",
+        "args": {}
+      },
+      {
+        "text": "condividi lo zen di github",
+        "args": {}
+      },
+      {
+        "text": "zen del giorno",
+        "args": {}
+      },
+      {
+        "text": "dammi lo zen del giorno",
+        "args": {}
+      },
+      {
+        "text": "frase zen del giorno",
+        "args": {}
+      },
+      {
+        "text": "una frase zen",
+        "args": {}
+      },
+      {
+        "text": "dimmi qualcosa di profondo",
+        "args": {}
+      },
+      {
+        "text": "dimmi qualcosa di zen",
+        "args": {}
+      },
+      {
+        "text": "illuminami con un po' di zen",
+        "args": {}
+      },
+      {
+        "text": "fammi riflettere con una massima",
+        "args": {}
+      },
+      {
+        "text": "un pensiero profondo per favore",
+        "args": {}
+      },
+      {
+        "text": "ho bisogno di un po' di zen",
+        "args": {}
+      },
+      {
+        "text": "ho bisogno di saggezza",
+        "args": {}
+      },
+      {
+        "text": "voglio un po' di saggezza",
+        "args": {}
+      },
+      {
+        "text": "un po' di zen grazie",
+        "args": {}
+      },
+      {
+        "text": "una citazione di github zen",
+        "args": {}
+      },
+      {
+        "text": "aforisma zen per favore",
+        "args": {}
+      },
+      {
+        "text": "dammi una massima",
+        "args": {}
+      },
+      {
+        "text": "dimmi una frase saggia",
+        "args": {}
+      },
+      {
+        "text": "un consiglio zen",
+        "args": {}
+      },
+      {
+        "text": "una perla zen",
+        "args": {}
+      },
+      {
+        "text": "dammi ispirazione zen",
+        "args": {}
+      },
+      {
+        "text": "qualche parola saggia",
+        "args": {}
+      },
+      {
+        "text": "regalami una riflessione",
+        "args": {}
+      },
+      {
+        "text": "dimmi un proverbio saggio",
+        "args": {}
+      },
+      {
+        "text": "dammi una perla zen",
+        "args": {}
+      },
+      {
+        "text": "dimmi due parole di saggezza",
+        "args": {}
+      }
+    ]
+  },
+  "dev.heyari.wasmecho": {
+    "target": 200,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "prova il modulo wasm echo",
+        "args": {}
+      },
+      {
+        "text": "prova la skill wasm echo",
+        "args": {}
+      },
+      {
+        "text": "prova il caricatore wasm",
+        "args": {}
+      },
+      {
+        "text": "prova il modulo wasm",
+        "args": {}
+      },
+      {
+        "text": "prova l'echo wasm",
+        "args": {}
+      },
+      {
+        "text": "prova la skill di test wasm",
+        "args": {}
+      },
+      {
+        "text": "testa wasm echo",
+        "args": {}
+      },
+      {
+        "text": "testa il modulo wasm echo",
+        "args": {}
+      },
+      {
+        "text": "testa la skill wasm echo",
+        "args": {}
+      },
+      {
+        "text": "testa il loader wasm",
+        "args": {}
+      },
+      {
+        "text": "testa il caricatore wasm",
+        "args": {}
+      },
+      {
+        "text": "testa il modulo wasm",
+        "args": {}
+      },
+      {
+        "text": "testa l'echo wasm",
+        "args": {}
+      },
+      {
+        "text": "testa la skill di test wasm",
+        "args": {}
+      },
+      {
+        "text": "esegui wasm echo",
+        "args": {}
+      },
+      {
+        "text": "esegui il modulo wasm echo",
+        "args": {}
+      },
+      {
+        "text": "esegui il loader wasm",
+        "args": {}
+      },
+      {
+        "text": "esegui il caricatore wasm",
+        "args": {}
+      },
+      {
+        "text": "esegui il modulo wasm",
+        "args": {}
+      },
+      {
+        "text": "esegui l'echo wasm",
+        "args": {}
+      },
+      {
+        "text": "esegui la skill di test wasm",
+        "args": {}
+      },
+      {
+        "text": "lancia wasm echo",
+        "args": {}
+      },
+      {
+        "text": "lancia il modulo wasm echo",
+        "args": {}
+      },
+      {
+        "text": "lancia la skill wasm echo",
+        "args": {}
+      },
+      {
+        "text": "lancia il loader wasm",
+        "args": {}
+      },
+      {
+        "text": "lancia il caricatore wasm",
+        "args": {}
+      },
+      {
+        "text": "lancia il modulo wasm",
+        "args": {}
+      },
+      {
+        "text": "lancia l'echo wasm",
+        "args": {}
+      },
+      {
+        "text": "lancia la skill di test wasm",
+        "args": {}
+      },
+      {
+        "text": "avvia wasm echo",
+        "args": {}
+      },
+      {
+        "text": "avvia il modulo wasm echo",
+        "args": {}
+      },
+      {
+        "text": "avvia la skill wasm echo",
+        "args": {}
+      },
+      {
+        "text": "avvia il loader wasm",
+        "args": {}
+      },
+      {
+        "text": "avvia il caricatore wasm",
+        "args": {}
+      },
+      {
+        "text": "avvia il modulo wasm",
+        "args": {}
+      },
+      {
+        "text": "avvia l'echo wasm",
+        "args": {}
+      },
+      {
+        "text": "avvia la skill di test wasm",
+        "args": {}
+      },
+      {
+        "text": "fai partire wasm echo",
+        "args": {}
+      },
+      {
+        "text": "fai partire il modulo wasm echo",
+        "args": {}
+      },
+      {
+        "text": "fai partire la skill wasm echo",
+        "args": {}
+      },
+      {
+        "text": "fai partire il loader wasm",
+        "args": {}
+      },
+      {
+        "text": "fai partire il caricatore wasm",
+        "args": {}
+      },
+      {
+        "text": "fai partire il modulo wasm",
+        "args": {}
+      },
+      {
+        "text": "fai partire l'echo wasm",
+        "args": {}
+      },
+      {
+        "text": "fai partire la skill di test wasm",
+        "args": {}
+      },
+      {
+        "text": "verifica wasm echo",
+        "args": {}
+      },
+      {
+        "text": "verifica il modulo wasm echo",
+        "args": {}
+      },
+      {
+        "text": "verifica la skill wasm echo",
+        "args": {}
+      },
+      {
+        "text": "verifica il loader wasm",
+        "args": {}
+      },
+      {
+        "text": "verifica il caricatore wasm",
+        "args": {}
+      },
+      {
+        "text": "verifica il modulo wasm",
+        "args": {}
+      },
+      {
+        "text": "verifica l'echo wasm",
+        "args": {}
+      },
+      {
+        "text": "verifica la skill di test wasm",
+        "args": {}
+      },
+      {
+        "text": "fai girare wasm echo",
+        "args": {}
+      },
+      {
+        "text": "fai girare il modulo wasm echo",
+        "args": {}
+      },
+      {
+        "text": "fai girare la skill wasm echo",
+        "args": {}
+      },
+      {
+        "text": "fai girare il loader wasm",
+        "args": {}
+      },
+      {
+        "text": "fai girare il caricatore wasm",
+        "args": {}
+      },
+      {
+        "text": "fai girare il modulo wasm",
+        "args": {}
+      },
+      {
+        "text": "fai girare l'echo wasm",
+        "args": {}
+      },
+      {
+        "text": "fai girare la skill di test wasm",
+        "args": {}
+      },
+      {
+        "text": "carica wasm echo",
+        "args": {}
+      },
+      {
+        "text": "carica il modulo wasm echo",
+        "args": {}
+      },
+      {
+        "text": "carica la skill wasm echo",
+        "args": {}
+      },
+      {
+        "text": "carica il loader wasm",
+        "args": {}
+      },
+      {
+        "text": "carica il caricatore wasm",
+        "args": {}
+      },
+      {
+        "text": "carica il modulo wasm",
+        "args": {}
+      },
+      {
+        "text": "carica l'echo wasm",
+        "args": {}
+      },
+      {
+        "text": "carica la skill di test wasm",
+        "args": {}
+      },
+      {
+        "text": "attiva wasm echo",
+        "args": {}
+      },
+      {
+        "text": "attiva il modulo wasm echo",
+        "args": {}
+      },
+      {
+        "text": "attiva la skill wasm echo",
+        "args": {}
+      },
+      {
+        "text": "attiva il loader wasm",
+        "args": {}
+      },
+      {
+        "text": "attiva il caricatore wasm",
+        "args": {}
+      },
+      {
+        "text": "attiva il modulo wasm",
+        "args": {}
+      },
+      {
+        "text": "attiva l'echo wasm",
+        "args": {}
+      },
+      {
+        "text": "attiva la skill di test wasm",
+        "args": {}
+      },
+      {
+        "text": "dammi il saluto del wasm",
+        "args": {}
+      },
+      {
+        "text": "fammi vedere che il wasm funziona",
+        "args": {}
+      },
+      {
+        "text": "controlla che il loader wasm risponda",
+        "args": {}
+      },
+      {
+        "text": "voglio testare il loader wasm",
+        "args": {}
+      },
+      {
+        "text": "modulo wasm di prova",
+        "args": {}
+      },
+      {
+        "text": "echo di prova wasm",
+        "args": {}
+      },
+      {
+        "text": "esegui il test del wasm",
+        "args": {}
+      },
+      {
+        "text": "il wasm dice ciao",
+        "args": {}
+      },
+      {
+        "text": "fammi sentire il saluto wasm",
+        "args": {}
+      },
+      {
+        "text": "fai un test del modulo wasm",
+        "args": {}
+      },
+      {
+        "text": "provami il caricatore wasm",
+        "args": {}
+      },
+      {
+        "text": "dammi il saluto dal wasm echo",
+        "args": {}
+      },
+      {
+        "text": "controlla il modulo wasm echo",
+        "args": {}
+      }
+    ]
+  }
+}

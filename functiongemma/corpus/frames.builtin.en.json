@@ -1,0 +1,3112 @@
+{
+  "current_time": {
+    "target": 180,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "what time is it now",
+        "args": {}
+      },
+      {
+        "text": "whats the time right now",
+        "args": {}
+      },
+      {
+        "text": "can you check the time",
+        "args": {}
+      },
+      {
+        "text": "tell me what time it is",
+        "args": {}
+      },
+      {
+        "text": "give me the time",
+        "args": {}
+      },
+      {
+        "text": "what time is it at the moment",
+        "args": {}
+      },
+      {
+        "text": "do you have the current time",
+        "args": {}
+      },
+      {
+        "text": "whats the time please",
+        "args": {}
+      },
+      {
+        "text": "tell me the time please",
+        "args": {}
+      },
+      {
+        "text": "i need the time",
+        "args": {}
+      },
+      {
+        "text": "whats the exact time",
+        "args": {}
+      },
+      {
+        "text": "what is the precise time",
+        "args": {}
+      },
+      {
+        "text": "show me the time",
+        "args": {}
+      },
+      {
+        "text": "read me the time",
+        "args": {}
+      },
+      {
+        "text": "whats the time on the clock",
+        "args": {}
+      },
+      {
+        "text": "what does the clock say",
+        "args": {}
+      },
+      {
+        "text": "what time is it exactly",
+        "args": {}
+      },
+      {
+        "text": "hey whats the time",
+        "args": {}
+      },
+      {
+        "text": "so what time is it",
+        "args": {}
+      },
+      {
+        "text": "remind me what time it is",
+        "args": {}
+      },
+      {
+        "text": "just tell me the time",
+        "args": {}
+      },
+      {
+        "text": "what time is it currently",
+        "args": {}
+      },
+      {
+        "text": "whats the local time",
+        "args": {}
+      },
+      {
+        "text": "whats the time here",
+        "args": {}
+      },
+      {
+        "text": "could you check the time for me",
+        "args": {}
+      },
+      {
+        "text": "mind giving me the time",
+        "args": {}
+      },
+      {
+        "text": "would you tell me the time",
+        "args": {}
+      },
+      {
+        "text": "whats it saying on the clock",
+        "args": {}
+      },
+      {
+        "text": "what hour are we at",
+        "args": {}
+      },
+      {
+        "text": "what hour is it now",
+        "args": {}
+      },
+      {
+        "text": "is it morning yet",
+        "args": {}
+      },
+      {
+        "text": "is it afternoon already",
+        "args": {}
+      },
+      {
+        "text": "is it evening now",
+        "args": {}
+      },
+      {
+        "text": "is it past noon",
+        "args": {}
+      },
+      {
+        "text": "has it gone noon",
+        "args": {}
+      },
+      {
+        "text": "is it past midnight",
+        "args": {}
+      },
+      {
+        "text": "are we into the afternoon yet",
+        "args": {}
+      },
+      {
+        "text": "is it still morning",
+        "args": {}
+      },
+      {
+        "text": "is it nearly evening",
+        "args": {}
+      },
+      {
+        "text": "is it getting late",
+        "args": {}
+      },
+      {
+        "text": "how late is it now",
+        "args": {}
+      },
+      {
+        "text": "is it too late to ring someone",
+        "args": {}
+      },
+      {
+        "text": "is it late in the evening",
+        "args": {}
+      },
+      {
+        "text": "is it early still",
+        "args": {}
+      },
+      {
+        "text": "how early is it right now",
+        "args": {}
+      },
+      {
+        "text": "whats the time of day",
+        "args": {}
+      },
+      {
+        "text": "what part of the day is it",
+        "args": {}
+      },
+      {
+        "text": "is it am or pm",
+        "args": {}
+      },
+      {
+        "text": "is it am or pm right now",
+        "args": {}
+      },
+      {
+        "text": "are we in the am or the pm",
+        "args": {}
+      },
+      {
+        "text": "my watch stopped what time is it",
+        "args": {}
+      },
+      {
+        "text": "my watch died whats the time",
+        "args": {}
+      },
+      {
+        "text": "my phone is off what time is it",
+        "args": {}
+      },
+      {
+        "text": "the clock on the wall stopped can you tell me the time",
+        "args": {}
+      },
+      {
+        "text": "my watch says twelve is that right",
+        "args": {}
+      },
+      {
+        "text": "is my clock correct what time is it really",
+        "args": {}
+      },
+      {
+        "text": "i think my watch is slow whats the actual time",
+        "args": {}
+      },
+      {
+        "text": "the clock stopped ages ago whats the real time",
+        "args": {}
+      },
+      {
+        "text": "my watchs battery went whats the time",
+        "args": {}
+      },
+      {
+        "text": "not sure my clock is right what time is it",
+        "args": {}
+      },
+      {
+        "text": "i totally lost track of the time",
+        "args": {}
+      },
+      {
+        "text": "i have no idea what time it is",
+        "args": {}
+      },
+      {
+        "text": "no clue what time it is right now",
+        "args": {}
+      },
+      {
+        "text": "i lost all sense of time whats it now",
+        "args": {}
+      },
+      {
+        "text": "cant tell what time it is anymore",
+        "args": {}
+      },
+      {
+        "text": "i wasnt watching the clock whats the time",
+        "args": {}
+      },
+      {
+        "text": "i zoned out whats the time",
+        "args": {}
+      },
+      {
+        "text": "time got away from me whats it now",
+        "args": {}
+      },
+      {
+        "text": "is it time to go yet",
+        "args": {}
+      },
+      {
+        "text": "is it home time yet",
+        "args": {}
+      },
+      {
+        "text": "is it lunchtime yet",
+        "args": {}
+      },
+      {
+        "text": "is it nearly lunchtime",
+        "args": {}
+      },
+      {
+        "text": "is it dinner time yet",
+        "args": {}
+      },
+      {
+        "text": "is it time for bed",
+        "args": {}
+      },
+      {
+        "text": "is it knocking off time yet",
+        "args": {}
+      },
+      {
+        "text": "is it beer o clock yet",
+        "args": {}
+      },
+      {
+        "text": "is it that late already",
+        "args": {}
+      },
+      {
+        "text": "surely its not that late what time is it",
+        "args": {}
+      },
+      {
+        "text": "wait what time is it",
+        "args": {}
+      },
+      {
+        "text": "hang on whats the time",
+        "args": {}
+      },
+      {
+        "text": "i need to know the time",
+        "args": {}
+      },
+      {
+        "text": "i have to catch a train what time is it",
+        "args": {}
+      },
+      {
+        "text": "whats the time i cant be late",
+        "args": {}
+      },
+      {
+        "text": "how much time before noon",
+        "args": {}
+      },
+      {
+        "text": "tell me the hour",
+        "args": {}
+      },
+      {
+        "text": "what o clock is it",
+        "args": {}
+      },
+      {
+        "text": "whats the time now please",
+        "args": {}
+      },
+      {
+        "text": "quick tell me the time",
+        "args": {}
+      },
+      {
+        "text": "gimme the time",
+        "args": {}
+      },
+      {
+        "text": "the time please",
+        "args": {}
+      },
+      {
+        "text": "time check",
+        "args": {}
+      },
+      {
+        "text": "give me a time check",
+        "args": {}
+      },
+      {
+        "text": "can i get a time check",
+        "args": {}
+      },
+      {
+        "text": "whats the time reading",
+        "args": {}
+      },
+      {
+        "text": "read out the time",
+        "args": {}
+      },
+      {
+        "text": "announce the time",
+        "args": {}
+      },
+      {
+        "text": "speak the time",
+        "args": {}
+      },
+      {
+        "text": "say the time",
+        "args": {}
+      },
+      {
+        "text": "whats the clock at",
+        "args": {}
+      },
+      {
+        "text": "current time",
+        "args": {}
+      },
+      {
+        "text": "how long until midday",
+        "args": {}
+      },
+      {
+        "text": "how far off is noon",
+        "args": {}
+      },
+      {
+        "text": "roughly what time is it",
+        "args": {}
+      },
+      {
+        "text": "approximately what time is it",
+        "args": {}
+      },
+      {
+        "text": "any idea of the time",
+        "args": {}
+      },
+      {
+        "text": "got any idea what time it is",
+        "args": {}
+      },
+      {
+        "text": "you know what time it is",
+        "args": {}
+      },
+      {
+        "text": "do you know the time offhand",
+        "args": {}
+      },
+      {
+        "text": "would you happen to have the time",
+        "args": {}
+      },
+      {
+        "text": "sorry do you have the time",
+        "args": {}
+      },
+      {
+        "text": "excuse me whats the time",
+        "args": {}
+      },
+      {
+        "text": "pardon me what time is it",
+        "args": {}
+      },
+      {
+        "text": "whats the time mate",
+        "args": {}
+      },
+      {
+        "text": "oi whats the time",
+        "args": {}
+      },
+      {
+        "text": "tell us the time",
+        "args": {}
+      },
+      {
+        "text": "what time you got",
+        "args": {}
+      },
+      {
+        "text": "what you got for the time",
+        "args": {}
+      },
+      {
+        "text": "whats the time then",
+        "args": {}
+      },
+      {
+        "text": "so how late are we",
+        "args": {}
+      },
+      {
+        "text": "are we late whats the time",
+        "args": {}
+      },
+      {
+        "text": "is it lunch time already",
+        "args": {}
+      },
+      {
+        "text": "has the morning gone",
+        "args": {}
+      },
+      {
+        "text": "is the morning over",
+        "args": {}
+      },
+      {
+        "text": "is it still the afternoon",
+        "args": {}
+      },
+      {
+        "text": "whats the time getting on to",
+        "args": {}
+      },
+      {
+        "text": "is it getting on for evening",
+        "args": {}
+      },
+      {
+        "text": "how far into the day are we",
+        "args": {}
+      },
+      {
+        "text": "whereabouts are we in the day",
+        "args": {}
+      },
+      {
+        "text": "what stage of the day is it",
+        "args": {}
+      },
+      {
+        "text": "is the day nearly done",
+        "args": {}
+      },
+      {
+        "text": "is it close to midnight",
+        "args": {}
+      },
+      {
+        "text": "are we near noon",
+        "args": {}
+      },
+      {
+        "text": "is noon close",
+        "args": {}
+      },
+      {
+        "text": "is it around lunchtime",
+        "args": {}
+      },
+      {
+        "text": "is it roughly dinner time",
+        "args": {}
+      },
+      {
+        "text": "whats the time about now",
+        "args": {}
+      },
+      {
+        "text": "about what time is it",
+        "args": {}
+      },
+      {
+        "text": "what would the time be",
+        "args": {}
+      },
+      {
+        "text": "whats the time meant to be",
+        "args": {}
+      },
+      {
+        "text": "what should the clock say by now",
+        "args": {}
+      },
+      {
+        "text": "i just woke up what time is it",
+        "args": {}
+      },
+      {
+        "text": "did i oversleep whats the time",
+        "args": {}
+      },
+      {
+        "text": "i overslept didnt i whats the time",
+        "args": {}
+      },
+      {
+        "text": "is it time to wake up",
+        "args": {}
+      },
+      {
+        "text": "is it time to get up yet",
+        "args": {}
+      },
+      {
+        "text": "whats the time i think i slept in",
+        "args": {}
+      },
+      {
+        "text": "i must have dozed off whats the time",
+        "args": {}
+      },
+      {
+        "text": "how long was i out whats the time",
+        "args": {}
+      },
+      {
+        "text": "i nodded off what time is it now",
+        "args": {}
+      },
+      {
+        "text": "crikey what time is it",
+        "args": {}
+      },
+      {
+        "text": "has it turned three yet",
+        "args": {}
+      },
+      {
+        "text": "has it gone five yet",
+        "args": {}
+      },
+      {
+        "text": "is it past eight yet",
+        "args": {}
+      },
+      {
+        "text": "is it gone ten already",
+        "args": {}
+      },
+      {
+        "text": "has it hit noon yet",
+        "args": {}
+      },
+      {
+        "text": "is it nine oclock yet",
+        "args": {}
+      },
+      {
+        "text": "is it after six now",
+        "args": {}
+      },
+      {
+        "text": "are we past seven",
+        "args": {}
+      },
+      {
+        "text": "is it before nine still",
+        "args": {}
+      },
+      {
+        "text": "whats the time roughly now",
+        "args": {}
+      },
+      {
+        "text": "hey ari whats the time",
+        "args": {}
+      },
+      {
+        "text": "ari what time is it",
+        "args": {}
+      },
+      {
+        "text": "ari tell me the time",
+        "args": {}
+      },
+      {
+        "text": "ari do you have the time",
+        "args": {}
+      },
+      {
+        "text": "whats the time love",
+        "args": {}
+      },
+      {
+        "text": "tell me the time real quick",
+        "args": {}
+      },
+      {
+        "text": "one sec whats the time",
+        "args": {}
+      },
+      {
+        "text": "before i forget whats the time",
+        "args": {}
+      },
+      {
+        "text": "remind me of the time",
+        "args": {}
+      },
+      {
+        "text": "whats the time currently showing",
+        "args": {}
+      },
+      {
+        "text": "how many hours till midnight",
+        "args": {}
+      },
+      {
+        "text": "how long left in the day",
+        "args": {}
+      },
+      {
+        "text": "how much of the day is left",
+        "args": {}
+      },
+      {
+        "text": "is it still office hours",
+        "args": {}
+      },
+      {
+        "text": "are we still in working hours",
+        "args": {}
+      },
+      {
+        "text": "is it too early to head out",
+        "args": {}
+      },
+      {
+        "text": "is it late enough to leave yet",
+        "args": {}
+      },
+      {
+        "text": "whats the time getting on for",
+        "args": {}
+      },
+      {
+        "text": "is it past teatime yet",
+        "args": {}
+      },
+      {
+        "text": "how far along is the day now",
+        "args": {}
+      }
+    ]
+  },
+  "current_date": {
+    "target": 180,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "whats the date for today",
+        "args": {}
+      },
+      {
+        "text": "whats todays date then",
+        "args": {}
+      },
+      {
+        "text": "what day is it today",
+        "args": {}
+      },
+      {
+        "text": "what date is it today",
+        "args": {}
+      },
+      {
+        "text": "tell me todays date",
+        "args": {}
+      },
+      {
+        "text": "tell me the date",
+        "args": {}
+      },
+      {
+        "text": "what day of the week is it",
+        "args": {}
+      },
+      {
+        "text": "which day of the week are we on",
+        "args": {}
+      },
+      {
+        "text": "what day are we",
+        "args": {}
+      },
+      {
+        "text": "what is the date",
+        "args": {}
+      },
+      {
+        "text": "give me todays date",
+        "args": {}
+      },
+      {
+        "text": "i need todays date",
+        "args": {}
+      },
+      {
+        "text": "do you know todays date",
+        "args": {}
+      },
+      {
+        "text": "can you give me the date",
+        "args": {}
+      },
+      {
+        "text": "whats the date right now",
+        "args": {}
+      },
+      {
+        "text": "whats the date this morning",
+        "args": {}
+      },
+      {
+        "text": "show me the date",
+        "args": {}
+      },
+      {
+        "text": "what does the calendar say",
+        "args": {}
+      },
+      {
+        "text": "whats the date on the calendar",
+        "args": {}
+      },
+      {
+        "text": "what day does the calendar say",
+        "args": {}
+      },
+      {
+        "text": "remind me what the date is",
+        "args": {}
+      },
+      {
+        "text": "remind me what day it is",
+        "args": {}
+      },
+      {
+        "text": "what day is today again",
+        "args": {}
+      },
+      {
+        "text": "whats the day were on",
+        "args": {}
+      },
+      {
+        "text": "tell me what the date is",
+        "args": {}
+      },
+      {
+        "text": "whats the full date today",
+        "args": {}
+      },
+      {
+        "text": "whats the date exactly",
+        "args": {}
+      },
+      {
+        "text": "what is todays exact date",
+        "args": {}
+      },
+      {
+        "text": "could you tell me todays date",
+        "args": {}
+      },
+      {
+        "text": "whats the day of the week today",
+        "args": {}
+      },
+      {
+        "text": "does today fall on a monday",
+        "args": {}
+      },
+      {
+        "text": "is today tuesday",
+        "args": {}
+      },
+      {
+        "text": "is it friday yet",
+        "args": {}
+      },
+      {
+        "text": "is it saturday already",
+        "args": {}
+      },
+      {
+        "text": "is today the weekend",
+        "args": {}
+      },
+      {
+        "text": "is it the weekend yet",
+        "args": {}
+      },
+      {
+        "text": "is it still a weekday",
+        "args": {}
+      },
+      {
+        "text": "what weekday is it",
+        "args": {}
+      },
+      {
+        "text": "which weekday are we on",
+        "args": {}
+      },
+      {
+        "text": "is it sunday",
+        "args": {}
+      },
+      {
+        "text": "is it midweek",
+        "args": {}
+      },
+      {
+        "text": "are we at the weekend already",
+        "args": {}
+      },
+      {
+        "text": "is it nearly the weekend",
+        "args": {}
+      },
+      {
+        "text": "how many days till the weekend",
+        "args": {}
+      },
+      {
+        "text": "remind me which day it is",
+        "args": {}
+      },
+      {
+        "text": "i forget what day it is",
+        "args": {}
+      },
+      {
+        "text": "i cant remember what day it is",
+        "args": {}
+      },
+      {
+        "text": "i lost track of what day it is",
+        "args": {}
+      },
+      {
+        "text": "what day of the year is it",
+        "args": {}
+      },
+      {
+        "text": "how many days into the year are we",
+        "args": {}
+      },
+      {
+        "text": "i have no idea what day it is",
+        "args": {}
+      },
+      {
+        "text": "no clue what the date is",
+        "args": {}
+      },
+      {
+        "text": "what day even is it",
+        "args": {}
+      },
+      {
+        "text": "honestly what day is it",
+        "args": {}
+      },
+      {
+        "text": "is it really wednesday already",
+        "args": {}
+      },
+      {
+        "text": "wait what day is it",
+        "args": {}
+      },
+      {
+        "text": "hang on whats the date",
+        "args": {}
+      },
+      {
+        "text": "remind me what day of the week this is",
+        "args": {}
+      },
+      {
+        "text": "what day did we land on",
+        "args": {}
+      },
+      {
+        "text": "what are we up to date wise",
+        "args": {}
+      },
+      {
+        "text": "the days are blurring what date is it",
+        "args": {}
+      },
+      {
+        "text": "every day feels the same whats the date",
+        "args": {}
+      },
+      {
+        "text": "ive lost all track of the days whats today",
+        "args": {}
+      },
+      {
+        "text": "i genuinely dont know the date",
+        "args": {}
+      },
+      {
+        "text": "cant keep track of dates whats today",
+        "args": {}
+      },
+      {
+        "text": "whats the date im so lost",
+        "args": {}
+      },
+      {
+        "text": "what day of the month is it",
+        "args": {}
+      },
+      {
+        "text": "what date of the month are we on",
+        "args": {}
+      },
+      {
+        "text": "whats the number today",
+        "args": {}
+      },
+      {
+        "text": "what number day is it today",
+        "args": {}
+      },
+      {
+        "text": "what month are we in",
+        "args": {}
+      },
+      {
+        "text": "which month is it now",
+        "args": {}
+      },
+      {
+        "text": "is it still june",
+        "args": {}
+      },
+      {
+        "text": "are we in july yet",
+        "args": {}
+      },
+      {
+        "text": "has the month changed",
+        "args": {}
+      },
+      {
+        "text": "how far through the month are we",
+        "args": {}
+      },
+      {
+        "text": "whereabouts in the month are we",
+        "args": {}
+      },
+      {
+        "text": "is it the start of the month",
+        "args": {}
+      },
+      {
+        "text": "are we near the end of the month",
+        "args": {}
+      },
+      {
+        "text": "is it the first of the month",
+        "args": {}
+      },
+      {
+        "text": "is it month end yet",
+        "args": {}
+      },
+      {
+        "text": "how many days left in the month",
+        "args": {}
+      },
+      {
+        "text": "how much of the month is left",
+        "args": {}
+      },
+      {
+        "text": "what week of the month is it",
+        "args": {}
+      },
+      {
+        "text": "are we halfway through the month",
+        "args": {}
+      },
+      {
+        "text": "is the month almost done",
+        "args": {}
+      },
+      {
+        "text": "is it the middle of the month",
+        "args": {}
+      },
+      {
+        "text": "what part of the month are we in",
+        "args": {}
+      },
+      {
+        "text": "is it late in the month",
+        "args": {}
+      },
+      {
+        "text": "are we past the middle of the month",
+        "args": {}
+      },
+      {
+        "text": "what should i put as the date",
+        "args": {}
+      },
+      {
+        "text": "what date do i write on this",
+        "args": {}
+      },
+      {
+        "text": "whats the date for this form",
+        "args": {}
+      },
+      {
+        "text": "what do i date this letter",
+        "args": {}
+      },
+      {
+        "text": "whats todays date for the record",
+        "args": {}
+      },
+      {
+        "text": "put a date on this whats today",
+        "args": {}
+      },
+      {
+        "text": "i need to date a cheque whats today",
+        "args": {}
+      },
+      {
+        "text": "whats the date so i can sign this",
+        "args": {}
+      },
+      {
+        "text": "remind me of todays date for my diary",
+        "args": {}
+      },
+      {
+        "text": "what date shall i note down",
+        "args": {}
+      },
+      {
+        "text": "whats the date im filling something in",
+        "args": {}
+      },
+      {
+        "text": "what day should i write down",
+        "args": {}
+      },
+      {
+        "text": "whats the current date",
+        "args": {}
+      },
+      {
+        "text": "current date please",
+        "args": {}
+      },
+      {
+        "text": "just the date today please",
+        "args": {}
+      },
+      {
+        "text": "the date thanks",
+        "args": {}
+      },
+      {
+        "text": "the date if you would",
+        "args": {}
+      },
+      {
+        "text": "gimme the date",
+        "args": {}
+      },
+      {
+        "text": "quick whats the date",
+        "args": {}
+      },
+      {
+        "text": "just tell me the date",
+        "args": {}
+      },
+      {
+        "text": "is it the first yet",
+        "args": {}
+      },
+      {
+        "text": "is it the fifteenth today",
+        "args": {}
+      },
+      {
+        "text": "is it payday yet",
+        "args": {}
+      },
+      {
+        "text": "is it the end of the month yet",
+        "args": {}
+      },
+      {
+        "text": "is it new years yet",
+        "args": {}
+      },
+      {
+        "text": "has the first of the month come",
+        "args": {}
+      },
+      {
+        "text": "is it christmas eve yet",
+        "args": {}
+      },
+      {
+        "text": "is today the last day of the month",
+        "args": {}
+      },
+      {
+        "text": "is it a bank holiday today",
+        "args": {}
+      },
+      {
+        "text": "is today a holiday",
+        "args": {}
+      },
+      {
+        "text": "so what day is it",
+        "args": {}
+      },
+      {
+        "text": "and what day is today",
+        "args": {}
+      },
+      {
+        "text": "sorry whats the date",
+        "args": {}
+      },
+      {
+        "text": "excuse me what day is it",
+        "args": {}
+      },
+      {
+        "text": "any idea what the date is",
+        "args": {}
+      },
+      {
+        "text": "you know what day it is",
+        "args": {}
+      },
+      {
+        "text": "do you happen to know the date",
+        "args": {}
+      },
+      {
+        "text": "whats the date mate",
+        "args": {}
+      },
+      {
+        "text": "whats the date love",
+        "args": {}
+      },
+      {
+        "text": "tell us the date",
+        "args": {}
+      },
+      {
+        "text": "what day you got",
+        "args": {}
+      },
+      {
+        "text": "what date is it then",
+        "args": {}
+      },
+      {
+        "text": "whats the day and date",
+        "args": {}
+      },
+      {
+        "text": "give me the day and date",
+        "args": {}
+      },
+      {
+        "text": "whats the date and day please",
+        "args": {}
+      },
+      {
+        "text": "what calendar day is it",
+        "args": {}
+      },
+      {
+        "text": "what day falls today",
+        "args": {}
+      },
+      {
+        "text": "what weekday are we",
+        "args": {}
+      },
+      {
+        "text": "what day of the week does today land on",
+        "args": {}
+      },
+      {
+        "text": "what day of the week are we having",
+        "args": {}
+      },
+      {
+        "text": "what date does today fall on",
+        "args": {}
+      },
+      {
+        "text": "whats the numerical date today",
+        "args": {}
+      },
+      {
+        "text": "whats the date in numbers",
+        "args": {}
+      },
+      {
+        "text": "whats todays date in full",
+        "args": {}
+      },
+      {
+        "text": "spell out todays date",
+        "args": {}
+      },
+      {
+        "text": "read me the date",
+        "args": {}
+      },
+      {
+        "text": "announce the date",
+        "args": {}
+      },
+      {
+        "text": "say todays date",
+        "args": {}
+      },
+      {
+        "text": "whats the date reading",
+        "args": {}
+      },
+      {
+        "text": "whats showing on the calendar today",
+        "args": {}
+      },
+      {
+        "text": "i woke up not knowing the day whats the date",
+        "args": {}
+      },
+      {
+        "text": "what day did i wake up to",
+        "args": {}
+      },
+      {
+        "text": "is it still the same day",
+        "args": {}
+      },
+      {
+        "text": "what day are we into now",
+        "args": {}
+      },
+      {
+        "text": "what day has it become",
+        "args": {}
+      },
+      {
+        "text": "what day is it now then",
+        "args": {}
+      },
+      {
+        "text": "whats the date at this point",
+        "args": {}
+      },
+      {
+        "text": "where are we date wise today",
+        "args": {}
+      },
+      {
+        "text": "whats the date this fine day",
+        "args": {}
+      },
+      {
+        "text": "whats the date good sir",
+        "args": {}
+      },
+      {
+        "text": "ari whats the date",
+        "args": {}
+      },
+      {
+        "text": "ari what day is it",
+        "args": {}
+      },
+      {
+        "text": "ari tell me todays date",
+        "args": {}
+      },
+      {
+        "text": "hey ari whats the date today",
+        "args": {}
+      },
+      {
+        "text": "whats todays date please ari",
+        "args": {}
+      },
+      {
+        "text": "can you remind me of the date",
+        "args": {}
+      },
+      {
+        "text": "what day is it supposed to be",
+        "args": {}
+      },
+      {
+        "text": "what day should it be today",
+        "args": {}
+      },
+      {
+        "text": "whats the date meant to be today",
+        "args": {}
+      },
+      {
+        "text": "give me the exact date",
+        "args": {}
+      },
+      {
+        "text": "what date are we sitting on today",
+        "args": {}
+      },
+      {
+        "text": "which date is it today",
+        "args": {}
+      },
+      {
+        "text": "what day of the week does it fall on",
+        "args": {}
+      },
+      {
+        "text": "is it the last friday of the month",
+        "args": {}
+      },
+      {
+        "text": "have we hit the new month yet",
+        "args": {}
+      },
+      {
+        "text": "what day is it turning into",
+        "args": {}
+      },
+      {
+        "text": "whats the date give or take",
+        "args": {}
+      },
+      {
+        "text": "roughly what date is it",
+        "args": {}
+      },
+      {
+        "text": "what day were we on again",
+        "args": {}
+      },
+      {
+        "text": "is it still the first week of the month",
+        "args": {}
+      }
+    ]
+  },
+  "greeting": {
+    "target": 200,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "hi there",
+        "args": {}
+      },
+      {
+        "text": "hello there",
+        "args": {}
+      },
+      {
+        "text": "hiya ari",
+        "args": {}
+      },
+      {
+        "text": "yo ari",
+        "args": {}
+      },
+      {
+        "text": "mornin",
+        "args": {}
+      },
+      {
+        "text": "morning ari",
+        "args": {}
+      },
+      {
+        "text": "good afternoon ari",
+        "args": {}
+      },
+      {
+        "text": "afternoon",
+        "args": {}
+      },
+      {
+        "text": "good evening ari",
+        "args": {}
+      },
+      {
+        "text": "evening ari",
+        "args": {}
+      },
+      {
+        "text": "good day",
+        "args": {}
+      },
+      {
+        "text": "g day",
+        "args": {}
+      },
+      {
+        "text": "morning morning",
+        "args": {}
+      },
+      {
+        "text": "a very good morning",
+        "args": {}
+      },
+      {
+        "text": "good morning to you ari",
+        "args": {}
+      },
+      {
+        "text": "top of the day to you",
+        "args": {}
+      },
+      {
+        "text": "hello good sir",
+        "args": {}
+      },
+      {
+        "text": "hey lovely",
+        "args": {}
+      },
+      {
+        "text": "hi there ari",
+        "args": {}
+      },
+      {
+        "text": "hey up ari",
+        "args": {}
+      },
+      {
+        "text": "how goes it",
+        "args": {}
+      },
+      {
+        "text": "how goes it ari",
+        "args": {}
+      },
+      {
+        "text": "hows it all going",
+        "args": {}
+      },
+      {
+        "text": "hows your day been so far",
+        "args": {}
+      },
+      {
+        "text": "how are you feeling today",
+        "args": {}
+      },
+      {
+        "text": "how are you getting on",
+        "args": {}
+      },
+      {
+        "text": "you keeping well",
+        "args": {}
+      },
+      {
+        "text": "keeping busy",
+        "args": {}
+      },
+      {
+        "text": "hope you are well ari",
+        "args": {}
+      },
+      {
+        "text": "hey hows things with you",
+        "args": {}
+      },
+      {
+        "text": "whats up",
+        "args": {}
+      },
+      {
+        "text": "wassup",
+        "args": {}
+      },
+      {
+        "text": "whats up ari",
+        "args": {}
+      },
+      {
+        "text": "whats going on",
+        "args": {}
+      },
+      {
+        "text": "how are you today",
+        "args": {}
+      },
+      {
+        "text": "hows it going",
+        "args": {}
+      },
+      {
+        "text": "hows it going ari",
+        "args": {}
+      },
+      {
+        "text": "hows things",
+        "args": {}
+      },
+      {
+        "text": "hows everything",
+        "args": {}
+      },
+      {
+        "text": "so how have you been",
+        "args": {}
+      },
+      {
+        "text": "how you been",
+        "args": {}
+      },
+      {
+        "text": "how are you keeping",
+        "args": {}
+      },
+      {
+        "text": "morning hope youre good",
+        "args": {}
+      },
+      {
+        "text": "hello lovely to catch you",
+        "args": {}
+      },
+      {
+        "text": "well hello there ari",
+        "args": {}
+      },
+      {
+        "text": "hey there hows life",
+        "args": {}
+      },
+      {
+        "text": "good to speak to you again",
+        "args": {}
+      },
+      {
+        "text": "hiya hows it going",
+        "args": {}
+      },
+      {
+        "text": "you alright",
+        "args": {}
+      },
+      {
+        "text": "you alright ari",
+        "args": {}
+      },
+      {
+        "text": "alright",
+        "args": {}
+      },
+      {
+        "text": "alright ari",
+        "args": {}
+      },
+      {
+        "text": "alright there",
+        "args": {}
+      },
+      {
+        "text": "you good",
+        "args": {}
+      },
+      {
+        "text": "you doing ok",
+        "args": {}
+      },
+      {
+        "text": "how are we doing",
+        "args": {}
+      },
+      {
+        "text": "how is it going today",
+        "args": {}
+      },
+      {
+        "text": "hows your day",
+        "args": {}
+      },
+      {
+        "text": "hows life",
+        "args": {}
+      },
+      {
+        "text": "top of the morning to you",
+        "args": {}
+      },
+      {
+        "text": "good morning to you",
+        "args": {}
+      },
+      {
+        "text": "morning ari how are you",
+        "args": {}
+      },
+      {
+        "text": "and a good morning to you",
+        "args": {}
+      },
+      {
+        "text": "evening ari hows things",
+        "args": {}
+      },
+      {
+        "text": "good evening to you",
+        "args": {}
+      },
+      {
+        "text": "afternoon ari",
+        "args": {}
+      },
+      {
+        "text": "lovely morning isnt it",
+        "args": {}
+      },
+      {
+        "text": "beautiful day today",
+        "args": {}
+      },
+      {
+        "text": "bit of a grey morning hey",
+        "args": {}
+      },
+      {
+        "text": "long time no chat",
+        "args": {}
+      },
+      {
+        "text": "its been ages hasnt it",
+        "args": {}
+      },
+      {
+        "text": "its been a while",
+        "args": {}
+      },
+      {
+        "text": "been a while hasnt it",
+        "args": {}
+      },
+      {
+        "text": "ages since we spoke",
+        "args": {}
+      },
+      {
+        "text": "we havent talked in forever",
+        "args": {}
+      },
+      {
+        "text": "havent heard from you in a bit",
+        "args": {}
+      },
+      {
+        "text": "its been too long",
+        "args": {}
+      },
+      {
+        "text": "its been such a long time",
+        "args": {}
+      },
+      {
+        "text": "hey its been a long time",
+        "args": {}
+      },
+      {
+        "text": "good to see you again",
+        "args": {}
+      },
+      {
+        "text": "great to see you",
+        "args": {}
+      },
+      {
+        "text": "lovely to see you",
+        "args": {}
+      },
+      {
+        "text": "good to have you back",
+        "args": {}
+      },
+      {
+        "text": "there you are",
+        "args": {}
+      },
+      {
+        "text": "so we meet again",
+        "args": {}
+      },
+      {
+        "text": "back again",
+        "args": {}
+      },
+      {
+        "text": "did you miss me",
+        "args": {}
+      },
+      {
+        "text": "long time no chat ari",
+        "args": {}
+      },
+      {
+        "text": "miss me",
+        "args": {}
+      },
+      {
+        "text": "look who it is again",
+        "args": {}
+      },
+      {
+        "text": "well look who it is",
+        "args": {}
+      },
+      {
+        "text": "look whos here",
+        "args": {}
+      },
+      {
+        "text": "look whos back",
+        "args": {}
+      },
+      {
+        "text": "well if it isnt ari",
+        "args": {}
+      },
+      {
+        "text": "if it isnt my old friend",
+        "args": {}
+      },
+      {
+        "text": "theres the legend",
+        "args": {}
+      },
+      {
+        "text": "ah there she is",
+        "args": {}
+      },
+      {
+        "text": "ah there you are",
+        "args": {}
+      },
+      {
+        "text": "look who just showed up",
+        "args": {}
+      },
+      {
+        "text": "hey you",
+        "args": {}
+      },
+      {
+        "text": "hey you there",
+        "args": {}
+      },
+      {
+        "text": "you there",
+        "args": {}
+      },
+      {
+        "text": "you around",
+        "args": {}
+      },
+      {
+        "text": "anybody home",
+        "args": {}
+      },
+      {
+        "text": "you awake",
+        "args": {}
+      },
+      {
+        "text": "you listening",
+        "args": {}
+      },
+      {
+        "text": "can you hear me",
+        "args": {}
+      },
+      {
+        "text": "hows tricks",
+        "args": {}
+      },
+      {
+        "text": "hows it hanging",
+        "args": {}
+      },
+      {
+        "text": "what are you up to",
+        "args": {}
+      },
+      {
+        "text": "whatcha doing",
+        "args": {}
+      },
+      {
+        "text": "whats new",
+        "args": {}
+      },
+      {
+        "text": "anything new",
+        "args": {}
+      },
+      {
+        "text": "whats the story",
+        "args": {}
+      },
+      {
+        "text": "hows your morning",
+        "args": {}
+      },
+      {
+        "text": "hows your afternoon",
+        "args": {}
+      },
+      {
+        "text": "hows your evening",
+        "args": {}
+      },
+      {
+        "text": "having a good day",
+        "args": {}
+      },
+      {
+        "text": "hope youre well",
+        "args": {}
+      },
+      {
+        "text": "ey up",
+        "args": {}
+      },
+      {
+        "text": "now then",
+        "args": {}
+      },
+      {
+        "text": "alright me old mucker",
+        "args": {}
+      },
+      {
+        "text": "hows it going pal",
+        "args": {}
+      },
+      {
+        "text": "hey buddy",
+        "args": {}
+      },
+      {
+        "text": "hey mate",
+        "args": {}
+      },
+      {
+        "text": "hi mate",
+        "args": {}
+      },
+      {
+        "text": "hello mate",
+        "args": {}
+      },
+      {
+        "text": "hiya love",
+        "args": {}
+      },
+      {
+        "text": "hello love",
+        "args": {}
+      },
+      {
+        "text": "hey pal",
+        "args": {}
+      },
+      {
+        "text": "hello friend",
+        "args": {}
+      },
+      {
+        "text": "hey friend",
+        "args": {}
+      },
+      {
+        "text": "hey champ",
+        "args": {}
+      },
+      {
+        "text": "hello you legend",
+        "args": {}
+      },
+      {
+        "text": "wotcha",
+        "args": {}
+      },
+      {
+        "text": "oi oi",
+        "args": {}
+      },
+      {
+        "text": "ahoy",
+        "args": {}
+      },
+      {
+        "text": "ahoy there",
+        "args": {}
+      },
+      {
+        "text": "how goes things",
+        "args": {}
+      },
+      {
+        "text": "hi how are you",
+        "args": {}
+      },
+      {
+        "text": "hey how are you doing",
+        "args": {}
+      },
+      {
+        "text": "hello how are things",
+        "args": {}
+      },
+      {
+        "text": "hi there hows it going",
+        "args": {}
+      },
+      {
+        "text": "hey ari hows it going",
+        "args": {}
+      },
+      {
+        "text": "morning hows things",
+        "args": {}
+      },
+      {
+        "text": "good morning how are you",
+        "args": {}
+      },
+      {
+        "text": "good evening how are you",
+        "args": {}
+      },
+      {
+        "text": "hello hope youre good",
+        "args": {}
+      },
+      {
+        "text": "hi hope youre doing well",
+        "args": {}
+      },
+      {
+        "text": "hey good to see you",
+        "args": {}
+      },
+      {
+        "text": "hi again",
+        "args": {}
+      },
+      {
+        "text": "hello again",
+        "args": {}
+      },
+      {
+        "text": "hey its me",
+        "args": {}
+      },
+      {
+        "text": "hi its me again",
+        "args": {}
+      },
+      {
+        "text": "hello you",
+        "args": {}
+      },
+      {
+        "text": "hey stranger",
+        "args": {}
+      },
+      {
+        "text": "hello stranger",
+        "args": {}
+      },
+      {
+        "text": "well hello",
+        "args": {}
+      },
+      {
+        "text": "why hello there",
+        "args": {}
+      },
+      {
+        "text": "hope you had a good weekend",
+        "args": {}
+      },
+      {
+        "text": "hope your weekend was good",
+        "args": {}
+      },
+      {
+        "text": "how was your weekend",
+        "args": {}
+      },
+      {
+        "text": "how was your day",
+        "args": {}
+      },
+      {
+        "text": "hope youre having a good one",
+        "args": {}
+      },
+      {
+        "text": "hows my favourite assistant",
+        "args": {}
+      },
+      {
+        "text": "hows my assistant doing",
+        "args": {}
+      },
+      {
+        "text": "hey how have things been",
+        "args": {}
+      },
+      {
+        "text": "hi how has your day been",
+        "args": {}
+      },
+      {
+        "text": "good to chat again",
+        "args": {}
+      },
+      {
+        "text": "nice to chat",
+        "args": {}
+      },
+      {
+        "text": "lovely to hear from you",
+        "args": {}
+      },
+      {
+        "text": "always good to see you",
+        "args": {}
+      },
+      {
+        "text": "glad to catch you",
+        "args": {}
+      },
+      {
+        "text": "glad youre here",
+        "args": {}
+      },
+      {
+        "text": "pleased to see you",
+        "args": {}
+      },
+      {
+        "text": "what a nice surprise",
+        "args": {}
+      },
+      {
+        "text": "fancy running into you",
+        "args": {}
+      },
+      {
+        "text": "so nice to see you",
+        "args": {}
+      },
+      {
+        "text": "well well well",
+        "args": {}
+      },
+      {
+        "text": "hey hey",
+        "args": {}
+      },
+      {
+        "text": "hi hi",
+        "args": {}
+      },
+      {
+        "text": "hello hello",
+        "args": {}
+      },
+      {
+        "text": "heyo",
+        "args": {}
+      },
+      {
+        "text": "helloo",
+        "args": {}
+      },
+      {
+        "text": "hihi",
+        "args": {}
+      },
+      {
+        "text": "yoo",
+        "args": {}
+      },
+      {
+        "text": "oi ari",
+        "args": {}
+      },
+      {
+        "text": "psst ari",
+        "args": {}
+      },
+      {
+        "text": "hey there you",
+        "args": {}
+      },
+      {
+        "text": "hello my friend",
+        "args": {}
+      },
+      {
+        "text": "hey there friend",
+        "args": {}
+      },
+      {
+        "text": "morning sunshine",
+        "args": {}
+      },
+      {
+        "text": "hello sunshine",
+        "args": {}
+      },
+      {
+        "text": "hey sunshine",
+        "args": {}
+      },
+      {
+        "text": "rise and shine",
+        "args": {}
+      },
+      {
+        "text": "good to see your face",
+        "args": {}
+      },
+      {
+        "text": "hello again ari",
+        "args": {}
+      },
+      {
+        "text": "hey there ari how are you",
+        "args": {}
+      },
+      {
+        "text": "hey now",
+        "args": {}
+      },
+      {
+        "text": "hows my favourite ai",
+        "args": {}
+      }
+    ]
+  },
+  "calculator": {
+    "target": 600,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "whats {N1} plus {N2}",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "what is {N1} plus {N2}",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "add {N1} and {N2}",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "{N1} plus {N2}",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "calculate {N1} + {N2}",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "what do {N1} and {N2} come to",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "whats the sum of {N1} and {N2}",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "add up {N1} and {N2}",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "{N1} added to {N2}",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "whats the total of {N1} and {N2}",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "sum {N1} and {N2} for me",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "how much is {N1} and {N2} together",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "whats {N1} minus {N2}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "what is {N1} minus {N2}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "subtract {N2} from {N1}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "take {N2} away from {N1}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "{N1} minus {N2}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "{N1} take away {N2}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "whats {N1} less {N2}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "how much is {N1} minus {N2}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "whats the difference between {N1} and {N2}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "knock {N2} off {N1}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "whats {N1} times {N2}",
+        "args": {
+          "expression": "{N1} * {N2}"
+        }
+      },
+      {
+        "text": "what is {N1} times {N2}",
+        "args": {
+          "expression": "{N1} * {N2}"
+        }
+      },
+      {
+        "text": "multiply {N1} by {N2}",
+        "args": {
+          "expression": "{N1} * {N2}"
+        }
+      },
+      {
+        "text": "{N1} times {N2}",
+        "args": {
+          "expression": "{N1} * {N2}"
+        }
+      },
+      {
+        "text": "{N1} multiplied by {N2}",
+        "args": {
+          "expression": "{N1} * {N2}"
+        }
+      },
+      {
+        "text": "compute {N1} * {N2}",
+        "args": {
+          "expression": "{N1} * {N2}"
+        }
+      },
+      {
+        "text": "whats the product of {N1} and {N2}",
+        "args": {
+          "expression": "{N1} * {N2}"
+        }
+      },
+      {
+        "text": "work out {N1} times {N2}",
+        "args": {
+          "expression": "{N1} * {N2}"
+        }
+      },
+      {
+        "text": "whats {N1} divided by {N2}",
+        "args": {
+          "expression": "{N1} / {N2}"
+        }
+      },
+      {
+        "text": "what is {N1} divided by {N2}",
+        "args": {
+          "expression": "{N1} / {N2}"
+        }
+      },
+      {
+        "text": "divide {N1} by {N2}",
+        "args": {
+          "expression": "{N1} / {N2}"
+        }
+      },
+      {
+        "text": "{N1} divided by {N2}",
+        "args": {
+          "expression": "{N1} / {N2}"
+        }
+      },
+      {
+        "text": "{N1} over {N2}",
+        "args": {
+          "expression": "{N1} / {N2}"
+        }
+      },
+      {
+        "text": "how many times does {N2} go into {N1}",
+        "args": {
+          "expression": "{N1} / {N2}"
+        }
+      },
+      {
+        "text": "split {N1} into {N2}",
+        "args": {
+          "expression": "{N1} / {N2}"
+        }
+      },
+      {
+        "text": "whats {N1} divided by {N2} please",
+        "args": {
+          "expression": "{N1} / {N2}"
+        }
+      },
+      {
+        "text": "whats {N1} to the power of {EXP}",
+        "args": {
+          "expression": "{N1}^{EXP}"
+        }
+      },
+      {
+        "text": "{N1} to the power of {EXP}",
+        "args": {
+          "expression": "{N1}^{EXP}"
+        }
+      },
+      {
+        "text": "{N1} squared",
+        "args": {
+          "expression": "{N1}^2"
+        }
+      },
+      {
+        "text": "whats {N1} squared",
+        "args": {
+          "expression": "{N1}^2"
+        }
+      },
+      {
+        "text": "the square of {N1}",
+        "args": {
+          "expression": "{N1}^2"
+        }
+      },
+      {
+        "text": "{N1} cubed",
+        "args": {
+          "expression": "{N1}^3"
+        }
+      },
+      {
+        "text": "whats {N1} cubed",
+        "args": {
+          "expression": "{N1}^3"
+        }
+      },
+      {
+        "text": "whats the square root of {N1}",
+        "args": {
+          "expression": "sqrt({N1})"
+        }
+      },
+      {
+        "text": "square root of {N1}",
+        "args": {
+          "expression": "sqrt({N1})"
+        }
+      },
+      {
+        "text": "what is the square root of {N1}",
+        "args": {
+          "expression": "sqrt({N1})"
+        }
+      },
+      {
+        "text": "whats {PCT} percent of {BASE}",
+        "args": {
+          "expression": "{PCT}% of {BASE}"
+        }
+      },
+      {
+        "text": "what is {PCT} percent of {BASE}",
+        "args": {
+          "expression": "{PCT}% of {BASE}"
+        }
+      },
+      {
+        "text": "how much is {PCT} percent of {BASE}",
+        "args": {
+          "expression": "{PCT}% of {BASE}"
+        }
+      },
+      {
+        "text": "{PCT} percent of {BASE}",
+        "args": {
+          "expression": "{PCT}% of {BASE}"
+        }
+      },
+      {
+        "text": "calculate {PCT}% of {BASE}",
+        "args": {
+          "expression": "{PCT}% of {BASE}"
+        }
+      },
+      {
+        "text": "work out {PCT} percent of {BASE}",
+        "args": {
+          "expression": "{PCT}% of {BASE}"
+        }
+      },
+      {
+        "text": "whats {PCT}% of {BASE}",
+        "args": {
+          "expression": "{PCT}% of {BASE}"
+        }
+      },
+      {
+        "text": "give me {PCT} percent of {BASE}",
+        "args": {
+          "expression": "{PCT}% of {BASE}"
+        }
+      },
+      {
+        "text": "whats half of {BASE}",
+        "args": {
+          "expression": "{BASE} / 2"
+        }
+      },
+      {
+        "text": "half of {BASE}",
+        "args": {
+          "expression": "{BASE} / 2"
+        }
+      },
+      {
+        "text": "whats a third of {BASE}",
+        "args": {
+          "expression": "{BASE} / 3"
+        }
+      },
+      {
+        "text": "a third of {BASE}",
+        "args": {
+          "expression": "{BASE} / 3"
+        }
+      },
+      {
+        "text": "whats a quarter of {BASE}",
+        "args": {
+          "expression": "{BASE} / 4"
+        }
+      },
+      {
+        "text": "a quarter of {BASE}",
+        "args": {
+          "expression": "{BASE} / 4"
+        }
+      },
+      {
+        "text": "double {N1}",
+        "args": {
+          "expression": "{N1} * 2"
+        }
+      },
+      {
+        "text": "whats double {N1}",
+        "args": {
+          "expression": "{N1} * 2"
+        }
+      },
+      {
+        "text": "triple {N1}",
+        "args": {
+          "expression": "{N1} * 3"
+        }
+      },
+      {
+        "text": "whats triple {N1}",
+        "args": {
+          "expression": "{N1} * 3"
+        }
+      },
+      {
+        "text": "{N1} doubled",
+        "args": {
+          "expression": "{N1} * 2"
+        }
+      },
+      {
+        "text": "{N1} tripled",
+        "args": {
+          "expression": "{N1} * 3"
+        }
+      },
+      {
+        "text": "figure out {N1} - {N2}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "solve {N1} + {N2}",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      }
+    ]
+  },
+  "open": {
+    "target": 600,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "open {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "open up {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "launch {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "start {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "start up {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "run {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "fire up {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "boot up {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "open the {APP} app",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "launch the {APP} app",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "can you open {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "could you launch {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "please open {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "open {APP} please",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "go to {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "get me {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "get me to {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "bring up {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "pull up {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "jump into {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "hop into {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "switch to {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "take me to {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "show me {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "show me the {APP} app",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "i want {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "i want to use {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "i need {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "i need the {APP} app",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "i need to use {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "i want to open {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "lets open {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "lets get {APP} going",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "lets fire up {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "time for some {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "time for a bit of {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "in the mood for {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "feel like some {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "how about some {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "gimme {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "give me {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "i fancy some {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "put {APP} on",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "put {APP} on the screen",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "get {APP} on the screen",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "{APP} on the screen please",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "{APP} please",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "lets have {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "i could go for some {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "throw {APP} on",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "throw on {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "can i get {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "can i have {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "bring me {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "load up {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "load {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "get {APP} up",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "get {APP} open",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "i wanna check {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "let me into {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "take me into {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "into {APP} please",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "head into {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "flick over to {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "hop over to {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "over to {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "i need to get into {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "mind opening {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "would you open {APP} for me",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "open me up {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      }
+    ]
+  }
+}
