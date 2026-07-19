@@ -688,7 +688,7 @@
         }
       },
       {
-        "text": "put on {SONG}",
+        "text": "put on the track {SONG}",
         "args": {
           "query": "{SONG}"
         }
@@ -726,7 +726,7 @@
         }
       },
       {
-        "text": "stick on {SONG}",
+        "text": "stick the song {SONG} on",
         "args": {
           "query": "{SONG}"
         }
@@ -738,7 +738,7 @@
         }
       },
       {
-        "text": "put {SONG} on",
+        "text": "put the song {SONG} on",
         "args": {
           "query": "{SONG}"
         }

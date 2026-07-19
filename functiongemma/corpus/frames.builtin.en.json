@@ -244,6 +244,46 @@
         "args": {}
       },
       {
+        "text": "my watch just died",
+        "args": {}
+      },
+      {
+        "text": "my watch battery has gone flat",
+        "args": {}
+      },
+      {
+        "text": "my watch isnt ticking anymore",
+        "args": {}
+      },
+      {
+        "text": "my watch has frozen",
+        "args": {}
+      },
+      {
+        "text": "my watch stopped in the night",
+        "args": {}
+      },
+      {
+        "text": "my watch has been stuck for hours",
+        "args": {}
+      },
+      {
+        "text": "the wall clock has stopped",
+        "args": {}
+      },
+      {
+        "text": "the kitchen clock is wrong",
+        "args": {}
+      },
+      {
+        "text": "the clock in the hall has stopped",
+        "args": {}
+      },
+      {
+        "text": "the clock seems to have stopped",
+        "args": {}
+      },
+      {
         "text": "i totally lost track of the time",
         "args": {}
       },
@@ -2394,6 +2434,54 @@
         }
       },
       {
+        "text": "lop {N2} off {N1}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "shave {N2} off {N1}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "take {N2} off {N1}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "chop {N2} off {N1}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "trim {N2} off {N1}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "knock {N2} off of {N1}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "minus {N2} off {N1}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "deduct {N2} from {N1}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
         "text": "whats {N1} times {N2}",
         "args": {
           "expression": "{N1} * {N2}"
@@ -2959,6 +3047,66 @@
       },
       {
         "text": "{APP} on the screen please",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "get {APP} up on the screen",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "throw {APP} up on the screen",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "stick {APP} on the screen",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "pop {APP} on the screen",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "chuck {APP} on the screen",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "show {APP} on the screen",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "put {APP} on my screen",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "bring {APP} up on the display",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "get {APP} on the display",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "{APP} on the display please",
         "args": {
           "app_name": "{APP}"
         }
