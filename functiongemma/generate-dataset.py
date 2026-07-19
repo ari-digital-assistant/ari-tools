@@ -153,7 +153,9 @@ def keyword_hits(engine_dir: Path, texts: list, locale: str) -> list:
         text=True,
         check=True,
     )
-    out = [line for line in result.stdout.split("\n") if line != ""]
+    out = result.stdout.split("\n")
+    if out and out[-1] == "":
+        out.pop()  # trailing newline from println!
     if len(out) != len(texts):
         sys.exit(f"ERROR: keyword-hit returned {len(out)} verdicts for "
                  f"{len(texts)} inputs — the corpus would be silently mis-paired")
@@ -938,8 +940,27 @@ def generate_skill_samples(skills: list, tools: list) -> list:
     return samples
 
 
-# Never fewer negatives than this, even with very few skills installed.
+# Absolute floor for a corpus too small to train on at all. This is a safety
+# net for the degenerate case, NOT a ratio control — see negative_target().
 NEG_FLOOR = 250
+
+
+def negative_target(positive_count: int, ratio: float) -> int:
+    """How many negatives to sample for `positive_count` positives.
+
+    Abstention hit 100% on a corpus with a 1:1 positive:negative ratio, so
+    that is the default and it is held explicitly. The old formula
+    (`max(NEG_FLOOR, positives)`) was equivalent while positives exceeded
+    250, but once the keyword-hit filter cuts positives below the floor it
+    pins negatives at 250 and skews the corpus toward "emit nothing" — the
+    over-abstention failure we are treating.
+
+    NEG_FLOOR now binds only for a corpus too small to train on at all
+    (< 50 positives), where an absolute floor beats a proportional one.
+    """
+    if positive_count < 50:
+        return NEG_FLOOR
+    return int(round(positive_count * ratio))
 
 
 def negatives_for_locale(locale: str) -> list:
@@ -970,7 +991,10 @@ def main():
     import argparse
     parser = argparse.ArgumentParser(description="Generate the FunctionGemma dataset.")
     parser.add_argument("--locale", default="en", help="Locale to build the dataset for (default: en)")
-    locale = parser.parse_args().locale
+    parser.add_argument("--neg-ratio", type=float, default=1.0,
+                        help="Negatives per positive (default: 1.0)")
+    parsed = parser.parse_args()
+    locale, neg_ratio = parsed.locale, parsed.neg_ratio
 
     engine_dir = find_engine_dir()
     builtin_skills = export_skills(engine_dir, locale)
@@ -1006,15 +1030,15 @@ def main():
     )
     flags = iter(hit_flags)
     for skill in all_skills:
-        kept, dropped = [], 0
+        kept, skill_dropped = [], 0
         for ex in skill["examples"]:
             if next(flags):
-                dropped += 1
+                skill_dropped += 1
             else:
                 kept.append(ex)
         skill["examples"] = kept
-        if dropped:
-            print(f"    {skill['id']}: dropped {dropped}, kept {len(kept)}", file=sys.stderr)
+        if skill_dropped:
+            print(f"    {skill['id']}: dropped {skill_dropped}, kept {len(kept)}", file=sys.stderr)
     after_filter = sum(len(s["examples"]) for s in all_skills)
     pct = 100.0 * (before_filter - after_filter) / before_filter if before_filter else 0.0
     print(f"  keyword-hit filter: {before_filter} -> {after_filter} examples "
@@ -1042,7 +1066,9 @@ def main():
     # mobile-actions demo dataset: the base model is already function-calling
     # pretrained, those are actions Ari doesn't support, and 9,654 always-call
     # samples drown abstention — the root of the r70→r75 regression.)
-    neg_target = max(NEG_FLOOR, len(skill_samples))
+    neg_target = negative_target(len(skill_samples), neg_ratio)
+    print(f"  negative target {neg_target} for {len(skill_samples)} positives "
+          f"(ratio {neg_ratio})", file=sys.stderr)
     negative_pool = normalize_texts(engine_dir, negatives_for_locale(locale), locale)
     print(f"  normalised {len(negative_pool)} negatives ({locale})", file=sys.stderr)
     negative_samples = generate_negative_samples(tools, neg_target, negative_pool)
