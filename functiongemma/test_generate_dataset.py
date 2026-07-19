@@ -2,6 +2,8 @@
 import importlib.util
 from pathlib import Path
 
+import pytest
+
 # The module filename has a hyphen, so load it explicitly.
 _spec = importlib.util.spec_from_file_location(
     "gends", Path(__file__).parent / "generate-dataset.py"
@@ -258,3 +260,94 @@ def test_keyword_hits_omits_the_flag_when_there_is_no_skills_checkout(monkeypatc
     cmd = captured["cmd"]
     assert "--skills-dir" not in cmd
     assert cmd[cmd.index("--") + 1 :] == ["--locale", "en"]
+
+
+def _skill(skill_id: str, *texts: str) -> dict:
+    return {"id": skill_id, "examples": [{"text": t} for t in texts]}
+
+
+def _oracle(*verdicts):
+    """Oracle stub returning a fixed verdict list, recording what it was asked."""
+    seen = []
+
+    def call(texts):
+        seen.append(list(texts))
+        return list(verdicts)
+
+    call.seen = seen
+    return call
+
+
+def test_drop_keyword_hits_pairs_verdicts_across_multiple_skills():
+    # The verdicts are flat but the structure is nested, so the hazard is a
+    # skill boundary shifting the pairing. Three skills of differing sizes,
+    # with the hits deliberately straddling every boundary.
+    skills = [
+        _skill("one", "a1", "a2"),
+        _skill("two", "b1", "b2", "b3"),
+        _skill("three", "c1"),
+    ]
+    #                a1     a2    b1     b2     b3     c1
+    gends.drop_keyword_hits(skills, _oracle(False, True, True, False, False, False))
+
+    assert [e["text"] for e in skills[0]["examples"]] == ["a1"]
+    assert [e["text"] for e in skills[1]["examples"]] == ["b2", "b3"]
+    assert [e["text"] for e in skills[2]["examples"]] == ["c1"]
+
+
+def test_drop_keyword_hits_asks_the_oracle_in_all_skills_order():
+    # The oracle is a subprocess whose reply is matched positionally, so the
+    # order the texts go out in IS the contract. Pin it.
+    skills = [_skill("one", "a1", "a2"), _skill("two", "b1")]
+    oracle = _oracle(False, False, False)
+
+    gends.drop_keyword_hits(skills, oracle)
+
+    assert oracle.seen == [["a1", "a2", "b1"]]
+
+
+def test_drop_keyword_hits_keeps_everything_when_no_verdict_is_a_hit():
+    skills = [_skill("one", "a1", "a2"), _skill("two", "b1")]
+
+    gends.drop_keyword_hits(skills, _oracle(False, False, False))
+
+    assert [e["text"] for e in skills[0]["examples"]] == ["a1", "a2"]
+    assert [e["text"] for e in skills[1]["examples"]] == ["b1"]
+
+
+def test_drop_keyword_hits_can_empty_a_skill():
+    # main() exits on an emptied skill; the filter itself must still produce
+    # that state rather than silently retaining an example.
+    skills = [_skill("one", "a1", "a2")]
+
+    gends.drop_keyword_hits(skills, _oracle(True, True))
+
+    assert skills[0]["examples"] == []
+
+
+def test_drop_keyword_hits_raises_when_verdicts_run_short():
+    # Fewer verdicts than examples. The tail must NOT be quietly kept.
+    skills = [_skill("one", "a1", "a2"), _skill("two", "b1")]
+
+    with pytest.raises(ValueError, match="ran out at skill 'two'"):
+        gends.drop_keyword_hits(skills, _oracle(False, False))
+
+
+def test_drop_keyword_hits_raises_when_verdicts_are_left_over():
+    # More verdicts than examples — without the exhaustion check this returned
+    # normally, having mis-paired every example after the divergence.
+    skills = [_skill("one", "a1"), _skill("two", "b1")]
+
+    with pytest.raises(ValueError, match="verdicts but all_skills holds fewer"):
+        gends.drop_keyword_hits(skills, _oracle(False, False, False))
+
+
+def test_drop_keyword_hits_treats_a_false_verdict_as_kept_not_as_exhaustion():
+    # The exhaustion sentinel must be distinguishable from a legitimate False.
+    # `next(flags, False)` would have made an all-False run indistinguishable
+    # from a short one.
+    skills = [_skill("one", "a1", "a2", "a3")]
+
+    gends.drop_keyword_hits(skills, _oracle(False, False, False))
+
+    assert [e["text"] for e in skills[0]["examples"]] == ["a1", "a2", "a3"]

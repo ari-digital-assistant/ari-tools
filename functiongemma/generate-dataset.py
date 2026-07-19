@@ -966,6 +966,62 @@ def generate_skill_samples(skills: list, tools: list) -> list:
 NEG_FLOOR = 250
 
 
+# Distinguishes "the verdict iterator is exhausted" from a legitimate False
+# verdict, which `next(flags, False)` could not.
+_EXHAUSTED = object()
+
+
+def drop_keyword_hits(all_skills: list, oracle) -> None:
+    """Delete, in place, every example the keyword scorer already claims.
+
+    `oracle` takes the flat list of example texts and returns one verdict per
+    text, in order — in production that is `keyword_hits`, in tests a stub.
+
+    The pairing between verdicts and examples is positional and entirely
+    implicit, which makes it the one place in this generator that can corrupt
+    the corpus SILENTLY: mis-paired verdicts drop the wrong examples and
+    nothing complains. Two things guard it.
+
+    First, the flat list is built HERE, immediately before it is consumed, from
+    the same `all_skills` the walk below uses. Previously the caller flattened
+    and the loop consumed, several statements apart — so reordering
+    `all_skills` in between would mis-pair every example after the divergence
+    while keeping the count intact, which no length check can catch. Building
+    and consuming in one function makes that reorder unexpressible.
+
+    Second, the verdict iterator must be exactly exhausted: running out
+    mid-walk, or having verdicts left over at the end, both raise. That covers
+    the oracle (a subprocess) returning the wrong number of verdicts.
+    """
+    hit_flags = oracle([e["text"] for s in all_skills for e in s["examples"]])
+    flags = iter(hit_flags)
+    for skill in all_skills:
+        kept, dropped = [], 0
+        for ex in skill["examples"]:
+            verdict = next(flags, _EXHAUSTED)
+            if verdict is _EXHAUSTED:
+                raise ValueError(
+                    f"keyword-hit verdicts ran out at skill {skill['id']!r}: got "
+                    f"{len(hit_flags)} verdicts for more examples than that. The flat "
+                    f"example list and all_skills have desynced — examples would be "
+                    f"paired with the wrong verdicts."
+                )
+            if verdict:
+                dropped += 1
+            else:
+                kept.append(ex)
+        skill["examples"] = kept
+        if dropped:
+            print(f"    {skill['id']}: dropped {dropped}, kept {len(kept)}", file=sys.stderr)
+
+    if next(flags, _EXHAUSTED) is not _EXHAUSTED:
+        raise ValueError(
+            f"keyword-hit returned {len(hit_flags)} verdicts but all_skills holds fewer "
+            f"examples than that. The flat example list and all_skills have desynced — "
+            f"examples were paired with the wrong verdicts."
+        )
+
+
 def negative_target(positive_count: int, ratio: float) -> int:
     """How many negatives to sample for `positive_count` positives.
 
@@ -1055,23 +1111,10 @@ def main():
     # RAW text (keyword_decision normalises internally) and before the
     # normalisation pass below, so we don't normalise text we're discarding.
     before_filter = sum(len(s["examples"]) for s in all_skills)
-    hit_flags = keyword_hits(
-        engine_dir,
-        [e["text"] for s in all_skills for e in s["examples"]],
-        locale,
-        skills_dir,
+    drop_keyword_hits(
+        all_skills,
+        lambda texts: keyword_hits(engine_dir, texts, locale, skills_dir),
     )
-    flags = iter(hit_flags)
-    for skill in all_skills:
-        kept, skill_dropped = [], 0
-        for ex in skill["examples"]:
-            if next(flags):
-                skill_dropped += 1
-            else:
-                kept.append(ex)
-        skill["examples"] = kept
-        if skill_dropped:
-            print(f"    {skill['id']}: dropped {skill_dropped}, kept {len(kept)}", file=sys.stderr)
     after_filter = sum(len(s["examples"]) for s in all_skills)
     pct = 100.0 * (before_filter - after_filter) / before_filter if before_filter else 0.0
     print(f"  keyword-hit filter: {before_filter} -> {after_filter} examples "

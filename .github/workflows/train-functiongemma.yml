@@ -191,9 +191,17 @@ jobs:
       - name: Routing-eval promotion gate
         if: steps.check.outputs.should_train == 'true'
         run: |
+          # --skills-dir points at the ari-skills checkout the "Check for skill
+          # changes" step already made (sparse-checkout of skills/). Without it
+          # the gate's keyword-pollution guardrail sees only the six built-ins,
+          # while the training filter sees the community patterns too — the two
+          # would disagree about what a keyword-hit is, and any eval case a
+          # community pattern claims would silently inflate the score that
+          # promotes this model to real devices.
           cd _ari-engine
           cargo run --release -p ari-ffi --bin route-eval -- \
             --locale ${{ matrix.locale }} \
+            --skills-dir /tmp/skills/skills \
             "$GITHUB_WORKSPACE/output/ari-functiongemma-${{ matrix.locale }}-q4_k_m.gguf" \
             "$GITHUB_WORKSPACE/${{ matrix.eval_file }}"
 
