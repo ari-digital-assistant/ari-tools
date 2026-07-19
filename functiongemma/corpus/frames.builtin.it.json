@@ -858,6 +858,62 @@
       {
         "text": "mi occorre l'ora esatta",
         "args": {}
+      },
+      {
+        "text": "è già buio",
+        "args": {}
+      },
+      {
+        "text": "ormai è buio",
+        "args": {}
+      },
+      {
+        "text": "s'è fatto buio",
+        "args": {}
+      },
+      {
+        "text": "si è fatto buio presto",
+        "args": {}
+      },
+      {
+        "text": "cala la sera",
+        "args": {}
+      },
+      {
+        "text": "sta calando la sera",
+        "args": {}
+      },
+      {
+        "text": "è calata la sera",
+        "args": {}
+      },
+      {
+        "text": "il sole è già tramontato",
+        "args": {}
+      },
+      {
+        "text": "il sole sta tramontando",
+        "args": {}
+      },
+      {
+        "text": "ormai è quasi sera",
+        "args": {}
+      },
+      {
+        "text": "sarà già sera",
+        "args": {}
+      },
+      {
+        "text": "è già scesa la sera",
+        "args": {}
+      },
+      {
+        "text": "si sta facendo sera",
+        "args": {}
+      },
+      {
+        "text": "fa già scuro",
+        "args": {}
       }
     ]
   },
@@ -1596,6 +1652,38 @@
       {
         "text": "giusto per curiosità in che data siamo",
         "args": {}
+      },
+      {
+        "text": "oggi quanti ne abbiamo",
+        "args": {}
+      },
+      {
+        "text": "ma quanti ne abbiamo",
+        "args": {}
+      },
+      {
+        "text": "senti quanti ne abbiamo",
+        "args": {}
+      },
+      {
+        "text": "scusa quanti ne abbiamo oggi",
+        "args": {}
+      },
+      {
+        "text": "quanti ne abbiamo di preciso",
+        "args": {}
+      },
+      {
+        "text": "quanti ne abbiamo questo mese",
+        "args": {}
+      },
+      {
+        "text": "a quanti ne siamo oggi",
+        "args": {}
+      },
+      {
+        "text": "dimmi quanti ne abbiamo",
+        "args": {}
       }
     ]
   },
@@ -2022,6 +2110,54 @@
         "args": {
           "expression": "{N1} * 3"
         }
+      },
+      {
+        "text": "quanto fanno {N1} e {N2} messi insieme",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "quanto fanno {N1} e {N2} in totale",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "{N1} e {N2} messi insieme quanto fanno",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "quanto viene {N1} e {N2} in tutto",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "sommati {N1} e {N2} quanto fanno",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "{N1} e {N2} sommati",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "quanto danno {N1} e {N2} insieme",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "levami {N2} da {N1}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
       }
     ]
   },
@@ -2099,10 +2235,6 @@
       },
       {
         "text": "buondì a te",
-        "args": {}
-      },
-      {
-        "text": "buongiorno bella giornata",
         "args": {}
       },
       {
@@ -2458,55 +2590,7 @@
         "args": {}
       },
       {
-        "text": "come va oggi",
-        "args": {}
-      },
-      {
-        "text": "come vanno le cose oggi",
-        "args": {}
-      },
-      {
-        "text": "come te la passi oggi",
-        "args": {}
-      },
-      {
-        "text": "come butta oggi",
-        "args": {}
-      },
-      {
         "text": "allora come butta",
-        "args": {}
-      },
-      {
-        "text": "tutto ok",
-        "args": {}
-      },
-      {
-        "text": "tutto tranquillo",
-        "args": {}
-      },
-      {
-        "text": "tutto liscio",
-        "args": {}
-      },
-      {
-        "text": "va tutto bene",
-        "args": {}
-      },
-      {
-        "text": "fila tutto liscio",
-        "args": {}
-      },
-      {
-        "text": "come stai stamattina",
-        "args": {}
-      },
-      {
-        "text": "come stai stasera",
-        "args": {}
-      },
-      {
-        "text": "come ti senti oggi",
         "args": {}
       },
       {
@@ -2518,23 +2602,7 @@
         "args": {}
       },
       {
-        "text": "come procede la giornata",
-        "args": {}
-      },
-      {
-        "text": "come sta andando",
-        "args": {}
-      },
-      {
-        "text": "come sta andando la giornata",
-        "args": {}
-      },
-      {
         "text": "come vanno le cose dalle tue parti",
-        "args": {}
-      },
-      {
-        "text": "che aria tira",
         "args": {}
       },
       {
@@ -2570,39 +2638,7 @@
         "args": {}
       },
       {
-        "text": "niente di nuovo",
-        "args": {}
-      },
-      {
-        "text": "come procede",
-        "args": {}
-      },
-      {
-        "text": "come procede tutto",
-        "args": {}
-      },
-      {
-        "text": "tutto bene lì",
-        "args": {}
-      },
-      {
-        "text": "tutto a posto lì",
-        "args": {}
-      },
-      {
-        "text": "va tutto liscio oggi",
-        "args": {}
-      },
-      {
         "text": "come butta lì",
-        "args": {}
-      },
-      {
-        "text": "come te la cavi",
-        "args": {}
-      },
-      {
-        "text": "come te la stai cavando",
         "args": {}
       },
       {
@@ -2622,27 +2658,7 @@
         "args": {}
       },
       {
-        "text": "come andiamo oggi",
-        "args": {}
-      },
-      {
-        "text": "come si sta",
-        "args": {}
-      },
-      {
-        "text": "come si va",
-        "args": {}
-      },
-      {
-        "text": "che si fa",
-        "args": {}
-      },
-      {
         "text": "tutto bene dalle tue parti",
-        "args": {}
-      },
-      {
-        "text": "come va tutto quanto",
         "args": {}
       },
       {
@@ -2846,10 +2862,6 @@
         "args": {}
       },
       {
-        "text": "salve come va oggi",
-        "args": {}
-      },
-      {
         "text": "buongiorno come butta",
         "args": {}
       },
@@ -2906,19 +2918,11 @@
         "args": {}
       },
       {
-        "text": "ehilà come stai oggi",
-        "args": {}
-      },
-      {
         "text": "come stai di bello",
         "args": {}
       },
       {
         "text": "come va di bello",
-        "args": {}
-      },
-      {
-        "text": "che si dice oggi",
         "args": {}
       },
       {
@@ -2930,19 +2934,7 @@
         "args": {}
       },
       {
-        "text": "novità di giornata",
-        "args": {}
-      },
-      {
         "text": "che mi combini",
-        "args": {}
-      },
-      {
-        "text": "che mi combini oggi",
-        "args": {}
-      },
-      {
-        "text": "come procede oggi",
         "args": {}
       },
       {
@@ -2962,15 +2954,83 @@
         "args": {}
       },
       {
-        "text": "che aria tira oggi",
+        "text": "bentrovato ari",
         "args": {}
       },
       {
-        "text": "come si mette oggi",
+        "text": "bentrovata",
         "args": {}
       },
       {
-        "text": "come ci si sente oggi",
+        "text": "ben ritrovato",
+        "args": {}
+      },
+      {
+        "text": "ciao ciao ari",
+        "args": {}
+      },
+      {
+        "text": "salve salve ari",
+        "args": {}
+      },
+      {
+        "text": "olà ari",
+        "args": {}
+      },
+      {
+        "text": "ciao bellissima",
+        "args": {}
+      },
+      {
+        "text": "ehilà bella",
+        "args": {}
+      },
+      {
+        "text": "ciao a te ari",
+        "args": {}
+      },
+      {
+        "text": "un salutone ari",
+        "args": {}
+      },
+      {
+        "text": "ti saluto",
+        "args": {}
+      },
+      {
+        "text": "ma guarda chi c'è",
+        "args": {}
+      },
+      {
+        "text": "guarda un po' chi c'è",
+        "args": {}
+      },
+      {
+        "text": "ma chi si vede mai",
+        "args": {}
+      },
+      {
+        "text": "oh guarda chi c'è",
+        "args": {}
+      },
+      {
+        "text": "ma tu guarda chi si rivede",
+        "args": {}
+      },
+      {
+        "text": "chi si fa vedere",
+        "args": {}
+      },
+      {
+        "text": "guarda un po' chi si fa vedere",
+        "args": {}
+      },
+      {
+        "text": "ti si rivede eh",
+        "args": {}
+      },
+      {
+        "text": "ma va' chi si vede",
         "args": {}
       }
     ]
@@ -3395,6 +3455,66 @@
       },
       {
         "text": "fammi dare un'occhiata a {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "è il momento di {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "è il momento di un po' di {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "è ora di un po' di {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "ci sta un po' di {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "ci vuole un po' di {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "un po' di {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "mettimi {APPNAME} davanti",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "portami su {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "mi serve {APPSG} al volo",
+        "args": {
+          "app_name": "{APPSG}"
+        }
+      },
+      {
+        "text": "devo controllare una cosa su {APPNAME}",
         "args": {
           "app_name": "{APPNAME}"
         }

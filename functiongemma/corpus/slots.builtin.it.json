@@ -244,6 +244,10 @@
     {
       "surface": "i miei contatti",
       "canonical": "Contacts"
+    },
+    {
+      "surface": "duolingo",
+      "canonical": "Duolingo"
     }
   ],
   "APPSG": [
@@ -418,6 +422,10 @@
     {
       "surface": "la mia mail",
       "canonical": "Email"
+    },
+    {
+      "surface": "duolingo",
+      "canonical": "Duolingo"
     }
   ],
   "APPNAME": [
@@ -516,6 +524,10 @@
     {
       "surface": "microsoft teams",
       "canonical": "Teams"
+    },
+    {
+      "surface": "duolingo",
+      "canonical": "Duolingo"
     }
   ]
 }
