@@ -194,24 +194,28 @@ def train(engine_ref: str = "main", skills_ref: str = "main", tools_ref: str = "
     # If corpus size changes materially, re-derive this from target optimizer
     # steps rather than leaving it fixed — that coupling is what made the
     # earlier measurement uninterpretable.
-    # Batch geometry: 8 × 4-accum (effective 32). The obvious "batch 32,
-    # no accumulation" was tried 2026-07-19 (run 29699674091) and OOM'd
-    # INSTANTLY on the A100-40GB with a single 41.16 GiB allocation. The
-    # wall is not the 270M's weights — it is the LOGITS tensor: Gemma's
-    # 262,144-token vocabulary means loss computation materialises
-    # batch × seq × 262144 floats (32 × 1536 × 262144 × fp32 ≈ 51 GB).
-    # That is also why the original A10G-24GB config was stuck at micro-
-    # batch 4 — the fear was real, just misattributed to model size.
-    # Ceiling maths: batch 8 → ~13 GB logits, fits with margin; batch 16
-    # → ~26 GB, does not. 8×4 halves the sequential micro-passes per
-    # optimizer step vs the old 4×8 — same effective batch 32,
-    # mathematically equivalent training, roughly 1.5-2× faster. Peak
-    # VRAM is printed after training so headroom stays a number.
+    # Batch geometry: 4 × 8-accum (effective 32) — measured 2026-07-19 as
+    # the right call, twice over. Do not "optimise" this without new
+    # evidence:
+    #   - batch 32×1 OOM'd instantly (run 29699674091): a single 41.16 GiB
+    #     allocation. The wall is not the 270M's weights, it is the LOGITS
+    #     tensor — Gemma's 262,144-token vocabulary makes loss computation
+    #     materialise batch × seq × 262144 floats.
+    #   - batch 8×4 fit (peak 33.4 GiB of 40 — far above naive estimates,
+    #     so no more headroom than that) but delivered ZERO speedup: the
+    #     same vocab projection dominates runtime and scales with tokens,
+    #     not micro-pass count. Trained model was statistically equivalent
+    #     (local eval 82%/35% vs 84%/40%, within cross-run noise), so it
+    #     was reverted to keep the canonical config identical to every
+    #     measured baseline.
+    # The real lever, if training speed ever matters, is a fused/chunked
+    # cross-entropy (Liger-style) that never materialises the full logits
+    # tensor — that kills the OOM wall and the runtime wall together.
     config_kwargs = dict(
         output_dir=f"{WORK_DIR}/training",
         num_train_epochs=2,
-        per_device_train_batch_size=8,
-        gradient_accumulation_steps=4,
+        per_device_train_batch_size=4,
+        gradient_accumulation_steps=8,
         learning_rate=1e-5,
         lr_scheduler_type="cosine",
         gradient_checkpointing=True,
