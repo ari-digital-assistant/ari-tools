@@ -194,11 +194,20 @@ def train(engine_ref: str = "main", skills_ref: str = "main", tools_ref: str = "
     # If corpus size changes materially, re-derive this from target optimizer
     # steps rather than leaving it fixed — that coupling is what made the
     # earlier measurement uninterpretable.
+    # Batch geometry: TRUE batch 32, no gradient accumulation. The old
+    # 4×8-accum split was a fossil from the A10G-24GB era (1a8b5a1), when
+    # OOM cancellations were real; on an A100-40GB with a 270M model and
+    # gradient_checkpointing on, accumulation was pure overhead — 8
+    # sequential micro-passes per optimizer step for ~2-4× the wall-clock.
+    # Same effective batch, mathematically equivalent training. Verified by
+    # an isolated sanity retrain on the unchanged corpus before anything
+    # else moved (2026-07-19); peak VRAM is printed at the end of training
+    # so headroom stays a number, not a vibe.
     config_kwargs = dict(
         output_dir=f"{WORK_DIR}/training",
         num_train_epochs=2,
-        per_device_train_batch_size=4,
-        gradient_accumulation_steps=8,
+        per_device_train_batch_size=32,
+        gradient_accumulation_steps=1,
         learning_rate=1e-5,
         lr_scheduler_type="cosine",
         gradient_checkpointing=True,
@@ -231,6 +240,11 @@ def train(engine_ref: str = "main", skills_ref: str = "main", tools_ref: str = "
 
     print("Starting training...")
     trainer.train()
+    # Headroom as a number, not a vibe — the batch-32 geometry is safe only
+    # while this stays comfortably under the card's 40GB.
+    import torch
+    peak_gb = torch.cuda.max_memory_allocated() / 1024**3
+    print(f"Peak VRAM: {peak_gb:.1f} GiB of 40 GiB")
 
     # Save fused model (both to working dir and volume for recovery)
     fused_dir = f"{WORK_DIR}/fused"
