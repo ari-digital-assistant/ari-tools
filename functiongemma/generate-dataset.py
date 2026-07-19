@@ -137,6 +137,12 @@ def keyword_hits(engine_dir: Path, texts: list, locale: str) -> list:
     production does with raw user input.
 
     One subprocess for the whole batch — not one per string.
+
+    Built with --no-default-features: ari-ffi defaults to the `llm` feature,
+    which pulls llama-cpp-sys and needs libclang at build time. The training
+    container ships no clang, so the default build would fail here before a
+    single row of the dataset was written. The keyword scorer doesn't touch
+    the LLM, so dropping the feature costs this oracle nothing.
     """
     if not texts:
         return []
@@ -145,8 +151,8 @@ def keyword_hits(engine_dir: Path, texts: list, locale: str) -> list:
         sys.exit(f"ERROR: training text contains a newline, which breaks the "
                  f"line-per-text protocol: {bad[:3]}")
     result = subprocess.run(
-        ["cargo", "run", "--quiet", "-p", "ari-ffi", "--bin",
-         "keyword-hit", "--", "--locale", locale],
+        ["cargo", "run", "--quiet", "-p", "ari-ffi", "--no-default-features",
+         "--bin", "keyword-hit", "--", "--locale", locale],
         cwd=engine_dir,
         input="\n".join(texts),
         capture_output=True,
