@@ -1,15 +1,20 @@
 // Held-out routing eval (Italian) for the FunctionGemma promotion gate.
-// NONE = the router must abstain (general knowledge → assistant). These
-// utterances are deliberately NOT in the Italian training data — fresh
-// entities and phrasings — so a pass means the model GENERALISED, not
-// memorised. Checked against all three Italian training sources: the
-// built-in *_EXAMPLES_IT consts, the SKILL.it.md examples, and
-// generate-dataset.py's Italian negative pool.
-// Positives are canonical Italian skill requests a competent router must
-// still route — differently phrased, not tricks.
-// The NONE cases carry no live Italian skill trigger (same poisoned-sample
-// rule the negative pool follows), so none of them is an utterance a
-// keyword skill should have owned.
+//
+// EVERY case here is a keyword-MISS. The router is the FALLBACK tier: it only
+// runs when the keyword scorer finds nothing, so a case the keyword scorer
+// already wins never reaches the router in production and scoring the router
+// on it measures nothing. `route-eval` enforces this (exits 3 on a polluted
+// eval) — verified against `Engine::keyword_decision` under locale "it".
+//
+// NONE = the router must abstain (general knowledge → assistant). Positives
+// are canonical Italian skill requests the keyword tier misses and a competent
+// router must still route — oblique phrasings, not tricks.
+//
+// Every case is also HELD OUT: absent from all three Italian training sources
+// (the built-in *_EXAMPLES_IT consts, the SKILL.it.md examples, and
+// generate-dataset.py's Italian negative pool), compared on the normalised
+// form. A pass therefore means the model GENERALISED, not memorised.
+//
 // Note: "search" is keyword-only (router_eligible=false), so it is never a
 // positive target here.
 {"utterance": "chi ha scritto la Divina Commedia", "expect": "NONE"}
@@ -34,17 +39,23 @@
 {"utterance": "qual è la montagna più alta d'Europa", "expect": "NONE"}
 {"utterance": "chi ha inventato la stampa a caratteri mobili", "expect": "NONE"}
 {"utterance": "qual è il metallo più leggero", "expect": "NONE"}
-{"utterance": "sapresti dirmi l'ora", "expect": "current_time"}
 {"utterance": "è ancora mattina", "expect": "current_time"}
-{"utterance": "che ore sono di preciso", "expect": "current_time"}
+{"utterance": "che orario è", "expect": "current_time"}
+{"utterance": "mi serve sapere l'orario", "expect": "current_time"}
+{"utterance": "è già sera", "expect": "current_time"}
 {"utterance": "quanti ne abbiamo oggi", "expect": "current_date"}
-{"utterance": "che data abbiamo oggi", "expect": "current_date"}
-{"utterance": "quant'è 63 meno 28", "expect": "calculator"}
+{"utterance": "in quale giorno della settimana siamo", "expect": "current_date"}
+{"utterance": "siamo già a venerdì", "expect": "current_date"}
+{"utterance": "ho perso il conto dei giorni", "expect": "current_date"}
 {"utterance": "quanto viene il 30 percento di 90", "expect": "calculator"}
 {"utterance": "fammi la somma di 128 e 256", "expect": "calculator"}
-{"utterance": "apri signal", "expect": "open"}
-{"utterance": "avvia l'app della banca", "expect": "open"}
-{"utterance": "aprimi duolingo", "expect": "open"}
+{"utterance": "togli 19 da 47", "expect": "calculator"}
+{"utterance": "qual è il prodotto di 12 e 11", "expect": "calculator"}
 {"utterance": "buon pomeriggio ari", "expect": "greeting"}
-{"utterance": "come va ultimamente", "expect": "greeting"}
-{"utterance": "salve come va", "expect": "greeting"}
+{"utterance": "guarda chi si vede", "expect": "greeting"}
+{"utterance": "ehilà ari", "expect": "greeting"}
+{"utterance": "che si racconta", "expect": "greeting"}
+{"utterance": "vorrei dare un'occhiata a instagram", "expect": "open"}
+{"utterance": "ho bisogno di whatsapp", "expect": "open"}
+{"utterance": "portami su telegram", "expect": "open"}
+{"utterance": "fammi vedere duolingo", "expect": "open"}
