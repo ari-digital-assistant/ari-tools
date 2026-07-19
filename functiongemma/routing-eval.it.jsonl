@@ -59,3 +59,35 @@
 {"utterance": "ho bisogno di whatsapp", "expect": "open"}
 {"utterance": "portami su telegram", "expect": "open"}
 {"utterance": "fammi vedere duolingo", "expect": "open"}
+// ── Espansione 2026-07-19: +20 positivi (4/skill) +8 NONE ──
+// Stessa logica dell'espansione inglese: ogni caso è verificato keyword-MISS
+// sotto il catalogo di PRODUZIONE (--skills-dir) e held-out rispetto al
+// corpus di training e al pool dei negativi.
+{"utterance": "abbiamo passato mezzogiorno", "expect": "current_time"}
+{"utterance": "il mio orologio si è fermato", "expect": "current_time"}
+{"utterance": "non so se è mattina o pomeriggio", "expect": "current_time"}
+{"utterance": "abbiamo già superato l'ora di pranzo", "expect": "current_time"}
+{"utterance": "il mese è quasi finito", "expect": "current_date"}
+{"utterance": "cosa segna il calendario oggi", "expect": "current_date"}
+{"utterance": "siamo a metà mese", "expect": "current_date"}
+{"utterance": "a che punto dell'anno siamo", "expect": "current_date"}
+{"utterance": "quanto fanno 34 e 58 messi insieme", "expect": "calculator"}
+{"utterance": "levami 12 da 90", "expect": "calculator"}
+{"utterance": "un terzo di 96 quanto sarebbe", "expect": "calculator"}
+{"utterance": "se triplico 17 cosa ottengo", "expect": "calculator"}
+{"utterance": "mettimi whatsapp davanti", "expect": "open"}
+{"utterance": "devo controllare una cosa su reddit", "expect": "open"}
+{"utterance": "è il momento di un po' di duolingo", "expect": "open"}
+{"utterance": "mi serve chrome al volo", "expect": "open"}
+{"utterance": "chi non muore si rivede", "expect": "greeting"}
+{"utterance": "è un piacere rivederti", "expect": "greeting"}
+{"utterance": "rieccoti finalmente", "expect": "greeting"}
+{"utterance": "quanto è che non ci si vede", "expect": "greeting"}
+{"utterance": "che lingua si parla in brasile", "expect": "NONE"}
+{"utterance": "perché il cielo è azzurro", "expect": "NONE"}
+{"utterance": "chi ha inventato il telefono", "expect": "NONE"}
+{"utterance": "quante ossa ha la mano umana", "expect": "NONE"}
+{"utterance": "quando è caduto il muro di berlino", "expect": "NONE"}
+{"utterance": "in che anno è affondato il titanic", "expect": "NONE"}
+{"utterance": "quanto era alto napoleone", "expect": "NONE"}
+{"utterance": "qual è la valuta del giappone", "expect": "NONE"}

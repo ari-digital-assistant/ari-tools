@@ -59,3 +59,36 @@
 {"utterance": "how have you been", "expect": "greeting"}
 {"utterance": "look who it is", "expect": "greeting"}
 {"utterance": "long time no see", "expect": "greeting"}
+// ── Expansion 2026-07-19: +20 positives (4/skill) +8 NONE ──
+// Instrument upgrade: 20 positives meant 5 points per case — too noisy to
+// steer by. Every case below verified keyword-MISS under the PRODUCTION
+// catalogue (community skills registered via --skills-dir) and held out
+// against the full training corpus and negative pool.
+{"utterance": "have we passed midday yet", "expect": "current_time"}
+{"utterance": "my watch has stopped", "expect": "current_time"}
+{"utterance": "would you say it is evening already", "expect": "current_time"}
+{"utterance": "roughly what hour are we at", "expect": "current_time"}
+{"utterance": "is the month nearly over", "expect": "current_date"}
+{"utterance": "what does the calendar say today", "expect": "current_date"}
+{"utterance": "are we in the second half of the month", "expect": "current_date"}
+{"utterance": "how deep into the year are we", "expect": "current_date"}
+{"utterance": "what do 34 and 58 come to", "expect": "calculator"}
+{"utterance": "knock 12 off 90 for me", "expect": "calculator"}
+{"utterance": "a third of 96 is what", "expect": "calculator"}
+{"utterance": "if i triple 17 what do i get", "expect": "calculator"}
+{"utterance": "get whatsapp in front of me", "expect": "open"}
+{"utterance": "i need to check something on reddit", "expect": "open"}
+{"utterance": "stick youtube on the screen", "expect": "open"}
+{"utterance": "time for a bit of duolingo", "expect": "open"}
+{"utterance": "fancy seeing you here", "expect": "greeting"}
+{"utterance": "its been ages", "expect": "greeting"}
+{"utterance": "guess whos back", "expect": "greeting"}
+{"utterance": "hows life treating you", "expect": "greeting"}
+{"utterance": "why is the sky blue", "expect": "NONE"}
+{"utterance": "who invented the telephone", "expect": "NONE"}
+{"utterance": "how many bones are in the human hand", "expect": "NONE"}
+{"utterance": "when did the berlin wall fall", "expect": "NONE"}
+{"utterance": "what year did the titanic sink", "expect": "NONE"}
+{"utterance": "how tall was napoleon", "expect": "NONE"}
+{"utterance": "what is the currency of japan", "expect": "NONE"}
+{"utterance": "how far can a kangaroo jump", "expect": "NONE"}
