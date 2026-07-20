@@ -1,0 +1,66 @@
+{
+  "calculator": {
+    "en": "ac5e89b8443b03828a89c2389e8ffa813160816b439346029cd5bf061e229abd",
+    "it": "3860158c0a730d51d4b962844781de916d0532d1e19d8d934eba4beb04ae5e4f"
+  },
+  "current_date": {
+    "en": "3e5b809945721996e8f597106db0d10664e3f604e5c88936d9458f071ba5d746",
+    "it": "1e042685bcce25c18db76aa04fcd7c4c68802c69de579f733e56ef4335395d40"
+  },
+  "current_time": {
+    "en": "18f0fc639ce0816afa310a1506aa603cee042c523ac60ce5758716f2e5e782cb",
+    "it": "da6e22809639268244d0b7a692968c5590beeea97326925ee551a4154cda91f3"
+  },
+  "dev.heyari.alarm": {
+    "en": "e6f97bbb64668b3e63f7fe1d7d3cf2c1074ad919492c25200bc1ffe236be14c2",
+    "it": "17d5b5f00f691f9a2a745d139dd5f05161ffa48d766747490d0bef54a474d568"
+  },
+  "dev.heyari.coinflip": {
+    "en": "c761667a0ea912ba4175243e887d6ddcd467517931a2d6045d195944087eeb0f",
+    "it": "dae14d6d7ab3a270f586b89df4356b558b22fe9eca2dff36cd37e484e869af5f"
+  },
+  "dev.heyari.counter": {
+    "en": "766b8e078f8fb889013047fb2a2a6e5bd2da3741a46dd3b04486f804f53bc32d",
+    "it": "aceb16d875b16505b8ebeb9fb3a869553c26e6877004e5dd348def258c7b3f1a"
+  },
+  "dev.heyari.githubzen": {
+    "en": "cefd0d5aa834293648e913bf0af723f23c07313f34cf6ba640dacf9958ce7e60",
+    "it": "b0122c0b9aa1ca018c8404bb994e0da95e5e6bfe8aadee28278dc5eb306d6787"
+  },
+  "dev.heyari.homeassistant": {
+    "en": "b408522bf8e2d4d315941cacb5c58ab49ea5b0f985614e4f3f84870d74a22093",
+    "it": "9390e3c55ee5b2c40d77c9b41ef00696eb4fecc21a3affad852fc189eb9a7a99"
+  },
+  "dev.heyari.music": {
+    "en": "aff701b76aed35770fc418461aa9245648af33c541b3315b0237471b25feccbc",
+    "it": "932adbce9db5095f4e02e687c40b46733a45c8e447d9485afffe88afee6b52db"
+  },
+  "dev.heyari.navigation": {
+    "en": "02ea7c7f0b2fd6c5e88089ccf34612abdf75aa4b1f3dd0f6cbd2805e2c37c721",
+    "it": "9f071f33a540f1efc2f2b97f321528d741b2e4d2b2caba62e48dc19c6131b2cd"
+  },
+  "dev.heyari.reminder": {
+    "en": "eda555660e0adf60e140b13e22a7f6350e49c8071d54946a00a1bf2b47639992",
+    "it": "782563ee22f552ab60d5b42e612110cb5f8ccbea3da65bb58bc1186e816e736f"
+  },
+  "dev.heyari.timer": {
+    "en": "34e0971cc0becdfef3714aecf7ccf2fdfa56e9c295f6bd9f2799900fb90e4513",
+    "it": "c306c521bb7f6306656cf57fceca9060c659b0c182110af1c17622d5ca4cda1e"
+  },
+  "dev.heyari.wasmecho": {
+    "en": "14e67b5d02a7e8d479b1ad229e803bae0276cd3cde8a19cfeb12a3b5687d033f",
+    "it": "9d31650c0b0c0ba5090fd3a318e72a865322836663e16fdde415ea819845c28a"
+  },
+  "dev.heyari.weather": {
+    "en": "ed23b770012f8f842362874479aaffdcd54ed9a9211d926fd8caeb799f5e844b",
+    "it": "7b8cb55db18d142f469fd0e68e0168d0c5507c608f0c47c5c6f03436309ccb6a"
+  },
+  "greeting": {
+    "en": "4b609e65de9e0c3acc93d94ca285df72e7b7cd21cfc8ce035ed3d06bc96d3402",
+    "it": "54604493536ed95d1bc67264f0533af4fc57dd40d8227c003515b7548dbed822"
+  },
+  "open": {
+    "en": "5d4384eeb958c8c470fead7e5ec6af3471911ba304bc07c6ea368d9bcfbfa019",
+    "it": "5da3020d46daf25754c4f3cc3bcdee1bb4d6cfeebbf4c89dc56b74180d4d672b"
+  }
+}

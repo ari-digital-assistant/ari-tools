@@ -25,7 +25,8 @@ on:
         default: ''
 
 permissions:
-  contents: write   # needed for `gh release create` + `gh release upload`
+  contents: write   # `gh release create` + `gh release upload` + push drafted banks
+  issues: write     # queue auto-drafted Italian banks for native review
 
 jobs:
   configure:
@@ -117,6 +118,106 @@ jobs:
       - name: Install Modal
         if: steps.check.outputs.should_train == 'true'
         run: pip install modal
+
+      # ── Corpus banks: keep them in step with the skills ────────────────
+      # A skill whose banks are missing or stale trains the router on a
+      # stale idea of what it does — and a bankless skill hard-errors the
+      # generator outright. Rather than failing the nightly and waiting for
+      # a human, draft the banks, activate them, and carry on. The
+      # promotion gate is the safety net: bad banks produce a model that
+      # fails Gate v3 and publishes nothing.
+      - name: Detect stale or missing corpus banks
+        id: banks
+        if: steps.check.outputs.should_train == 'true'
+        env:
+          ARI_ENGINE_DIR: /tmp/engine-full
+          ARI_SKILLS_DIR: /tmp/skills
+        run: |
+          # check_banks needs the real skill sources, not the sparse
+          # checkouts the change-detection step made.
+          git clone --depth 1 https://github.com/ari-digital-assistant/ari-engine.git /tmp/engine-full
+          cd functiongemma
+          python3 check_banks.py --locale ${{ matrix.locale }} --github-output
+
+      - name: Draft banks for changed skills
+        if: steps.check.outputs.should_train == 'true' && steps.banks.outputs.has_drift == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ARI_ENGINE_DIR: /tmp/engine-full
+          ARI_SKILLS_DIR: /tmp/skills
+        run: |
+          if [ -z "$ANTHROPIC_API_KEY" ]; then
+            echo "::error::Banks are stale for: ${{ steps.banks.outputs.needs_drafting }}"
+            echo "::error::ANTHROPIC_API_KEY is not set, so they cannot be drafted."
+            echo "::error::Add the secret, or draft manually with author-frames.py."
+            exit 1
+          fi
+          cd functiongemma
+          IFS=',' read -ra SKILLS <<< "${{ steps.banks.outputs.needs_drafting }}"
+          for S in "${SKILLS[@]}"; do
+            echo "── drafting banks for $S (${{ matrix.locale }}) ──"
+            python3 author-frames.py --skill "$S" --locale ${{ matrix.locale }} --apply
+          done
+          # Prove the corpus still builds BEFORE anything is committed or a
+          # GPU-second is spent. Catches a malformed draft immediately.
+          python3 generate-dataset.py --locale ${{ matrix.locale }} \
+            --augment corpus > /dev/null
+          python3 check_banks.py --locale ${{ matrix.locale }} --record
+
+      - name: Commit drafted banks
+        if: steps.check.outputs.should_train == 'true' && steps.banks.outputs.has_drift == 'true'
+        run: |
+          git config user.name "ari-frames-bot"
+          git config user.email "bot@heyari.dev"
+          git add functiongemma/corpus/
+          git commit -m "chore(corpus): auto-draft banks for ${{ steps.banks.outputs.needs_drafting }} (${{ matrix.locale }})
+
+          Drafted by author-frames.py because these skills were added or their
+          description/parameters/examples changed since the banks were last
+          written. Machine-authored: review at leisure — the promotion gate,
+          not this commit, is what decides whether the resulting model ships.
+
+          Workflow run: ${{ github.run_id }}"
+          # Both locales' jobs can land here at once (they touch different
+          # files, so a rebase resolves cleanly) — retry rather than lose
+          # the drafted banks to a push race.
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main && git push origin HEAD:main && break
+            echo "push race (attempt $i), retrying..."
+            sleep $((RANDOM % 10 + 5))
+          done
+
+      # Auto-committed Italian is machine-drafted; Keith reviews Italian by
+      # standing project rule. The commit is not blocked on that review (the
+      # gate decides shipping), but the debt must be VISIBLE rather than
+      # accumulating silently — so file it as a review queue.
+      - name: Queue Italian banks for native review
+        if: >-
+          steps.check.outputs.should_train == 'true'
+          && steps.banks.outputs.has_drift == 'true'
+          && matrix.locale == 'it'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --title "Review auto-drafted Italian banks: ${{ steps.banks.outputs.needs_drafting }}" \
+            --label "italian-review" \
+            --body "The nightly auto-drafted Italian corpus banks for:
+
+          \`${{ steps.banks.outputs.needs_drafting }}\`
+
+          These are machine-written and already committed to \`main\` (training
+          data, never user-facing text — the promotion gate decides what ships).
+          They are live in the corpus now; this issue is a review queue, not a
+          blocker.
+
+          Look at \`functiongemma/corpus/frames.auto.it.json\` for idiomatic
+          Italian: natural spoken phrasing, correct accents, nothing a real
+          person wouldn't say to an assistant. Edit in place and commit — no
+          need to re-draft.
+
+          Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            || echo "::warning::could not open review issue (label missing?) — banks are still committed"
 
       - name: Train on Modal
         if: steps.check.outputs.should_train == 'true'

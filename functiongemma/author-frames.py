@@ -151,16 +151,75 @@ def validate(doc: dict, skill_id: str, locale: str) -> None:
           f"{len(doc.get('slots', {}))} new slot bank(s)", file=sys.stderr)
 
 
+def apply_draft(doc: dict, skill_id: str, locale: str) -> list:
+    """Activate a draft in place: drop any existing bank for this skill, then
+    write the new one into the auto-authored union files.
+
+    Auto-drafted content lives in `frames.auto.<locale>.json` /
+    `slots.auto.<locale>.json`, kept separate from hand-authored banks so a
+    human can always see which frames a machine wrote. The expander unions
+    all `frames*.<locale>.json`, so activation needs no merge step — but it
+    DOES need the stale entry removed first, because a skill defined in two
+    files is a hard error by design.
+
+    Returns the list of files changed.
+    """
+    changed = []
+    # Remove the skill from wherever it currently lives (hand-authored or a
+    # previous auto draft) so the union stays single-owner per skill.
+    for p in sorted(CORPUS.glob(f"frames*.{locale}.json")):
+        if p.name.startswith("draft-"):
+            continue
+        doc_existing = json.loads(p.read_text())
+        if skill_id in doc_existing:
+            del doc_existing[skill_id]
+            p.write_text(json.dumps(doc_existing, ensure_ascii=False, indent=2) + "\n")
+            changed.append(p.name)
+
+    frames_path = CORPUS / f"frames.auto.{locale}.json"
+    merged = json.loads(frames_path.read_text()) if frames_path.exists() else {}
+    merged.update(doc["frames"])
+    frames_path.write_text(json.dumps(merged, ensure_ascii=False, indent=2) + "\n")
+    changed.append(frames_path.name)
+
+    if doc.get("slots"):
+        slots_path = CORPUS / f"slots.auto.{locale}.json"
+        slots = json.loads(slots_path.read_text()) if slots_path.exists() else {}
+        # Never clobber a slot bank another author owns — the expander
+        # rejects duplicate slot keys across files, so only add genuinely new
+        # ones and let a collision surface as an authoring error.
+        existing_names = set(existing_slot_names(locale))
+        for name, bank in doc["slots"].items():
+            if name in existing_names and name not in slots:
+                print(f"  skipping slot {name!r}: already owned by another bank file",
+                      file=sys.stderr)
+                continue
+            slots[name] = bank
+        slots_path.write_text(json.dumps(slots, ensure_ascii=False, indent=2) + "\n")
+        changed.append(slots_path.name)
+
+    return changed
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--skill", required=True, help="skill id, e.g. dev.heyari.timer")
     ap.add_argument("--locale", required=True, choices=["en", "it"])
     ap.add_argument("--model", default=DEFAULT_MODEL)
+    ap.add_argument("--apply", action="store_true",
+                    help="Activate the draft immediately (write into "
+                         "frames.auto.<locale>.json) instead of leaving a "
+                         "draft-* file for review. Used by the nightly.")
     args = ap.parse_args()
 
     spec = skill_spec(args.skill, args.locale)
     doc = call_model(build_prompt(args.skill, args.locale, spec), args.model)
     validate(doc, args.skill, args.locale)
+
+    if args.apply:
+        for name in apply_draft(doc, args.skill, args.locale):
+            print(f"updated {name}")
+        return
 
     frames_out = CORPUS / f"draft-frames.{args.skill}.{args.locale}.json"
     frames_out.write_text(json.dumps(doc["frames"], ensure_ascii=False, indent=2) + "\n")

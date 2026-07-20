@@ -80,3 +80,33 @@ are still general knowledge, quantity questions near `calculator`).
    manifest declares them.
 5. Reproducibility: expansion is seeded — same banks, same corpus, anywhere
    including CI.
+
+## Automation — what the nightly does for you
+
+You should not normally author banks by hand. When a skill is added, or its
+description / parameters / examples change, the nightly training run:
+
+1. **Detects the drift** — `check_banks.py` fingerprints each router-eligible
+   skill (id + description + parameters + example texts, deliberately NOT the
+   whole manifest, so a version bump or prose edit doesn't invalidate good
+   banks) and compares against `bank-sources.json`.
+2. **Drafts the banks** — `author-frames.py --apply` per changed skill, under
+   a fixed prompt contract that embeds this file verbatim.
+3. **Proves the corpus still builds** before committing or spending a
+   GPU-second.
+4. **Commits to main** as `ari-frames-bot`, into `frames.auto.<locale>.json` /
+   `slots.auto.<locale>.json` — kept separate from hand-authored banks so it
+   is always obvious which frames a machine wrote.
+5. **Trains and gates.** The promotion gate is the safety net: bad banks make
+   a model that fails Gate v3 and publishes nothing.
+
+Italian drafts additionally open a review issue (label `italian-review`).
+That is a queue, not a blocker — edit `frames.auto.it.json` in place and
+commit; there is no need to re-draft.
+
+**Requires the `ANTHROPIC_API_KEY` secret.** Without it the nightly fails
+loudly naming the stale skills rather than training on a stale corpus.
+
+Manual escape hatches, unchanged: `author-frames.py --skill X --locale en`
+writes a `draft-*` file for review (the expander ignores `draft-*`), and the
+`author-frames` workflow_dispatch does the same via a PR.
