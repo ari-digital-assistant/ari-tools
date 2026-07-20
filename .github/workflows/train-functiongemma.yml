@@ -80,6 +80,14 @@ jobs:
 
           echo "engine_skills_sha=$ENGINE_SKILLS_SHA" >> "$GITHUB_OUTPUT"
           echo "skills_sha=$SKILLS_SHA" >> "$GITHUB_OUTPUT"
+          # Pin the eval harness to the engine as it stood when this run
+          # started. Training takes ~90 minutes, and the gate is built from
+          # ari-engine — so an unpinned checkout grades the model against
+          # whatever landed on main meanwhile. That is not hypothetical: the
+          # 2026-07-20 nightly failed at MIN_ROUTER_CONFIDENCE=-0.10 while a
+          # run started three hours later passed the same corpus at -0.06,
+          # because the threshold commit landed between them.
+          echo "engine_sha=$ENGINE_SHA" >> "$GITHUB_OUTPUT"
 
           # Per-locale stored SHAs — each locale tracks its own last training.
           STORED_ENGINE=""
@@ -269,6 +277,7 @@ jobs:
         uses: actions/checkout@v5
         with:
           repository: ari-digital-assistant/ari-engine
+          ref: ${{ steps.check.outputs.engine_sha }}
           path: _ari-engine
 
       - name: Set up Rust
