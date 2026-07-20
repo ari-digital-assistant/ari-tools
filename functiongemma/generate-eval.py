@@ -335,6 +335,10 @@ def main() -> None:
 
     banks = bank_frame_texts(args.locale)
     per_skill, thin = {}, []
+    # Keys of everything kept SO FAR this run — a case generated for one
+    # skill (or for NONE, below) must not reappear under another label in
+    # the same file: two contradictory expectations for one utterance.
+    session_keys = set()
     for skill in skills:
         sid = skill["id"]
         avoid = banks.get(sid, []) + [e["text"] for e in skill.get("examples", [])]
@@ -346,7 +350,7 @@ def main() -> None:
                 positive_prompt(skill, avoid, want, args.locale), args.model)
         kept, stats = filter_candidates(
             cands, args.locale, engine_dir, skills_dir,
-            avoid_keys, corpus_keyset, args.per_skill)
+            avoid_keys | session_keys, corpus_keyset, args.per_skill)
         if not args.dry_run and len(kept) < args.per_skill:
             # One top-up round: ask again, with the survivors AND the
             # rejects in the avoid list so the model explores elsewhere.
@@ -355,11 +359,12 @@ def main() -> None:
                 args.model)
             extra, stats2 = filter_candidates(
                 more, args.locale, engine_dir, skills_dir,
-                avoid_keys | {loose_key(k) for k in kept},
+                avoid_keys | session_keys | {loose_key(k) for k in kept},
                 corpus_keyset, args.per_skill - len(kept))
             kept += extra
             for k in stats:
                 stats[k] += stats2[k]
+        session_keys |= {loose_key(k) for k in kept}
         per_skill[sid] = kept
         flag = "" if len(kept) >= WARN_FLOOR else "  << THIN"
         print(f"    {sid}: kept {len(kept)}/{stats['raw']} "
@@ -388,7 +393,7 @@ def main() -> None:
             args.model)
     none_kept, none_stats = filter_candidates(
         none_cands, args.locale, engine_dir, skills_dir,
-        avoid_keys, corpus_keyset, args.none_count)
+        avoid_keys | session_keys, corpus_keyset, args.none_count)
     print(f"    NONE: kept {len(none_kept)}/{none_stats['raw']}",
           file=sys.stderr)
 

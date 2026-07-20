@@ -372,6 +372,10 @@ jobs:
         id: floor
         if: steps.check.outputs.should_train == 'true'
         run: |
+          # pipefail so a derive_floor failure surfaces HERE with its own
+          # message, instead of tee masking it and the publish step choking
+          # on an empty --min-confidence.
+          set -o pipefail
           python3 functiongemma/derive_floor.py \
             --spine "output/route-eval.spine.${{ matrix.locale }}.log" \
             --generated "output/route-eval.gen.${{ matrix.locale }}.log" \

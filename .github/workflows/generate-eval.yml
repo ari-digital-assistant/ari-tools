@@ -83,11 +83,19 @@ jobs:
           feed derive_floor.py and community-skill coverage tracking.
 
           Workflow run: ${{ github.run_id }}"
+          # Unlike the train workflow's bank commit, a silently-lost push
+          # here means later training runs quietly use STALE eval — fail
+          # loud instead.
+          PUSHED=0
           for i in 1 2 3 4 5; do
-            git pull --rebase origin main && git push origin HEAD:main && break
+            git pull --rebase origin main && git push origin HEAD:main && { PUSHED=1; break; }
             echo "push race (attempt $i), retrying..."
             sleep $((RANDOM % 10 + 5))
           done
+          if [[ "$PUSHED" != "1" ]]; then
+            echo "::error::failed to push regenerated eval banks after 5 attempts"
+            exit 1
+          fi
 
       - name: Queue Italian eval for native review
         if: >-

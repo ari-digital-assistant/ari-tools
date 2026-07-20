@@ -1127,6 +1127,11 @@ def main():
         eval_keys = load_eval_keys([
             Path(__file__).parent / "routing-eval.jsonl",
             Path(__file__).parent / "routing-eval.it.jsonl",
+            # MUST stay in lockstep with the held-out guard's list below: an
+            # expansion this site fails to drop is exactly what the (fatal)
+            # guard then trips over, hard-failing the nightly.
+            Path(__file__).parent / "routing-eval.gen.jsonl",
+            Path(__file__).parent / "routing-eval.gen.it.jsonl",
         ])
         print(f"  augmenting from {augment_dir} ({locale}):", file=sys.stderr)
         extra = expand_skills(augment_dir, locale, all_skills, eval_keys,
