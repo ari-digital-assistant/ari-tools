@@ -1,0 +1,608 @@
+{
+  "dev.heyari.coinflip": {
+    "target": 500,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "Flip a coin for me.",
+        "args": {}
+      },
+      {
+        "text": "Please flip a coin.",
+        "args": {}
+      },
+      {
+        "text": "Could you flip a coin?",
+        "args": {}
+      },
+      {
+        "text": "Would you flip a coin for me?",
+        "args": {}
+      },
+      {
+        "text": "Can you give a coin a flip?",
+        "args": {}
+      },
+      {
+        "text": "Go ahead and flip a coin.",
+        "args": {}
+      },
+      {
+        "text": "Flip one coin, please.",
+        "args": {}
+      },
+      {
+        "text": "I want you to flip a coin.",
+        "args": {}
+      },
+      {
+        "text": "I'd like a coin flipped.",
+        "args": {}
+      },
+      {
+        "text": "Give me a quick coin flip.",
+        "args": {}
+      },
+      {
+        "text": "Do a quick coin flip for me.",
+        "args": {}
+      },
+      {
+        "text": "Run a coin flip.",
+        "args": {}
+      },
+      {
+        "text": "Let's do a coin flip.",
+        "args": {}
+      },
+      {
+        "text": "How about a coin flip?",
+        "args": {}
+      },
+      {
+        "text": "Mind flipping a coin?",
+        "args": {}
+      },
+      {
+        "text": "Will you flip a coin?",
+        "args": {}
+      },
+      {
+        "text": "Could I get a coin flip?",
+        "args": {}
+      },
+      {
+        "text": "Give the coin a flip.",
+        "args": {}
+      },
+      {
+        "text": "Flip the coin and tell me what comes up.",
+        "args": {}
+      },
+      {
+        "text": "Flip a coin and give me the result.",
+        "args": {}
+      },
+      {
+        "text": "Please flip one and tell me the outcome.",
+        "args": {}
+      },
+      {
+        "text": "I need you to flip a coin.",
+        "args": {}
+      },
+      {
+        "text": "Time for a coin flip.",
+        "args": {}
+      },
+      {
+        "text": "Let's settle this with a coin flip.",
+        "args": {}
+      },
+      {
+        "text": "Settle it by flipping a coin.",
+        "args": {}
+      },
+      {
+        "text": "Use a coin flip to decide.",
+        "args": {}
+      },
+      {
+        "text": "Make the call with a coin flip.",
+        "args": {}
+      },
+      {
+        "text": "Let a coin flip decide this.",
+        "args": {}
+      },
+      {
+        "text": "Can we decide this with a coin flip?",
+        "args": {}
+      },
+      {
+        "text": "Could you settle something with a coin flip?",
+        "args": {}
+      },
+      {
+        "text": "Toss a coin for me.",
+        "args": {}
+      },
+      {
+        "text": "Please toss a coin.",
+        "args": {}
+      },
+      {
+        "text": "Could you toss a coin?",
+        "args": {}
+      },
+      {
+        "text": "Can you do a coin toss?",
+        "args": {}
+      },
+      {
+        "text": "Give me a coin toss.",
+        "args": {}
+      },
+      {
+        "text": "Do a quick coin toss.",
+        "args": {}
+      },
+      {
+        "text": "Go ahead and toss a coin.",
+        "args": {}
+      },
+      {
+        "text": "Toss one and tell me the result.",
+        "args": {}
+      },
+      {
+        "text": "Toss the coin and see what happens.",
+        "args": {}
+      },
+      {
+        "text": "I'd like you to toss a coin.",
+        "args": {}
+      },
+      {
+        "text": "Mind tossing a coin for me?",
+        "args": {}
+      },
+      {
+        "text": "Will you toss a coin?",
+        "args": {}
+      },
+      {
+        "text": "Let's toss a coin for it.",
+        "args": {}
+      },
+      {
+        "text": "Settle this with a coin toss.",
+        "args": {}
+      },
+      {
+        "text": "Let a coin toss decide.",
+        "args": {}
+      },
+      {
+        "text": "Use a coin toss to make the choice.",
+        "args": {}
+      },
+      {
+        "text": "Can I get a coin toss?",
+        "args": {}
+      },
+      {
+        "text": "One coin toss, please.",
+        "args": {}
+      },
+      {
+        "text": "Toss a coin and call the outcome.",
+        "args": {}
+      },
+      {
+        "text": "I could use a coin toss right now.",
+        "args": {}
+      },
+      {
+        "text": "Heads or tails?",
+        "args": {}
+      },
+      {
+        "text": "Give me heads or tails.",
+        "args": {}
+      },
+      {
+        "text": "Pick heads or tails for me.",
+        "args": {}
+      },
+      {
+        "text": "Choose between heads and tails.",
+        "args": {}
+      },
+      {
+        "text": "Tell me heads or tails.",
+        "args": {}
+      },
+      {
+        "text": "Let's go with heads or tails.",
+        "args": {}
+      },
+      {
+        "text": "Can you choose heads or tails?",
+        "args": {}
+      },
+      {
+        "text": "Could you pick heads or tails?",
+        "args": {}
+      },
+      {
+        "text": "I need a heads-or-tails result.",
+        "args": {}
+      },
+      {
+        "text": "Give me a random heads or tails.",
+        "args": {}
+      },
+      {
+        "text": "Call heads or tails at random.",
+        "args": {}
+      },
+      {
+        "text": "Decide between heads and tails.",
+        "args": {}
+      },
+      {
+        "text": "Randomly choose heads or tails.",
+        "args": {}
+      },
+      {
+        "text": "Which is it, heads or tails?",
+        "args": {}
+      },
+      {
+        "text": "What do I get, heads or tails?",
+        "args": {}
+      },
+      {
+        "text": "Let me have a heads-or-tails call.",
+        "args": {}
+      },
+      {
+        "text": "Make a heads-or-tails call for me.",
+        "args": {}
+      },
+      {
+        "text": "I want a random call between heads and tails.",
+        "args": {}
+      },
+      {
+        "text": "Just say heads or tails.",
+        "args": {}
+      },
+      {
+        "text": "Hit me with heads or tails.",
+        "args": {}
+      },
+      {
+        "text": "Heads or tails will do.",
+        "args": {}
+      },
+      {
+        "text": "Give me one side of the coin.",
+        "args": {}
+      },
+      {
+        "text": "Pick a side of the coin at random.",
+        "args": {}
+      },
+      {
+        "text": "Choose a coin side for me.",
+        "args": {}
+      },
+      {
+        "text": "Tell me which side of the coin wins.",
+        "args": {}
+      },
+      {
+        "text": "What side does the coin land on?",
+        "args": {}
+      },
+      {
+        "text": "See whether it comes up heads or tails.",
+        "args": {}
+      },
+      {
+        "text": "Find out if it's heads or tails.",
+        "args": {}
+      },
+      {
+        "text": "Let me know which face comes up.",
+        "args": {}
+      },
+      {
+        "text": "Give me the result of a virtual coin toss.",
+        "args": {}
+      },
+      {
+        "text": "Leave this one up to a coin.",
+        "args": {}
+      },
+      {
+        "text": "Let the coin decide.",
+        "args": {}
+      },
+      {
+        "text": "Let the coin make the call.",
+        "args": {}
+      },
+      {
+        "text": "Put it to a coin flip.",
+        "args": {}
+      },
+      {
+        "text": "Leave the decision to a coin flip.",
+        "args": {}
+      },
+      {
+        "text": "I want chance to make a fifty-fifty choice.",
+        "args": {}
+      },
+      {
+        "text": "Make a random fifty-fifty decision for me.",
+        "args": {}
+      },
+      {
+        "text": "Choose one of two outcomes at random.",
+        "args": {}
+      },
+      {
+        "text": "I need a random binary outcome.",
+        "args": {}
+      },
+      {
+        "text": "Give me a fifty-fifty result.",
+        "args": {}
+      },
+      {
+        "text": "Make a fifty-fifty call.",
+        "args": {}
+      },
+      {
+        "text": "Can you make a random two-way choice?",
+        "args": {}
+      },
+      {
+        "text": "Could you decide a two-way tie at random?",
+        "args": {}
+      },
+      {
+        "text": "Break the tie with a coin.",
+        "args": {}
+      },
+      {
+        "text": "Use chance to break this tie.",
+        "args": {}
+      },
+      {
+        "text": "Settle this fifty-fifty.",
+        "args": {}
+      },
+      {
+        "text": "Let luck pick between the two.",
+        "args": {}
+      },
+      {
+        "text": "I want luck to make the choice.",
+        "args": {}
+      },
+      {
+        "text": "Let fate choose this one.",
+        "args": {}
+      },
+      {
+        "text": "Put this decision in the hands of chance.",
+        "args": {}
+      },
+      {
+        "text": "I can't choose, so let chance decide.",
+        "args": {}
+      },
+      {
+        "text": "I'm stuck between two options; pick at random.",
+        "args": {}
+      },
+      {
+        "text": "I'm torn between two choices, so flip for it.",
+        "args": {}
+      },
+      {
+        "text": "This is a toss-up, so make the call.",
+        "args": {}
+      },
+      {
+        "text": "It's fifty-fifty; decide for me.",
+        "args": {}
+      },
+      {
+        "text": "Either option works, so leave it to chance.",
+        "args": {}
+      },
+      {
+        "text": "I don't care which of the two wins; choose randomly.",
+        "args": {}
+      },
+      {
+        "text": "There are two choices and I need a random winner.",
+        "args": {}
+      },
+      {
+        "text": "Help me make a binary choice.",
+        "args": {}
+      },
+      {
+        "text": "Make an unbiased choice between two possibilities.",
+        "args": {}
+      },
+      {
+        "text": "Randomly decide yes or no for me.",
+        "args": {}
+      },
+      {
+        "text": "Give me a random yes-or-no decision.",
+        "args": {}
+      },
+      {
+        "text": "Use a coin to answer yes or no.",
+        "args": {}
+      },
+      {
+        "text": "Flip for a yes-or-no answer.",
+        "args": {}
+      },
+      {
+        "text": "I need a fifty-fifty yes or no.",
+        "args": {}
+      },
+      {
+        "text": "Decide yes or no by coin toss.",
+        "args": {}
+      },
+      {
+        "text": "Let chance give me a yes or no.",
+        "args": {}
+      },
+      {
+        "text": "Make a random call: yes or no.",
+        "args": {}
+      },
+      {
+        "text": "I'm leaving this yes-or-no choice to a coin.",
+        "args": {}
+      },
+      {
+        "text": "Settle my yes-or-no question with a flip.",
+        "args": {}
+      },
+      {
+        "text": "I need a little luck to decide this.",
+        "args": {}
+      },
+      {
+        "text": "Can chance settle something for me?",
+        "args": {}
+      },
+      {
+        "text": "Could you make the decision randomly?",
+        "args": {}
+      },
+      {
+        "text": "I want a completely random choice between two things.",
+        "args": {}
+      },
+      {
+        "text": "No preference here; make it fifty-fifty.",
+        "args": {}
+      },
+      {
+        "text": "Either way is fine, so flip for it.",
+        "args": {}
+      },
+      {
+        "text": "Let's leave the outcome to luck.",
+        "args": {}
+      },
+      {
+        "text": "Let randomness settle the matter.",
+        "args": {}
+      },
+      {
+        "text": "I'd rather have a coin make this decision.",
+        "args": {}
+      },
+      {
+        "text": "A coin flip should settle it.",
+        "args": {}
+      },
+      {
+        "text": "This calls for a coin toss.",
+        "args": {}
+      },
+      {
+        "text": "We need a fair way to pick between two options.",
+        "args": {}
+      },
+      {
+        "text": "Give both choices an even shot.",
+        "args": {}
+      },
+      {
+        "text": "Make it an even-chance decision.",
+        "args": {}
+      },
+      {
+        "text": "Pick one of the two with equal odds.",
+        "args": {}
+      },
+      {
+        "text": "Decide it with fifty-fifty odds.",
+        "args": {}
+      },
+      {
+        "text": "I need an impartial two-way decision.",
+        "args": {}
+      },
+      {
+        "text": "Make the choice without favoring either side.",
+        "args": {}
+      },
+      {
+        "text": "Let a virtual coin settle this.",
+        "args": {}
+      },
+      {
+        "text": "Could a virtual coin decide for me?",
+        "args": {}
+      },
+      {
+        "text": "Spin up a virtual coin toss.",
+        "args": {}
+      },
+      {
+        "text": "Give me the outcome of a virtual coin flip.",
+        "args": {}
+      },
+      {
+        "text": "Simulate a coin flip.",
+        "args": {}
+      },
+      {
+        "text": "Can you simulate tossing a coin?",
+        "args": {}
+      },
+      {
+        "text": "Do a virtual coin toss.",
+        "args": {}
+      },
+      {
+        "text": "Flip an imaginary coin.",
+        "args": {}
+      },
+      {
+        "text": "Toss a virtual coin and report the result.",
+        "args": {}
+      },
+      {
+        "text": "I don't have a coin; flip one for me.",
+        "args": {}
+      },
+      {
+        "text": "Pretend to flip a coin and tell me the result.",
+        "args": {}
+      },
+      {
+        "text": "Give me one fair coin-flip outcome.",
+        "args": {}
+      }
+    ]
+  }
+}
