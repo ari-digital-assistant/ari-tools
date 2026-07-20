@@ -914,6 +914,78 @@
       {
         "text": "fa già scuro",
         "args": {}
+      },
+      {
+        "text": "è già l'ora di cena vero",
+        "args": {}
+      },
+      {
+        "text": "è già mattino",
+        "args": {}
+      },
+      {
+        "text": "è già mattinata inoltrata",
+        "args": {}
+      },
+      {
+        "text": "è ancora presto per la cena",
+        "args": {}
+      },
+      {
+        "text": "è ancora presto o si è fatto tardi",
+        "args": {}
+      },
+      {
+        "text": "ormai è quasi mezzogiorno",
+        "args": {}
+      },
+      {
+        "text": "siamo già a sera vero",
+        "args": {}
+      },
+      {
+        "text": "è già l'ora della merenda",
+        "args": {}
+      },
+      {
+        "text": "è già l'imbrunire",
+        "args": {}
+      },
+      {
+        "text": "è già l'ora del tè",
+        "args": {}
+      },
+      {
+        "text": "è ancora giorno oppure è già sera",
+        "args": {}
+      },
+      {
+        "text": "è già calato il sole vero",
+        "args": {}
+      },
+      {
+        "text": "sai che orario è",
+        "args": {}
+      },
+      {
+        "text": "mi dici che orario è",
+        "args": {}
+      },
+      {
+        "text": "che orario abbiamo ora",
+        "args": {}
+      },
+      {
+        "text": "che orario segna il tuo orologio",
+        "args": {}
+      },
+      {
+        "text": "dimmi tu che orario è",
+        "args": {}
+      },
+      {
+        "text": "che orario facciamo adesso",
+        "args": {}
       }
     ]
   },
@@ -1683,6 +1755,78 @@
       },
       {
         "text": "dimmi quanti ne abbiamo",
+        "args": {}
+      },
+      {
+        "text": "a che punto siamo dell'anno",
+        "args": {}
+      },
+      {
+        "text": "a che punto dell'anno siamo arrivati",
+        "args": {}
+      },
+      {
+        "text": "a che punto dell'anno ci troviamo",
+        "args": {}
+      },
+      {
+        "text": "quanto siamo avanti nell'anno",
+        "args": {}
+      },
+      {
+        "text": "quanto è avanzato l'anno",
+        "args": {}
+      },
+      {
+        "text": "l'anno è già a metà vero",
+        "args": {}
+      },
+      {
+        "text": "siamo già a metà anno",
+        "args": {}
+      },
+      {
+        "text": "quanti mesi dell'anno sono passati",
+        "args": {}
+      },
+      {
+        "text": "a che punto del mese siamo arrivati",
+        "args": {}
+      },
+      {
+        "text": "quanto manca alla fine dell'anno che giorno è",
+        "args": {}
+      },
+      {
+        "text": "l'anno sta volando a che mese siamo",
+        "args": {}
+      },
+      {
+        "text": "siamo a inizio o fine anno",
+        "args": {}
+      },
+      {
+        "text": "sai quanti ne abbiamo oggi",
+        "args": {}
+      },
+      {
+        "text": "ma oggi quanti ne abbiamo",
+        "args": {}
+      },
+      {
+        "text": "allora quanti ne abbiamo",
+        "args": {}
+      },
+      {
+        "text": "quanti ne abbiamo adesso",
+        "args": {}
+      },
+      {
+        "text": "quanti giorni ne abbiamo oggi",
+        "args": {}
+      },
+      {
+        "text": "chissà quanti ne abbiamo oggi",
         "args": {}
       }
     ]
@@ -2878,10 +3022,6 @@
         "args": {}
       },
       {
-        "text": "ciao come procede",
-        "args": {}
-      },
-      {
         "text": "ciao come te la passi",
         "args": {}
       },
@@ -3031,6 +3171,54 @@
       },
       {
         "text": "ma va' chi si vede",
+        "args": {}
+      },
+      {
+        "text": "e guarda chi si rivede",
+        "args": {}
+      },
+      {
+        "text": "ma chi si rivede mai",
+        "args": {}
+      },
+      {
+        "text": "chi si rivede finalmente",
+        "args": {}
+      },
+      {
+        "text": "rieccoti qua",
+        "args": {}
+      },
+      {
+        "text": "eccoti di ritorno",
+        "args": {}
+      },
+      {
+        "text": "finalmente ti rivedo",
+        "args": {}
+      },
+      {
+        "text": "guarda un po' chi ricompare",
+        "args": {}
+      },
+      {
+        "text": "quanto tempo che non ti si vede",
+        "args": {}
+      },
+      {
+        "text": "una vita che non ci si vede",
+        "args": {}
+      },
+      {
+        "text": "ce n'è voluto per rivederti",
+        "args": {}
+      },
+      {
+        "text": "chi si rivede dopo tanto tempo",
+        "args": {}
+      },
+      {
+        "text": "guarda tu chi si fa rivedere",
         "args": {}
       }
     ]
@@ -3517,6 +3705,78 @@
         "text": "devo controllare una cosa su {APPNAME}",
         "args": {
           "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "fammi vedere subito {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "mostrami al volo {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "aprimi al volo {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "fammi dare una sbirciata a {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "mettimi {APPNAME} in primo piano",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "portami davanti {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "voglio dare un'occhiata a {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "è proprio il momento di {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "ci vorrebbe un po' di {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "fammi controllare {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "buttami su {APPNAME}",
+        "args": {
+          "app_name": "{APPNAME}"
+        }
+      },
+      {
+        "text": "mi serve {APPSG} un secondo",
+        "args": {
+          "app_name": "{APPSG}"
         }
       }
     ]

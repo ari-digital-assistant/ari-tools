@@ -492,14 +492,6 @@
         "args": {}
       },
       {
-        "text": "un altro",
-        "args": {}
-      },
-      {
-        "text": "ancora uno",
-        "args": {}
-      },
-      {
         "text": "segna uno",
         "args": {}
       },
@@ -525,10 +517,6 @@
       },
       {
         "text": "fammi contare",
-        "args": {}
-      },
-      {
-        "text": "tieni il conto",
         "args": {}
       },
       {
@@ -565,10 +553,6 @@
       },
       {
         "text": "conteggia",
-        "args": {}
-      },
-      {
-        "text": "registra un altro",
         "args": {}
       },
       {
@@ -1834,18 +1818,6 @@
       },
       {
         "text": "ho qualche promemoria oggi",
-        "args": {}
-      },
-      {
-        "text": "cosa ho in programma oggi",
-        "args": {}
-      },
-      {
-        "text": "cosa ho in programma domani",
-        "args": {}
-      },
-      {
-        "text": "che cosa devo fare oggi",
         "args": {}
       },
       {
