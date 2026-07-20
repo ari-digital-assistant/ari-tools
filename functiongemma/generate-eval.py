@@ -227,6 +227,13 @@ def call_gemini(prompt: str, model: str) -> list:
                                  f"{interaction.output_text[:200]}")
             return [c for c in cases if isinstance(c, str)]
         except Exception as e:  # noqa: BLE001 — retried, then fatal with detail
+            # A 404 ("model not found" / "not available to new users") will
+            # never heal on retry — fail fast with the model-picking hint.
+            # 429s stay retryable: per-minute throttles recover in seconds.
+            if "not_found" in str(e) or "404" in str(e):
+                sys.exit(f"ERROR: Gemini model {model!r} is not usable on "
+                         f"this API key: {e!r} — pick another with "
+                         f"--list-models.")
             last_err = e
             wait = min(5 * (2 ** attempt), 60)
             print(f"  Gemini attempt {attempt + 1} failed ({e!r}); "
