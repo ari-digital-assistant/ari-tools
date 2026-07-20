@@ -1,0 +1,379 @@
+// GENERATED routing eval (en) — written by generate-eval.py.
+// Model: gemini-3.5-flash  Run: 29774697870  At: 2026-07-20T20:23:37Z
+// 320 positives across 16 skills + 50 NONE.
+//
+// Regenerated wholesale — do not hand-edit (edits are overwritten).
+// The hand-written spine in routing-eval[.it].jsonl is the promotion
+// gate; this file adds breadth for derive_floor.py and community-
+// skill coverage. Every case is a keyword-MISS and decontaminated
+// against the training corpus at generation time.
+{"utterance": "If 5 people split a 150 dollar bill, how much should each pay?", "expect": "calculator"}
+{"utterance": "What's the total cost of 6 tickets if each one is 12 dollars?", "expect": "calculator"}
+{"utterance": "If I have 500 dollars and buy a 120 dollar coat, what's my remaining balance?", "expect": "calculator"}
+{"utterance": "What do you get when you combine 45 and 55?", "expect": "calculator"}
+{"utterance": "If I have 12 boxes with 8 chocolates in each, how many chocolates do I have in total?", "expect": "calculator"}
+{"utterance": "How many 6s are there in 54?", "expect": "calculator"}
+{"utterance": "What do you get if you raise 5 to the 4th?", "expect": "calculator"}
+{"utterance": "What is the side length of a square with an area of 144?", "expect": "calculator"}
+{"utterance": "If a 80 dollar shirt has a 25 percent discount, how much is the savings?", "expect": "calculator"}
+{"utterance": "If you increase 150 by 20%, what is the final amount?", "expect": "calculator"}
+{"utterance": "What is the average of 12, 15, and 18?", "expect": "calculator"}
+{"utterance": "Convert the fraction 7 eighths into a decimal.", "expect": "calculator"}
+{"utterance": "What is 45 out of 60 expressed as a percentage?", "expect": "calculator"}
+{"utterance": "If I save 15 dollars a week for 52 weeks, how much will I have?", "expect": "calculator"}
+{"utterance": "How many centimeters taller is someone who is 190 than someone who is 165?", "expect": "calculator"}
+{"utterance": "How many weeks are in 350 days?", "expect": "calculator"}
+{"utterance": "If I have 100 items and lose 15 of them, how many do I still have?", "expect": "calculator"}
+{"utterance": "If I have 9 groups of 9, what is the total?", "expect": "calculator"}
+{"utterance": "If a rectangle is 12 inches by 8 inches, what is its area?", "expect": "calculator"}
+{"utterance": "How many quarters are in 15 dollars?", "expect": "calculator"}
+{"utterance": "I'm signing a lease right now, what do I write at the top?", "expect": "current_date"}
+{"utterance": "Which square of my wall calendar should I cross off tonight?", "expect": "current_date"}
+{"utterance": "Can you tell me the current timeline coordinate?", "expect": "current_date"}
+{"utterance": "I need to label my journal entry for today.", "expect": "current_date"}
+{"utterance": "What does the official calendar marker say for today?", "expect": "current_date"}
+{"utterance": "Check the system clock and tell me today's calendar stamp.", "expect": "current_date"}
+{"utterance": "Which page of the daily calendar are we currently looking at?", "expect": "current_date"}
+{"utterance": "What is today's numerical place on the yearly calendar?", "expect": "current_date"}
+{"utterance": "I've completely lost track of where we are on the calendar.", "expect": "current_date"}
+{"utterance": "Give me the chronological marker for this morning.", "expect": "current_date"}
+{"utterance": "What is the calendar notation for today?", "expect": "current_date"}
+{"utterance": "What is the exact calendar stamp for today's logs?", "expect": "current_date"}
+{"utterance": "What numbers do I write in the date field of my check?", "expect": "current_date"}
+{"utterance": "What's the active box on the calendar planner?", "expect": "current_date"}
+{"utterance": "Can you confirm today's chronological label?", "expect": "current_date"}
+{"utterance": "What's the current calendar stamp according to the server?", "expect": "current_date"}
+{"utterance": "I'm filling out a receipt and need the correct chronological numbers.", "expect": "current_date"}
+{"utterance": "Which block on the yearly calendar is active today?", "expect": "current_date"}
+{"utterance": "Give me today's calendar-code.", "expect": "current_date"}
+{"utterance": "What should the header of today's diary entry be?", "expect": "current_date"}
+{"utterance": "What digit is the hour hand pointing to?", "expect": "current_time"}
+{"utterance": "Are we past the half-hour mark yet?", "expect": "current_time"}
+{"utterance": "Has the clock struck twelve yet?", "expect": "current_time"}
+{"utterance": "How many hours have we gone through today?", "expect": "current_time"}
+{"utterance": "Is it still single digits on the hour?", "expect": "current_time"}
+{"utterance": "Am I supposed to say good morning or good afternoon right now?", "expect": "current_time"}
+{"utterance": "Should my greeting be good evening at this point?", "expect": "current_time"}
+{"utterance": "Are we closer to noon or midnight at this moment?", "expect": "current_time"}
+{"utterance": "What are the numbers showing on your display?", "expect": "current_time"}
+{"utterance": "If I need to set my wrist watch, what number do I use?", "expect": "current_time"}
+{"utterance": "Have we transitioned into the afternoon portion of the day?", "expect": "current_time"}
+{"utterance": "Is it still standard sleeping hours?", "expect": "current_time"}
+{"utterance": "Has the workday officially ended yet?", "expect": "current_time"}
+{"utterance": "Is it past five pm?", "expect": "current_time"}
+{"utterance": "Would the sun be directly overhead right now?", "expect": "current_time"}
+{"utterance": "How far along in the 24-hour cycle are we?", "expect": "current_time"}
+{"utterance": "Are we in the first half of the day or the second?", "expect": "current_time"}
+{"utterance": "What's the digital reading on your screen?", "expect": "current_time"}
+{"utterance": "Has the sun reached its highest point today?", "expect": "current_time"}
+{"utterance": "Is it already too late to get breakfast?", "expect": "current_time"}
+{"utterance": "Could you program a bell for eight tomorrow?", "expect": "dev.heyari.alarm"}
+{"utterance": "I've got a class at 8:00 AM, ring the device half an hour before.", "expect": "dev.heyari.alarm"}
+{"utterance": "Configure a daily ring at sunrise.", "expect": "dev.heyari.alarm"}
+{"utterance": "Can you establish a rise time of 7:45 AM?", "expect": "dev.heyari.alarm"}
+{"utterance": "Trigger a notification to end my sleep at six.", "expect": "dev.heyari.alarm"}
+{"utterance": "Make the phone go off at 5 tomorrow morning.", "expect": "dev.heyari.alarm"}
+{"utterance": "Could you arrange a daily ring for six AM?", "expect": "dev.heyari.alarm"}
+{"utterance": "Beep at me at seven tomorrow.", "expect": "dev.heyari.alarm"}
+{"utterance": "Ensure I'm conscious by seven thirty tomorrow morning.", "expect": "dev.heyari.alarm"}
+{"utterance": "Let's do a 6:00 AM siren.", "expect": "dev.heyari.alarm"}
+{"utterance": "Configure my rise hour to 6:30 for work.", "expect": "dev.heyari.alarm"}
+{"utterance": "I need a morning signal at seven.", "expect": "dev.heyari.alarm"}
+{"utterance": "I have a meeting at nine, cue the morning tone at eight.", "expect": "dev.heyari.alarm"}
+{"utterance": "We need to be active by five AM, set the clock.", "expect": "dev.heyari.alarm"}
+{"utterance": "Can you sound the buzzer at 6:15?", "expect": "dev.heyari.alarm"}
+{"utterance": "Establish a recurring buzzer for eight every morning.", "expect": "dev.heyari.alarm"}
+{"utterance": "Configure a chime for every weekend morning at nine.", "expect": "dev.heyari.alarm"}
+{"utterance": "I need my device to ring at five forty-five.", "expect": "dev.heyari.alarm"}
+{"utterance": "Configure the morning ringer to six.", "expect": "dev.heyari.alarm"}
+{"utterance": "I have to leave by eight, so schedule an alert for seven.", "expect": "dev.heyari.alarm"}
+{"utterance": "I need you to spin a quarter for me.", "expect": "dev.heyari.coinflip"}
+{"utterance": "Throw a penny in the air to make a choice.", "expect": "dev.heyari.coinflip"}
+{"utterance": "Can we settle this with a quarter toss?", "expect": "dev.heyari.coinflip"}
+{"utterance": "Let's throw a nickel to decide who goes first.", "expect": "dev.heyari.coinflip"}
+{"utterance": "Flick a silver dollar to see who wins.", "expect": "dev.heyari.coinflip"}
+{"utterance": "Flip a piece of pocket change for us.", "expect": "dev.heyari.coinflip"}
+{"utterance": "Which side of the quarter landed facing up?", "expect": "dev.heyari.coinflip"}
+{"utterance": "Can you do a virtual penny toss?", "expect": "dev.heyari.coinflip"}
+{"utterance": "Spin a dime to make our decision.", "expect": "dev.heyari.coinflip"}
+{"utterance": "Flick a nickel and tell me the outcome.", "expect": "dev.heyari.coinflip"}
+{"utterance": "I need to settle this wager with a quarter flip.", "expect": "dev.heyari.coinflip"}
+{"utterance": "Give a penny a quick spin on the table.", "expect": "dev.heyari.coinflip"}
+{"utterance": "Let's throw a metallic piece to see who gets the last slice.", "expect": "dev.heyari.coinflip"}
+{"utterance": "Which face of the penny is showing?", "expect": "dev.heyari.coinflip"}
+{"utterance": "Flip a fifty-cent piece for me.", "expect": "dev.heyari.coinflip"}
+{"utterance": "Toss a silver dollar to break this deadlock.", "expect": "dev.heyari.coinflip"}
+{"utterance": "Settle this argument with a fifty-fifty chance.", "expect": "dev.heyari.coinflip"}
+{"utterance": "Let's make our choice based on a random fifty-fifty.", "expect": "dev.heyari.coinflip"}
+{"utterance": "Generate a random selection between these two options.", "expect": "dev.heyari.coinflip"}
+{"utterance": "Give me a true or false outcome using a nickel.", "expect": "dev.heyari.coinflip"}
+{"utterance": "add another to the total", "expect": "dev.heyari.counter"}
+{"utterance": "mark another one down", "expect": "dev.heyari.counter"}
+{"utterance": "put another on the board", "expect": "dev.heyari.counter"}
+{"utterance": "chalk up another one", "expect": "dev.heyari.counter"}
+{"utterance": "add to my score", "expect": "dev.heyari.counter"}
+{"utterance": "register this turn", "expect": "dev.heyari.counter"}
+{"utterance": "log another occurrence", "expect": "dev.heyari.counter"}
+{"utterance": "that's another one for the books", "expect": "dev.heyari.counter"}
+{"utterance": "put another notch on my belt", "expect": "dev.heyari.counter"}
+{"utterance": "record another event", "expect": "dev.heyari.counter"}
+{"utterance": "mark down one more occurrence", "expect": "dev.heyari.counter"}
+{"utterance": "log this instance as well", "expect": "dev.heyari.counter"}
+{"utterance": "increase it by one", "expect": "dev.heyari.counter"}
+{"utterance": "push it forward", "expect": "dev.heyari.counter"}
+{"utterance": "move the number up", "expect": "dev.heyari.counter"}
+{"utterance": "make the number go up", "expect": "dev.heyari.counter"}
+{"utterance": "increase the total by one", "expect": "dev.heyari.counter"}
+{"utterance": "make it one higher", "expect": "dev.heyari.counter"}
+{"utterance": "advance the number", "expect": "dev.heyari.counter"}
+{"utterance": "shift it up", "expect": "dev.heyari.counter"}
+{"utterance": "read me a philosophical quote", "expect": "dev.heyari.githubzen"}
+{"utterance": "give me an aphorism to think about", "expect": "dev.heyari.githubzen"}
+{"utterance": "do you have a mantra for today", "expect": "dev.heyari.githubzen"}
+{"utterance": "say something profound to me", "expect": "dev.heyari.githubzen"}
+{"utterance": "tell me a deep truth", "expect": "dev.heyari.githubzen"}
+{"utterance": "what is the octocats philosophy", "expect": "dev.heyari.githubzen"}
+{"utterance": "i need a guiding principle right now", "expect": "dev.heyari.githubzen"}
+{"utterance": "give me a thought to reflect on", "expect": "dev.heyari.githubzen"}
+{"utterance": "provide a comforting maxim", "expect": "dev.heyari.githubzen"}
+{"utterance": "recite a short proverb", "expect": "dev.heyari.githubzen"}
+{"utterance": "hit me with a deep saying", "expect": "dev.heyari.githubzen"}
+{"utterance": "i want to meditate on a quote", "expect": "dev.heyari.githubzen"}
+{"utterance": "give me a snippet of life advice", "expect": "dev.heyari.githubzen"}
+{"utterance": "could you share a contemplative line", "expect": "dev.heyari.githubzen"}
+{"utterance": "what is a good mind reset quote", "expect": "dev.heyari.githubzen"}
+{"utterance": "tell me something to ponder", "expect": "dev.heyari.githubzen"}
+{"utterance": "do you have any spiritual insights", "expect": "dev.heyari.githubzen"}
+{"utterance": "give me a mindfulness phrase", "expect": "dev.heyari.githubzen"}
+{"utterance": "whats a good motto to live by", "expect": "dev.heyari.githubzen"}
+{"utterance": "inspire me with a deep thought", "expect": "dev.heyari.githubzen"}
+{"utterance": "It's getting really dark in the office.", "expect": "dev.heyari.homeassistant"}
+{"utterance": "It is freezing in the nursery.", "expect": "dev.heyari.homeassistant"}
+{"utterance": "Can you check if the back entry is locked?", "expect": "dev.heyari.homeassistant"}
+{"utterance": "Let's get ready for sleep.", "expect": "dev.heyari.homeassistant"}
+{"utterance": "Is my wife still at the office?", "expect": "dev.heyari.homeassistant"}
+{"utterance": "Is the driveway gate shut?", "expect": "dev.heyari.homeassistant"}
+{"utterance": "I can't see anything in the crawlspace.", "expect": "dev.heyari.homeassistant"}
+{"utterance": "Could you make the nursery a little toastier?", "expect": "dev.heyari.homeassistant"}
+{"utterance": "I'm leaving the house now.", "expect": "dev.heyari.homeassistant"}
+{"utterance": "The sun is beating down on the patio window.", "expect": "dev.heyari.homeassistant"}
+{"utterance": "It's stuffy in the master bedroom.", "expect": "dev.heyari.homeassistant"}
+{"utterance": "I think I left the basement lights burning.", "expect": "dev.heyari.homeassistant"}
+{"utterance": "Make the TV room pitch black.", "expect": "dev.heyari.homeassistant"}
+{"utterance": "Is Sarah back from school yet?", "expect": "dev.heyari.homeassistant"}
+{"utterance": "Secure the perimeter.", "expect": "dev.heyari.homeassistant"}
+{"utterance": "Can we get some air moving in the study?", "expect": "dev.heyari.homeassistant"}
+{"utterance": "It's like an oven in here.", "expect": "dev.heyari.homeassistant"}
+{"utterance": "Is the main entrance bolted?", "expect": "dev.heyari.homeassistant"}
+{"utterance": "Shut down the entire main floor.", "expect": "dev.heyari.homeassistant"}
+{"utterance": "Let's watch a film.", "expect": "dev.heyari.homeassistant"}
+{"utterance": "How about some Queen right now?", "expect": "dev.heyari.music"}
+{"utterance": "Let's get some Fleetwood Mac going on Pandora.", "expect": "dev.heyari.music"}
+{"utterance": "I could really go for Bohemian Rhapsody on Amazon Music.", "expect": "dev.heyari.music"}
+{"utterance": "Let's hear Stairway to Heaven.", "expect": "dev.heyari.music"}
+{"utterance": "Could we cue up Blinding Lights by The Weeknd?", "expect": "dev.heyari.music"}
+{"utterance": "Spin some records by David Bowie.", "expect": "dev.heyari.music"}
+{"utterance": "Is it possible to load up the latest Taylor Swift album?", "expect": "dev.heyari.music"}
+{"utterance": "I'm in the mood for some eighties synth pop.", "expect": "dev.heyari.music"}
+{"utterance": "Can we queue up some classic rock on YouTube Music?", "expect": "dev.heyari.music"}
+{"utterance": "Get some lo fi beats running on Spotify.", "expect": "dev.heyari.music"}
+{"utterance": "How about throwing back to some early nineties hip hop?", "expect": "dev.heyari.music"}
+{"utterance": "I need some energetic workout tunes right now.", "expect": "dev.heyari.music"}
+{"utterance": "Let's vibe to some reggae this afternoon.", "expect": "dev.heyari.music"}
+{"utterance": "I'd love to stream the soundtrack of Interstellar.", "expect": "dev.heyari.music"}
+{"utterance": "Stream some chill electronic tracks on Deezer.", "expect": "dev.heyari.music"}
+{"utterance": "Fire up the album Thriller.", "expect": "dev.heyari.music"}
+{"utterance": "Get some Miles Davis flowing through the speakers.", "expect": "dev.heyari.music"}
+{"utterance": "I'm dying for some Billie Eilish.", "expect": "dev.heyari.music"}
+{"utterance": "Blast some heavy metal on Tidal.", "expect": "dev.heyari.music"}
+{"utterance": "Let's treat ourselves to some Beethoven.", "expect": "dev.heyari.music"}
+{"utterance": "Pull up GPS instructions for the petrol station", "expect": "dev.heyari.navigation"}
+{"utterance": "Let's begin the drive to the local racetrack", "expect": "dev.heyari.navigation"}
+{"utterance": "Can you pull up the driving steps for Birmingham?", "expect": "dev.heyari.navigation"}
+{"utterance": "Track a path to the municipal park", "expect": "dev.heyari.navigation"}
+{"utterance": "Pull up the journey to Liverpool on the screen", "expect": "dev.heyari.navigation"}
+{"utterance": "I'm setting off for Chester, turn on the GPS", "expect": "dev.heyari.navigation"}
+{"utterance": "Can we begin the trip to the local post office?", "expect": "dev.heyari.navigation"}
+{"utterance": "Load up the path to the nearest Walmart", "expect": "dev.heyari.navigation"}
+{"utterance": "Set up the GPS for the golf course", "expect": "dev.heyari.navigation"}
+{"utterance": "Put the Hilton Hotel into my maps application", "expect": "dev.heyari.navigation"}
+{"utterance": "Can you load the path to the science center?", "expect": "dev.heyari.navigation"}
+{"utterance": "Load the map for the nearest Shell station", "expect": "dev.heyari.navigation"}
+{"utterance": "Begin the transit to my grandmother's place", "expect": "dev.heyari.navigation"}
+{"utterance": "I'm off to the gym, track my drive", "expect": "dev.heyari.navigation"}
+{"utterance": "Set the destination on my screen to Burger King", "expect": "dev.heyari.navigation"}
+{"utterance": "Put the local high school into the mapping system", "expect": "dev.heyari.navigation"}
+{"utterance": "Get the GPS running for the art gallery", "expect": "dev.heyari.navigation"}
+{"utterance": "Track my journey to Edinburgh", "expect": "dev.heyari.navigation"}
+{"utterance": "Could you set the GPS to target the university campus?", "expect": "dev.heyari.navigation"}
+{"utterance": "Begin tracking the trip to the train terminal", "expect": "dev.heyari.navigation"}
+{"utterance": "Could you keep an eye on the clock and alert me when it's five for my call?", "expect": "dev.heyari.reminder"}
+{"utterance": "At noon, tap me on the shoulder to eat lunch.", "expect": "dev.heyari.reminder"}
+{"utterance": "When four o'clock rolls around, bring up the staff meeting.", "expect": "dev.heyari.reminder"}
+{"utterance": "Can you make a mental note for me to feed the fish at sunset?", "expect": "dev.heyari.reminder"}
+{"utterance": "I'll need an alert at eight to catch my train.", "expect": "dev.heyari.reminder"}
+{"utterance": "Keep track of my three PM appointment with the dentist.", "expect": "dev.heyari.reminder"}
+{"utterance": "When it's nine tomorrow, raise the issue of the weekly status report.", "expect": "dev.heyari.reminder"}
+{"utterance": "Can you get back to me at noon about checking the roast?", "expect": "dev.heyari.reminder"}
+{"utterance": "Draw my attention to the laundry in twenty minutes.", "expect": "dev.heyari.reminder"}
+{"utterance": "In two hours, I need a prompt to take my medication.", "expect": "dev.heyari.reminder"}
+{"utterance": "Whisper in my ear at seven to call mom.", "expect": "dev.heyari.reminder"}
+{"utterance": "I need a poke to leave for the airport at midnight.", "expect": "dev.heyari.reminder"}
+{"utterance": "Once it hits three, yell at me to log off.", "expect": "dev.heyari.reminder"}
+{"utterance": "Will you ring me at five about the conference call?", "expect": "dev.heyari.reminder"}
+{"utterance": "Let's mark down checking the mailbox for five PM today.", "expect": "dev.heyari.reminder"}
+{"utterance": "Make a note on my schedule for eight to water the plants.", "expect": "dev.heyari.reminder"}
+{"utterance": "Keep it in mind to get the mail in an hour.", "expect": "dev.heyari.reminder"}
+{"utterance": "I'm going to need a warning at six AM for my flight.", "expect": "dev.heyari.reminder"}
+{"utterance": "Tap me at three PM to check on the cake.", "expect": "dev.heyari.reminder"}
+{"utterance": "Will you highlight the team huddle at four today?", "expect": "dev.heyari.reminder"}
+{"utterance": "measure out half an hour for the cake in the oven", "expect": "dev.heyari.timer"}
+{"utterance": "alert me in forty five minutes to check the sprinkler", "expect": "dev.heyari.timer"}
+{"utterance": "alert me when twenty minutes have elapsed for the laundry", "expect": "dev.heyari.timer"}
+{"utterance": "can you track twelve minutes for the broccoli", "expect": "dev.heyari.timer"}
+{"utterance": "watch the clock for six minutes while the tea steeps", "expect": "dev.heyari.timer"}
+{"utterance": "keep an eye on the time for the chicken, make it forty minutes", "expect": "dev.heyari.timer"}
+{"utterance": "give me an alert in nine minutes for the pasta", "expect": "dev.heyari.timer"}
+{"utterance": "ring in eight minutes for the veggies", "expect": "dev.heyari.timer"}
+{"utterance": "I need an alert for the pizza in twenty-five minutes", "expect": "dev.heyari.timer"}
+{"utterance": "buzz me when forty minutes have gone by", "expect": "dev.heyari.timer"}
+{"utterance": "track a ten-minute window for the face mask", "expect": "dev.heyari.timer"}
+{"utterance": "mind the oven for forty-five minutes", "expect": "dev.heyari.timer"}
+{"utterance": "set an alert to flip the steak in five minutes", "expect": "dev.heyari.timer"}
+{"utterance": "can you watch the clock for seven minutes for my coffee", "expect": "dev.heyari.timer"}
+{"utterance": "time fifteen minutes for my workout session", "expect": "dev.heyari.timer"}
+{"utterance": "give me a heads up when twenty-five minutes are over for the laundry", "expect": "dev.heyari.timer"}
+{"utterance": "keep a tally of twelve minutes for the rice", "expect": "dev.heyari.timer"}
+{"utterance": "let's do twenty minutes of study time starting now", "expect": "dev.heyari.timer"}
+{"utterance": "how much of the thirty minutes is remaining for the roast", "expect": "dev.heyari.timer"}
+{"utterance": "where are we at with the chicken in the oven", "expect": "dev.heyari.timer"}
+{"utterance": "is the webassembly virtual machine up and running", "expect": "dev.heyari.wasmecho"}
+{"utterance": "let's see if the sandboxed module can talk to us", "expect": "dev.heyari.wasmecho"}
+{"utterance": "can we get a quick greeting from the wasm runtime", "expect": "dev.heyari.wasmecho"}
+{"utterance": "verify that the webassembly host is executing code", "expect": "dev.heyari.wasmecho"}
+{"utterance": "let's pull a sign of life from the binary container", "expect": "dev.heyari.wasmecho"}
+{"utterance": "is the compiled sandboxed code working", "expect": "dev.heyari.wasmecho"}
+{"utterance": "can you ping the webassembly subsystem", "expect": "dev.heyari.wasmecho"}
+{"utterance": "do a quick health check on the wasm engine", "expect": "dev.heyari.wasmecho"}
+{"utterance": "make sure the sandboxed interpreter is responsive", "expect": "dev.heyari.wasmecho"}
+{"utterance": "let's see if we can load the compiled module", "expect": "dev.heyari.wasmecho"}
+{"utterance": "does the webassembly vm return a message", "expect": "dev.heyari.wasmecho"}
+{"utterance": "get a hello from the sandboxed environment", "expect": "dev.heyari.wasmecho"}
+{"utterance": "i want to test the execution of the sandboxed binary", "expect": "dev.heyari.wasmecho"}
+{"utterance": "is the webassembly interpreter online", "expect": "dev.heyari.wasmecho"}
+{"utterance": "pull a reply from the virtual machine", "expect": "dev.heyari.wasmecho"}
+{"utterance": "test the sandboxed execution layer", "expect": "dev.heyari.wasmecho"}
+{"utterance": "can the wasm backend hear me", "expect": "dev.heyari.wasmecho"}
+{"utterance": "let's check the status of the webassembly subsystem", "expect": "dev.heyari.wasmecho"}
+{"utterance": "trigger a response from the sandboxed runtime", "expect": "dev.heyari.wasmecho"}
+{"utterance": "is the compiled binary responding properly", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Should I pack boots for my trip to Chicago this weekend?", "expect": "dev.heyari.weather"}
+{"utterance": "Are we expecting storms in Miami on Friday?", "expect": "dev.heyari.weather"}
+{"utterance": "Do I need to bundle up in Boston tomorrow morning?", "expect": "dev.heyari.weather"}
+{"utterance": "Is it going to freeze in Denver tonight?", "expect": "dev.heyari.weather"}
+{"utterance": "Is it looking muggy in Houston this afternoon?", "expect": "dev.heyari.weather"}
+{"utterance": "Should I prepare for high winds in Chicago tomorrow?", "expect": "dev.heyari.weather"}
+{"utterance": "Will the streets be wet in New York on Tuesday?", "expect": "dev.heyari.weather"}
+{"utterance": "Is it a t-shirt day in Phoenix on Thursday?", "expect": "dev.heyari.weather"}
+{"utterance": "Am I going to get drenched in Seattle this evening?", "expect": "dev.heyari.weather"}
+{"utterance": "Do I need to cover my plants in Detroit tonight?", "expect": "dev.heyari.weather"}
+{"utterance": "Will it be overcast in San Francisco tomorrow afternoon?", "expect": "dev.heyari.weather"}
+{"utterance": "Are we looking at clear skies in Miami this Sunday?", "expect": "dev.heyari.weather"}
+{"utterance": "Is there a storm warning for Boston this weekend?", "expect": "dev.heyari.weather"}
+{"utterance": "Will I get heat stroke in Death Valley this afternoon?", "expect": "dev.heyari.weather"}
+{"utterance": "Is there a chance of precipitation in Dallas on Monday?", "expect": "dev.heyari.weather"}
+{"utterance": "Will the roads be icy in Anchorage tomorrow morning?", "expect": "dev.heyari.weather"}
+{"utterance": "Is the humidity going to be bad in Atlanta this afternoon?", "expect": "dev.heyari.weather"}
+{"utterance": "Do I need my snow boots for Toronto this Friday?", "expect": "dev.heyari.weather"}
+{"utterance": "Will conditions be decent for a hike in Denver this Sunday?", "expect": "dev.heyari.weather"}
+{"utterance": "Is the sun going to show itself in London on Sunday?", "expect": "dev.heyari.weather"}
+{"utterance": "Are you ready to get started today?", "expect": "greeting"}
+{"utterance": "How is the world treating you today?", "expect": "greeting"}
+{"utterance": "What's the craic?", "expect": "greeting"}
+{"utterance": "Just popping by for a second.", "expect": "greeting"}
+{"utterance": "Thought I'd touch base with you.", "expect": "greeting"}
+{"utterance": "Is your day going well so far?", "expect": "greeting"}
+{"utterance": "Nice to connect with you.", "expect": "greeting"}
+{"utterance": "Glad to have you with me today.", "expect": "greeting"}
+{"utterance": "Just wanted to check in.", "expect": "greeting"}
+{"utterance": "I hope you're having a productive day.", "expect": "greeting"}
+{"utterance": "Are we ready to do this?", "expect": "greeting"}
+{"utterance": "What's the good word today?", "expect": "greeting"}
+{"utterance": "Hope your week is going well.", "expect": "greeting"}
+{"utterance": "What is the vibe on your end today?", "expect": "greeting"}
+{"utterance": "I trust everything is going smoothly with you.", "expect": "greeting"}
+{"utterance": "Pleased to make your acquaintance.", "expect": "greeting"}
+{"utterance": "Is everything quiet in your world?", "expect": "greeting"}
+{"utterance": "What's shaking today?", "expect": "greeting"}
+{"utterance": "Checking in on my favorite assistant.", "expect": "greeting"}
+{"utterance": "It's wonderful to be speaking with you.", "expect": "greeting"}
+{"utterance": "Let's check if there are any new updates on Twitter.", "expect": "open"}
+{"utterance": "Is there any way you can display Instagram?", "expect": "open"}
+{"utterance": "Navigate me over towards Slack.", "expect": "open"}
+{"utterance": "Let's browse some videos on YouTube.", "expect": "open"}
+{"utterance": "Can we step inside WhatsApp?", "expect": "open"}
+{"utterance": "I'd love to browse Pinterest right now.", "expect": "open"}
+{"utterance": "Help me access my Gmail.", "expect": "open"}
+{"utterance": "Would you mind summoning Netflix?", "expect": "open"}
+{"utterance": "Can you pull Slack to the forefront?", "expect": "open"}
+{"utterance": "Let's inspect the Calculator for a second.", "expect": "open"}
+{"utterance": "Are you able to initiate Safari?", "expect": "open"}
+{"utterance": "Unleash Chrome, please.", "expect": "open"}
+{"utterance": "Can we transition to Discord?", "expect": "open"}
+{"utterance": "I should probably take a look at Duolingo.", "expect": "open"}
+{"utterance": "Can you toggle over to Spotify?", "expect": "open"}
+{"utterance": "Why don't we inspect the Contacts?", "expect": "open"}
+{"utterance": "I'm ready to write some notes on Evernote.", "expect": "open"}
+{"utterance": "Let's look at what's happening on Reddit.", "expect": "open"}
+{"utterance": "Can you bring Gmail to life?", "expect": "open"}
+{"utterance": "Would you wake up Zoom?", "expect": "open"}
+{"utterance": "What is the capital of Australia?", "expect": "NONE"}
+{"utterance": "When did the American Civil War end?", "expect": "NONE"}
+{"utterance": "How do planes fly?", "expect": "NONE"}
+{"utterance": "What is the gestation period of an elephant?", "expect": "NONE"}
+{"utterance": "Who was the second president of the United States?", "expect": "NONE"}
+{"utterance": "What is the population of Tokyo?", "expect": "NONE"}
+{"utterance": "Why do leaves change color in autumn?", "expect": "NONE"}
+{"utterance": "Who directed the movie Inception?", "expect": "NONE"}
+{"utterance": "What are the three branches of the US government?", "expect": "NONE"}
+{"utterance": "What is the main ingredient in hummus?", "expect": "NONE"}
+{"utterance": "Who developed the theory of relativity?", "expect": "NONE"}
+{"utterance": "How many teeth does an adult human have?", "expect": "NONE"}
+{"utterance": "What language is spoken in Brazil?", "expect": "NONE"}
+{"utterance": "What is the distance between the Earth and the Moon?", "expect": "NONE"}
+{"utterance": "What is the largest ocean on Earth?", "expect": "NONE"}
+{"utterance": "Why do we yawn?", "expect": "NONE"}
+{"utterance": "How many ounces are in a gallon?", "expect": "NONE"}
+{"utterance": "How many stripes are on the American flag?", "expect": "NONE"}
+{"utterance": "Who was the first woman to win a Nobel Prize?", "expect": "NONE"}
+{"utterance": "What is the tallest waterfall in the world?", "expect": "NONE"}
+{"utterance": "Why is salt used to melt ice on roads?", "expect": "NONE"}
+{"utterance": "How many time zones are there in Russia?", "expect": "NONE"}
+{"utterance": "What is the lifespan of a housefly?", "expect": "NONE"}
+{"utterance": "Who wrote the Great Gatsby?", "expect": "NONE"}
+{"utterance": "What is the main gas in Earth's atmosphere?", "expect": "NONE"}
+{"utterance": "What is the national flower of Japan?", "expect": "NONE"}
+{"utterance": "Who was the first person to walk on the moon?", "expect": "NONE"}
+{"utterance": "How many players are on a soccer field?", "expect": "NONE"}
+{"utterance": "What is the capital of Egypt?", "expect": "NONE"}
+{"utterance": "Who designed the Eiffel Tower?", "expect": "NONE"}
+{"utterance": "What is the most common surname in the world?", "expect": "NONE"}
+{"utterance": "How do clouds form?", "expect": "NONE"}
+{"utterance": "What is the largest desert in the world?", "expect": "NONE"}
+{"utterance": "What is the primary ingredient in chocolate?", "expect": "NONE"}
+{"utterance": "Why do cats purr?", "expect": "NONE"}
+{"utterance": "What is the capital of India?", "expect": "NONE"}
+{"utterance": "Who was the first prime minister of Great Britain?", "expect": "NONE"}
+{"utterance": "How many bones are in an adult human body?", "expect": "NONE"}
+{"utterance": "Who wrote To Kill a Mockingbird?", "expect": "NONE"}
+{"utterance": "How do fish breathe underwater?", "expect": "NONE"}
+{"utterance": "What is the largest species of shark?", "expect": "NONE"}
+{"utterance": "What is the national dish of Spain?", "expect": "NONE"}
+{"utterance": "Who sculpted David?", "expect": "NONE"}
+{"utterance": "What is the capital of South Africa?", "expect": "NONE"}
+{"utterance": "How many valves does a trumpet have?", "expect": "NONE"}
+{"utterance": "What is the main language of Egypt?", "expect": "NONE"}
+{"utterance": "Who wrote the novel 1984?", "expect": "NONE"}
+{"utterance": "What is the capital of Germany?", "expect": "NONE"}
+{"utterance": "How many rings are there on the Olympic flag?", "expect": "NONE"}
+{"utterance": "What is the primary crop of Iowa?", "expect": "NONE"}
