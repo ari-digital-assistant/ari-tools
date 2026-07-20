@@ -49,7 +49,9 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 CORPUS = HERE / "corpus"
-DEFAULT_MODEL = os.environ.get("EVAL_MODEL", "gemini-3.5-flash")
+# `or` (not a .get default): the workflow exports EVAL_MODEL="" when the
+# dispatch input is blank, and an empty string must still mean the default.
+DEFAULT_MODEL = os.environ.get("EVAL_MODEL") or "gemini-3.5-flash"
 
 EVAL_FILES = [
     HERE / "routing-eval.jsonl",
@@ -203,7 +205,10 @@ def call_gemini(prompt: str, model: str) -> list:
     from google import genai
     client = genai.Client()  # reads GEMINI_API_KEY
     last_err = None
-    for attempt in range(3):
+    # 5 attempts, capped exponential backoff: observed 2026-07-20, the
+    # flash tier under "high demand" throws alternating 500s and silent
+    # connection drops for 10+ minutes — 3 thin retries lost a whole run.
+    for attempt in range(5):
         try:
             interaction = client.interactions.create(
                 model=model,
@@ -223,11 +228,14 @@ def call_gemini(prompt: str, model: str) -> list:
             return [c for c in cases if isinstance(c, str)]
         except Exception as e:  # noqa: BLE001 — retried, then fatal with detail
             last_err = e
-            wait = 5 * (2 ** attempt)
+            wait = min(5 * (2 ** attempt), 60)
             print(f"  Gemini attempt {attempt + 1} failed ({e!r}); "
                   f"retrying in {wait}s", file=sys.stderr)
             time.sleep(wait)
-    sys.exit(f"ERROR: Gemini ({model}) failed after 3 attempts: {last_err!r}")
+    sys.exit(f"ERROR: Gemini ({model}) failed after 5 attempts: {last_err!r} — "
+             f"if the model is overloaded, re-run with EVAL_MODEL (or "
+             f"--model) set to another GA model, e.g. gemini-2.5-flash; the "
+             f"output header records which model wrote the bank.")
 
 
 def filter_candidates(cands: list, locale: str, engine_dir: Path,

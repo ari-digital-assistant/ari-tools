@@ -20,6 +20,10 @@ on:
         description: 'Plumbing test only — no Gemini calls, no commit.'
         required: false
         default: 'false'
+      model:
+        description: 'EVAL_MODEL override (GA models only). Empty = gemini-3.5-flash. Use when the default tier is overloaded.'
+        required: false
+        default: ''
 
 permissions:
   contents: write   # push regenerated eval banks to main
@@ -50,6 +54,7 @@ jobs:
       - name: Generate eval banks
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          EVAL_MODEL: ${{ github.event.inputs.model }}
           ARI_ENGINE_DIR: /tmp/engine
           ARI_SKILLS_DIR: /tmp/skills
         run: |
