@@ -58,15 +58,21 @@ jobs:
           git add functiongemma/corpus/draft-*
           git commit -m "draft(corpus): frame bank for ${{ github.event.inputs.skill }} (${{ github.event.inputs.locale }})"
           git push -f origin "$BRANCH"
-          # Deliberately NOT `gh pr create`: this repo (like most, by default)
-          # forbids GitHub Actions from opening pull requests, and enabling
-          # that org-wide setting to save one click is a poor trade. The
-          # branch is pushed; the link below opens the PR form pre-filled.
-          {
-            echo "### Frame bank drafted: \`${{ github.event.inputs.skill }}\` (${{ github.event.inputs.locale }})"
-            echo ""
-            echo "Branch \`$BRANCH\` pushed. [Open a PR](${{ github.server_url }}/${{ github.repository }}/compare/$BRANCH?expand=1)"
-            echo ""
-            echo "Review, drop the \`draft-\` prefix (merging slots as appropriate), then merge."
-            echo "Draft files are ignored by training until renamed. Italian needs native review."
-          } >> "$GITHUB_STEP_SUMMARY"
+          # Requires the org + repo setting "Allow GitHub Actions to create and
+          # approve pull requests" (enabled 2026-07-20). If that is ever turned
+          # off again this step fails with a 'not permitted' GraphQL error —
+          # the branch is already pushed at that point, so the fallback is
+          # simply to open the PR by hand from the link below.
+          gh pr create \
+            --title "Frame bank draft: ${{ github.event.inputs.skill }} (${{ github.event.inputs.locale }})" \
+            --body "LLM-drafted via \`author-frames.py\` under the prompt contract in \`functiongemma/corpus/README.md\`.
+
+          Review, drop the \`draft-\` prefix (merging slots as appropriate), then merge — the
+          expander ignores \`draft-*\` files, so nothing trains on this until renamed.
+          Italian requires native-speaker review.
+
+          Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            || {
+              echo "::warning::PR creation refused — branch \`$BRANCH\` is pushed, open it manually"
+              echo "[Open a PR](${{ github.server_url }}/${{ github.repository }}/compare/$BRANCH?expand=1)" >> "$GITHUB_STEP_SUMMARY"
+            }
