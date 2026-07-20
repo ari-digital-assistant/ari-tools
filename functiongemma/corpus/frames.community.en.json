@@ -390,19 +390,11 @@
         "args": {}
       },
       {
-        "text": "add another one",
-        "args": {}
-      },
-      {
         "text": "count once more",
         "args": {}
       },
       {
         "text": "increment",
-        "args": {}
-      },
-      {
-        "text": "bump it",
         "args": {}
       },
       {
@@ -3182,98 +3174,6 @@
         "args": {}
       },
       {
-        "text": "run the wasm loader test",
-        "args": {}
-      },
-      {
-        "text": "check the wasm loader",
-        "args": {}
-      },
-      {
-        "text": "run a wasm loader test",
-        "args": {}
-      },
-      {
-        "text": "wasm loader test please",
-        "args": {}
-      },
-      {
-        "text": "smoke test the wasm loader",
-        "args": {}
-      },
-      {
-        "text": "run the wasm smoke test",
-        "args": {}
-      },
-      {
-        "text": "do the wasm smoke test",
-        "args": {}
-      },
-      {
-        "text": "wasm smoke test please",
-        "args": {}
-      },
-      {
-        "text": "run a wasm smoke test",
-        "args": {}
-      },
-      {
-        "text": "quick wasm smoke test",
-        "args": {}
-      },
-      {
-        "text": "smoke test the wasm skill",
-        "args": {}
-      },
-      {
-        "text": "test the wasm module",
-        "args": {}
-      },
-      {
-        "text": "run the wasm module test",
-        "args": {}
-      },
-      {
-        "text": "check the wasm module",
-        "args": {}
-      },
-      {
-        "text": "does the wasm loader work",
-        "args": {}
-      },
-      {
-        "text": "is the wasm loader working",
-        "args": {}
-      },
-      {
-        "text": "verify the wasm loader",
-        "args": {}
-      },
-      {
-        "text": "run wasm hello",
-        "args": {}
-      },
-      {
-        "text": "say wasm hello",
-        "args": {}
-      },
-      {
-        "text": "wasm hello please",
-        "args": {}
-      },
-      {
-        "text": "get the wasm greeting",
-        "args": {}
-      },
-      {
-        "text": "run the wasm greeting",
-        "args": {}
-      },
-      {
-        "text": "show me the wasm greeting",
-        "args": {}
-      },
-      {
         "text": "echo something from wasm",
         "args": {}
       },
@@ -3319,18 +3219,6 @@
       },
       {
         "text": "verify the wasm echo",
-        "args": {}
-      },
-      {
-        "text": "run the wasm abi test",
-        "args": {}
-      },
-      {
-        "text": "test the wasm abi",
-        "args": {}
-      },
-      {
-        "text": "wasm abi smoke test",
         "args": {}
       },
       {

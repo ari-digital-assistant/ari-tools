@@ -1,6 +1,6 @@
 {
   "current_time": {
-    "target": 180,
+    "target": 218,
     "cap": 12,
     "frames": [
       {
@@ -762,11 +762,123 @@
       {
         "text": "how far along is the day now",
         "args": {}
+      },
+      {
+        "text": "do you know what time it is by any chance",
+        "args": {}
+      },
+      {
+        "text": "would you kindly tell me the time",
+        "args": {}
+      },
+      {
+        "text": "could you possibly tell me the time",
+        "args": {}
+      },
+      {
+        "text": "any chance you could tell me the time",
+        "args": {}
+      },
+      {
+        "text": "if you dont mind whats the time",
+        "args": {}
+      },
+      {
+        "text": "sorry to bother you whats the time",
+        "args": {}
+      },
+      {
+        "text": "might i trouble you for the time",
+        "args": {}
+      },
+      {
+        "text": "would you be able to tell me the time",
+        "args": {}
+      },
+      {
+        "text": "do you reckon you know the time",
+        "args": {}
+      },
+      {
+        "text": "if its no trouble whats the time",
+        "args": {}
+      },
+      {
+        "text": "would you say its evening yet",
+        "args": {}
+      },
+      {
+        "text": "has it turned to evening yet",
+        "args": {}
+      },
+      {
+        "text": "is it evening already or not",
+        "args": {}
+      },
+      {
+        "text": "reckon its evening by now",
+        "args": {}
+      },
+      {
+        "text": "would you call this evening",
+        "args": {}
+      },
+      {
+        "text": "has evening come around yet",
+        "args": {}
+      },
+      {
+        "text": "is it nearly evening time",
+        "args": {}
+      },
+      {
+        "text": "are we into the evening yet",
+        "args": {}
+      },
+      {
+        "text": "my watch has packed in whats the time",
+        "args": {}
+      },
+      {
+        "text": "my watch has conked out what time is it",
+        "args": {}
+      },
+      {
+        "text": "my watch gave up the ghost whats the time",
+        "args": {}
+      },
+      {
+        "text": "my watch quit on me whats the time",
+        "args": {}
+      },
+      {
+        "text": "my clock has died what time is it",
+        "args": {}
+      },
+      {
+        "text": "the battery in my watch is dead whats the time",
+        "args": {}
+      },
+      {
+        "text": "my watch wont tick whats the time",
+        "args": {}
+      },
+      {
+        "text": "my wristwatch has stopped so whats the time",
+        "args": {}
+      },
+      {
+        "text": "roughly what hour is it now",
+        "args": {}
+      },
+      {
+        "text": "about what hour are we on",
+        "args": {}
       }
     ]
   },
   "current_date": {
-    "target": 180,
+    "target": 204,
     "cap": 12,
     "frames": [
       {
@@ -1488,11 +1600,107 @@
       {
         "text": "is it still the first week of the month",
         "args": {}
+      },
+      {
+        "text": "is it monday already",
+        "args": {}
+      },
+      {
+        "text": "is it thursday already",
+        "args": {}
+      },
+      {
+        "text": "is it the weekend already",
+        "args": {}
+      },
+      {
+        "text": "cant believe its wednesday already",
+        "args": {}
+      },
+      {
+        "text": "is it really friday now",
+        "args": {}
+      },
+      {
+        "text": "surely its not friday already",
+        "args": {}
+      },
+      {
+        "text": "has friday come around already",
+        "args": {}
+      },
+      {
+        "text": "is it tuesday already",
+        "args": {}
+      },
+      {
+        "text": "give me the date off the calendar",
+        "args": {}
+      },
+      {
+        "text": "read me the calendar date",
+        "args": {}
+      },
+      {
+        "text": "whats the calendar date today",
+        "args": {}
+      },
+      {
+        "text": "tell me the calendar date",
+        "args": {}
+      },
+      {
+        "text": "what date does the calendar show",
+        "args": {}
+      },
+      {
+        "text": "whats the date showing on the calendar",
+        "args": {}
+      },
+      {
+        "text": "give me todays calendar date",
+        "args": {}
+      },
+      {
+        "text": "what day is the calendar on",
+        "args": {}
+      },
+      {
+        "text": "is the month almost over",
+        "args": {}
+      },
+      {
+        "text": "are we near month end now",
+        "args": {}
+      },
+      {
+        "text": "how far through the year are we",
+        "args": {}
+      },
+      {
+        "text": "are we in the back half of the month",
+        "args": {}
+      },
+      {
+        "text": "is the month coming to an end",
+        "args": {}
+      },
+      {
+        "text": "how deep into the month are we now",
+        "args": {}
+      },
+      {
+        "text": "are we over halfway through the year",
+        "args": {}
+      },
+      {
+        "text": "is the year nearly done",
+        "args": {}
       }
     ]
   },
   "greeting": {
-    "target": 200,
+    "target": 210,
     "cap": 12,
     "frames": [
       {
@@ -2294,6 +2502,46 @@
       {
         "text": "hows my favourite ai",
         "args": {}
+      },
+      {
+        "text": "nice to see you again",
+        "args": {}
+      },
+      {
+        "text": "so nice to see you again",
+        "args": {}
+      },
+      {
+        "text": "lovely seeing you",
+        "args": {}
+      },
+      {
+        "text": "great to see you again",
+        "args": {}
+      },
+      {
+        "text": "fancy meeting you here",
+        "args": {}
+      },
+      {
+        "text": "fancy bumping into you",
+        "args": {}
+      },
+      {
+        "text": "well look whos here again",
+        "args": {}
+      },
+      {
+        "text": "guess whos here",
+        "args": {}
+      },
+      {
+        "text": "well if it isnt you",
+        "args": {}
+      },
+      {
+        "text": "good to have you back again",
+        "args": {}
       }
     ]
   },
@@ -2767,6 +3015,102 @@
         "text": "solve {N1} + {N2}",
         "args": {
           "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "knock {N2} off {N1} for me",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "take {N2} off {N1} for me",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "shave {N2} off {N1} would you",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "lop {N2} off {N1} for me",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "knock {N2} off {N1} please",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "can you knock {N2} off {N1}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "just knock {N2} off {N1}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "chop {N2} off {N1} for me",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "take {N2} away from {N1} for me",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "can you take {N2} away from {N1}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "whats {N1} take {N2} away",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "take away {N2} from {N1}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "if i take {N2} away from {N1} what do i get",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "please take {N2} away from {N1}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "work out {N1} take away {N2}",
+        "args": {
+          "expression": "{N1} - {N2}"
+        }
+      },
+      {
+        "text": "subtract {N2} from {N1} for me",
+        "args": {
+          "expression": "{N1} - {N2}"
         }
       }
     ]
@@ -3251,6 +3595,66 @@
       },
       {
         "text": "open me up {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "get {APP} in front of me",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "put {APP} right in front of me",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "bring {APP} in front of me",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "shove {APP} on the screen",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "slap {APP} on the screen",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "get {APP} up in front of me",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "whack {APP} on the screen",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "chuck {APP} up on the screen",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "fling {APP} on the screen",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "have {APP} up on my screen",
         "args": {
           "app_name": "{APP}"
         }
