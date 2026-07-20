@@ -325,7 +325,24 @@ def main() -> None:
                     help="No API calls: run discovery, the corpus oracle and "
                          "the filters over frame-bank texts as stand-in "
                          "candidates. Writes nothing.")
+    ap.add_argument("--list-models", action="store_true",
+                    help="Print the models this GEMINI_API_KEY can use, then "
+                         "exit. For choosing EVAL_MODEL when a tier is "
+                         "quota-capped or gated (2026-07-20: 3.5-flash free "
+                         "tier is 20 req/day; 2.5-flash 404s for new keys).")
     args = ap.parse_args()
+
+    if args.list_models:
+        if not os.environ.get("GEMINI_API_KEY"):
+            sys.exit("ERROR: GEMINI_API_KEY not set")
+        from google import genai
+        client = genai.Client()
+        for m in client.models.list():
+            name = getattr(m, "name", m)
+            extra = (getattr(m, "supported_actions", None)
+                     or getattr(m, "supported_generation_methods", None) or "")
+            print(f"{name}  {extra}")
+        return
 
     if not args.dry_run and not os.environ.get("GEMINI_API_KEY"):
         sys.exit("ERROR: GEMINI_API_KEY not set (or use --dry-run)")
