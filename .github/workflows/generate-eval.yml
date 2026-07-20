@@ -1,0 +1,113 @@
+name: Generate routing eval
+
+# Regenerate the GENERATED eval banks (routing-eval.gen.<locale>.jsonl) with
+# Gemini and commit them to main. These are the breadth set derive_floor.py
+# sweeps for the per-model confidence floor; the hand-written spine files
+# remain the promotion gate and are never touched here.
+#
+# Must run (and its commit must land) BEFORE a training run that should see
+# the fresh eval: the nightly's decontamination reads eval keys from the
+# ari-tools checkout Modal clones, so only committed eval exists there.
+
+on:
+  workflow_dispatch:
+    inputs:
+      locale:
+        description: 'Locale (en|it). Empty = both.'
+        required: false
+        default: ''
+      dry_run:
+        description: 'Plumbing test only — no Gemini calls, no commit.'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: write   # push regenerated eval banks to main
+  issues: write     # queue Italian output for native review
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Clone ari-skills and ari-engine
+        run: |
+          git clone --depth 1 https://github.com/ari-digital-assistant/ari-skills.git /tmp/skills
+          git clone --depth 1 https://github.com/ari-digital-assistant/ari-engine.git /tmp/engine
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Install Python deps
+        run: pip install google-genai pyyaml
+
+      - name: Generate eval banks
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ARI_ENGINE_DIR: /tmp/engine
+          ARI_SKILLS_DIR: /tmp/skills
+        run: |
+          set -e
+          DRY=""
+          if [[ "${{ github.event.inputs.dry_run }}" == "true" ]]; then
+            DRY="--dry-run"
+          fi
+          LOCALES="${{ github.event.inputs.locale }}"
+          if [[ -z "$LOCALES" ]]; then LOCALES="en it"; fi
+          for L in $LOCALES; do
+            echo "── generating eval bank ($L) ──"
+            python3 functiongemma/generate-eval.py --locale "$L" $DRY
+          done
+
+      - name: Commit regenerated eval banks
+        if: github.event.inputs.dry_run != 'true'
+        run: |
+          git config user.name "ari-frames-bot"
+          git config user.email "bot@heyari.dev"
+          git add functiongemma/routing-eval.gen*.jsonl
+          if git diff --cached --quiet; then
+            echo "no changes to commit"
+            exit 0
+          fi
+          git commit -m "chore(eval): regenerate generated eval banks (${{ github.event.inputs.locale || 'en it' }})
+
+          Written by generate-eval.py (Gemini) — keyword-miss filtered and
+          decontaminated against the training corpus at generation time.
+          The hand-written spine remains the promotion gate; these files
+          feed derive_floor.py and community-skill coverage tracking.
+
+          Workflow run: ${{ github.run_id }}"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin main && git push origin HEAD:main && break
+            echo "push race (attempt $i), retrying..."
+            sleep $((RANDOM % 10 + 5))
+          done
+
+      - name: Queue Italian eval for native review
+        if: >-
+          github.event.inputs.dry_run != 'true'
+          && (github.event.inputs.locale == '' || github.event.inputs.locale == 'it')
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh issue create \
+            --title "Review generated Italian eval bank (routing-eval.gen.it.jsonl)" \
+            --label "italian-review" \
+            --body "generate-eval.py regenerated the Italian GENERATED eval bank.
+
+          Machine-written and already committed to \`main\`. It never gates
+          promotion (the hand-written spine does), but it DOES feed the
+          per-model confidence-floor derivation — a subtly-unnatural Italian
+          phrase here is a permanent unfair test, which matters more than in
+          training data. Check \`functiongemma/routing-eval.gen.it.jsonl\`
+          for idiomatic phrasing and correct accents; edit in place and
+          commit.
+
+          Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            || echo "::warning::could not open review issue (label missing?) — eval is still committed"
