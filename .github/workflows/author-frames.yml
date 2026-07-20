@@ -47,16 +47,26 @@ jobs:
             --skill "${{ github.event.inputs.skill }}" \
             --locale "${{ github.event.inputs.locale }}"
 
-      - name: Open PR
+      - name: Push draft branch
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           BRANCH="frames/${{ github.event.inputs.skill }}-${{ github.event.inputs.locale }}"
           git config user.name "ari-frames-bot"
           git config user.email "bot@heyari.dev"
-          git checkout -b "$BRANCH"
+          git checkout -B "$BRANCH"
           git add functiongemma/corpus/draft-*
           git commit -m "draft(corpus): frame bank for ${{ github.event.inputs.skill }} (${{ github.event.inputs.locale }})"
-          git push origin "$BRANCH"
-          gh pr create --title "Frame bank draft: ${{ github.event.inputs.skill }} (${{ github.event.inputs.locale }})" \
-            --body "LLM-drafted via author-frames.py. Review, drop the draft- prefix (merge slots as appropriate), then merge. Italian requires native-speaker review. Draft files are ignored by training until renamed."
+          git push -f origin "$BRANCH"
+          # Deliberately NOT `gh pr create`: this repo (like most, by default)
+          # forbids GitHub Actions from opening pull requests, and enabling
+          # that org-wide setting to save one click is a poor trade. The
+          # branch is pushed; the link below opens the PR form pre-filled.
+          {
+            echo "### Frame bank drafted: \`${{ github.event.inputs.skill }}\` (${{ github.event.inputs.locale }})"
+            echo ""
+            echo "Branch \`$BRANCH\` pushed. [Open a PR](${{ github.server_url }}/${{ github.repository }}/compare/$BRANCH?expand=1)"
+            echo ""
+            echo "Review, drop the \`draft-\` prefix (merging slots as appropriate), then merge."
+            echo "Draft files are ignored by training until renamed. Italian needs native review."
+          } >> "$GITHUB_STEP_SUMMARY"
