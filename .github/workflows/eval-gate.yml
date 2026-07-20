@@ -1,0 +1,65 @@
+name: Eval gate (no training)
+
+# Run the Gate v3 promotion gate against an ALREADY-TRAINED GGUF, on the
+# canonical CI machine, without spending a GPU-second. Exists because local
+# eval numbers drift ±2-4 cases/70 across machines (llama.cpp CPU kernels),
+# so threshold and promotion decisions must be confirmed HERE, never on a
+# laptop. Costs ~nothing; the runner does a cargo build and 70 CPU
+# inferences of a 270M Q4 model.
+
+on:
+  workflow_dispatch:
+    inputs:
+      locale:
+        description: 'Locale (en|it)'
+        required: true
+      run_id:
+        description: 'Workflow run id whose ari-functiongemma-<locale>-q4_k_m artifact to gate'
+        required: true
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Download the candidate GGUF
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh run download "${{ github.event.inputs.run_id }}" \
+            -n "ari-functiongemma-${{ github.event.inputs.locale }}-q4_k_m" \
+            -D model -R "${{ github.repository }}"
+          ls -la model/
+
+      - name: Clone ari-engine and ari-skills
+        run: |
+          git clone --depth 1 https://github.com/ari-digital-assistant/ari-engine.git _ari-engine
+          git clone --depth 1 --filter=blob:none --sparse \
+            https://github.com/ari-digital-assistant/ari-skills.git /tmp/skills
+          cd /tmp/skills && git sparse-checkout set skills/
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: _ari-engine
+
+      - name: Install llama.cpp build deps
+        run: |
+          sudo apt-get update && sudo apt-get install -y cmake clang libclang-dev
+          LIBCLANG_DIR="$(dirname "$(find /usr/lib /usr/lib64 -name 'libclang*.so*' 2>/dev/null | head -1)")"
+          echo "LIBCLANG_PATH=$LIBCLANG_DIR" >> "$GITHUB_ENV"
+
+      - name: Gate
+        run: |
+          EVAL="functiongemma/routing-eval.jsonl"
+          [ "${{ github.event.inputs.locale }}" = "it" ] && EVAL="functiongemma/routing-eval.it.jsonl"
+          cd _ari-engine
+          cargo run --release -p ari-ffi --bin route-eval -- \
+            --locale ${{ github.event.inputs.locale }} \
+            --skills-dir /tmp/skills/skills \
+            "$GITHUB_WORKSPACE/model/ari-functiongemma-${{ github.event.inputs.locale }}-q4_k_m.gguf" \
+            "$GITHUB_WORKSPACE/$EVAL"
