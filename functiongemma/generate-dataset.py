@@ -1211,6 +1211,12 @@ def main():
     heldout_keys = load_eval_keys([
         Path(__file__).parent / "routing-eval.jsonl",
         Path(__file__).parent / "routing-eval.it.jsonl",
+        # Generated eval banks (generate-eval.py) are held out exactly like
+        # the hand-written spine — a training row matching one would turn
+        # its derive_floor.py numbers into a memorisation test.
+        # load_eval_keys skips files that don't exist yet.
+        Path(__file__).parent / "routing-eval.gen.jsonl",
+        Path(__file__).parent / "routing-eval.gen.it.jsonl",
     ])
     poisoned = [ex["text"] for ex in flat if loose_key(ex["text"]) in heldout_keys]
     if poisoned:

@@ -38,8 +38,8 @@ jobs:
         id: set
         run: |
           LOCALE="${{ github.event.inputs.locale }}"
-          EN='{"locale":"en","eval_file":"functiongemma/routing-eval.jsonl"}'
-          IT='{"locale":"it","eval_file":"functiongemma/routing-eval.it.jsonl"}'
+          EN='{"locale":"en","eval_file":"functiongemma/routing-eval.jsonl","gen_eval_file":"functiongemma/routing-eval.gen.jsonl"}'
+          IT='{"locale":"it","eval_file":"functiongemma/routing-eval.it.jsonl","gen_eval_file":"functiongemma/routing-eval.gen.it.jsonl"}'
           case "$LOCALE" in
             "")  echo "matrix={\"include\":[$EN,$IT]}" >> "$GITHUB_OUTPUT" ;;
             en)  echo "matrix={\"include\":[$EN]}" >> "$GITHUB_OUTPUT" ;;
@@ -58,6 +58,11 @@ jobs:
         run: git config --global init.defaultBranch main
 
       - uses: actions/checkout@v5
+        with:
+          # Deep enough that `git log -1 -- functiongemma/` below finds the
+          # real last-touching commit instead of degenerating to HEAD (which
+          # a depth-1 checkout would, retraining on every unrelated commit).
+          fetch-depth: 50
 
       - name: Check for skill changes since last training
         id: check
@@ -78,8 +83,17 @@ jobs:
           SKILLS_SHA=$(git log -1 --format=%H -- skills/)
           cd -
 
+          # The corpus, eval banks and generator scripts live HERE in
+          # ari-tools — a bank-surgery or eval-regeneration commit must
+          # trigger a retrain exactly like a skill change does. Scoped to
+          # functiongemma/ (slight over-trigger on e.g. eval.py edits is the
+          # right direction; the old behaviour — never retraining on corpus
+          # work — bit us on 2026-07-20).
+          TOOLS_CORPUS_SHA=$(git log -1 --format=%H -- functiongemma/)
+
           echo "engine_skills_sha=$ENGINE_SKILLS_SHA" >> "$GITHUB_OUTPUT"
           echo "skills_sha=$SKILLS_SHA" >> "$GITHUB_OUTPUT"
+          echo "tools_corpus_sha=$TOOLS_CORPUS_SHA" >> "$GITHUB_OUTPUT"
           # Pin the eval harness to the engine as it stood when this run
           # started. Training takes ~90 minutes, and the gate is built from
           # ari-engine — so an unpinned checkout grades the model against
@@ -92,25 +106,28 @@ jobs:
           # Per-locale stored SHAs — each locale tracks its own last training.
           STORED_ENGINE=""
           STORED_SKILLS=""
+          STORED_TOOLS=""
           if pip install -q modal && \
              modal volume get ari-functiongemma-output "last-trained-${{ matrix.locale }}.json" /tmp/last-trained.json 2>/dev/null; then
             STORED_ENGINE=$(python3 -c "import json; print(json.load(open('/tmp/last-trained.json')).get('engine_skills_sha',''))")
             STORED_SKILLS=$(python3 -c "import json; print(json.load(open('/tmp/last-trained.json')).get('skills_sha',''))")
+            STORED_TOOLS=$(python3 -c "import json; print(json.load(open('/tmp/last-trained.json')).get('tools_corpus_sha',''))")
           fi
 
           echo "Locale: ${{ matrix.locale }}"
           echo "Stored engine SHA: $STORED_ENGINE  Current: $ENGINE_SKILLS_SHA"
           echo "Stored skills SHA: $STORED_SKILLS  Current: $SKILLS_SHA"
+          echo "Stored tools SHA:  $STORED_TOOLS  Current: $TOOLS_CORPUS_SHA"
 
           FORCE="${{ github.event.inputs.force || 'false' }}"
           if [[ "$FORCE" == "true" ]]; then
             echo "Force flag set — training will run."
             echo "should_train=true" >> "$GITHUB_OUTPUT"
-          elif [[ "$ENGINE_SKILLS_SHA" != "$STORED_ENGINE" || "$SKILLS_SHA" != "$STORED_SKILLS" ]]; then
-            echo "Skill changes detected — training will run."
+          elif [[ "$ENGINE_SKILLS_SHA" != "$STORED_ENGINE" || "$SKILLS_SHA" != "$STORED_SKILLS" || "$TOOLS_CORPUS_SHA" != "$STORED_TOOLS" ]]; then
+            echo "Skill or corpus changes detected — training will run."
             echo "should_train=true" >> "$GITHUB_OUTPUT"
           else
-            echo "No skill changes since last training — skipping."
+            echo "No skill or corpus changes since last training — skipping."
             echo "should_train=false" >> "$GITHUB_OUTPUT"
           fi
         env:
@@ -308,12 +325,57 @@ jobs:
           # would disagree about what a keyword-hit is, and any eval case a
           # community pattern claims would silently inflate the score that
           # promotes this model to real devices.
+          #
+          # pipefail is NOT in this workflow's default shell (`bash -e`, no
+          # `-o pipefail`) — without it, `tee` would mask a gate failure and
+          # promote a rejected model. The VERBOSE dump feeds derive_floor.py.
+          set -o pipefail
           cd _ari-engine
-          cargo run --release -p ari-ffi --bin route-eval -- \
+          ROUTE_EVAL_VERBOSE=1 cargo run --release -p ari-ffi --bin route-eval -- \
             --locale ${{ matrix.locale }} \
             --skills-dir /tmp/skills/skills \
             "$GITHUB_WORKSPACE/output/ari-functiongemma-${{ matrix.locale }}-q4_k_m.gguf" \
-            "$GITHUB_WORKSPACE/${{ matrix.eval_file }}"
+            "$GITHUB_WORKSPACE/${{ matrix.eval_file }}" \
+            | tee "$GITHUB_WORKSPACE/output/route-eval.spine.${{ matrix.locale }}.log"
+
+      - name: Routing-eval on the generated eval (floor-derivation input)
+        if: steps.check.outputs.should_train == 'true'
+        run: |
+          # The generated set is measurement, never a gate: exit 0/1 are both
+          # fine (its pass/fail verdict at the compiled threshold is
+          # irrelevant), but exit >= 2 (usage error / polluted eval) means the
+          # dump is untrustworthy — drop it so derive_floor.py falls back to
+          # the compiled constant, and say so loudly. Never fail the nightly
+          # over this file.
+          set -o pipefail
+          GEN="$GITHUB_WORKSPACE/${{ matrix.gen_eval_file }}"
+          if [ ! -f "$GEN" ]; then
+            echo "no generated eval bank ($GEN) — floor derivation will fall back."
+            exit 0
+          fi
+          cd _ari-engine
+          set +e
+          ROUTE_EVAL_VERBOSE=1 cargo run --release -p ari-ffi --bin route-eval -- \
+            --locale ${{ matrix.locale }} \
+            --skills-dir /tmp/skills/skills \
+            "$GITHUB_WORKSPACE/output/ari-functiongemma-${{ matrix.locale }}-q4_k_m.gguf" \
+            "$GEN" \
+            | tee "$GITHUB_WORKSPACE/output/route-eval.gen.${{ matrix.locale }}.log"
+          STATUS=$?
+          set -e
+          if [ "$STATUS" -ge 2 ]; then
+            echo "::warning::generated-eval route-eval failed (exit $STATUS) — floor will fall back to the compiled constant. Re-run generate-eval.yml (skill patterns may have drifted since generation)."
+            rm -f "$GITHUB_WORKSPACE/output/route-eval.gen.${{ matrix.locale }}.log"
+          fi
+
+      - name: Derive confidence floor
+        id: floor
+        if: steps.check.outputs.should_train == 'true'
+        run: |
+          python3 functiongemma/derive_floor.py \
+            --spine "output/route-eval.spine.${{ matrix.locale }}.log" \
+            --generated "output/route-eval.gen.${{ matrix.locale }}.log" \
+            | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Store training SHAs
         if: steps.check.outputs.should_train == 'true' && github.event.inputs.experimental != 'true'
@@ -325,6 +387,7 @@ jobs:
           {
             "engine_skills_sha": "${{ steps.check.outputs.engine_skills_sha }}",
             "skills_sha": "${{ steps.check.outputs.skills_sha }}",
+            "tools_corpus_sha": "${{ steps.check.outputs.tools_corpus_sha }}",
             "locale": "${{ matrix.locale }}",
             "trained_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
             "workflow_run": "${{ github.run_id }}"
@@ -346,7 +409,8 @@ jobs:
             --gguf output/ari-functiongemma-${{ matrix.locale }}-q4_k_m.gguf \
             --version "${{ steps.manifest.outputs.version }}" \
             --gguf-url "${{ steps.manifest.outputs.gguf_url }}" \
-            --release-tag "functiongemma-${{ matrix.locale }}-latest"
+            --release-tag "functiongemma-${{ matrix.locale }}-latest" \
+            --min-confidence "${{ steps.floor.outputs.min_confidence }}"
 
       - name: Send email notification
         if: steps.check.outputs.should_train == 'true' && github.event.inputs.experimental != 'true'

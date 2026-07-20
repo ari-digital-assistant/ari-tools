@@ -303,6 +303,11 @@ def publish_functiongemma(args: argparse.Namespace) -> int:
         "size_bytes": gguf.stat().st_size,
         "released_at": now_iso(),
     }
+    # Per-model confidence floor (derive_floor.py). Optional: manifests
+    # without it leave the engine on its compiled MIN_ROUTER_CONFIDENCE
+    # fallback, and devices that predate the field ignore it.
+    if args.min_confidence is not None:
+        manifest["min_confidence"] = args.min_confidence
     replace_release_asset(args.release_tag, manifest)
     print(f"{args.release_tag}: published version={args.version} "
           f"({manifest['size_bytes']} bytes)")
@@ -338,6 +343,10 @@ def main() -> int:
     p_fg.add_argument("--gguf-url", required=True,
                       help="public URL where the GGUF is hosted")
     p_fg.add_argument("--release-tag", required=True)
+    p_fg.add_argument("--min-confidence", type=float, default=None,
+                      help="per-model router confidence floor (mean per-token "
+                           "log-prob) derived by derive_floor.py; omitted = "
+                           "engine uses its compiled constant")
 
     args = p.parse_args()
     if args.kind == "llm":
