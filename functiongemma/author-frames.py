@@ -7,14 +7,19 @@ the first draft the same way every time — same prompt contract, same rules
 (it embeds corpus/README.md verbatim), same validation — instead of an ad-hoc
 chat with whichever model is nearby.
 
-    ANTHROPIC_API_KEY=... python3 author-frames.py \
+    OPENAI_API_KEY=... python3 author-frames.py \
         --skill dev.heyari.timer --locale en
 
 Output: corpus/draft-frames.<skill>.<locale>.json (+ draft-slots.* if the
 model needed new slot banks). Draft files are IGNORED by the expander until a
 human reviews, renames (drop the draft- prefix, merge slots), and commits.
+`--apply` instead activates the draft immediately (what the nightly does).
 Italian drafts additionally need native-speaker review — standing project
 rule.
+
+Uses the OpenAI API. The model is configurable (`--model`, or the
+`FRAMES_MODEL` env var) because model names move faster than this script:
+if the default is retired, override it rather than editing code.
 """
 
 import argparse
@@ -23,13 +28,14 @@ import os
 import re
 import subprocess
 import sys
+import urllib.error
 import urllib.request
 from pathlib import Path
 
 HERE = Path(__file__).parent
 CORPUS = HERE / "corpus"
-API_URL = "https://api.anthropic.com/v1/messages"
-DEFAULT_MODEL = "claude-opus-4-8"
+API_URL = "https://api.openai.com/v1/chat/completions"
+DEFAULT_MODEL = os.environ.get("FRAMES_MODEL", "gpt-5.6-sol")
 
 BUILTIN_IDS = {"current_time", "current_date", "calculator", "greeting", "open"}
 
@@ -112,26 +118,71 @@ Reply with ONLY a JSON object, no prose, of the shape:
             short name to avoid collisions...}}}}"""
 
 
-def call_model(prompt: str, model: str) -> dict:
-    key = os.environ.get("ANTHROPIC_API_KEY")
-    if not key:
-        sys.exit("ERROR: ANTHROPIC_API_KEY not set")
+def _post(payload: dict, key: str) -> dict:
     req = urllib.request.Request(
         API_URL,
-        data=json.dumps({
-            "model": model,
-            "max_tokens": 16000,
-            "messages": [{"role": "user", "content": prompt}],
-        }).encode(),
-        headers={"x-api-key": key, "anthropic-version": "2023-06-01",
-                 "content-type": "application/json"},
+        data=json.dumps(payload).encode(),
+        headers={"Authorization": f"Bearer {key}",
+                 "Content-Type": "application/json"},
     )
-    with urllib.request.urlopen(req) as resp:
-        body = json.load(resp)
-    text = "".join(b["text"] for b in body["content"] if b["type"] == "text")
+    with urllib.request.urlopen(req, timeout=600) as resp:
+        return json.load(resp)
+
+
+def call_model(prompt: str, model: str) -> dict:
+    key = os.environ.get("OPENAI_API_KEY")
+    if not key:
+        sys.exit("ERROR: OPENAI_API_KEY not set")
+
+    payload = {
+        "model": model,
+        "messages": [{"role": "user", "content": prompt}],
+        # The prompt demands a bare JSON object; asking the API to enforce
+        # it removes the single most common failure mode (prose preamble).
+        "response_format": {"type": "json_object"},
+        "max_completion_tokens": 32000,
+    }
+
+    # Parameter names drift between model generations, and this script has
+    # to keep working when they do. Retry once without whichever parameter
+    # the API rejected, rather than failing a nightly over a schema nit.
+    for attempt in range(4):
+        try:
+            body = _post(payload, key)
+            break
+        except urllib.error.HTTPError as e:
+            detail = e.read().decode("utf-8", "replace")
+            if e.code == 400 and "max_completion_tokens" in detail and \
+                    "max_completion_tokens" in payload:
+                payload["max_tokens"] = payload.pop("max_completion_tokens")
+                continue
+            if e.code == 400 and "max_tokens" in detail and "max_tokens" in payload:
+                payload.pop("max_tokens")
+                continue
+            if e.code == 400 and "response_format" in detail:
+                payload.pop("response_format", None)
+                continue
+            sys.exit(f"ERROR: OpenAI API {e.code} for model {model!r}: {detail[:600]}")
+    else:
+        sys.exit(f"ERROR: OpenAI API kept rejecting the request for model {model!r}")
+
+    choice = body["choices"][0]
+    text = (choice["message"].get("content") or "").strip()
+    if not text:
+        sys.exit(f"ERROR: model {model!r} returned no content "
+                 f"(finish_reason={choice.get('finish_reason')!r}) — if this is "
+                 f"'length', the bank is too large for one reply; lower the "
+                 f"per-skill frame quota or raise the token limit.")
+    if choice.get("finish_reason") == "length":
+        sys.exit("ERROR: reply was truncated mid-JSON (finish_reason=length). "
+                 "Re-run with a smaller quota rather than committing a partial bank.")
     # Tolerate a fenced reply, but nothing looser.
-    text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text.strip())
-    return json.loads(text)
+    text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError as e:
+        sys.exit(f"ERROR: model {model!r} did not return valid JSON: {e}\n"
+                 f"first 400 chars: {text[:400]}")
 
 
 def validate(doc: dict, skill_id: str, locale: str) -> None:

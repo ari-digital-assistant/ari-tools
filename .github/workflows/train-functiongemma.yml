@@ -142,13 +142,13 @@ jobs:
       - name: Draft banks for changed skills
         if: steps.check.outputs.should_train == 'true' && steps.banks.outputs.has_drift == 'true'
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ARI_ENGINE_DIR: /tmp/engine-full
           ARI_SKILLS_DIR: /tmp/skills
         run: |
-          if [ -z "$ANTHROPIC_API_KEY" ]; then
+          if [ -z "$OPENAI_API_KEY" ]; then
             echo "::error::Banks are stale for: ${{ steps.banks.outputs.needs_drafting }}"
-            echo "::error::ANTHROPIC_API_KEY is not set, so they cannot be drafted."
+            echo "::error::OPENAI_API_KEY is not set, so they cannot be drafted."
             echo "::error::Add the secret, or draft manually with author-frames.py."
             exit 1
           fi

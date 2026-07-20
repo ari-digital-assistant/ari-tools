@@ -39,7 +39,7 @@ jobs:
 
       - name: Draft the banks
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           ARI_SKILLS_DIR: /tmp/skills
           ARI_ENGINE_DIR: /tmp/engine
         run: |

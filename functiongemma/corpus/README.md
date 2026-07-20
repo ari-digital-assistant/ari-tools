@@ -104,7 +104,7 @@ Italian drafts additionally open a review issue (label `italian-review`).
 That is a queue, not a blocker — edit `frames.auto.it.json` in place and
 commit; there is no need to re-draft.
 
-**Requires the `ANTHROPIC_API_KEY` secret.** Without it the nightly fails
+**Requires the `OPENAI_API_KEY` secret.** Without it the nightly fails
 loudly naming the stale skills rather than training on a stale corpus.
 
 Manual escape hatches, unchanged: `author-frames.py --skill X --locale en`
