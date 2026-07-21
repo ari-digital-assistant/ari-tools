@@ -23,6 +23,7 @@ if the default is retired, override it rather than editing code.
 """
 
 import argparse
+import importlib.util
 import json
 import os
 import re
@@ -86,7 +87,28 @@ def existing_slot_names(locale: str) -> list:
     return names
 
 
-def build_prompt(skill_id: str, locale: str, spec: str) -> str:
+def sibling_catalogue(locale: str, exclude_id: str) -> list:
+    """(id, description) for every OTHER router-eligible skill.
+
+    The drafting model sees one skill's spec; without this list it cannot
+    know which surface shapes its siblings own, and it WILL wander into
+    them — counter's `somma {ITCNT} al contatore` sat next to calculator's
+    `somma {N1} e {N2}` until 2026-07-21, and the resulting model routed
+    arithmetic to counter and failed the promotion gate two nights running.
+    """
+    spec = importlib.util.spec_from_file_location(
+        "generate_dataset", HERE / "generate-dataset.py")
+    gd = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(gd)
+    builtin = gd.export_skills(find_engine_dir(), locale)
+    community = gd.load_community_skills(find_skills_dir(), locale)
+    builtin_ids = {s["id"] for s in builtin}
+    merged = builtin + [s for s in community if s["id"] not in builtin_ids]
+    return [(s["id"], s["description"])
+            for s in gd.router_eligible_skills(merged) if s["id"] != exclude_id]
+
+
+def build_prompt(skill_id: str, locale: str, spec: str, siblings: list) -> str:
     readme = (CORPUS / "README.md").read_text()
     slots = existing_slot_names(locale)
     lang_rule = (
@@ -107,6 +129,19 @@ your frames' args must match these arg shapes exactly):
 {lang_rule}
 
 Existing slot bank names you may reference without redefining: {slots}
+
+Other skills installed on the same device (id: description):
+
+{chr(10).join(f"- {i}: {d}" for i, d in siblings)}
+
+STAY IN YOUR LANE. Every frame must be unambiguously a request for
+{skill_id}, with zero surrounding context. If a phrasing could plausibly be
+read as a request for ANY sibling above, anchor it with a noun naming this
+skill's own domain, or discard it. In particular, bare arithmetic shapes —
+a generic verb (add, sum, più, somma, aggiungi, ...) plus numbers and
+nothing else — belong to the calculator skill only; a frame of yours that
+mentions a number or numeric slot must also contain a noun naming your
+domain. When in doubt, discard the frame.
 
 Produce 55 frames if the skill takes arguments, 150 if it is slotless.
 Cover the full register range: commands, questions, statements implying a
@@ -264,7 +299,8 @@ def main() -> None:
     args = ap.parse_args()
 
     spec = skill_spec(args.skill, args.locale)
-    doc = call_model(build_prompt(args.skill, args.locale, spec), args.model)
+    siblings = sibling_catalogue(args.locale, args.skill)
+    doc = call_model(build_prompt(args.skill, args.locale, spec, siblings), args.model)
     validate(doc, args.skill, args.locale)
 
     if args.apply:

@@ -110,3 +110,25 @@ loudly naming the stale skills rather than training on a stale corpus.
 Manual escape hatches, unchanged: `author-frames.py --skill X --locale en`
 writes a `draft-*` file for review (the expander ignores `draft-*`), and the
 `author-frames` workflow_dispatch does the same via a PR.
+
+## Cross-skill ambiguity — stay in your lane
+
+A frame must be unambiguously a request for ITS OWN skill with no
+surrounding context. The router resolves collisions by surface shape, and a
+270M model weights shape far more than a single anchor word — so a frame
+whose shape belongs to a sibling skill actively trains misrouting.
+
+Incident that wrote this rule (2026-07-21): counter's banks contained
+`più uno`, `somma {ITCNT} al contatore`, `add {CN1} to the tally` — the
+same verb+number surface as calculator's core frames. Result: a model that
+routed "quanto fanno 34 e 58 messi insieme" to **counter** with high
+confidence, and failed the promotion gate two nights running.
+
+Rules:
+- Bare arithmetic shapes (a generic verb — add/sum/più/somma/aggiungi —
+  plus number slots, and nothing else) belong to calculator ONLY.
+- Any other skill's frame that mentions a number MUST also contain a noun
+  that names its own domain (counter/tally/count, contatore/conteggio, timer
+  minutes, alarm time-of-day, ...). No noun, no frame.
+- When in doubt, discard: a dropped frame costs a little coverage; an
+  ambiguous one poisons routing for a sibling.

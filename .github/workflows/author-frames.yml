@@ -29,12 +29,14 @@ jobs:
       - name: Clone ari-skills
         run: git clone --depth 1 https://github.com/ari-digital-assistant/ari-skills.git /tmp/skills
 
-      - name: Install Rust (builtin skills need export-utterances)
-        if: ${{ !startsWith(github.event.inputs.skill, 'dev.') }}
+      # The engine is needed for EVERY skill since 2026-07-21, not just
+      # builtins: the drafting prompt's sibling catalogue (stay-in-your-lane)
+      # lists all router-eligible skills, and the builtin half of that list
+      # comes from export-utterances.
+      - name: Install Rust
         uses: dtolnay/rust-toolchain@stable
 
-      - name: Clone ari-engine (builtin skills only)
-        if: ${{ !startsWith(github.event.inputs.skill, 'dev.') }}
+      - name: Clone ari-engine
         run: git clone --depth 1 https://github.com/ari-digital-assistant/ari-engine.git /tmp/engine
 
       - name: Draft the banks

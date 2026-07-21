@@ -266,7 +266,7 @@
         "args": {}
       },
       {
-        "text": "add {CN1} to the tally",
+        "text": "bump the tally by {CN1}",
         "args": {}
       },
       {
@@ -302,11 +302,11 @@
         "args": {}
       },
       {
-        "text": "bump it up by {CN1}",
+        "text": "bump the counter up by {CN1}",
         "args": {}
       },
       {
-        "text": "add another {CN1} to the count",
+        "text": "put another {CN1} on the count",
         "args": {}
       },
       {
@@ -438,7 +438,7 @@
         "args": {}
       },
       {
-        "text": "clock up another one",
+        "text": "chalk another one up on the tally",
         "args": {}
       }
     ]

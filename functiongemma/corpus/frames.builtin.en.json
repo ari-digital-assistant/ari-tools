@@ -3112,6 +3112,18 @@
         "args": {
           "expression": "{N1} - {N2}"
         }
+      },
+      {
+        "text": "what do {N1} and {N2} make together",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
+      },
+      {
+        "text": "put {N1} and {N2} together for me",
+        "args": {
+          "expression": "{N1} + {N2}"
+        }
       }
     ]
   },

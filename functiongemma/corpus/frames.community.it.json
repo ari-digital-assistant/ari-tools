@@ -464,7 +464,7 @@
         "args": {}
       },
       {
-        "text": "aggiungine uno",
+        "text": "aggiungine uno al conteggio",
         "args": {}
       },
       {
@@ -488,11 +488,7 @@
         "args": {}
       },
       {
-        "text": "più uno",
-        "args": {}
-      },
-      {
-        "text": "segna uno",
+        "text": "segnane uno sul conteggio",
         "args": {}
       },
       {
@@ -536,7 +532,7 @@
         "args": {}
       },
       {
-        "text": "aumenta di uno",
+        "text": "aumenta il conteggio di uno",
         "args": {}
       },
       {
@@ -564,10 +560,6 @@
         "args": {}
       },
       {
-        "text": "aggiungine {ITCNT}",
-        "args": {}
-      },
-      {
         "text": "aumenta il contatore di {ITCNT}",
         "args": {}
       },
@@ -576,7 +568,7 @@
         "args": {}
       },
       {
-        "text": "somma {ITCNT} al contatore",
+        "text": "segna {ITCNT} sul contatore",
         "args": {}
       },
       {
@@ -604,10 +596,6 @@
         "args": {}
       },
       {
-        "text": "segna {ITCNT}",
-        "args": {}
-      },
-      {
         "text": "aggiorna il contatore di {ITCNT}",
         "args": {}
       },
@@ -620,35 +608,15 @@
         "args": {}
       },
       {
-        "text": "sommagli {ITCNT}",
-        "args": {}
-      },
-      {
         "text": "incrementa di {ITCNT}",
         "args": {}
       },
       {
-        "text": "aggiungi altri {ITCNT}",
+        "text": "fai salire il conteggio di {ITCNT}",
         "args": {}
       },
       {
-        "text": "conta {ITCNT} in più",
-        "args": {}
-      },
-      {
-        "text": "sali di {ITCNT}",
-        "args": {}
-      },
-      {
-        "text": "aggiungine altri {ITCNT}",
-        "args": {}
-      },
-      {
-        "text": "fai {ITCNT} in più",
-        "args": {}
-      },
-      {
-        "text": "registra {ITCNT} in più",
+        "text": "registra {ITCNT} in più sul conteggio",
         "args": {}
       },
       {
