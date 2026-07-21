@@ -316,6 +316,7 @@ jobs:
           echo "LIBCLANG_PATH=$LIBCLANG_DIR" >> "$GITHUB_ENV"
 
       - name: Routing-eval spine measurement (floor-derivation input)
+        id: spine
         if: steps.check.outputs.should_train == 'true'
         run: |
           # MEASUREMENT, not the gate. The promotion decision moved AFTER
@@ -351,6 +352,8 @@ jobs:
             echo "::error::spine route-eval failed structurally (exit $STATUS) — polluted eval or harness error. Cannot derive a floor or gate."
             exit "$STATUS"
           fi
+          # Recorded for the promotion gate's pre-T5 device-reality check.
+          echo "device_gate=$STATUS" >> "$GITHUB_OUTPUT"
 
       - name: Routing-eval on the generated eval (floor-derivation input)
         if: steps.check.outputs.should_train == 'true'
@@ -409,6 +412,20 @@ jobs:
           FLOOR="${{ steps.floor.outputs.min_confidence }}"
           if [ -z "$FLOOR" ]; then
             echo "::error::derive step produced no min_confidence — refusing to gate blind."
+            exit 1
+          fi
+          # ── PRE-T5 DEVICE-REALITY CHECK ──────────────────────────────
+          # Deployed apps enforce the COMPILED constant; none of them read
+          # min_confidence yet (T5 unbuilt). Until T5 ships, a published
+          # model runs on real devices at the compiled floor — so it must
+          # be safe THERE, not only at its derived floor. This check is
+          # what stops a repeat of 2026-07-21, when an IT model certified
+          # only at its derived floor (-0.0233) was published to a fleet
+          # enforcing -0.06, where it measured 78% precision (rolled back
+          # within ~25 min). REMOVE this block when T5 lands and devices
+          # honor the manifest floor.
+          if [ "${{ steps.spine.outputs.device_gate }}" != "0" ]; then
+            echo "::error::model passes at its derived floor ($FLOOR) but FAILS at the compiled constant real devices enforce (see spine measurement step). Not publishable until T5 (min_confidence consumption) ships."
             exit 1
           fi
           set -o pipefail
