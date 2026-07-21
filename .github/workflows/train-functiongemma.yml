@@ -355,45 +355,34 @@ jobs:
           # Recorded for the promotion gate's pre-T5 device-reality check.
           echo "device_gate=$STATUS" >> "$GITHUB_OUTPUT"
 
-      # ── Promotion gate (Gate v4, 2026-07-21) ────────────────────────────
-      - name: Routing-eval promotion gate (generated set, Gate v4)
+      - name: Routing-eval generated-set measurement (floor-derivation input)
         if: steps.check.outputs.should_train == 'true'
         run: |
-          # THE promotion decision, judged on the ~370-case GENERATED set at
-          # precision >= 0.85 and abstention >= 0.90, graded at the compiled
-          # floor devices run today. Gate v3 gated the 40-case spine at 0.90,
-          # where 8-18 fired cases meant one boundary flip moved precision
-          # 6-12 points — promotions were decided by single-case noise (an
-          # EN model died at 7/8 = 88% the same morning it measured 89% on
-          # 62 fired generated cases). The spine step above remains the
-          # tracked cross-run reference; it no longer gates.
-          #
-          # When T5 (devices consume min_confidence) ships, grade this at
-          # the derived floor instead of the compiled constant.
-          #
-          # If the generated bank is missing (bootstrap / new locale), fall
-          # back to the spine verdict at the compiled bars — strict, but a
-          # locale without a generated bank has no business shipping on
-          # vibes.
+          # Measurement pass at the compiled constant: its VERBOSE dump (raw
+          # per-case confidences, threshold-independent) feeds derive_floor.
+          # Exit 1 tolerated — the verdict that matters comes from the gate
+          # below, at the derived floor. Exit >= 2 (pollution/harness) is
+          # fatal: an untrustworthy dump can neither derive nor gate.
           set -o pipefail
           GEN="$GITHUB_WORKSPACE/${{ matrix.gen_eval_file }}"
           if [ ! -f "$GEN" ]; then
-            echo "no generated eval bank ($GEN) — falling back to the spine verdict."
-            if [ "${{ steps.spine.outputs.device_gate }}" != "0" ]; then
-              echo "::error::spine gate failed and no generated bank exists to gate on. Run generate-eval.yml for this locale."
-              exit 1
-            fi
+            echo "no generated eval bank ($GEN) — floor will fall back; gate falls back to the spine verdict."
             exit 0
           fi
           cd _ari-engine
+          set +e
           ROUTE_EVAL_VERBOSE=1 cargo run --release -p ari-ffi --bin route-eval -- \
             --locale ${{ matrix.locale }} \
             --skills-dir /tmp/skills/skills \
-            --precision-min 0.85 \
-            --abstain-min 0.90 \
             "$GITHUB_WORKSPACE/output/ari-functiongemma-${{ matrix.locale }}-q4_k_m.gguf" \
             "$GEN" \
             | tee "$GITHUB_WORKSPACE/output/route-eval.gen.${{ matrix.locale }}.log"
+          STATUS=$?
+          set -e
+          if [ "$STATUS" -ge 2 ]; then
+            echo "::error::generated-eval route-eval failed structurally (exit $STATUS) — polluted bank or harness error. Re-run generate-eval.yml."
+            exit "$STATUS"
+          fi
 
       - name: Derive confidence floor
         id: floor
@@ -406,6 +395,53 @@ jobs:
           python3 functiongemma/derive_floor.py \
             --spine "output/route-eval.spine.${{ matrix.locale }}.log" \
             --generated "output/route-eval.gen.${{ matrix.locale }}.log" \
+            | tee -a "$GITHUB_STEP_SUMMARY"
+
+      # ── Promotion gate (Gate v5 = v4 bars AT the derived floor) ─────────
+      - name: Routing-eval promotion gate (generated set at derived floor)
+        if: steps.check.outputs.should_train == 'true'
+        run: |
+          # THE promotion decision: precision >= 0.85 and abstention >= 0.90
+          # on the ~370-case generated set, graded at THE FLOOR THIS MODEL
+          # SHIPS WITH — steps.floor's min_confidence, which the manifest
+          # carries and (since T5) devices read from the install sidecar and
+          # enforce at runtime. A model whose derivation fell back is graded
+          # at the compiled constant, exactly as before T5.
+          #
+          # The v4 history in one line: the 40-case spine at 0.90 decided
+          # promotions on single-case noise; v4 moved the bars to the
+          # generated set; v5 moves the graded threshold from the compiled
+          # constant to the per-model floor — closing the loop where an IT
+          # model safe at -0.0233 died forever at a constant tuned for a
+          # different roll.
+          #
+          # No generated bank (bootstrap locale): fall back to the spine
+          # verdict at the compiled bars — strict, but a locale without a
+          # generated bank has no business shipping on vibes.
+          FLOOR="${{ steps.floor.outputs.min_confidence }}"
+          if [ -z "$FLOOR" ]; then
+            echo "::error::derive step produced no min_confidence — refusing to gate blind."
+            exit 1
+          fi
+          GEN="$GITHUB_WORKSPACE/${{ matrix.gen_eval_file }}"
+          if [ ! -f "$GEN" ]; then
+            echo "no generated eval bank — falling back to the spine verdict."
+            if [ "${{ steps.spine.outputs.device_gate }}" != "0" ]; then
+              echo "::error::spine gate failed and no generated bank exists to gate on. Run generate-eval.yml for this locale."
+              exit 1
+            fi
+            exit 0
+          fi
+          set -o pipefail
+          cd _ari-engine
+          cargo run --release -p ari-ffi --bin route-eval -- \
+            --locale ${{ matrix.locale }} \
+            --skills-dir /tmp/skills/skills \
+            --threshold "$FLOOR" \
+            --precision-min 0.85 \
+            --abstain-min 0.90 \
+            "$GITHUB_WORKSPACE/output/ari-functiongemma-${{ matrix.locale }}-q4_k_m.gguf" \
+            "$GEN" \
             | tee -a "$GITHUB_STEP_SUMMARY"
 
       - name: Store training SHAs
