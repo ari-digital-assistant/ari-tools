@@ -142,7 +142,11 @@ jobs:
 
       - name: Install Modal
         if: steps.check.outputs.should_train == 'true'
-        run: pip install modal
+        # pyyaml is what generate-dataset.py parses SKILL.*.md with, and both
+        # check_banks.py and the corpus smoke test below run it HERE on the
+        # runner (the Modal image has its own copy). Without it every community
+        # skill vanishes from both, silently and successfully.
+        run: pip install modal pyyaml
 
       # ── Corpus banks: keep them in step with the skills ────────────────
       # A skill whose banks are missing or stale trains the router on a

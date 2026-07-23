@@ -1,0 +1,37 @@
+name: ci
+
+# The repo's workflows all consume these scripts (corpus generation, bank
+# hygiene, floor derivation, manifest publishing) but nothing ran their tests
+# until something broke at 3am. This is that missing gate.
+#
+# Deps are listed explicitly rather than installed from a lockfile: pyyaml is
+# how generate-dataset.py reads SKILL.*.md, and without it the loaders return
+# an empty community-skill list and still exit 0 — a failure mode that has to
+# be a hard error, never a shrug.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  pytest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out ari-tools
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Install test deps
+        run: pip install pytest pyyaml requests
+
+      - name: Run tests
+        run: python3 -m pytest -q

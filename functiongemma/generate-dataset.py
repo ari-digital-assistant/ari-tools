@@ -210,11 +210,11 @@ def find_skills_dir() -> Path | None:
 
 def parse_skillfile_yaml(path: Path) -> dict | None:
     """Minimal YAML frontmatter parser for SKILL.md. Extracts metadata.ari fields."""
-    try:
-        import yaml
-    except ImportError:
-        # Fall back to a basic parser if PyYAML isn't available
-        return _parse_skillfile_basic(path)
+    # Deliberately no fallback. Without PyYAML every community skill silently
+    # disappears from the corpus AND from check_banks' drift detection — the
+    # generator still "succeeds", it just trains on the six built-ins. Crashing
+    # is the kind thing to do here.
+    import yaml
 
     text = path.read_text()
     if not text.startswith("---"):
@@ -228,11 +228,6 @@ def parse_skillfile_yaml(path: Path) -> dict | None:
     except Exception:
         return None
     return doc
-
-
-def _parse_skillfile_basic(path: Path) -> dict | None:
-    """Fallback parser using json via subprocess — calls the engine's validator."""
-    return None
 
 
 def load_community_skills(skills_dir: Path, locale: str) -> list:
