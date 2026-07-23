@@ -120,7 +120,14 @@ def train(engine_ref: str = "main", skills_ref: str = "main", tools_ref: str = "
             env=env,
         )
     line_count = sum(1 for _ in open(dataset_path))
-    print(f"Dataset: {line_count} samples")
+    # Content hash in the run log: generation is deterministic given its
+    # inputs (verified 2026-07-22, incl. across PYTHONHASHSEED values), so
+    # two runs with different hashes ATE DIFFERENT INPUTS — the 2026-07-20
+    # "nondeterminism" scare was bank-surgery commits landing 3 minutes
+    # before a dispatch. This line makes the next such diff self-diagnosing.
+    import hashlib
+    corpus_sha = hashlib.sha256(open(dataset_path, "rb").read()).hexdigest()[:16]
+    print(f"Dataset: {line_count} samples sha256:{corpus_sha}")
 
     # Load and split
     samples = []
