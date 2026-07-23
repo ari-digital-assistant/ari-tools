@@ -274,20 +274,6 @@ jobs:
           echo "tag=$TAG" >> "$GITHUB_OUTPUT"
           echo "gguf_url=$GGUF_URL" >> "$GITHUB_OUTPUT"
 
-      - name: Create versioned release with GGUF
-        # Archival release for every non-experimental run of either locale — this
-        # is NOT device-facing (the floating manifest is). Italian models are
-        # archived here even before promotion, so they can be inspected/downloaded.
-        if: steps.check.outputs.should_train == 'true' && github.event.inputs.experimental != 'true'
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release create "${{ steps.manifest.outputs.tag }}" \
-            output/ari-functiongemma-${{ matrix.locale }}-q4_k_m.gguf \
-            --repo ${{ github.repository }} \
-            --title "FunctionGemma ${{ matrix.locale }} ${{ steps.manifest.outputs.version }}" \
-            --notes "Retrain (${{ matrix.locale }}). Engine skills SHA: ${{ steps.check.outputs.engine_skills_sha }} · Community skills SHA: ${{ steps.check.outputs.skills_sha }} · Workflow run: ${{ github.run_id }}"
-
       # ── Promotion gate ──────────────────────────────────────────────────
       - name: Check out ari-engine (eval harness)
         if: steps.check.outputs.should_train == 'true'
@@ -399,6 +385,7 @@ jobs:
 
       # ── Promotion gate (Gate v5 = v4 bars AT the derived floor) ─────────
       - name: Routing-eval promotion gate (generated set at derived floor)
+        id: gate
         if: steps.check.outputs.should_train == 'true'
         run: |
           # THE promotion decision: precision >= 0.85 and abstention >= 0.90
@@ -443,6 +430,45 @@ jobs:
             "$GITHUB_WORKSPACE/output/ari-functiongemma-${{ matrix.locale }}-q4_k_m.gguf" \
             "$GEN" \
             | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - name: Create versioned release with GGUF
+        # Archival release for every non-experimental run of either locale — this
+        # is NOT device-facing (the floating manifest is). Models are archived
+        # here even when they never ship, so they can be inspected/downloaded.
+        #
+        # It runs AFTER the gate on purpose: creating it before meant the
+        # releases page listed gate-FAILED models indistinguishably from
+        # promoted ones. Devices were never at risk (the floating manifest step
+        # below is correctly skipped on failure) but a human browsing releases
+        # had no way to tell, which is its own kind of dangerous.
+        #
+        # `!cancelled()` so a rejected model still gets archived; the manifest
+        # step's outcome stands in for "training produced a GGUF at all" — it is
+        # the last step before the gate that touches the file.
+        if: >-
+          !cancelled()
+          && steps.manifest.outcome == 'success'
+          && github.event.inputs.experimental != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [ "${{ steps.gate.outcome }}" = "success" ]; then
+            TAG="${{ steps.manifest.outputs.tag }}"
+            TITLE="FunctionGemma ${{ matrix.locale }} ${{ steps.manifest.outputs.version }}"
+            PRERELEASE=false
+            VERDICT="Passed the promotion gate."
+          else
+            TAG="${{ steps.manifest.outputs.tag }}-rejected"
+            TITLE="FunctionGemma ${{ matrix.locale }} ${{ steps.manifest.outputs.version }} (REJECTED)"
+            PRERELEASE=true
+            VERDICT="FAILED the promotion gate — archived for inspection, never published to devices."
+          fi
+          gh release create "$TAG" \
+            output/ari-functiongemma-${{ matrix.locale }}-q4_k_m.gguf \
+            --repo ${{ github.repository }} \
+            --prerelease="$PRERELEASE" \
+            --title "$TITLE" \
+            --notes "Retrain (${{ matrix.locale }}). $VERDICT Engine skills SHA: ${{ steps.check.outputs.engine_skills_sha }} · Community skills SHA: ${{ steps.check.outputs.skills_sha }} · Workflow run: ${{ github.run_id }}"
 
       - name: Store training SHAs
         if: steps.check.outputs.should_train == 'true' && github.event.inputs.experimental != 'true'
