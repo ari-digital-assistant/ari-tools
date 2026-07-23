@@ -33,5 +33,17 @@ jobs:
       - name: Install test deps
         run: pip install pytest pyyaml requests
 
+      # Four tests shell out to the engine's own `normalize` bin instead of
+      # replicating normalize_input in Python — that binary IS the definition
+      # of train/serve parity, so a replica would just drift. They need a real
+      # ari-engine and a toolchain to build it with.
+      - name: Check out ari-engine (the normalize oracle)
+        run: git clone --depth 1 https://github.com/ari-digital-assistant/ari-engine.git "$RUNNER_TEMP/ari-engine"
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+
       - name: Run tests
+        env:
+          ARI_ENGINE_DIR: ${{ runner.temp }}/ari-engine
         run: python3 -m pytest -q
