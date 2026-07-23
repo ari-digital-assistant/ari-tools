@@ -882,6 +882,17 @@ def router_eligible_skills(skills: list) -> list:
     return [s for s in skills if s.get("router_eligible", True)]
 
 
+def merge_skills(builtin_skills: list, community_skills: list) -> list:
+    """Built-ins first, then community skills, skipping duplicate ids.
+
+    Shared with eval.py, which has to declare the exact same catalogue the
+    corpus was built from — it used to hardcode its own list and drifted
+    into declaring functions no training row ever mentioned.
+    """
+    builtin_ids = {s["id"] for s in builtin_skills}
+    return builtin_skills + [s for s in community_skills if s["id"] not in builtin_ids]
+
+
 def assign_aliases(skills: list) -> None:
     """Set s["alias"] on each skill, mirroring ari-llm's router_alias_table:
     the router declares skills by a short alias (the final id segment) because a
@@ -1099,9 +1110,7 @@ def main():
     community_skills = load_community_skills(skills_dir, locale) if skills_dir else []
     print(f"  {len(community_skills)} community skills with examples", file=sys.stderr)
 
-    # Merge — community skills after built-ins. Skip duplicates by id.
-    builtin_ids = {s["id"] for s in builtin_skills}
-    all_skills = builtin_skills + [s for s in community_skills if s["id"] not in builtin_ids]
+    all_skills = merge_skills(builtin_skills, community_skills)
     before = len(all_skills)
     all_skills = router_eligible_skills(all_skills)
     dropped = before - len(all_skills)

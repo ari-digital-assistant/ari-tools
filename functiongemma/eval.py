@@ -19,13 +19,19 @@ Usage:
     python3 eval.py ./output/ari-functiongemma-it-q4_k_m.gguf --locale it
 
 Prints one line per test case plus a summary grouped by difficulty.
+
+The tool declarations are built from generate-dataset.py's own catalogue, so
+this needs the ari-engine and ari-skills checkouts the generator needs
+(ARI_ENGINE_DIR / ARI_SKILLS_DIR, or sibling clones).
 """
 
 import argparse
+import importlib.util
 import re
 import sys
 import time
 import types
+from pathlib import Path
 
 # Stub out sqlite3/diskcache — some pyenv builds are missing _sqlite3
 _diskcache = types.ModuleType("diskcache")
@@ -37,46 +43,91 @@ sys.modules.setdefault("diskcache.core", _diskcache)
 
 from llama_cpp import Llama
 
+# The generator owns the skill catalogue. Its filename has a hyphen, so
+# load it explicitly — same trick test_generate_dataset.py uses.
+_spec = importlib.util.spec_from_file_location(
+    "gends", Path(__file__).parent / "generate-dataset.py"
+)
+gends = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(gends)
+
 E = "<escape>"  # string delimiter token
 
-# Ari's skills as FunctionGemma declarations.
-# Descriptions enriched with semantic keywords per the best practices doc.
-SKILL_DECLARATIONS = [
-    f"<start_function_declaration>declaration:current_time{{description:{E}Tells the current time. Use when the user asks what time it is, what hour it is, whether it is morning or afternoon, or anything related to the current time of day.{E},parameters:{{type:{E}OBJECT{E}}}}}<end_function_declaration>",
-    f"<start_function_declaration>declaration:date{{description:{E}Tells today's date. Use when the user asks what day it is, what date it is, which day of the week, or anything about today's date.{E},parameters:{{type:{E}OBJECT{E}}}}}<end_function_declaration>",
-    f"<start_function_declaration>declaration:calculator{{description:{E}Evaluates math expressions. Use when the user asks to calculate, compute, or figure out any mathematical expression, percentage, division, multiplication, or arithmetic.{E},parameters:{{properties:{{expression:{{description:{E}The math expression to evaluate{E},type:{E}STRING{E}}}}},required:[{E}expression{E}],type:{E}OBJECT{E}}}}}<end_function_declaration>",
-    f"<start_function_declaration>declaration:greeting{{description:{E}Responds to greetings. Use when the user says hello, hi, hey, good morning, good evening, howdy, or asks how Ari is doing.{E},parameters:{{type:{E}OBJECT{E}}}}}<end_function_declaration>",
-    f"<start_function_declaration>declaration:open_app{{description:{E}Opens or launches apps by name. Use when the user asks to open, launch, start, or run an application or app.{E},parameters:{{properties:{{app_name:{{description:{E}Name of the app to open{E},type:{E}STRING{E}}}}},required:[{E}app_name{E}],type:{E}OBJECT{E}}}}}<end_function_declaration>",
-    f"<start_function_declaration>declaration:search{{description:{E}Searches the web. Use when the user asks to search, look up, find information, or google something.{E},parameters:{{properties:{{query:{{description:{E}The search query{E},type:{E}STRING{E}}}}},required:[{E}query{E}],type:{E}OBJECT{E}}}}}<end_function_declaration>",
-    f"<start_function_declaration>declaration:coin_flip{{description:{E}Flips a virtual coin. Use when the user wants to flip a coin, toss a coin, or make a random heads or tails choice.{E},parameters:{{type:{E}OBJECT{E}}}}}<end_function_declaration>",
-]
 
-SKILL_NAMES = {"current_time", "date", "calculator", "greeting", "open_app", "search", "coin_flip"}
+def load_tools(locale: str) -> list:
+    """The exact tool list the router was trained on and is offered at
+    inference, built by the generator's own functions.
 
-# Test cases: (input, expected_skill, difficulty)
+    This used to be a hand-maintained copy of the declarations, and it had
+    drifted: it declared `date`, `open_app` and `coin_flip` while the corpus
+    taught `current_date`, `open` and `coinflip`, so every test case in those
+    categories was scored as a hallucination no matter what the model did.
+    It also declared `search`, which `router_eligible_skills` removes — the
+    router is never offered it.
+    """
+    engine_dir = gends.find_engine_dir()
+    skills_dir = gends.find_skills_dir()
+    builtin = gends.export_skills(engine_dir, locale)
+    community = gends.load_community_skills(skills_dir, locale) if skills_dir else []
+    skills = gends.router_eligible_skills(gends.merge_skills(builtin, community))
+    gends.assign_aliases(skills)
+    return gends.build_tools(skills)
+
+
+def render_schema(value) -> str:
+    """Render a JSON schema in FunctionGemma's declaration syntax: bare
+    identifier keys, string values upper-cased and wrapped in <escape>.
+
+    Mirrors `render_funcgemma_value` in ari-llm, which builds the same
+    prompt on device.
+    """
+    if isinstance(value, dict):
+        return "{" + ",".join(f"{k}:{render_schema(v)}" for k, v in value.items()) + "}"
+    if isinstance(value, list):
+        return "[" + ",".join(render_schema(v) for v in value) + "]"
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    if isinstance(value, (int, float)):
+        return str(value)
+    if value is None:
+        return f"{E}NULL{E}"
+    return f"{E}{value.upper()}{E}"
+
+
+def build_declarations(tools: list) -> str:
+    return "".join(
+        f"<start_function_declaration>declaration:{t['function']['name']}"
+        f"{{description:{E}{t['function']['description']}{E},"
+        f"parameters:{render_schema(t['function']['parameters'])}}}"
+        f"<end_function_declaration>"
+        for t in tools
+    )
+
+
+# Test cases: (input, expected_skill, difficulty). Skill names are the
+# router's aliases — the final id segment, as `assign_aliases` computes it.
+# No `search` cases: it is router-ineligible, so it is never declared and
+# routing to it is not a thing the model can be asked to do.
 TEST_CASES = [
     # Easy — keyword matcher would handle these
     ("what time is it", "current_time", "easy"),
-    ("what's the date today", "date", "easy"),
+    ("what's the date today", "current_date", "easy"),
     ("calculate 5 + 3", "calculator", "easy"),
     ("hello", "greeting", "easy"),
-    ("open spotify", "open_app", "easy"),
-    ("search for python tutorials", "search", "easy"),
-    ("flip a coin", "coin_flip", "easy"),
+    ("open spotify", "open", "easy"),
+    ("flip a coin", "coinflip", "easy"),
 
     # Hard — paraphrases the keyword matcher would miss
     ("do you know what hour it is", "current_time", "hard"),
     ("is it morning or afternoon right now", "current_time", "hard"),
-    ("which day of the week is it", "date", "hard"),
+    ("which day of the week is it", "current_date", "hard"),
     ("how much is fifteen percent of two hundred", "calculator", "hard"),
     ("what's 99 divided by 3", "calculator", "hard"),
     ("hey there, how are you", "greeting", "hard"),
     ("good morning ari", "greeting", "hard"),
-    ("can you start the camera app", "open_app", "hard"),
-    ("launch my music player", "open_app", "hard"),
-    ("I need to look something up online", "search", "hard"),
-    ("find me information about black holes", "search", "hard"),
-    ("let's leave it to chance, heads or tails", "coin_flip", "hard"),
+    ("can you start the camera app", "open", "hard"),
+    ("launch my music player", "open", "hard"),
+    ("let's leave it to chance, heads or tails", "coinflip", "hard"),
 
     # None — should NOT match any skill (general knowledge)
     ("what is the capital of France", None, "none"),
@@ -95,26 +146,23 @@ TEST_CASES = [
 IT_TEST_CASES = [
     # Easy — keyword matcher would handle these
     ("che ore sono di preciso", "current_time", "easy"),
-    ("che data abbiamo oggi", "date", "easy"),
+    ("che data abbiamo oggi", "current_date", "easy"),
     ("calcola 63 meno 28", "calculator", "easy"),
     ("buondì ari", "greeting", "easy"),
-    ("apri signal", "open_app", "easy"),
-    ("cerca dei tutorial di python", "search", "easy"),
-    ("lancia una monetina", "coin_flip", "easy"),
+    ("apri signal", "open", "easy"),
+    ("lancia una monetina", "coinflip", "easy"),
 
     # Hard — paraphrases the keyword matcher would miss
     ("sapresti dirmi l'ora", "current_time", "hard"),
     ("è ancora mattina o siamo nel pomeriggio", "current_time", "hard"),
-    ("quanti ne abbiamo oggi", "date", "hard"),
+    ("quanti ne abbiamo oggi", "current_date", "hard"),
     ("quanto viene il 30 percento di 90", "calculator", "hard"),
     ("fammi la somma di 128 e 256", "calculator", "hard"),
     ("come va ultimamente", "greeting", "hard"),
     ("buon pomeriggio ari", "greeting", "hard"),
-    ("aprimi duolingo", "open_app", "hard"),
-    ("avvia l'app della banca", "open_app", "hard"),
-    ("vorrei cercare una cosa su internet", "search", "hard"),
-    ("trovami delle informazioni sui buchi neri", "search", "hard"),
-    ("decidiamo a sorte, testa o croce", "coin_flip", "hard"),
+    ("aprimi duolingo", "open", "hard"),
+    ("avvia l'app della banca", "open", "hard"),
+    ("decidiamo a sorte, testa o croce", "coinflip", "hard"),
 
     # None — should NOT match any skill (general knowledge)
     ("chi ha scritto la Divina Commedia", None, "none"),
@@ -131,9 +179,8 @@ TEST_CASES_BY_LOCALE = {
 }
 
 
-def build_prompt(user_input: str) -> str:
+def build_prompt(user_input: str, declarations: str) -> str:
     """Build the FunctionGemma prompt with tool declarations."""
-    declarations = "".join(SKILL_DECLARATIONS)
     return (
         f"<start_of_turn>developer\n"
         f"You are a model that can do function calling with the following functions"
@@ -144,17 +191,27 @@ def build_prompt(user_input: str) -> str:
     )
 
 
-def parse_first_call(raw: str) -> str | None:
+def parse_first_call(raw: str, skill_names: set) -> str | None:
     """Extract the function name from the first call block."""
     m = re.search(r"<start_function_call>call:(\w+)\{", raw)
     if m:
         name = m.group(1)
-        return name if name in SKILL_NAMES else f"__hallucinated:{name}__"
+        return name if name in skill_names else f"__hallucinated:{name}__"
     return None
 
 
 def run_test(model_path: str, locale: str = "en"):
     test_cases = TEST_CASES_BY_LOCALE[locale]
+    tools = load_tools(locale)
+    declarations = build_declarations(tools)
+    skill_names = {t["function"]["name"] for t in tools}
+
+    unknown = {expected for _, expected, _ in test_cases if expected} - skill_names
+    if unknown:
+        sys.exit(
+            f"ERROR: test case(s) expect {sorted(unknown)}, which the router is "
+            f"never offered. Declared: {sorted(skill_names)}"
+        )
 
     print(f"Loading model from {model_path}...")
     t0 = time.time()
@@ -165,13 +222,13 @@ def run_test(model_path: str, locale: str = "en"):
         verbose=False,
     )
     print(f"Model loaded in {time.time() - t0:.1f}s")
-    print(f"Locale: {locale} ({len(test_cases)} cases)\n")
+    print(f"Locale: {locale} ({len(test_cases)} cases, {len(tools)} tools declared)\n")
 
     results = {"easy": [], "hard": [], "none": []}
     total_time = 0
 
     for user_input, expected, difficulty in test_cases:
-        prompt = build_prompt(user_input)
+        prompt = build_prompt(user_input, declarations)
 
         t1 = time.time()
         output = llm(
@@ -185,7 +242,7 @@ def run_test(model_path: str, locale: str = "en"):
 
         raw = output["choices"][0]["text"].strip()
 
-        matched_skill = parse_first_call(raw)
+        matched_skill = parse_first_call(raw, skill_names)
         if matched_skill is None:
             # No function call — model declined. This is correct for "none" cases.
             matched_skill = "__none__"
