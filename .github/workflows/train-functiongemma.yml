@@ -253,7 +253,18 @@ jobs:
         env:
           MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
           MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
-        run: modal run functiongemma/modal_train.py --locale ${{ matrix.locale }} --tools-ref "${{ github.event.inputs.tools_ref || 'main' }}"
+        # Pin the training clones to the SHAs resolved at run start — the same
+        # engine the eval gate is pinned to (steps.check.outputs.engine_sha),
+        # the skills tree change-detection keyed off, and this workflow's own
+        # ari-tools commit — so the model trains on exactly what it's graded
+        # against, not a moving `main`. A workflow_dispatch may still override
+        # tools_ref to trial a corpus branch.
+        run: >-
+          modal run functiongemma/modal_train.py
+          --locale ${{ matrix.locale }}
+          --engine-ref "${{ steps.check.outputs.engine_sha }}"
+          --skills-ref "${{ steps.check.outputs.skills_sha }}"
+          --tools-ref "${{ github.event.inputs.tools_ref || github.sha }}"
 
       - name: Upload GGUF as artifact
         if: steps.check.outputs.should_train == 'true'

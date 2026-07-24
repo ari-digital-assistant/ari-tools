@@ -80,21 +80,29 @@ def train(engine_ref: str = "main", skills_ref: str = "main", tools_ref: str = "
 
     os.makedirs(WORK_DIR, exist_ok=True)
 
-    # Clone repos. Refs default to main; a branch can be passed so an
-    # experiment can be trained without landing on main first (and so the
-    # nightly, which passes no refs, is unaffected).
+    # Clone repos. Each ref may be a branch name (an experiment, or the
+    # default "main") OR a full commit SHA — the nightly now pins all three to
+    # the SHAs the workflow resolved at run start, so training clones exactly
+    # what the eval gate is pinned to instead of a moving `main`. `git clone
+    # --branch` rejects raw SHAs, so init + shallow-fetch the ref instead, and
+    # record the resolved SHA in the log for provenance (r127 cloned `master`
+    # without recording its commit and so could never be reproduced).
+    def fetch_repo(repo_url: str, ref: str, dest: str) -> str:
+        subprocess.check_call(["git", "init", "-q", dest])
+        subprocess.check_call(["git", "-C", dest, "remote", "add", "origin", repo_url])
+        subprocess.check_call(["git", "-C", dest, "fetch", "--depth", "1", "origin", ref])
+        subprocess.check_call(["git", "-C", dest, "checkout", "--detach", "-q", "FETCH_HEAD"])
+        return subprocess.check_output(
+            ["git", "-C", dest, "rev-parse", "HEAD"], text=True
+        ).strip()
+
     print(f"Cloning ari-engine @ {engine_ref}...")
-    subprocess.check_call(
-        ["git", "clone", "--depth", "1", "--branch", engine_ref, ARI_ENGINE_REPO, f"{WORK_DIR}/ari-engine"]
-    )
+    engine_at = fetch_repo(ARI_ENGINE_REPO, engine_ref, f"{WORK_DIR}/ari-engine")
     print(f"Cloning ari-skills @ {skills_ref}...")
-    subprocess.check_call(
-        ["git", "clone", "--depth", "1", "--branch", skills_ref, ARI_SKILLS_REPO, f"{WORK_DIR}/ari-skills"]
-    )
+    skills_at = fetch_repo(ARI_SKILLS_REPO, skills_ref, f"{WORK_DIR}/ari-skills")
     print(f"Cloning ari-tools @ {tools_ref}...")
-    subprocess.check_call(
-        ["git", "clone", "--depth", "1", "--branch", tools_ref, ARI_TOOLS_REPO, f"{WORK_DIR}/ari-tools"]
-    )
+    tools_at = fetch_repo(ARI_TOOLS_REPO, tools_ref, f"{WORK_DIR}/ari-tools")
+    print(f"Training inputs pinned: engine={engine_at} skills={skills_at} tools={tools_at}")
 
     # Verify cargo is available
     print(f"PATH: {os.environ.get('PATH', 'NOT SET')}")
