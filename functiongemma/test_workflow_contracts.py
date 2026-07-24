@@ -21,6 +21,17 @@ def test_rejected_attempt_is_remembered_without_becoming_promotion_state():
     assert '[[ "$ACK_RUN" =~ ^[0-9]+$ ]]' in configure["run"]
     assert "acknowledge_run_id requires an explicit locale" in configure["run"]
     assert "acknowledge_run_id and force are mutually exclusive" in configure["run"]
+    assert "quant_sweep requires an explicit locale" in configure["run"]
+    assert "quant_sweep cannot be combined" in configure["run"]
+    assert workflow["jobs"]["train"]["if"] == (
+        "github.event.inputs.quant_sweep != 'true'"
+    )
+
+    bridge = workflow["jobs"]["quant-sweep"]
+    assert bridge["if"] == "github.event.inputs.quant_sweep == 'true'"
+    assert bridge["uses"] == "./.github/workflows/functiongemma-quant-sweep.yml"
+    assert bridge["permissions"] == {"contents": "read", "actions": "read"}
+    assert bridge["secrets"] == "inherit"
 
     steps = _steps(TRAIN_WORKFLOW, "train")
 
@@ -52,7 +63,7 @@ def test_rejected_attempt_is_remembered_without_becoming_promotion_state():
 def test_quant_sweep_is_manual_diagnostic_only_and_keeps_gate_bars():
     workflow = yaml.safe_load(SWEEP_WORKFLOW.read_text())
     triggers = workflow.get("on", workflow.get(True))
-    assert set(triggers) == {"workflow_dispatch"}
+    assert set(triggers) == {"workflow_dispatch", "workflow_call"}
     assert workflow["permissions"] == {"contents": "read", "actions": "read"}
     assert set(workflow["jobs"]) == {"sweep"}
 

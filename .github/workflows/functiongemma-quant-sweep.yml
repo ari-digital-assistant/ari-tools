@@ -26,6 +26,28 @@ on:
         description: 'ari-skills ref for the routing catalogue (r127 default)'
         required: true
         default: '15c0d02e7a632d894e6d8daa4932bb4af735fd27'
+  workflow_call:
+    inputs:
+      locale:
+        description: 'Retained fused checkpoint locale'
+        required: false
+        type: string
+        default: 'it'
+      baseline_run_id:
+        description: 'Workflow run containing the archived Q4 baseline'
+        required: false
+        type: string
+        default: '30063710751'
+      engine_ref:
+        description: 'ari-engine ref for route-eval'
+        required: false
+        type: string
+        default: 'f990bee13f21f368388cf85c3d765756ace01506'
+      skills_ref:
+        description: 'ari-skills ref for the routing catalogue'
+        required: false
+        type: string
+        default: '15c0d02e7a632d894e6d8daa4932bb4af735fd27'
 
 permissions:
   contents: read
@@ -52,24 +74,24 @@ jobs:
         run: >-
           modal run functiongemma/modal_train.py
           --quant-sweep
-          --locale "${{ github.event.inputs.locale }}"
+          --locale "${{ inputs.locale }}"
 
       - name: Download archived Q4 baseline
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh run download "${{ github.event.inputs.baseline_run_id }}" \
+          gh run download "${{ inputs.baseline_run_id }}" \
             --repo "${{ github.repository }}" \
-            --name "ari-functiongemma-${{ github.event.inputs.locale }}-q4_k_m" \
+            --name "ari-functiongemma-${{ inputs.locale }}-q4_k_m" \
             --dir baseline
           mv \
-            "baseline/ari-functiongemma-${{ github.event.inputs.locale }}-q4_k_m.gguf" \
-            "output/ari-functiongemma-${{ github.event.inputs.locale }}-r127_q4.gguf"
+            "baseline/ari-functiongemma-${{ inputs.locale }}-q4_k_m.gguf" \
+            "output/ari-functiongemma-${{ inputs.locale }}-r127_q4.gguf"
 
       - name: Upload conversion evidence
         uses: actions/upload-artifact@v7
         with:
-          name: ari-functiongemma-${{ github.event.inputs.locale }}-quant-sweep-models
+          name: ari-functiongemma-${{ inputs.locale }}-quant-sweep-models
           path: |
             output/*.gguf
             output/quantization-metadata.json
@@ -80,14 +102,14 @@ jobs:
         uses: actions/checkout@v5
         with:
           repository: ari-digital-assistant/ari-engine
-          ref: ${{ github.event.inputs.engine_ref }}
+          ref: ${{ inputs.engine_ref }}
           path: _ari-engine
 
       - name: Check out the pinned skill catalogue
         uses: actions/checkout@v5
         with:
           repository: ari-digital-assistant/ari-skills
-          ref: ${{ github.event.inputs.skills_ref }}
+          ref: ${{ inputs.skills_ref }}
           path: _ari-skills
 
       - uses: dtolnay/rust-toolchain@stable
@@ -111,25 +133,25 @@ jobs:
         run: |
           SPINE="functiongemma/routing-eval.jsonl"
           GENERATED="functiongemma/routing-eval.gen.jsonl"
-          if [ "${{ github.event.inputs.locale }}" = "it" ]; then
+          if [ "${{ inputs.locale }}" = "it" ]; then
             SPINE="functiongemma/routing-eval.it.jsonl"
             GENERATED="functiongemma/routing-eval.gen.it.jsonl"
           fi
           python3 functiongemma/evaluate_quant_sweep.py \
             --router "_ari-engine/target/release/route-eval" \
-            --locale "${{ github.event.inputs.locale }}" \
+            --locale "${{ inputs.locale }}" \
             --skills-dir "_ari-skills/skills" \
             --spine "$SPINE" \
             --generated "$GENERATED" \
             --output "output/eval" \
             --precision-min 0.85 \
             --abstain-min 0.90 \
-            --model "r127_q4=output/ari-functiongemma-${{ github.event.inputs.locale }}-r127_q4.gguf" \
-            --model "q4_k_m=output/ari-functiongemma-${{ github.event.inputs.locale }}-q4_k_m.gguf" \
-            --model "q5_k_m=output/ari-functiongemma-${{ github.event.inputs.locale }}-q5_k_m.gguf" \
-            --model "q6_k=output/ari-functiongemma-${{ github.event.inputs.locale }}-q6_k.gguf" \
-            --model "q8_0=output/ari-functiongemma-${{ github.event.inputs.locale }}-q8_0.gguf" \
-            --model "f16=output/ari-functiongemma-${{ github.event.inputs.locale }}-f16.gguf"
+            --model "r127_q4=output/ari-functiongemma-${{ inputs.locale }}-r127_q4.gguf" \
+            --model "q4_k_m=output/ari-functiongemma-${{ inputs.locale }}-q4_k_m.gguf" \
+            --model "q5_k_m=output/ari-functiongemma-${{ inputs.locale }}-q5_k_m.gguf" \
+            --model "q6_k=output/ari-functiongemma-${{ inputs.locale }}-q6_k.gguf" \
+            --model "q8_0=output/ari-functiongemma-${{ inputs.locale }}-q8_0.gguf" \
+            --model "f16=output/ari-functiongemma-${{ inputs.locale }}-f16.gguf"
 
       - name: Publish sweep curve in the run summary
         if: always()
@@ -144,7 +166,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v7
         with:
-          name: ari-functiongemma-${{ github.event.inputs.locale }}-quant-sweep-eval
+          name: ari-functiongemma-${{ inputs.locale }}-quant-sweep-eval
           path: output/eval/
           if-no-files-found: warn
           retention-days: 30

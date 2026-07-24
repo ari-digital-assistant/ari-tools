@@ -27,6 +27,10 @@ on:
         description: 'No-GPU recovery: record current inputs as already attempted by this prior run id. Requires locale; never trains or publishes.'
         required: false
         default: ''
+      quant_sweep:
+        description: 'Diagnostic only: run the retained-checkpoint quant sweep instead of training.'
+        required: false
+        default: 'false'
 
 permissions:
   contents: write   # `gh release create` + `gh release upload` + push drafted banks
@@ -44,6 +48,7 @@ jobs:
           ACK_RUN: ${{ github.event.inputs.acknowledge_run_id }}
           FORCE: ${{ github.event.inputs.force || 'false' }}
           LOCALE: ${{ github.event.inputs.locale }}
+          QUANT_SWEEP: ${{ github.event.inputs.quant_sweep || 'false' }}
         run: |
           if [ -n "$ACK_RUN" ] && [ -z "$LOCALE" ]; then
             echo "acknowledge_run_id requires an explicit locale" >&2
@@ -57,6 +62,14 @@ jobs:
             echo "acknowledge_run_id and force are mutually exclusive" >&2
             exit 1
           fi
+          if [ "$QUANT_SWEEP" = "true" ] && { [ -n "$ACK_RUN" ] || [ "$FORCE" = "true" ]; }; then
+            echo "quant_sweep cannot be combined with acknowledge_run_id or force" >&2
+            exit 1
+          fi
+          if [ "$QUANT_SWEEP" = "true" ] && [ -z "$LOCALE" ]; then
+            echo "quant_sweep requires an explicit locale" >&2
+            exit 1
+          fi
           EN='{"locale":"en","eval_file":"functiongemma/routing-eval.jsonl","gen_eval_file":"functiongemma/routing-eval.gen.jsonl"}'
           IT='{"locale":"it","eval_file":"functiongemma/routing-eval.it.jsonl","gen_eval_file":"functiongemma/routing-eval.gen.it.jsonl"}'
           case "$LOCALE" in
@@ -68,6 +81,7 @@ jobs:
 
   train:
     needs: configure
+    if: github.event.inputs.quant_sweep != 'true'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -622,3 +636,15 @@ jobs:
             Engine skills SHA: ${{ steps.check.outputs.engine_skills_sha }}
             Community skills SHA: ${{ steps.check.outputs.skills_sha }}
             Workflow run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+  quant-sweep:
+    name: Diagnostic quant sweep
+    needs: configure
+    if: github.event.inputs.quant_sweep == 'true'
+    permissions:
+      contents: read
+      actions: read
+    uses: ./.github/workflows/functiongemma-quant-sweep.yml
+    with:
+      locale: ${{ github.event.inputs.locale }}
+    secrets: inherit
