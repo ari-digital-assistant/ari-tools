@@ -1,0 +1,1321 @@
+{
+  "dev.heyari.reminder": {
+    "target": 500,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "remind me to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "remind me {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "please remind me to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "can you remind me to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "could you remind me {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "would you remind me to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "set a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "set up a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "create a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "make me a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "add a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "schedule a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "I need a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "I'd like a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "can I get a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "could I have a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "give me a reminder {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "send me a reminder {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "leave me a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "make sure I get a reminder {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "don't let me forget to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "ping me {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "nudge me {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "buzz me {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "tell me {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "give me a heads-up {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "let me know {WHEN} that it's time to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "remind me to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "please remind me to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "set a reminder to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "set up a reminder to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "create a reminder to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "make me a reminder to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "add a reminder to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "I need a reminder to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "I'd like a reminder to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "can I get a reminder to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "don't let me forget to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "make a note in my reminders to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "add {REMTXT} to my reminders",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "put {REMTXT} on my reminder list",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "add {ITEM} to my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "put {ITEM} on my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "could you add {ITEM} to my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "please put {ITEM} on the {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "I need {ITEM} added to my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "make sure {ITEM} is on my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "stick {ITEM} on my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "pop {ITEM} onto my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "save {ITEM} to my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "add a list item for {ITEM} to my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "create a task for {ITEM} on my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "note {ITEM} down on my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "can you put {ITEM} in my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "my {LIST} list needs {ITEM} added",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      }
+    ]
+  },
+  "dev.heyari.wasmecho": {
+    "target": 500,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "Please test the WASM echo",
+        "args": {}
+      },
+      {
+        "text": "Test the WASM echo for me",
+        "args": {}
+      },
+      {
+        "text": "Give the WASM echo a quick test",
+        "args": {}
+      },
+      {
+        "text": "Do a quick WASM echo test",
+        "args": {}
+      },
+      {
+        "text": "Perform a WASM echo test",
+        "args": {}
+      },
+      {
+        "text": "Start a WASM echo test",
+        "args": {}
+      },
+      {
+        "text": "Run a WASM echo test",
+        "args": {}
+      },
+      {
+        "text": "Try the WASM echo test",
+        "args": {}
+      },
+      {
+        "text": "Check the WASM echo test",
+        "args": {}
+      },
+      {
+        "text": "Trigger the WASM echo test",
+        "args": {}
+      },
+      {
+        "text": "Invoke the WASM echo test",
+        "args": {}
+      },
+      {
+        "text": "Execute the WASM echo test",
+        "args": {}
+      },
+      {
+        "text": "Launch the WASM echo test",
+        "args": {}
+      },
+      {
+        "text": "Fire off the WASM echo test",
+        "args": {}
+      },
+      {
+        "text": "Put the WASM echo through a test",
+        "args": {}
+      },
+      {
+        "text": "Can you test the WASM echo?",
+        "args": {}
+      },
+      {
+        "text": "Could you test the WASM echo?",
+        "args": {}
+      },
+      {
+        "text": "Would you test the WASM echo for me?",
+        "args": {}
+      },
+      {
+        "text": "Will you run the WASM echo test?",
+        "args": {}
+      },
+      {
+        "text": "Can I get a WASM echo test?",
+        "args": {}
+      },
+      {
+        "text": "Could I get a quick WASM echo test?",
+        "args": {}
+      },
+      {
+        "text": "How about a WASM echo test?",
+        "args": {}
+      },
+      {
+        "text": "Let's test the WASM echo",
+        "args": {}
+      },
+      {
+        "text": "I'd like to test the WASM echo",
+        "args": {}
+      },
+      {
+        "text": "I want to try the WASM echo",
+        "args": {}
+      },
+      {
+        "text": "I need to check the WASM echo",
+        "args": {}
+      },
+      {
+        "text": "Time for a WASM echo test",
+        "args": {}
+      },
+      {
+        "text": "Give me the WASM echo response",
+        "args": {}
+      },
+      {
+        "text": "Show me the WASM echo response",
+        "args": {}
+      },
+      {
+        "text": "Return the WASM echo greeting",
+        "args": {}
+      },
+      {
+        "text": "Get the greeting from the WASM echo skill",
+        "args": {}
+      },
+      {
+        "text": "Ask the WASM echo skill for its greeting",
+        "args": {}
+      },
+      {
+        "text": "Have the WASM echo skill return its greeting",
+        "args": {}
+      },
+      {
+        "text": "Make the WASM echo module respond",
+        "args": {}
+      },
+      {
+        "text": "Get a response from the WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "Let me hear from the WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "What does the WASM echo skill return?",
+        "args": {}
+      },
+      {
+        "text": "What response comes back from the WASM echo?",
+        "args": {}
+      },
+      {
+        "text": "Can you get the WASM echo response?",
+        "args": {}
+      },
+      {
+        "text": "Could you show me the WASM echo output?",
+        "args": {}
+      },
+      {
+        "text": "I want to see the WASM echo output",
+        "args": {}
+      },
+      {
+        "text": "Show me what the WASM echo returns",
+        "args": {}
+      },
+      {
+        "text": "Tell me what the WASM echo module says",
+        "args": {}
+      },
+      {
+        "text": "Let's see what the WASM echo module says",
+        "args": {}
+      },
+      {
+        "text": "I'd like the greeting from the WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "Fetch the greeting from the WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "Request the greeting from the WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "Call the WASM echo skill",
+        "args": {}
+      },
+      {
+        "text": "Invoke the WASM echo skill",
+        "args": {}
+      },
+      {
+        "text": "Execute the WASM echo skill",
+        "args": {}
+      },
+      {
+        "text": "Trigger the WASM echo skill",
+        "args": {}
+      },
+      {
+        "text": "Run the WASM echo skill now",
+        "args": {}
+      },
+      {
+        "text": "Start the WASM echo skill",
+        "args": {}
+      },
+      {
+        "text": "Try the WASM echo skill",
+        "args": {}
+      },
+      {
+        "text": "Call into the WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "Invoke the WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "Execute the WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "Trigger the WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "Run the WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "Start the WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "Can you call the WASM echo skill?",
+        "args": {}
+      },
+      {
+        "text": "Could you invoke the WASM echo module?",
+        "args": {}
+      },
+      {
+        "text": "Would you trigger the WASM echo skill?",
+        "args": {}
+      },
+      {
+        "text": "Please execute the WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "Go ahead and run the WASM echo skill",
+        "args": {}
+      },
+      {
+        "text": "Go ahead and call the WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "I want to invoke the WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "I'd like to run the WASM echo skill",
+        "args": {}
+      },
+      {
+        "text": "I need the WASM echo module executed",
+        "args": {}
+      },
+      {
+        "text": "The WASM echo skill needs a quick run",
+        "args": {}
+      },
+      {
+        "text": "Test the WASM loader with the echo module",
+        "args": {}
+      },
+      {
+        "text": "Check the WASM loader using the echo skill",
+        "args": {}
+      },
+      {
+        "text": "Verify the WASM loader with the echo test",
+        "args": {}
+      },
+      {
+        "text": "Exercise the WASM loader with its echo module",
+        "args": {}
+      },
+      {
+        "text": "Try the echo module in the WASM loader",
+        "args": {}
+      },
+      {
+        "text": "Run the echo module through the WASM loader",
+        "args": {}
+      },
+      {
+        "text": "Put the WASM loader through an echo test",
+        "args": {}
+      },
+      {
+        "text": "Give the WASM loader an echo test",
+        "args": {}
+      },
+      {
+        "text": "Do an echo test on the WASM loader",
+        "args": {}
+      },
+      {
+        "text": "Perform the loader's WASM echo test",
+        "args": {}
+      },
+      {
+        "text": "Can you test the WASM loader with echo?",
+        "args": {}
+      },
+      {
+        "text": "Could you check the WASM loader using echo?",
+        "args": {}
+      },
+      {
+        "text": "Would you verify the WASM loader with the echo module?",
+        "args": {}
+      },
+      {
+        "text": "Please exercise the WASM loader with echo",
+        "args": {}
+      },
+      {
+        "text": "I want to test the WASM loader with its echo skill",
+        "args": {}
+      },
+      {
+        "text": "I'd like to check the WASM loader's echo module",
+        "args": {}
+      },
+      {
+        "text": "I need a WASM loader echo test",
+        "args": {}
+      },
+      {
+        "text": "Let's check the WASM loader with the echo module",
+        "args": {}
+      },
+      {
+        "text": "Let's see if the WASM loader can return the echo greeting",
+        "args": {}
+      },
+      {
+        "text": "See whether the WASM loader returns the echo response",
+        "args": {}
+      },
+      {
+        "text": "Check whether the WASM echo module loads",
+        "args": {}
+      },
+      {
+        "text": "Verify that the WASM echo skill loads",
+        "args": {}
+      },
+      {
+        "text": "Test whether the WASM echo module responds",
+        "args": {}
+      },
+      {
+        "text": "Check that the WASM echo skill responds",
+        "args": {}
+      },
+      {
+        "text": "Verify that the WASM echo module runs",
+        "args": {}
+      },
+      {
+        "text": "Make sure the WASM echo skill works",
+        "args": {}
+      },
+      {
+        "text": "Confirm that the WASM echo module works",
+        "args": {}
+      },
+      {
+        "text": "See if the WASM echo skill is working",
+        "args": {}
+      },
+      {
+        "text": "Can you check whether the WASM echo module works?",
+        "args": {}
+      },
+      {
+        "text": "Could you make sure the WASM echo skill runs?",
+        "args": {}
+      },
+      {
+        "text": "Is the WASM echo module working?",
+        "args": {}
+      },
+      {
+        "text": "Does the WASM echo skill respond?",
+        "args": {}
+      },
+      {
+        "text": "Can the WASM echo module return its greeting?",
+        "args": {}
+      },
+      {
+        "text": "Will the WASM echo skill load?",
+        "args": {}
+      },
+      {
+        "text": "Does the WASM loader pass the echo test?",
+        "args": {}
+      },
+      {
+        "text": "Is the WASM loader working with the echo module?",
+        "args": {}
+      },
+      {
+        "text": "Can you confirm the WASM loader works with echo?",
+        "args": {}
+      },
+      {
+        "text": "Could you verify the WASM echo module is available?",
+        "args": {}
+      },
+      {
+        "text": "I want to know if the WASM echo skill works",
+        "args": {}
+      },
+      {
+        "text": "I'd like to confirm the WASM echo module runs",
+        "args": {}
+      },
+      {
+        "text": "Check the sandboxed WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "Test the sandboxed WASM echo skill",
+        "args": {}
+      },
+      {
+        "text": "Run the sandboxed WASM echo test",
+        "args": {}
+      },
+      {
+        "text": "Invoke the sandboxed WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "Get a greeting from the sandboxed WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "Can you test the sandboxed WASM echo module?",
+        "args": {}
+      },
+      {
+        "text": "Verify the sandboxed WASM echo response",
+        "args": {}
+      },
+      {
+        "text": "See if the sandboxed WASM echo module responds",
+        "args": {}
+      },
+      {
+        "text": "I'd like to try the sandboxed WASM echo skill",
+        "args": {}
+      },
+      {
+        "text": "Please call the sandboxed WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "Do the WASM echo smoke test",
+        "args": {}
+      },
+      {
+        "text": "Run the WASM echo smoke test",
+        "args": {}
+      },
+      {
+        "text": "Start the WASM echo smoke test",
+        "args": {}
+      },
+      {
+        "text": "Perform the WASM echo smoke test",
+        "args": {}
+      },
+      {
+        "text": "Trigger a WASM echo smoke test",
+        "args": {}
+      },
+      {
+        "text": "Give the WASM echo module a smoke test",
+        "args": {}
+      },
+      {
+        "text": "Smoke-test the WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "Can you run the WASM echo smoke test?",
+        "args": {}
+      },
+      {
+        "text": "Could you smoke-test the WASM echo module?",
+        "args": {}
+      },
+      {
+        "text": "I need a quick WASM echo smoke test",
+        "args": {}
+      },
+      {
+        "text": "Let's do a WASM echo smoke test",
+        "args": {}
+      },
+      {
+        "text": "It's time to smoke-test the WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "Check the WASM echo integration",
+        "args": {}
+      },
+      {
+        "text": "Test the WASM echo integration",
+        "args": {}
+      },
+      {
+        "text": "Verify the WASM echo integration",
+        "args": {}
+      },
+      {
+        "text": "Exercise the WASM echo integration",
+        "args": {}
+      },
+      {
+        "text": "Can you check the WASM echo integration?",
+        "args": {}
+      },
+      {
+        "text": "Please test the WASM echo sandbox",
+        "args": {}
+      },
+      {
+        "text": "Verify the WASM echo sandbox",
+        "args": {}
+      },
+      {
+        "text": "Try the WASM echo sandbox",
+        "args": {}
+      },
+      {
+        "text": "Can you run the WASM echo sandbox test?",
+        "args": {}
+      },
+      {
+        "text": "Check the echo skill inside the WASM sandbox",
+        "args": {}
+      },
+      {
+        "text": "Test the echo module inside the WASM sandbox",
+        "args": {}
+      },
+      {
+        "text": "Get the fixed greeting from the WASM module",
+        "args": {}
+      },
+      {
+        "text": "Return the fixed greeting from the WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "Show the fixed greeting from the WASM echo skill",
+        "args": {}
+      },
+      {
+        "text": "Can you retrieve the greeting from the WASM echo module?",
+        "args": {}
+      },
+      {
+        "text": "Could you ask the WASM echo module to respond?",
+        "args": {}
+      },
+      {
+        "text": "I could use a quick check of the WASM echo module",
+        "args": {}
+      },
+      {
+        "text": "A quick WASM echo test would be helpful",
+        "args": {}
+      }
+    ]
+  },
+  "open": {
+    "target": 500,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "open {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "please open {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "open {APP} for me",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "could you open {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "would you open {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "can you open {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "launch {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "please launch {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "can you launch {APP} for me",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "start {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "start up {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "run {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "fire up {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "boot up {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "open up {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "pull up {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "bring up {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "get {APP} open",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "get {APP} running",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "get {APP} started",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "load {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "load up {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "put {APP} on the screen",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "show {APP} on the screen",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "take me into the {APP} app",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "switch over to {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "switch me to {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "jump into {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "go ahead and open {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "let's open {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "I'd like to open {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "I want {APP} open",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "I want to use {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "I'd like to use {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "I need the {APP} app",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "I need to get into {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "I need {APP} on screen",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "let me use {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "let me into the {APP} app",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "could you get {APP} up",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "can you bring {APP} up",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "would you mind opening {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "can we open {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "where's the {APP} app",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "find the {APP} app and open it",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "open the app called {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "launch the app called {APP}",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "bring the {APP} app to the front",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "make {APP} the active app",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "switch to the {APP} app",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "bring {APP} to the foreground",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "get me into the {APP} app",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "I'd like {APP} on screen",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "can I get {APP} on screen",
+        "args": {
+          "app_name": "{APP}"
+        }
+      },
+      {
+        "text": "all I need is the {APP} app open",
+        "args": {
+          "app_name": "{APP}"
+        }
+      }
+    ]
+  }
+}
