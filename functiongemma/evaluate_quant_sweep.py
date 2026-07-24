@@ -4,9 +4,10 @@
 The same-runner constraint is intentional: route-eval decisions can drift by a
 few cases across CPU kernels, which is large enough to obscure the effect of a
 nearby quantisation level. Each model is measured by route-eval with its raw
-confidence dump, its floor is derived by derive_floor.py, and the generated-set
-gate metrics are then computed from that dump using derive_floor.metrics (the
-same definitions as route-eval).
+confidence dump and its floor is derived by derive_floor.py. A derived floor is
+then replayed through route-eval exactly as production does. Fallback floors can
+reuse the first generated-set run because that run already used the compiled
+fallback threshold.
 """
 
 import argparse
@@ -18,15 +19,16 @@ import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-if str(HERE) not in sys.path:
-    sys.path.insert(0, str(HERE))
-
-import derive_floor  # noqa: E402
 
 
 FLOOR_RE = re.compile(
     r"floor: min_confidence=(?P<floor>-?[0-9.]+) source=(?P<source>\w+)"
 )
+ABSTENTION_RE = re.compile(r"abstention:\s+(?P<passed>\d+)/(?P<total>\d+)")
+PRECISION_RE = re.compile(
+    r"precision:\s+(?P<correct>\d+)/(?P<fired>\d+)\s+fired"
+)
+RECALL_RE = re.compile(r"recall:\s+(?P<correct>\d+)/(?P<total>\d+)")
 
 
 def parse_model(value: str) -> tuple[str, Path]:
@@ -91,6 +93,76 @@ def derive(spine_log: Path, generated_log: Path, output_path: Path) -> tuple[flo
     if not match:
         raise RuntimeError(f"derive_floor.py emitted no floor; see {output_path}")
     return float(match.group("floor")), match.group("source")
+
+
+def parse_route_eval_summary(path: Path) -> dict:
+    """Parse exact counts emitted by route-eval at the threshold it executed."""
+    text = path.read_text()
+    abstention = ABSTENTION_RE.search(text)
+    precision = PRECISION_RE.search(text)
+    recall = RECALL_RE.search(text)
+    if not all((abstention, precision, recall)):
+        raise RuntimeError(f"route-eval summary is incomplete: {path}")
+
+    abst_pass = int(abstention.group("passed"))
+    abst_total = int(abstention.group("total"))
+    correct = int(precision.group("correct"))
+    fired = int(precision.group("fired"))
+    recall_correct = int(recall.group("correct"))
+    pos_total = int(recall.group("total"))
+    if correct != recall_correct:
+        raise RuntimeError(
+            f"route-eval precision/recall correct counts disagree in {path}: "
+            f"{correct} != {recall_correct}"
+        )
+    return {
+        "abstention": abst_pass / abst_total if abst_total else 1.0,
+        "abst_pass": abst_pass,
+        "abst_total": abst_total,
+        "precision": correct / fired if fired else 1.0,
+        "fired": fired,
+        "correct": correct,
+        "recall": correct / pos_total if pos_total else 0.0,
+        "pos_total": pos_total,
+    }
+
+
+def replay_gate(
+    router: Path,
+    model: Path,
+    generated: Path,
+    locale: str,
+    skills_dir: Path,
+    floor: float,
+    precision_min: float,
+    abstain_min: float,
+    stdout_path: Path,
+    stderr_path: Path,
+) -> int:
+    """Run the production gate at a derived floor, preserving full precision."""
+    command = [
+        str(router),
+        "--locale",
+        locale,
+        "--skills-dir",
+        str(skills_dir),
+        "--threshold",
+        str(floor),
+        "--precision-min",
+        str(precision_min),
+        "--abstain-min",
+        str(abstain_min),
+        str(model),
+        str(generated),
+    ]
+    with stdout_path.open("w") as stdout, stderr_path.open("w") as stderr:
+        result = subprocess.run(command, stdout=stdout, stderr=stderr)
+    if result.returncode >= 2:
+        raise RuntimeError(
+            f"route-eval gate failed structurally for {model.name} "
+            f"(exit {result.returncode}); see {stderr_path}"
+        )
+    return result.returncode
 
 
 def render_summary(results: list[dict]) -> str:
@@ -167,12 +239,30 @@ def main() -> None:
         floor, floor_source = derive(
             spine_log, generated_log, model_output / "derive-floor.log"
         )
-        generated_cases, _compiled = derive_floor.parse_dump(generated_log)
-        metrics = derive_floor.metrics(generated_cases, floor)
-        passed = (
-            metrics["precision"] >= args.precision_min
-            and metrics["abstention"] >= args.abstain_min
-        )
+        if floor_source == "derived":
+            gate_log = model_output / "route-eval.gate.log"
+            gate_status = replay_gate(
+                args.router,
+                model,
+                args.generated,
+                args.locale,
+                args.skills_dir,
+                floor,
+                args.precision_min,
+                args.abstain_min,
+                gate_log,
+                model_output / "route-eval.gate.stderr.log",
+            )
+            metrics = parse_route_eval_summary(gate_log)
+            passed = gate_status == 0
+        else:
+            # The first generated-set run used route-eval's compiled threshold,
+            # which is exactly the floor derive_floor falls back to.
+            metrics = parse_route_eval_summary(generated_log)
+            passed = (
+                metrics["precision"] >= args.precision_min
+                and metrics["abstention"] >= args.abstain_min
+            )
         result = {
             "label": label,
             "model": str(model),
