@@ -56,9 +56,137 @@ image = (
 ARI_ENGINE_REPO = "https://github.com/ari-digital-assistant/ari-engine.git"
 ARI_SKILLS_REPO = "https://github.com/ari-digital-assistant/ari-skills.git"
 ARI_TOOLS_REPO = "https://github.com/ari-digital-assistant/ari-tools.git"
+LLAMA_CPP_REPO = "https://github.com/ggml-org/llama.cpp.git"
+# Conversion is part of the model artifact. Pin it so a quant sweep compares
+# quantisation levels rather than accidentally comparing different converter
+# revisions. r127 cloned `master` without recording its commit, so it cannot be
+# reproduced byte-for-byte; all recovery artifacts use this one revision.
+LLAMA_CPP_COMMIT = "0cea36222fe9bac5ebfc45716c9eef11f37046c4"
+SWEEP_QUANTS = ("Q4_K_M", "Q5_K_M", "Q6_K", "Q8_0")
 
 OUTPUT_DIR = "/output"
 WORK_DIR = "/work"
+
+
+def _prepare_llama_cpp():
+    """Check out and build the pinned GGUF converter/quantizer."""
+    import os
+    import shutil
+
+    checkout = f"{WORK_DIR}/llama.cpp"
+    if os.path.exists(checkout):
+        shutil.rmtree(checkout)
+    os.makedirs(checkout)
+    subprocess.check_call(["git", "init"], cwd=checkout)
+    subprocess.check_call(
+        ["git", "remote", "add", "origin", LLAMA_CPP_REPO], cwd=checkout
+    )
+    subprocess.check_call(
+        ["git", "fetch", "--depth", "1", "origin", LLAMA_CPP_COMMIT],
+        cwd=checkout,
+    )
+    subprocess.check_call(["git", "checkout", "--detach", "FETCH_HEAD"], cwd=checkout)
+    actual = subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=checkout, text=True
+    ).strip()
+    if actual != LLAMA_CPP_COMMIT:
+        raise RuntimeError(
+            f"llama.cpp checkout mismatch: wanted {LLAMA_CPP_COMMIT}, got {actual}"
+        )
+    print(f"Building llama-quantize from llama.cpp {actual}...")
+    subprocess.check_call(["cmake", "-B", "build"], cwd=checkout)
+    subprocess.check_call(
+        ["cmake", "--build", "build", "--target", "llama-quantize", "-j4"],
+        cwd=checkout,
+    )
+    return checkout
+
+
+def _ensure_tokenizer_files(fused_dir: str):
+    """Restore tokenizer files that save_pretrained occasionally omits."""
+    import os
+    import shutil
+
+    from huggingface_hub import hf_hub_download, login
+
+    login(token=os.environ["HF_TOKEN"])
+    base_model_id = "google/functiongemma-270m-it"
+    for fname in ["tokenizer.model", "added_tokens.json", "special_tokens_map.json"]:
+        if os.path.exists(os.path.join(fused_dir, fname)):
+            continue
+        try:
+            src = hf_hub_download(base_model_id, fname)
+            shutil.copy2(src, os.path.join(fused_dir, fname))
+            print(f"  Copied {fname} from Hugging Face Hub")
+        except Exception as exc:
+            print(f"  WARNING: could not download {fname}: {exc}")
+
+
+def _convert_fused(
+    fused_dir: str,
+    locale: str,
+    output_dir: str,
+    quant_types=("Q4_K_M",),
+    retain_f16: bool = False,
+):
+    """Convert one fused checkpoint and quantise every requested variant."""
+    import json
+    import os
+    from datetime import datetime, timezone
+    from pathlib import Path
+
+    os.makedirs(output_dir, exist_ok=True)
+    _ensure_tokenizer_files(fused_dir)
+    llama_cpp = _prepare_llama_cpp()
+
+    f16_dir = output_dir if retain_f16 else WORK_DIR
+    f16_path = f"{f16_dir}/ari-functiongemma-{locale}-f16.gguf"
+    print("Converting to GGUF F16...")
+    subprocess.check_call(
+        [
+            sys.executable,
+            f"{llama_cpp}/convert_hf_to_gguf.py",
+            fused_dir,
+            "--outfile",
+            f16_path,
+            "--outtype",
+            "f16",
+        ]
+    )
+
+    files = {}
+    if retain_f16:
+        files["f16"] = {
+            "path": f16_path,
+            "bytes": os.path.getsize(f16_path),
+        }
+    for quant_type in quant_types:
+        suffix = quant_type.lower()
+        quant_path = f"{output_dir}/ari-functiongemma-{locale}-{suffix}.gguf"
+        print(f"Quantising to {quant_type}...")
+        subprocess.check_call(
+            [
+                f"{llama_cpp}/build/bin/llama-quantize",
+                f16_path,
+                quant_path,
+                quant_type,
+            ]
+        )
+        files[suffix] = {
+            "path": quant_path,
+            "bytes": os.path.getsize(quant_path),
+        }
+        print(f"  {suffix}: {files[suffix]['bytes'] / 1024 / 1024:.1f} MiB")
+
+    metadata = {
+        "locale": locale,
+        "llama_cpp_commit": LLAMA_CPP_COMMIT,
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "files": files,
+    }
+    metadata_path = Path(output_dir) / "quantization-metadata.json"
+    metadata_path.write_text(json.dumps(metadata, indent=2) + "\n")
+    return metadata
 
 
 @app.function(
@@ -276,56 +404,9 @@ def train(engine_ref: str = "main", skills_ref: str = "main", tools_ref: str = "
     volume.commit()
     print(f"Fused model backed up to volume")
 
-    # Copy missing tokenizer files from the base model into the fused dir.
-    # save_pretrained doesn't always copy tokenizer.model (sentencepiece),
-    # and the GGUF converter asserts vocab size matches. FunctionGemma has
-    # 262146 tokens (2 image tokens beyond config's 262144), which trips
-    # the assertion if the sentencepiece model is missing.
-    from huggingface_hub import hf_hub_download
-    for fname in ["tokenizer.model", "added_tokens.json", "special_tokens_map.json"]:
-        if not os.path.exists(os.path.join(fused_dir, fname)):
-            try:
-                src = hf_hub_download(base_model_id, fname)
-                import shutil
-                shutil.copy2(src, os.path.join(fused_dir, fname))
-                print(f"  Copied {fname} from HuggingFace hub")
-            except Exception as e:
-                print(f"  WARNING: could not download {fname}: {e}")
-
-    # Convert to GGUF
-    print("Cloning llama.cpp for GGUF conversion...")
-    subprocess.check_call(
-        ["git", "clone", "--depth", "1", "https://github.com/ggml-org/llama.cpp.git", f"{WORK_DIR}/llama.cpp"]
-    )
-    print("Building llama-quantize...")
-    subprocess.check_call(["cmake", "-B", "build"], cwd=f"{WORK_DIR}/llama.cpp")
-    subprocess.check_call(
-        ["cmake", "--build", "build", "--target", "llama-quantize", "-j4"],
-        cwd=f"{WORK_DIR}/llama.cpp",
-    )
-
-    f16_path = f"{WORK_DIR}/ari-functiongemma-{locale}-f16.gguf"
-    q4_path = f"{OUTPUT_DIR}/ari-functiongemma-{locale}-q4_k_m.gguf"
-
-    print("Converting to GGUF F16...")
-    subprocess.check_call([
-        sys.executable,
-        f"{WORK_DIR}/llama.cpp/convert_hf_to_gguf.py",
-        fused_dir,
-        "--outfile", f16_path,
-        "--outtype", "f16",
-    ])
-
-    print("Quantising to Q4_K_M...")
-    subprocess.check_call([
-        f"{WORK_DIR}/llama.cpp/build/bin/llama-quantize",
-        f16_path,
-        q4_path,
-        "Q4_K_M",
-    ])
-
-    size_mb = os.path.getsize(q4_path) / 1024 / 1024
-    print(f"Final model: {q4_path} ({size_mb:.0f} MB)")
+    metadata = _convert_fused(fused_dir, locale, OUTPUT_DIR)
+    q4 = metadata["files"]["q4_k_m"]
+    print(f"Final model: {q4['path']} ({q4['bytes'] / 1024 / 1024:.0f} MiB)")
 
     volume.commit()
     print("Done. Model saved to Modal volume 'ari-functiongemma-output'.")
@@ -353,80 +434,108 @@ def convert_only_fn(locale: str = "en"):
         shutil.copytree(fused_backup, fused_dir)
     print(f"Fused model restored from volume to {fused_dir}")
 
-    # Download missing tokenizer files
-    from huggingface_hub import hf_hub_download, login
-    login(token=os.environ["HF_TOKEN"])
-    base_model_id = "google/functiongemma-270m-it"
-    for fname in ["tokenizer.model", "added_tokens.json", "special_tokens_map.json"]:
-        if not os.path.exists(os.path.join(fused_dir, fname)):
-            try:
-                src = hf_hub_download(base_model_id, fname)
-                shutil.copy2(src, os.path.join(fused_dir, fname))
-                print(f"  Copied {fname}")
-            except Exception as e:
-                print(f"  WARNING: {fname}: {e}")
-
-    # Build llama.cpp quantizer
-    print("Cloning llama.cpp...")
-    subprocess.check_call(
-        ["git", "clone", "--depth", "1", "https://github.com/ggml-org/llama.cpp.git", f"{WORK_DIR}/llama.cpp"]
-    )
-    subprocess.check_call(["cmake", "-B", "build"], cwd=f"{WORK_DIR}/llama.cpp")
-    subprocess.check_call(
-        ["cmake", "--build", "build", "--target", "llama-quantize", "-j4"],
-        cwd=f"{WORK_DIR}/llama.cpp",
-    )
-
-    f16_path = f"{WORK_DIR}/ari-functiongemma-{locale}-f16.gguf"
-    q4_path = f"{OUTPUT_DIR}/ari-functiongemma-{locale}-q4_k_m.gguf"
-
-    print("Converting to GGUF F16...")
-    subprocess.check_call([
-        sys.executable,
-        f"{WORK_DIR}/llama.cpp/convert_hf_to_gguf.py",
-        fused_dir,
-        "--outfile", f16_path,
-        "--outtype", "f16",
-    ])
-
-    print("Quantising to Q4_K_M...")
-    subprocess.check_call([
-        f"{WORK_DIR}/llama.cpp/build/bin/llama-quantize",
-        f16_path,
-        q4_path,
-        "Q4_K_M",
-    ])
-
-    size_mb = os.path.getsize(q4_path) / 1024 / 1024
-    print(f"Final model: {q4_path} ({size_mb:.0f} MB)")
+    metadata = _convert_fused(fused_dir, locale, OUTPUT_DIR)
+    q4 = metadata["files"]["q4_k_m"]
+    print(f"Final model: {q4['path']} ({q4['bytes'] / 1024 / 1024:.0f} MiB)")
     volume.commit()
+
+
+@app.function(
+    image=image,
+    cpu=8.0,
+    memory=16384,
+    timeout=7200,
+    secrets=[modal.Secret.from_name("huggingface")],
+    volumes={OUTPUT_DIR: volume},
+)
+def quant_sweep_fn(locale: str = "it"):
+    """Quantise a retained fused checkpoint without spending GPU time."""
+    import os
+    import shutil
+
+    fused_backup = f"{OUTPUT_DIR}/fused-{locale}"
+    if not os.path.exists(fused_backup):
+        raise RuntimeError(
+            f"No fused-{locale} checkpoint on the Modal volume. Run training first."
+        )
+
+    os.makedirs(WORK_DIR, exist_ok=True)
+    fused_dir = f"{WORK_DIR}/fused"
+    if os.path.exists(fused_dir):
+        shutil.rmtree(fused_dir)
+    shutil.copytree(fused_backup, fused_dir)
+    print(f"Fused model restored from {fused_backup}")
+
+    sweep_dir = f"{OUTPUT_DIR}/quant-sweep-{locale}"
+    if os.path.exists(sweep_dir):
+        shutil.rmtree(sweep_dir)
+    _convert_fused(
+        fused_dir,
+        locale,
+        sweep_dir,
+        quant_types=SWEEP_QUANTS,
+        retain_f16=True,
+    )
+    volume.commit()
+    print(f"Quant sweep saved to {sweep_dir}")
 
 
 @app.local_entrypoint()
 def main(
     convert_only: bool = False,
+    quant_sweep: bool = False,
     engine_ref: str = "main",
     skills_ref: str = "main",
     tools_ref: str = "main",
     locale: str = "en",
 ):
     import os as _os
+    if convert_only and quant_sweep:
+        raise ValueError("--convert-only and --quant-sweep are mutually exclusive")
+
     if convert_only:
         print(f"Retrying GGUF conversion only ({locale})...")
         convert_only_fn.remote(locale=locale)
+    elif quant_sweep:
+        print(f"Quantising retained fused checkpoint ({locale})...")
+        quant_sweep_fn.remote(locale=locale)
     else:
         print(f"Launching training on Modal (engine={engine_ref} skills={skills_ref} tools={tools_ref} locale={locale})...")
         train.remote(engine_ref=engine_ref, skills_ref=skills_ref, tools_ref=tools_ref, locale=locale)
 
-    print("Downloading model from Modal volume...")
     import subprocess as sp
-    gguf_name = f"ari-functiongemma-{locale}-q4_k_m.gguf"
     _os.makedirs("./output", exist_ok=True)
-    sp.check_call([
-        "modal", "volume", "get",
-        "ari-functiongemma-output",
-        gguf_name,
-        "./output/",
-        "--force",
-    ])
-    print(f"Done. Model: ./output/{gguf_name}")
+    if quant_sweep:
+        filenames = [
+            f"ari-functiongemma-{locale}-{suffix}.gguf"
+            for suffix in ("q4_k_m", "q5_k_m", "q6_k", "q8_0", "f16")
+        ] + ["quantization-metadata.json"]
+        print("Downloading quant sweep from Modal volume...")
+        for filename in filenames:
+            sp.check_call(
+                [
+                    "modal",
+                    "volume",
+                    "get",
+                    "ari-functiongemma-output",
+                    f"quant-sweep-{locale}/{filename}",
+                    "./output/",
+                    "--force",
+                ]
+            )
+        print("Done. Quant sweep is in ./output/")
+    else:
+        gguf_name = f"ari-functiongemma-{locale}-q4_k_m.gguf"
+        print("Downloading model from Modal volume...")
+        sp.check_call(
+            [
+                "modal",
+                "volume",
+                "get",
+                "ari-functiongemma-output",
+                gguf_name,
+                "./output/",
+                "--force",
+            ]
+        )
+        print(f"Done. Model: ./output/{gguf_name}")

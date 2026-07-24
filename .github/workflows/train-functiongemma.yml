@@ -23,6 +23,14 @@ on:
         description: 'Restrict to one locale (en|it). Empty = both (the nightly default).'
         required: false
         default: ''
+      acknowledge_run_id:
+        description: 'No-GPU recovery: record current inputs as already attempted by this prior run id. Requires locale; never trains or publishes.'
+        required: false
+        default: ''
+      quant_sweep:
+        description: 'Diagnostic only: run the retained-checkpoint quant sweep instead of training.'
+        required: false
+        default: 'false'
 
 permissions:
   contents: write   # `gh release create` + `gh release upload` + push drafted banks
@@ -36,8 +44,32 @@ jobs:
     steps:
       - name: Compute locale matrix
         id: set
+        env:
+          ACK_RUN: ${{ github.event.inputs.acknowledge_run_id }}
+          FORCE: ${{ github.event.inputs.force || 'false' }}
+          LOCALE: ${{ github.event.inputs.locale }}
+          QUANT_SWEEP: ${{ github.event.inputs.quant_sweep || 'false' }}
         run: |
-          LOCALE="${{ github.event.inputs.locale }}"
+          if [ -n "$ACK_RUN" ] && [ -z "$LOCALE" ]; then
+            echo "acknowledge_run_id requires an explicit locale" >&2
+            exit 1
+          fi
+          if [ -n "$ACK_RUN" ] && ! [[ "$ACK_RUN" =~ ^[0-9]+$ ]]; then
+            echo "acknowledge_run_id must be a numeric GitHub Actions run id" >&2
+            exit 1
+          fi
+          if [ -n "$ACK_RUN" ] && [ "$FORCE" = "true" ]; then
+            echo "acknowledge_run_id and force are mutually exclusive" >&2
+            exit 1
+          fi
+          if [ "$QUANT_SWEEP" = "true" ] && { [ -n "$ACK_RUN" ] || [ "$FORCE" = "true" ]; }; then
+            echo "quant_sweep cannot be combined with acknowledge_run_id or force" >&2
+            exit 1
+          fi
+          if [ "$QUANT_SWEEP" = "true" ] && [ -z "$LOCALE" ]; then
+            echo "quant_sweep requires an explicit locale" >&2
+            exit 1
+          fi
           EN='{"locale":"en","eval_file":"functiongemma/routing-eval.jsonl","gen_eval_file":"functiongemma/routing-eval.gen.jsonl"}'
           IT='{"locale":"it","eval_file":"functiongemma/routing-eval.it.jsonl","gen_eval_file":"functiongemma/routing-eval.gen.it.jsonl"}'
           case "$LOCALE" in
@@ -49,6 +81,7 @@ jobs:
 
   train:
     needs: configure
+    if: github.event.inputs.quant_sweep != 'true'
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -66,6 +99,11 @@ jobs:
 
       - name: Check for skill changes since last training
         id: check
+        env:
+          ACK_RUN: ${{ github.event.inputs.acknowledge_run_id }}
+          FORCE: ${{ github.event.inputs.force || 'false' }}
+          MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+          MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
         run: |
           set -e
           ENGINE_SHA=$(git ls-remote https://github.com/ari-digital-assistant/ari-engine.git HEAD | cut -f1)
@@ -103,15 +141,30 @@ jobs:
           # because the threshold commit landed between them.
           echo "engine_sha=$ENGINE_SHA" >> "$GITHUB_OUTPUT"
 
-          # Per-locale stored SHAs — each locale tracks its own last training.
+          # Per-locale attempted SHAs — each locale tracks the last inputs it
+          # actually spent compute on, whether or not that model promoted.
+          # last-trained remains the audit record for the last PROMOTED model.
+          # Keeping those concepts separate prevents a rejected model from
+          # shipping while also preventing identical failed inputs from
+          # retraining and billing every night. Fall back to last-trained while
+          # old volumes migrate to the new state file.
           STORED_ENGINE=""
           STORED_SKILLS=""
           STORED_TOOLS=""
           if pip install -q modal && \
-             modal volume get ari-functiongemma-output "last-trained-${{ matrix.locale }}.json" /tmp/last-trained.json 2>/dev/null; then
-            STORED_ENGINE=$(python3 -c "import json; print(json.load(open('/tmp/last-trained.json')).get('engine_skills_sha',''))")
-            STORED_SKILLS=$(python3 -c "import json; print(json.load(open('/tmp/last-trained.json')).get('skills_sha',''))")
-            STORED_TOOLS=$(python3 -c "import json; print(json.load(open('/tmp/last-trained.json')).get('tools_corpus_sha',''))")
+             modal volume get ari-functiongemma-output "last-attempted-${{ matrix.locale }}.json" /tmp/last-attempted.json 2>/dev/null; then
+            STATE=/tmp/last-attempted.json
+            echo "Comparing against the last attempted inputs."
+          elif modal volume get ari-functiongemma-output "last-trained-${{ matrix.locale }}.json" /tmp/last-trained.json 2>/dev/null; then
+            STATE=/tmp/last-trained.json
+            echo "No attempted-input state yet; comparing against the last promoted inputs."
+          else
+            STATE=""
+          fi
+          if [ -n "$STATE" ]; then
+            STORED_ENGINE=$(python3 -c "import json; print(json.load(open('$STATE')).get('engine_skills_sha',''))")
+            STORED_SKILLS=$(python3 -c "import json; print(json.load(open('$STATE')).get('skills_sha',''))")
+            STORED_TOOLS=$(python3 -c "import json; print(json.load(open('$STATE')).get('tools_corpus_sha',''))")
           fi
 
           echo "Locale: ${{ matrix.locale }}"
@@ -119,8 +172,10 @@ jobs:
           echo "Stored skills SHA: $STORED_SKILLS  Current: $SKILLS_SHA"
           echo "Stored tools SHA:  $STORED_TOOLS  Current: $TOOLS_CORPUS_SHA"
 
-          FORCE="${{ github.event.inputs.force || 'false' }}"
-          if [[ "$FORCE" == "true" ]]; then
+          if [[ -n "$ACK_RUN" ]]; then
+            echo "Acknowledging prior run $ACK_RUN for the current inputs; no training will run."
+            echo "should_train=false" >> "$GITHUB_OUTPUT"
+          elif [[ "$FORCE" == "true" ]]; then
             echo "Force flag set — training will run."
             echo "should_train=true" >> "$GITHUB_OUTPUT"
           elif [[ "$ENGINE_SKILLS_SHA" != "$STORED_ENGINE" || "$SKILLS_SHA" != "$STORED_SKILLS" || "$TOOLS_CORPUS_SHA" != "$STORED_TOOLS" ]]; then
@@ -130,9 +185,26 @@ jobs:
             echo "No skill or corpus changes since last training — skipping."
             echo "should_train=false" >> "$GITHUB_OUTPUT"
           fi
+      - name: Acknowledge prior attempted inputs (no training)
+        if: github.event.inputs.acknowledge_run_id != ''
         env:
+          ACK_RUN: ${{ github.event.inputs.acknowledge_run_id }}
           MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
           MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+        run: |
+          cat > /tmp/last-attempted.json <<EOF
+          {
+            "engine_skills_sha": "${{ steps.check.outputs.engine_skills_sha }}",
+            "skills_sha": "${{ steps.check.outputs.skills_sha }}",
+            "tools_corpus_sha": "${{ steps.check.outputs.tools_corpus_sha }}",
+            "locale": "${{ matrix.locale }}",
+            "attempted_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "workflow_run": "$ACK_RUN",
+            "recorded_by_workflow_run": "${{ github.run_id }}",
+            "gate_outcome": "acknowledged"
+          }
+          EOF
+          modal volume put --force ari-functiongemma-output /tmp/last-attempted.json "last-attempted-${{ matrix.locale }}.json"
 
       - name: Set up Python
         if: steps.check.outputs.should_train == 'true'
@@ -418,13 +490,16 @@ jobs:
           if [ ! -f "$GEN" ]; then
             echo "no generated eval bank — falling back to the spine verdict."
             if [ "${{ steps.spine.outputs.device_gate }}" != "0" ]; then
+              echo "exit_code=1" >> "$GITHUB_OUTPUT"
               echo "::error::spine gate failed and no generated bank exists to gate on. Run generate-eval.yml for this locale."
               exit 1
             fi
+            echo "exit_code=0" >> "$GITHUB_OUTPUT"
             exit 0
           fi
           set -o pipefail
           cd _ari-engine
+          set +e
           cargo run --release -p ari-ffi --bin route-eval -- \
             --locale ${{ matrix.locale }} \
             --skills-dir /tmp/skills/skills \
@@ -434,6 +509,10 @@ jobs:
             "$GITHUB_WORKSPACE/output/ari-functiongemma-${{ matrix.locale }}-q4_k_m.gguf" \
             "$GEN" \
             | tee -a "$GITHUB_STEP_SUMMARY"
+          STATUS=$?
+          set -e
+          echo "exit_code=$STATUS" >> "$GITHUB_OUTPUT"
+          exit "$STATUS"
 
       - name: Create versioned release with GGUF
         # Archival release for every non-experimental run of either locale — this
@@ -446,12 +525,13 @@ jobs:
         # below is correctly skipped on failure) but a human browsing releases
         # had no way to tell, which is its own kind of dangerous.
         #
-        # `!cancelled()` so a rejected model still gets archived; the manifest
-        # step's outcome stands in for "training produced a GGUF at all" — it is
-        # the last step before the gate that touches the file.
+        # `!cancelled()` so a rejected model still gets archived. The manifest
+        # outcome proves training produced a GGUF; gate exit 0/1 proves this was
+        # a real promotion verdict rather than a structural harness failure.
         if: >-
           !cancelled()
           && steps.manifest.outcome == 'success'
+          && (steps.gate.outputs.exit_code == '0' || steps.gate.outputs.exit_code == '1')
           && github.event.inputs.experimental != 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -474,8 +554,38 @@ jobs:
             --title "$TITLE" \
             --notes "Retrain (${{ matrix.locale }}). $VERDICT Engine skills SHA: ${{ steps.check.outputs.engine_skills_sha }} · Community skills SHA: ${{ steps.check.outputs.skills_sha }} · Workflow run: ${{ github.run_id }}"
 
-      - name: Store training SHAs
-        if: steps.check.outputs.should_train == 'true' && github.event.inputs.experimental != 'true'
+      - name: Store attempted input SHAs
+        # Deliberately runs after a rejected gate. This is NOT promotion state:
+        # it only says these exact inputs have already consumed a training run.
+        # A later corpus/skill change or a manual `force` still retries.
+        if: >-
+          !cancelled()
+          && steps.manifest.outcome == 'success'
+          && (steps.gate.outputs.exit_code == '0' || steps.gate.outputs.exit_code == '1')
+          && github.event.inputs.experimental != 'true'
+        env:
+          MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+          MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+        run: |
+          cat > /tmp/last-attempted.json <<EOF
+          {
+            "engine_skills_sha": "${{ steps.check.outputs.engine_skills_sha }}",
+            "skills_sha": "${{ steps.check.outputs.skills_sha }}",
+            "tools_corpus_sha": "${{ steps.check.outputs.tools_corpus_sha }}",
+            "locale": "${{ matrix.locale }}",
+            "attempted_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "workflow_run": "${{ github.run_id }}",
+            "gate_outcome": "${{ steps.gate.outcome }}"
+          }
+          EOF
+          modal volume put --force ari-functiongemma-output /tmp/last-attempted.json "last-attempted-${{ matrix.locale }}.json"
+
+      - name: Store promoted training SHAs
+        # last-trained is promotion state. Never write it for a rejected model.
+        if: >-
+          steps.check.outputs.should_train == 'true'
+          && steps.gate.outcome == 'success'
+          && github.event.inputs.experimental != 'true'
         env:
           MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
           MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
@@ -526,3 +636,15 @@ jobs:
             Engine skills SHA: ${{ steps.check.outputs.engine_skills_sha }}
             Community skills SHA: ${{ steps.check.outputs.skills_sha }}
             Workflow run: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+  quant-sweep:
+    name: Diagnostic quant sweep
+    needs: configure
+    if: github.event.inputs.quant_sweep == 'true'
+    permissions:
+      contents: read
+      actions: read
+    uses: ./.github/workflows/functiongemma-quant-sweep.yml
+    with:
+      locale: ${{ github.event.inputs.locale }}
+    secrets: inherit
