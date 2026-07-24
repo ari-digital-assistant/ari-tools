@@ -1,0 +1,150 @@
+name: FunctionGemma quant sweep
+
+# Diagnostic only: restores an already-trained fused checkpoint, converts one
+# F16 GGUF, then evaluates every variant sequentially on ONE runner. It never
+# trains, releases, updates a floating manifest, or changes training state.
+on:
+  workflow_dispatch:
+    inputs:
+      locale:
+        description: 'Retained fused checkpoint locale'
+        required: true
+        type: choice
+        options:
+          - it
+          - en
+        default: it
+      baseline_run_id:
+        description: 'Workflow run containing the archived Q4 baseline'
+        required: true
+        default: '30063710751'
+      engine_ref:
+        description: 'ari-engine ref for route-eval (r127 default)'
+        required: true
+        default: 'f990bee13f21f368388cf85c3d765756ace01506'
+      skills_ref:
+        description: 'ari-skills ref for the routing catalogue (r127 default)'
+        required: true
+        default: '15c0d02e7a632d894e6d8daa4932bb4af735fd27'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  sweep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+
+      - name: Install Modal
+        run: pip install modal
+
+      - name: Convert retained fused checkpoint
+        env:
+          MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
+          MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
+        run: >-
+          modal run functiongemma/modal_train.py
+          --quant-sweep
+          --locale "${{ github.event.inputs.locale }}"
+
+      - name: Download archived Q4 baseline
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh run download "${{ github.event.inputs.baseline_run_id }}" \
+            --repo "${{ github.repository }}" \
+            --name "ari-functiongemma-${{ github.event.inputs.locale }}-q4_k_m" \
+            --dir baseline
+          mv \
+            "baseline/ari-functiongemma-${{ github.event.inputs.locale }}-q4_k_m.gguf" \
+            "output/ari-functiongemma-${{ github.event.inputs.locale }}-r127_q4.gguf"
+
+      - name: Upload conversion evidence
+        uses: actions/upload-artifact@v7
+        with:
+          name: ari-functiongemma-${{ github.event.inputs.locale }}-quant-sweep-models
+          path: |
+            output/*.gguf
+            output/quantization-metadata.json
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Check out the pinned eval harness
+        uses: actions/checkout@v5
+        with:
+          repository: ari-digital-assistant/ari-engine
+          ref: ${{ github.event.inputs.engine_ref }}
+          path: _ari-engine
+
+      - name: Check out the pinned skill catalogue
+        uses: actions/checkout@v5
+        with:
+          repository: ari-digital-assistant/ari-skills
+          ref: ${{ github.event.inputs.skills_ref }}
+          path: _ari-skills
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: _ari-engine
+
+      - name: Install llama.cpp build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y cmake clang libclang-dev
+          LIBCLANG_DIR="$(dirname "$(find /usr/lib /usr/lib64 -name 'libclang*.so*' 2>/dev/null | head -1)")"
+          echo "LIBCLANG_PATH=$LIBCLANG_DIR" >> "$GITHUB_ENV"
+
+      - name: Build route-eval once
+        working-directory: _ari-engine
+        run: cargo build --release -p ari-ffi --bin route-eval
+
+      - name: Evaluate all variants on the same runner
+        run: |
+          SPINE="functiongemma/routing-eval.jsonl"
+          GENERATED="functiongemma/routing-eval.gen.jsonl"
+          if [ "${{ github.event.inputs.locale }}" = "it" ]; then
+            SPINE="functiongemma/routing-eval.it.jsonl"
+            GENERATED="functiongemma/routing-eval.gen.it.jsonl"
+          fi
+          python3 functiongemma/evaluate_quant_sweep.py \
+            --router "_ari-engine/target/release/route-eval" \
+            --locale "${{ github.event.inputs.locale }}" \
+            --skills-dir "_ari-skills/skills" \
+            --spine "$SPINE" \
+            --generated "$GENERATED" \
+            --output "output/eval" \
+            --precision-min 0.85 \
+            --abstain-min 0.90 \
+            --model "r127_q4=output/ari-functiongemma-${{ github.event.inputs.locale }}-r127_q4.gguf" \
+            --model "q4_k_m=output/ari-functiongemma-${{ github.event.inputs.locale }}-q4_k_m.gguf" \
+            --model "q5_k_m=output/ari-functiongemma-${{ github.event.inputs.locale }}-q5_k_m.gguf" \
+            --model "q6_k=output/ari-functiongemma-${{ github.event.inputs.locale }}-q6_k.gguf" \
+            --model "q8_0=output/ari-functiongemma-${{ github.event.inputs.locale }}-q8_0.gguf" \
+            --model "f16=output/ari-functiongemma-${{ github.event.inputs.locale }}-f16.gguf"
+
+      - name: Publish sweep curve in the run summary
+        if: always()
+        run: |
+          if [ -f output/eval/summary.md ]; then
+            cat output/eval/summary.md >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "Quant sweep did not produce a summary; inspect the evidence artifact." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload evaluation evidence
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: ari-functiongemma-${{ github.event.inputs.locale }}-quant-sweep-eval
+          path: output/eval/
+          if-no-files-found: warn
+          retention-days: 30
