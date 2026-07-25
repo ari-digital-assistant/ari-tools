@@ -1,0 +1,394 @@
+{
+  "REMLIST": [
+    {
+      "surface": "lista della spesa",
+      "canonical": "spesa"
+    },
+    {
+      "surface": "lista di lavoro",
+      "canonical": "lavoro"
+    },
+    {
+      "surface": "lista di casa",
+      "canonical": "casa"
+    },
+    {
+      "surface": "lista delle commissioni",
+      "canonical": "commissioni"
+    },
+    {
+      "surface": "lista dei regali",
+      "canonical": "regali"
+    },
+    {
+      "surface": "lista del viaggio",
+      "canonical": "viaggio"
+    },
+    {
+      "surface": "lista della scuola",
+      "canonical": "scuola"
+    },
+    {
+      "surface": "lista della farmacia",
+      "canonical": "farmacia"
+    },
+    {
+      "surface": "lista delle cose da fare",
+      "canonical": "cose da fare"
+    },
+    {
+      "surface": "lista del fine settimana",
+      "canonical": "fine settimana"
+    }
+  ],
+  "WEATHERCITY": [
+    {
+      "surface": "roma",
+      "canonical": "roma"
+    },
+    {
+      "surface": "milano",
+      "canonical": "milano"
+    },
+    {
+      "surface": "torino",
+      "canonical": "torino"
+    },
+    {
+      "surface": "napoli",
+      "canonical": "napoli"
+    },
+    {
+      "surface": "bologna",
+      "canonical": "bologna"
+    },
+    {
+      "surface": "firenze",
+      "canonical": "firenze"
+    },
+    {
+      "surface": "genova",
+      "canonical": "genova"
+    },
+    {
+      "surface": "palermo",
+      "canonical": "palermo"
+    },
+    {
+      "surface": "catania",
+      "canonical": "catania"
+    },
+    {
+      "surface": "venezia",
+      "canonical": "venezia"
+    },
+    {
+      "surface": "trieste",
+      "canonical": "trieste"
+    },
+    {
+      "surface": "bari",
+      "canonical": "bari"
+    },
+    {
+      "surface": "cagliari",
+      "canonical": "cagliari"
+    },
+    {
+      "surface": "londra",
+      "canonical": "londra"
+    },
+    {
+      "surface": "parigi",
+      "canonical": "parigi"
+    },
+    {
+      "surface": "berlino",
+      "canonical": "berlino"
+    },
+    {
+      "surface": "madrid",
+      "canonical": "madrid"
+    },
+    {
+      "surface": "lisbona",
+      "canonical": "lisbona"
+    },
+    {
+      "surface": "vienna",
+      "canonical": "vienna"
+    },
+    {
+      "surface": "praga",
+      "canonical": "praga"
+    },
+    {
+      "surface": "atene",
+      "canonical": "atene"
+    },
+    {
+      "surface": "tokyo",
+      "canonical": "tokyo"
+    },
+    {
+      "surface": "new york",
+      "canonical": "new york"
+    },
+    {
+      "surface": "san francisco",
+      "canonical": "san francisco"
+    },
+    {
+      "surface": "città del messico",
+      "canonical": "città del messico"
+    },
+    {
+      "surface": "buenos aires",
+      "canonical": "buenos aires"
+    },
+    {
+      "surface": "sydney",
+      "canonical": "sydney"
+    },
+    {
+      "surface": "dubai",
+      "canonical": "dubai"
+    },
+    {
+      "surface": "valletta",
+      "canonical": "valletta"
+    },
+    {
+      "surface": "amsterdam",
+      "canonical": "amsterdam"
+    }
+  ],
+  "OPEN_APP": [
+    {
+      "surface": "Spotify",
+      "canonical": "Spotify"
+    },
+    {
+      "surface": "la fotocamera",
+      "canonical": "Camera"
+    },
+    {
+      "surface": "il browser",
+      "canonical": "Browser"
+    },
+    {
+      "surface": "YouTube",
+      "canonical": "YouTube"
+    },
+    {
+      "surface": "le impostazioni",
+      "canonical": "Settings"
+    },
+    {
+      "surface": "Mappe",
+      "canonical": "Maps"
+    },
+    {
+      "surface": "il lettore musicale",
+      "canonical": "Music Player"
+    },
+    {
+      "surface": "Chrome",
+      "canonical": "Chrome"
+    },
+    {
+      "surface": "la posta",
+      "canonical": "Email"
+    },
+    {
+      "surface": "WhatsApp",
+      "canonical": "WhatsApp"
+    },
+    {
+      "surface": "la calcolatrice",
+      "canonical": "Calculator"
+    },
+    {
+      "surface": "Instagram",
+      "canonical": "Instagram"
+    },
+    {
+      "surface": "Netflix",
+      "canonical": "Netflix"
+    },
+    {
+      "surface": "la galleria",
+      "canonical": "Gallery"
+    },
+    {
+      "surface": "Telegram",
+      "canonical": "Telegram"
+    },
+    {
+      "surface": "Firefox",
+      "canonical": "Firefox"
+    },
+    {
+      "surface": "l'orologio",
+      "canonical": "Clock"
+    },
+    {
+      "surface": "il telefono",
+      "canonical": "Phone"
+    },
+    {
+      "surface": "Messaggi",
+      "canonical": "Messages"
+    },
+    {
+      "surface": "Twitter",
+      "canonical": "Twitter"
+    },
+    {
+      "surface": "Note",
+      "canonical": "Notes"
+    },
+    {
+      "surface": "Slack",
+      "canonical": "Slack"
+    },
+    {
+      "surface": "il calendario",
+      "canonical": "Calendar"
+    },
+    {
+      "surface": "Fitness",
+      "canonical": "Fitness"
+    },
+    {
+      "surface": "Reddit",
+      "canonical": "Reddit"
+    },
+    {
+      "surface": "Discord",
+      "canonical": "Discord"
+    },
+    {
+      "surface": "il gestore file",
+      "canonical": "Files"
+    },
+    {
+      "surface": "l'app della banca",
+      "canonical": "Banking"
+    }
+  ],
+  "OPEN_APPNAME": [
+    {
+      "surface": "Spotify",
+      "canonical": "Spotify"
+    },
+    {
+      "surface": "Fotocamera",
+      "canonical": "Camera"
+    },
+    {
+      "surface": "Browser",
+      "canonical": "Browser"
+    },
+    {
+      "surface": "YouTube",
+      "canonical": "YouTube"
+    },
+    {
+      "surface": "Impostazioni",
+      "canonical": "Settings"
+    },
+    {
+      "surface": "Mappe",
+      "canonical": "Maps"
+    },
+    {
+      "surface": "Lettore musicale",
+      "canonical": "Music Player"
+    },
+    {
+      "surface": "Chrome",
+      "canonical": "Chrome"
+    },
+    {
+      "surface": "Posta",
+      "canonical": "Email"
+    },
+    {
+      "surface": "WhatsApp",
+      "canonical": "WhatsApp"
+    },
+    {
+      "surface": "Calcolatrice",
+      "canonical": "Calculator"
+    },
+    {
+      "surface": "Instagram",
+      "canonical": "Instagram"
+    },
+    {
+      "surface": "Netflix",
+      "canonical": "Netflix"
+    },
+    {
+      "surface": "Galleria",
+      "canonical": "Gallery"
+    },
+    {
+      "surface": "Telegram",
+      "canonical": "Telegram"
+    },
+    {
+      "surface": "Firefox",
+      "canonical": "Firefox"
+    },
+    {
+      "surface": "Orologio",
+      "canonical": "Clock"
+    },
+    {
+      "surface": "Telefono",
+      "canonical": "Phone"
+    },
+    {
+      "surface": "Messaggi",
+      "canonical": "Messages"
+    },
+    {
+      "surface": "Twitter",
+      "canonical": "Twitter"
+    },
+    {
+      "surface": "Note",
+      "canonical": "Notes"
+    },
+    {
+      "surface": "Slack",
+      "canonical": "Slack"
+    },
+    {
+      "surface": "Calendario",
+      "canonical": "Calendar"
+    },
+    {
+      "surface": "Fitness",
+      "canonical": "Fitness"
+    },
+    {
+      "surface": "Reddit",
+      "canonical": "Reddit"
+    },
+    {
+      "surface": "Discord",
+      "canonical": "Discord"
+    },
+    {
+      "surface": "Gestore file",
+      "canonical": "Files"
+    },
+    {
+      "surface": "Banca",
+      "canonical": "Banking"
+    }
+  ]
+}

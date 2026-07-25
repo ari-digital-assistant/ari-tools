@@ -1,0 +1,1105 @@
+{
+  "dev.heyari.reminder": {
+    "target": 500,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "imposta un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "crea un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "fammi un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "puoi impostarmi un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "vorrei un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "mi serve un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "ho bisogno di un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "potresti creare un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "mi prepari un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "segnami un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "programma un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "metti in agenda un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "lasciami un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "non farmi dimenticare di {ITREMTXT}: crea un promemoria {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "assicurati che riceva un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "ricordamelo con un promemoria: {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "avvisami con un promemoria di {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "mandami un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "fai comparire un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "sarebbe utile avere un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "posso avere un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "mi imposti un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "mi crei un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "tienimi da parte un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "annota un promemoria per {ITREMTXT} {ITWHEN}",
+        "args": {
+          "title": "{ITREMTXT}",
+          "when": "{ITWHEN}"
+        }
+      },
+      {
+        "text": "ricordami di {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "imposta un promemoria per {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "crea un promemoria senza orario per {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "segnami tra i promemoria di {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "aggiungi un promemoria per {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "puoi lasciarmi un promemoria per {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "vorrei ricordarmi di {ITREMTXT}, aggiungi un promemoria",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "mi serve un promemoria senza scadenza per {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "metti {ITREMTXT} nei miei promemoria",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "annota tra i promemoria di {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "fammi trovare un promemoria per {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "non devo dimenticare di {ITREMTXT}, crea un promemoria",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "puoi creare un promemoria non programmato per {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "salva come promemoria: {ITREMTXT}",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "tienimi a mente {ITREMTXT} con un promemoria",
+        "args": {
+          "title": "{ITREMTXT}"
+        }
+      },
+      {
+        "text": "aggiungi {ITSHOP} alla {REMLIST}",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "{REMLIST}"
+        }
+      },
+      {
+        "text": "metti {ITSHOP} nella {REMLIST}",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "{REMLIST}"
+        }
+      },
+      {
+        "text": "segna {ITSHOP} sulla {REMLIST}",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "{REMLIST}"
+        }
+      },
+      {
+        "text": "puoi aggiungere {ITSHOP} alla {REMLIST}",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "{REMLIST}"
+        }
+      },
+      {
+        "text": "mi aggiungi {ITSHOP} alla {REMLIST}",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "{REMLIST}"
+        }
+      },
+      {
+        "text": "vorrei {ITSHOP} nella {REMLIST}",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "{REMLIST}"
+        }
+      },
+      {
+        "text": "fammi trovare {ITSHOP} sulla {REMLIST}",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "{REMLIST}"
+        }
+      },
+      {
+        "text": "annota {ITSHOP} nella {REMLIST}",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "{REMLIST}"
+        }
+      },
+      {
+        "text": "inserisci {ITSHOP} nella {REMLIST}",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "{REMLIST}"
+        }
+      },
+      {
+        "text": "puoi mettere {ITSHOP} sulla {REMLIST}",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "{REMLIST}"
+        }
+      },
+      {
+        "text": "non farmi dimenticare {ITSHOP}, aggiungilo alla {REMLIST}",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "{REMLIST}"
+        }
+      },
+      {
+        "text": "mi serve {ITSHOP} nella {REMLIST}",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "{REMLIST}"
+        }
+      },
+      {
+        "text": "aggiungimi {ITSHOP} alla {REMLIST}",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "{REMLIST}"
+        }
+      },
+      {
+        "text": "scrivi {ITSHOP} sulla {REMLIST}",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "{REMLIST}"
+        }
+      },
+      {
+        "text": "ricordati di mettere {ITSHOP} nella {REMLIST}",
+        "args": {
+          "title": "{ITSHOP}",
+          "list_hint": "{REMLIST}"
+        }
+      }
+    ]
+  },
+  "dev.heyari.weather": {
+    "target": 500,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "com'è il tempo qui adesso",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "che condizioni meteo ci sono fuori in questo momento",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "qual è la temperatura esterna adesso",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "sta piovendo qui in questo momento",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "quanto sono forti i raggi UV adesso",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "fammi vedere le previsioni meteo per oggi",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "oggi ci sarà molto vento da queste parti",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "secondo il meteo, oggi mi servirà l'ombrello",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "vorrei sapere che tempo farà qui domani",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "è prevista neve qui per domani",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "dammi le previsioni per tutta questa settimana",
+        "args": {
+          "location": "",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "pioverà spesso da queste parti questa settimana",
+        "args": {
+          "location": "",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "come saranno le temperature qui durante questa settimana",
+        "args": {
+          "location": "",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "che tempo c'è a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "dammi il meteo aggiornato per {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "quali sono le condizioni meteo in questo momento a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "quanti gradi ci sono adesso a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "sta piovendo in questo momento a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "quanto vento c'è adesso a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "c'è il sole in questo momento a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "qual è l'indice UV attuale a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "quanto è umida l'aria adesso a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "il cielo è nuvoloso a {WEATHERCITY} in questo momento",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "c'è nebbia adesso a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "qual è la temperatura percepita adesso a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "c'è un temporale in corso a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "controlla il meteo di {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "fammi vedere le previsioni meteo di oggi per {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "che tempo farà oggi a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "è prevista pioggia oggi a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "qual è la temperatura massima di oggi a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "oggi tirerà molto vento a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "quanto sarà alto l'indice UV oggi a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "ci sarà il sole oggi a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "sono previsti grandine o temporali oggi a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "devo portarmi l'ombrello oggi a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "le previsioni di oggi a {WEATHERCITY} permettono di stare all'aperto",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "controlla il meteo di domani a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "mi dai le previsioni per domani a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "domani pioverà a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "che temperature sono previste domani a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "ci sarà vento forte domani a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "nevicherà domani a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "domani a {WEATHERCITY} sarà sereno o nuvoloso",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "sono previsti temporali domani a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "come sarà l'indice UV domani a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "farà abbastanza freddo da servire il cappotto domani a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "le previsioni meteo permettono un picnic domani a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "domani l'aria sarà molto umida a {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "mostrami le previsioni meteo di questa settimana per {WEATHERCITY}",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "come cambierà il tempo a {WEATHERCITY} nel corso di questa settimana",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "in quali giorni pioverà a {WEATHERCITY} questa settimana",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "come saranno le temperature a {WEATHERCITY} questa settimana",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "è previsto vento forte a {WEATHERCITY} durante questa settimana",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "ci saranno nevicate a {WEATHERCITY} questa settimana",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "this week"
+        }
+      }
+    ]
+  },
+  "open": {
+    "target": 500,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "apri {OPEN_APP}, per favore",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "mi apri {OPEN_APP}?",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "puoi aprirmi {OPEN_APP}?",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "potresti aprire {OPEN_APP}?",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "aprimi subito {OPEN_APP}",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "vorrei aprire {OPEN_APP}",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "vorrei che mi aprissi {OPEN_APP}",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "ho bisogno che tu apra {OPEN_APP}",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "dai, apri {OPEN_APP}",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "per cortesia, apri {OPEN_APP}",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "lancia subito {OPEN_APP}",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "mi lanceresti {OPEN_APP}?",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "puoi lanciare {OPEN_APP} per me?",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "avvia adesso {OPEN_APP}",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "mi avvii {OPEN_APP}?",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "riesci ad avviare {OPEN_APP}?",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "fai partire adesso {OPEN_APP}",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "riesci a far partire {OPEN_APP}?",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "fammi usare {OPEN_APP}",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "voglio poter usare {OPEN_APP}",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "mi piacerebbe usare {OPEN_APP}",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "devo usare {OPEN_APP}, aprilo",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "ho bisogno di usare {OPEN_APP}, puoi aprirlo?",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "mostrami {OPEN_APP} sullo schermo",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "fammi vedere {OPEN_APP} sullo schermo",
+        "args": {
+          "app_name": "{OPEN_APP}"
+        }
+      },
+      {
+        "text": "apri subito l'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "apriresti l'app {OPEN_APPNAME}?",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "è possibile aprire l'app {OPEN_APPNAME}?",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "riesci ad aprire l'app {OPEN_APPNAME}?",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "mi puoi aprire l'app {OPEN_APPNAME}?",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "avvia adesso l'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "lancia per me l'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "fai partire l'app {OPEN_APPNAME}, grazie",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "manda in esecuzione l'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "carica l'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "esegui l'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "attiva l'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "entra nell'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "fammi entrare nell'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "voglio entrare nell'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "vai nell'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "portami nell'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "passa all'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "fammi passare all'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "vorrei passare all'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "torna all'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "metti in primo piano l'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "porta in primo piano l'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "fai comparire sullo schermo l'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "voglio vedere sullo schermo l'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "mi serve l'app {OPEN_APPNAME} sullo schermo",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "mostrami la schermata dell'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "portami alla schermata dell'app {OPEN_APPNAME}",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "cerca l'app {OPEN_APPNAME} e aprila",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      },
+      {
+        "text": "trova l'app {OPEN_APPNAME} e avviala",
+        "args": {
+          "app_name": "{OPEN_APPNAME}"
+        }
+      }
+    ]
+  }
+}
