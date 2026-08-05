@@ -10,14 +10,36 @@ pipelines, training scripts, registry maintenance, that sort of thing.
 
 ```
 ari-tools/
-└── functiongemma/        — fine-tuning pipeline for the FunctionGemma router
-    ├── generate-dataset.py    Build the training JSONL from Ari skills (built-in + community) + scaled negatives
-    ├── modal_train.py         Train on Modal (recommended — one command, no infra)
-    ├── train.py               Standalone training script (runs on any GPU instance)
-    ├── launch-aws.sh          Launch an AWS spot instance for training (legacy)
-    ├── eval.py                Quick eval harness for a GGUF model against Ari test cases
-    └── finetune-colab.ipynb   Colab notebook (alternative, manual)
+├── functiongemma/        — fine-tuning pipeline for the FunctionGemma router
+│   ├── generate-dataset.py    Build the training JSONL from Ari skills (built-in + community) + scaled negatives
+│   ├── modal_train.py         Train on Modal (recommended — one command, no infra)
+│   ├── train.py               Standalone training script (runs on any GPU instance)
+│   ├── launch-aws.sh          Launch an AWS spot instance for training (legacy)
+│   ├── eval.py                Quick eval harness for a GGUF model against Ari test cases
+│   └── finetune-colab.ipynb   Colab notebook (alternative, manual)
+└── scripts/              — operational scripts, run by CI or by hand
+    ├── publish_manifest.py    Publish on-device model manifests to floating releases (called by three workflows)
+    ├── stt_bench.py           Replay captured utterances through STT models and compare transcripts
+    └── measure_wake_cpu.sh    Measure what always-on wake-word listening costs in CPU
 ```
+
+### Diagnosing a speech-to-text problem
+
+Start with `scripts/stt_bench.py`, not with the Android pipeline. It replays
+the app's debug captures through any model and flags where the bench and the
+device disagree — agreement means the model is at fault and no amount of
+Kotlin will help.
+
+```bash
+pip install sherpa-onnx
+scripts/stt_bench.py --model kroko=./kroko-2025-08-06 captures/*.wav
+```
+
+This is not a hypothetical shortcut. Nemotron 0.6B int8 shipped as the "high
+accuracy" option and was quietly mangling transcripts — "how's the weather"
+arriving as "how's the weat" — while a fortnight of fixes went into audio
+plumbing that had never been at fault. Twenty minutes on the bench, comparing
+it against the 71 MB Kroko on the same WAVs, settled it and retired the model.
 
 After a training run, evaluate the model:
 
