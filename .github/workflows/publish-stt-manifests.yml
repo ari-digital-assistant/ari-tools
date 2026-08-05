@@ -28,9 +28,6 @@ jobs:
           - id: kroko
             hf_repo: csukuangfj/sherpa-onnx-streaming-zipformer-en-kroko-2025-08-06
             files: encoder.onnx,decoder.onnx,joiner.onnx,tokens.txt
-          - id: nemotron
-            hf_repo: csukuangfj/sherpa-onnx-nemotron-speech-streaming-en-0.6b-int8-2026-01-14
-            files: encoder.int8.onnx,decoder.int8.onnx,joiner.int8.onnx,tokens.txt
           - id: whisper-turbo
             hf_repo: csukuangfj/sherpa-onnx-whisper-turbo
             # Whisper is encoder-decoder, no joiner. int8 quantised
