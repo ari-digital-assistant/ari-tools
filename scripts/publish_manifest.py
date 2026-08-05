@@ -185,10 +185,19 @@ def replace_release_asset(release_tag: str, manifest: dict) -> None:
         # already exists, which is the common case — we ignore that.
         # Without this, adding a new model to the workflow matrix would
         # need a one-shot manual `gh release create` step.
+        #
+        # --prerelease because these are machine-consumed pointers, not
+        # releases for humans: the app fetches
+        # `/releases/download/<tag>/manifest.json` by exact tag and never
+        # asks for "latest". Without the flag a floating tag can outrank a
+        # real versioned release for the repo's "Latest release" badge,
+        # which is how the existing tags drifted into a mix of true and
+        # false.
         subprocess.run(
             ["gh", "release", "create", release_tag,
              "--repo", GH_REPO,
              "--title", release_tag,
+             "--prerelease",
              "--notes",
              f"Floating release tracking the latest manifest.json for {release_tag}.",
              "--target", "main"],
