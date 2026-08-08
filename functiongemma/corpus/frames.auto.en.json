@@ -1,381 +1,4 @@
 {
-  "dev.heyari.reminder": {
-    "target": 500,
-    "cap": 12,
-    "frames": [
-      {
-        "text": "remind me to {REMTXT} {WHEN}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "remind me {WHEN} to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "please remind me to {REMTXT} {WHEN}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "can you remind me to {REMTXT} {WHEN}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "could you remind me {WHEN} to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "would you remind me to {REMTXT} {WHEN}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "set a reminder to {REMTXT} {WHEN}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "set up a reminder to {REMTXT} {WHEN}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "create a reminder to {REMTXT} {WHEN}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "make me a reminder to {REMTXT} {WHEN}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "add a reminder to {REMTXT} {WHEN}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "schedule a reminder to {REMTXT} {WHEN}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "I need a reminder to {REMTXT} {WHEN}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "I'd like a reminder to {REMTXT} {WHEN}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "can I get a reminder to {REMTXT} {WHEN}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "could I have a reminder to {REMTXT} {WHEN}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "give me a reminder {WHEN} to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "send me a reminder {WHEN} to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "leave me a reminder to {REMTXT} {WHEN}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "make sure I get a reminder {WHEN} to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "don't let me forget to {REMTXT} {WHEN}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "ping me {WHEN} to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "nudge me {WHEN} to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "buzz me {WHEN} to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "tell me {WHEN} to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "give me a heads-up {WHEN} to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "let me know {WHEN} that it's time to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}",
-          "when": "{WHEN}"
-        }
-      },
-      {
-        "text": "remind me to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}"
-        }
-      },
-      {
-        "text": "please remind me to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}"
-        }
-      },
-      {
-        "text": "set a reminder to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}"
-        }
-      },
-      {
-        "text": "set up a reminder to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}"
-        }
-      },
-      {
-        "text": "create a reminder to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}"
-        }
-      },
-      {
-        "text": "make me a reminder to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}"
-        }
-      },
-      {
-        "text": "add a reminder to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}"
-        }
-      },
-      {
-        "text": "I need a reminder to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}"
-        }
-      },
-      {
-        "text": "I'd like a reminder to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}"
-        }
-      },
-      {
-        "text": "can I get a reminder to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}"
-        }
-      },
-      {
-        "text": "don't let me forget to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}"
-        }
-      },
-      {
-        "text": "make a note in my reminders to {REMTXT}",
-        "args": {
-          "title": "{REMTXT}"
-        }
-      },
-      {
-        "text": "add {REMTXT} to my reminders",
-        "args": {
-          "title": "{REMTXT}"
-        }
-      },
-      {
-        "text": "put {REMTXT} on my reminder list",
-        "args": {
-          "title": "{REMTXT}"
-        }
-      },
-      {
-        "text": "add {ITEM} to my {LIST} list",
-        "args": {
-          "title": "{ITEM}",
-          "list_hint": "{LIST}"
-        }
-      },
-      {
-        "text": "put {ITEM} on my {LIST} list",
-        "args": {
-          "title": "{ITEM}",
-          "list_hint": "{LIST}"
-        }
-      },
-      {
-        "text": "could you add {ITEM} to my {LIST} list",
-        "args": {
-          "title": "{ITEM}",
-          "list_hint": "{LIST}"
-        }
-      },
-      {
-        "text": "please put {ITEM} on the {LIST} list",
-        "args": {
-          "title": "{ITEM}",
-          "list_hint": "{LIST}"
-        }
-      },
-      {
-        "text": "I need {ITEM} added to my {LIST} list",
-        "args": {
-          "title": "{ITEM}",
-          "list_hint": "{LIST}"
-        }
-      },
-      {
-        "text": "make sure {ITEM} is on my {LIST} list",
-        "args": {
-          "title": "{ITEM}",
-          "list_hint": "{LIST}"
-        }
-      },
-      {
-        "text": "stick {ITEM} on my {LIST} list",
-        "args": {
-          "title": "{ITEM}",
-          "list_hint": "{LIST}"
-        }
-      },
-      {
-        "text": "pop {ITEM} onto my {LIST} list",
-        "args": {
-          "title": "{ITEM}",
-          "list_hint": "{LIST}"
-        }
-      },
-      {
-        "text": "save {ITEM} to my {LIST} list",
-        "args": {
-          "title": "{ITEM}",
-          "list_hint": "{LIST}"
-        }
-      },
-      {
-        "text": "add a list item for {ITEM} to my {LIST} list",
-        "args": {
-          "title": "{ITEM}",
-          "list_hint": "{LIST}"
-        }
-      },
-      {
-        "text": "create a task for {ITEM} on my {LIST} list",
-        "args": {
-          "title": "{ITEM}",
-          "list_hint": "{LIST}"
-        }
-      },
-      {
-        "text": "note {ITEM} down on my {LIST} list",
-        "args": {
-          "title": "{ITEM}",
-          "list_hint": "{LIST}"
-        }
-      },
-      {
-        "text": "can you put {ITEM} in my {LIST} list",
-        "args": {
-          "title": "{ITEM}",
-          "list_hint": "{LIST}"
-        }
-      },
-      {
-        "text": "my {LIST} list needs {ITEM} added",
-        "args": {
-          "title": "{ITEM}",
-          "list_hint": "{LIST}"
-        }
-      }
-    ]
-  },
   "dev.heyari.wasmecho": {
     "target": 500,
     "cap": 12,
@@ -1314,6 +937,385 @@
         "text": "all I need is the {APP} app open",
         "args": {
           "app_name": "{APP}"
+        }
+      }
+    ]
+  },
+  "dev.heyari.reminder": {
+    "target": 500,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "set a reminder for me to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "create a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "schedule a reminder {WHEN} for me to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "make me a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "add a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "put in a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "can you set a reminder for me to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "could you create a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "would you set a reminder {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "please schedule a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "I need a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "I'd like a reminder {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "I want a reminder to {REMTXT} {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "set a reminder {WHEN} so I don't forget to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "make sure I get a reminder {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "give me a reminder {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "send me a reminder {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "have a reminder pop up {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "arrange a reminder {WHEN} for me to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "leave me a reminder {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "put {REMTXT} in my reminders {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "add {REMTXT} to my reminders {WHEN}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "put a reminder on my schedule {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "set up a reminder {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "program a reminder {WHEN} for me to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "I could use a reminder {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "I need you to set a reminder {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "is it possible to set a reminder {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "how about setting a reminder {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "do me a favor and set a reminder {WHEN} to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}",
+          "when": "{WHEN}"
+        }
+      },
+      {
+        "text": "remind me to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "please remind me to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "can you remind me to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "could you remind me to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "don't let me forget to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "make sure I remember to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "I need a reminder to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "create a reminder for me to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "put down a reminder to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "jot down a reminder for me to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "save a reminder that I need to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "keep a reminder for me to {REMTXT}",
+        "args": {
+          "title": "{REMTXT}"
+        }
+      },
+      {
+        "text": "add {ITEM} to my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "put {ITEM} on my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "please add {ITEM} to my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "can you put {ITEM} on my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "I need {ITEM} added to my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "make sure {ITEM} goes on my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "stick {ITEM} on my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "pop {ITEM} onto my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "jot {ITEM} down on my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "add {ITEM} to the {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "put {ITEM} on our {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "add {ITEM} to {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
+        }
+      },
+      {
+        "text": "{ITEM} needs to go on my {LIST} list",
+        "args": {
+          "title": "{ITEM}",
+          "list_hint": "{LIST}"
         }
       }
     ]
