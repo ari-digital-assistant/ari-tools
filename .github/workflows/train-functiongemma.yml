@@ -12,9 +12,9 @@ on:
         required: false
         default: 'false'
       tools_ref:
-        description: 'ari-tools branch to train from (default: main)'
+        description: 'ari-tools branch to train from. Empty = this run''s commit (or the banks this run drafted). Setting it marks the run as a trial: it trains and ships, but never rewrites the last-trained record.'
         required: false
-        default: 'main'
+        default: ''
       experimental:
         description: 'Experimental run — train + routing-eval ONLY. Never releases, never stores training SHAs, never publishes to devices.'
         required: false
@@ -62,7 +62,10 @@ jobs:
           # Deep enough that `git log -1 -- functiongemma/` below finds the
           # real last-touching commit instead of degenerating to HEAD (which
           # a depth-1 checkout would, retraining on every unrelated commit).
-          fetch-depth: 50
+          # 200 rather than 50 since that lookup went per-locale: excluding the
+          # other locale's corpus means walking past every commit that touched
+          # only it. Measured at 6 on 2026-08-09, but it only ever grows.
+          fetch-depth: 200
 
       - name: Check for skill changes since last training
         id: check
@@ -80,7 +83,14 @@ jobs:
             https://github.com/ari-digital-assistant/ari-skills.git /tmp/skills
           cd /tmp/skills
           git sparse-checkout set skills/
-          SKILLS_SHA=$(git log -1 --format=%H -- skills/)
+          # Screenshots are not training data. Keyed on a bare `skills/`, a
+          # commit adding three .webp files bumps this SHA and buys a full ~2h
+          # retrain for zero routing change — that is exactly what 2026-08-07
+          # (run 31142513613) spent its GPU-hours on. A commit touching BOTH
+          # screenshots and skill sources still counts, which is what we want.
+          # NB: the trailing `*` is load-bearing. `:(exclude)skills/*/screenshots/`
+          # is silently a no-op — git needs the file glob, not a directory.
+          SKILLS_SHA=$(git log -1 --format=%H -- skills/ ':(exclude)skills/*/screenshots/*')
           cd -
 
           # The corpus, eval banks and generator scripts live HERE in
@@ -89,7 +99,37 @@ jobs:
           # functiongemma/ (slight over-trigger on e.g. eval.py edits is the
           # right direction; the old behaviour — never retraining on corpus
           # work — bit us on 2026-07-20).
-          TOOLS_CORPUS_SHA=$(git log -1 --format=%H -- functiongemma/)
+          #
+          # ...but scoped PER LOCALE, because `functiongemma/` wholesale is a
+          # shared key between two jobs that both write to it. An Italian-only
+          # corpus commit retrained English for nothing, and when both locales
+          # drafted banks on the same night the second push left the first
+          # locale's stored SHA behind for good — a retrain every night after.
+          # On 2026-08-09 the `it` job retrained solely because the `en` job's
+          # bot commit had moved a key `it` had no stake in.
+          #
+          # bank-sources.json is excluded outright: it is a RECORD of bank
+          # fingerprints, written by BOTH locales, and never a training input.
+          # Everything unlisted (generators, negatives, eval.py, scripts) stays
+          # shared and still triggers both locales, which is what we want.
+          case "${{ matrix.locale }}" in
+            en) OTHER_LOCALE=( ':(exclude)functiongemma/corpus/*.it.json'
+                               ':(exclude)functiongemma/*.it.jsonl' ) ;;
+            it) OTHER_LOCALE=( ':(exclude)functiongemma/corpus/*.en.json'
+                               ':(exclude)functiongemma/routing-eval.jsonl'
+                               ':(exclude)functiongemma/routing-eval.gen.jsonl' ) ;;
+          esac
+          TOOLS_CORPUS_SHA=$(git log -1 --format=%H -- functiongemma/ \
+            ':(exclude)functiongemma/corpus/bank-sources.json' \
+            "${OTHER_LOCALE[@]}")
+          # Scoping narrows the match set, so the lookback grows if a locale's
+          # corpus sits untouched. Past the checkout depth this returns empty,
+          # which would compare unequal forever and retrain nightly with no
+          # explanation. Say so out loud and train, rather than rot quietly.
+          if [ -z "$TOOLS_CORPUS_SHA" ]; then
+            echo "::warning::no ari-tools commit touching the ${{ matrix.locale }} corpus within the checkout depth — treating as changed. Raise fetch-depth if you see this twice."
+            TOOLS_CORPUS_SHA="beyond-fetch-depth-$GITHUB_RUN_ID"
+          fi
 
           echo "engine_skills_sha=$ENGINE_SKILLS_SHA" >> "$GITHUB_OUTPUT"
           echo "skills_sha=$SKILLS_SHA" >> "$GITHUB_OUTPUT"
@@ -194,6 +234,7 @@ jobs:
           python3 check_banks.py --locale ${{ matrix.locale }} --record
 
       - name: Commit drafted banks
+        id: banks_commit
         if: steps.check.outputs.should_train == 'true' && steps.banks.outputs.has_drift == 'true'
         run: |
           git config user.name "ari-frames-bot"
@@ -210,11 +251,26 @@ jobs:
           # Both locales' jobs can land here at once (they touch different
           # files, so a rebase resolves cleanly) — retry rather than lose
           # the drafted banks to a push race.
+          #
+          # The pushed SHA is an OUTPUT because training must clone it: see the
+          # "Train on Modal" step. Capturing it inside the loop also fixes a
+          # silent failure — the old loop's exit status was the last `sleep`,
+          # so five straight push failures still exited 0 and the run carried
+          # on training against a corpus the remote had never heard of.
+          PUSHED=""
           for i in 1 2 3 4 5; do
-            git pull --rebase origin main && git push origin HEAD:main && break
+            if git pull --rebase origin main && git push origin HEAD:main; then
+              PUSHED=$(git rev-parse HEAD)
+              break
+            fi
             echo "push race (attempt $i), retrying..."
             sleep $((RANDOM % 10 + 5))
           done
+          if [ -z "$PUSHED" ]; then
+            echo "::error::could not push drafted banks after 5 attempts — refusing to train against a corpus that only exists on this runner."
+            exit 1
+          fi
+          echo "sha=$PUSHED" >> "$GITHUB_OUTPUT"
 
       # Auto-committed Italian is machine-drafted; Keith reviews Italian by
       # standing project rule. The commit is not blocked on that review (the
@@ -259,12 +315,21 @@ jobs:
         # ari-tools commit — so the model trains on exactly what it's graded
         # against, not a moving `main`. A workflow_dispatch may still override
         # tools_ref to trial a corpus branch.
+        #
+        # tools-ref prefers the banks_commit SHA, and that is the whole point:
+        # `github.sha` is the commit that TRIGGERED the run, which predates the
+        # banks this run just drafted. Until 2026-08-09 a drafting run therefore
+        # trained without its own drafted banks, and they only reached a model
+        # the following night — via a retrain triggered by the bot commit that
+        # the "Store training SHAs" step had failed to record. One bug papering
+        # over another. Now the drafting run trains what it drafted, in the same
+        # run, and stores that same SHA below so there is no phantom encore.
         run: >-
           modal run functiongemma/modal_train.py
           --locale ${{ matrix.locale }}
           --engine-ref "${{ steps.check.outputs.engine_sha }}"
           --skills-ref "${{ steps.check.outputs.skills_sha }}"
-          --tools-ref "${{ github.event.inputs.tools_ref || github.sha }}"
+          --tools-ref "${{ github.event.inputs.tools_ref || steps.banks_commit.outputs.sha || github.sha }}"
 
       - name: Upload GGUF as artifact
         if: steps.check.outputs.should_train == 'true'
@@ -486,16 +551,31 @@ jobs:
             --notes "Retrain (${{ matrix.locale }}). $VERDICT Engine skills SHA: ${{ steps.check.outputs.engine_skills_sha }} · Community skills SHA: ${{ steps.check.outputs.skills_sha }} · Workflow run: ${{ github.run_id }}"
 
       - name: Store training SHAs
-        if: steps.check.outputs.should_train == 'true' && github.event.inputs.experimental != 'true'
+        # Skipped when tools_ref names a branch: the record answers "what has
+        # main been trained on", and a branch trial has no business answering
+        # it. Storing the branch SHA would have been a lie; storing main's
+        # would be worse — the next nightly would see a match and skip, and
+        # main's corpus would never get trained at all. So: don't record.
+        # `default: ''` makes an ordinary dispatch behave like the nightly,
+        # which is also why the old `default: 'main'` always beat the drafted
+        # SHA in --tools-ref below.
+        if: >-
+          steps.check.outputs.should_train == 'true'
+          && github.event.inputs.experimental != 'true'
+          && !github.event.inputs.tools_ref
         env:
           MODAL_TOKEN_ID: ${{ secrets.MODAL_TOKEN_ID }}
           MODAL_TOKEN_SECRET: ${{ secrets.MODAL_TOKEN_SECRET }}
         run: |
+          # tools_corpus_sha records what was TRAINED ON, not what was resolved
+          # at run start — those differ whenever this run drafted banks, and
+          # recording the stale one is what made every drafting night guarantee
+          # a full retrain the next night (2026-08-08 → 2026-08-09).
           cat > /tmp/last-trained.json <<EOF
           {
             "engine_skills_sha": "${{ steps.check.outputs.engine_skills_sha }}",
             "skills_sha": "${{ steps.check.outputs.skills_sha }}",
-            "tools_corpus_sha": "${{ steps.check.outputs.tools_corpus_sha }}",
+            "tools_corpus_sha": "${{ steps.banks_commit.outputs.sha || steps.check.outputs.tools_corpus_sha }}",
             "locale": "${{ matrix.locale }}",
             "trained_at": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
             "workflow_run": "${{ github.run_id }}"
