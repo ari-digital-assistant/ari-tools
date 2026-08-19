@@ -375,397 +375,6 @@
       }
     ]
   },
-  "dev.heyari.weather": {
-    "target": 500,
-    "cap": 12,
-    "frames": [
-      {
-        "text": "com'è il tempo qui adesso",
-        "args": {
-          "location": "",
-          "when": "now"
-        }
-      },
-      {
-        "text": "che condizioni meteo ci sono fuori in questo momento",
-        "args": {
-          "location": "",
-          "when": "now"
-        }
-      },
-      {
-        "text": "qual è la temperatura esterna adesso",
-        "args": {
-          "location": "",
-          "when": "now"
-        }
-      },
-      {
-        "text": "sta piovendo qui in questo momento",
-        "args": {
-          "location": "",
-          "when": "now"
-        }
-      },
-      {
-        "text": "quanto sono forti i raggi UV adesso",
-        "args": {
-          "location": "",
-          "when": "now"
-        }
-      },
-      {
-        "text": "fammi vedere le previsioni meteo per oggi",
-        "args": {
-          "location": "",
-          "when": "today"
-        }
-      },
-      {
-        "text": "oggi ci sarà molto vento da queste parti",
-        "args": {
-          "location": "",
-          "when": "today"
-        }
-      },
-      {
-        "text": "secondo il meteo, oggi mi servirà l'ombrello",
-        "args": {
-          "location": "",
-          "when": "today"
-        }
-      },
-      {
-        "text": "vorrei sapere che tempo farà qui domani",
-        "args": {
-          "location": "",
-          "when": "tomorrow"
-        }
-      },
-      {
-        "text": "è prevista neve qui per domani",
-        "args": {
-          "location": "",
-          "when": "tomorrow"
-        }
-      },
-      {
-        "text": "dammi le previsioni per tutta questa settimana",
-        "args": {
-          "location": "",
-          "when": "this week"
-        }
-      },
-      {
-        "text": "pioverà spesso da queste parti questa settimana",
-        "args": {
-          "location": "",
-          "when": "this week"
-        }
-      },
-      {
-        "text": "come saranno le temperature qui durante questa settimana",
-        "args": {
-          "location": "",
-          "when": "this week"
-        }
-      },
-      {
-        "text": "che tempo c'è a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "now"
-        }
-      },
-      {
-        "text": "dammi il meteo aggiornato per {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "now"
-        }
-      },
-      {
-        "text": "quali sono le condizioni meteo in questo momento a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "now"
-        }
-      },
-      {
-        "text": "quanti gradi ci sono adesso a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "now"
-        }
-      },
-      {
-        "text": "sta piovendo in questo momento a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "now"
-        }
-      },
-      {
-        "text": "quanto vento c'è adesso a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "now"
-        }
-      },
-      {
-        "text": "c'è il sole in questo momento a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "now"
-        }
-      },
-      {
-        "text": "qual è l'indice UV attuale a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "now"
-        }
-      },
-      {
-        "text": "quanto è umida l'aria adesso a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "now"
-        }
-      },
-      {
-        "text": "il cielo è nuvoloso a {WEATHERCITY} in questo momento",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "now"
-        }
-      },
-      {
-        "text": "c'è nebbia adesso a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "now"
-        }
-      },
-      {
-        "text": "qual è la temperatura percepita adesso a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "now"
-        }
-      },
-      {
-        "text": "c'è un temporale in corso a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "now"
-        }
-      },
-      {
-        "text": "controlla il meteo di {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "now"
-        }
-      },
-      {
-        "text": "fammi vedere le previsioni meteo di oggi per {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "today"
-        }
-      },
-      {
-        "text": "che tempo farà oggi a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "today"
-        }
-      },
-      {
-        "text": "è prevista pioggia oggi a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "today"
-        }
-      },
-      {
-        "text": "qual è la temperatura massima di oggi a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "today"
-        }
-      },
-      {
-        "text": "oggi tirerà molto vento a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "today"
-        }
-      },
-      {
-        "text": "quanto sarà alto l'indice UV oggi a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "today"
-        }
-      },
-      {
-        "text": "ci sarà il sole oggi a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "today"
-        }
-      },
-      {
-        "text": "sono previsti grandine o temporali oggi a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "today"
-        }
-      },
-      {
-        "text": "devo portarmi l'ombrello oggi a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "today"
-        }
-      },
-      {
-        "text": "le previsioni di oggi a {WEATHERCITY} permettono di stare all'aperto",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "today"
-        }
-      },
-      {
-        "text": "controlla il meteo di domani a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "tomorrow"
-        }
-      },
-      {
-        "text": "mi dai le previsioni per domani a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "tomorrow"
-        }
-      },
-      {
-        "text": "domani pioverà a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "tomorrow"
-        }
-      },
-      {
-        "text": "che temperature sono previste domani a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "tomorrow"
-        }
-      },
-      {
-        "text": "ci sarà vento forte domani a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "tomorrow"
-        }
-      },
-      {
-        "text": "nevicherà domani a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "tomorrow"
-        }
-      },
-      {
-        "text": "domani a {WEATHERCITY} sarà sereno o nuvoloso",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "tomorrow"
-        }
-      },
-      {
-        "text": "sono previsti temporali domani a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "tomorrow"
-        }
-      },
-      {
-        "text": "come sarà l'indice UV domani a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "tomorrow"
-        }
-      },
-      {
-        "text": "farà abbastanza freddo da servire il cappotto domani a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "tomorrow"
-        }
-      },
-      {
-        "text": "le previsioni meteo permettono un picnic domani a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "tomorrow"
-        }
-      },
-      {
-        "text": "domani l'aria sarà molto umida a {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "tomorrow"
-        }
-      },
-      {
-        "text": "mostrami le previsioni meteo di questa settimana per {WEATHERCITY}",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "this week"
-        }
-      },
-      {
-        "text": "come cambierà il tempo a {WEATHERCITY} nel corso di questa settimana",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "this week"
-        }
-      },
-      {
-        "text": "in quali giorni pioverà a {WEATHERCITY} questa settimana",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "this week"
-        }
-      },
-      {
-        "text": "come saranno le temperature a {WEATHERCITY} questa settimana",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "this week"
-        }
-      },
-      {
-        "text": "è previsto vento forte a {WEATHERCITY} durante questa settimana",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "this week"
-        }
-      },
-      {
-        "text": "ci saranno nevicate a {WEATHERCITY} questa settimana",
-        "args": {
-          "location": "{WEATHERCITY}",
-          "when": "this week"
-        }
-      }
-    ]
-  },
   "open": {
     "target": 500,
     "cap": 12,
@@ -1098,6 +707,397 @@
         "text": "trova l'app {OPEN_APPNAME} e avviala",
         "args": {
           "app_name": "{OPEN_APPNAME}"
+        }
+      }
+    ]
+  },
+  "dev.heyari.weather": {
+    "target": 500,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "Che tempo c'è fuori in questo momento?",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "Mi dici il meteo di oggi?",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "Vorrei conoscere le condizioni meteo attuali.",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "Dammi un aggiornamento sul tempo qui.",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "Com'è il tempo dalle mie parti?",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "Controlla la temperatura esterna adesso.",
+        "args": {
+          "location": "",
+          "when": "now"
+        }
+      },
+      {
+        "text": "Che tempo c'è a {WEATHERCITY}?",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "Quali sono le condizioni meteo a {WEATHERCITY}?",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "Com'è il cielo a {WEATHERCITY} in questo momento?",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "Fa caldo o freddo a {WEATHERCITY} adesso?",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "Qual è la temperatura esterna a {WEATHERCITY}?",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "Sta piovendo a {WEATHERCITY}?",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "C'è il sole a {WEATHERCITY} in questo momento?",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "Quanto vento c'è a {WEATHERCITY} adesso?",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "Com'è l'umidità a {WEATHERCITY}?",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "Qual è l'indice UV attuale a {WEATHERCITY}?",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "Fammi vedere le previsioni meteo per oggi.",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "Pioverà nel corso della giornata?",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "Qual è la probabilità di pioggia per oggi?",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "È previsto vento oggi?",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "Quanto sarà forte il vento oggi?",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "Che livello di umidità è previsto oggi?",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "Quanto sarà alto l'indice UV oggi?",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "Quali temperature massime e minime avremo oggi?",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "Farà caldo durante la giornata?",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "Oggi farà abbastanza freddo da mettere il cappotto?",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "Mi conviene prendere l'ombrello oggi?",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "Serve una giacca pesante per il tempo di oggi?",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "Posso stendere il bucato fuori oggi o rischia di piovere?",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "È una giornata da spiaggia oggi?",
+        "args": {
+          "location": "",
+          "when": "today"
+        }
+      },
+      {
+        "text": "Com'è il meteo a {WEATHERCITY} oggi?",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "C'è rischio di pioggia a {WEATHERCITY} oggi?",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "Che vento è previsto a {WEATHERCITY} oggi?",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "Controlla l'indice UV a {WEATHERCITY} per oggi.",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "Che temperature sono previste a {WEATHERCITY} oggi?",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "Vorrei le previsioni meteo per domani.",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "Come sarà il tempo a {WEATHERCITY} domani?",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "Domani dobbiamo aspettarci pioggia?",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "A {WEATHERCITY} pioverà domani?",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "Dovrò portarmi l'ombrello domani?",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "Domani servirà il cappotto per il freddo?",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "Ci sarà una giornata di sole domani?",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "Che vento farà domani?",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "Come sarà l'umidità domani?",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "Che indice UV è previsto per domani?",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "Quanti gradi sono previsti per domani?",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "Il tempo permetterà di pranzare fuori domani?",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "Domani sarà bel tempo per andare al mare?",
+        "args": {
+          "location": "",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "Nevicherà a {WEATHERCITY} domani?",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "Mostrami le previsioni per tutta la settimana.",
+        "args": {
+          "location": "",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "Come si metterà il tempo nel corso di questa settimana?",
+        "args": {
+          "location": "",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "Ci saranno giornate di pioggia questa settimana?",
+        "args": {
+          "location": "",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "Come cambieranno le temperature a {WEATHERCITY} questa settimana?",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "È previsto molto vento a {WEATHERCITY} questa settimana?",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "C'è neve in arrivo a {WEATHERCITY} questa settimana?",
+        "args": {
+          "location": "{WEATHERCITY}",
+          "when": "this week"
         }
       }
     ]
