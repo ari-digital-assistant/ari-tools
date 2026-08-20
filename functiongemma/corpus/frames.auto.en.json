@@ -1319,5 +1319,396 @@
         }
       }
     ]
+  },
+  "dev.heyari.weather": {
+    "target": 500,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "what are the weather conditions {WEATHER_LOC} right now",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "give me the current weather {WEATHER_LOC}",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "how warm is it {WEATHER_LOC} at the moment",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "what is the temperature {WEATHER_LOC} right now",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "what does it feel like outside {WEATHER_LOC} right now",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "is any rain falling {WEATHER_LOC} right now",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "how strong is the wind {WEATHER_LOC} at the moment",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "what is the humidity {WEATHER_LOC} right now",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "how high is the uv level {WEATHER_LOC} right now",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "are the skies clear {WEATHER_LOC} at the moment",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "how is the weather shaping up {WEATHER_LOC} today",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "give me today's forecast {WEATHER_LOC}",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "is rain expected {WEATHER_LOC} today",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "are there showers coming later {WEATHER_LOC} today",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "will it be windy {WEATHER_LOC} today",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "what will the high temperature be {WEATHER_LOC} today",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "is it going to stay cold {WEATHER_LOC} today",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "will sunscreen be necessary {WEATHER_LOC} today",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "do I need an umbrella {WEATHER_LOC} today",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "how humid will it be {WEATHER_LOC} today",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "when will the uv be strongest {WEATHER_LOC} today",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "is there a chance of snow {WEATHER_LOC} today",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "is the weather suitable for being outdoors {WEATHER_LOC} today",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "show me tomorrow's forecast {WEATHER_LOC}",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "what will the weather be like {WEATHER_LOC} tomorrow",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "is rain likely {WEATHER_LOC} tomorrow",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "what temperature will it reach {WEATHER_LOC} tomorrow",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "will the wind pick up {WEATHER_LOC} tomorrow",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "could it snow {WEATHER_LOC} tomorrow",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "will I need a warm coat {WEATHER_LOC} tomorrow",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "should I bring an umbrella {WEATHER_LOC} tomorrow",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "will I need sun protection {WEATHER_LOC} tomorrow",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "is it expected to be humid {WEATHER_LOC} tomorrow",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "are clear skies expected {WEATHER_LOC} tomorrow",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "what is the weather outlook {WEATHER_LOC} this week",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "give me the weeklong forecast {WEATHER_LOC}",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "will it rain at any point {WEATHER_LOC} this week",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "what temperatures are expected {WEATHER_LOC} this week",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "are strong winds expected {WEATHER_LOC} this week",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "is snow in the forecast {WEATHER_LOC} this week",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "which days should be sunniest {WEATHER_LOC} this week",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "am I likely to need an umbrella {WEATHER_LOC} this week",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "will the weather be good for outdoor plans {WEATHER_LOC} this week",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "I'd like a quick weather update {WEATHER_LOC}",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "can you check the current conditions {WEATHER_LOC}",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "tell me whether it is dry {WEATHER_LOC} right now",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "is there much cloud cover {WEATHER_LOC} at the moment",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "now"
+        }
+      },
+      {
+        "text": "what does the weather feel like {WEATHER_LOC} today",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "I need to know today's weather {WEATHER_LOC}",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "let me know if thunderstorms are likely {WEATHER_LOC} today",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "today"
+        }
+      },
+      {
+        "text": "could you check tomorrow's weather {WEATHER_LOC}",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "I am curious whether tomorrow will be warmer {WEATHER_LOC}",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "tomorrow"
+        }
+      },
+      {
+        "text": "give me the rain outlook {WEATHER_LOC} for this week",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "which day has the best weather {WEATHER_LOC} this week",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "this week"
+        }
+      },
+      {
+        "text": "will freezing conditions be a concern {WEATHER_LOC} this week",
+        "args": {
+          "location": "{WEATHER_LOC}",
+          "when": "this week"
+        }
+      }
+    ]
   }
 }

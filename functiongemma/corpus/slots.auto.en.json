@@ -1,0 +1,116 @@
+{
+  "WEATHER_LOC": [
+    {
+      "surface": "here",
+      "canonical": ""
+    },
+    {
+      "surface": "around here",
+      "canonical": ""
+    },
+    {
+      "surface": "where I am",
+      "canonical": ""
+    },
+    {
+      "surface": "in my area",
+      "canonical": ""
+    },
+    {
+      "surface": "in boston",
+      "canonical": "boston"
+    },
+    {
+      "surface": "in chicago",
+      "canonical": "chicago"
+    },
+    {
+      "surface": "in seattle",
+      "canonical": "seattle"
+    },
+    {
+      "surface": "in miami",
+      "canonical": "miami"
+    },
+    {
+      "surface": "in san francisco",
+      "canonical": "san francisco"
+    },
+    {
+      "surface": "in new york",
+      "canonical": "new york"
+    },
+    {
+      "surface": "in toronto",
+      "canonical": "toronto"
+    },
+    {
+      "surface": "in vancouver",
+      "canonical": "vancouver"
+    },
+    {
+      "surface": "in dublin",
+      "canonical": "dublin"
+    },
+    {
+      "surface": "in edinburgh",
+      "canonical": "edinburgh"
+    },
+    {
+      "surface": "in manchester",
+      "canonical": "manchester"
+    },
+    {
+      "surface": "in paris",
+      "canonical": "paris"
+    },
+    {
+      "surface": "in berlin",
+      "canonical": "berlin"
+    },
+    {
+      "surface": "in madrid",
+      "canonical": "madrid"
+    },
+    {
+      "surface": "in rome",
+      "canonical": "rome"
+    },
+    {
+      "surface": "in athens",
+      "canonical": "athens"
+    },
+    {
+      "surface": "in lisbon",
+      "canonical": "lisbon"
+    },
+    {
+      "surface": "in amsterdam",
+      "canonical": "amsterdam"
+    },
+    {
+      "surface": "in copenhagen",
+      "canonical": "copenhagen"
+    },
+    {
+      "surface": "in oslo",
+      "canonical": "oslo"
+    },
+    {
+      "surface": "in sydney",
+      "canonical": "sydney"
+    },
+    {
+      "surface": "in melbourne",
+      "canonical": "melbourne"
+    },
+    {
+      "surface": "in singapore",
+      "canonical": "singapore"
+    },
+    {
+      "surface": "in cape town",
+      "canonical": "cape town"
+    }
+  ]
+}
