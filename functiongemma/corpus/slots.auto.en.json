@@ -112,5 +112,243 @@
       "surface": "in cape town",
       "canonical": "cape town"
     }
+  ],
+  "MSG_RECIPIENT": [
+    {
+      "surface": "alex",
+      "canonical": "alex"
+    },
+    {
+      "surface": "jamie",
+      "canonical": "jamie"
+    },
+    {
+      "surface": "sam",
+      "canonical": "sam"
+    },
+    {
+      "surface": "taylor",
+      "canonical": "taylor"
+    },
+    {
+      "surface": "jordan",
+      "canonical": "jordan"
+    },
+    {
+      "surface": "casey",
+      "canonical": "casey"
+    },
+    {
+      "surface": "morgan",
+      "canonical": "morgan"
+    },
+    {
+      "surface": "chris",
+      "canonical": "chris"
+    },
+    {
+      "surface": "daniel",
+      "canonical": "daniel"
+    },
+    {
+      "surface": "sophie",
+      "canonical": "sophie"
+    },
+    {
+      "surface": "maria",
+      "canonical": "maria"
+    },
+    {
+      "surface": "david",
+      "canonical": "david"
+    },
+    {
+      "surface": "my mom",
+      "canonical": "my mom"
+    },
+    {
+      "surface": "my dad",
+      "canonical": "my dad"
+    },
+    {
+      "surface": "my sister",
+      "canonical": "my sister"
+    },
+    {
+      "surface": "my brother",
+      "canonical": "my brother"
+    },
+    {
+      "surface": "my partner",
+      "canonical": "my partner"
+    },
+    {
+      "surface": "my boss",
+      "canonical": "my boss"
+    },
+    {
+      "surface": "the family group",
+      "canonical": "the family group"
+    },
+    {
+      "surface": "the project team",
+      "canonical": "the project team"
+    }
+  ],
+  "MSG_BODY": [
+    {
+      "surface": "i'll be home soon",
+      "canonical": "i'll be home soon"
+    },
+    {
+      "surface": "i'm running a little late",
+      "canonical": "i'm running a little late"
+    },
+    {
+      "surface": "i'm on my way",
+      "canonical": "i'm on my way"
+    },
+    {
+      "surface": "i'm outside",
+      "canonical": "i'm outside"
+    },
+    {
+      "surface": "i got home safely",
+      "canonical": "i got home safely"
+    },
+    {
+      "surface": "i'm stuck in traffic",
+      "canonical": "i'm stuck in traffic"
+    },
+    {
+      "surface": "i'm on the bus",
+      "canonical": "i'm on the bus"
+    },
+    {
+      "surface": "i've arrived",
+      "canonical": "i've arrived"
+    },
+    {
+      "surface": "i can't make it today",
+      "canonical": "i can't make it today"
+    },
+    {
+      "surface": "i'll call later",
+      "canonical": "i'll call later"
+    },
+    {
+      "surface": "please call me when you can",
+      "canonical": "please call me when you can"
+    },
+    {
+      "surface": "can you pick me up",
+      "canonical": "can you pick me up"
+    },
+    {
+      "surface": "the meeting has moved",
+      "canonical": "the meeting has moved"
+    },
+    {
+      "surface": "the meeting is cancelled",
+      "canonical": "the meeting is cancelled"
+    },
+    {
+      "surface": "the appointment is confirmed",
+      "canonical": "the appointment is confirmed"
+    },
+    {
+      "surface": "the invoice is attached",
+      "canonical": "the invoice is attached"
+    },
+    {
+      "surface": "the documents are ready",
+      "canonical": "the documents are ready"
+    },
+    {
+      "surface": "the package has arrived",
+      "canonical": "the package has arrived"
+    },
+    {
+      "surface": "dinner is ready",
+      "canonical": "dinner is ready"
+    },
+    {
+      "surface": "remember to buy milk",
+      "canonical": "remember to buy milk"
+    },
+    {
+      "surface": "thanks for your help",
+      "canonical": "thanks for your help"
+    },
+    {
+      "surface": "happy birthday",
+      "canonical": "happy birthday"
+    },
+    {
+      "surface": "congratulations",
+      "canonical": "congratulations"
+    },
+    {
+      "surface": "i hope you're feeling better",
+      "canonical": "i hope you're feeling better"
+    },
+    {
+      "surface": "let's talk tomorrow",
+      "canonical": "let's talk tomorrow"
+    },
+    {
+      "surface": "i'll meet you there",
+      "canonical": "i'll meet you there"
+    },
+    {
+      "surface": "we need to reschedule",
+      "canonical": "we need to reschedule"
+    },
+    {
+      "surface": "everything went well",
+      "canonical": "everything went well"
+    },
+    {
+      "surface": "i've sent the details",
+      "canonical": "i've sent the details"
+    },
+    {
+      "surface": "please check your email",
+      "canonical": "please check your email"
+    }
+  ],
+  "MSG_SERVICE": [
+    {
+      "surface": "SMS",
+      "canonical": "sms"
+    },
+    {
+      "surface": "WhatsApp",
+      "canonical": "whatsapp"
+    },
+    {
+      "surface": "Telegram",
+      "canonical": "telegram"
+    },
+    {
+      "surface": "Signal",
+      "canonical": "signal"
+    },
+    {
+      "surface": "Messenger",
+      "canonical": "messenger"
+    },
+    {
+      "surface": "Slack",
+      "canonical": "slack"
+    },
+    {
+      "surface": "Matrix",
+      "canonical": "matrix"
+    },
+    {
+      "surface": "email",
+      "canonical": "email"
+    }
   ]
 }

@@ -1710,5 +1710,415 @@
         }
       }
     ]
+  },
+  "dev.heyari.message": {
+    "target": 500,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "tell {MSG_RECIPIENT} {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "tell {MSG_RECIPIENT} that {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "please tell {MSG_RECIPIENT} {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "could you tell {MSG_RECIPIENT} that {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "would you mind telling {MSG_RECIPIENT} that {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "let {MSG_RECIPIENT} know {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "please let {MSG_RECIPIENT} know that {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "can you let {MSG_RECIPIENT} know {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "could you let {MSG_RECIPIENT} know that {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "make sure {MSG_RECIPIENT} gets my message that {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "pass this message to {MSG_RECIPIENT}: {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "pass along a message to {MSG_RECIPIENT} saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "get a message to {MSG_RECIPIENT} saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "relay this message to {MSG_RECIPIENT}: {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "send {MSG_RECIPIENT} a message saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "send a message to {MSG_RECIPIENT} saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "send {MSG_RECIPIENT} this message: {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "please send {MSG_RECIPIENT} a message saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "can you send {MSG_RECIPIENT} a message saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "could you send a message to {MSG_RECIPIENT} saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "would you send {MSG_RECIPIENT} a message saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "i need you to send {MSG_RECIPIENT} a message saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "i want to send {MSG_RECIPIENT} a message saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "i'd like to send a message to {MSG_RECIPIENT} saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "help me send {MSG_RECIPIENT} a message saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "message {MSG_RECIPIENT} {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "message {MSG_RECIPIENT}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}"
+        }
+      },
+      {
+        "text": "can you message {MSG_RECIPIENT} saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "could you message {MSG_RECIPIENT} and say {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "i need to message {MSG_RECIPIENT} that {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}"
+        }
+      },
+      {
+        "text": "i want to message {MSG_RECIPIENT}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}"
+        }
+      },
+      {
+        "text": "text {MSG_RECIPIENT} {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "sms"
+        }
+      },
+      {
+        "text": "send a text to {MSG_RECIPIENT} saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "sms"
+        }
+      },
+      {
+        "text": "please text {MSG_RECIPIENT} {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "sms"
+        }
+      },
+      {
+        "text": "can you text {MSG_RECIPIENT}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "service": "sms"
+        }
+      },
+      {
+        "text": "i need to text {MSG_RECIPIENT} that {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "sms"
+        }
+      },
+      {
+        "text": "whatsapp {MSG_RECIPIENT} {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "whatsapp"
+        }
+      },
+      {
+        "text": "send {MSG_RECIPIENT} a WhatsApp message saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "whatsapp"
+        }
+      },
+      {
+        "text": "start a WhatsApp message to {MSG_RECIPIENT}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "service": "whatsapp"
+        }
+      },
+      {
+        "text": "telegram {MSG_RECIPIENT} {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "telegram"
+        }
+      },
+      {
+        "text": "send {MSG_RECIPIENT} a Telegram message saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "telegram"
+        }
+      },
+      {
+        "text": "send {MSG_RECIPIENT} a Signal message saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "signal"
+        }
+      },
+      {
+        "text": "message {MSG_RECIPIENT} via Signal and say {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "signal"
+        }
+      },
+      {
+        "text": "send {MSG_RECIPIENT} a Messenger message saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "messenger"
+        }
+      },
+      {
+        "text": "send {MSG_RECIPIENT} a Slack message saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "slack"
+        }
+      },
+      {
+        "text": "send {MSG_RECIPIENT} a Matrix message saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "matrix"
+        }
+      },
+      {
+        "text": "email {MSG_RECIPIENT} {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "email"
+        }
+      },
+      {
+        "text": "send an email to {MSG_RECIPIENT} saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "email"
+        }
+      },
+      {
+        "text": "please email {MSG_RECIPIENT} and say {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "email"
+        }
+      },
+      {
+        "text": "can you email {MSG_RECIPIENT}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "service": "email"
+        }
+      },
+      {
+        "text": "send {MSG_RECIPIENT} a message via {MSG_SERVICE} saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "{MSG_SERVICE}"
+        }
+      },
+      {
+        "text": "please send a message to {MSG_RECIPIENT} via {MSG_SERVICE} saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "{MSG_SERVICE}"
+        }
+      },
+      {
+        "text": "can you send {MSG_RECIPIENT} a message using {MSG_SERVICE} saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "{MSG_SERVICE}"
+        }
+      },
+      {
+        "text": "message {MSG_RECIPIENT} via {MSG_SERVICE} and say {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "{MSG_SERVICE}"
+        }
+      },
+      {
+        "text": "i need to get a message to {MSG_RECIPIENT} via {MSG_SERVICE} saying {MSG_BODY}",
+        "args": {
+          "recipient": "{MSG_RECIPIENT}",
+          "body": "{MSG_BODY}",
+          "service": "{MSG_SERVICE}"
+        }
+      }
+    ]
   }
 }
