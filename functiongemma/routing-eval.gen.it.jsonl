@@ -1,379 +1,399 @@
 // GENERATED routing eval (it) — written by generate-eval.py.
-// Model: gemini-3.5-flash  Run: 29774697870  At: 2026-07-20T20:40:32Z
-// 320 positives across 16 skills + 50 NONE.
+// Model: gemini-3.5-flash  Run: 32836086978  At: 2026-08-25T10:55:44Z
+// 340 positives across 17 skills + 50 NONE.
 //
 // Regenerated wholesale — do not hand-edit (edits are overwritten).
 // The hand-written spine in routing-eval[.it].jsonl is the promotion
 // gate; this file adds breadth for derive_floor.py and community-
 // skill coverage. Every case is a keyword-MISS and decontaminated
 // against the training corpus at generation time.
-{"utterance": "Se dividiamo un conto di ottantacinque euro in cinque persone, quanto dobbiamo mettere a testa?", "expect": "calculator"}
-{"utterance": "Ho pagato con una banconota da cinquanta euro una spesa di trentadue euro, quant'è il resto?", "expect": "calculator"}
-{"utterance": "Se compro quattro bottiglie di vino a sei euro e cinquanta l'una, quanto spendo in totale?", "expect": "calculator"}
-{"utterance": "Quanti giorni sono in totale dodici settimane?", "expect": "calculator"}
-{"utterance": "Se un articolo da centosessanta euro ha uno sconto di trenta euro, quanto lo pago alla fine?", "expect": "calculator"}
-{"utterance": "Se un treno viaggia a centoventi chilometri orari, quanta strada fa in tre ore?", "expect": "calculator"}
-{"utterance": "Ho novantasei caramelle e voglio fare dei sacchetti da oro l'uno, quanti ne vengono?", "expect": "calculator"}
-{"utterance": "Se una stanza ha i lati di cinque e quattro metri, quant'è la superficie?", "expect": "calculator"}
-{"utterance": "Se a scuola ci sono sei classi e ognuna ha ventidue alunni, quanti studenti ci sono in totale?", "expect": "calculator"}
-{"utterance": "Qual è la media aritmetica tra i numeri sette, otto e nove?", "expect": "calculator"}
-{"utterance": "Se risparmio quindisi euro al mese, quanti soldi ho messo da parte dopo un anno?", "expect": "calculator"}
-{"utterance": "Se distribuisco equamente settantadue cioccolatini a nove bambini, quanti ne spettano a ciascuno?", "expect": "calculator"}
-{"utterance": "Se compro tre magliette da diciannove euro l'una, quanto mi viene a costare?", "expect": "calculator"}
-{"utterance": "Se ho novantacinque euro e ne spendo trentasette, quanto mi resta?", "expect": "calculator"}
-{"utterance": "Se una cassa di mele pesa quindici chili, quanto pesano sei casse?", "expect": "calculator"}
-{"utterance": "Se divido una vincita di mille euro tra quattro persone, ognuna quanto riceve?", "expect": "calculator"}
-{"utterance": "Se un'auto consuma un litro di benzina ogni quindici chilometri, quanti litri servono per fare novanta chilometri?", "expect": "calculator"}
-{"utterance": "Se l'anno scorso pesavo ottantadue chili e ora ne peso settantasei, quanti chili ho perso?", "expect": "calculator"}
-{"utterance": "Se un pacchetto di figurine costa un euro e cinquanta, quanto spendo per prenderne dieci?", "expect": "calculator"}
-{"utterance": "Quanti secondi ci sono in cinque minuti e mezzo?", "expect": "calculator"}
-{"utterance": "Devo compilare un modulo, cosa scrivo alla voce data?", "expect": "current_date"}
-{"utterance": "Mi serve la data odierna da mettere sul contratto.", "expect": "current_date"}
-{"utterance": "Che casella del calendario devo barrare stamattina?", "expect": "current_date"}
-{"utterance": "Sto scrivendo una lettera, qual è la data di redazione?", "expect": "current_date"}
-{"utterance": "Dovrei datare un assegno con il giorno corrente.", "expect": "current_date"}
-{"utterance": "Che numero devo mettere sul foglio per indicare oggi?", "expect": "current_date"}
-{"utterance": "Per datare questa fattura di oggi, cosa ci scrivo?", "expect": "current_date"}
-{"utterance": "Qual è il giorno esatto da scrivere in cima alla pagina?", "expect": "current_date"}
-{"utterance": "Fammi un controllo sul datario per la giornata di oggi.", "expect": "current_date"}
-{"utterance": "Ho bisogno di sapere come datare la mail di stamattina.", "expect": "current_date"}
-{"utterance": "Mi serve il giorno preciso per l'intestazione della lettera.", "expect": "current_date"}
-{"utterance": "Che casella del calendario stiamo occupando oggi?", "expect": "current_date"}
-{"utterance": "Qual è la posizione odierna sul calendario di casa?", "expect": "current_date"}
-{"utterance": "Sapresti indicarmi il giorno corrente sulla tabella di marcia?", "expect": "current_date"}
-{"utterance": "Mi indicheresti la collocazione temporale odierna?", "expect": "current_date"}
-{"utterance": "Per la datazione di oggi, che riferimenti sul calendario abbiamo?", "expect": "current_date"}
-{"utterance": "Oggi che casella del mese stiamo sbarrando?", "expect": "current_date"}
-{"utterance": "Su quale riga del calendario ci troviamo stamattina?", "expect": "current_date"}
-{"utterance": "Mi diresti il giorno preciso da scrivere sulla cartolina?", "expect": "current_date"}
-{"utterance": "Se devo fare un timbro con la data odierna, come lo regolo?", "expect": "current_date"}
-{"utterance": "Il sole sta già tramontando?", "expect": "current_time"}
-{"utterance": "Siamo ancora in pieno giorno?", "expect": "current_time"}
-{"utterance": "È già buio fuori?", "expect": "current_time"}
-{"utterance": "Siamo vicini alla fine del turno?", "expect": "current_time"}
-{"utterance": "Dovrebbe essere già iniziato il TG?", "expect": "current_time"}
-{"utterance": "I negozi sono già chiusi?", "expect": "current_time"}
-{"utterance": "È già passata la mezza?", "expect": "current_time"}
-{"utterance": "Siamo oltre la metà della giornata?", "expect": "current_time"}
-{"utterance": "I bambini dovrebbero essere già usciti da scuola?", "expect": "current_time"}
-{"utterance": "A che altezza è il sole?", "expect": "current_time"}
-{"utterance": "Il sole è già alto?", "expect": "current_time"}
-{"utterance": "Siamo vicini al tramonto?", "expect": "current_time"}
-{"utterance": "Siamo già all'alba?", "expect": "current_time"}
-{"utterance": "La giornata è quasi finita?", "expect": "current_time"}
-{"utterance": "Siamo vicini alle otto?", "expect": "current_time"}
-{"utterance": "Le cinque sono già passate?", "expect": "current_time"}
-{"utterance": "Siamo ancora lontani dalle sette?", "expect": "current_time"}
-{"utterance": "Il mezzogiorno l'abbiamo superato?", "expect": "current_time"}
-{"utterance": "Siamo vicini alla mezzanotte?", "expect": "current_time"}
-{"utterance": "Hanno già suonato le campane del mezzogiorno?", "expect": "current_time"}
-{"utterance": "Puntami l'orologio per le sei e mezza di domani", "expect": "dev.heyari.alarm"}
-{"utterance": "Ho bisogno di essere operativo per le sette, imposta un avviso sonoro", "expect": "dev.heyari.alarm"}
-{"utterance": "Per favore, fai squillare il cellulare alle sei in punto", "expect": "dev.heyari.alarm"}
-{"utterance": "Domattina ho il treno all'alba, fammi sentire la suoneria alle cinque e un quarto", "expect": "dev.heyari.alarm"}
-{"utterance": "Fai in modo che io apra gli occhi alle sette e mezza", "expect": "dev.heyari.alarm"}
-{"utterance": "Piazza un avviso acustico per le otto", "expect": "dev.heyari.alarm"}
-{"utterance": "Domattina non vorrei rischiare di addormentarmi, programma un risveglio per le sei", "expect": "dev.heyari.alarm"}
-{"utterance": "Voglio alzarmi col canto del gallo, fai fare rumore alle cinque", "expect": "dev.heyari.alarm"}
-{"utterance": "Assicurati di dare il segnale acustico alle sette e quaranta", "expect": "dev.heyari.alarm"}
-{"utterance": "Metti un richiamo sonoro ricorrente dal lunedì al venerdì alle sette", "expect": "dev.heyari.alarm"}
-{"utterance": "Ho il turno presto domani, puntami la suoneria per le cinque e mezza", "expect": "dev.heyari.alarm"}
-{"utterance": "Tutti i sabati ho bisogno di un fischio alle nove", "expect": "dev.heyari.alarm"}
-{"utterance": "Fammi saltare fuori dal letto alle sei e tre quarti", "expect": "dev.heyari.alarm"}
-{"utterance": "Puntami una suonata alle sette di mattina", "expect": "dev.heyari.alarm"}
-{"utterance": "Per le sei di domani fa' risuonare il dispositivo", "expect": "dev.heyari.alarm"}
-{"utterance": "Domattina ho un incontro presto, vedi di non farmi fare tardi e metti un segnale alle sette", "expect": "dev.heyari.alarm"}
-{"utterance": "Imposta un avviso di risveglio per le sei di lunedì", "expect": "dev.heyari.alarm"}
-{"utterance": "Dobbiamo far alzare i bambini alle sette e un quarto, metti un avviso sonoro", "expect": "dev.heyari.alarm"}
-{"utterance": "Voglio essere in piedi prima del solito, fai suonare alle cinque e mezza", "expect": "dev.heyari.alarm"}
-{"utterance": "Inserisci un richiamo per le otto e mezza nei giorni feriali", "expect": "dev.heyari.alarm"}
-{"utterance": "Fai saltare un soldino per me", "expect": "dev.heyari.coinflip"}
-{"utterance": "Vediamo che lato del soldo esce fuori", "expect": "dev.heyari.coinflip"}
-{"utterance": "Fai ruotare un euro per decidere", "expect": "dev.heyari.coinflip"}
-{"utterance": "Gettiamo in alto un euro virtuale", "expect": "dev.heyari.coinflip"}
-{"utterance": "Fai ruotare un cerchietto di metallo", "expect": "dev.heyari.coinflip"}
-{"utterance": "Ho bisogno di un verdetto a due opzioni al cinquanta per cento", "expect": "dev.heyari.coinflip"}
-{"utterance": "Fai un sorteggio secco tra due alternative", "expect": "dev.heyari.coinflip"}
-{"utterance": "Siamo indecisi su due opzioni, dacci una risposta casuale", "expect": "dev.heyari.coinflip"}
-{"utterance": "Risolvi questa disputa al cinquanta e cinquanta", "expect": "dev.heyari.coinflip"}
-{"utterance": "Usa il metodo del dischetto bicolore", "expect": "dev.heyari.coinflip"}
-{"utterance": "Simula il volo di un pezzo da due euro", "expect": "dev.heyari.coinflip"}
-{"utterance": "Vediamo quale faccia del tondino viene fuori", "expect": "dev.heyari.coinflip"}
-{"utterance": "Fai cadere un euro e dimmi come atterra", "expect": "dev.heyari.coinflip"}
-{"utterance": "Fai oscillare la scelta in modo del tutto casuale", "expect": "dev.heyari.coinflip"}
-{"utterance": "Simula il tragitto di un pezzo da cento lire", "expect": "dev.heyari.coinflip"}
-{"utterance": "Dammi una decisione imparziale usando la probabilità binaria", "expect": "dev.heyari.coinflip"}
-{"utterance": "Fai ruotare quel tondino d'argento", "expect": "dev.heyari.coinflip"}
-{"utterance": "Scegli a caso tra la via a e la via b", "expect": "dev.heyari.coinflip"}
-{"utterance": "Risolviamo il nostro bivio con un'estrazione veloce", "expect": "dev.heyari.coinflip"}
-{"utterance": "Dacci un responso immediato basato su due possibilità", "expect": "dev.heyari.coinflip"}
-{"utterance": "fai scattare la rotella di una tacca", "expect": "dev.heyari.counter"}
-{"utterance": "un altro giro alla ruota", "expect": "dev.heyari.counter"}
-{"utterance": "fai un clic sul dispositivo", "expect": "dev.heyari.counter"}
-{"utterance": "avanza di uno step", "expect": "dev.heyari.counter"}
-{"utterance": "passa al valore successivo", "expect": "dev.heyari.counter"}
-{"utterance": "fai avanzare la numerazione", "expect": "dev.heyari.counter"}
-{"utterance": "facciamo un altro passo", "expect": "dev.heyari.counter"}
-{"utterance": "fai fare uno scatto", "expect": "dev.heyari.counter"}
-{"utterance": "metti un'altra tacca", "expect": "dev.heyari.counter"}
-{"utterance": "fai una spunta", "expect": "dev.heyari.counter"}
-{"utterance": "metti una crocetta", "expect": "dev.heyari.counter"}
-{"utterance": "muta il valore attuale", "expect": "dev.heyari.counter"}
-{"utterance": "passa oltre col numero", "expect": "dev.heyari.counter"}
-{"utterance": "procedi di un passo", "expect": "dev.heyari.counter"}
-{"utterance": "fai progredire la sequenza", "expect": "dev.heyari.counter"}
-{"utterance": "un altro colpo sul tabellone", "expect": "dev.heyari.counter"}
-{"utterance": "metti a referto", "expect": "dev.heyari.counter"}
-{"utterance": "tieni traccia di un altro giro", "expect": "dev.heyari.counter"}
-{"utterance": "un'altra occorrenza", "expect": "dev.heyari.counter"}
-{"utterance": "fai scattare il meccanismo", "expect": "dev.heyari.counter"}
-{"utterance": "Estrai un messaggio ispiratore dal server di github", "expect": "dev.heyari.githubzen"}
-{"utterance": "Cosa dice l'api filosofica di github oggi?", "expect": "dev.heyari.githubzen"}
-{"utterance": "Mostrami l'estratto motivazionale di github", "expect": "dev.heyari.githubzen"}
-{"utterance": "Recupera un pensiero profondo da github", "expect": "dev.heyari.githubzen"}
-{"utterance": "Cosa consiglia l'api di github per rilassarsi?", "expect": "dev.heyari.githubzen"}
-{"utterance": "Leggimi la filosofia di github", "expect": "dev.heyari.githubzen"}
-{"utterance": "Voglio vedere l'insegnamento caricato su github", "expect": "dev.heyari.githubzen"}
-{"utterance": "Prendi un motto dal sito di github", "expect": "dev.heyari.githubzen"}
-{"utterance": "Aiutami a svuotare la mente con un bel pensiero", "expect": "dev.heyari.githubzen"}
-{"utterance": "Ho bisogno di ritrovare l'equilibrio interiore", "expect": "dev.heyari.githubzen"}
-{"utterance": "Sussurrami qualcosa che porti pace alla mia giornata", "expect": "dev.heyari.githubzen"}
-{"utterance": "Mi piacerebbe fermarmi un secondo e ascoltare una guida per lo spirito", "expect": "dev.heyari.githubzen"}
-{"utterance": "Consolami con una verità spirituale", "expect": "dev.heyari.githubzen"}
-{"utterance": "Fammi rilassare con un concetto profondo", "expect": "dev.heyari.githubzen"}
-{"utterance": "Ho la testa nel caos, dammi un faro di luce", "expect": "dev.heyari.githubzen"}
-{"utterance": "Fammi respirare aria di spiritualità", "expect": "dev.heyari.githubzen"}
-{"utterance": "Cercami un pensiero che ispiri tranquillità", "expect": "dev.heyari.githubzen"}
-{"utterance": "Aiutami a meditare con un pensiero adatto", "expect": "dev.heyari.githubzen"}
-{"utterance": "Cosa direbbe un maestro buddista in questo momento?", "expect": "dev.heyari.githubzen"}
-{"utterance": "Regalami un briciolo di filosofia orientale", "expect": "dev.heyari.githubzen"}
-{"utterance": "c'è troppo buio in corridoio, puoi fare qualcosa?", "expect": "dev.heyari.homeassistant"}
-{"utterance": "rintraccia la posizione di papà", "expect": "dev.heyari.homeassistant"}
-{"utterance": "si gela qui dentro, dai una scaldata alla stanza", "expect": "dev.heyari.homeassistant"}
-{"utterance": "assicurati che il portone d'ingresso sia blindato", "expect": "dev.heyari.homeassistant"}
-{"utterance": "vorrei un po' di penombra in camera da letto", "expect": "dev.heyari.homeassistant"}
-{"utterance": "ho lasciato aperto il cancello?", "expect": "dev.heyari.homeassistant"}
-{"utterance": "prepara l'ambiente per quando guardiamo la tv", "expect": "dev.heyari.homeassistant"}
-{"utterance": "dove si è cacciata Giulia?", "expect": "dev.heyari.homeassistant"}
-{"utterance": "qui si soffoca dal caldo, fai partire il condizionatore a ventidue gradi", "expect": "dev.heyari.homeassistant"}
-{"utterance": "fai entrare un po' di luce naturale in salotto", "expect": "dev.heyari.homeassistant"}
-{"utterance": "controlla se c'è qualche lampadina rimasta attiva in soffitta", "expect": "dev.heyari.homeassistant"}
-{"utterance": "voglio l'atmosfera romantica in sala da pranzo", "expect": "dev.heyari.homeassistant"}
-{"utterance": "dai un giro di chiave al retro", "expect": "dev.heyari.homeassistant"}
-{"utterance": "mi dici se la finestra del bagno è accostata?", "expect": "dev.heyari.homeassistant"}
-{"utterance": "scurisci la stanza dei bambini che devono dormire", "expect": "dev.heyari.homeassistant"}
-{"utterance": "togli tensione alla presa intelligente in cucina", "expect": "dev.heyari.homeassistant"}
-{"utterance": "è rimasto qualcuno in garage?", "expect": "dev.heyari.homeassistant"}
-{"utterance": "fai in modo che si veda qualcosa nel vialetto", "expect": "dev.heyari.homeassistant"}
-{"utterance": "rinfresca la camera prima che vada a letto", "expect": "dev.heyari.homeassistant"}
-{"utterance": "isola acusticamente la camera facendo scendere le tapparelle", "expect": "dev.heyari.homeassistant"}
-{"utterance": "Ho voglia di rinfrescarmi la memoria con l'ultimo album dei Maneskin.", "expect": "dev.heyari.music"}
-{"utterance": "Sintonizzati immediatamente sulla discografia dei Pink Floyd usando Spotify.", "expect": "dev.heyari.music"}
-{"utterance": "Fai partire l'ultimo singolo di Annalisa.", "expect": "dev.heyari.music"}
-{"utterance": "Gradirei del jazz classico in sottofondo per la serata.", "expect": "dev.heyari.music"}
-{"utterance": "Sarebbe fantastico avere un po' di musica classica mentre studio.", "expect": "dev.heyari.music"}
-{"utterance": "Ti va di deliziarmi con il brano di chiusura dell'album dei Queen?", "expect": "dev.heyari.music"}
-{"utterance": "Crea un'atmosfera rilassante avviando la selezione pianoforte su Amazon Music.", "expect": "dev.heyari.music"}
-{"utterance": "Fai girare il vinile virtuale di Abbey Road tramite Apple Music.", "expect": "dev.heyari.music"}
-{"utterance": "C'è modo di far risuonare le note dei Coldplay qui dentro?", "expect": "dev.heyari.music"}
-{"utterance": "Passami l'ultimo pezzo di Lazza per favore.", "expect": "dev.heyari.music"}
-{"utterance": "Ho proprio bisogno di caricarmi con della techno svedese.", "expect": "dev.heyari.music"}
-{"utterance": "Fai andare quella compilation di balli di gruppo estivi.", "expect": "dev.heyari.music"}
-{"utterance": "Sarebbe ottimo che risuonasse la voce di Mina in questo momento.", "expect": "dev.heyari.music"}
-{"utterance": "Inizia a trasmettere la nona sinfonia di Beethoven.", "expect": "dev.heyari.music"}
-{"utterance": "Ti spiace avviare la traccia intitolata Alba di Ultimo?", "expect": "dev.heyari.music"}
-{"utterance": "Fai squillare le note di Starman di David Bowie.", "expect": "dev.heyari.music"}
-{"utterance": "Mi piacerebbe rilassarmi con la colonna sonora di Interstellar.", "expect": "dev.heyari.music"}
-{"utterance": "Sintonizza il sistema sui brani di Vasco Rossi.", "expect": "dev.heyari.music"}
-{"utterance": "Potresti allietare il pomeriggio con della musica lounge?", "expect": "dev.heyari.music"}
-{"utterance": "Fai risuonare nell'aria la traccia dei Daft Punk.", "expect": "dev.heyari.music"}
-{"utterance": "Metti il GPS su via Garibaldi trenta", "expect": "dev.heyari.navigation"}
-{"utterance": "Mostrami il tragitto verso la Coop", "expect": "dev.heyari.navigation"}
-{"utterance": "Qual è il percorso per la biblioteca comunale?", "expect": "dev.heyari.navigation"}
-{"utterance": "Traccia l'itinerario fino a Firenze", "expect": "dev.heyari.navigation"}
-{"utterance": "Ho bisogno del tragitto per l'aeroporto di Malpensa", "expect": "dev.heyari.navigation"}
-{"utterance": "Imposta come destinazione Piazza del Duomo", "expect": "dev.heyari.navigation"}
-{"utterance": "Attiva le mappe verso il supermercato Conad", "expect": "dev.heyari.navigation"}
-{"utterance": "Che via devo prendere per raggiungere la palestra?", "expect": "dev.heyari.navigation"}
-{"utterance": "Mi calcoli la rotta verso l'hotel Bristol?", "expect": "dev.heyari.navigation"}
-{"utterance": "Fammi vedere la strada verso il benzinaio più vicino", "expect": "dev.heyari.navigation"}
-{"utterance": "Qual è l'itinerario consigliato per la spiaggia di Rimini?", "expect": "dev.heyari.navigation"}
-{"utterance": "Imposta sul navigatore l'indirizzo Corso Buenos Aires ventidue", "expect": "dev.heyari.navigation"}
-{"utterance": "Dammi la strada per la stazione centrale", "expect": "dev.heyari.navigation"}
-{"utterance": "Come si raggiunge il Castello Sforzesco da qui?", "expect": "dev.heyari.navigation"}
-{"utterance": "Quale tragitto mi consigli per il lago di Garda?", "expect": "dev.heyari.navigation"}
-{"utterance": "Traccia la strada verso il cinema multisala", "expect": "dev.heyari.navigation"}
-{"utterance": "Attiva il percorso stradale per la scuola elementare", "expect": "dev.heyari.navigation"}
-{"utterance": "Metti le mappe stradali su via Roma quindici", "expect": "dev.heyari.navigation"}
-{"utterance": "Ho bisogno di un tragitto stradale verso l'università", "expect": "dev.heyari.navigation"}
-{"utterance": "Calcola l'itinerario automobilistico per Torino", "expect": "dev.heyari.navigation"}
-{"utterance": "Butta dentro la birra tra le cose da comprare", "expect": "dev.heyari.reminder"}
-{"utterance": "Infilami il pane nel foglio della spesa", "expect": "dev.heyari.reminder"}
-{"utterance": "Scrivi pomodori dove c'è la roba del supermercato", "expect": "dev.heyari.reminder"}
-{"utterance": "Ci sarebbe da mettere le uova nell'elenco della spesa", "expect": "dev.heyari.reminder"}
-{"utterance": "Fai una nota sulla spesa: comprare il sale", "expect": "dev.heyari.reminder"}
-{"utterance": "Inserisci ricarica telefonica nell'elenco delle cose da fare", "expect": "dev.heyari.reminder"}
-{"utterance": "Registra latte sulla nota della spesa", "expect": "dev.heyari.reminder"}
-{"utterance": "Includi pure il burro per la spesa", "expect": "dev.heyari.reminder"}
-{"utterance": "Mancano le mele sul foglietto del supermercato, mettile", "expect": "dev.heyari.reminder"}
-{"utterance": "Puoi scrivere dentifricio tra le cose da prendere?", "expect": "dev.heyari.reminder"}
-{"utterance": "Sarebbe utile avere il formaggio nell'elenco della spesa", "expect": "dev.heyari.reminder"}
-{"utterance": "Segnati caciotta tra gli acquisti da fare", "expect": "dev.heyari.reminder"}
-{"utterance": "Butta giù farina sul memo della spesa", "expect": "dev.heyari.reminder"}
-{"utterance": "Ficca anche i biscotti nella nota per la spesa", "expect": "dev.heyari.reminder"}
-{"utterance": "Alle sei oggi pomeriggio devo assolutamente chiamare il capo, fammi un fischio", "expect": "dev.heyari.reminder"}
-{"utterance": "Non vorrei scordarmi di spegnere il forno tra dieci minuti, dammi un segnale", "expect": "dev.heyari.reminder"}
-{"utterance": "Fai in modo che io non passi sopra alla scadenza delle tasse venerdì", "expect": "dev.heyari.reminder"}
-{"utterance": "Tienimi d'occhio l'orario: alle quindici devo uscire", "expect": "dev.heyari.reminder"}
-{"utterance": "C'è da fare la lavatrice stasera alle nove, tienilo a mente", "expect": "dev.heyari.reminder"}
-{"utterance": "Domani alle dieci devo sentire il medico, fammi squillare il telefono", "expect": "dev.heyari.reminder"}
-{"utterance": "voglio che mi ricordi di spegnere il fuoco tra 5 minuti", "expect": "dev.heyari.timer"}
-{"utterance": "fai scattare un allarme tra tre minuti", "expect": "dev.heyari.timer"}
-{"utterance": "fammi un segnale acustico tra dieci minuti giusti", "expect": "dev.heyari.timer"}
-{"utterance": "vorrei un promemoria sonoro tra un'ora per il bucato", "expect": "dev.heyari.timer"}
-{"utterance": "cronometrami sei minuti per il riso", "expect": "dev.heyari.timer"}
-{"utterance": "ho bisogno di un avviso tra quaranta minuti", "expect": "dev.heyari.timer"}
-{"utterance": "misura tre minuti per il tè", "expect": "dev.heyari.timer"}
-{"utterance": "tienimi d'occhio la cottura della carne, imposta tre quarti d'ora", "expect": "dev.heyari.timer"}
-{"utterance": "mi ricordi di togliere il latte dal fuoco tra cinque minuti?", "expect": "dev.heyari.timer"}
-{"utterance": "calcola dodici minuti a partire da adesso", "expect": "dev.heyari.timer"}
-{"utterance": "tra otto minuti esatti fammi un fischio", "expect": "dev.heyari.timer"}
-{"utterance": "puoi fare un alert tra dodici minuti per favore?", "expect": "dev.heyari.timer"}
-{"utterance": "aggiungi in coda sette minuti per le verdure", "expect": "dev.heyari.timer"}
-{"utterance": "inizia a contare cinque minuti per le uova sode", "expect": "dev.heyari.timer"}
-{"utterance": "gestisci cinque minuti per la maschera viso", "expect": "dev.heyari.timer"}
-{"utterance": "a che punto siamo con il risotto?", "expect": "dev.heyari.timer"}
-{"utterance": "quanti minuti devo aspettare ancora per il forno?", "expect": "dev.heyari.timer"}
-{"utterance": "il riso ha quasi finito di cuocere?", "expect": "dev.heyari.timer"}
-{"utterance": "mi dici a che punto è la carne?", "expect": "dev.heyari.timer"}
-{"utterance": "è rimasto molto per le patate?", "expect": "dev.heyari.timer"}
-{"utterance": "Chiedi al modulo isolato di inviarmi un saluto", "expect": "dev.heyari.wasmecho"}
-{"utterance": "Vorrei sentire se l'ambiente webassembly è attivo", "expect": "dev.heyari.wasmecho"}
-{"utterance": "Puoi dirmi cosa restituisce il codice in sandbox?", "expect": "dev.heyari.wasmecho"}
-{"utterance": "Interroga il bytecode per vedere se risponde", "expect": "dev.heyari.wasmecho"}
-{"utterance": "Fai fare un cenno di vita alla sandbox", "expect": "dev.heyari.wasmecho"}
-{"utterance": "Riesci a metterti in contatto con il sistema isolato?", "expect": "dev.heyari.wasmecho"}
-{"utterance": "Dimmi cosa dice l'applicazione protetta", "expect": "dev.heyari.wasmecho"}
-{"utterance": "Vorrei ricevere l'output dal motore virtuale", "expect": "dev.heyari.wasmecho"}
-{"utterance": "Fammi sentire la stringa che restituisce il codice compilato", "expect": "dev.heyari.wasmecho"}
-{"utterance": "Controlliamo se l'ambiente virtualizzato è in ascolto", "expect": "dev.heyari.wasmecho"}
-{"utterance": "Chiedi il messaggio fisso al modulo di sicurezza", "expect": "dev.heyari.wasmecho"}
-{"utterance": "La macchina virtuale isolata è in grado di parlarmi?", "expect": "dev.heyari.wasmecho"}
-{"utterance": "Fai rispondere l'interprete locale sicuro", "expect": "dev.heyari.wasmecho"}
-{"utterance": "Estrai la risposta dal container webassembly", "expect": "dev.heyari.wasmecho"}
-{"utterance": "Fai una chiamata all'echo nel sandbox", "expect": "dev.heyari.wasmecho"}
-{"utterance": "Vorrei il feedback dall'applicazione protetta", "expect": "dev.heyari.wasmecho"}
-{"utterance": "Il motore di esecuzione isolato è pronto?", "expect": "dev.heyari.wasmecho"}
-{"utterance": "Chiedi una risposta al modulo residente in memoria", "expect": "dev.heyari.wasmecho"}
-{"utterance": "Riesci a connetterti alla sandbox isolata?", "expect": "dev.heyari.wasmecho"}
-{"utterance": "Fai stampare il messaggio di benvenuto dal bytecode", "expect": "dev.heyari.wasmecho"}
-{"utterance": "Devo coprirmi bene se esco a Milano stasera?", "expect": "dev.heyari.weather"}
-{"utterance": "Si schiarirà il cielo a Napoli domani pomeriggio?", "expect": "dev.heyari.weather"}
-{"utterance": "Rischio di bagnarmi se vado a spasso a Firenze oggi pomeriggio?", "expect": "dev.heyari.weather"}
-{"utterance": "Ci sarà bisogno di accendere l'aria condizionata a Palermo questo weekend?", "expect": "dev.heyari.weather"}
-{"utterance": "C'è rischio di ghiaccio sulle strade a Cortina domattina?", "expect": "dev.heyari.weather"}
-{"utterance": "Riuscirò a vedere le stelle a Torino stasera?", "expect": "dev.heyari.weather"}
-{"utterance": "Dovrò usare i tergicristalli per andare a Bologna domani?", "expect": "dev.heyari.weather"}
-{"utterance": "Che aria tira a Trieste questo pomeriggio?", "expect": "dev.heyari.weather"}
-{"utterance": "Ci sarà una bella giornata per la gita a Lucca domenica?", "expect": "dev.heyari.weather"}
-{"utterance": "È prevista nebbia fitta sulla costa a Genova domani all'alba?", "expect": "dev.heyari.weather"}
-{"utterance": "Vale la pena stendere i panni sul balcone a Pisa oggi?", "expect": "dev.heyari.weather"}
-{"utterance": "Sarebbe meglio rimandare la grigliata a Verona questo sabato?", "expect": "dev.heyari.weather"}
-{"utterance": "Si suda molto a Bari in questo momento?", "expect": "dev.heyari.weather"}
-{"utterance": "È il caso di mettere le catene a bordo per andare ad Aosta stasera?", "expect": "dev.heyari.weather"}
-{"utterance": "Avrò bisogno degli stivali di gomma a Venezia domani?", "expect": "dev.heyari.weather"}
-{"utterance": "Ci sarà una tregua dall'afa a Cagliari giovedì?", "expect": "dev.heyari.weather"}
-{"utterance": "Il cielo sarà coperto sopra Siena per il weekend?", "expect": "dev.heyari.weather"}
-{"utterance": "Si prevede una brusca discesa del termometro a Trento questo venerdì?", "expect": "dev.heyari.weather"}
-{"utterance": "Come si presenta la situazione per sciare a Tarvisio dopodomani?", "expect": "dev.heyari.weather"}
-{"utterance": "Dovremo pranzare al chiuso a Perugia domenica?", "expect": "dev.heyari.weather"}
-{"utterance": "Ti andrebbe di fare due chiacchiere?", "expect": "greeting"}
-{"utterance": "Sono passato a vedere come procedono le cose.", "expect": "greeting"}
-{"utterance": "Mi andava di scambiare due parole.", "expect": "greeting"}
-{"utterance": "Confido di trovarti in splendida forma.", "expect": "greeting"}
-{"utterance": "Sei pronta per una nuova giornata?", "expect": "greeting"}
-{"utterance": "Sono di nuovo in linea.", "expect": "greeting"}
-{"utterance": "Sei operativa?", "expect": "greeting"}
-{"utterance": "Come scorre la tua giornata?", "expect": "greeting"}
-{"utterance": "Come si prospetta oggi?", "expect": "greeting"}
-{"utterance": "Spero che tutto proceda per il meglio là nel cloud.", "expect": "greeting"}
-{"utterance": "Ti trovo bene oggi?", "expect": "greeting"}
-{"utterance": "Spero che tu stia passando una buona giornata.", "expect": "greeting"}
-{"utterance": "Confido che vada tutto alla grande.", "expect": "greeting"}
-{"utterance": "Iniziamo la giornata con gioia.", "expect": "greeting"}
-{"utterance": "Pronto a ricevermi?", "expect": "greeting"}
-{"utterance": "Sintonizzato e pronto a parlarti.", "expect": "greeting"}
-{"utterance": "Mi ricevi bene?", "expect": "greeting"}
-{"utterance": "Sei già attiva stamattina?", "expect": "greeting"}
-{"utterance": "Volevo solo accertarmi che fossi attiva.", "expect": "greeting"}
-{"utterance": "Sei già in piedi e pronta?", "expect": "greeting"}
-{"utterance": "Carica l'applicazione di Outlook.", "expect": "open"}
-{"utterance": "Sblocca lo schermo su Prime Video.", "expect": "open"}
-{"utterance": "Mettiti in comunicazione con Zoom.", "expect": "open"}
-{"utterance": "Fai un salto dentro Audible.", "expect": "open"}
-{"utterance": "Collega l'applicazione di Duolingo.", "expect": "open"}
-{"utterance": "Mandami su Pinterest.", "expect": "open"}
-{"utterance": "Fai comparire l'interfaccia di LinkedIn.", "expect": "open"}
-{"utterance": "Sintonizzati su YouTube Music.", "expect": "open"}
-{"utterance": "Metti in funzione Shazam.", "expect": "open"}
-{"utterance": "Richiama l'app di Kindle.", "expect": "open"}
-{"utterance": "Inizializza subito Teams.", "expect": "open"}
-{"utterance": "Sarebbe possibile accedere a eBay?", "expect": "open"}
-{"utterance": "Sarebbe utile consultare Booking.", "expect": "open"}
-{"utterance": "Dovrei fare un salto su Facebook.", "expect": "open"}
-{"utterance": "Mi manderesti su TripAdvisor?", "expect": "open"}
-{"utterance": "Si può caricare Uber?", "expect": "open"}
-{"utterance": "Renditi utile e sblocca Tinder.", "expect": "open"}
-{"utterance": "Fai girare Skype.", "expect": "open"}
-{"utterance": "Posizionati su Dropbox.", "expect": "open"}
-{"utterance": "Mi caricheresti Safari?", "expect": "open"}
-{"utterance": "Chi ha scritto il romanzo 'Il nome della rosa'?", "expect": "NONE"}
-{"utterance": "Come si prepara un perfetto tiramisù?", "expect": "NONE"}
-{"utterance": "Chi è stato il primo uomo a camminare sulla Luna?", "expect": "NONE"}
-{"utterance": "Qual è il pianeta più grande del sistema solare?", "expect": "NONE"}
-{"utterance": "Perché i cani si annusano tra di loro?", "expect": "NONE"}
-{"utterance": "Qual è l'oceano più grande della Terra?", "expect": "NONE"}
-{"utterance": "Come si cura un'infestazione di formiche in giardino?", "expect": "NONE"}
-{"utterance": "In che anno è scoppiata la Rivoluzione Francese?", "expect": "NONE"}
-{"utterance": "Chi ha inventato la lampadina a incandescenza?", "expect": "NONE"}
-{"utterance": "Come fanno gli aerei a volare?", "expect": "NONE"}
-{"utterance": "Che cos'è la fotosintesi clorofilliana?", "expect": "NONE"}
-{"utterance": "Qual è la differenza tra un virus e un batterio?", "expect": "NONE"}
-{"utterance": "Come si forma un arcobaleno?", "expect": "NONE"}
-{"utterance": "Chi è il presidente in carica degli Stati Uniti?", "expect": "NONE"}
-{"utterance": "Perché le foglie cambiano colore in autunno?", "expect": "NONE"}
-{"utterance": "Chi ha scritto l'Odissea?", "expect": "NONE"}
-{"utterance": "Come funziona il motore di un'auto elettrica?", "expect": "NONE"}
-{"utterance": "Qual è l'animale più veloce sulla terraferma?", "expect": "NONE"}
-{"utterance": "Chi ha dipinto la Cappella Sistina?", "expect": "NONE"}
-{"utterance": "Qual è il metallo più prezioso al mondo?", "expect": "NONE"}
-{"utterance": "Come si riproducono i coralli?", "expect": "NONE"}
-{"utterance": "Chi è considerato il padre della lingua italiana?", "expect": "NONE"}
-{"utterance": "Qual è lo stato più piccolo del mondo?", "expect": "NONE"}
-{"utterance": "Come si fa il nodo alla cravatta Windsor?", "expect": "NONE"}
-{"utterance": "Chi ha vinto l'ultimo mondiale di calcio?", "expect": "NONE"}
-{"utterance": "Qual è il fiume più lungo d'Italia?", "expect": "NONE"}
-{"utterance": "Come fanno i ragni a tessere la ragnatela?", "expect": "NONE"}
-{"utterance": "Perché sbadigliamo quando siamo stanchi?", "expect": "NONE"}
-{"utterance": "Chi era Giulio Cesare?", "expect": "NONE"}
-{"utterance": "Come si produce il cioccolato a partire dal cacao?", "expect": "NONE"}
-{"utterance": "Qual è il deserto più arido del mondo?", "expect": "NONE"}
-{"utterance": "Come respirano le balene sotto l'acqua?", "expect": "NONE"}
-{"utterance": "Qual è il vulcano più attivo d'Europa?", "expect": "NONE"}
-{"utterance": "Perché la Luna brilla di notte?", "expect": "NONE"}
-{"utterance": "Chi ha dipinto 'L'urlo'?", "expect": "NONE"}
-{"utterance": "Qual è l'animale più grande del pianeta?", "expect": "NONE"}
-{"utterance": "Come si fa a togliere una macchia di vino rosso?", "expect": "NONE"}
-{"utterance": "In che anno è stata scoperta l'America?", "expect": "NONE"}
-{"utterance": "Chi ha inventato il motore a scoppio?", "expect": "NONE"}
-{"utterance": "Perché i gatti hanno paura dell'acqua?", "expect": "NONE"}
-{"utterance": "Come funziona una centrale nucleare?", "expect": "NONE"}
-{"utterance": "Chi è l'autore del quadro 'Guernica'?", "expect": "NONE"}
-{"utterance": "Come si coltivano le orchidee in casa?", "expect": "NONE"}
-{"utterance": "Chi era Alessandro Magno?", "expect": "NONE"}
-{"utterance": "Qual è il lago più grande d'Italia?", "expect": "NONE"}
-{"utterance": "Perché si dice 'versare lacrime di coccodrillo'?", "expect": "NONE"}
-{"utterance": "Come si forma la grandine?", "expect": "NONE"}
-{"utterance": "Chi ha scritto 'Amleto'?", "expect": "NONE"}
-{"utterance": "Qual è l'uccello che non può volare più grande del mondo?", "expect": "NONE"}
-{"utterance": "Come funziona la borsa valori?", "expect": "NONE"}
+{"utterance": "Se spendo venticinque euro e poi altri quattordici, quanto ho speso in tutto?", "expect": "calculator"}
+{"utterance": "Ho tre scatole con dodici uova ciascuna, quante uova ho?", "expect": "calculator"}
+{"utterance": "Se dividiamo un conto da novanta euro in sei persone, quanto dobbiamo mettere a testa?", "expect": "calculator"}
+{"utterance": "Un vestito da ottanta euro con lo sconto del venti per cento, quanto viene a costare?", "expect": "calculator"}
+{"utterance": "Se ho cento caramelle e ne distribuisco cinque a testa, a quanti bambini posso darne?", "expect": "calculator"}
+{"utterance": "Se a scuola oggi mancano sette alunni su venticinque, quanti siamo in classe?", "expect": "calculator"}
+{"utterance": "Se compro quattro biglietti da quindici euro l'uno, qual è la spesa complessiva?", "expect": "calculator"}
+{"utterance": "Se facciamo quattro rate da quarantacinque euro, qual è il totale?", "expect": "calculator"}
+{"utterance": "Se a cento e venti togliamo il quindici per cento, che cifra rimane?", "expect": "calculator"}
+{"utterance": "Qual è il valore se moltiplichiamo dodici per se stesso?", "expect": "calculator"}
+{"utterance": "Se raggruppiamo novanta oggetti in lotti da quindici, quanti lotti otteniamo?", "expect": "calculator"}
+{"utterance": "Se ho un budget di duecento euro e ne consumo novantacinque, quanti soldi mi avanzano?", "expect": "calculator"}
+{"utterance": "Se a quarantacinque aggiungiamo altri trentadue, a che cifra arriviamo?", "expect": "calculator"}
+{"utterance": "Se facciamo cinque gruppi da venti persone, quante persone ci sono in tutto?", "expect": "calculator"}
+{"utterance": "Qual è la quinta parte di duecento?", "expect": "calculator"}
+{"utterance": "Se ho sessanta caramelle e ne mangio sei, quante ne restano?", "expect": "calculator"}
+{"utterance": "A quanto ammonta l'iva al ventidue per cento su un importo di cinquanta euro?", "expect": "calculator"}
+{"utterance": "Se una stanza ha un lato di sei metri e uno di quattro, quanti metri quadri sono?", "expect": "calculator"}
+{"utterance": "Se divido novantasei caramelle tra otto bambini, quante ne spettano a ciascuno?", "expect": "calculator"}
+{"utterance": "Se accumulo dodici euro al giorno per dieci giorni, quanto risparmio?", "expect": "calculator"}
+{"utterance": "devo datare questo foglio, cosa ci scrivo?", "expect": "current_date"}
+{"utterance": "qual è la data da mettere sul contratto di affitto?", "expect": "current_date"}
+{"utterance": "che numero devo mettere sopra la firma oggi?", "expect": "current_date"}
+{"utterance": "ho un appuntamento oggi ma non ricordo il numero del giorno", "expect": "current_date"}
+{"utterance": "sto scrivendo sul diario, che giorno metto in alto a destra?", "expect": "current_date"}
+{"utterance": "il calendario sul muro che numero indica oggi?", "expect": "current_date"}
+{"utterance": "gira la pagina del calendario, cosa c'è stampato oggi?", "expect": "current_date"}
+{"utterance": "che foglietto devo staccare dal calendario stamattina?", "expect": "current_date"}
+{"utterance": "qual è il giorno attuale?", "expect": "current_date"}
+{"utterance": "mi diresti il giorno corrente?", "expect": "current_date"}
+{"utterance": "in che momento del mese ci troviamo di preciso?", "expect": "current_date"}
+{"utterance": "oggi è l'Epifania?", "expect": "current_date"}
+{"utterance": "oggi è la vigilia di Natale?", "expect": "current_date"}
+{"utterance": "siamo già arrivati a ferragosto oggi?", "expect": "current_date"}
+{"utterance": "oggi è la festa della Repubblica?", "expect": "current_date"}
+{"utterance": "che ricorrenza c'è oggi sul calendario?", "expect": "current_date"}
+{"utterance": "oggi è il primo giorno del mese?", "expect": "current_date"}
+{"utterance": "siamo all'ultimo del mese oggi?", "expect": "current_date"}
+{"utterance": "oggi è l'ultimo giorno dell'anno?", "expect": "current_date"}
+{"utterance": "oggi scade il mese sul calendario?", "expect": "current_date"}
+{"utterance": "A che punto della giornata ci troviamo?", "expect": "current_time"}
+{"utterance": "La mattinata è ormai conclusa?", "expect": "current_time"}
+{"utterance": "Siamo a metà del pomeriggio?", "expect": "current_time"}
+{"utterance": "Il sole è ancora alto?", "expect": "current_time"}
+{"utterance": "Ci stiamo avvicinando alla sera?", "expect": "current_time"}
+{"utterance": "Siamo entrati nella fascia pomeridiana?", "expect": "current_time"}
+{"utterance": "Siamo ancora nel primo mattino?", "expect": "current_time"}
+{"utterance": "Siamo già oltre la metà del giorno?", "expect": "current_time"}
+{"utterance": "Siamo nel tardo pomeriggio?", "expect": "current_time"}
+{"utterance": "La giornata volge al termine?", "expect": "current_time"}
+{"utterance": "È già scesa la notte?", "expect": "current_time"}
+{"utterance": "Siamo ancora nella prima parte della giornata?", "expect": "current_time"}
+{"utterance": "La serata è già cominciata?", "expect": "current_time"}
+{"utterance": "Siamo nel cuore della notte?", "expect": "current_time"}
+{"utterance": "Siamo vicini al momento della cena?", "expect": "current_time"}
+{"utterance": "La mattinata è agli sgoccioli?", "expect": "current_time"}
+{"utterance": "Siamo già in serata?", "expect": "current_time"}
+{"utterance": "Il pomeriggio è già iniziato?", "expect": "current_time"}
+{"utterance": "Siamo vicini a mezzogiorno?", "expect": "current_time"}
+{"utterance": "Il sole sta per sorgere?", "expect": "current_time"}
+{"utterance": "Domani ho un aereo molto presto, fammi squillare il telefono alle sei", "expect": "dev.heyari.alarm"}
+{"utterance": "C'è qualche avviso sonoro attivo per domattina?", "expect": "dev.heyari.alarm"}
+{"utterance": "Fammi sentire un suono alle sette in punto di domani", "expect": "dev.heyari.alarm"}
+{"utterance": "A che ora è programmato il primo segnale acustico di domani?", "expect": "dev.heyari.alarm"}
+{"utterance": "Disattiva tutti i promemoria sonori mattutini", "expect": "dev.heyari.alarm"}
+{"utterance": "Non voglio sentire nessun trillo domattina, disabilita tutto", "expect": "dev.heyari.alarm"}
+{"utterance": "Ho bisogno di un promemoria rumoroso alle otto", "expect": "dev.heyari.alarm"}
+{"utterance": "Fai casino alle sette e un quarto", "expect": "dev.heyari.alarm"}
+{"utterance": "Ho bisogno di interrompere il sonno alle sei e quaranta", "expect": "dev.heyari.alarm"}
+{"utterance": "Controlla se c'è qualcosa impostato per domattina nell'orologio", "expect": "dev.heyari.alarm"}
+{"utterance": "Ho scordato di togliere il richiamo mattutino delle sette, provvedi tu", "expect": "dev.heyari.alarm"}
+{"utterance": "Ho un appuntamento alle nove, calcola che devo essere operativo un'ora prima", "expect": "dev.heyari.alarm"}
+{"utterance": "Fai squillare il telefono alle sei di mattina", "expect": "dev.heyari.alarm"}
+{"utterance": "Ho bisogno che domattina alle sette il telefono inizi a suonare", "expect": "dev.heyari.alarm"}
+{"utterance": "Puoi far suonare il dispositivo alle otto e mezza?", "expect": "dev.heyari.alarm"}
+{"utterance": "Domattina devo essere già operativo per le sette, fa' in modo che io non resti a dormire", "expect": "dev.heyari.alarm"}
+{"utterance": "Non far suonare niente domani mattina", "expect": "dev.heyari.alarm"}
+{"utterance": "Mostrami gli orari dei trilli configurati", "expect": "dev.heyari.alarm"}
+{"utterance": "Vorrei dormire fino a tardi sabato, togli l'avviso mattutino delle otto", "expect": "dev.heyari.alarm"}
+{"utterance": "Aggiungi un avviso rumoroso per le otto e mezza del mattino", "expect": "dev.heyari.alarm"}
+{"utterance": "tira su un euro", "expect": "dev.heyari.coinflip"}
+{"utterance": "puoi lanciare un euro per me?", "expect": "dev.heyari.coinflip"}
+{"utterance": "fai saltare un euro", "expect": "dev.heyari.coinflip"}
+{"utterance": "mi flipperesti un euro?", "expect": "dev.heyari.coinflip"}
+{"utterance": "tira un euro per favore", "expect": "dev.heyari.coinflip"}
+{"utterance": "butta per aria un euro", "expect": "dev.heyari.coinflip"}
+{"utterance": "fai ruotare un pezzo da due euro", "expect": "dev.heyari.coinflip"}
+{"utterance": "fai un flip con un euro", "expect": "dev.heyari.coinflip"}
+{"utterance": "tira un cinquanta centesimi", "expect": "dev.heyari.coinflip"}
+{"utterance": "fai girare un cinquanta centesimi", "expect": "dev.heyari.coinflip"}
+{"utterance": "voglio vedere quale faccia dell'euro viene fuori", "expect": "dev.heyari.coinflip"}
+{"utterance": "estrai una delle due facce dell'euro", "expect": "dev.heyari.coinflip"}
+{"utterance": "fai cadere un euro e guarda come atterra", "expect": "dev.heyari.coinflip"}
+{"utterance": "tira un euro e vediamo chi ha ragione", "expect": "dev.heyari.coinflip"}
+{"utterance": "fai scegliere a un euro", "expect": "dev.heyari.coinflip"}
+{"utterance": "decide l'euro", "expect": "dev.heyari.coinflip"}
+{"utterance": "lasciamo decidere a un euro", "expect": "dev.heyari.coinflip"}
+{"utterance": "tira un soldo", "expect": "dev.heyari.coinflip"}
+{"utterance": "vorrei tirare un soldo", "expect": "dev.heyari.coinflip"}
+{"utterance": "puoi far girare un soldo?", "expect": "dev.heyari.coinflip"}
+{"utterance": "fai un altro clic", "expect": "dev.heyari.counter"}
+{"utterance": "passa al numero successivo", "expect": "dev.heyari.counter"}
+{"utterance": "registra un'altra volta", "expect": "dev.heyari.counter"}
+{"utterance": "somma un altro punto", "expect": "dev.heyari.counter"}
+{"utterance": "registra un altro passaggio", "expect": "dev.heyari.counter"}
+{"utterance": "metti a verbale questo giro", "expect": "dev.heyari.counter"}
+{"utterance": "voglio fare più uno", "expect": "dev.heyari.counter"}
+{"utterance": "avanza sul totale", "expect": "dev.heyari.counter"}
+{"utterance": "fai un altro scatto", "expect": "dev.heyari.counter"}
+{"utterance": "saliamo di un'unità", "expect": "dev.heyari.counter"}
+{"utterance": "procedi col prossimo numero", "expect": "dev.heyari.counter"}
+{"utterance": "fai un'altra spunta", "expect": "dev.heyari.counter"}
+{"utterance": "aggiudicami un altro punto", "expect": "dev.heyari.counter"}
+{"utterance": "registra la mia presenza ancora", "expect": "dev.heyari.counter"}
+{"utterance": "fai avanzare la cifra", "expect": "dev.heyari.counter"}
+{"utterance": "registra un altro giro", "expect": "dev.heyari.counter"}
+{"utterance": "passa oltre con la numerazione", "expect": "dev.heyari.counter"}
+{"utterance": "fai scattare la rotella", "expect": "dev.heyari.counter"}
+{"utterance": "voglio salire di un gradino", "expect": "dev.heyari.counter"}
+{"utterance": "fai scattare il dispositivo", "expect": "dev.heyari.counter"}
+{"utterance": "che dice oggi l'oracolo di github?", "expect": "dev.heyari.githubzen"}
+{"utterance": "vorrei sintonizzarmi sulla filosofia di github.", "expect": "dev.heyari.githubzen"}
+{"utterance": "avrei bisogno di una battuta filosofica dai server di github.", "expect": "dev.heyari.githubzen"}
+{"utterance": "cosa suggerisce la filosofia dei programmatori?", "expect": "dev.heyari.githubzen"}
+{"utterance": "tira fuori un motto esistenziale da github.", "expect": "dev.heyari.githubzen"}
+{"utterance": "c'è qualche insegnamento orientale nel codice?", "expect": "dev.heyari.githubzen"}
+{"utterance": "cosa mi consiglia l'api di github sul senso della vita?", "expect": "dev.heyari.githubzen"}
+{"utterance": "leggimi l'ultimo frammento di filosofia di github.", "expect": "dev.heyari.githubzen"}
+{"utterance": "ho lo stress a mille, leggimi un pensiero filosofico da github.", "expect": "dev.heyari.githubzen"}
+{"utterance": "che dicono i filosofi di github oggi?", "expect": "dev.heyari.githubzen"}
+{"utterance": "estratta a sorte, mi faresti sentire una frase filosofica del repository?", "expect": "dev.heyari.githubzen"}
+{"utterance": "vorrei sentire una di quelle pillole di filosofia orientale.", "expect": "dev.heyari.githubzen"}
+{"utterance": "che ne dici di ispirarmi con un motto spirituale?", "expect": "dev.heyari.githubzen"}
+{"utterance": "fammi meditare con un estratto da github.", "expect": "dev.heyari.githubzen"}
+{"utterance": "cosa c'è di filosofico oggi sui server di github?", "expect": "dev.heyari.githubzen"}
+{"utterance": "mi serve ispirazione spirituale, interroga github.", "expect": "dev.heyari.githubzen"}
+{"utterance": "vorrei meditare su qualcosa di profondo da github.", "expect": "dev.heyari.githubzen"}
+{"utterance": "qual è il motto spirituale dei programmatori oggi?", "expect": "dev.heyari.githubzen"}
+{"utterance": "mi piacerebbe sentire una perla della filosofia orientale.", "expect": "dev.heyari.githubzen"}
+{"utterance": "cosa ci insegna oggi github?", "expect": "dev.heyari.githubzen"}
+{"utterance": "c'è troppa ombra qui in ufficio", "expect": "dev.heyari.homeassistant"}
+{"utterance": "non si vede un tubo in cucina", "expect": "dev.heyari.homeassistant"}
+{"utterance": "illumina il corridoio", "expect": "dev.heyari.homeassistant"}
+{"utterance": "fai luce sul tavolo da pranzo", "expect": "dev.heyari.homeassistant"}
+{"utterance": "vorrei un po' di chiarore in salotto", "expect": "dev.heyari.homeassistant"}
+{"utterance": "qui in camera si schiatta dal caldo", "expect": "dev.heyari.homeassistant"}
+{"utterance": "si sta congelando in cucina", "expect": "dev.heyari.homeassistant"}
+{"utterance": "il soggiorno è diventato un congelatore", "expect": "dev.heyari.homeassistant"}
+{"utterance": "rinfresca la taverna per favore", "expect": "dev.heyari.homeassistant"}
+{"utterance": "dai una scaldata allo studio", "expect": "dev.heyari.homeassistant"}
+{"utterance": "riscalda la camera dei bambini", "expect": "dev.heyari.homeassistant"}
+{"utterance": "il sole mi sta accecando in camera", "expect": "dev.heyari.homeassistant"}
+{"utterance": "vorrei che entrasse luce naturale in corridoio", "expect": "dev.heyari.homeassistant"}
+{"utterance": "fai scendere le tapparelle della sala", "expect": "dev.heyari.homeassistant"}
+{"utterance": "solleva le serrande in ufficio", "expect": "dev.heyari.homeassistant"}
+{"utterance": "nascondi la vista dalla finestra della camera", "expect": "dev.heyari.homeassistant"}
+{"utterance": "scopri i vetri in cucina", "expect": "dev.heyari.homeassistant"}
+{"utterance": "rendi invisibile l'interno del soggiorno", "expect": "dev.heyari.homeassistant"}
+{"utterance": "oscura la stanza da letto", "expect": "dev.heyari.homeassistant"}
+{"utterance": "mi assicuri che il portone sia sbarrato?", "expect": "dev.heyari.homeassistant"}
+{"utterance": "Fai un fischio a Luca per dirgli che sono già qui", "expect": "dev.heyari.message"}
+{"utterance": "Batti un colpo su WhatsApp a Francesca che stasera non ci sono", "expect": "dev.heyari.message"}
+{"utterance": "Lascia detto a mio fratello che ho preso le chiavi io", "expect": "dev.heyari.message"}
+{"utterance": "Fai arrivare la voce a Roberta che la cena è saltata", "expect": "dev.heyari.message"}
+{"utterance": "Segnala a Giovanni che l'ufficio è chiuso oggi", "expect": "dev.heyari.message"}
+{"utterance": "Butta su WhatsApp di Marco un 'arrivo subito'", "expect": "dev.heyari.message"}
+{"utterance": "Butta giù due parole per papà dicendo che arrivo per cena", "expect": "dev.heyari.message"}
+{"utterance": "Invia una notifica a Andrea che il treno ha mezz'ora di ritardo", "expect": "dev.heyari.message"}
+{"utterance": "Aggiorna la mamma sul fatto che sono atterrato adesso", "expect": "dev.heyari.message"}
+{"utterance": "Fai un cenno a Silvia che la riunione comincia tra poco", "expect": "dev.heyari.message"}
+{"utterance": "Riferisci a Claudio che mi serve quel documento entro oggi", "expect": "dev.heyari.message"}
+{"utterance": "Spedisci una mail a Paola ricordandole la scadenza di domani", "expect": "dev.heyari.message"}
+{"utterance": "Lascia un messaggino su Telegram a Giulio per sapere se è libero", "expect": "dev.heyari.message"}
+{"utterance": "Dovrei far recapitare a Valentina la lista della spesa", "expect": "dev.heyari.message"}
+{"utterance": "Recapita a Matteo la notizia che ho superato l'esame", "expect": "dev.heyari.message"}
+{"utterance": "Passa la parola a Daniele che l'appuntamento è alle otto", "expect": "dev.heyari.message"}
+{"utterance": "Spara un colpo su Slack a Roberto per chiedergli del file", "expect": "dev.heyari.message"}
+{"utterance": "Fai pervenire a Sofia il mio nuovo indirizzo", "expect": "dev.heyari.message"}
+{"utterance": "Piazza su WhatsApp a Cristina che sono per strada", "expect": "dev.heyari.message"}
+{"utterance": "Lascia una riga a Giorgio su Messenger che ci vediamo dopo", "expect": "dev.heyari.message"}
+{"utterance": "C'è modo di far andare l'ultimo album di Caparezza?", "expect": "dev.heyari.music"}
+{"utterance": "Inizia a trasmettere un po' di blues", "expect": "dev.heyari.music"}
+{"utterance": "Sintonizzati sui Daft Punk", "expect": "dev.heyari.music"}
+{"utterance": "Fai partire l'ultimo singolo di Marco Mengoni", "expect": "dev.heyari.music"}
+{"utterance": "Passami un po' di techno", "expect": "dev.heyari.music"}
+{"utterance": "Mi andrebbe del rock classico", "expect": "dev.heyari.music"}
+{"utterance": "Sarebbe perfetto del pianoforte di sottofondo", "expect": "dev.heyari.music"}
+{"utterance": "Spara a cannone i Maneskin", "expect": "dev.heyari.music"}
+{"utterance": "Ho voglia di sognare con la colonna sonora di Interstellar", "expect": "dev.heyari.music"}
+{"utterance": "Facciamo partire Bella Ciao", "expect": "dev.heyari.music"}
+{"utterance": "Puoi far risuonare dell'heavy metal?", "expect": "dev.heyari.music"}
+{"utterance": "Gradirei della musica celtica", "expect": "dev.heyari.music"}
+{"utterance": "Ci starebbe bene un po' di lo-fi", "expect": "dev.heyari.music"}
+{"utterance": "Sintonizza il canale sui Pooh", "expect": "dev.heyari.music"}
+{"utterance": "Ti va di far cantare Mina?", "expect": "dev.heyari.music"}
+{"utterance": "Sarebbe bello godersi il ritmo del reggaeton", "expect": "dev.heyari.music"}
+{"utterance": "Mandami in streaming l'ultimo pezzo di Ultimo", "expect": "dev.heyari.music"}
+{"utterance": "Ho bisogno di rilassarmi con Mozart", "expect": "dev.heyari.music"}
+{"utterance": "Sottofondo soft per la cena per favore", "expect": "dev.heyari.music"}
+{"utterance": "Fai risuonare Nel blu dipinto di blu su Apple Music", "expect": "dev.heyari.music"}
+{"utterance": "imposta il GPS sul Colosseo", "expect": "dev.heyari.navigation"}
+{"utterance": "metti sul GPS il supermercato Conad", "expect": "dev.heyari.navigation"}
+{"utterance": "calcola il percorso fino a Bologna centrale", "expect": "dev.heyari.navigation"}
+{"utterance": "metti l'indirizzo via dei Mille venti", "expect": "dev.heyari.navigation"}
+{"utterance": "trovami il percorso per la farmacia più vicina", "expect": "dev.heyari.navigation"}
+{"utterance": "disegna il tragitto per la spiaggia di Mondello", "expect": "dev.heyari.navigation"}
+{"utterance": "qual è il tragitto migliore per il parco di Monza", "expect": "dev.heyari.navigation"}
+{"utterance": "mostrami la via per l'ufficio postale", "expect": "dev.heyari.navigation"}
+{"utterance": "indirizzami verso il centro commerciale", "expect": "dev.heyari.navigation"}
+{"utterance": "ho bisogno del tragitto per lo stadio San Siro", "expect": "dev.heyari.navigation"}
+{"utterance": "crea un itinerario per la reggia di Caserta", "expect": "dev.heyari.navigation"}
+{"utterance": "attivami il GPS sulla clinica convenzionata", "expect": "dev.heyari.navigation"}
+{"utterance": "imposta sul navigatore la pizzeria da Michele", "expect": "dev.heyari.navigation"}
+{"utterance": "che tragitto devo seguire per l'aeroporto di Malpensa", "expect": "dev.heyari.navigation"}
+{"utterance": "mostrami come giungere a Piazza di Spagna", "expect": "dev.heyari.navigation"}
+{"utterance": "disegnami la mappa per l'hotel Continental", "expect": "dev.heyari.navigation"}
+{"utterance": "dammi le istruzioni stradali per il distributore Eni", "expect": "dev.heyari.navigation"}
+{"utterance": "calcola l'itinerario verso la cattedrale", "expect": "dev.heyari.navigation"}
+{"utterance": "mostrami la rotta verso il porto di Genova", "expect": "dev.heyari.navigation"}
+{"utterance": "dimmi da che parte devo svoltare per la stazione di Porta Nuova", "expect": "dev.heyari.navigation"}
+{"utterance": "Stasera alle 20 ho bisogno di un avviso per tirare fuori la pizza dal forno.", "expect": "dev.heyari.reminder"}
+{"utterance": "Non farmi scordare di prendere le chiavi dell'auto domattina alle 7.", "expect": "dev.heyari.reminder"}
+{"utterance": "Appuntami per venerdì alle 14 la call con il nuovo cliente.", "expect": "dev.heyari.reminder"}
+{"utterance": "Fai in modo che io non mi dimentichi di pagare la bolletta oggi alle 18.", "expect": "dev.heyari.reminder"}
+{"utterance": "Rammentami di prendere l'antibiotico subito dopo pranzo.", "expect": "dev.heyari.reminder"}
+{"utterance": "Segnati sul calendario che alle 15 di oggi c'è la riunione di condominio.", "expect": "dev.heyari.reminder"}
+{"utterance": "Mandami un avviso alle 16:30 per andare a prendere i bambini a scuola.", "expect": "dev.heyari.reminder"}
+{"utterance": "C'è da fare la lavatrice alle 19, puoi farmi uno squillo?", "expect": "dev.heyari.reminder"}
+{"utterance": "Stasera verso le nove dovrei chiamare mia nonna, mi daresti una sveglia?", "expect": "dev.heyari.reminder"}
+{"utterance": "Domani alle 10 devo assolutamente chiamare l'amministratore, scrivilo da qualche parte.", "expect": "dev.heyari.reminder"}
+{"utterance": "Puoi fare in modo che il telefono mi ricordi di spegnere l'irrigazione tra un'ora?", "expect": "dev.heyari.reminder"}
+{"utterance": "Fissa una nota per martedì alle 9 sul controllo dal medico.", "expect": "dev.heyari.reminder"}
+{"utterance": "Rammentami che devo passare in farmacia oggi pomeriggio alle 16.", "expect": "dev.heyari.reminder"}
+{"utterance": "Me lo segni per le 11:30? Devo spedire quel pacco postale.", "expect": "dev.heyari.reminder"}
+{"utterance": "Fai suonare una notifica alle 12 così vado al pranzo con Luca.", "expect": "dev.heyari.reminder"}
+{"utterance": "Domattina alle 8 rammentami di fare benzina.", "expect": "dev.heyari.reminder"}
+{"utterance": "Alle 15 di oggi avrò bisogno di un segnale per prendere le pillole.", "expect": "dev.heyari.reminder"}
+{"utterance": "Non lasciare che mi passi di mente la scadenza di domani alle 12.", "expect": "dev.heyari.reminder"}
+{"utterance": "Puoi appuntarmi per stasera alle 21 che c'è la partita in tv?", "expect": "dev.heyari.reminder"}
+{"utterance": "Segnati questo impegno: giovedì alle 10 incontro con l'avvocato.", "expect": "dev.heyari.reminder"}
+{"utterance": "tra trenta secondi fammi un fischio", "expect": "dev.heyari.timer"}
+{"utterance": "calcola mezz'ora a partire da adesso", "expect": "dev.heyari.timer"}
+{"utterance": "fammi uno squillo tra dieci minuti", "expect": "dev.heyari.timer"}
+{"utterance": "cronometra cinque minuti per favore", "expect": "dev.heyari.timer"}
+{"utterance": "ho buttato il riso adesso, calcola nove minuti", "expect": "dev.heyari.timer"}
+{"utterance": "fai scattare un allarme tra venti minuti", "expect": "dev.heyari.timer"}
+{"utterance": "per la torta in forno servono quaranta minuti, tienili d'occhio", "expect": "dev.heyari.timer"}
+{"utterance": "comincia a contare sette minuti da questo momento", "expect": "dev.heyari.timer"}
+{"utterance": "da adesso conta sei minuti", "expect": "dev.heyari.timer"}
+{"utterance": "tienimi dieci minuti per gli spinaci", "expect": "dev.heyari.timer"}
+{"utterance": "ho messo il pollo, metti in conto tre quarti d'ora", "expect": "dev.heyari.timer"}
+{"utterance": "tra sette minuti esatti voglio sentire un bip", "expect": "dev.heyari.timer"}
+{"utterance": "fammi un trillo tra cinque minuti", "expect": "dev.heyari.timer"}
+{"utterance": "tienimi d'occhio la cottura della pizza, deve stare dentro per dodici minuti", "expect": "dev.heyari.timer"}
+{"utterance": "ho bisogno di un segnale acustico tra sei minuti", "expect": "dev.heyari.timer"}
+{"utterance": "fai scorrere tre minuti da ora", "expect": "dev.heyari.timer"}
+{"utterance": "fammi fare una pennichella di venti minuti, svegliami poi", "expect": "dev.heyari.timer"}
+{"utterance": "calcolami cinque minuti esatti per il tè", "expect": "dev.heyari.timer"}
+{"utterance": "tienimi d'occhio questi sei minuti per favore", "expect": "dev.heyari.timer"}
+{"utterance": "fai passare otto minuti e poi avvisami", "expect": "dev.heyari.timer"}
+{"utterance": "Vediamo se risponde l'ambiente isolato", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Chiedi alla sandbox un riscontro", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Fai rispondere l'interprete WebAssembly", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Dimmi cosa risponde il codice WebAssembly", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Chiedi un ciao al micro-modulo", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Riesci a tirare fuori il saluto dal sandbox?", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Vorrei sentire la risposta preconfezionata del sandbox", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Il micro-modulo in WASM è vivo?", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Ottieni un riscontro dal motore WebAssembly", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Fammi un ping sul motore WebAssembly", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Riesci ad accedere al modulo compilato in WASM?", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Cosa dice il codice dentro la sandbox?", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Dimmi la frase fissa del modulo isolato", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Vediamo se riusciamo a far rispondere la sandbox", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Fai un fischio alla componente WebAssembly", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Voglio vedere se la macchina virtuale WASM risponde", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Riesci a ottenere la stringa di benvenuto dal WASM?", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Manda un comando di echo al modulo isolato", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Fammi sentire la voce del modulo WebAssembly", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Chiedi alla sandbox di presentarsi", "expect": "dev.heyari.wasmecho"}
+{"utterance": "Dovrò coprirmi molto a Cortina questo weekend?", "expect": "dev.heyari.weather"}
+{"utterance": "C'è il rischio di bagnarsi a Venezia stasera?", "expect": "dev.heyari.weather"}
+{"utterance": "Ci si scotta la pelle a Palermo oggi pomeriggio?", "expect": "dev.heyari.weather"}
+{"utterance": "La bora ci porterà via a Trieste domani mattina?", "expect": "dev.heyari.weather"}
+{"utterance": "Riusciamo a fare la grigliata in giardino a Firenze domenica?", "expect": "dev.heyari.weather"}
+{"utterance": "Meglio restare al chiuso a Bologna dopodomani?", "expect": "dev.heyari.weather"}
+{"utterance": "C'è bisogno dell'aria condizionata a Siviglia stasera?", "expect": "dev.heyari.weather"}
+{"utterance": "Ci vuole l'impermeabile a Londra lunedì?", "expect": "dev.heyari.weather"}
+{"utterance": "Troveremo nebbia fitta a Parma domani all'alba?", "expect": "dev.heyari.weather"}
+{"utterance": "Si scia bene a Bormio questo sabato?", "expect": "dev.heyari.weather"}
+{"utterance": "Servono gli stivali di gomma a Genova oggi?", "expect": "dev.heyari.weather"}
+{"utterance": "Sarà il caso di montare le catene a bordo verso Aosta stasera?", "expect": "dev.heyari.weather"}
+{"utterance": "Rischio colpi di calore a Roma oggi a mezzogiorno?", "expect": "dev.heyari.weather"}
+{"utterance": "Ci sarà mareggiata a Ponza questo venerdì?", "expect": "dev.heyari.weather"}
+{"utterance": "C'è una bella aria frizzante a Sestriere stasera?", "expect": "dev.heyari.weather"}
+{"utterance": "Vale la pena indossare le lenti scure a Rimini domani?", "expect": "dev.heyari.weather"}
+{"utterance": "Si suderà parecchio a Napoli giovedì?", "expect": "dev.heyari.weather"}
+{"utterance": "C'è pericolo di gelate a Bolzano stanotte?", "expect": "dev.heyari.weather"}
+{"utterance": "Sarà tutto grigio e cupo a Parigi questo weekend?", "expect": "dev.heyari.weather"}
+{"utterance": "Possiamo fare un tuffo a Cagliari domani?", "expect": "dev.heyari.weather"}
+{"utterance": "Volevo solo farti un saluto al volo", "expect": "greeting"}
+{"utterance": "Ti disturbo per un salutino rapido", "expect": "greeting"}
+{"utterance": "Passavo di qua per farti un cenno", "expect": "greeting"}
+{"utterance": "Ci tenevo a farti un saluto prima di iniziare", "expect": "greeting"}
+{"utterance": "Un saluto veloce a te", "expect": "greeting"}
+{"utterance": "Ti mando un caloroso saluto", "expect": "greeting"}
+{"utterance": "Ti porgo i miei omaggi", "expect": "greeting"}
+{"utterance": "I miei più cordiali saluti", "expect": "greeting"}
+{"utterance": "Desideravo scambiare un saluto con te", "expect": "greeting"}
+{"utterance": "Spero di trovarti in ottima forma", "expect": "greeting"}
+{"utterance": "Spero che tu stia trascorrendo una buona giornata", "expect": "greeting"}
+{"utterance": "Ti auguro una splendida mattinata", "expect": "greeting"}
+{"utterance": "Ti auguro una serena serata", "expect": "greeting"}
+{"utterance": "Spero che tutto proceda per il meglio", "expect": "greeting"}
+{"utterance": "Come procedono i tuoi circuiti oggi?", "expect": "greeting"}
+{"utterance": "Tutto tranquillo da quelle parti?", "expect": "greeting"}
+{"utterance": "Come si prospetta la giornata odierna?", "expect": "greeting"}
+{"utterance": "Come ti gira oggi la giornata?", "expect": "greeting"}
+{"utterance": "Sei in gran forma stamattina?", "expect": "greeting"}
+{"utterance": "Spero che la tua giornata stia andando a gonfie vele", "expect": "greeting"}
+{"utterance": "tira fuori l'app di zalando", "expect": "open"}
+{"utterance": "visualizza l'interfaccia di trello", "expect": "open"}
+{"utterance": "mi daresti l'accesso a facebook?", "expect": "open"}
+{"utterance": "vorrei fare un salto su reddit", "expect": "open"}
+{"utterance": "ascoltiamo qualcosa su spotify", "expect": "open"}
+{"utterance": "vorrei dare un'occhiata veloce a whatsapp", "expect": "open"}
+{"utterance": "dovrei dare una controllata a linkedin", "expect": "open"}
+{"utterance": "faccio una scappata su tiktok", "expect": "open"}
+{"utterance": "mi connetti a zoom?", "expect": "open"}
+{"utterance": "puoi collegarti a skype?", "expect": "open"}
+{"utterance": "carica la home di twitch", "expect": "open"}
+{"utterance": "ho necessità di accedere a drive", "expect": "open"}
+{"utterance": "vorrei segnare un appunto su evernote", "expect": "open"}
+{"utterance": "sbirciamo un attimo instagram", "expect": "open"}
+{"utterance": "prendiamo qualche appunto su notepad", "expect": "open"}
+{"utterance": "vorrei fare un disegno con procreate", "expect": "open"}
+{"utterance": "modifichiamo un'immagine su lightroom", "expect": "open"}
+{"utterance": "ritocchiamo questa foto con photoshop", "expect": "open"}
+{"utterance": "scriviamo a qualcuno su telegram", "expect": "open"}
+{"utterance": "mandiamo un messaggio con messenger", "expect": "open"}
+{"utterance": "Come si prepara una vera carbonara?", "expect": "NONE"}
+{"utterance": "Consigliami un bel film di fantascienza da guardare stasera.", "expect": "NONE"}
+{"utterance": "Cosa ne pensi dell'intelligenza artificiale?", "expect": "NONE"}
+{"utterance": "Spiegami la teoria della relatività di Einstein in modo semplice.", "expect": "NONE"}
+{"utterance": "Come si dice 'grazie' in giapponese?", "expect": "NONE"}
+{"utterance": "Chi è il presidente della Repubblica Italiana?", "expect": "NONE"}
+{"utterance": "Qual es il deserto più grande del mondo?", "expect": "NONE"}
+{"utterance": "Raccontami una barzelletta divertente.", "expect": "NONE"}
+{"utterance": "Credi negli extraterrestri?", "expect": "NONE"}
+{"utterance": "Qual è il significato del nome Alessandro?", "expect": "NONE"}
+{"utterance": "Come posso togliere una macchia di vino rosso da una camicia?", "expect": "NONE"}
+{"utterance": "Qual è la squadra di calcio con più scudetti in Italia?", "expect": "NONE"}
+{"utterance": "Qual è l'oceano più profondo?", "expect": "NONE"}
+{"utterance": "Cosa succede se si mescolano aceto e bicarbonato?", "expect": "NONE"}
+{"utterance": "Qual è il ciclo di vita di una farfalla?", "expect": "NONE"}
+{"utterance": "Chi ha vinto l'ultimo festival di Sanremo?", "expect": "NONE"}
+{"utterance": "Come si coltivano i pomodori sul balcone?", "expect": "NONE"}
+{"utterance": "Qual è il mammifero più grande della terra?", "expect": "NONE"}
+{"utterance": "Quali sono i sintomi dell'influenza?", "expect": "NONE"}
+{"utterance": "Cosa ne pensi della pizza con l'ananas?", "expect": "NONE"}
+{"utterance": "Chi è l'autore del quadro L'urlo?", "expect": "NONE"}
+{"utterance": "Qual è l'origine della lingua latina?", "expect": "NONE"}
+{"utterance": "In che anno è nata la Repubblica Italiana?", "expect": "NONE"}
+{"utterance": "Come funziona un motore elettrico?", "expect": "NONE"}
+{"utterance": "Chi ha vinto la prima guerra mondiale?", "expect": "NONE"}
+{"utterance": "Qual è il monumento più visitato al mondo?", "expect": "NONE"}
+{"utterance": "Come si fa il pane fatto in casa?", "expect": "NONE"}
+{"utterance": "Cosa significa la parola 'resilienza'?", "expect": "NONE"}
+{"utterance": "Chi ha scoperto la penicillina?", "expect": "NONE"}
+{"utterance": "Quali sono le sette meraviglie del mondo moderno?", "expect": "NONE"}
+{"utterance": "Come si riproducono i funghi?", "expect": "NONE"}
+{"utterance": "Qual è il verso del gufo?", "expect": "NONE"}
+{"utterance": "Qual è l'origine della festa di Halloween?", "expect": "NONE"}
+{"utterance": "Cosa c'è all'interno di un buco nero?", "expect": "NONE"}
+{"utterance": "Chi ha interpretato il ruolo di Jack in Titanic?", "expect": "NONE"}
+{"utterance": "Come si fa a superare la paura dell'aereo?", "expect": "NONE"}
+{"utterance": "Qual è la differenza tra l'italiano e lo spagnolo?", "expect": "NONE"}
+{"utterance": "Perché la luna ha delle fasi?", "expect": "NONE"}
+{"utterance": "Qual è la pianta più velenosa del mondo?", "expect": "NONE"}
+{"utterance": "Come si puliscono le scarpe di camoscio?", "expect": "NONE"}
+{"utterance": "Qual è il metallo più prezioso della terra?", "expect": "NONE"}
+{"utterance": "Perché le zanzare pungono solo alcune persone?", "expect": "NONE"}
+{"utterance": "Come si cura una scottatura da cucina?", "expect": "NONE"}
+{"utterance": "Come si chiamano i tre moschettieri?", "expect": "NONE"}
+{"utterance": "Qual è la storia della festa della mamma?", "expect": "NONE"}
+{"utterance": "Perché il ferro arrugginisce?", "expect": "NONE"}
+{"utterance": "Come si fa a capire se un uovo è fresco?", "expect": "NONE"}
+{"utterance": "Qual è la differenza tra emisfero destro e sinistro del cervello?", "expect": "NONE"}
+{"utterance": "Chi ha scritto Il Piccolo Principe?", "expect": "NONE"}
+{"utterance": "Perché le balene cantano?", "expect": "NONE"}
