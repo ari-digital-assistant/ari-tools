@@ -72,11 +72,27 @@ def skill_spec(skill_id: str, locale: str) -> str:
                 return json.dumps(entry, ensure_ascii=False, indent=2)
         sys.exit(f"ERROR: {skill_id} not in export-utterances output")
     root = find_skills_dir() / "skills"
-    for manifest in sorted(root.glob(f"*/SKILL.{locale}.md")):
-        text = manifest.read_text()
-        if re.search(rf"^\s*id:\s*{re.escape(skill_id)}\s*$", text, re.M):
-            return text
-    sys.exit(f"ERROR: no SKILL.{locale}.md declares id {skill_id} under {root}")
+    # Prefer the locale's own manifest, then fall back to English — the same
+    # order `generate-dataset.load_community_skills` uses, and for the same
+    # reason: the engine registers a skill on every device regardless of what
+    # `languages` it declares, so an English-only skill IS in the Italian
+    # router's world and needs Italian banks.
+    #
+    # Without the fallback this exits 1, which is how `dev.heyari.message`
+    # (shipped en-only on 2026-08-21) killed the nightly's `it` leg for four
+    # nights: the stale-bank detector correctly asked for Italian banks and
+    # the drafter refused to write them. An English spec is not a problem for
+    # the drafting prompt — it already demands idiomatic Italian output from
+    # whatever ground truth it's given.
+    for want in (locale, "en"):
+        for manifest in sorted(root.glob(f"*/SKILL.{want}.md")):
+            text = manifest.read_text()
+            if re.search(rf"^\s*id:\s*{re.escape(skill_id)}\s*$", text, re.M):
+                if want != locale:
+                    print(f"WARNING: {skill_id} has no SKILL.{locale}.md — drafting "
+                          f"{locale} frames from {manifest.name}", file=sys.stderr)
+                return text
+    sys.exit(f"ERROR: no SKILL.{locale}.md or SKILL.en.md declares id {skill_id} under {root}")
 
 
 def existing_slot_names(locale: str) -> list:

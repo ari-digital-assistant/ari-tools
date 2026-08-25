@@ -40,6 +40,13 @@ jobs:
       - name: Check out ari-engine (the normalize oracle)
         run: git clone --depth 1 https://github.com/ari-digital-assistant/ari-engine.git "$RUNNER_TEMP/ari-engine"
 
+      # The eval-bank hygiene check needs the community manifests: without
+      # them the keyword oracle sees only the six built-ins, so a community
+      # skill's own patterns are never in the running and a polluted bank
+      # passes. A false green there is worse than no check.
+      - name: Check out ari-skills (the community manifests)
+        run: git clone --depth 1 https://github.com/ari-digital-assistant/ari-skills.git "$RUNNER_TEMP/ari-skills"
+
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
 
@@ -47,3 +54,12 @@ jobs:
         env:
           ARI_ENGINE_DIR: ${{ runner.temp }}/ari-engine
         run: python3 -m pytest -q
+
+      # Grades the COMMITTED banks against the skills as they are today. A
+      # bank is only clean on the day it's generated — see the header of
+      # check_eval_hygiene.py for the incident that established this.
+      - name: Eval-bank hygiene
+        env:
+          ARI_ENGINE_DIR: ${{ runner.temp }}/ari-engine
+          ARI_SKILLS_DIR: ${{ runner.temp }}/ari-skills
+        run: python3 functiongemma/check_eval_hygiene.py --all

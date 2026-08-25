@@ -304,6 +304,27 @@ jobs:
           Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
             || echo "::warning::could not open review issue (label missing?) — banks are still committed"
 
+      # ── Pre-flight: are the eval banks still keyword-MISSES? ────────────
+      # route-eval enforces this, but it loads the GGUF before it checks, so
+      # a polluted bank isn't discovered until ~2h of Modal GPU has already
+      # been spent. That is exactly how the 2026-08-18 weather-0.2.0 incident
+      # burned seven consecutive nightlies: the skill grew a `humidity`
+      # pattern, one committed eval case stopped being a keyword-miss, and
+      # every run trained a model it then refused to grade.
+      #
+      # Same oracle, same rule, no model. Runs after the banks are drafted so
+      # it sees the final state, and before a GPU-second is spent.
+      - name: Eval-bank hygiene (pre-flight)
+        if: steps.check.outputs.should_train == 'true'
+        env:
+          ARI_ENGINE_DIR: /tmp/engine-full
+          ARI_SKILLS_DIR: /tmp/skills
+        run: |
+          cd functiongemma
+          python3 check_eval_hygiene.py --locale ${{ matrix.locale }} \
+            "$GITHUB_WORKSPACE/${{ matrix.eval_file }}" \
+            "$GITHUB_WORKSPACE/${{ matrix.gen_eval_file }}"
+
       - name: Train on Modal
         if: steps.check.outputs.should_train == 'true'
         env:
