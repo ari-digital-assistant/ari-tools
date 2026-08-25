@@ -60,14 +60,14 @@
         }
       },
       {
-        "text": "scrivi un messaggio a {MSGPERSON} per dirgli {MSGDIRECT}",
+        "text": "scrivi un messaggio a {MSGPERSON} per dire: {MSGDIRECT}",
         "args": {
           "recipient": "{MSGPERSON}",
           "body": "{MSGDIRECT}"
         }
       },
       {
-        "text": "scrivi qualcosa a {MSGPERSON} per fargli sapere che {MSGDECL}",
+        "text": "scrivi qualcosa a {MSGPERSON} per far sapere che {MSGDECL}",
         "args": {
           "recipient": "{MSGPERSON}",
           "body": "{MSGDECL}"
@@ -102,7 +102,7 @@
         }
       },
       {
-        "text": "invia un messaggio a {MSGPERSON} per avvertirlo che {MSGDECL}",
+        "text": "invia un messaggio a {MSGPERSON} per avvertire che {MSGDECL}",
         "args": {
           "recipient": "{MSGPERSON}",
           "body": "{MSGDECL}"
@@ -116,7 +116,7 @@
         }
       },
       {
-        "text": "manda un messaggino a {MSGPERSON} per dirgli che {MSGDECL}",
+        "text": "manda un messaggino a {MSGPERSON} per dire che {MSGDECL}",
         "args": {
           "recipient": "{MSGPERSON}",
           "body": "{MSGDECL}"
@@ -186,7 +186,7 @@
         }
       },
       {
-        "text": "contatta {MSGPERSON} con un messaggio e digli {MSGDIRECT}",
+        "text": "contatta {MSGPERSON} con un messaggio che dice: {MSGDIRECT}",
         "args": {
           "recipient": "{MSGPERSON}",
           "body": "{MSGDIRECT}"
@@ -207,7 +207,7 @@
         }
       },
       {
-        "text": "scrivi a {MSGPERSON} e chiedigli se {MSGQUESTION}",
+        "text": "scrivi a {MSGPERSON} e chiedi se {MSGQUESTION}",
         "args": {
           "recipient": "{MSGPERSON}",
           "body": "{MSGQUESTION}"
@@ -267,7 +267,7 @@
         }
       },
       {
-        "text": "contatta {MSGPERSON} con {MSGSERVICE} e scrivigli {MSGDIRECT}",
+        "text": "contatta {MSGPERSON} con {MSGSERVICE} e scrivi: {MSGDIRECT}",
         "args": {
           "recipient": "{MSGPERSON}",
           "body": "{MSGDIRECT}",
