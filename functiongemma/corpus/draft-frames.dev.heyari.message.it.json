@@ -1,0 +1,402 @@
+{
+  "dev.heyari.message": {
+    "target": 500,
+    "cap": 12,
+    "frames": [
+      {
+        "text": "scrivi a {MSGPERSON} che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}"
+        }
+      },
+      {
+        "text": "puoi scrivere a {MSGPERSON} che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}"
+        }
+      },
+      {
+        "text": "mi scrivi a {MSGPERSON} che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}"
+        }
+      },
+      {
+        "text": "per favore scrivi a {MSGPERSON} che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}"
+        }
+      },
+      {
+        "text": "vorrei scrivere a {MSGPERSON} che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}"
+        }
+      },
+      {
+        "text": "avrei bisogno di scrivere a {MSGPERSON} che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}"
+        }
+      },
+      {
+        "text": "fammi mandare a {MSGPERSON} un messaggio con scritto {MSGDIRECT}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDIRECT}"
+        }
+      },
+      {
+        "text": "preparami un messaggio per {MSGPERSON} con scritto {MSGDIRECT}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDIRECT}"
+        }
+      },
+      {
+        "text": "scrivi un messaggio a {MSGPERSON} per dire: {MSGDIRECT}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDIRECT}"
+        }
+      },
+      {
+        "text": "scrivi qualcosa a {MSGPERSON} per far sapere che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}"
+        }
+      },
+      {
+        "text": "manda un messaggio a {MSGPERSON} dicendo che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}"
+        }
+      },
+      {
+        "text": "potresti mandare un messaggio a {MSGPERSON} per dire che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}"
+        }
+      },
+      {
+        "text": "mi mandi un messaggio a {MSGPERSON} con scritto {MSGDIRECT}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDIRECT}"
+        }
+      },
+      {
+        "text": "fai partire un messaggio per {MSGPERSON}: {MSGDIRECT}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDIRECT}"
+        }
+      },
+      {
+        "text": "invia un messaggio a {MSGPERSON} per avvertire che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}"
+        }
+      },
+      {
+        "text": "inoltra a {MSGPERSON} un messaggio con scritto {MSGDIRECT}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDIRECT}"
+        }
+      },
+      {
+        "text": "manda un messaggino a {MSGPERSON} per dire che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}"
+        }
+      },
+      {
+        "text": "vorrei mandare un messaggio a {MSGPERSON} dicendo {MSGDIRECT}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDIRECT}"
+        }
+      },
+      {
+        "text": "c'è da mandare un messaggio a {MSGPERSON} per dire che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}"
+        }
+      },
+      {
+        "text": "ho bisogno che tu invii a {MSGPERSON} un messaggio con scritto {MSGDIRECT}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDIRECT}"
+        }
+      },
+      {
+        "text": "avvisa {MSGPERSON} con un messaggio che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}"
+        }
+      },
+      {
+        "text": "puoi avvisare {MSGPERSON} per messaggio che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}"
+        }
+      },
+      {
+        "text": "fai sapere a {MSGPERSON} con un messaggio che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}"
+        }
+      },
+      {
+        "text": "di' a {MSGPERSON} per messaggio che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}"
+        }
+      },
+      {
+        "text": "comunica a {MSGPERSON} con un messaggio che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}"
+        }
+      },
+      {
+        "text": "informa {MSGPERSON} per messaggio che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}"
+        }
+      },
+      {
+        "text": "contatta {MSGPERSON} con un messaggio che dice: {MSGDIRECT}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDIRECT}"
+        }
+      },
+      {
+        "text": "chiedi a {MSGPERSON} per messaggio se {MSGQUESTION}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGQUESTION}"
+        }
+      },
+      {
+        "text": "manda un messaggio a {MSGPERSON} per chiedere se {MSGQUESTION}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGQUESTION}"
+        }
+      },
+      {
+        "text": "scrivi a {MSGPERSON} e chiedi se {MSGQUESTION}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGQUESTION}"
+        }
+      },
+      {
+        "text": "puoi domandare a {MSGPERSON} per messaggio se {MSGQUESTION}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGQUESTION}"
+        }
+      },
+      {
+        "text": "vorrei chiedere a {MSGPERSON} con un messaggio se {MSGQUESTION}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGQUESTION}"
+        }
+      },
+      {
+        "text": "fai arrivare a {MSGPERSON} un messaggio per sapere se {MSGQUESTION}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGQUESTION}"
+        }
+      },
+      {
+        "text": "manda a {MSGPERSON} su {MSGSERVICE} il messaggio {MSGDIRECT}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDIRECT}",
+          "service": "{MSGSERVICE}"
+        }
+      },
+      {
+        "text": "scrivi a {MSGPERSON} su {MSGSERVICE} che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}",
+          "service": "{MSGSERVICE}"
+        }
+      },
+      {
+        "text": "invia a {MSGPERSON} via {MSGSERVICE} il messaggio {MSGDIRECT}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDIRECT}",
+          "service": "{MSGSERVICE}"
+        }
+      },
+      {
+        "text": "manda un messaggio a {MSGPERSON} tramite {MSGSERVICE} dicendo che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}",
+          "service": "{MSGSERVICE}"
+        }
+      },
+      {
+        "text": "contatta {MSGPERSON} con {MSGSERVICE} e scrivi: {MSGDIRECT}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDIRECT}",
+          "service": "{MSGSERVICE}"
+        }
+      },
+      {
+        "text": "per questo messaggio a {MSGPERSON} usa {MSGSERVICE}: {MSGDIRECT}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDIRECT}",
+          "service": "{MSGSERVICE}"
+        }
+      },
+      {
+        "text": "vorrei scrivere a {MSGPERSON} con {MSGSERVICE} per dire che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}",
+          "service": "{MSGSERVICE}"
+        }
+      },
+      {
+        "text": "preparami su {MSGSERVICE} un messaggio per {MSGPERSON} con scritto {MSGDIRECT}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDIRECT}",
+          "service": "{MSGSERVICE}"
+        }
+      },
+      {
+        "text": "fai sapere a {MSGPERSON} via {MSGSERVICE} che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}",
+          "service": "{MSGSERVICE}"
+        }
+      },
+      {
+        "text": "manda un SMS a {MSGPERSON} con scritto {MSGDIRECT}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDIRECT}",
+          "service": "sms"
+        }
+      },
+      {
+        "text": "invia un'email a {MSGPERSON} per dire che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}",
+          "service": "email"
+        }
+      },
+      {
+        "text": "scrivi a {MSGPERSON} su WhatsApp che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDECL}",
+          "service": "whatsapp"
+        }
+      },
+      {
+        "text": "manda a {MSGPERSON} su Telegram il messaggio {MSGDIRECT}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDIRECT}",
+          "service": "telegram"
+        }
+      },
+      {
+        "text": "avvisa {MSGPERSON} su Signal con il messaggio {MSGDIRECT}",
+        "args": {
+          "recipient": "{MSGPERSON}",
+          "body": "{MSGDIRECT}",
+          "service": "signal"
+        }
+      },
+      {
+        "text": "scrivi a {MSGPERSON}",
+        "args": {
+          "recipient": "{MSGPERSON}"
+        }
+      },
+      {
+        "text": "preparami un messaggio da mandare a {MSGPERSON}",
+        "args": {
+          "recipient": "{MSGPERSON}"
+        }
+      },
+      {
+        "text": "vorrei mandare un messaggio a {MSGPERSON}",
+        "args": {
+          "recipient": "{MSGPERSON}"
+        }
+      },
+      {
+        "text": "devo scrivere un messaggio a {MSGPERSON}",
+        "args": {
+          "recipient": "{MSGPERSON}"
+        }
+      },
+      {
+        "text": "aprimi un nuovo messaggio per {MSGPERSON}",
+        "args": {
+          "recipient": "{MSGPERSON}"
+        }
+      },
+      {
+        "text": "manda alla {MSGROLE} un messaggio per dire che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGROLE}",
+          "body": "{MSGDECL}"
+        }
+      },
+      {
+        "text": "scrivi alla {MSGROLE} il messaggio {MSGDIRECT}",
+        "args": {
+          "recipient": "{MSGROLE}",
+          "body": "{MSGDIRECT}"
+        }
+      },
+      {
+        "text": "avvisa la {MSGROLE} con un messaggio che {MSGDECL}",
+        "args": {
+          "recipient": "{MSGROLE}",
+          "body": "{MSGDECL}"
+        }
+      }
+    ]
+  }
+}
