@@ -1,13 +1,7 @@
 name: ci
 
-# The repo's workflows all consume these scripts (corpus generation, bank
-# hygiene, floor derivation, manifest publishing) but nothing ran their tests
-# until something broke at 3am. This is that missing gate.
-#
-# Deps are listed explicitly rather than installed from a lockfile: pyyaml is
-# how generate-dataset.py reads SKILL.*.md, and without it the loaders return
-# an empty community-skill list and still exit 0 — a failure mode that has to
-# be a hard error, never a shrug.
+# The repo's workflows consume these scripts (manifest publishing) but nothing
+# ran their tests until something broke at 3am. This is that missing gate.
 
 on:
   push:
@@ -31,19 +25,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install test deps
-        run: pip install pytest pyyaml requests
-
-      # Four tests shell out to the engine's own `normalize` bin instead of
-      # replicating normalize_input in Python — that binary IS the definition
-      # of train/serve parity, so a replica would just drift. They need a real
-      # ari-engine and a toolchain to build it with.
-      - name: Check out ari-engine (the normalize oracle)
-        run: git clone --depth 1 https://github.com/ari-digital-assistant/ari-engine.git "$RUNNER_TEMP/ari-engine"
-
-      - name: Set up Rust
-        uses: dtolnay/rust-toolchain@stable
+        run: pip install pytest requests
 
       - name: Run tests
-        env:
-          ARI_ENGINE_DIR: ${{ runner.temp }}/ari-engine
         run: python3 -m pytest -q

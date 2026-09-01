@@ -20,12 +20,6 @@ Usage:
       --hf-files encoder.onnx,decoder.onnx,joiner.onnx,tokens.txt \\
       --release-tag stt-kroko-latest
 
-  publish_manifest.py functiongemma \\
-      --gguf output/ari-functiongemma-q4_k_m.gguf \\
-      --version 2026.04.28-r17 \\
-      --gguf-url https://github.com/.../functiongemma-2026.04.28-r17/.../...gguf \\
-      --release-tag functiongemma-latest
-
 Dedup is content-based: each kind compares the newly-fetched file SHA(s)
 against the SHA(s) in the existing manifest (if any) and exits 0 with no
 republish if nothing changed. The version string is for display
@@ -289,40 +283,6 @@ def publish_stt_bundle(args: argparse.Namespace) -> int:
     return 0
 
 
-def publish_functiongemma(args: argparse.Namespace) -> int:
-    """For FunctionGemma, the GGUF is already published to a versioned
-    release by the training workflow. This script step computes SHA-256
-    of the local artifact and replaces the floating-release manifest.
-    No content-based dedup — every successful training run emits a fresh
-    manifest, by design.
-    """
-    gguf = Path(args.gguf)
-    if not gguf.is_file():
-        raise SystemExit(f"GGUF not found at {gguf}")
-
-    h = hashlib.sha256()
-    with gguf.open("rb") as f:
-        for chunk in iter(lambda: f.read(64 * 1024), b""):
-            h.update(chunk)
-
-    manifest = {
-        "version": args.version,
-        "url": args.gguf_url,
-        "sha256": h.hexdigest(),
-        "size_bytes": gguf.stat().st_size,
-        "released_at": now_iso(),
-    }
-    # Per-model confidence floor (derive_floor.py). Optional: manifests
-    # without it leave the engine on its compiled MIN_ROUTER_CONFIDENCE
-    # fallback, and devices that predate the field ignore it.
-    if args.min_confidence is not None:
-        manifest["min_confidence"] = args.min_confidence
-    replace_release_asset(args.release_tag, manifest)
-    print(f"{args.release_tag}: published version={args.version} "
-          f"({manifest['size_bytes']} bytes)")
-    return 0
-
-
 def main() -> int:
     p = argparse.ArgumentParser(
         description="Publish model manifests to ari-tools floating releases.",
@@ -343,27 +303,11 @@ def main() -> int:
     )
     p_stt.add_argument("--release-tag", required=True)
 
-    p_fg = sub.add_parser(
-        "functiongemma",
-        help="locally-trained GGUF — point manifest at an already-published versioned release",
-    )
-    p_fg.add_argument("--gguf", required=True, help="path to local GGUF file")
-    p_fg.add_argument("--version", required=True)
-    p_fg.add_argument("--gguf-url", required=True,
-                      help="public URL where the GGUF is hosted")
-    p_fg.add_argument("--release-tag", required=True)
-    p_fg.add_argument("--min-confidence", type=float, default=None,
-                      help="per-model router confidence floor (mean per-token "
-                           "log-prob) derived by derive_floor.py; omitted = "
-                           "engine uses its compiled constant")
-
     args = p.parse_args()
     if args.kind == "llm":
         return publish_llm(args)
     if args.kind == "stt-bundle":
         return publish_stt_bundle(args)
-    if args.kind == "functiongemma":
-        return publish_functiongemma(args)
     raise SystemExit(f"unknown kind: {args.kind}")
 
 

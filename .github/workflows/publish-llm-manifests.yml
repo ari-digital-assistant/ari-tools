@@ -7,7 +7,7 @@ name: Publish LLM manifests
 
 on:
   schedule:
-    - cron: '15 1 * * *'   # 01:15 UTC daily — staggered from FunctionGemma's 00:00
+    - cron: '15 1 * * *'   # 01:15 UTC daily
   workflow_dispatch:
 
 permissions:
