@@ -24,5 +24,8 @@ wakeword/eval/
 wakeword/models/
 wakeword/*.wav
 
-# Upstream clone, only present to supply piper_train (see wakeword/README.md).
+# Upstream clones. Present only to supply subpackages that upstream's own
+# packaging drops (piper_train; microwakeword.audio and .layers). See
+# wakeword/README.md.
 wakeword/generate/upstream/
+wakeword/train/upstream/

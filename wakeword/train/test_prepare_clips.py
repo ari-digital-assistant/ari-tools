@@ -79,22 +79,28 @@ def test_augmentation_spans_the_dynamic_range_of_a_real_room(impulse_dir):
     assert max(levels) - min(levels) > 20.0
 
 
-def test_quiet_variants_are_actually_produced(impulse_dir):
-    """Gain has p=1.0, so no clip escapes unattenuated.
+def test_the_corpus_leans_quiet(impulse_dir):
+    """Gain has p=1.0 and its range is lopsided towards attenuation, so most
+    clips come out quieter than they went in.
 
-    Guards the specific regression: if Gain were ever made probabilistic, or a
+    Guards the specific regression: if Gain were made probabilistic, or a
     Normalize crept into the chain, the corpus would look augmented while every
     clip sat back at full level.
+
+    Note there is deliberately NO upper bound asserted here. Reverb adds energy,
+    so the chain's ceiling is not gain-limited — an earlier version of this test
+    asserted `max <= reference + MAX_GAIN_DB` and was simply wrong about the
+    physics. It passed on one seed and failed on the next.
     """
     np.random.seed(0)
     augment = build_chain(impulse_dir)
     source = _tone(0.6, TARGET_RATE)
     reference = _dbfs(source)
 
-    levels = [_dbfs(augment(samples=source, sample_rate=TARGET_RATE)) for _ in range(60)]
+    levels = sorted(_dbfs(augment(samples=source, sample_rate=TARGET_RATE)) for _ in range(60))
 
     assert min(levels) < reference + MIN_GAIN_DB / 2
-    assert max(levels) <= reference + MAX_GAIN_DB + 1.0
+    assert levels[len(levels) // 2] < reference
 
 
 def test_no_augment_preserves_the_signal_exactly(tmp_path):

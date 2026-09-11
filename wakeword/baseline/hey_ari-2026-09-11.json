@@ -1,0 +1,35 @@
+{
+  "model": "hey_ari.tflite",
+  "step_ms": 10,
+  "positives_dir": "/home/keith/Downloads/command-captures-2026-09-10/hey-ari",
+  "negatives_dir": "/home/keith/Downloads/wake-captures-2026-09-10/rejected",
+  "results": {
+    "HIGH": {
+      "cutoff": 0.95,
+      "sliding_window_size": 5,
+      "recall": 1.0,
+      "positives_missed": 0,
+      "negatives_fired": 15,
+      "negatives_total": 16,
+      "false_accepts_per_hour": 874.78
+    },
+    "MEDIUM": {
+      "cutoff": 0.985,
+      "sliding_window_size": 10,
+      "recall": 0.95,
+      "positives_missed": 1,
+      "negatives_fired": 14,
+      "negatives_total": 16,
+      "false_accepts_per_hour": 816.46
+    },
+    "LOW": {
+      "cutoff": 0.99,
+      "sliding_window_size": 14,
+      "recall": 0.9,
+      "positives_missed": 2,
+      "negatives_fired": 10,
+      "negatives_total": 16,
+      "false_accepts_per_hour": 583.18
+    }
+  }
+}

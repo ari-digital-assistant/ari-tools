@@ -135,3 +135,43 @@ with RMS clustered in a band barely 20% wide. **Raw generator output is
 uniformly loud.** That uniformity is exactly what taught `hey_ari` to treat
 loudness as the wake phrase (design §2.3), so volume augmentation is not a
 nicety to add later; it is the point.
+
+## The incumbent's baseline — the number to beat
+
+`baseline/hey_ari-2026-09-11.json`, measured by `train/eval_model.py` against 20
+real wake utterances and 16 real captured false-accepts, using a port of the
+app's own detection rule (window mean over `probability_cutoff`, plus the 4 s
+refractory period).
+
+| operating point | recall | hard negatives firing |
+|---|---|---|
+| HIGH  (0.95 / 5)   | 100% | 15/16 |
+| MEDIUM (0.985 / 10) | 95% | 14/16 |
+| LOW   (0.99 / 14)  | 90% | 10/16 |
+
+Sweeping the cutoff at window 10 is the result that matters:
+
+| cutoff | 0.50 | 0.90 | 0.95 | 0.97 | 0.985 | 0.99 | 0.999 |
+|---|---|---|---|---|---|---|---|
+| recall | 100% | 100% | 100% | 100% | 95% | 95% | 90% |
+| negatives firing | 15/16 | 15/16 | 15/16 | 14/16 | 14/16 | 12/16 | 9/16 |
+
+**Nothing changes between 0.5 and 0.95.** The model emits near-1.0 for genuine
+wakes and for "spaghetti" alike, so no threshold anywhere in the range separates
+them — and at 0.999, the most extreme the rule allows, nine of sixteen still
+fire while recall has already started falling. This is design section 2.1 as a
+measurement rather than an argument: threshold tuning is exhausted, and only
+retraining can help.
+
+Two honest caveats:
+
+- Recall is measured on **one speaker** — the developer, near-field, giving
+  commands. It is an upper bound. The whole point of the recorder in the Android
+  app is to make this number mean something for anyone else.
+- FA/hour here is measured on **known-hard negatives**, clips selected precisely
+  because they already fooled a model. It is a worst case, not a user's
+  experience. An ambient corpus is still needed for the real rate.
+
+A useful validation fell out of this: all 16 negatives genuinely fired on the
+device, and the harness reproduces 14-15 of them firing at the app's default.
+The port of the detection rule is faithful.
