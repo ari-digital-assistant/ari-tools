@@ -15,3 +15,14 @@ venv/
 
 # OS
 .DS_Store
+
+# Wake-word corpora. Household voice recordings and capture exports must never
+# be committed: they are personal audio, they are large, and the eval set's
+# value depends on it staying held out rather than published.
+wakeword/corpus/
+wakeword/eval/
+wakeword/models/
+wakeword/*.wav
+
+# Upstream clone, only present to supply piper_train (see wakeword/README.md).
+wakeword/generate/upstream/

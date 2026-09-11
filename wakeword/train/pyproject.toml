@@ -1,0 +1,22 @@
+[project]
+name = "ari-wakeword"
+version = "0.1.0"
+description = "Wake-word corpus assembly, training and evaluation for Ari"
+requires-python = ">=3.13,<3.14"
+
+dependencies = [
+    # Upstream trainer. Not on PyPI, so pinned to a revision rather than a
+    # branch: `main` moving under us would silently change what a model was
+    # trained with, and the ship gate compares models across weeks.
+    # Apache-2.0. Canonical home is OHF-Voice (Open Home Foundation) — the
+    # kahrendt/ and community forks the 2026-07 design referenced are not it.
+    "microwakeword @ git+https://github.com/OHF-Voice/micro-wake-word@4665173cd35f1cff9a61e06fc427f124766c488e",
+]
+
+# TensorFlow publishes cp310-cp313 wheels only; Arch ships 3.14, which is why
+# this project carries its own interpreter instead of using the system one.
+[dependency-groups]
+dev = ["pytest>=8"]
+
+[tool.uv]
+package = false

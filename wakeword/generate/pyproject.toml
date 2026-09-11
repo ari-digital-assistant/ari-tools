@@ -1,0 +1,20 @@
+[project]
+name = "ari-wakeword-generate"
+version = "0.1.0"
+description = "Synthetic wake-phrase positives for Ari, via Piper"
+requires-python = ">=3.13,<3.14"
+
+dependencies = [
+    # Exact pin, not a range: the generator's settings ARE the training data,
+    # so a version moving under us changes the corpus without changing anything
+    # we would notice. MIT.
+    #
+    # PyPI, not the git URL. Installing from git yields a package that cannot
+    # run: the repo's `packages.find` includes only `piper_sample_generator*`,
+    # so the top-level `piper_train` that `__main__` imports is never installed.
+    # The published wheel carries it.
+    "piper-sample-generator==3.2.0",
+]
+
+[tool.uv]
+package = false

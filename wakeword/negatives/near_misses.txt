@@ -1,0 +1,66 @@
+# Near-miss negatives for hey_ari — phrases observed to falsely wake it.
+#
+# Derived from the 2026-09-10 capture review (retrain design section 2.5), not
+# from intuition. Every line below is either something the rejection log
+# actually recorded, or a close variant within a category the log established.
+#
+# Deliberately short fragments. The captures also contained long sentences of
+# household and work speech; those are not useful as near-misses (the trigger
+# was a syllable, not the sentence) and there is no reason to commit somebody's
+# conversation to a repository to train a wake word.
+#
+# Fed to generate_speech.py --phrases-file, which reads them with an English
+# TTS across many speakers. See the "cannot be synthesised" note at the bottom.
+
+# --- Observed: "Okay, Addy" — a near-miss on hey_ari AND ok_ari at once.
+okay addy
+ok addy
+addy
+okay adi
+hey addy
+
+# --- Observed: spoken numbers. Three separate captures.
+eighty nine
+eight and nine
+eighty
+plus fifty nine
+eight or nine
+eighty five
+
+# --- Observed: "all right", twice.
+all right
+alright then
+all right so
+
+# --- Observed: short name-like fragments.
+eli
+airy
+harry
+ray
+are we
+arie
+
+# --- Observed openers with no name following. These SHOULD not wake it.
+hey
+hey there
+hey so
+okay
+okay so
+hey you
+yeah you
+you know
+
+# --- Observed: "spaghetti". Kept because it was real, and because the model
+# has no business caring what is for dinner.
+spaghetti
+
+# --- CANNOT BE SYNTHESISED HERE, and must come from real audio instead:
+#
+#   Maltese  — three captures, spoken in the household. The biggest single
+#              trigger class in the review.
+#   French   — two captures, media playback. Both contained an "arri" sequence
+#              (J'arrive, arreter), which is the actual mechanism.
+#
+# LibriTTS-R is English. Feeding it Maltese or French text yields an English
+# speaker mangling foreign words, which is not the sound that triggered the
+# model and would teach it the wrong thing. Real recordings only.

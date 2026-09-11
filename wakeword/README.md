@@ -1,0 +1,137 @@
+# wakeword
+
+Corpus assembly, training and evaluation for Ari's wake-word models.
+
+See `ari-android/docs/superpowers/specs/2026-09-10-wake-word-retrain-design.md`
+for why this exists and what the ship gate is.
+
+## Two projects, two virtualenvs — on purpose
+
+```
+wakeword/
+├── generate/   Piper synthesis of wake-phrase positives (torch)
+└── train/      microWakeWord training + evaluation (TensorFlow)
+```
+
+They resolve together perfectly well. They are kept apart anyway, because a
+combined resolution **downgrades `audiomentations` from 0.43.1 to 0.33.0** —
+`piper-sample-generator` pins it hard, `microwakeword` does not pin it at all,
+so the older wins.
+
+That library is not incidental here. The whole reason `hey_ari` needs
+retraining is that its positives were never volume-augmented, so the model
+learned loudness as a proxy for the wake phrase (design §2.3). Running the
+trainer's augmentation against a version it was never developed against is the
+one silent downgrade this project cannot afford.
+
+## Python
+
+Both pin 3.13. TensorFlow publishes cp310–cp313 wheels only, and Arch ships
+3.14 — so these carry their own interpreter rather than using the system one.
+`uv` fetches it; nothing is installed system-wide.
+
+```bash
+cd train    && uv sync    # or: cd generate && uv sync
+uv run python -c "import microwakeword"
+```
+
+## Corpus data is never committed
+
+Recorded positives are household voice audio, and the eval set's value depends
+on staying held out rather than published. `corpus/`, `eval/` and `models/` are
+gitignored at the repo root — keep it that way.
+
+## Running it
+
+```bash
+# 1. Clean voices (GPU, ~12 clips/s)
+cd generate
+uv run ./generate_speech.py --model ../models/en_US-libritts_r-medium.pt \
+    --count 10000 --output-dir ../corpus/positives-raw
+
+# 2. Resample to 16 kHz and break the loudness shortcut (CPU, ~23 clips/s)
+cd ../train
+uv run ./prepare_clips.py --input ../corpus/positives-raw \
+    --output ../corpus/positives --variants 5
+uv run pytest
+```
+
+Step 1's output is **not** training data. Measured over 40 clips from 40
+different speakers, it varies by 4.6 dB — raw generator output is uniformly
+loud, which is exactly what taught `hey_ari` to hear loudness instead of its
+name. Step 2 takes that to **38 dB**, the range real speech occupies across a
+room:
+
+| corpus | spread | dB range | stdev/mean |
+|---|---|---|---|
+| raw generator | 1.7x | 4.6 | 13% |
+| prepared | 80x | 38.1 | 103% |
+
+### Negatives
+
+The same two scripts, different text. `negatives/near_misses.txt` is derived
+from the 2026-09-10 capture review rather than from intuition — spoken numbers,
+"all right", and "okay Addy", which is a near-miss on `hey_ari` and `ok_ari` at
+once.
+
+```bash
+cd generate
+uv run ./generate_speech.py --phrases-file ../negatives/near_misses.txt \
+    --model ../models/en_US-libritts_r-medium.pt --count 3000 \
+    --output-dir ../corpus/near-misses-raw
+```
+
+**Maltese and French negatives cannot be produced this way.** They were the
+largest trigger class in the review (5 of 18), but LibriTTS-R is English — feed
+it Maltese and you get an English speaker mangling foreign words, which is not
+the sound that fired the model. Those have to be real recordings.
+
+### Eval material is never augmented
+
+```bash
+uv run ./prepare_clips.py --input ~/captures/rejected \
+    --output ../corpus/eval-negatives --variants 1 --no-augment
+```
+
+Held-out material is the only honest measurement in the project. Augmenting it
+would score models against audio no microphone ever produced, and would flatter
+whichever model happened to suit the augmentation.
+
+Useful sanity check from the first real export: 16 captured false-accepts span
+**18 dB** of natural variation. Training augmentation spans 38 dB — comfortably
+wider than reality, without being absurd.
+
+Both steps write a `manifest.json` recording every setting used. The settings
+are the corpus: without them, two models trained weeks apart cannot be compared
+because nobody can say what differed.
+
+## Two upstream gotchas, both load-bearing
+
+**`piper_train` is missing from every published artifact.** `piper-sample-generator`
+imports `piper_train.vits.commons` in `__main__`, but its `packages.find` includes
+only `piper_sample_generator*`, so neither the PyPI wheel nor a git install ships
+it. (The `except ImportError` guard around that import retries the identical
+import, so it can only ever fail twice.) `generate/upstream/` is a shallow clone
+of the pinned tag that exists purely to supply it:
+
+```bash
+cd generate
+git clone --depth 1 --branch v3.2.0 https://github.com/rhasspy/piper-sample-generator.git upstream
+PYTHONPATH=upstream uv run python -m piper_sample_generator --help
+```
+
+**The `.pt.json` config lives in the repo, not the release.** The GitHub release
+carries `en_US-libritts_r-medium.pt` alone; the generator also wants
+`<model>.pt.json` beside it, which only exists in the repo's `models/`.
+
+## Generator output is 22.05 kHz — microWakeWord wants 16 kHz
+
+Verified on a six-sample smoke run: 22050 Hz, mono, 16-bit. Everything fed to
+training has to be resampled to 16 kHz first.
+
+That smoke run also demonstrated the bug this whole project exists to fix. Six
+samples, six different speakers and speeds — and peaks of 32767, 30899, 27790,
+with RMS clustered in a band barely 20% wide. **Raw generator output is
+uniformly loud.** That uniformity is exactly what taught `hey_ari` to treat
+loudness as the wake phrase (design §2.3), so volume augmentation is not a
+nicety to add later; it is the point.
