@@ -67,8 +67,8 @@ def test_augmentation_spans_the_dynamic_range_of_a_real_room(impulse_dir):
 
     The threshold is the specification, not a loose bound: speech reaching a
     phone across a room varies by 20-40 dB, while raw generator output varies
-    by 4.6 dB. A corpus that does not span that range is a corpus that teaches
-    loudness as a proxy for the wake phrase, which is the bug being fixed.
+    by 4.6 dB. A corpus that does not span that range describes a world no
+    microphone lives in.
     """
     np.random.seed(0)
     augment = build_chain(impulse_dir)

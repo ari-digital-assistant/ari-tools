@@ -11,12 +11,10 @@ speeds, all of it loud and close-mic'd. Do not train on the output of this
 script. `../train/prepare_clips.py` does the resampling and the volume/room
 augmentation, and that second step is not optional:
 
-    `hey_ari.tflite` false-accepts on non-speech and ignores quiet speakers
-    because every positive it ever saw was loud. Amplitude was genuinely
-    discriminative in its training set, so the model learned loudness as a
-    proxy for the phrase and never had to learn the phrase properly. See
-    `ari-android/docs/superpowers/specs/2026-09-10-wake-word-retrain-design.md`
-    section 2.3.
+    Raw generator output is uniformly loud — measured across 40 clips from 40
+    different speakers, RMS varies by 4.6 dB. Real speech across a room varies
+    by 20-40 dB, so training on this unaltered would teach the model about a
+    world that does not exist.
 
 A six-sample run of this script shows the problem in its own output: six
 different speakers, peaks of 32767 / 30899 / 27790, RMS clustered inside a 20%

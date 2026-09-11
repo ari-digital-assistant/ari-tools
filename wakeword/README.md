@@ -18,11 +18,10 @@ combined resolution **downgrades `audiomentations` from 0.43.1 to 0.33.0** —
 `piper-sample-generator` pins it hard, `microwakeword` does not pin it at all,
 so the older wins.
 
-That library is not incidental here. The whole reason `hey_ari` needs
-retraining is that its positives were never volume-augmented, so the model
-learned loudness as a proxy for the wake phrase (design §2.3). Running the
-trainer's augmentation against a version it was never developed against is the
-one silent downgrade this project cannot afford.
+Augmentation is the heart of this pipeline, so running the trainer's
+augmentation against a library version it was never developed against is the one
+silent downgrade this project cannot afford — whatever the eventual diagnosis
+turns out to be.
 
 ## Python
 
@@ -49,7 +48,7 @@ cd generate
 uv run ./generate_speech.py --model ../models/en_US-libritts_r-medium.pt \
     --count 10000 --output-dir ../corpus/positives-raw
 
-# 2. Resample to 16 kHz and break the loudness shortcut (CPU, ~23 clips/s)
+# 2. Resample to 16 kHz and spread across a real room's dynamic range (CPU)
 cd ../train
 uv run ./prepare_clips.py --input ../corpus/positives-raw \
     --output ../corpus/positives --variants 5
@@ -57,10 +56,9 @@ uv run pytest
 ```
 
 Step 1's output is **not** training data. Measured over 40 clips from 40
-different speakers, it varies by 4.6 dB — raw generator output is uniformly
-loud, which is exactly what taught `hey_ari` to hear loudness instead of its
-name. Step 2 takes that to **38 dB**, the range real speech occupies across a
-room:
+different speakers it varies by just 4.6 dB — raw generator output is uniformly
+loud, and training on it unaltered would describe a world that does not exist.
+Step 2 takes that to **38 dB**, the range real speech occupies across a room:
 
 | corpus | spread | dB range | stdev/mean |
 |---|---|---|---|
@@ -132,9 +130,13 @@ training has to be resampled to 16 kHz first.
 That smoke run also demonstrated the bug this whole project exists to fix. Six
 samples, six different speakers and speeds — and peaks of 32767, 30899, 27790,
 with RMS clustered in a band barely 20% wide. **Raw generator output is
-uniformly loud.** That uniformity is exactly what taught `hey_ari` to treat
-loudness as the wake phrase (design §2.3), so volume augmentation is not a
-nicety to add later; it is the point.
+uniformly loud**, so step 2 is not a nicety to add later.
+
+A correction worth recording: this README previously claimed that uniformity was
+what broke `hey_ari`. It was not. The trainer that produced it volume-augmented
+at p=0.8 across -45 dB — wider than this pipeline does. See the retraction in
+the retrain design section 2.3. Wide dynamic range is still correct practice;
+it is just not a fix for a diagnosed fault.
 
 ## The incumbent's baseline — the number to beat
 

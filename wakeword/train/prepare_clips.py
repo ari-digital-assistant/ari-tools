@@ -1,24 +1,21 @@
 #!/usr/bin/env python3
 """
-Turn audio into training clips: resample to 16 kHz, then break the loudness
-shortcut.
+Turn audio into training clips: resample to 16 kHz, then spread them across the
+dynamic range of a real room.
 
 Used for every corpus — synthetic positives, synthetic near-miss negatives, and
 real captured negatives. Also has an eval mode (`--no-augment`) that resamples
 and nothing else, because held-out material has to stay exactly as recorded.
 
-This is the step whose absence produced the bug. `hey_ari.tflite` was trained on
-raw generator output, which is uniformly loud — measured over 40 clips from 40
-different speakers, RMS varied by 13% and every clip peaked near full scale. In
-that training set amplitude genuinely IS discriminative, so the model learned
-loudness as a proxy for the wake phrase and never had to learn the phrase. It
-then answered to any loud noise and ignored anyone speaking normally from across
-a room. See the retrain design, section 2.3.
-
-Real speech reaching a phone across a room varies by 20-40 dB. That is a 10-100x
-amplitude range against the generator's 1.7x. Closing that gap is the point of
-this script, and `Gain` is therefore the one transform applied to EVERY clip
+Wide dynamic range is correct practice: speech reaching a phone across a room
+varies by 20-40 dB, while raw generator output varies by 4.6 dB (measured over
+40 clips from 40 different speakers). `Gain` is therefore applied to EVERY clip
 rather than probabilistically.
+
+An earlier version of this docstring claimed this step's absence was what broke
+`hey_ari`. That was wrong, and is retracted — the trainer that produced it DID
+volume-augment, at p=0.8 across -45 dB. See the retrain design section 2.3. This
+step is still right; it is just not a fix for a diagnosed fault.
 
 Nothing here normalises. A normalisation step anywhere in this chain would
 quietly undo the entire exercise and leave the corpus looking fine.
@@ -69,8 +66,8 @@ ROOM_IMPULSES = (
 )
 
 # -30 dB is a person across a room; +3 dB is someone leaning into the handset.
-# Wide on purpose: the shortcut only breaks if loudness stops correlating with
-# "this is the wake phrase".
+# Wide on purpose: loudness should carry no information about whether the wake
+# phrase was spoken.
 MIN_GAIN_DB = -30.0
 MAX_GAIN_DB = 3.0
 
@@ -154,8 +151,8 @@ def main() -> int:
             out = audio if augment is None else augment(samples=audio, sample_rate=TARGET_RATE)
             peak = float(np.max(np.abs(out))) if out.size else 0.0
             # Clip rather than rescale. Rescaling to fit is normalisation by
-            # another name, and would hand back the loudness cue this whole
-            # script exists to remove.
+            # another name, and would collapse the range this script exists
+            # to create.
             if peak > 1.0:
                 out = np.clip(out, -1.0, 1.0)
                 clipped += 1
