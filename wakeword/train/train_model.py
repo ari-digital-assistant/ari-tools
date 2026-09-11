@@ -43,7 +43,7 @@ CLIP_DURATION_MS = 1500
 # we can actually name: the incumbent saw no non-English speech whatsoever, and
 # Maltese and French were 5 of 18 real false accepts in the capture review.
 FEATURE_SETS = [
-    ("positive", 2.0, 1.0, True, "truncate_start"),
+    ("positive", None, 1.0, True, "truncate_start"),  # weight from --positive-weight
     ("near_miss", 6.0, 1.0, False, "random"),
     ("speech_mt", 10.0, 1.0, False, "random"),
     ("speech_fr", 8.0, 1.0, False, "random"),
@@ -64,7 +64,9 @@ MIXEDNET_ARGS = [
 ]
 
 
-def build_config(features: Path, out: Path, steps: int, negative_weight: int) -> dict:
+def build_config(
+    features: Path, out: Path, steps: int, negative_weight: int, positive_weight: float
+) -> dict:
     entries = []
     for name, sampling, penalty, truth, truncation in FEATURE_SETS:
         directory = features / name
@@ -73,7 +75,7 @@ def build_config(features: Path, out: Path, steps: int, negative_weight: int) ->
             continue
         entries.append({
             "features_dir": str(directory),
-            "sampling_weight": sampling,
+            "sampling_weight": positive_weight if sampling is None else sampling,
             "penalty_weight": penalty,
             "truth": truth,
             "truncation_strategy": truncation,
@@ -113,6 +115,14 @@ def main() -> int:
     ap.add_argument("--out", required=True, type=Path, help="Where the model lands")
     ap.add_argument("--steps", type=int, default=10000)
     ap.add_argument("--negative-class-weight", type=int, default=20)
+    ap.add_argument(
+        "--positive-weight",
+        type=float,
+        default=2.0,
+        help="Sampling weight for positives. The negatives here total ~29, so "
+        "the notebook's 2.0 is roughly 14:1 against the wake phrase — which, "
+        "with negative_class_weight on top, trains a model that never fires.",
+    )
     ap.add_argument("--config-only", action="store_true", help="Write the yaml and stop")
     args = ap.parse_args()
 
@@ -120,7 +130,9 @@ def main() -> int:
         sys.exit(f"No features at {args.features} — run make_features.py first")
 
     args.out.mkdir(parents=True, exist_ok=True)
-    config = build_config(args.features, args.out, args.steps, args.negative_class_weight)
+    config = build_config(
+        args.features, args.out, args.steps, args.negative_class_weight, args.positive_weight
+    )
     config_path = args.out / "training_parameters.yaml"
     config_path.write_text(yaml.dump(config, sort_keys=False))
     print(f"config -> {config_path}")
