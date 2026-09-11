@@ -11,6 +11,18 @@ dependencies = [
     # Apache-2.0. Canonical home is OHF-Voice (Open Home Foundation) — the
     # kahrendt/ and community forks the 2026-07 design referenced are not it.
     "microwakeword @ git+https://github.com/OHF-Voice/micro-wake-word@4665173cd35f1cff9a61e06fc427f124766c488e",
+
+    # Pinned below 4.0. microwakeword leaves `datasets` unpinned, but 4.0 made
+    # torchcodec the audio decoder — so on anything newer its own Clips loader
+    # raises ImportError before reading a single file. The alternative is
+    # pulling torch into this virtualenv beside TensorFlow, to decode WAVs that
+    # soundfile (already here) decodes perfectly well.
+    "datasets<4",
+
+    # microwakeword's train loop calls tf.summary.scalar, which raises
+    # TBNotInstalledError without this. Not listed in its own setup.py, so it
+    # only surfaces at the end of a training run — after the compute is spent.
+    "tensorboard",
 ]
 
 # TensorFlow publishes cp310-cp313 wheels only; Arch ships 3.14, which is why
