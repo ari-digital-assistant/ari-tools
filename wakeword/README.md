@@ -123,6 +123,29 @@ Useful sanity check from the first real export: 16 captured false-accepts span
 **18 dB** of natural variation. Training augmentation spans 38 dB — comfortably
 wider than reality, without being absurd.
 
+### Before training: prove the exam is not in the lessons
+
+```bash
+cd train
+uv run ./check_leakage.py --train ../corpus/positives --eval ../corpus/eval-positives
+```
+
+Exits 1 if anything leaked, so it gates a pipeline rather than printing advice.
+Three routes, because no single check finds all of them:
+
+1. **identical** — same PCM both sides. The only one a hash catches.
+2. **shared source** — `0-3.wav` in training and `0-7.wav` in eval are different
+   augmentations of one original. Different bytes, same utterance underneath.
+   This is how a corpus built by *this* pipeline will actually leak.
+3. **same utterance, different capture path** — the one that would have got us.
+   `WakeCaptureStore`'s firehose and `UtteranceCaptureStore` both record an
+   accepted turn through different windows, 2 s against 4.2 s of the same
+   moment. Different lengths, different directories, neither aware of the other.
+   Only the epoch-ms in the filename connects them.
+
+Verified against the real thing: run over the 2026-09-10 export it finds
+**exactly 22 pairs**, which is the number that export actually contains.
+
 Both steps write a `manifest.json` recording every setting used. The settings
 are the corpus: without them, two models trained weeks apart cannot be compared
 because nobody can say what differed.
