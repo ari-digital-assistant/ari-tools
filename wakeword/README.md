@@ -84,6 +84,30 @@ largest trigger class in the review (5 of 18), but LibriTTS-R is English — fee
 it Maltese and you get an English speaker mangling foreign words, which is not
 the sound that fired the model. Those have to be real recordings.
 
+### Negatives from real speech
+
+```bash
+cd train
+uv run ./fetch_negatives.py --languages mt,fr --max-clips 3000 \
+    --output ../corpus/negatives
+```
+
+Fetched 2026-09-11: **7.25 hours** of real non-English speech — 3.74 h Maltese,
+3.51 h French, 6,000 clips, 34 seconds. CC0.
+
+This is the one gap in the incumbent's training we can actually name. Its
+negative set was CHiME, FMA and AudioSet: ambient noise and music, and not one
+word of non-English speech. The capture review found Maltese and French were
+5 of 18 real false accepts — the largest single class.
+
+`--audioset-clips N` adds ambient/non-speech on top. Common Voice is read
+speech: one person, close-mic'd, no room. It is not a substitute for a
+television, so use both. AudioSet streams as parquet now rather than the tars
+upstream's notebook expects, and `datasets` will not decode audio without
+`torchcodec` — which would pull torch into the train venv, the exact pairing the
+two-project split avoids. The fetcher takes the raw bytes and decodes them with
+soundfile instead.
+
 ### Eval material is never augmented
 
 ```bash
