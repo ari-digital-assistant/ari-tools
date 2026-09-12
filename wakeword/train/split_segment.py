@@ -17,6 +17,12 @@ The segment's `.txt` sidecar is copied alongside each take, so the room,
 distance and background labels survive the split. Losing those would leave a
 pile of clips nobody can group by anything.
 
+If the sidecar carries a `marks:` line the speaker tapped a button after each
+take, and that line wins: one clip per mark, in mark order, including the takes
+energy alone could not find. Those are the interesting ones — a take the
+splitter misses is usually a take the detector missed too, and dropping it
+quietly flatters every recall number computed afterwards.
+
 Usage:
   ./split_segment.py files/wake-samples/sample-...-gail-bedroom.wav --out ../corpus/gail
   ./split_segment.py seg.wav --out dir --threshold-db -32   # noisier room
@@ -41,6 +47,9 @@ MERGE_GAP_MS = 350
 # Keep the onset: /h/ is turbulent air and barely registers as energy, so a
 # tight cut removes exactly the part of "Hey Ari" the detector needs most.
 PAD_MS = 250
+# A mark is tapped after the phrase, so the take is behind it: the phrase itself
+# plus however long the speaker took to reach the button.
+MARK_LOOKBACK_MS = 2500
 
 
 def frame_energies_db(audio: np.ndarray, rate: int) -> tuple[np.ndarray, int]:
@@ -80,6 +89,42 @@ def find_takes(audio: np.ndarray, rate: int, threshold_db: float | None) -> list
     return takes
 
 
+def read_marks(sidecar: Path) -> list[int]:
+    """Mark offsets in ms, in the order they were tapped. Empty if unmarked."""
+    if not sidecar.is_file():
+        return []
+    for line in sidecar.read_text().splitlines():
+        key, _, value = line.partition(": ")
+        if key == "marks":
+            return [int(v) for v in value.split(",") if v.strip().isdigit()]
+    return []
+
+
+def takes_from_marks(
+    marks: list[int], runs: list[tuple[int, int]], rate: int, total: int
+) -> tuple[list[tuple[int, int]], int]:
+    """One take per mark, tightened onto a detected run wherever one fits.
+
+    Returns the takes and how many fell back to a fixed window because energy
+    found nothing there.
+    """
+    lookback = int(MARK_LOOKBACK_MS / 1000 * rate)
+    pad = int(PAD_MS / 1000 * rate)
+    takes: list[tuple[int, int]] = []
+    fallbacks = 0
+    for mark_ms in marks:
+        at = int(mark_ms / 1000 * rate)
+        window = (max(0, at - lookback), min(total, at + pad))
+        candidates = [r for r in runs if r[0] < window[1] and r[1] > window[0]]
+        if candidates:
+            # The last run before the tap is the take that prompted it.
+            takes.append(max(candidates, key=lambda r: r[1]))
+        else:
+            takes.append(window)
+            fallbacks += 1
+    return takes, fallbacks
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[1])
     ap.add_argument("segment", type=Path)
@@ -96,12 +141,17 @@ def main() -> int:
     if audio.ndim > 1:
         audio = audio.mean(axis=1)
 
-    takes = find_takes(audio, rate, args.threshold_db)
+    sidecar = args.segment.with_suffix(".txt")
+    marks = read_marks(sidecar)
+    runs = find_takes(audio, rate, args.threshold_db)
+    if marks:
+        takes, fallbacks = takes_from_marks(marks, runs, rate, len(audio))
+    else:
+        takes, fallbacks = runs, 0
     if not takes:
         sys.exit("No takes found. Try a lower --threshold-db.")
 
     args.out.mkdir(parents=True, exist_ok=True)
-    sidecar = args.segment.with_suffix(".txt")
     for index, (start, end) in enumerate(takes):
         name = f"{args.segment.stem}-take{index:02d}"
         sf.write(args.out / f"{name}.wav", audio[start:end], rate, subtype="PCM_16")
@@ -110,7 +160,12 @@ def main() -> int:
         print(f"  {name}.wav  {start/rate:6.2f}s - {end/rate:6.2f}s  ({(end-start)/rate:.2f}s)")
 
     print(f"\n{len(takes)} takes from {len(audio)/rate:.1f}s")
-    print("Check the count against what was actually said before trusting any recall number.")
+    if marks:
+        print(f"Split on {len(marks)} marks from the sidecar; energy found {len(runs)} bursts.")
+        if fallbacks:
+            print(f"{fallbacks} mark(s) had no burst loud enough to detect — kept as fixed windows.")
+    else:
+        print("Check the count against what was actually said before trusting any recall number.")
     return 0
 
 

@@ -9,7 +9,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from split_segment import find_takes
+from split_segment import find_takes, read_marks, takes_from_marks
 
 RATE = 16000
 
@@ -64,3 +64,60 @@ def test_takes_are_padded_so_a_soft_onset_survives():
 
     assert start < int(2.0 * RATE)
     assert end > int(2.8 * RATE)
+
+
+def test_marks_are_read_back_in_tap_order(tmp_path):
+    sidecar = tmp_path / "seg.txt"
+    sidecar.write_text("room: kitchen\nmarks: 1200,5400,9000\napp: 0.1.0\n")
+
+    assert read_marks(sidecar) == [1200, 5400, 9000]
+
+
+def test_an_unmarked_sidecar_reads_as_no_marks(tmp_path):
+    sidecar = tmp_path / "seg.txt"
+    sidecar.write_text("room: kitchen\napp: 0.1.0\n")
+
+    assert read_marks(sidecar) == []
+
+
+def test_a_mark_snaps_onto_the_burst_that_prompted_it():
+    audio = _segment(bursts=[(1.0, 0.8), (5.0, 0.8)])
+    runs = find_takes(audio, RATE, threshold_db=-40.0)
+
+    # Tapped 0.4 s after each phrase ended.
+    takes, fallbacks = takes_from_marks([2200, 6200], runs, RATE, len(audio))
+
+    assert fallbacks == 0
+    assert takes == runs
+
+
+def test_a_mark_with_no_detectable_burst_still_yields_a_take():
+    """The phrase was said too quietly for the energy gate to see it.
+
+    Dropping it would remove exactly the takes a wake model fails on, which
+    silently inflates every recall number computed from the split.
+    """
+    audio = _segment(bursts=[(1.0, 0.8)])
+    runs = find_takes(audio, RATE, threshold_db=-40.0)
+
+    takes, fallbacks = takes_from_marks([2200, 8000], runs, RATE, len(audio))
+
+    assert fallbacks == 1
+    assert len(takes) == 2
+    start, end = takes[1]
+    assert start == int(8.0 * RATE) - int(2.5 * RATE)
+    assert end == int(8.0 * RATE) + int(0.25 * RATE)
+
+
+def test_one_take_per_mark_even_when_energy_finds_more():
+    """Somebody else talking, or the telly, is not a take.
+
+    The mark count is the denominator; energy bursts are not.
+    """
+    audio = _segment(bursts=[(1.0, 0.8), (3.0, 0.8), (5.0, 0.8), (7.0, 0.8)])
+    runs = find_takes(audio, RATE, threshold_db=-40.0)
+    assert len(runs) == 4
+
+    takes, _ = takes_from_marks([2200, 6200], runs, RATE, len(audio))
+
+    assert len(takes) == 2
