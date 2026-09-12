@@ -55,9 +55,9 @@ sys.path.insert(0, str(HERE / "upstream"))
 # The three settings the app actually ships, from WakeWordSensitivity.kt. These
 # are what a user is running, so these are what the numbers should describe.
 APP_OPERATING_POINTS = {
-    "HIGH": (0.95, 5),
-    "MEDIUM": (0.985, 10),
-    "LOW": (0.99, 14),
+    "HIGH": (0.995, 5),
+    "MEDIUM": (0.999, 5),
+    "LOW": (0.999, 10),
 }
 
 # WakeWordService.detectionDebounceMs. One shout must not score as six wakes.
@@ -91,12 +91,19 @@ def read_wav_16k(path: Path) -> np.ndarray:
         return np.frombuffer(w.readframes(w.getnframes()), dtype=np.int16)
 
 
-def count_detections(probs: np.ndarray, cutoff: float, window: int, step_ms: int) -> int:
-    """Detections in one clip under the app's sliding-window mean rule."""
+def count_detections(probs: np.ndarray, cutoff: float, window: int, frame_ms: int) -> int:
+    """Detections in one clip under the app's sliding-window mean rule.
+
+    [frame_ms] is the audio a single probability covers, which is NOT the
+    feature step size: MicroWakeWordEngine accumulates `stride` feature frames
+    before each Invoke, so a 10 ms feature step on a stride-2 model yields one
+    probability per 20 ms. Reading it as 10 doubles the refractory period and
+    silently swallows real repeat wakes.
+    """
     if len(probs) < window:
         return 0
     means = np.convolve(probs, np.ones(window) / window, mode="valid")
-    refractory_frames = REFRACTORY_MS // step_ms
+    refractory_frames = REFRACTORY_MS // frame_ms
     detections = 0
     index = 0
     while index < len(means):
@@ -108,13 +115,13 @@ def count_detections(probs: np.ndarray, cutoff: float, window: int, step_ms: int
     return detections
 
 
-def score_dir(model, clips: list[tuple[Path, np.ndarray]], cutoff, window, step_ms) -> Score:
+def score_dir(model, clips: list[tuple[Path, np.ndarray]], cutoff, window, frame_ms) -> Score:
     detected = 0
     total = 0
     seconds = 0.0
     for _, probs_and_len in clips:
         probs, samples = probs_and_len
-        hits = count_detections(probs, cutoff, window, step_ms)
+        hits = count_detections(probs, cutoff, window, frame_ms)
         detected += 1 if hits else 0
         total += hits
         seconds += samples / 16000.0
@@ -146,6 +153,7 @@ def main() -> int:
     from microwakeword.inference import Model
 
     model = Model(str(args.model))
+    frame_ms = args.step_ms * model.stride
     positives = load_probs(model, args.positives, args.step_ms)
     negatives = load_probs(model, args.negatives, args.step_ms)
 
@@ -155,7 +163,7 @@ def main() -> int:
     else:
         points = APP_OPERATING_POINTS
 
-    print(f"model     {args.model.name}")
+    print(f"model     {args.model.name}  (stride {model.stride}, {frame_ms} ms per probability)")
     print(f"positives {len(positives)} clips  ({sum(p[1][1] for p in positives)/16000:.1f}s)")
     print(f"negatives {len(negatives)} clips  ({sum(n[1][1] for n in negatives)/16000:.1f}s)")
     print()
@@ -165,8 +173,8 @@ def main() -> int:
 
     results = {}
     for name, (cutoff, window) in points.items():
-        pos = score_dir(model, positives, cutoff, window, args.step_ms)
-        neg = score_dir(model, negatives, cutoff, window, args.step_ms)
+        pos = score_dir(model, positives, cutoff, window, frame_ms)
+        neg = score_dir(model, negatives, cutoff, window, frame_ms)
         print(
             f"{name:>8} {cutoff:7.4f} {window:4d} | {pos.clip_rate:6.1%} "
             f"{pos.clips - pos.detected_clips:7d} | "
@@ -189,7 +197,7 @@ def main() -> int:
 
     if args.json:
         args.json.write_text(json.dumps(
-            {"model": args.model.name, "step_ms": args.step_ms,
+            {"model": args.model.name, "step_ms": args.step_ms, "frame_ms": frame_ms,
              "positives_dir": str(args.positives), "negatives_dir": str(args.negatives),
              "results": results}, indent=2))
     return 0

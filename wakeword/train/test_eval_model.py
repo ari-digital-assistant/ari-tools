@@ -8,19 +8,21 @@ import numpy as np
 
 from eval_model import REFRACTORY_MS, Score, count_detections
 
-STEP_MS = 10
+# One probability covers stride x feature-step ms of audio; the rule itself
+# is period-agnostic, so the tests pick a round number.
+FRAME_MS = 10
 
 
 def test_sustained_high_probability_fires_once():
     probs = np.full(50, 0.99)
 
-    assert count_detections(probs, cutoff=0.985, window=10, step_ms=STEP_MS) == 1
+    assert count_detections(probs, cutoff=0.985, window=10, frame_ms=FRAME_MS) == 1
 
 
 def test_nothing_fires_below_the_cutoff():
     probs = np.full(50, 0.98)
 
-    assert count_detections(probs, cutoff=0.985, window=10, step_ms=STEP_MS) == 0
+    assert count_detections(probs, cutoff=0.985, window=10, frame_ms=FRAME_MS) == 0
 
 
 def test_the_rule_is_the_window_MEAN_not_every_frame():
@@ -32,13 +34,13 @@ def test_the_rule_is_the_window_MEAN_not_every_frame():
     """
     probs = np.concatenate([np.full(5, 1.0), np.full(5, 0.98)])
 
-    assert count_detections(probs, cutoff=0.985, window=10, step_ms=STEP_MS) == 1
+    assert count_detections(probs, cutoff=0.985, window=10, frame_ms=FRAME_MS) == 1
 
 
 def test_a_window_short_of_frames_cannot_fire():
     probs = np.full(9, 1.0)
 
-    assert count_detections(probs, cutoff=0.985, window=10, step_ms=STEP_MS) == 0
+    assert count_detections(probs, cutoff=0.985, window=10, frame_ms=FRAME_MS) == 0
 
 
 def test_one_long_shout_counts_once_not_once_per_frame():
@@ -46,14 +48,14 @@ def test_one_long_shout_counts_once_not_once_per_frame():
     and false-accepts-per-hour becomes meaningless."""
     probs = np.full(200, 0.999)
 
-    assert count_detections(probs, cutoff=0.985, window=10, step_ms=STEP_MS) == 1
+    assert count_detections(probs, cutoff=0.985, window=10, frame_ms=FRAME_MS) == 1
 
 
 def test_two_events_separated_by_more_than_the_refractory_count_twice():
-    quiet = np.zeros(REFRACTORY_MS // STEP_MS + 20)
+    quiet = np.zeros(REFRACTORY_MS // FRAME_MS + 20)
     probs = np.concatenate([np.full(20, 0.999), quiet, np.full(20, 0.999)])
 
-    assert count_detections(probs, cutoff=0.985, window=10, step_ms=STEP_MS) == 2
+    assert count_detections(probs, cutoff=0.985, window=10, frame_ms=FRAME_MS) == 2
 
 
 def test_score_reports_rate_per_hour_and_per_clip():
