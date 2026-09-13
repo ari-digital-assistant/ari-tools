@@ -153,7 +153,10 @@ def main() -> int:
     from microwakeword.inference import Model
 
     model = Model(str(args.model))
-    frame_ms = args.step_ms * model.stride
+    # int() because the stride comes off the tflite input shape as a numpy
+    # int32, which propagates into the JSON and fails the write at the very end
+    # of a run, after all the compute is spent.
+    frame_ms = args.step_ms * int(model.stride)
     positives = load_probs(model, args.positives, args.step_ms)
     negatives = load_probs(model, args.negatives, args.step_ms)
 
@@ -184,9 +187,12 @@ def main() -> int:
             "cutoff": cutoff,
             "sliding_window_size": window,
             "recall": round(pos.clip_rate, 4),
-            "positives_missed": pos.clips - pos.detected_clips,
-            "negatives_fired": neg.detected_clips,
-            "negatives_total": neg.clips,
+            # int() because these come off numpy sums as int32/int64, which the
+            # json encoder refuses — and it refuses at the very end, after the
+            # whole run has been spent.
+            "positives_missed": int(pos.clips - pos.detected_clips),
+            "negatives_fired": int(neg.detected_clips),
+            "negatives_total": int(neg.clips),
             "false_accepts_per_hour": round(neg.per_hour, 2),
         }
 
