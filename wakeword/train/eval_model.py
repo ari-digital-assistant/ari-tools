@@ -55,7 +55,7 @@ sys.path.insert(0, str(HERE / "upstream"))
 # The three settings the app actually ships, from WakeWordSensitivity.kt. These
 # are what a user is running, so these are what the numbers should describe.
 APP_OPERATING_POINTS = {
-    "HIGH": (0.995, 5),
+    "HIGH": (0.9, 5),
     "MEDIUM": (0.999, 5),
     "LOW": (0.999, 10),
 }
@@ -197,9 +197,17 @@ def main() -> int:
         }
 
     print()
-    print("FA/hour here is measured on KNOWN-HARD negatives — clips selected")
-    print("precisely because they already fooled a model. It is a worst case,")
-    print("not the rate a user experiences. An ambient corpus is needed for that.")
+    # The note used to assert the negatives were hand-picked near-misses, which
+    # stopped being true the moment an ambient corpus existed to pass instead.
+    negative_seconds = sum(n[1][1] for n in negatives) / 16000
+    if len(negatives) == 1 and negative_seconds > 120:
+        print(f"FA/hour is measured on {negative_seconds/60:.0f} minutes of continuous audio")
+        print(f"from {args.negatives.name}. It is a rate a user would experience in")
+        print("that room, with that noise, and nowhere else.")
+    else:
+        print(f"FA/hour is extrapolated from {negative_seconds:.0f}s of clips. If those were")
+        print("selected because they already fooled a model, it is a worst case rather")
+        print("than a rate anybody experiences — use a continuous ambient recording for that.")
 
     if args.json:
         args.json.write_text(json.dumps(
