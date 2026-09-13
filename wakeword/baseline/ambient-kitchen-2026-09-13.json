@@ -1,0 +1,108 @@
+{
+  "model": "hey_ari.tflite",
+  "step_ms": 10,
+  "frame_ms": 20,
+  "positives_dir": "/tmp/claude-1000/-home-keith-LocalCode-keithvassallomt-Ari/8f6e5cc7-3d73-4591-851f-4cc3e7648516/scratchpad/kitchen/near",
+  "negatives_dir": "captures/ambient-kitchen-2026-09-13",
+  "results": {
+    "0.5000": {
+      "cutoff": 0.5,
+      "sliding_window_size": 5,
+      "recall": 0.875,
+      "positives_missed": 2,
+      "negatives_fired": 1,
+      "negatives_total": 1,
+      "false_accepts_per_hour": 6.0
+    },
+    "0.7000": {
+      "cutoff": 0.7,
+      "sliding_window_size": 5,
+      "recall": 0.875,
+      "positives_missed": 2,
+      "negatives_fired": 0,
+      "negatives_total": 1,
+      "false_accepts_per_hour": 0.0
+    },
+    "0.8000": {
+      "cutoff": 0.8,
+      "sliding_window_size": 5,
+      "recall": 0.875,
+      "positives_missed": 2,
+      "negatives_fired": 0,
+      "negatives_total": 1,
+      "false_accepts_per_hour": 0.0
+    },
+    "0.9000": {
+      "cutoff": 0.9,
+      "sliding_window_size": 5,
+      "recall": 0.875,
+      "positives_missed": 2,
+      "negatives_fired": 0,
+      "negatives_total": 1,
+      "false_accepts_per_hour": 0.0
+    },
+    "0.9500": {
+      "cutoff": 0.95,
+      "sliding_window_size": 5,
+      "recall": 0.875,
+      "positives_missed": 2,
+      "negatives_fired": 0,
+      "negatives_total": 1,
+      "false_accepts_per_hour": 0.0
+    },
+    "0.9700": {
+      "cutoff": 0.97,
+      "sliding_window_size": 5,
+      "recall": 0.8125,
+      "positives_missed": 3,
+      "negatives_fired": 0,
+      "negatives_total": 1,
+      "false_accepts_per_hour": 0.0
+    },
+    "0.9800": {
+      "cutoff": 0.98,
+      "sliding_window_size": 5,
+      "recall": 0.6875,
+      "positives_missed": 5,
+      "negatives_fired": 0,
+      "negatives_total": 1,
+      "false_accepts_per_hour": 0.0
+    },
+    "0.9850": {
+      "cutoff": 0.985,
+      "sliding_window_size": 5,
+      "recall": 0.625,
+      "positives_missed": 6,
+      "negatives_fired": 0,
+      "negatives_total": 1,
+      "false_accepts_per_hour": 0.0
+    },
+    "0.9900": {
+      "cutoff": 0.99,
+      "sliding_window_size": 5,
+      "recall": 0.625,
+      "positives_missed": 6,
+      "negatives_fired": 0,
+      "negatives_total": 1,
+      "false_accepts_per_hour": 0.0
+    },
+    "0.9950": {
+      "cutoff": 0.995,
+      "sliding_window_size": 5,
+      "recall": 0.5625,
+      "positives_missed": 7,
+      "negatives_fired": 0,
+      "negatives_total": 1,
+      "false_accepts_per_hour": 0.0
+    },
+    "0.9990": {
+      "cutoff": 0.999,
+      "sliding_window_size": 5,
+      "recall": 0.4375,
+      "positives_missed": 9,
+      "negatives_fired": 0,
+      "negatives_total": 1,
+      "false_accepts_per_hour": 0.0
+    }
+  }
+}
