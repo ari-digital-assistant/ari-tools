@@ -56,12 +56,15 @@ sys.path.insert(0, str(HERE / "upstream"))
 # are what a user is running, so these are what the numbers should describe.
 APP_OPERATING_POINTS = {
     "HIGH": (0.9, 5),
-    "MEDIUM": (0.999, 5),
-    "LOW": (0.999, 10),
+    "MEDIUM": (0.95, 5),
+    "LOW": (0.985, 10),
 }
 
 # WakeWordService.detectionDebounceMs. One shout must not score as six wakes.
 REFRACTORY_MS = 4000
+# How long before the speaker's tap a detection may land and still be that take.
+# The phrase itself plus however long a hand takes to reach the button.
+MARK_WINDOW_MS = 2500
 
 
 @dataclass(frozen=True)
@@ -115,7 +118,7 @@ def count_detections(probs: np.ndarray, cutoff: float, window: int, frame_ms: in
     return detections
 
 
-def score_dir(model, clips: list[tuple[Path, np.ndarray]], cutoff, window, frame_ms) -> Score:
+def score_dir(clips: list[tuple[Path, np.ndarray]], cutoff, window, frame_ms) -> Score:
     detected = 0
     total = 0
     seconds = 0.0
@@ -128,15 +131,89 @@ def score_dir(model, clips: list[tuple[Path, np.ndarray]], cutoff, window, frame
     return Score(len(clips), detected, total, seconds)
 
 
-def load_probs(model, directory: Path, step_ms: int):
+def load_probs(model_path: Path, directory: Path, step_ms: int):
+    """Score every clip in [directory] from a cold start.
+
+    A new Model per clip, because nothing short of that resets one. The tflite
+    model is a streaming model whose recurrent state survives
+    `reset_all_variables()`, `allocate_tensors()` and zeroing every input
+    tensor — scoring the same clip twice on one instance already gives two
+    answers. Left shared, a clip inherits whatever the previous clip left
+    behind: the ten-minute kitchen negative opens at 0.02 on a fresh model and
+    at 0.9961 straight after a wake phrase, so a directory's results depended on
+    the alphabetical order of its filenames.
+
+    Construction costs about a millisecond, which is nothing beside inference.
+    """
+    from microwakeword.inference import Model
+
     out = []
     for path in sorted(directory.glob("*.wav")):
         audio = read_wav_16k(path)
-        probs = np.asarray(model.predict_clip(audio, step_ms=step_ms), dtype=np.float64)
+        probs = np.asarray(
+            Model(str(model_path)).predict_clip(audio, step_ms=step_ms), dtype=np.float64
+        )
         out.append((path, (probs, len(audio))))
     if not out:
         sys.exit(f"No WAVs in {directory}")
     return out
+
+
+def score_segment(
+    probs: np.ndarray, marks: list[int], cutoff: float, window: int, frame_ms: int
+) -> tuple[int, int]:
+    """Takes caught, and detections that answered to no take.
+
+    The faithful measurement. On the phone the detector runs across one
+    continuous stream with its state carried from whatever the room was doing a
+    moment ago; it never sees a clip boundary and never starts cold. Splitting a
+    segment into takes and scoring each on its own tests neither of those, and
+    which artefact you get depends on whether the model instance is shared.
+
+    A mark is tapped just after the phrase, so a take counts as caught when the
+    window mean clears the cutoff somewhere in the [MARK_WINDOW_MS] before the
+    tap. Deliberately without the refractory period: a speaker recording takes
+    says the phrase every two or three seconds, so a 4 s debounce would score
+    most of them as misses when the question being asked is whether the model
+    heard each one. The refractory is real on the phone, but nobody talks to an
+    assistant in bursts of fifteen.
+
+    Detections outside every mark window are counted with the refractory, since
+    there the debounce is exactly what a user would experience. They are false
+    wakes inside a positive recording, which clip scoring cannot see at all.
+    """
+    means = np.convolve(probs, np.ones(window) / window, mode="valid")
+
+    # Each take owns the stretch between the previous tap and its own. Without
+    # that clamp a 2.5 s lookback reaches back over the take before it — the
+    # speakers here tap every two seconds — and one clear phrase gets counted
+    # twice while the mumbled one beside it scores as a hit.
+    windows = []
+    previous = 0
+    for mark in marks:
+        start = max(previous, mark - MARK_WINDOW_MS)
+        windows.append((max(0, start // frame_ms), min(len(means), mark // frame_ms + 1)))
+        previous = mark
+
+    caught = 0
+    for start, end in windows:
+        if end > start and means[start:end].max() > cutoff:
+            caught += 1
+
+    in_take = np.zeros(len(means), dtype=bool)
+    for start, end in windows:
+        in_take[start:end] = True
+    refractory = REFRACTORY_MS // frame_ms
+    unclaimed = 0
+    index = 0
+    while index < len(means):
+        if means[index] > cutoff:
+            if not in_take[index]:
+                unclaimed += 1
+            index += refractory
+        else:
+            index += 1
+    return caught, unclaimed
 
 
 def main() -> int:
@@ -157,8 +234,8 @@ def main() -> int:
     # int32, which propagates into the JSON and fails the write at the very end
     # of a run, after all the compute is spent.
     frame_ms = args.step_ms * int(model.stride)
-    positives = load_probs(model, args.positives, args.step_ms)
-    negatives = load_probs(model, args.negatives, args.step_ms)
+    positives = load_probs(args.model, args.positives, args.step_ms)
+    negatives = load_probs(args.model, args.negatives, args.step_ms)
 
     if args.sweep:
         points = {f"{c:.4f}": (c, args.window) for c in
@@ -176,8 +253,8 @@ def main() -> int:
 
     results = {}
     for name, (cutoff, window) in points.items():
-        pos = score_dir(model, positives, cutoff, window, frame_ms)
-        neg = score_dir(model, negatives, cutoff, window, frame_ms)
+        pos = score_dir(positives, cutoff, window, frame_ms)
+        neg = score_dir(negatives, cutoff, window, frame_ms)
         print(
             f"{name:>8} {cutoff:7.4f} {window:4d} | {pos.clip_rate:6.1%} "
             f"{pos.clips - pos.detected_clips:7d} | "

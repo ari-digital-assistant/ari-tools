@@ -6,7 +6,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from eval_model import REFRACTORY_MS, Score, count_detections
+from eval_model import REFRACTORY_MS, Score, count_detections, score_segment
 
 # One probability covers stride x feature-step ms of audio; the rule itself
 # is period-agnostic, so the tests pick a round number.
@@ -70,3 +70,63 @@ def test_score_of_nothing_does_not_divide_by_zero():
 
     assert empty.clip_rate == 0.0
     assert empty.per_hour == 0.0
+
+
+FRAME = 20  # this model's probability period
+
+
+def _probs(length_ms: int, bursts: list[tuple[int, int]]) -> np.ndarray:
+    """A probability stream with 1.0 across each (start_ms, end_ms) burst."""
+    p = np.zeros(length_ms // FRAME)
+    for start, end in bursts:
+        p[start // FRAME : end // FRAME] = 1.0
+    return p
+
+
+def test_a_take_counts_when_the_model_fired_just_before_the_tap():
+    # Phrase at 1.0-1.6 s, speaker taps at 2.0 s.
+    probs = _probs(4000, [(1000, 1600)])
+
+    assert score_segment(probs, [2000], cutoff=0.9, window=5, frame_ms=FRAME) == (1, 0)
+
+
+def test_a_silent_take_is_a_miss_not_a_false_wake():
+    probs = _probs(4000, [])
+
+    assert score_segment(probs, [2000], cutoff=0.9, window=5, frame_ms=FRAME) == (0, 0)
+
+
+def test_one_phrase_cannot_be_credited_to_two_takes():
+    """Marks two seconds apart with a 2.5 s lookback would otherwise overlap.
+
+    The second take was silent; without clamping each window to start at the
+    previous tap it would borrow the first take's phrase and score 2/2.
+    """
+    probs = _probs(6000, [(1000, 1600)])
+
+    assert score_segment(probs, [2000, 4000], cutoff=0.9, window=5, frame_ms=FRAME) == (1, 0)
+
+
+def test_a_detection_away_from_every_take_is_a_false_wake():
+    # Take at 2 s answered; something else fires at 8 s with nobody speaking.
+    probs = _probs(12000, [(1000, 1600), (8000, 8600)])
+
+    assert score_segment(probs, [2000], cutoff=0.9, window=5, frame_ms=FRAME) == (1, 1)
+
+
+def test_a_long_false_wake_is_counted_once():
+    """The refractory applies to the unclaimed detections, where a user would
+    genuinely feel the debounce, and not to the per-take recall."""
+    probs = _probs(20000, [(8000, 15000)])
+
+    caught, unclaimed = score_segment(probs, [2000], cutoff=0.9, window=5, frame_ms=FRAME)
+    assert (caught, unclaimed) == (0, 2)  # 7 s of firing, 4 s refractory
+
+
+def test_the_refractory_does_not_suppress_rapid_takes():
+    """Three takes two seconds apart all count, though a 4 s debounce would
+    let only the first through on a real phone. Recording takes in quick
+    succession is a protocol artefact, not how anybody speaks to an assistant."""
+    probs = _probs(8000, [(1000, 1600), (3000, 3600), (5000, 5600)])
+
+    assert score_segment(probs, [2000, 4000, 6000], cutoff=0.9, window=5, frame_ms=FRAME) == (3, 0)
