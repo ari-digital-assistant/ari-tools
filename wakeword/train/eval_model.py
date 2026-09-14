@@ -52,12 +52,14 @@ HERE = Path(__file__).resolve().parent
 # unable to run inference at all. The clone supplies them. See ../README.md.
 sys.path.insert(0, str(HERE / "upstream"))
 
-# The three settings the app actually ships, from WakeWordSensitivity.kt. These
-# are what a user is running, so these are what the numbers should describe.
+# The three settings the app actually ships for hey_ari, from WakeWordRegistry.
+# These are what a user is running, so these are what the numbers should
+# describe. Per-model since 2026-09-14: a cutoff is meaningless without the
+# model it belongs to, and ok_ari and hey_jarvis sit on a different ladder.
 APP_OPERATING_POINTS = {
-    "HIGH": (0.9, 5),
-    "MEDIUM": (0.95, 5),
-    "LOW": (0.985, 10),
+    "HIGH": (0.40, 5),
+    "MEDIUM": (0.50, 5),
+    "LOW": (0.60, 5),
 }
 
 # WakeWordService.detectionDebounceMs. One shout must not score as six wakes.
