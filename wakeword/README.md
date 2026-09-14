@@ -37,8 +37,9 @@ uv run python -c "import microwakeword"
 ## Corpus data is never committed
 
 Recorded positives are household voice audio, and the eval set's value depends
-on staying held out rather than published. `corpus/`, `eval/` and `models/` are
-gitignored at the repo root — keep it that way.
+on staying held out rather than published. `corpus/`, `eval/`, `models/`,
+`captures/`, `features/`, `trained/` and any stray `*.wav` are gitignored at the
+repo root — keep it that way.
 
 ## Running it
 
@@ -150,7 +151,7 @@ Both steps write a `manifest.json` recording every setting used. The settings
 are the corpus: without them, two models trained weeks apart cannot be compared
 because nobody can say what differed.
 
-## Two upstream gotchas, both load-bearing
+## Three upstream gotchas, all load-bearing
 
 **`piper_train` is missing from every published artifact.** `piper-sample-generator`
 imports `piper_train.vits.commons` in `__main__`, but its `packages.find` includes
@@ -169,6 +170,20 @@ PYTHONPATH=upstream uv run python -m piper_sample_generator --help
 carries `en_US-libritts_r-medium.pt` alone; the generator also wants
 `<model>.pt.json` beside it, which only exists in the repo's `models/`.
 
+**`microwakeword.audio` and `.layers` are missing from the installed package
+too.** `pyproject.toml` installs `microwakeword` from git, but its packaging
+drops those two subpackages, and `make_features.py` and `train_model.py` both
+need them — so `train/upstream/` is a clone of the *same pinned commit*, put on
+`sys.path` ahead of the installed copy. Clone it at that commit and no other; a
+newer one changes the spectrogram path the committed feature banks were built
+with.
+
+```bash
+cd train
+git clone https://github.com/OHF-Voice/micro-wake-word.git upstream
+git -C upstream checkout 4665173cd35f1cff9a61e06fc427f124766c488e
+```
+
 ## Generator output is 22.05 kHz — microWakeWord wants 16 kHz
 
 Verified on a six-sample smoke run: 22050 Hz, mono, 16-bit. Everything fed to
@@ -185,42 +200,73 @@ at p=0.8 across -45 dB — wider than this pipeline does. See the retraction in
 the retrain design section 2.3. Wide dynamic range is still correct practice;
 it is just not a fix for a diagnosed fault.
 
-## The incumbent's baseline — the number to beat
+## Measuring a model — and the threshold it is judged by
 
-`baseline/hey_ari-2026-09-11.json`, measured by `train/eval_model.py` against 20
-real wake utterances and 16 real captured false-accepts, using a port of the
-app's own detection rule (window mean over `probability_cutoff`, plus the 4 s
-refractory period).
+`train/eval_model.py` scores a model with a port of the app's own detection rule
+(window mean over `probability_cutoff`, plus the 4 s refractory period) and
+writes the result into `baseline/`. Positives are **marked takes** — the
+speaker's own tap — so the denominator is every take they meant to make rather
+than every take something happened to detect.
 
-| operating point | recall | hard negatives firing |
-|---|---|---|
-| HIGH  (0.95 / 5)   | 100% | 15/16 |
-| MEDIUM (0.985 / 10) | 95% | 14/16 |
-| LOW   (0.99 / 14)  | 90% | 10/16 |
+The measurement that settled the project is 92 marked takes from four speakers
+and twenty minutes of household ambient: a kitchen with four people talking, and
+a living room. None of it had ever been heard by any model under test.
 
-Sweeping the cutoff at window 10 is the result that matters:
+The operating points it scores at are **parsed out of the app's
+`WakeWordModel.kt`**, so "at the app's default" always means what the phone is
+actually running. That used to be a copied constant and it went stale twice —
+once reporting a model uniformly better than its predecessor while the phone
+said otherwise. A wrong ladder here is invisible: every row still prints, just
+about the wrong app. If the parse fails it raises rather than guessing.
 
-| cutoff | 0.50 | 0.90 | 0.95 | 0.97 | 0.985 | 0.99 | 0.999 |
-|---|---|---|---|---|---|---|---|
-| recall | 100% | 100% | 100% | 100% | 95% | 95% | 90% |
-| negatives firing | 15/16 | 15/16 | 15/16 | 14/16 | 14/16 | 12/16 | 9/16 |
+### The threshold was the fault, not the model
 
-**Nothing changes between 0.5 and 0.95.** The model emits near-1.0 for genuine
-wakes and for "spaghetti" alike, so no threshold anywhere in the range separates
-them — and at 0.999, the most extreme the rule allows, nine of sixteen still
-fire while recall has already started falling. This is design section 2.1 as a
-measurement rather than an argument: threshold tuning is exhausted, and only
-retraining can help.
+The April model (`hey_ari.tflite`) shipped on a ladder of **0.95 / 0.985 / 0.99**
+that arrived in a commit called "Minor UI tweaks", was inherited from upstream,
+and had never once been measured against a recording. On those 92 takes it hears
+the loudest voice in the house 13 times out of 16 and the quietest **18 out of
+46**. Every week of "she can't wake it" was that gap: the model could always hear
+her, and the threshold was throwing the answer away.
 
-Two honest caveats:
+Over the twenty minutes of ambient the highest mean across a window of 10 is
+**0.349**. Quoting each cutoff by its headroom above that floor gives
+**0.45 / 0.55 / 0.65** at +0.10 / +0.20 / +0.30 — 72% / 69% / 69% recall across
+all four speakers, and the quietest speaker at **29 of 46** instead of 18. That
+is the ladder the app ships today, in `WakeWordRegistry`.
 
-- Recall is measured on **one speaker** — the developer, near-field, giving
-  commands. It is an upper bound. The whole point of the recorder in the Android
-  app is to make this number mean something for anyone else.
-- FA/hour here is measured on **known-hard negatives**, clips selected precisely
-  because they already fooled a model. It is a worst case, not a user's
-  experience. An ambient corpus is still needed for the real rate.
+A cutoff means nothing on its own. It is only ever a number relative to what the
+room is already producing, so a ladder belongs to the model it was measured on
+and travels with it — which is why operating points live per-model rather than
+per-app.
 
-A useful validation fell out of this: all 16 negatives genuinely fired on the
-device, and the harness reproduces 14-15 of them firing at the app's default.
-The port of the detection rule is faithful.
+### RUN 2: shipped and reverted the same day
+
+The 2026-09-13 retrain (`baseline/hey_ari-run2-seed3.json`) went out on
+2026-09-14 and came back within hours. Its strictest setting, 0.60, sat below an
+ordinary kitchen's ambient peak of 0.623 — firing on conversation by
+construction rather than by bad luck. Held to **equal headroom** above the floor
+it manages 64 / 53 / 46% where the April model manages 74 / 71 / 70%: it
+separates the phrase from speech worse, which is how it contrived to miss takes
+and false-fire at the same time.
+
+`WakeWordSensitivityTest` in the app now fails any `hey_ari` cutoff that doesn't
+clear measured ambient by 0.10. The floor rises as more rooms are recorded, and
+the cutoffs move with it.
+
+> **Retraction.** An earlier version of this section presented a threshold sweep
+> on one speaker's audio and concluded that "threshold tuning is exhausted, and
+> only retraining can help." That was wrong, and expensively so — a week went
+> into retraining before anyone checked the number the model was being judged
+> by. The sweep was measured near-field on the developer's own voice, which is
+> exactly the speaker the old ladder served well. A measurement that only covers
+> the person who set the thing up cannot see the fault.
+
+### What is still missing
+
+Twenty minutes cannot price a rate of one false wake an hour. Longer ambient,
+from more rooms and more households, is the measurement that would have caught
+all of the above and has still not been made.
+
+`ok_ari` and `hey_jarvis` keep the ladder they shipped on. Neither has a
+household recording to justify moving it, and moving it on `hey_ari`'s numbers
+would be a guess dressed as a fix.

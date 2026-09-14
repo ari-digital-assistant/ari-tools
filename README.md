@@ -10,11 +10,17 @@ pipelines, registry maintenance, that sort of thing.
 
 ```
 ari-tools/
-└── scripts/              — operational scripts, run by CI or by hand
-    ├── publish_manifest.py    Publish on-device model manifests to floating releases (called by three workflows)
-    ├── stt_bench.py           Replay captured utterances through STT models and compare transcripts
-    └── measure_wake_cpu.sh    Measure what always-on wake-word listening costs in CPU
+├── scripts/              — operational scripts, run by CI or by hand
+│   ├── publish_manifest.py    Publish on-device model manifests to floating releases
+│   │                          (called by publish-llm-manifests and publish-stt-manifests)
+│   ├── stt_bench.py           Replay captured utterances through STT models and compare transcripts
+│   └── measure_wake_cpu.sh    Measure what always-on wake-word listening costs in CPU
+└── wakeword/             — corpus assembly, training and evaluation for the wake-word models
 ```
+
+`wakeword/` is a project in its own right rather than a script — two Python
+environments, a corpus that is never committed, and a ship gate a new model has
+to clear before it goes near a phone. It has [its own README](wakeword/README.md).
 
 ### Diagnosing a speech-to-text problem
 
