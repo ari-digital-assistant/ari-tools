@@ -2,6 +2,13 @@ name: ci
 
 # The repo's workflows consume these scripts (manifest publishing) but nothing
 # ran their tests until something broke at 3am. This is that missing gate.
+#
+# Scoped to scripts/ on purpose. wakeword/ carries its own tests, but they
+# belong to a uv project pinned to Python 3.13 whose dependency set reaches
+# TensorFlow, and their behaviour depends on the exact audiomentations version
+# that project pins — resolved loose, it silently drops from 0.43.1 to 0.33.0
+# and the augmentation tests would then be measuring something else. Run those
+# the way wakeword/README.md says: `cd wakeword/train && uv run pytest`.
 
 on:
   push:
@@ -28,4 +35,4 @@ jobs:
         run: pip install pytest requests
 
       - name: Run tests
-        run: python3 -m pytest -q
+        run: python3 -m pytest -q scripts/
