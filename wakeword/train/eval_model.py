@@ -39,6 +39,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 import wave
 from dataclasses import dataclass
@@ -52,15 +53,54 @@ HERE = Path(__file__).resolve().parent
 # unable to run inference at all. The clone supplies them. See ../README.md.
 sys.path.insert(0, str(HERE / "upstream"))
 
-# The three settings the app actually ships for hey_ari, from WakeWordRegistry.
-# These are what a user is running, so these are what the numbers should
-# describe. Per-model since 2026-09-14: a cutoff is meaningless without the
-# model it belongs to, and ok_ari and hey_jarvis sit on a different ladder.
-APP_OPERATING_POINTS = {
-    "HIGH": (0.40, 5),
-    "MEDIUM": (0.50, 5),
-    "LOW": (0.60, 5),
-}
+# Where WakeWordRegistry keeps the ladder the app actually ships.
+REGISTRY_KT = (
+    HERE.parent.parent.parent
+    / "ari-android/app/src/main/java/dev/heyari/ari/wakeword/WakeWordModel.kt"
+)
+
+
+def app_operating_points(model_id: str = "hey_ari") -> dict[str, tuple[float, int]]:
+    """The three settings a user is actually running, read from the app source.
+
+    Not copied into a constant here, because a copy is exactly what went wrong
+    twice. This harness is the ship gate: it decides whether a model is good
+    enough to put in front of the household, and it answers with whatever
+    ladder it believes the app uses. Both times the app's ladder moved, the
+    copy stayed, and the gate went on grading against a setting nobody was
+    running — once reporting a model uniformly better than the one it replaced
+    while the phone said otherwise.
+
+    Parsing Kotlin with a regex is ugly and it is still the right trade: the
+    alternative is a number that agrees with the app only as long as somebody
+    remembers, and twice now nobody did. If the parse fails this raises rather
+    than falling back to a guess, because a wrong ladder here is invisible in
+    the output — every row still prints, just about the wrong app.
+    """
+    src = REGISTRY_KT.read_text()
+    block = re.search(
+        rf'\bid\s*=\s*"{re.escape(model_id)}"(.*?)^\s*\)',
+        src,
+        re.DOTALL | re.MULTILINE,
+    )
+    if not block and re.search(rf'\bunmeasured\(\s*"{re.escape(model_id)}"', src):
+        # The models with no household recordings share one block via the
+        # `unmeasured` helper, so they have no `id = "..."` line of their own.
+        block = re.search(
+            r"private fun unmeasured\((.*?)^\s*\)", src, re.DOTALL | re.MULTILINE
+        )
+    if not block:
+        raise SystemExit(f"No WakeWordModel block for {model_id!r} in {REGISTRY_KT}")
+    points = {}
+    for level in ("high", "medium", "low"):
+        m = re.search(
+            rf"\b{level}\s*=\s*OperatingPoint\(\s*([0-9.]+)f\s*,\s*(\d+)\s*\)",
+            block.group(1),
+        )
+        if not m:
+            raise SystemExit(f"No {level} OperatingPoint for {model_id!r} in {REGISTRY_KT}")
+        points[level.upper()] = (float(m.group(1)), int(m.group(2)))
+    return points
 
 # WakeWordService.detectionDebounceMs. One shout must not score as six wakes.
 REFRACTORY_MS = 4000
@@ -243,7 +283,7 @@ def main() -> int:
         points = {f"{c:.4f}": (c, args.window) for c in
                   (0.5, 0.7, 0.8, 0.9, 0.95, 0.97, 0.98, 0.985, 0.99, 0.995, 0.999)}
     else:
-        points = APP_OPERATING_POINTS
+        points = app_operating_points()
 
     print(f"model     {args.model.name}  (stride {model.stride}, {frame_ms} ms per probability)")
     print(f"positives {len(positives)} clips  ({sum(p[1][1] for p in positives)/16000:.1f}s)")
