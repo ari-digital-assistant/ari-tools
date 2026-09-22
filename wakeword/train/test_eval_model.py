@@ -5,8 +5,21 @@ than about the phone."""
 from __future__ import annotations
 
 import numpy as np
+import pytest
 
-from eval_model import REFRACTORY_MS, Score, count_detections, score_segment
+from pathlib import Path
+
+from eval_model import (
+    REFRACTORY_MS,
+    MarkedSegment,
+    Score,
+    ambient_floor,
+    count_detections,
+    marked_segments,
+    read_marks,
+    score_segment,
+    score_speakers,
+)
 
 # One probability covers stride x feature-step ms of audio; the rule itself
 # is period-agnostic, so the tests pick a round number.
@@ -130,3 +143,94 @@ def test_the_refractory_does_not_suppress_rapid_takes():
     probs = _probs(8000, [(1000, 1600), (3000, 3600), (5000, 5600)])
 
     assert score_segment(probs, [2000, 4000, 6000], cutoff=0.9, window=5, frame_ms=FRAME) == (3, 0)
+
+
+def sidecar(tmp_path, name, body):
+    (tmp_path / f"{name}.wav").write_bytes(b"")
+    (tmp_path / f"{name}.txt").write_text(body)
+    return tmp_path / f"{name}.wav"
+
+
+def test_marks_come_from_the_sidecar_not_the_filename():
+    """A filename is a convention; `set:` is what the speaker typed."""
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:
+        wav = sidecar(Path(d), "sample-0001-keith-kitchen",
+                      "set: Gail\nmarks: 4059,6321,8455\n")
+
+        assert read_marks(wav) == ("gail", [4059, 6321, 8455])
+
+
+def test_one_speaker_who_typed_their_name_two_ways_is_one_speaker():
+    """The real corpus holds both "Gail" and "gail". Split, she reports as a
+    31/46 and a 15/46 and neither number looks like the problem it is."""
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:
+        shouty = sidecar(Path(d), "one", "set:  GAIL \nmarks: 2000\n")
+        quiet = sidecar(Path(d), "two", "set: gail\nmarks: 2000\n")
+        probs = np.zeros(10)
+
+        segments = marked_segments([(shouty, (probs, 0)), (quiet, (probs, 0))])
+
+        assert {s.speaker for s in segments} == {"gail"}
+
+
+def test_a_clip_with_no_sidecar_is_unmarked_rather_than_a_miss():
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:
+        wav = Path(d) / "lonely.wav"
+        wav.write_bytes(b"")
+
+        assert read_marks(wav) is None
+
+
+def test_a_sidecar_with_an_empty_marks_line_is_unmarked():
+    """The recorder writes the key whether or not anybody tapped.
+
+    Treating that as zero takes would report a recall of 0% against a corpus
+    nobody marked, which reads exactly like a broken model.
+    """
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:
+        wav = sidecar(Path(d), "untapped", "set: Gail\nmarks: \n")
+
+        assert read_marks(wav) is None
+
+
+def test_unmarked_clips_are_dropped_from_the_marked_corpus():
+    import tempfile
+    with tempfile.TemporaryDirectory() as d:
+        marked = sidecar(Path(d), "marked", "set: joe\nmarks: 2000\n")
+        unmarked = Path(d) / "plain.wav"
+        unmarked.write_bytes(b"")
+        probs = np.zeros(10)
+
+        segments = marked_segments([(marked, (probs, 0)), (unmarked, (probs, 0))])
+
+        assert [s.speaker for s in segments] == ["joe"]
+
+
+def test_each_speaker_is_counted_apart_across_segments():
+    """The whole point. One number across a household hid a 18/46 for months."""
+    quiet = np.concatenate([np.zeros(100), np.full(10, 0.99), np.zeros(100)])
+    silent = np.zeros(210)
+    segments = [
+        MarkedSegment(Path("a.wav"), "gail", [1100], quiet),
+        MarkedSegment(Path("b.wav"), "gail", [1100], silent),
+        MarkedSegment(Path("c.wav"), "keith", [1100], quiet),
+    ]
+
+    per = score_speakers(segments, cutoff=0.9, window=5, frame_ms=FRAME_MS)
+
+    assert per == {"gail": (1, 2, 0), "keith": (1, 1, 0)}
+
+
+def test_the_ambient_floor_is_the_loudest_window_mean_any_negative_reaches():
+    """Not the loudest frame: the engine fires on the window mean, so a floor
+    quoted per frame would price headroom the detector never has to clear."""
+    spike = np.concatenate([np.zeros(20), np.full(5, 0.8), np.zeros(20)])
+    flat = np.full(45, 0.2)
+
+    floor = ambient_floor([(Path("a.wav"), (spike, 0)), (Path("b.wav"), (flat, 0))], window=10)
+
+    assert floor == pytest.approx(0.4)

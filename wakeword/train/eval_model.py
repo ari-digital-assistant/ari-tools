@@ -27,6 +27,12 @@ Features must be generated at the model's own `feature_step_size` (10 ms for
 hey_ari; upstream's default is 20). Getting that wrong halves the frame rate and
 quietly changes what a "window of 10" means.
 
+Recall is reported per speaker whenever the positives carry marks, because one
+number across a household hides the only failure that matters. The ladder this
+app shipped from April to September served the developer 13 takes in 16 and the
+quietest speaker in his house 18 in 46. Averaged, that is 51%, and 51% reads
+like a model problem rather than a threshold that answers one person.
+
 Usage:
   ./eval_model.py --model ../../../ari-android/app/src/main/assets/hey_ari.tflite \\
       --positives ~/captures/hey-ari --negatives ~/captures/rejected
@@ -126,6 +132,16 @@ class Score:
         return self.detections / hours if hours else 0.0
 
 
+@dataclass(frozen=True)
+class MarkedSegment:
+    """One continuous recording and the taps the speaker made inside it."""
+
+    path: Path
+    speaker: str
+    marks: list[int]
+    probs: np.ndarray
+
+
 def read_wav_16k(path: Path) -> np.ndarray:
     with wave.open(str(path)) as w:
         if w.getframerate() != 16000 or w.getnchannels() != 1 or w.getsampwidth() != 2:
@@ -171,6 +187,23 @@ def score_dir(clips: list[tuple[Path, np.ndarray]], cutoff, window, frame_ms) ->
         total += hits
         seconds += samples / 16000.0
     return Score(len(clips), detected, total, seconds)
+
+
+def ambient_floor(negatives, window: int) -> float:
+    """The highest window mean the negatives ever reach.
+
+    The number every cutoff in `WakeWordModel.kt` is quoted against, and the
+    one `WakeWordSensitivityTest` asserts on. FA/hour answers "did it fire on
+    this recording"; on twenty minutes of audio the answer is usually no, at
+    every cutoff, which says nothing about whether the next twenty minutes will
+    — the last two ladders both read zero here and one of them false-fired in a
+    house within two days. The margin is the number that degrades gracefully:
+    it says by how much the recording missed.
+    """
+    return max(
+        float(np.convolve(probs, np.ones(window) / window, mode="valid").max())
+        for _, (probs, _) in negatives
+    )
 
 
 def load_probs(model_path: Path, directory: Path, step_ms: int):
@@ -258,6 +291,70 @@ def score_segment(
     return caught, unclaimed
 
 
+def read_marks(wav: Path) -> tuple[str, list[int]] | None:
+    """Speaker and tap times from a WakeSampleRecorder sidecar, or None.
+
+    None when there is no sidecar or it carries no marks, which is how an
+    unmarked corpus falls back to clip scoring instead of reporting a recall of
+    zero against takes nobody recorded.
+
+    The speaker comes from the sidecar's `set:` rather than the filename: the
+    recorder writes the name the speaker typed, and a filename is only ever a
+    convention somebody can rename.
+
+    That field is free text, and the same person does not type their name the
+    same way twice — this corpus holds both "Gail" and "gail". Left as typed,
+    her 46 takes report as a 31 and a 15, and the breakdown that exists to stop
+    one speaker's recall hiding inside a household average hides it inside two
+    spellings instead. Hence the fold to a single key.
+    """
+    sidecar = wav.with_suffix(".txt")
+    if not sidecar.exists():
+        return None
+    speaker, marks = "unknown", []
+    for line in sidecar.read_text().splitlines():
+        key, _, value = line.partition(":")
+        if key == "set" and value.strip():
+            speaker = " ".join(value.split()).casefold()
+        elif key == "marks":
+            marks = [int(m) for m in value.split(",") if m.strip()]
+    return (speaker, marks) if marks else None
+
+
+def marked_segments(positives) -> list[MarkedSegment]:
+    """Pair each scored positive with its marks, dropping those that have none.
+
+    Built from probabilities already computed for [positives] rather than
+    re-running inference, which is most of a run's cost.
+    """
+    segments = []
+    for path, (probs, _) in positives:
+        parsed = read_marks(path)
+        if parsed is None:
+            continue
+        speaker, marks = parsed
+        segments.append(MarkedSegment(path, speaker, marks, probs))
+    return segments
+
+
+def score_speakers(
+    segments: list[MarkedSegment], cutoff: float, window: int, frame_ms: int
+) -> dict[str, tuple[int, int, int]]:
+    """Per speaker: takes caught, takes attempted, and false wakes inside them."""
+    per: dict[str, tuple[int, int, int]] = {}
+    for segment in segments:
+        caught, unclaimed = score_segment(
+            segment.probs, segment.marks, cutoff, window, frame_ms
+        )
+        had = per.get(segment.speaker, (0, 0, 0))
+        per[segment.speaker] = (
+            had[0] + caught,
+            had[1] + len(segment.marks),
+            had[2] + unclaimed,
+        )
+    return per
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[1])
     ap.add_argument("--model", required=True, type=Path, help="A .tflite wake model")
@@ -278,44 +375,97 @@ def main() -> int:
     frame_ms = args.step_ms * int(model.stride)
     positives = load_probs(args.model, args.positives, args.step_ms)
     negatives = load_probs(args.model, args.negatives, args.step_ms)
+    segments = marked_segments(positives)
+    speakers = sorted({segment.speaker for segment in segments})
+    takes = sum(len(segment.marks) for segment in segments)
 
     if args.sweep:
+        # Spread across the range a ladder has actually occupied rather than
+        # bunched at the ceiling, which is where they all sat when the only
+        # cutoff anyone had tried was 0.985.
         points = {f"{c:.4f}": (c, args.window) for c in
-                  (0.5, 0.7, 0.8, 0.9, 0.95, 0.97, 0.98, 0.985, 0.99, 0.995, 0.999)}
+                  (0.45, 0.55, 0.65, 0.75, 0.8, 0.85, 0.9, 0.95, 0.985)}
     else:
         points = app_operating_points()
 
     print(f"model     {args.model.name}  (stride {model.stride}, {frame_ms} ms per probability)")
-    print(f"positives {len(positives)} clips  ({sum(p[1][1] for p in positives)/16000:.1f}s)")
+    if segments:
+        unmarked = len(positives) - len(segments)
+        note = f", {unmarked} unmarked clip(s) ignored" if unmarked else ""
+        print(f"positives {takes} marked takes across {len(segments)} segments{note}")
+    else:
+        print(f"positives {len(positives)} clips  ({sum(p[1][1] for p in positives)/16000:.1f}s)")
     print(f"negatives {len(negatives)} clips  ({sum(n[1][1] for n in negatives)/16000:.1f}s)")
     print()
-    print(f"{'point':>8} {'cutoff':>7} {'win':>4} | {'recall':>7} {'missed':>7} | "
-          f"{'neg fired':>10} {'FA/hour':>8}")
-    print("-" * 66)
+
+    # Two layouts, because clip recall is not merely coarser on a marked
+    # corpus, it is wrong: a segment holding sixteen takes counts as one clip
+    # and scores 100% the moment any single one of them lands.
+    if segments:
+        header = (f"{'point':>8} {'cutoff':>7} {'win':>4} {'margin':>7} | "
+                  + " ".join(f"{s:>11}" for s in speakers)
+                  + f" | {'all':>10} | {'in-take':>7} {'FA/hour':>8}")
+    else:
+        header = (f"{'point':>8} {'cutoff':>7} {'win':>4} {'margin':>7} | "
+                  f"{'recall':>7} {'missed':>7} | {'neg fired':>10} {'FA/hour':>8}")
+    print(header)
+    print("-" * len(header))
 
     results = {}
     for name, (cutoff, window) in points.items():
-        pos = score_dir(positives, cutoff, window, frame_ms)
         neg = score_dir(negatives, cutoff, window, frame_ms)
-        print(
-            f"{name:>8} {cutoff:7.4f} {window:4d} | {pos.clip_rate:6.1%} "
-            f"{pos.clips - pos.detected_clips:7d} | "
-            f"{neg.detected_clips:4d}/{neg.clips:<5d} {neg.per_hour:8.1f}"
-        )
+        floor = ambient_floor(negatives, window)
         results[name] = {
             "cutoff": cutoff,
             "sliding_window_size": window,
-            "recall": round(pos.clip_rate, 4),
-            # int() because these come off numpy sums as int32/int64, which the
-            # json encoder refuses — and it refuses at the very end, after the
-            # whole run has been spent.
-            "positives_missed": int(pos.clips - pos.detected_clips),
+            "ambient_floor": round(floor, 4),
+            "margin": round(cutoff - floor, 4),
             "negatives_fired": int(neg.detected_clips),
             "negatives_total": int(neg.clips),
             "false_accepts_per_hour": round(neg.per_hour, 2),
         }
+        if segments:
+            per = score_speakers(segments, cutoff, window, frame_ms)
+            caught = sum(per[s][0] for s in speakers)
+            in_take = sum(per[s][2] for s in speakers)
+            cells = " ".join(
+                f"{per[s][0]:>3}/{per[s][1]:<3}{per[s][0]/per[s][1]:>4.0%}" for s in speakers
+            )
+            print(
+                f"{name:>8} {cutoff:7.4f} {window:4d} {cutoff - floor:+7.2f} | {cells} | "
+                f"{caught:>3}/{takes:<3}{caught/takes:>4.0%} | {in_take:7d} {neg.per_hour:8.1f}"
+            )
+            results[name] |= {
+                "recall": round(caught / takes, 4),
+                "takes_caught": caught,
+                "takes_total": takes,
+                "by_speaker": {
+                    s: {"caught": per[s][0], "takes": per[s][1], "false_wakes": per[s][2]}
+                    for s in speakers
+                },
+                "in_take_false_wakes": in_take,
+            }
+        else:
+            pos = score_dir(positives, cutoff, window, frame_ms)
+            print(
+                f"{name:>8} {cutoff:7.4f} {window:4d} {cutoff - floor:+7.2f} | "
+                f"{pos.clip_rate:6.1%} {pos.clips - pos.detected_clips:7d} | "
+                f"{neg.detected_clips:4d}/{neg.clips:<5d} {neg.per_hour:8.1f}"
+            )
+            results[name] |= {
+                "recall": round(pos.clip_rate, 4),
+                # int() because these come off numpy sums as int32/int64, which
+                # the json encoder refuses — and it refuses at the very end,
+                # after the whole run has been spent.
+                "positives_missed": int(pos.clips - pos.detected_clips),
+            }
 
     print()
+    if segments:
+        print("margin is the cutoff's gap above the loudest window mean the negatives")
+        print("reach. It is the unit the ladder in WakeWordModel.kt is quoted in, and")
+        print("unlike FA/hour it still carries information when nothing fired at all.")
+        print()
     # The note used to assert the negatives were hand-picked near-misses, which
     # stopped being true the moment an ambient corpus existed to pass instead.
     negative_seconds = sum(n[1][1] for n in negatives) / 16000

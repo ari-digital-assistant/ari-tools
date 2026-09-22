@@ -1,0 +1,114 @@
+{
+  "model": "hey_ari.tflite",
+  "step_ms": 10,
+  "frame_ms": 20,
+  "positives_dir": "/tmp/claude-1000/-home-keith-LocalCode-keithvassallomt-Ari/b6855dfd-48e3-410b-9edd-f39f5c9ca957/scratchpad/marked",
+  "negatives_dir": "../captures/ambient-kitchen-2026-09-13",
+  "results": {
+    "HIGH": {
+      "cutoff": 0.65,
+      "sliding_window_size": 10,
+      "ambient_floor": 0.3486,
+      "margin": 0.3014,
+      "negatives_fired": 0,
+      "negatives_total": 1,
+      "false_accepts_per_hour": 0.0,
+      "recall": 0.6957,
+      "takes_caught": 64,
+      "takes_total": 92,
+      "by_speaker": {
+        "gail": {
+          "caught": 29,
+          "takes": 46,
+          "false_wakes": 0
+        },
+        "joe": {
+          "caught": 9,
+          "takes": 15,
+          "false_wakes": 0
+        },
+        "keith": {
+          "caught": 14,
+          "takes": 16,
+          "false_wakes": 0
+        },
+        "maryanne": {
+          "caught": 12,
+          "takes": 15,
+          "false_wakes": 0
+        }
+      },
+      "in_take_false_wakes": 0
+    },
+    "MEDIUM": {
+      "cutoff": 0.75,
+      "sliding_window_size": 10,
+      "ambient_floor": 0.3486,
+      "margin": 0.4014,
+      "negatives_fired": 0,
+      "negatives_total": 1,
+      "false_accepts_per_hour": 0.0,
+      "recall": 0.6739,
+      "takes_caught": 62,
+      "takes_total": 92,
+      "by_speaker": {
+        "gail": {
+          "caught": 27,
+          "takes": 46,
+          "false_wakes": 0
+        },
+        "joe": {
+          "caught": 9,
+          "takes": 15,
+          "false_wakes": 0
+        },
+        "keith": {
+          "caught": 14,
+          "takes": 16,
+          "false_wakes": 0
+        },
+        "maryanne": {
+          "caught": 12,
+          "takes": 15,
+          "false_wakes": 0
+        }
+      },
+      "in_take_false_wakes": 0
+    },
+    "LOW": {
+      "cutoff": 0.85,
+      "sliding_window_size": 10,
+      "ambient_floor": 0.3486,
+      "margin": 0.5014,
+      "negatives_fired": 0,
+      "negatives_total": 1,
+      "false_accepts_per_hour": 0.0,
+      "recall": 0.6304,
+      "takes_caught": 58,
+      "takes_total": 92,
+      "by_speaker": {
+        "gail": {
+          "caught": 25,
+          "takes": 46,
+          "false_wakes": 0
+        },
+        "joe": {
+          "caught": 8,
+          "takes": 15,
+          "false_wakes": 0
+        },
+        "keith": {
+          "caught": 14,
+          "takes": 16,
+          "false_wakes": 0
+        },
+        "maryanne": {
+          "caught": 11,
+          "takes": 15,
+          "false_wakes": 0
+        }
+      },
+      "in_take_false_wakes": 0
+    }
+  }
+}
