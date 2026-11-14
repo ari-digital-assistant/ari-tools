@@ -77,16 +77,20 @@ class HfFileMetaTests(unittest.TestCase):
 
     def test_non_lfs_blob_with_sha1_etag_falls_back_to_download(self):
         # The trap: HF's resolve HEAD on a plain git blob (tokens.txt)
-        # still returns x-linked-etag — but it's the git SHA-1, NOT a
-        # content SHA-256, and there's no x-linked-size. We must ignore
-        # that etag and hash the bytes ourselves, or the manifest ends up
-        # with a 40-char SHA-1 the app can never match.
+        # returns x-linked-etag as the git SHA-1, not a content SHA-256,
+        # and since October 2026 it sends x-linked-size alongside it.
+        # Headers below are what HF really returned for Kroko's tokens.txt.
+        # We must ignore that etag and hash the bytes ourselves, or the
+        # manifest ends up with a 40-char SHA-1 the app can never match.
         body = b"hello tokens"
         import hashlib
         expected = hashlib.sha256(body).hexdigest()
         head = mock.Mock(return_value=FakeResponse(
             status_code=307,
-            headers={"x-linked-etag": '"14a984cd7fdc0cabd277d6d0979f1b6561cbf1f1"'},
+            headers={
+                "x-linked-etag": '"14a984cd7fdc0cabd277d6d0979f1b6561cbf1f1"',
+                "x-linked-size": "6310",
+            },
         ))
         get = mock.Mock(return_value=FakeResponse(status_code=200, content=body))
         self._install_session(head=head, get=get)

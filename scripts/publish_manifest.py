@@ -96,11 +96,12 @@ def hf_file_meta(repo: str, filename: str) -> dict:
     it.
 
     Plain git blobs (e.g. a small `tokens.txt`) also expose an
-    `x-linked-etag`, but there it's the git SHA-1 of the blob, NOT a
-    content SHA-256 — and crucially they carry no `x-linked-size`. So the
-    presence of `x-linked-size` is the LFS/Xet marker: only then is
-    `x-linked-etag` a real SHA-256. Without it we fall back to
-    downloading and hashing the bytes client-side.
+    `x-linked-etag`, but there it's the git SHA-1 of the blob, not a
+    content SHA-256. HF used to omit `x-linked-size` for those, and we
+    keyed on that; by October 2026 it sent the size for plain blobs too,
+    and both STT manifests shipped a SHA-1 the app could never match. The
+    etag's length is the only reliable marker: 64 hex chars is a SHA-256,
+    anything else gets downloaded and hashed client-side.
     """
     url = f"https://huggingface.co/{repo}/resolve/main/{filename}"
     r = hf_session().head(url, allow_redirects=False, timeout=30)
@@ -108,17 +109,14 @@ def hf_file_meta(repo: str, filename: str) -> dict:
         raise SystemExit(f"file '{filename}' not found in HF repo {repo}")
     r.raise_for_status()
 
-    etag = r.headers.get("x-linked-etag")
+    etag = (r.headers.get("x-linked-etag") or "").strip('"')
     size = r.headers.get("x-linked-size")
-    if etag and size:
-        # LFS/Xet-backed: x-linked-etag is the content SHA-256.
+    if len(etag) == 64 and size:
         return {
             "url": url,
-            "sha256": etag.strip('"'),
+            "sha256": etag,
             "size_bytes": int(size),
         }
-    # Plain git blob (no x-linked-size): hash the bytes directly. The
-    # x-linked-etag here would be a SHA-1, so we must not trust it.
     return _hash_inline_file(repo, filename, None)
 
 
