@@ -3,7 +3,9 @@ name: Publish LLM manifests
 # Polls Hugging Face daily for each on-device LLM tier and republishes
 # the floating-release manifest if the upstream GGUF has changed. The
 # script's content-based dedup means same-sha re-runs are no-ops, so
-# the daily cron is cheap.
+# the daily cron is cheap. A changed GGUF is first mirrored to the
+# heyari-models bucket, served at https://heyari.dev/models/ through
+# CloudFront; the manifest points the app there, not at Hugging Face.
 
 on:
   schedule:
@@ -12,6 +14,7 @@ on:
 
 permissions:
   contents: write   # needed for `gh release upload` against the same repo
+  id-token: write   # OIDC into the ari-tools-model-publisher AWS role
 
 jobs:
   publish:
@@ -28,12 +31,15 @@ jobs:
           - id: small
             hf_repo: unsloth/gemma-3-1b-it-GGUF
             file: gemma-3-1b-it-Q4_K_M.gguf
+            licence: gemma
           - id: medium
             hf_repo: unsloth/gemma-4-E2B-it-GGUF
             file: gemma-4-E2B-it-Q4_K_M.gguf
+            licence: apache-2.0
           - id: large
             hf_repo: unsloth/gemma-4-E4B-it-GGUF
             file: gemma-4-E4B-it-Q4_K_M.gguf
+            licence: apache-2.0
     steps:
       - name: Silence git default-branch hint
         run: git config --global init.defaultBranch main
@@ -47,6 +53,13 @@ jobs:
       - name: Install dependencies
         run: pip install requests
 
+      # Scoped to put/get under models/llm/ in heyari-models, and only
+      # assumable from this repo's main branch.
+      - uses: aws-actions/configure-aws-credentials@v6
+        with:
+          role-to-assume: arn:aws:iam::781345700122:role/ari-tools-model-publisher
+          aws-region: eu-west-2
+
       - name: Publish if upstream changed
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -55,4 +68,5 @@ jobs:
           python3 scripts/publish_manifest.py llm \
             --hf-repo "${{ matrix.tier.hf_repo }}" \
             --hf-file "${{ matrix.tier.file }}" \
-            --release-tag "llm-${{ matrix.tier.id }}-latest"
+            --release-tag "llm-${{ matrix.tier.id }}-latest" \
+            --licence "${{ matrix.tier.licence }}"

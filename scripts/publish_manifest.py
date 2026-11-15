@@ -25,6 +25,14 @@ against the SHA(s) in the existing manifest (if any) and exits 0 with no
 republish if nothing changed. The version string is for display
 (`{date}-{sha-short}`) but the comparison is on the SHAs themselves, so
 re-running on a different day with no upstream change is a no-op.
+
+LLM tiers are served from our own copy, not from Hugging Face: each GGUF
+is mirrored to the `heyari-models` S3 bucket and the manifest points at
+`https://heyari.dev/models/...` (CloudFront). The key carries the SHA, so
+an object never changes once written and can be cached forever. Hugging
+Face throttled multi-GB downloads (ari-android#36), and its `resolve/main`
+URL changes content under us whenever upstream re-uploads, failing the
+app's checksum until the next nightly run caught up.
 """
 
 from __future__ import annotations
@@ -46,6 +54,19 @@ from urllib3.util.retry import Retry
 
 
 GH_REPO = "ari-digital-assistant/ari-tools"
+
+# heyari.dev's CloudFront distribution routes /models/* to this bucket.
+MODELS_BUCKET = "heyari-models"
+MODELS_BASE_URL = "https://heyari.dev"
+
+# The line each upstream licence asks redistributors to ship. Gemma's
+# Terms of Use require this exact sentence in a NOTICE file.
+LICENCE_NOTICES = {
+    "gemma": "Gemma is provided under and subject to the Gemma Terms of Use "
+             "found at ai.google.dev/gemma/terms",
+    "apache-2.0": "Licensed under the Apache License, Version 2.0: "
+                  "https://www.apache.org/licenses/LICENSE-2.0",
+}
 
 _session: Optional[requests.Session] = None
 
@@ -210,6 +231,67 @@ def replace_release_asset(release_tag: str, manifest: dict) -> None:
         )
 
 
+def s3_object_exists(key: str) -> bool:
+    result = subprocess.run(
+        ["aws", "s3api", "head-object", "--bucket", MODELS_BUCKET, "--key", key],
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.PIPE,
+        text=True,
+    )
+    if result.returncode == 0:
+        return True
+    if "404" in result.stderr or "Not Found" in result.stderr:
+        return False
+    raise SystemExit(f"head-object s3://{MODELS_BUCKET}/{key} failed: {result.stderr.strip()}")
+
+
+def mirror_to_s3(meta: dict, key: str, notice: str) -> None:
+    """Copy a Hugging Face file to S3 at `key`, with a NOTICE beside it.
+
+    The NOTICE goes up last, so its presence means both landed and a re-run
+    after a half-finished mirror redoes the whole thing. The bytes are
+    hashed on the way down and must match the SHA the manifest will carry:
+    a mirror that serves something else would fail every install.
+    """
+    notice_key = f"{key.rsplit('/', 1)[0]}/NOTICE"
+    if s3_object_exists(notice_key):
+        print(f"already mirrored: s3://{MODELS_BUCKET}/{key}")
+        return
+
+    with tempfile.TemporaryDirectory() as td:
+        path = Path(td) / key.rsplit("/", 1)[1]
+        digest = hashlib.sha256()
+        with hf_session().get(meta["url"], stream=True, timeout=60) as r:
+            r.raise_for_status()
+            with open(path, "wb") as f:
+                for chunk in r.iter_content(chunk_size=8 * 1024 * 1024):
+                    f.write(chunk)
+                    digest.update(chunk)
+        if digest.hexdigest() != meta["sha256"].lower():
+            raise SystemExit(
+                f"downloaded {meta['url']} hashes to {digest.hexdigest()}, "
+                f"expected {meta['sha256']}"
+            )
+
+        subprocess.run(
+            ["aws", "s3", "cp", str(path), f"s3://{MODELS_BUCKET}/{key}",
+             "--content-type", "application/octet-stream",
+             "--cache-control", "public, max-age=31536000, immutable",
+             "--only-show-errors"],
+            check=True,
+        )
+        notice_path = Path(td) / "NOTICE"
+        notice_path.write_text(notice)
+        subprocess.run(
+            ["aws", "s3", "cp", str(notice_path), f"s3://{MODELS_BUCKET}/{notice_key}",
+             "--content-type", "text/plain; charset=utf-8",
+             "--cache-control", "public, max-age=31536000, immutable",
+             "--only-show-errors"],
+            check=True,
+        )
+    print(f"mirrored to s3://{MODELS_BUCKET}/{key}")
+
+
 def now_iso() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -220,20 +302,39 @@ def today_yyyymmdd() -> str:
 
 def publish_llm(args: argparse.Namespace) -> int:
     meta = hf_file_meta(args.hf_repo, args.hf_file)
+    key = f"models/llm/{meta['sha256'].lower()}/{args.hf_file}"
+    url = f"{MODELS_BASE_URL}/{key}"
 
-    prev = existing_manifest(args.release_tag)
-    prev_sha = (prev or {}).get("sha256", "")
-    if prev_sha and prev_sha.lower() == meta["sha256"].lower():
+    prev = existing_manifest(args.release_tag) or {}
+    same_bytes = prev.get("sha256", "").lower() == meta["sha256"].lower()
+    if same_bytes and prev.get("url") == url:
         print(f"{args.release_tag}: no change (sha {meta['sha256'][:12]}…)")
         return 0
 
-    version = f"{today_yyyymmdd()}-{meta['sha256'][:7]}"
+    notice = (
+        f"{args.hf_file}\n"
+        f"Mirrored unchanged from https://huggingface.co/{args.hf_repo} "
+        f"for the Ari digital assistant.\n\n"
+        f"{LICENCE_NOTICES[args.licence]}\n"
+    )
+    # Before the manifest moves, so the app is never pointed at a file
+    # that isn't there yet.
+    mirror_to_s3(meta, key, notice)
+
+    if same_bytes and prev.get("version"):
+        # Same file, new host. Keeping the version means installed copies
+        # aren't offered an "update" that would download identical bytes.
+        version = prev["version"]
+        released_at = prev.get("released_at") or now_iso()
+    else:
+        version = f"{today_yyyymmdd()}-{meta['sha256'][:7]}"
+        released_at = now_iso()
     manifest = {
         "version": version,
-        "url": meta["url"],
+        "url": url,
         "sha256": meta["sha256"],
         "size_bytes": meta["size_bytes"],
-        "released_at": now_iso(),
+        "released_at": released_at,
     }
     replace_release_asset(args.release_tag, manifest)
     print(f"{args.release_tag}: published version={version}")
@@ -292,6 +393,7 @@ def main() -> int:
     p_llm.add_argument("--hf-repo", required=True)
     p_llm.add_argument("--hf-file", required=True)
     p_llm.add_argument("--release-tag", required=True)
+    p_llm.add_argument("--licence", required=True, choices=sorted(LICENCE_NOTICES))
 
     p_stt = sub.add_parser("stt-bundle", help="multi-file HF-hosted STT bundle")
     p_stt.add_argument("--hf-repo", required=True)

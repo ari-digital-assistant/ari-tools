@@ -109,5 +109,56 @@ class HfFileMetaTests(unittest.TestCase):
             pm.hf_file_meta("some/repo", "nope.gguf")
 
 
+class PublishLlmTests(unittest.TestCase):
+    """LLM manifests point at our CloudFront mirror, never at Hugging Face."""
+
+    SHA = "740185b21d22ceb83a11c3aa62ad5842ef32c70f6096d756bbee85a1e4ec34b8"
+    HF_URL = "https://huggingface.co/unsloth/gemma-4-E2B-it-GGUF/resolve/main/gemma-4-E2B-it-Q4_K_M.gguf"
+    MIRROR_URL = f"https://heyari.dev/models/llm/{SHA}/gemma-4-E2B-it-Q4_K_M.gguf"
+
+    def _run(self, prev):
+        args = pm.argparse.Namespace(
+            hf_repo="unsloth/gemma-4-E2B-it-GGUF",
+            hf_file="gemma-4-E2B-it-Q4_K_M.gguf",
+            release_tag="llm-medium-latest",
+            licence="apache-2.0",
+        )
+        meta = {"url": self.HF_URL, "sha256": self.SHA, "size_bytes": 3106738272}
+        with mock.patch.object(pm, "hf_file_meta", return_value=meta), \
+             mock.patch.object(pm, "existing_manifest", return_value=prev), \
+             mock.patch.object(pm, "mirror_to_s3") as mirror, \
+             mock.patch.object(pm, "replace_release_asset") as publish:
+            self.assertEqual(pm.publish_llm(args), 0)
+        return mirror, publish
+
+    def test_already_mirrored_is_a_no_op(self):
+        mirror, publish = self._run({"version": "v1", "sha256": self.SHA, "url": self.MIRROR_URL})
+        mirror.assert_not_called()
+        publish.assert_not_called()
+
+    def test_same_bytes_on_hugging_face_move_keeping_the_version(self):
+        # The one-off move: nothing changed upstream, so installed copies
+        # must not be offered an update, but the URL has to change.
+        prev = {"version": "2026.07.18-740185b", "sha256": self.SHA, "url": self.HF_URL,
+                "released_at": "2026-07-18T04:13:57Z"}
+        mirror, publish = self._run(prev)
+        mirror.assert_called_once()
+        (_, manifest), _ = publish.call_args
+        self.assertEqual(manifest["url"], self.MIRROR_URL)
+        self.assertEqual(manifest["version"], "2026.07.18-740185b")
+        self.assertEqual(manifest["released_at"], "2026-07-18T04:13:57Z")
+
+    def test_new_upstream_bytes_get_a_new_version_and_the_mirror_url(self):
+        prev = {"version": "old", "sha256": "0" * 64, "url": "https://heyari.dev/models/llm/old/x.gguf"}
+        mirror, publish = self._run(prev)
+        (meta, key, notice), _ = mirror.call_args
+        self.assertEqual(key, f"models/llm/{self.SHA}/gemma-4-E2B-it-Q4_K_M.gguf")
+        self.assertIn("Apache License", notice)
+        (_, manifest), _ = publish.call_args
+        self.assertEqual(manifest["url"], self.MIRROR_URL)
+        self.assertTrue(manifest["version"].endswith("-740185b"))
+        self.assertNotEqual(manifest["version"], "old")
+
+
 if __name__ == "__main__":
     unittest.main()
