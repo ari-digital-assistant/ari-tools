@@ -160,5 +160,32 @@ class PublishLlmTests(unittest.TestCase):
         self.assertNotEqual(manifest["version"], "old")
 
 
+class MirrorProgressTests(unittest.TestCase):
+    """A multi-GB mirror must show how far it has got, not sit silent."""
+
+    def test_logs_every_ten_percent_then_the_upload(self):
+        import hashlib, io
+        from contextlib import redirect_stdout
+        body = b"x" * 1000
+        meta = {"url": "https://hf/x.gguf", "sha256": hashlib.sha256(body).hexdigest(),
+                "size_bytes": len(body)}
+        response = mock.MagicMock()
+        response.__enter__.return_value = response
+        response.iter_content.return_value = [body[i:i + 100] for i in range(0, len(body), 100)]
+        sess = mock.Mock()
+        sess.get.return_value = response
+        pm._session = sess
+        out = io.StringIO()
+        with mock.patch.object(pm, "s3_object_exists", return_value=False), \
+             mock.patch.object(pm.subprocess, "run") as run, redirect_stdout(out):
+            pm.mirror_to_s3(meta, "models/llm/abc/x.gguf", "notice")
+        lines = out.getvalue().splitlines()
+        percents = [l.split("(")[1].split("%")[0] for l in lines if "GB (" in l]
+        self.assertEqual(percents, [str(p) for p in range(10, 101, 10)])
+        self.assertTrue(any(l.startswith("uploading x.gguf") for l in lines))
+        self.assertTrue(lines[-1].startswith("mirrored to s3://heyari-models/models/llm/abc/x.gguf"))
+        self.assertEqual(run.call_count, 2)  # the GGUF, then its NOTICE
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -44,6 +44,7 @@ import os
 import subprocess
 import sys
 import tempfile
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Optional
@@ -245,6 +246,13 @@ def s3_object_exists(key: str) -> bool:
     raise SystemExit(f"head-object s3://{MODELS_BUCKET}/{key} failed: {result.stderr.strip()}")
 
 
+def progress_line(name: str, done: int, total: int, elapsed: float) -> str:
+    rate = done / elapsed if elapsed > 0 else 0
+    left = f"{(total - done) / rate:.0f}s left" if rate else "time left unknown"
+    return (f"{name}: {done / 1e9:.1f} of {total / 1e9:.1f} GB ({done * 100 // total}%), "
+            f"{rate / 1e6:.0f} MB/s, {left}")
+
+
 def mirror_to_s3(meta: dict, key: str, notice: str) -> None:
     """Copy a Hugging Face file to S3 at `key`, with a NOTICE beside it.
 
@@ -252,6 +260,9 @@ def mirror_to_s3(meta: dict, key: str, notice: str) -> None:
     after a half-finished mirror redoes the whole thing. The bytes are
     hashed on the way down and must match the SHA the manifest will carry:
     a mirror that serves something else would fail every install.
+
+    A multi-GB copy takes minutes, so it logs every 10% (flushed, so the
+    Actions log shows it live) plus the upload's start and finish.
     """
     notice_key = f"{key.rsplit('/', 1)[0]}/NOTICE"
     if s3_object_exists(notice_key):
@@ -259,20 +270,32 @@ def mirror_to_s3(meta: dict, key: str, notice: str) -> None:
         return
 
     with tempfile.TemporaryDirectory() as td:
-        path = Path(td) / key.rsplit("/", 1)[1]
+        name = key.rsplit("/", 1)[1]
+        path = Path(td) / name
         digest = hashlib.sha256()
+        total = meta["size_bytes"]
+        done = 0
+        next_report = 10
+        print(f"downloading {name} ({total / 1e9:.1f} GB) from Hugging Face", flush=True)
+        started = time.monotonic()
         with hf_session().get(meta["url"], stream=True, timeout=60) as r:
             r.raise_for_status()
             with open(path, "wb") as f:
                 for chunk in r.iter_content(chunk_size=8 * 1024 * 1024):
                     f.write(chunk)
                     digest.update(chunk)
+                    done += len(chunk)
+                    while total and next_report <= 100 and done * 100 >= next_report * total:
+                        print(progress_line(name, done, total, time.monotonic() - started), flush=True)
+                        next_report += 10
         if digest.hexdigest() != meta["sha256"].lower():
             raise SystemExit(
                 f"downloaded {meta['url']} hashes to {digest.hexdigest()}, "
                 f"expected {meta['sha256']}"
             )
 
+        print(f"uploading {name} to s3://{MODELS_BUCKET}/{key}", flush=True)
+        started = time.monotonic()
         subprocess.run(
             ["aws", "s3", "cp", str(path), f"s3://{MODELS_BUCKET}/{key}",
              "--content-type", "application/octet-stream",
@@ -289,7 +312,8 @@ def mirror_to_s3(meta: dict, key: str, notice: str) -> None:
              "--only-show-errors"],
             check=True,
         )
-    print(f"mirrored to s3://{MODELS_BUCKET}/{key}")
+    print(f"mirrored to s3://{MODELS_BUCKET}/{key} (upload took {time.monotonic() - started:.0f}s)",
+          flush=True)
 
 
 def now_iso() -> str:
