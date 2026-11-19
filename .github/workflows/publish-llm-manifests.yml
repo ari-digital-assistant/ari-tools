@@ -40,6 +40,22 @@ jobs:
             hf_repo: unsloth/gemma-4-E4B-it-GGUF
             file: gemma-4-E4B-it-Q4_K_M.gguf
             licence: apache-2.0
+          # LiteRT-LM builds (ari-android#52), under their own release tags:
+          # older apps read llm-<tier>-latest and save what it names as a GGUF.
+          # Small's repo is behind Gemma's licence prompt, so HF_TOKEN's
+          # account must have accepted it.
+          - id: small-litert
+            hf_repo: litert-community/Gemma3-1B-IT
+            file: Gemma3-1B-IT_multi-prefill-seq_q8_ekv2048.task
+            licence: gemma
+          - id: medium-litert
+            hf_repo: litert-community/gemma-4-E2B-it-litert-lm
+            file: gemma-4-E2B-it.litertlm
+            licence: apache-2.0
+          - id: large-litert
+            hf_repo: litert-community/gemma-4-E4B-it-litert-lm
+            file: gemma-4-E4B-it.litertlm
+            licence: apache-2.0
     steps:
       - name: Silence git default-branch hint
         run: git config --global init.defaultBranch main
