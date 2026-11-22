@@ -34,7 +34,7 @@ quietest speaker in his house 18 in 46. Averaged, that is 51%, and 51% reads
 like a model problem rather than a threshold that answers one person.
 
 Usage:
-  ./eval_model.py --model ../../../ari-android/app/src/main/assets/hey_ari.tflite \\
+  ./eval_model.py --model ../../../ari-engine/assets/voice/ok_ari.tflite \\
       --positives ~/captures/hey-ari --negatives ~/captures/rejected
 
   # Sweep the operating point instead of using the app's presets:
