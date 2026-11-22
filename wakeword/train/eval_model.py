@@ -59,15 +59,14 @@ HERE = Path(__file__).resolve().parent
 # unable to run inference at all. The clone supplies them. See ../README.md.
 sys.path.insert(0, str(HERE / "upstream"))
 
-# Where WakeWordRegistry keeps the ladder the app actually ships.
-REGISTRY_KT = (
-    HERE.parent.parent.parent
-    / "ari-android/app/src/main/java/dev/heyari/ari/wakeword/WakeWordModel.kt"
+# Where the engine keeps the ladder the app actually ships.
+REGISTRY_RS = (
+    HERE.parent.parent.parent / "ari-engine/crates/ari-voice/src/wake_model.rs"
 )
 
 
 def app_operating_points(model_id: str = "hey_ari") -> dict[str, tuple[float, int]]:
-    """The three settings a user is actually running, read from the app source.
+    """The three settings a user is actually running, read from the engine source.
 
     Not copied into a constant here, because a copy is exactly what went wrong
     twice. This harness is the ship gate: it decides whether a model is good
@@ -77,34 +76,34 @@ def app_operating_points(model_id: str = "hey_ari") -> dict[str, tuple[float, in
     running — once reporting a model uniformly better than the one it replaced
     while the phone said otherwise.
 
-    Parsing Kotlin with a regex is ugly and it is still the right trade: the
+    Parsing Rust with a regex is ugly and it is still the right trade: the
     alternative is a number that agrees with the app only as long as somebody
     remembers, and twice now nobody did. If the parse fails this raises rather
     than falling back to a guess, because a wrong ladder here is invisible in
     the output — every row still prints, just about the wrong app.
     """
-    src = REGISTRY_KT.read_text()
+    src = REGISTRY_RS.read_text()
     block = re.search(
-        rf'\bid\s*=\s*"{re.escape(model_id)}"(.*?)^\s*\)',
+        rf'\bid:\s*"{re.escape(model_id)}"\.into\(\)(.*?)^\s*\}}',
         src,
         re.DOTALL | re.MULTILINE,
     )
     if not block and re.search(rf'\bunmeasured\(\s*"{re.escape(model_id)}"', src):
         # The models with no household recordings share one block via the
-        # `unmeasured` helper, so they have no `id = "..."` line of their own.
+        # `unmeasured` helper, so they have no `id: "..."` line of their own.
         block = re.search(
-            r"private fun unmeasured\((.*?)^\s*\)", src, re.DOTALL | re.MULTILINE
+            r"fn unmeasured\((.*?)^\s*\}", src, re.DOTALL | re.MULTILINE
         )
     if not block:
-        raise SystemExit(f"No WakeWordModel block for {model_id!r} in {REGISTRY_KT}")
+        raise SystemExit(f"No WakeWordModel block for {model_id!r} in {REGISTRY_RS}")
     points = {}
     for level in ("high", "medium", "low"):
         m = re.search(
-            rf"\b{level}\s*=\s*OperatingPoint\(\s*([0-9.]+)f\s*,\s*(\d+)\s*\)",
+            rf"\b{level}:\s*OperatingPoint::new\(\s*([0-9.]+)\s*,\s*(\d+)\s*\)",
             block.group(1),
         )
         if not m:
-            raise SystemExit(f"No {level} OperatingPoint for {model_id!r} in {REGISTRY_KT}")
+            raise SystemExit(f"No {level} OperatingPoint for {model_id!r} in {REGISTRY_RS}")
         points[level.upper()] = (float(m.group(1)), int(m.group(2)))
     return points
 
@@ -192,7 +191,7 @@ def score_dir(clips: list[tuple[Path, np.ndarray]], cutoff, window, frame_ms) ->
 def ambient_floor(negatives, window: int) -> float:
     """The highest window mean the negatives ever reach.
 
-    The number every cutoff in `WakeWordModel.kt` is quoted against, and the
+    The number every cutoff in `wake_model.rs` is quoted against, and the
     one `WakeWordSensitivityTest` asserts on. FA/hour answers "did it fire on
     this recording"; on twenty minutes of audio the answer is usually no, at
     every cutoff, which says nothing about whether the next twenty minutes will
@@ -463,7 +462,7 @@ def main() -> int:
     print()
     if segments:
         print("margin is the cutoff's gap above the loudest window mean the negatives")
-        print("reach. It is the unit the ladder in WakeWordModel.kt is quoted in, and")
+        print("reach. It is the unit the ladder in wake_model.rs is quoted in, and")
         print("unlike FA/hour it still carries information when nothing fired at all.")
         print()
     # The note used to assert the negatives were hand-picked near-misses, which

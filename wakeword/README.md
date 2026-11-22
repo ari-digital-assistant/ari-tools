@@ -212,8 +212,8 @@ The measurement that settled the project is 92 marked takes from four speakers
 and twenty minutes of household ambient: a kitchen with four people talking, and
 a living room. None of it had ever been heard by any model under test.
 
-The operating points it scores at are **parsed out of the app's
-`WakeWordModel.kt`**, so "at the app's default" always means what the phone is
+The operating points it scores at are **parsed out of the engine's
+`ari-voice/src/wake_model.rs`**, so "at the app's default" always means what the phone is
 actually running. That used to be a copied constant and it went stale twice —
 once reporting a model uniformly better than its predecessor while the phone
 said otherwise. A wrong ladder here is invisible: every row still prints, just
